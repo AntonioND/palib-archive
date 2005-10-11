@@ -1,0 +1,310 @@
+#ifndef _PA_Main
+#define _PA_Main
+
+
+// Remove the // in front of this define to have perfect stylus emulation on Dualis...
+//#define EMUSTYLUS
+
+
+// Remove these // to activate the splash screens. Leaving // takes up less rom space
+//#define USE_PA_SPLASH
+//#define USE_NEOSPLASH
+
+#include <NDS/NDS.h>
+#include <NDS/memory.h>
+#include <NDS/ARM9/BIOS.h>
+
+
+#include <stdarg.h> // Pour le système de text
+#include <stdlib.h>
+
+#include "Sound9.h"
+
+#define _REG8 *(volatile u16 *)
+#define _REG16 *(volatile u16 *)
+#define _REG32 *(volatile u32 *)
+
+#include "PA/PA_Sprite.h"
+#include "PA/PA_Sound.h"
+#include "PA/PA_Micro.h"
+#include "PA/PA_Draw.h"
+#include "PA/PA_Interrupt.h"
+#include "PA/PA_Keys.h"
+
+#include "PA/PA_Math.h"
+#include "PA/PA_Palette.h"
+#include "PA/PA_Save.h"
+
+#include "PA/PA_SpecialFx.h"
+
+#include "PA/PA_Tile.h"
+#include "PA/PA_Keyboard.h"
+
+#include "PA/PA_Text.h"
+#include "PA/PA_Window.h"
+
+#include "PA/PA_3D.h"
+
+#include "PA/splash.h"
+#include "PA/splash2.h"
+#include "PA/PApalet.h"
+extern const unsigned short bitmap[768];
+
+
+#include "PA/NeoSplash.h"  // Splash NeoFlash
+
+
+#define SWITCH_SCREENS  (1<<15)
+
+
+
+#define N_HBLS 263
+
+
+
+/*! \file PA.h
+    \brief Contains prototypes and macros... for the arm9
+
+    Contains prototypes and macros... for the arm9
+*/
+
+
+
+extern const u32 Blank[30000];
+
+
+#define BG_GFX1			0x6000000
+#define BG_GFX2			0x6200000
+#define SPRITE_GFX1		0x6400000
+#define SPRITE_GFX2		0x6600000
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+// Général
+//////////////////////////////////////////////////////////////////////
+
+#define SIZEOF_8BIT(x)          (sizeof(x))
+#define SIZEOF_16BIT(x)         (sizeof(x)>>1)
+#define SIZEOF_32BIT(x)         (sizeof(x)>>2)
+
+
+
+
+#define CODE_IN_IWRAM __attribute__ ((section (".iwram"), long_call))
+#define IN_IWRAM __attribute__ ((section (".iwram")))
+#define CODE_IN_EWRAM __attribute__ ((section (".ewram"), long_call))
+#define IN_EWRAM __attribute__ ((section (".ewram")))
+#define PACKED __attribute__ ((packed))
+
+
+extern const s16 PA_SIN[512];
+
+
+
+typedef struct {
+   u8 Color;  // Favorite Color
+   u8 BdayMonth; // Mois d'anniversaire
+   u8 BdayDay;  // Jour de naissance
+   u8 AlarmHour;
+   u8 AlarmMinute;
+   u8 Name[21];
+   u8 NameLength;
+   u8 Message[53];
+   u8 MessageLength;
+} infos;
+extern infos PA_UserInfo;
+
+#define INFO_COLOR *(u8*)0x027FFC82
+#define INFO_BDAY_MONTH *(u8*)0x027FFC83
+#define INFO_BDAY_DAY *(u8*)0x027FFC84
+#define INFO_ALARM_HOUR *(u8*)0x027FFCD2
+#define INFO_ALARM_MINUTE *(u8*)0x027FFCD3
+#define INFO_NAME *(u8*)0x027FFC86
+#define INFO_NAME_LENGTH *(u8*)0x027FFC9A
+#define INFO_MESSAGE *(u8*)0x027FFC9C
+#define INFO_MESSAGE_LENGTH *(u8*)0x027FFCD0
+
+
+
+typedef struct {
+   u8 NoIdea; 
+   u8 Year;
+   u8 Month;
+   u8 Day;
+   u8 NoIdea2;
+   u8 Hour;
+   u8 Minutes;
+   u8 Seconds;
+} RTC;
+extern RTC PA_RTC;
+
+
+
+
+
+/** @defgroup General General Functions
+ *  Initialise the lib, and other general functions...
+ *  @{
+ */
+
+
+/*! \fn void PA_Init(void)
+    \brief
+         \~english Initialise the library. Must be used at the beginning or main()
+         \~french Initialise la lib... Doit etre placé au début de main()
+*/
+void PA_Init(void);
+
+
+
+/*! \fn void PA_UpdateUserInfo(void)
+    \brief
+         \~english Updates the user info. This is automatically done in PA_Init. You can then get any info with the following variables : PA_UserInfo.Color (favorite color), .BdayDay, .BdayMonth, .AlarmHour, .AlarmMinute, .Name, .NameLength, .Message, .MessageLength
+         \~french Met à jour les infos sur l'utilisateur... C'est fait automatiquement dans PA_Init. On peut ensuite récupérer toutes les infos avec PA_UserInfo.Color (couleur favorite), .BdayDay, .BdayMonth, .AlarmHour, .AlarmMinute, .Name, .NameLength, .Message, .MessageLength
+*/
+void PA_UpdateUserInfo(void);
+
+
+/*! \fn void PA_UpdateRTC(void)
+    \brief
+         \~english Updates the Real Time Clock, with info on the current date and hour. Automatically updated in the PA VBL... Get the info with PA_RTC.Minutes, .Hour, .Seconds, .Day, .Month, and .Year
+         \~french Met à jour les infos sur l'heure et la date. C'est automatiquement mis à jour dans le VBL PA... On récupère les infos avec PA_RTC.Minutes, .Hour, .Seconds, .Day, .Month, et .Year
+*/
+void PA_UpdateRTC(void);
+
+
+/*! \fn void PA_LoadSplash(void)
+    \brief
+         \~english Load a PlayerAdvance splash screen... It's always nice to give some credit ;)
+         \~french Affiche un splash screen PlayerAdvance... C'est toujours sympa de remercier ;)
+
+
+*/
+void PA_LoadSplash(void);
+
+
+/*! \fn void PA_LoadSplash()
+    \brief
+         \~english Load a NeoFlash splash screen...
+         \~french Affiche un splash screen NeoFlash
+
+
+*/
+void PA_NeoSplash(void);
+
+
+
+/*! \fn extern inline void PA_WaitForVBL(void)
+    \brief
+         \~english Wait for the VBlank to occur
+         \~french Attendre le vbl...
+*/
+extern inline void PA_WaitForVBL(void) {
+	u16 tempvalue = PA_GetVcount();
+
+	if (tempvalue > 193) PA_lines += (263 - tempvalue) + (263 * PA_VBLCount);
+	else PA_lines += 70 + tempvalue + (263 * PA_VBLCount);
+
+	PA_vblok = 0;  while ((volatile bool)PA_vblok == 0);
+	PA_VBLCount = 0;
+}
+//	 ;}
+//#define PA_WaitForVBL()  
+//#define PA_WaitForVBL() {PA_vblok = 0;  while (!PA_vblok) ;}
+
+
+
+/*! \def PA_SwitchScreens()
+    \brief
+         \~english Switch the bottom and top screens...
+         \~french Echange les écrans du haut et du bas
+*/
+#define PA_SwitchScreens() POWER_CR ^= SWITCH_SCREENS
+
+
+/*! \fn extern inline void PA_InitCPUMeter()
+    \brief
+         \~english Initialises the CPU Meter. The CPU value is saved in PA_CPU (and PA_MaxCPU for max usage)
+         \~french Initialise le compteur CPU. La valeur (en %) est sauvée dans PA_CPU (et le plus gros dans PA_MaxCPU)
+*/
+extern inline void PA_InitCPUMeter() {
+	PA_CPU = 0; 
+	PA_MaxCPU = 0; 
+	PA_lines = 0; 
+	PA_VBLCount = 0;
+	PA_nVBLs = 0;
+}
+
+/*! \def PA_LidClosed()
+    \brief
+         \~english Check if the DS is closed. Returns 0 if open, 1 if closed
+         \~french Vérifie si la DS est fermée. Renvoie 0 si ouverte, 1 si fermée
+*/
+#define PA_LidClosed() (IPC->buttons>>7)
+
+/** @} */ // end of General
+
+
+
+
+
+//Pour le DMA Copy...
+#define REG_DMA3SRC *(volatile u32*)0x040000D4
+#define REG_DMA3DST *(volatile u32*)0x040000D8
+#define REG_DMA3CNT *(volatile u32*)0x040000DC
+#define DMA_ON 0x80000000
+#define DMA_NOW 0x00000000
+#define DMA_16 0x00000000
+#define DMA_32 0x04000000
+#define DMA_16NOW (DMA_ON | DMA_NOW | DMA_16)
+#define DMA_32NOW (DMA_ON | DMA_NOW | DMA_32)
+#define DMA_Copy(source, dest, count, mode) {REG_DMA3SRC = (u32)source; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) | (mode);}
+
+#define DMA_Clear(dest, count, mode) {REG_DMA3SRC = (u32)Blank; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) | (mode);}
+
+#define DMA_Force(ulVal,dest, count, mode) {REG_DMA3SRC=(u32)&ulVal; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) |(mode) | DMA_SRC_FIXED;}
+
+
+
+
+
+void PA_Nothing(void);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif
+
+

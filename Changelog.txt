@@ -1,0 +1,17 @@
+[Feature] Added a very easy GBFS support ! Things just can't get easier... Check out the new example in the examples/other folder...
+[Feature] Added a GBFS function to search a file by name, extension, or both
+
+[Feature] Started to port nDoS's API !!! For now, I just put in the checkboxes and buttons (see examples in the API folder). Easy to use, works well... There also is a function to load your own graphics for the buttons and all, but it might be a bit complicated to convert the graphics (you have to use usenti), so I'll come back on that later on... The sliders should be in here soon (I won't have time for something like a week, though)
+
+[Feature] Added a PA Jpeg function (uses the gba jpeg library) to load a jpeg on a 16 bit background... and the example to go with it (in the bitmap folder)
+
+[Feature] Greatly simplified the template : only one folder, corresponding to the arm9... the arm7.bin is directly taken from PAlib, that way I'll be able to migrate some stuff over to the arm7 (to optimize some more) and you'll benefit from it without updating the template...
+
+[Feature] Added some examples (sound, bitmap loading, 16 bit drawing, GBFS, jpeg, API)
+
+[Optimization] Optimized all the Draw functions to make them faster and avoid some shooting lines
+[Optimization] Reorganized the examples into several categories (sprites, backgrounds, text...). I know some are in several categories (MoveSprite is for the sprites and the stylus...), it's normal :)
+
+[Bugfix] Fixed the 16 bit Draw function
+[Bugfix] Fixed the 16 bit bitmap load function (carefull, it's slow, because gfx2gba doesn't output the file correctly)
+
