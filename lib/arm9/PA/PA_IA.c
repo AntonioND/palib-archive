@@ -1,7 +1,8 @@
 #include <PA9.h>
-int maze[255][255];
-int x, y;
-int PA_Astar(int width, int height){
+u16 *maze[255];
+u16 x, y;
+
+u16 PA_Astar(u16 width, u16 height){
   int chemin[width][height];
   int bloc[width][height];
   int arriveex=0, arriveey=0, debutx=0, debuty=0;

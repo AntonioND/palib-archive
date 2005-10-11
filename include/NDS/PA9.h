@@ -17,6 +17,7 @@ extern "C" {
 #include <nds.h>
 #include <nds/memory.h>
 #include <nds/bios.h>
+#include <malloc.h>
 
 extern bool PA_Screen;
 
@@ -56,7 +57,7 @@ extern inline void PA_WaitForVBL(void);
 
 #define DMA_Clear(dest, count, mode) {REG_DMA3SRC = (u32)Blank; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) | (mode);}
 
-#define DMA_Force(ulVal,dest, count, mode) {REG_DMA3SRC=(u32)&ulVal; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) |(mode) | DMA_SRC_FIXED;}
+#define DMA_Force(ulVal,dest, count, mode) {REG_DMA3SRC=(u32)&ulVal; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) |(mode) | DMA_SRC_FIX;}
 
 
 
@@ -126,7 +127,7 @@ extern const unsigned short bitmap[768];
 
 
 
-extern const u32 Blank[33000];
+extern u32 *Blank;
 
 
 

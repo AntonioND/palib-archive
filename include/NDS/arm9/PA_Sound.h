@@ -9,7 +9,8 @@
 
 
 #include "../Sound9.h"
-#include "PA9.h"
+#include "PA_GBFS.h"
+#include <PA9.h>
 
 	// 256KB to load MOD files into. Actual size necessary is the size 
 	// of your largest MOD file (probably less than 256KB).
@@ -28,6 +29,7 @@ typedef struct{ // Default sound format
 
 extern PA_SoundOptions PA_SoundOption;
 
+extern u8 *GBFS_mod;
 
 //plays an 8 bit mono sample at 11025Hz
 
@@ -69,6 +71,7 @@ extern inline void PA_InitSound(void) {
 	sndMemPool = (u32*)0x2200000;
 	SndSetMemPool(sndMemPool, SND_MEM_POOL_SIZE);
 	PA_SetDefaultSound(127, 11025, 1);
+	GBFS_mod = (u8*)malloc(2); // Initialise a small portion of memory, will make it bigger later on...
 }
 
 
@@ -154,6 +157,26 @@ PA_PlaySoundEx(PA_Channel, data, length, PA_SoundOption.volume, PA_SoundOption.f
 */
 #define PA_PlayMod(mod_snd) SndPlayMOD((u8*)mod_snd)
 
+
+/*! \fn extern inline void PA_PlayGBFSMod(u16 GBFS_mod_number)
+    \brief
+         \~english Play a mod from GBFS... Warning, it copies to RAM, so big mods will make the DS crash...
+         \~french Joue un mod à partir de GBFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS
+    \param GBFS_mod_number
+         \~english Mod's PA GBFS file number
+         \~french Numéro de fichier PA GBFS du mod que l'on veut jouer
+*/
+extern inline void PA_PlayGBFSMod(u16 GBFS_mod_number){
+	free(GBFS_mod);
+	GBFS_mod = (u8*)malloc(PA_GBFSfile[GBFS_mod_number].Length);
+	
+	u8 *mod = (u8*)PA_GBFSfile[GBFS_mod_number].File;
+	s32 i;
+	
+	for (i = 0; i < PA_GBFSfile[GBFS_mod_number].Length; i++) // Copy the file in RAM
+		GBFS_mod[i] = mod[i];
+	PA_PlayMod(GBFS_mod);
+}
 
 /*! \def PA_StopMod()
     \brief

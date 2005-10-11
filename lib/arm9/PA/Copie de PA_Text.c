@@ -334,7 +334,7 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
 
 
 
-
+#define PA_LETTER_SIZE(size, letter) (policepos[size][letter+1] - policepos[size][letter])
 
 // Use all sizes...
 #ifdef TEXT_ALLSIZES
@@ -345,9 +345,10 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
 	#include "text3.c" // La police à taille variable...
 	#include "text4.c" // La police à taille variable...
 
-	const u8 *textData[5] = {(u8*)(text0Data), (u8*)(text1Data), (u8*)(text2Data), (u8*)(text3Data), (u8*)(text4Data)};
+	const u8 *textData[5] = {(u8*)(text0Data), (u8*)(text1Bitmap), (u8*)(text2Data), (u8*)(text3Data), (u8*)(text4Data)};
 	const u8 policeheight[5] = {6, 8, 9, 11, 14};
-	const u8 policesize[5][256] = {
+	const u16 policewidth[5] = {512, 512, 512, 512, 512};
+	const u16 policepos[5][256] = {
 					  {2, 2, 4, 6, 6, 6, 0, 2, 3, 3, 2, 4, 3, 4, 2, 6, 5, 3, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 4, 4, 4, 5,
 					   6, 5, 5, 4, 5, 4, 4, 5, 5, 4, 5, 5, 4, 6, 5, 5, 5, 5, 5, 5, 4, 5, 5, 6, 5, 5, 4, 3, 6, 3, 4, 5,
 				       2, 5, 5, 4, 5, 5, 4, 4, 5, 2, 3, 5, 2, 6, 5, 5, 4, 4, 4, 5, 4, 5, 5, 6, 4, 4, 5, 0, 0, 0, 0, 0,
@@ -389,16 +390,17 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
 // If only one size, use size 1...
 //#ifndef TEXT_ALLSIZES
 	#include "text1.c" // La police à taille variable...
-	const u8 *textData[5] = {(u8*)(text1Data), (u8*)(text1Data), (u8*)(text1Data), (u8*)(text1Data), (u8*)(text1Data)};
+	const u8 *textData[5] = {(u8*)(text1Bitmap), (u8*)(text1Bitmap), (u8*)(text1Bitmap), (u8*)(text1Bitmap), (u8*)(text1Bitmap)};
 	const u8 policeheight[5] = {8, 8, 8, 8, 8};
-	const u8 policesize[5][256] = {
-					  {2, 2, 4, 7, 6, 9, 0, 2, 4, 4, 2, 6, 3, 4, 3, 4, 6, 4, 6, 6, 6, 6, 6, 6, 6, 6, 3, 3, 4, 6, 4, 5,
-					   8, 6, 6, 6, 5, 5, 5, 6, 6, 4, 4, 6, 5, 6, 7, 7, 6, 7, 6, 6, 6, 6, 6, 8, 6, 6, 6, 4, 4, 4, 6, 6,
-				       2, 5, 5, 5, 5, 5, 5, 6, 5, 2, 4, 5, 2, 8, 5, 5, 5, 5, 5, 5, 4, 5, 4, 6, 6, 4, 5, 0, 0, 0, 0, 0,	
-				       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,		
-				       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,		
-				       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,		
-				       5, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0},		
+	const u16 policewidth[5] = {512, 512, 512, 512, 512};
+	const u16 policepos[5][256] = {
+		{0, 3, 5, 9, 16, 22, 31, 31, 33, 37, 41, 43, 49, 52, 56, 59, 64, 70, 74, 80, 86, 92, 98, 104, 110, 116, 122, 125, 128, 132, 138, 142,
+		147, 156, 162, 168, 174, 179, 184, 189, 196, 202, 206, 210, 216, 221, 227, 234, 241, 247, 254, 260, 266, 272, 278, 284, 292, 298, 304, 310, 314, 318, 322, 328,
+		334, 336, 341, 346, 351, 356, 361, 366, 372, 379, 383, 388, 390, 398, 403, 408, 413, 418, 423, 428, 432, 437, 441, 447, 453, 457, 462, 462, 462, 462, 462,	
+		462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462,		
+		462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462,		
+		462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462, 462,		
+		462, 467, 467, 467, 467, 467, 467, 467, 472, 477, 482, 487, 487, 487, 487, 487, 487, 487, 487, 487, 487, 487, 487, 487, 487, 487, 492, 492, 492, 492, 492, 492},		
 					  {2, 2, 4, 7, 6, 9, 0, 2, 4, 4, 2, 6, 3, 4, 3, 4, 6, 4, 6, 6, 6, 6, 6, 6, 6, 6, 3, 3, 4, 6, 4, 5,
 					   8, 6, 6, 6, 5, 5, 5, 6, 6, 4, 4, 6, 5, 6, 7, 7, 6, 7, 6, 6, 6, 6, 6, 8, 6, 6, 6, 4, 4, 4, 6, 6,
 				       2, 5, 5, 5, 5, 5, 5, 6, 5, 2, 4, 5, 2, 8, 5, 5, 5, 5, 5, 5, 4, 5, 4, 6, 6, 4, 5, 0, 0, 0, 0, 0,	
@@ -463,7 +465,7 @@ for (i = 0; text[i]; i++){ // Calcul du centrage
 	else{
 		letter = text[i] - 32;
 		if (letter > 128) letter -= 96; // pour les accents...
-		xsize[nlines] += policesize[size][letter];
+		xsize[nlines] += PA_LETTER_SIZE(size, letter);
 	}
 }
 
@@ -480,7 +482,7 @@ for (i = 0; text[i]; i++) {
 	}
 	else{
 		letter = text[i] - 32;
-		lx = policesize[size][letter];
+		lx = PA_LETTER_SIZE(size, letter);
 		letters[transp](size, screen, x, y, letter, color);				
 		x += lx;
 	}
@@ -492,6 +494,9 @@ length = i;
 return length;
 
 }
+
+
+
 
 
 

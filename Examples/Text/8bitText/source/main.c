@@ -32,6 +32,7 @@ int main(int argc, char ** argv)
 	PA_Init8bitBg(0, 3);
 	PA_Init8bitBg(1, 3);
 	
+	
 	// On these backgrounds, you can plot pixels, draw lines... and draw some custom text !
 	PA_SmartText(1, // SCreen
 				0, // Top left X

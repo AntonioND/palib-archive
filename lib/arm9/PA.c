@@ -42,7 +42,7 @@ TransferSound snd;
 
 u32 *sndMemPool;
 
-const u32 Blank[33000] = {};
+u32 *Blank;
 
 typedef struct {
    s16 x, y, oldx, oldy, vx, vy;  // Coordonnées
@@ -118,6 +118,11 @@ powerON(POWER_ALL);
   SUB_DISPLAY_CR = MODE_0_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE|2<<20;
 
 vramSetMainBanks(VRAM_A_MAIN_BG,VRAM_B_MAIN_SPRITE,VRAM_C_SUB_BG,VRAM_D_SUB_SPRITE);
+
+u32 temp = 0;
+free(Blank); // Free, just in case it's a ReInit...
+Blank = (u32*)malloc(130000); // Malloc a big blank chunk
+DMA_Force(temp, Blank, 65000, DMA_16NOW);
 
 
 PA_ResetSpriteSys();

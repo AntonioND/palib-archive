@@ -1,6 +1,8 @@
 #include "PA9.h"
 
 PA_SoundOptions PA_SoundOption; // Default sound formats...
+u8 *GBFS_mod;
+
 
 void PA_SetDefaultSound(u8 volume, s16 freq, s16 format){
 	PA_SoundOption.volume = volume;

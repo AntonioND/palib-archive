@@ -10,7 +10,7 @@
 */
 
 //#include "../PA.h"
-
+#include "PA_Tile.h"
 
 
 //////////////////////////////////////////////////////////////////////
@@ -49,7 +49,8 @@ typedef void(*letterfp)(u8 size, bool screen, u16 x, u16 y, char lettertemp, u8 
 
 extern const u8 *textData[5];
 extern const u8 policeheight[5];
-extern const u8 policesize[5][256];
+extern 	const u16 policewidth[5];
+extern const u16 policepos[5][256];
 
 
 extern letterfp letters[5];
@@ -83,6 +84,27 @@ extern letterfp letters[5];
 void PA_InitText(bool screen, u8 bg_select);
 
 
+/*! \fn extern inline void PA_SetTileLetter(bool screen, u16 x, u16 y, char letter)
+    \brief
+         \~english Output a letter on the DS screen.
+         \~french Ecrire une lettre à l'écran.
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param x
+         \~english X coordinate in TILES (0-31) where to write the letter
+         \~french Coordonnée X en TILES (0-31) où afficher la lettre
+    \param y
+         \~english Y coordinate in TILES (0-19) where to write the letter
+         \~french Coordonnée Y en TILES (0-19) où afficher la lettre
+    \param letter
+         \~english Letter... 'a', 'Z', etc...
+         \~french Lettre... 'a', 'Z', etc...
+*/
+extern inline void PA_SetTileLetter(bool screen, u16 x, u16 y, char letter) {
+	PA_SetMapTileAll(screen, PAbgtext[screen], x, y, PA_textmap[screen][(u16)letter]);
+}
+
 /*! \fn void PA_OutputText(bool screen, u16 x, u16 y, char* text, ...)
     \brief
          \~english Output text on the DS screen. Works only in modes 0-2
@@ -102,10 +124,10 @@ void PA_InitText(bool screen, u8 bg_select);
 */
 void PA_OutputText(bool screen, u16 x, u16 y, char* text, ...);
 
-/*! \fn void PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text)
+/*! \fn u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text)
     \brief
-         \~english Output simple text on the DS screen. Works only in modes 0-2. Much faster than PA_OutputText, but much more limited...
-         \~french Ecrire du texte tout simple à l'écran. Ne marche qu'en modes 0-2. Beaucoup plus rapide que PA_OutputText, masi aussi beaucoup plus limité...
+         \~english Output simple text on the DS screen. Works only in modes 0-2. Much faster than PA_OutputText, but much more limited... Returns the number of letters
+         \~french Ecrire du texte tout simple à l'écran. Ne marche qu'en modes 0-2. Beaucoup plus rapide que PA_OutputText, masi aussi beaucoup plus limité... Renvoie le nombre de lettres
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -119,7 +141,7 @@ void PA_OutputText(bool screen, u16 x, u16 y, char* text, ...);
          \~english String to output. 
          \~french Chaine de caractère à écrire.
 */
-void PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text);
+u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text);
 
 /*! \fn u32 PA_BoxText(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)
     \brief

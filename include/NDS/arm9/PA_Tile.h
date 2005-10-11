@@ -758,6 +758,43 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
 
 /*!
+    \def PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)
+    \brief
+      \~english Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), but here you can put yourself the tile size...
+      \~french Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_select
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
+    \param bg_tiles
+      \~english Name of the tiles' info (example: ship_Tiles)
+      \~french Nom du tableau contenant les tiles (exemple: ship_Tiles)
+    \param tile_size
+      \~english Size of your tileset
+      \~french Taille du tilset
+    \param bg_map
+      \~english Name of the map's info (example : ship_Map)
+      \~french Nom du tableau contenant les infos sur la map (exemple : ship_Map)
+   \param color_mode
+      \~english Color mode : 0 for 16 color mode, 1 for 256...
+      \~french Nombre de couleurs : 0 pour 16 couleurs, 1 pour 256
+   \param lx
+      \~english Width, in tiles. So a 512 pixel wide map is 64 tiles wide...
+      \~french Largeur, en tiles. Un fond de 512 pixels de large fera 64 tiles de large.
+   \param ly
+      \~english Height, in tiles. So a 512 pixel high map is 64 tiles high...
+      \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
+*/
+#define PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\
+PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 1, color_mode);\
+PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
+
+
+
+
+/*!
     \fn void PA_InfLargeScrollX(bool screen, u8 bg_select, s32 x)
     \brief
       \~english Scroll a large infinite scrolling background horizontaly. It must have been initialised with PA_LoadLargeBg.
