@@ -171,8 +171,8 @@ void PAPI_CheckCheck(void);
          \~english Text color in the palette index (0-255)
          \~french Couleur du texte dans la palette (0-255)
     \param textsize
-         \~english Text size, typically 1, but can be bigger for big buttons. !!!! the #define TEXT_ALLSIZES must be set in PA9.h (and install.bat used again) to enable other sizes than 1 !!!!
-         \~french Taille du texte, en général 1, mais peut être plus pour des gros boutons !!! la macro #define TEXT_ALLSIZES doit être mise dans PA9.h (et install.bat réutilisé) pour activer les autres taille que 1
+         \~english Text size, typically 1, but can be bigger for big buttons. !!!! the define TEXT_ALLSIZES must be set in PA9.h (and install.bat used again) to enable other sizes than 1 !!!!
+         \~french Taille du texte, en général 1, mais peut être plus pour des gros boutons !!! la macro define TEXT_ALLSIZES doit être mise dans PA9.h (et install.bat réutilisé) pour activer les autres taille que 1
 */
 u8 PAPI_CreateButton(bool screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char* text, u8 color, s8 textsize);
 

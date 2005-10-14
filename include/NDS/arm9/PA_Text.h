@@ -50,7 +50,7 @@ typedef void(*letterfp)(u8 size, bool screen, u16 x, u16 y, char lettertemp, u8 
 extern const u8 *textData[5];
 extern const u8 policeheight[5];
 extern 	const u16 policewidth[5];
-extern const u16 policepos[5][256];
+extern const u8 policesize[5][256];
 
 
 extern letterfp letters[5];

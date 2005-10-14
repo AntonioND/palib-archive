@@ -2,7 +2,7 @@
 
 PA_SoundOptions PA_SoundOption; // Default sound formats...
 u8 *GBFS_mod;
-
+u8 *GBFS_wav[16];
 
 void PA_SetDefaultSound(u8 volume, s16 freq, s16 format){
 	PA_SoundOption.volume = volume;

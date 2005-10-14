@@ -30,6 +30,7 @@ typedef struct{ // Default sound format
 extern PA_SoundOptions PA_SoundOption;
 
 extern u8 *GBFS_mod;
+extern u8 *GBFS_wav[16]; // 16 channels...
 
 //plays an 8 bit mono sample at 11025Hz
 
@@ -101,6 +102,35 @@ extern inline void PA_InitSound(void) {
 */
 void PA_PlaySoundEx(u8 PA_Channel, const void* data, u32 length, u8 volume, s16 freq, s16 format);
 
+/*! \fn extern inline void PA_PlayGBFSSoundEx(u8 PA_Channel, u16 GBFS_wav_number, u8 volume, s16 freq, s16 format)
+    \brief
+         \~english Play a given sound effect, but chose your format, from GBFS
+         \~french Joue une fois un son, mais en choisissant le format, depuis GBFS
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param GBFS_wav_number
+         \~english Number of your sound RAW file in the PA GBFS system
+         \~french Numéro du son RAW dans PA GBFS
+    \param volume
+         \~english Volume, from 0 to 127. 64 if not used
+         \~french Volume, de 0 à 127. 64 si rien n'est mis
+    \param freq
+         \~english Sound frequence, depends on the sound... 11025 by default
+         \~french Fréquence du son...11025 par défaut
+    \param format
+         \~english Sound format.
+         \~french Format du son.
+*/
+extern inline void PA_PlayGBFSSoundEx(u8 PA_Channel, u16 GBFS_wav_number, u8 volume, s16 freq, s16 format){
+s32 length = (PA_GBFSfile[GBFS_wav_number].Length >> 2) + 1; // Pour etre sur...
+	free(GBFS_wav[PA_Channel]);
+	GBFS_wav[PA_Channel] = (u8*)malloc(length << 2);
+	
+	DMA_Copy(PA_GBFSfile[GBFS_wav_number].File, GBFS_wav[PA_Channel], length, DMA_32NOW);
+
+	PA_PlaySoundEx(PA_Channel, (void*)GBFS_wav[PA_Channel], length << 2, volume, freq, format);
+}
 
 /*! \fn extern inline void PA_PlaySound(u8 PA_Channel, const void* data, u32 length, u8 volume, s16 freq)
     \brief
@@ -126,6 +156,32 @@ extern inline void PA_PlaySound(u8 PA_Channel, const void* data, u32 length, u8 
 PA_PlaySoundEx(PA_Channel, data, length, volume, freq, 1);
 }
 
+/*! \fn extern inline void PA_PlayGBFSSound(u8 PA_Channel, u16 GBFS_wav_number, u8 volume, s16 freq)
+    \brief
+         \~english Play a given sound effect, with default format (raw), from GBFS
+         \~french Joue une fois un son, avec format par défaut (raw), depuis GBFS
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param GBFS_wav_number
+         \~english Number of your sound RAW file in the PA GBFS system
+         \~french Numéro du son RAW dans PA GBFS
+    \param volume
+         \~english Volume, from 0 to 127. 64 if not used
+         \~french Volume, de 0 à 127. 64 si rien n'est mis
+    \param freq
+         \~english Sound frequence, depends on the sound... 11025 by default
+         \~french Fréquence du son...11025 par défaut
+*/
+extern inline void PA_PlayGBFSSound(u8 PA_Channel, u16 GBFS_wav_number, u8 volume, s16 freq){
+s32 length = (PA_GBFSfile[GBFS_wav_number].Length >> 2) + 1; // Pour etre sur...
+	free(GBFS_wav[PA_Channel]);
+	GBFS_wav[PA_Channel] = (u8*)malloc(length << 2);
+	
+	DMA_Copy(PA_GBFSfile[GBFS_wav_number].File, GBFS_wav[PA_Channel], length, DMA_32NOW);
+
+	PA_PlaySound(PA_Channel, (void*)GBFS_wav[PA_Channel], length << 2, volume, freq);
+}
 
 /*! \fn extern inline void PA_PlaySimpleSound(u8 PA_Channel, const void* data, u32 length)
     \brief
@@ -143,6 +199,28 @@ PA_PlaySoundEx(PA_Channel, data, length, volume, freq, 1);
 */
 extern inline void PA_PlaySimpleSound(u8 PA_Channel, const void* data, u32 length){
 PA_PlaySoundEx(PA_Channel, data, length, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format);
+}
+
+
+/*! \fn extern inline void PA_PlayGBFSSimpleSound(u8 PA_Channel, u16 GBFS_wav_number)
+    \brief
+         \~english Simplest sound playing function... From GBFS... Takes the default options for volume, format, and rate (11025). You can change these options by using PA_SetDefaultSound
+         \~french Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param GBFS_wav_number
+         \~english Number of your sound RAW file in the PA GBFS system
+         \~french Numéro du son RAW dans PA GBFS
+*/
+extern inline void PA_PlayGBFSSimpleSound(u8 PA_Channel, u16 GBFS_wav_number){
+s32 length = (PA_GBFSfile[GBFS_wav_number].Length >> 2) + 1; // Pour etre sur...
+	free(GBFS_wav[PA_Channel]);
+	GBFS_wav[PA_Channel] = (u8*)malloc(length << 2);
+	
+	DMA_Copy(PA_GBFSfile[GBFS_wav_number].File, GBFS_wav[PA_Channel], length, DMA_32NOW);
+
+	PA_PlaySimpleSound(PA_Channel, (void*)GBFS_wav[PA_Channel], length << 2);
 }
 
 
@@ -167,14 +245,15 @@ PA_PlaySoundEx(PA_Channel, data, length, PA_SoundOption.volume, PA_SoundOption.f
          \~french Numéro de fichier PA GBFS du mod que l'on veut jouer
 */
 extern inline void PA_PlayGBFSMod(u16 GBFS_mod_number){
+s32 length = (PA_GBFSfile[GBFS_mod_number].Length >> 2) + 1; // Pour etre sur...
 	free(GBFS_mod);
-	GBFS_mod = (u8*)malloc(PA_GBFSfile[GBFS_mod_number].Length);
-	
-	u8 *mod = (u8*)PA_GBFSfile[GBFS_mod_number].File;
-	s32 i;
-	
-	for (i = 0; i < PA_GBFSfile[GBFS_mod_number].Length; i++) // Copy the file in RAM
-		GBFS_mod[i] = mod[i];
+	GBFS_mod = (u8*)malloc(length << 2);
+
+	DMA_Copy(PA_GBFSfile[GBFS_mod_number].File, GBFS_mod, length, DMA_32NOW);
+/*	s32 i;	
+	u32 *mod = (u32*)PA_GBFSfile[GBFS_mod_number].File;	
+	for (i = 0; i < length; i++) // Copy the file in RAM
+		GBFS_mod[i] = mod[i];*/
 	PA_PlayMod(GBFS_mod);
 }
 
