@@ -171,6 +171,34 @@ u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text);
 */
 u32 PA_BoxText(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit);
 
+/*! \fn u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, limit)
+    \brief
+         \~english Output text on the DS screen. This text is limited to a chosen box, and you can chose the number of letters to output (can be used to show 'typed' text, just put 10000 if you want to show all the text...). Returns the number of letters outputed. This function does not support word wrapping
+         \~french Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nombre de lettre écrites. Cette fonction coupe les mots...
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param basex
+         \~english X coordinate in TILES (0-31) where to begin writing the text
+         \~french Coordonnée X en TILES (0-31) où commencer à afficher le text
+    \param basey
+         \~english Y coordinate in TILES (0-19) where to begin writing the text
+         \~french Coordonnée Y en TILES (0-19) où commencer à afficher le text
+    \param maxx
+         \~english X coordinate in TILES (0-31) where to stop writing the text
+         \~french Coordonnée X en TILES (0-31) où finir d'afficher le text
+    \param maxy
+         \~english Y coordinate in TILES (0-19) where to stop writing the text
+         \~french Coordonnée Y en TILES (0-19) où finir d'afficher le text		 
+    \param text
+         \~english String to output. 
+         \~french Chaine de caractère à écrire.
+    \param limit
+         \~english Maximum number of letters to show this time
+         \~french Nombre maximum de lettres à afficher pour ce coup-ci 
+*/
+u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit);
+
 
 /*!
     \fn void PA_SetTextCol(bool screen, u8 r, u8 g, u8 b)

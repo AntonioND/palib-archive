@@ -49,7 +49,6 @@ void PA_SetTextCustomFont(bool screen, void* tiles, void* map) {
 	PA_textmap[screen] = (u16*)map;
 	PA_texttiles[screen] = (u16*)tiles;
 
-
 	PA_InitText(screen, PAbgtext[screen]); // On recharge le tout en mémoire
 }
 
@@ -67,7 +66,6 @@ void PA_SetTextCol(bool screen, u8 r, u8 g, u8 b) {
 }
 
 
-
 u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text) {
 s16 j;
 u16 textcount = 0; // compte le nombre de lettres...
@@ -76,6 +74,36 @@ BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au ca
 
 	for (j = 0; text[j]; j++) {
 		PA_SetTileLetter(screen, x+j, y, text[j]);
+		++textcount;
+	}
+return textcount; 
+}
+
+
+u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit) {
+u16 x = basex;
+u16 y = basey;
+s16 j;
+u16 textcount = 0; // compte le nombre de lettres...
+bool loop = 1; // On continue...
+   
+BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au cas où on ait chargé du texte par-dessus...
+
+	for (j = 0; text[j]&&loop&&(j < limit); j++) {
+		if (text[j] == '\n') {
+			x = basex;
+			y++;
+			if (y > maxy) loop = 0;
+		}
+		else{			
+			PA_SetTileLetter(screen, x, y, text[j]);
+			x++;
+			if (x > maxx) {
+				x = basex;
+				y++;
+				if (y > maxy) loop = 0;
+			}
+		}
 		++textcount;
 	}
 return textcount; 
