@@ -99,6 +99,23 @@ PA_IPCinfo PA_IPC;*/
 // Général
 //////////////////////////////////////////////////////////////////////
 
+
+void PA_WaitForVBL(void) {
+/*	u16 tempvalue = PA_GetVcount();
+
+	if (tempvalue > 193) PA_lines += (263 - tempvalue) + (263 * PA_VBLCount);
+	else PA_lines += 70 + tempvalue + (263 * PA_VBLCount);*/
+//swiWaitForVBlank();
+
+	PA_vblok = 0;  while ((volatile bool)PA_vblok == 0);
+	
+//PA_RestorePad();	
+//	PA_UpdateStylus(); // Updates the stylus input
+//	PA_UpdatePad(); // Updates the Keypad...
+
+//	PA_VBLCount = 0;
+}
+
 void PA_Init(void) {
 // Turn on the screens and 2D cores and switch to mode 0
 powerON(POWER_ALL);

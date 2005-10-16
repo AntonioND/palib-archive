@@ -54,6 +54,7 @@ interruptfunc[inter] = interfunc;
 if (inter == INT_HBLANK) REG_DISPSTAT |= ENABLE_HBLANK;
 if (inter == INT_VBLANK) {
 	REG_DISPSTAT |= ENABLE_VBLANK;
+	DISP_SR |= DISP_VBLANK_IRQ;
 	//VBLANK_INTR_WAIT_FLAGS |= IRQ_VBLANK;
 }
 if (inter == INT_VCOUNT) REG_DISPSTAT |= ENABLE_VCOUNT;

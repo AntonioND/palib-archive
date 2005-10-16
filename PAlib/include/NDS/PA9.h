@@ -33,7 +33,7 @@ typedef struct {
 } RTC;
 extern RTC PA_RTC;
 
-extern inline void PA_WaitForVBL(void);
+void PA_WaitForVBL(void);
 
 
 
@@ -266,27 +266,12 @@ extern Pads BackupPad;
 void PA_BackupPad(void);
 void PA_RestorePad(void);
 */
-/*! \fn extern inline void PA_WaitForVBL(void)
+/*! \fn void PA_WaitForVBL(void)
     \brief
          \~english Wait for the VBlank to occur
          \~french Attendre le vbl...
 */
-extern inline void PA_WaitForVBL(void) {
-/*	u16 tempvalue = PA_GetVcount();
-
-	if (tempvalue > 193) PA_lines += (263 - tempvalue) + (263 * PA_VBLCount);
-	else PA_lines += 70 + tempvalue + (263 * PA_VBLCount);*/
-//swiWaitForVBlank();
-
-
-	PA_vblok = 0;  while ((volatile bool)PA_vblok == 0);
-	
-//PA_RestorePad();	
-//	PA_UpdateStylus(); // Updates the stylus input
-//	PA_UpdatePad(); // Updates the Keypad...
-
-//	PA_VBLCount = 0;
-}
+void PA_WaitForVBL(void);
 
 
 
