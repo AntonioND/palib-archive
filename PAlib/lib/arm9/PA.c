@@ -56,20 +56,6 @@ typedef struct {
 u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
 bool PA_Screen = 0;
 
-Pads  BackupPad;
-
-void PA_BackupPad(void){
-COPYPAD(BackupPad.Held, Pad.Held);
-COPYPAD(BackupPad.Newpress, Pad.Newpress);
-COPYPAD(BackupPad.Released, Pad.Released);
-}
-
-void PA_RestorePad(void){
-COPYPAD(Pad.Held, BackupPad.Held);
-COPYPAD(Pad.Newpress, BackupPad.Newpress);
-COPYPAD(Pad.Released, BackupPad.Released);
-}
-
 
 
 // Pour les fenetres
@@ -99,13 +85,9 @@ PA_IPCinfo PA_IPC;*/
 // Général
 //////////////////////////////////////////////////////////////////////
 
-
+/*
 void PA_WaitForVBL(void) {
-/*	u16 tempvalue = PA_GetVcount();
 
-	if (tempvalue > 193) PA_lines += (263 - tempvalue) + (263 * PA_VBLCount);
-	else PA_lines += 70 + tempvalue + (263 * PA_VBLCount);*/
-//swiWaitForVBlank();
 
 	PA_vblok = 0;  while ((volatile bool)PA_vblok == 0);
 	
@@ -114,7 +96,7 @@ void PA_WaitForVBL(void) {
 //	PA_UpdatePad(); // Updates the Keypad...
 
 //	PA_VBLCount = 0;
-}
+}*/
 
 void PA_Init(void) {
 // Turn on the screens and 2D cores and switch to mode 0

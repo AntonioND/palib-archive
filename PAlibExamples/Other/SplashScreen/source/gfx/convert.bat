@@ -1,4 +1,4 @@
 REM --- Backgrounds ---
-gfx2gba -fsrc -m -pBackgrounds.pal -t8 BG*.bmp
+gfx2gba -fsrc -m -align -pBackgrounds.pal -t8 BG*.bmp
 
 pause

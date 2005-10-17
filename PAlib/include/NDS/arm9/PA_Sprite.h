@@ -174,8 +174,8 @@ extern u16 *PA_SpriteAnimP[2][128];
          \~english Object size. Use the OBJ_SIZE_32X32 (...) macros for object shape and obj_size...
          \~french Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille...
     \param color_mode
-         \~english 256 or 16 color mode (1 or 0).
-         \~french Mode 256 ou 16 couleurs (1 ou 0).
+         \~english 256 or 16 color mode (1 or 0), or 2 for 16bit
+         \~french Mode 256 ou 16 couleurs (1 ou 0), ou 2 pour 16 bits
 */
 
 u16 PA_CreateGfx(bool screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode);
@@ -281,9 +281,104 @@ extern inline void PA_CreateSprite(bool screen, u8 obj_number, void* obj_data, u
 extern inline void PA_CreateSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y) {
    PA_SpriteAnimP[screen][obj_number] = (u16*)obj_data;
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (prio << 10) + (palette << 12);
-   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + (color_mode << 13) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + ((color_mode) << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
 };
+
+
+
+
+
+/*! \fn extern inline void PA_Create16bitSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)
+    \brief
+         \~english Create a 16 bit sprite with it's gfx. This is the complex version of the function. Warning : a 16bit sprite MUST be 128 pixels large, even if you sprite only takes up a small part on the left...
+         \~french Creer un sprite de 16 bits avec ses gfx... Ceci est la version complexe de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param obj_number
+         \~english Object number you want to use (0-127 for each screen seperately). 
+         \~french Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment).
+    \param obj_data
+         \~english Gfx to load
+         \~french Gfx à charger
+    \param obj_shape
+         \~english Object shape, from 0 to 2. Use the OBJ_SIZE_32X32 (...) macros for object shape and obj_size...
+         \~french Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille...
+    \param obj_size
+         \~english Object size. Use the OBJ_SIZE_32X32 (...) macros for object shape and obj_size...
+         \~french Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille...
+     \param mosaic
+         \~english Activate Mosaic for the sprite or not. Not yet functionnal either :p
+         \~french Activer le mode mosaique pour ce sprite. Pas encore au point...
+    \param hflip
+         \~english Horizontal flip on or off...
+         \~french Flip horizontal activé ou non.
+     \param vflip
+         \~english Vertical flip...
+         \~french Flip vertical...
+    \param prio
+         \~english Sprite priority regarding backgrounds : in front of which background to show it (0-3)
+         \~french Priorité du sprite vis-à-vis des fonds : devant quel fond l'afficher... (0-3)
+     \param dblsize
+         \~english Double the possible sprite size. Activate only if you are going to rotate and zoom in the sprite
+         \~french Doubler la taille possible du sprite. A activer uniquement si on compte grossir et faire tourner le sprite
+    \param x
+         \~english X position of the sprite
+         \~french Position X du sprite
+    \param y
+         \~english Y position of the sprite
+         \~french Position Y du sprite
+*/
+extern inline void PA_Create16bitSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y){
+u16 mem_size = PA_obj_sizes[obj_size][obj_shape] << 1;
+u16 *gfx = malloc(mem_size);
+mem_size = mem_size;
+s32 i;
+u16 *data = (u16*)obj_data;
+for (i = 0; i < mem_size; i++) gfx[i] = data[i] + (1 << 15);
+
+   PA_SpriteAnimP[screen][obj_number] = (u16*)obj_data;
+   PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, gfx, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);
+   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
+
+free(gfx);
+}
+
+
+
+/*! \fn extern inline void PA_Create16bitSprite(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)
+    \brief
+         \~english Create a 16 bit sprite with it's gfx. This is the simple version of the function. Warning : a 16bit sprite MUST be 128 pixels large, even if you sprite only takes up a small part on the left...
+         \~french Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param obj_number
+         \~english Object number you want to use (0-127 for each screen seperately). 
+         \~french Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment).
+    \param obj_data
+         \~english Gfx to load
+         \~french Gfx à charger
+    \param obj_shape
+         \~english Object shape, from 0 to 2. Use the OBJ_SIZE_32X32 (...) macros for object shape and obj_size...
+         \~french Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille...
+    \param obj_size
+         \~english Object size. Use the OBJ_SIZE_32X32 (...) macros for object shape and obj_size...
+         \~french Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille...
+    \param x
+         \~english X position of the sprite
+         \~french Position X du sprite
+    \param y
+         \~english Y position of the sprite
+         \~french Position Y du sprite
+*/
+extern inline void PA_Create16bitSprite(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y){
+PA_Create16bitSpriteEx(screen, obj_number, obj_data, obj_shape, obj_size, 0, 0, 0, 0, 0, x, y);
+}
+
+
 
 
 /*! \fn extern inline void PA_CreateSpriteFromGfx(bool screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)

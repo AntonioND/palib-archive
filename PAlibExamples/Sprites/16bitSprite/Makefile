@@ -1,3 +1,4 @@
+PATH := $(DEVKITARM)/bin:$(PATH)
 #---------------------------------------------------------------------------------
 .SUFFIXES:
 #---------------------------------------------------------------------------------
@@ -14,8 +15,8 @@ TARGET	:=	$(shell basename $(CURDIR))
 BUILD		:=	build
 SOURCES	:=	gfx source data
 INCLUDES	:=	include build
- 
-EXPORT_DIR := /C/devkitPro/template
+
+EXPORT_DIR := /c/ndsexamples/
 #---------------------------------------------------------------------------------
 # ARM7BIN is the path to an arm7 binary other than the default
 #	usage: ARM7BIN := -7 binaryName.bin
@@ -24,37 +25,33 @@ EXPORT_DIR := /C/devkitPro/template
 #	usage: ICON := -t iconName.bmp "text line one; text line 2; text line 3"
 # 
 #---------------------------------------------------------------------------------
- 
-ARM7BIN	:= -7 $(CURDIR)/../../arm7/arm7.bin  
-#              ^ FIXES SOUND, MESSES UP STYLUS
- 
+
+ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
 ICON 		:= -b $(PAPATH)/logo.bmp
- 
+
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
 ARCH	:=	-mthumb-interwork
- 
+
 # note: arm9tdmi isn't the correct CPU arch, but anything newer and LD
 # *insists* it has a FPU or VFP, and it won't take no for an answer!
 CFLAGS	:=	-g -Wall -O2\
  		-mcpu=arm9tdmi -mtune=arm9tdmi -fomit-frame-pointer\
 		-ffast-math \
 		$(ARCH)
- 
+
 CFLAGS	+=	$(INCLUDE) -DARM9 -I$(DEVKITPRO)/PAlib/include/nds
-#                                    ^ NEEDED FOR COMPILE
- 
- 
+
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	:=	-g $(ARCH) -mno-fpu -L$(DEVKITPRO)/PAlib/lib
-#                                      ^ NEEDED FOR COMPILE
- 
- 
+
+
+
 #---------------------------------------------------------------------------------
 # path to tools - this can be deleted if you set the path in windows
 #---------------------------------------------------------------------------------
-export PATH		:=	/c/devkitpro/devkitarm/bin:/bin
+# export PATH		:=	/d/dev/ds/devkitARM_r11/bin:/bin
  
 #---------------------------------------------------------------------------------
 # PATH to ndslib - just make a system variable called NDSLIBPATH and be done with it
@@ -109,8 +106,10 @@ BINFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bin)))
 PALFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.pal)))
 RAWFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.raw)))
 MAPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.map)))
+JPEGFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.jpg)))
+MODFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.mod)))
  
-export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o)\
+export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o) $(JPEGFILES:.jpg=.o) $(MODFILES:.mod=.o)\
 					$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
  
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
@@ -137,7 +136,7 @@ clean:
 export:
 	@echo exporting ...$(TARGET)
 	@cp *.nds $(EXPORT_DIR)/$(TARGET).nds
- 
+
 #---------------------------------------------------------------------------------
 else
  
@@ -147,9 +146,9 @@ DEPENDS	:=	$(OFILES:.o=.d)
 # main targets
 #---------------------------------------------------------------------------------
 $(OUTPUT).ds.gba	: 	$(OUTPUT).nds
- 
+
 $(OUTPUT).nds	: 	$(OUTPUT).bin
- 
+
 $(OUTPUT).bin	:	$(OUTPUT).elf
  
 $(OUTPUT).elf	:	$(OFILES)
@@ -158,17 +157,17 @@ $(OUTPUT).elf	:	$(OFILES)
 %.ds.gba: %.nds
 	@echo built ... $(notdir $@)
 	@dsbuild $<  
- 
+
 #---------------------------------------------------------------------------------
 %.nds: %.bin
- 
-	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(ICON) "$(shell basename $@);By Kleevah;www.zawiarr.com"
- 
- 
- 
+	
+	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(ICON) "$(shell basename $@);By Dovoto;www.drunkencoders.com"
+
+
+
 #---------------------------------------------------------------------------------
 %.bin: %.elf
- 
+	
 	@$(OBJCOPY) -O binary $(TARGET).elf $(TARGET).bin
  
 #---------------------------------------------------------------------------------
@@ -242,16 +241,28 @@ endef
 #---------------------------------------------------------------------------------
 	@echo $(notdir $<)
 	@$(bin2o)
- 
+
 #---------------------------------------------------------------------------------
 %.o	:	%.mdl
 #---------------------------------------------------------------------------------
 	@echo $(notdir $<)
 	@$(bin2o)
- 
+
+#---------------------------------------------------------------------------------
+%.o	:	%.jpg
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
  
 -include $(DEPENDS)
+
+#---------------------------------------------------------------------------------
+%.o	:	%.mod
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
  
+-include $(DEPENDS) 
 #---------------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------------

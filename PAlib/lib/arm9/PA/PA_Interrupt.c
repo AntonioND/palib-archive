@@ -113,7 +113,7 @@ Int_Flag = REG_IF;
 if (PAtest > 19) {PAtest = 0; ++PA2;}
 */
 
-if(Int_Flag & INTVBLANK)  {PA_vblok = 1; interruptfunc[0](); }
+if(Int_Flag & INTVBLANK)  {PA_vblok = 1; VBLANK_INTR_WAIT_FLAGS |= IRQ_VBLANK; interruptfunc[0](); }
 if(Int_Flag & INTHBLANK)   interruptfunc[1]();
 if(Int_Flag & INTVCOUNT)   interruptfunc[2]();
 if(Int_Flag & INTTIMER0)   interruptfunc[3]();

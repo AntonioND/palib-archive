@@ -33,7 +33,7 @@ typedef struct {
 } RTC;
 extern RTC PA_RTC;
 
-void PA_WaitForVBL(void);
+extern inline void PA_WaitForVBL(void);
 
 
 
@@ -260,18 +260,14 @@ void PA_NeoSplash(void);
 
 
 
-
-extern Pads BackupPad;
-/*
-void PA_BackupPad(void);
-void PA_RestorePad(void);
-*/
-/*! \fn void PA_WaitForVBL(void)
+/*! \fn extern inline void PA_WaitForVBL(void)
     \brief
          \~english Wait for the VBlank to occur
          \~french Attendre le vbl...
 */
-void PA_WaitForVBL(void);
+extern inline void PA_WaitForVBL(void){
+swiWaitForVBlank();
+}
 
 
 

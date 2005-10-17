@@ -31,7 +31,6 @@ int main(void){
 					   x, // x position
 					   y); // y...
 		
-
 		PA_WaitForVBL();
 	
 	}

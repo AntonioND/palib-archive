@@ -1,0 +1,7 @@
+PAlib 0.62a :
+
+- Added a search for *.extension in PA GBFS system
+- Changed the WaitForVBL again, it's even better now, and speeds up the demos on emulator
+- Changed all the convert.bat files (gfx2gba...) to have the -align command in them, should fix some sprite problems
+- Added 16 bit sprites ! With the example to go with it... Only thing : I discovered that 16 bit sprites need to be 128 pixels large... this means that any sprite size takes up a lot more memory than it takes in 256 or 16 color modes... example : an 8x8 pixel will take as much memory as a 128x8 one ! so 16 times more... 
+- Adding 16 bit sprites made me change a line or 2 in the sprite gfx system, apparently it works perfectly, but if you get anything weird, could be my fault... (half-sprites, or double-sprites)

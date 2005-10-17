@@ -95,6 +95,18 @@ return -1;
 }
 
 
+/*! \fn s16 PA_GBFSSearchExt(s16 *array, char *extension)
+    \brief
+         \~english Puts the number of all the GBFS files with a given extension in the array, and returns the number of files found
+         \~french Cherche tous les fichiers de GBFS avec l'extension trouvée, place le numéro dans le tableau, et renvoie le nombre de fichiers trouvés...
+    \param array
+         \~english Array in which to store the GBFS file positions
+         \~french Tableau dans lequel stocker la position des fichiers GBFS trouvés
+    \param extension
+         \~english Extension to search, such as "txt" 
+         \~french Extension à chercher, comme "txt"
+*/
+s16 PA_GBFSSearchExt(s16 *array, char *extension);
 
 
 /** @} */ // end of GBFS
