@@ -1,6 +1,6 @@
 #include <PA9.h>
 u16 *maze[255];
-u16 x, y;
+//u16 mazex, mazey;
 
 u16 PA_Astar(u16 width, u16 height){
   int chemin[width][height];

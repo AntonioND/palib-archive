@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib:  Fichier source de PA_Sound.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li id="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Liste&nbsp;des&nbsp;fichiers</span></a></li>
+    <li><a href="globals.html"><span>Portée&nbsp;globale</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_C_3A_2FdevkitPro_2F.html">devkitPro</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2F.html">PAlib</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2F.html">include</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2F.html">NDS</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2Farm9_2F.html">arm9</a></div>
+<h1>PA_Sound.h</h1><a href="_p_a___sound_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _PA_Sound9</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_Sound9</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00011"></a>00011 <span class="preprocessor">#include "../Sound9.h"</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#include "<a class="code" href="_p_a___g_b_f_s_8h.html">PA_GBFS.h</a>"</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;<a class="code" href="_p_a9_8h.html">PA9.h</a>&gt;</span>
+<a name="l00014"></a>00014 
+<a name="l00015"></a>00015        <span class="comment">// 256KB to load MOD files into. Actual size necessary is the size </span>
+<a name="l00016"></a>00016        <span class="comment">// of your largest MOD file (probably less than 256KB).</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#define SND_MEM_POOL_SIZE   256*1024</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span>
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="keyword">extern</span> TransferSound snd;
+<a name="l00022"></a>00022 <span class="keyword">extern</span> u32 *sndMemPool;
+<a name="l00023"></a>00023 
+<a name="l00024"></a>00024 <span class="keyword">typedef</span> <span class="keyword">struct</span>{ <span class="comment">// Default sound format</span>
+<a name="l00025"></a>00025        u8 volume;
+<a name="l00026"></a>00026        s16 freq;
+<a name="l00027"></a>00027        s16 format;
+<a name="l00028"></a>00028 } PA_SoundOptions;
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="keyword">extern</span> PA_SoundOptions PA_SoundOption;
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 <span class="keyword">extern</span> u8 *GBFS_mod;
+<a name="l00033"></a>00033 <span class="keyword">extern</span> u8 *GBFS_wav[16]; <span class="comment">// 16 channels...</span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 <span class="comment">//plays an 8 bit mono sample at 11025Hz</span>
+<a name="l00036"></a>00036 
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038 
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 
+<a name="l00062"></a>00062 <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#gc52d55ab796e251612750328eba7d4ee">PA_SetDefaultSound</a>(u8 volume, s16 freq, s16 format);
+<a name="l00063"></a>00063 
+<a name="l00064"></a>00064 
+<a name="l00070"></a><a class="code" href="group___sound_a_r_m9.html#g8cce6d671931ea6bbfada641491d975d">00070</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#g8cce6d671931ea6bbfada641491d975d">PA_InitSound</a>(<span class="keywordtype">void</span>) {
+<a name="l00071"></a>00071        SndInit9 ();
+<a name="l00072"></a>00072        sndMemPool = (u32*)0x2200000;
+<a name="l00073"></a>00073        SndSetMemPool(sndMemPool, SND_MEM_POOL_SIZE);
+<a name="l00074"></a>00074        <a class="code" href="group___sound_a_r_m9.html#gc52d55ab796e251612750328eba7d4ee">PA_SetDefaultSound</a>(127, 11025, 1);
+<a name="l00075"></a>00075        GBFS_mod = (u8*)malloc(2); <span class="comment">// Initialise a small portion of memory, will make it bigger later on...</span>
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079 
+<a name="l00103"></a>00103 <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga97075bd67507665cc0ab86b18f1bee0">PA_PlaySoundEx</a>(u8 PA_Channel, <span class="keyword">const</span> <span class="keywordtype">void</span>* data, u32 length, u8 volume, s16 freq, s16 format);
+<a name="l00104"></a>00104 
+<a name="l00125"></a><a class="code" href="group___sound_a_r_m9.html#gdbc4b5c3a4b9d7548f8e7d71e289c64d">00125</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#gdbc4b5c3a4b9d7548f8e7d71e289c64d">PA_PlayGBFSSoundEx</a>(u8 PA_Channel, u16 GBFS_wav_number, u8 volume, s16 freq, s16 format){
+<a name="l00126"></a>00126 s32 length = (PA_GBFSfile[GBFS_wav_number].Length &gt;&gt; 2) + 1; <span class="comment">// Pour etre sur...</span>
+<a name="l00127"></a>00127        free(GBFS_wav[PA_Channel]);
+<a name="l00128"></a>00128        GBFS_wav[PA_Channel] = (u8*)malloc(length &lt;&lt; 2);
+<a name="l00129"></a>00129        
+<a name="l00130"></a>00130        DMA_Copy(PA_GBFSfile[GBFS_wav_number].File, GBFS_wav[PA_Channel], length, DMA_32NOW);
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132        <a class="code" href="group___sound_a_r_m9.html#ga97075bd67507665cc0ab86b18f1bee0">PA_PlaySoundEx</a>(PA_Channel, (<span class="keywordtype">void</span>*)GBFS_wav[PA_Channel], length &lt;&lt; 2, volume, freq, format);
+<a name="l00133"></a>00133 }
+<a name="l00134"></a>00134 
+<a name="l00155"></a><a class="code" href="group___sound_a_r_m9.html#gdaa0cde723362f069cca26540443e99a">00155</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#gdaa0cde723362f069cca26540443e99a">PA_PlaySound</a>(u8 PA_Channel, <span class="keyword">const</span> <span class="keywordtype">void</span>* data, u32 length, u8 volume, s16 freq){
+<a name="l00156"></a>00156 <a class="code" href="group___sound_a_r_m9.html#ga97075bd67507665cc0ab86b18f1bee0">PA_PlaySoundEx</a>(PA_Channel, data, length, volume, freq, 1);
+<a name="l00157"></a>00157 }
+<a name="l00158"></a>00158 
+<a name="l00176"></a><a class="code" href="group___sound_a_r_m9.html#g53967093290effc5a58dcf2702879bc9">00176</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#g53967093290effc5a58dcf2702879bc9">PA_PlayGBFSSound</a>(u8 PA_Channel, u16 GBFS_wav_number, u8 volume, s16 freq){
+<a name="l00177"></a>00177 s32 length = (PA_GBFSfile[GBFS_wav_number].Length &gt;&gt; 2) + 1; <span class="comment">// Pour etre sur...</span>
+<a name="l00178"></a>00178        free(GBFS_wav[PA_Channel]);
+<a name="l00179"></a>00179        GBFS_wav[PA_Channel] = (u8*)malloc(length &lt;&lt; 2);
+<a name="l00180"></a>00180        
+<a name="l00181"></a>00181        DMA_Copy(PA_GBFSfile[GBFS_wav_number].File, GBFS_wav[PA_Channel], length, DMA_32NOW);
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183        <a class="code" href="group___sound_a_r_m9.html#gdaa0cde723362f069cca26540443e99a">PA_PlaySound</a>(PA_Channel, (<span class="keywordtype">void</span>*)GBFS_wav[PA_Channel], length &lt;&lt; 2, volume, freq);
+<a name="l00184"></a>00184 }
+<a name="l00185"></a>00185 
+<a name="l00200"></a><a class="code" href="group___sound_a_r_m9.html#g0e1ce2f981aa1794272cbccbf443e8ab">00200</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#g0e1ce2f981aa1794272cbccbf443e8ab">PA_PlaySimpleSound</a>(u8 PA_Channel, <span class="keyword">const</span> <span class="keywordtype">void</span>* data, u32 length){
+<a name="l00201"></a>00201 <a class="code" href="group___sound_a_r_m9.html#ga97075bd67507665cc0ab86b18f1bee0">PA_PlaySoundEx</a>(PA_Channel, data, length, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format);
+<a name="l00202"></a>00202 }
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204 
+<a name="l00216"></a><a class="code" href="group___sound_a_r_m9.html#gabf2192dc204ee5c4061d4d3126a9157">00216</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#gabf2192dc204ee5c4061d4d3126a9157">PA_PlayGBFSSimpleSound</a>(u8 PA_Channel, u16 GBFS_wav_number){
+<a name="l00217"></a>00217 s32 length = (PA_GBFSfile[GBFS_wav_number].Length &gt;&gt; 2) + 1; <span class="comment">// Pour etre sur...</span>
+<a name="l00218"></a>00218        free(GBFS_wav[PA_Channel]);
+<a name="l00219"></a>00219        GBFS_wav[PA_Channel] = (u8*)malloc(length &lt;&lt; 2);
+<a name="l00220"></a>00220        
+<a name="l00221"></a>00221        DMA_Copy(PA_GBFSfile[GBFS_wav_number].File, GBFS_wav[PA_Channel], length, DMA_32NOW);
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223        <a class="code" href="group___sound_a_r_m9.html#g0e1ce2f981aa1794272cbccbf443e8ab">PA_PlaySimpleSound</a>(PA_Channel, (<span class="keywordtype">void</span>*)GBFS_wav[PA_Channel], length &lt;&lt; 2);
+<a name="l00224"></a>00224 }
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227 
+<a name="l00236"></a><a class="code" href="group___sound_a_r_m9.html#g0c045e5e8e44f52be660ea6490cb9905">00236</a> <span class="preprocessor">#define PA_PlayMod(mod_snd) SndPlayMOD((u8*)mod_snd)</span>
+<a name="l00237"></a>00237 <span class="preprocessor"></span>
+<a name="l00238"></a>00238 
+<a name="l00247"></a><a class="code" href="group___sound_a_r_m9.html#g9bcd639bae9e8b40d9247a462ed07818">00247</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#g9bcd639bae9e8b40d9247a462ed07818">PA_PlayGBFSMod</a>(u16 GBFS_mod_number){
+<a name="l00248"></a>00248 s32 length = (PA_GBFSfile[GBFS_mod_number].Length &gt;&gt; 2) + 1; <span class="comment">// Pour etre sur...</span>
+<a name="l00249"></a>00249        free(GBFS_mod);
+<a name="l00250"></a>00250        GBFS_mod = (u8*)malloc(length &lt;&lt; 2);
+<a name="l00251"></a>00251 
+<a name="l00252"></a>00252        DMA_Copy(PA_GBFSfile[GBFS_mod_number].File, GBFS_mod, length, DMA_32NOW);
+<a name="l00253"></a>00253 <span class="comment">/*     s32 i; </span>
+<a name="l00254"></a>00254 <span class="comment">       u32 *mod = (u32*)PA_GBFSfile[GBFS_mod_number].File;     </span>
+<a name="l00255"></a>00255 <span class="comment">       for (i = 0; i &lt; length; i++) // Copy the file in RAM</span>
+<a name="l00256"></a>00256 <span class="comment">              GBFS_mod[i] = mod[i];*/</span>
+<a name="l00257"></a>00257        <a class="code" href="group___sound_a_r_m9.html#g0c045e5e8e44f52be660ea6490cb9905">PA_PlayMod</a>(GBFS_mod);
+<a name="l00258"></a>00258 }
+<a name="l00259"></a>00259 
+<a name="l00265"></a><a class="code" href="group___sound_a_r_m9.html#g2667778d7f061871cb541cfe50bcd69e">00265</a> <span class="preprocessor">#define PA_StopMod() SndStopMOD()</span>
+<a name="l00266"></a>00266 <span class="preprocessor"></span>
+<a name="l00267"></a>00267 
+<a name="l00276"></a><a class="code" href="group___sound_a_r_m9.html#gf2a7b3177b5c94de418d7777b4af1414">00276</a> <span class="preprocessor">#define PA_PauseMod(bool) SndPauseMOD(bool)</span>
+<a name="l00277"></a>00277 <span class="preprocessor"></span>
+<a name="l00278"></a>00278  <span class="comment">// end of SoundARM9</span>
+<a name="l00280"></a>00280 
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282 
+<a name="l00283"></a>00283 
+<a name="l00284"></a>00284 <span class="preprocessor">#endif</span>
+<a name="l00285"></a>00285 <span class="preprocessor"></span>
+<a name="l00286"></a>00286 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:44 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

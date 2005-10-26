@@ -332,8 +332,8 @@ extern inline void PA_CreateSpriteEx(bool screen, u8 obj_number, void* obj_data,
 */
 extern inline void PA_Create16bitSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y){
 u16 mem_size = PA_obj_sizes[obj_size][obj_shape] << 1;
-u16 *gfx = malloc(mem_size);
-mem_size = mem_size;
+u16 *gfx = (u16*)malloc(mem_size);
+mem_size = mem_size >> 1;
 s32 i;
 u16 *data = (u16*)obj_data;
 for (i = 0; i < mem_size; i++) gfx[i] = data[i] + (1 << 15);

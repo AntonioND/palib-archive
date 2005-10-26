@@ -1,3 +1,17 @@
+PAlib 0.63a : 
+
+- Fixed the Draw functions to work with different drawing sizes
+- Added a Line function with different sizes
+- Added a Rectangle function
+- Some screens were switched on G6 ! (don't ask me why)... This is fixed (basicly, double-checks the screen on init, and switches if it was wrong)
+- Added support for BMP files ! See the GBFS example (but can be used without GBFS). Currently, only supports 16, 24, and 32 bit bmps, on a 16bit background, but paletted bitmaps are coming...
+- Added support for GIF files ! Thanks Birslip, and thanks to Libungif... Currently, only did the example to load on a 16bit background, but the functions will be updated soon to work on 8 bit backgrounds (with auto-detection of 8/16bit). This might have made the PAlib size go up some more, but some of the files will be removed later on, and optimisations are still to be done speedwise (I have some ideas I haven't had time to put in place...)
+- Changed the makefile a bit :
+	-> To easy change author/game name/website, just open the makefile and you'll see where to change...
+	-> To add support for gif/bmp files in the data folder
+- Lots of bug fixes/enhancements
+
+
 PAlib 0.62a :
 
 - Added a search for *.extension in PA GBFS system

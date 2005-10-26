@@ -1,8 +1,10 @@
 #include "PA9.h"
 #include <nds.h>
 
+
 #include "PA/PA_API.c"
 #include "PA/PA_Draw.c"
+#include "PA/PA_Gif.c"
 #include "PA/PA_Interrupt.c"
 #include "PA/PA_Keys.c"
 #include "PA/PA_GBFS.c"
@@ -102,6 +104,8 @@ void PA_Init(void) {
 // Turn on the screens and 2D cores and switch to mode 0
 powerON(POWER_ALL);
   POWER_CR = POWER_ALL_2D;
+  
+ POWER_CR |= SWITCH_SCREENS; POWER_CR ^= SWITCH_SCREENS; // on s'assure que l'écran est bien
 
 //IPC->mailData
 
@@ -121,7 +125,7 @@ vramSetMainBanks(VRAM_A_MAIN_BG,VRAM_B_MAIN_SPRITE,VRAM_C_SUB_BG,VRAM_D_SUB_SPRI
 u32 temp = 0;
 free(Blank); // Free, just in case it's a ReInit...
 Blank = (u32*)malloc(130000); // Malloc a big blank chunk
-DMA_Force(temp, Blank, 65000, DMA_16NOW);
+DMA_Force(temp, Blank, 32500, DMA_32NOW);
 
 
 PA_ResetSpriteSys();

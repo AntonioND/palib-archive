@@ -198,7 +198,22 @@ void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
          \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
 */
 #define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen << 9)] = colorRGB
-//#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen << 9)} ) colorRGB
+
+/*! \def PA_SetSpritePalCol(screen, color_number, colorRGB)
+    \brief
+         \~english Change de color of one of the sprite palette colors
+         \~french Changer la couleur d'une des couleurs de la palette des sprites
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param color_number
+         \~english Color number in palette (0-255)
+         \~french Numéro de la couleur dans la palette (0-255)
+    \param colorRGB
+         \~english RGB value, like PA_RGB(31, 31, 31) for white
+         \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
+*/
+#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen << 9)] = colorRGB
 
 
 /** @} */ // end of Palette

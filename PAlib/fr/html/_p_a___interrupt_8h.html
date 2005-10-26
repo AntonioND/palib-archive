@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib: Référence du fichier PA_Interrupt.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li id="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Liste&nbsp;des&nbsp;fichiers</span></a></li>
+    <li><a href="globals.html"><span>Portée&nbsp;globale</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_C_3A_2FdevkitPro_2F.html">devkitPro</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2F.html">PAlib</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2F.html">include</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2F.html">NDS</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2Farm9_2F.html">arm9</a></div>
+<h1>Référence du fichier PA_Interrupt.h</h1>Interrupt system. <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="_p_a___interrupt_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="88a541836c374eb4d963b6b1278bc238"></a><!-- doxytag: member="PA_Interrupt.h::REG_IME" ref="88a541836c374eb4d963b6b1278bc238" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_IME</b>&nbsp;&nbsp;&nbsp;*(u32*)0x04000208</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0b0b039351e0428cf57f915bd1e3733"></a><!-- doxytag: member="PA_Interrupt.h::REG_IE" ref="a0b0b039351e0428cf57f915bd1e3733" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_IE</b>&nbsp;&nbsp;&nbsp;*(u32*)0x04000210</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="f060d681065c943ca4ccb04ded2234ba"></a><!-- doxytag: member="PA_Interrupt.h::REG_IF" ref="f060d681065c943ca4ccb04ded2234ba" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_IF</b>&nbsp;&nbsp;&nbsp;*(u32*)0x04000214</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="12f944cf27c008b4bfe0c405b082e781"></a><!-- doxytag: member="PA_Interrupt.h::REG_INTERRUPT" ref="12f944cf27c008b4bfe0c405b082e781" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_INTERRUPT</b>&nbsp;&nbsp;&nbsp;IRQ_HANDLER</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="30a64b4bdaf227cb62c21f0a76f379aa"></a><!-- doxytag: member="PA_Interrupt.h::REG_DISPSTAT" ref="30a64b4bdaf227cb62c21f0a76f379aa" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_DISPSTAT</b>&nbsp;&nbsp;&nbsp;DISP_SR</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="e0decf917c68e10fa32161a7eb5e2046"></a><!-- doxytag: member="PA_Interrupt.h::REG_VCOUNT" ref="e0decf917c68e10fa32161a7eb5e2046" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_VCOUNT</b>&nbsp;&nbsp;&nbsp;_REG16(0x04000006)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2ee85e970aecd2a0e1efb5bc01342c78"></a><!-- doxytag: member="PA_Interrupt.h::INTVBLANK" ref="2ee85e970aecd2a0e1efb5bc01342c78" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTVBLANK</b>&nbsp;&nbsp;&nbsp;0x0001</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="81719c32a370c648e5e50dd700ff8f7d"></a><!-- doxytag: member="PA_Interrupt.h::INTHBLANK" ref="81719c32a370c648e5e50dd700ff8f7d" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTHBLANK</b>&nbsp;&nbsp;&nbsp;0x0002</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="18d6243d4603230c3f64c35c9acc6367"></a><!-- doxytag: member="PA_Interrupt.h::INTVCOUNT" ref="18d6243d4603230c3f64c35c9acc6367" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTVCOUNT</b>&nbsp;&nbsp;&nbsp;0x0004</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3dd401fadb05cf29da84cc259a0e06b9"></a><!-- doxytag: member="PA_Interrupt.h::INTTIMER0" ref="3dd401fadb05cf29da84cc259a0e06b9" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTTIMER0</b>&nbsp;&nbsp;&nbsp;0x0008</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="747c45eb48479ed5376729d27ad3c671"></a><!-- doxytag: member="PA_Interrupt.h::INTTIMER1" ref="747c45eb48479ed5376729d27ad3c671" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTTIMER1</b>&nbsp;&nbsp;&nbsp;0x0010</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="325b685634254840d66a5b75016bb947"></a><!-- doxytag: member="PA_Interrupt.h::INTTIMER2" ref="325b685634254840d66a5b75016bb947" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTTIMER2</b>&nbsp;&nbsp;&nbsp;0x0020</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="d085a014284a4a01909a20ae5a14d367"></a><!-- doxytag: member="PA_Interrupt.h::INTTIMER3" ref="d085a014284a4a01909a20ae5a14d367" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTTIMER3</b>&nbsp;&nbsp;&nbsp;0x0040</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="e18aae53fb3fb7f861a87223bcb66dd4"></a><!-- doxytag: member="PA_Interrupt.h::INTCOM" ref="e18aae53fb3fb7f861a87223bcb66dd4" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTCOM</b>&nbsp;&nbsp;&nbsp;0x0080</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="c5020b2895ee703b46110145d7bef33a"></a><!-- doxytag: member="PA_Interrupt.h::INTDMA0" ref="c5020b2895ee703b46110145d7bef33a" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTDMA0</b>&nbsp;&nbsp;&nbsp;0x0100</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2fd2e27626b8b851298bd5f8e63ea606"></a><!-- doxytag: member="PA_Interrupt.h::INTDMA1" ref="2fd2e27626b8b851298bd5f8e63ea606" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTDMA1</b>&nbsp;&nbsp;&nbsp;0x0200</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="88018f8c54ac1e3c003d2fb65a7c26bb"></a><!-- doxytag: member="PA_Interrupt.h::INTDMA2" ref="88018f8c54ac1e3c003d2fb65a7c26bb" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTDMA2</b>&nbsp;&nbsp;&nbsp;0x0400</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="fad35a244153e44421e071a7311b2492"></a><!-- doxytag: member="PA_Interrupt.h::INTDMA3" ref="fad35a244153e44421e071a7311b2492" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTDMA3</b>&nbsp;&nbsp;&nbsp;0x0800</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="5c71088c4ce74f318634eb22729b84c3"></a><!-- doxytag: member="PA_Interrupt.h::INTBUTTON" ref="5c71088c4ce74f318634eb22729b84c3" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTBUTTON</b>&nbsp;&nbsp;&nbsp;0x1000</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="adfcf89b89eb871a510347b21bd98799"></a><!-- doxytag: member="PA_Interrupt.h::INTCART" ref="adfcf89b89eb871a510347b21bd98799" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTCART</b>&nbsp;&nbsp;&nbsp;0x2000</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="73cc2ba51b0619987f0c5ecb83d288f5"></a><!-- doxytag: member="PA_Interrupt.h::INT_VBLANK" ref="73cc2ba51b0619987f0c5ecb83d288f5" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_VBLANK</b>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="75bd6f4db8358e8721df4b20febf9c99"></a><!-- doxytag: member="PA_Interrupt.h::INT_HBLANK" ref="75bd6f4db8358e8721df4b20febf9c99" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_HBLANK</b>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="30f6f56cfa2e6ca3a0c44992d56aa882"></a><!-- doxytag: member="PA_Interrupt.h::INT_VCOUNT" ref="30f6f56cfa2e6ca3a0c44992d56aa882" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_VCOUNT</b>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ec0bcaef438ca4bb19c8d7afd8db6fa9"></a><!-- doxytag: member="PA_Interrupt.h::INT_TIMER0" ref="ec0bcaef438ca4bb19c8d7afd8db6fa9" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_TIMER0</b>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="f3eac47d2762c9e7bf4eff50ad8a5025"></a><!-- doxytag: member="PA_Interrupt.h::INT_TIMER1" ref="f3eac47d2762c9e7bf4eff50ad8a5025" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_TIMER1</b>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="5e0db23f8b48879194ff551b688f6216"></a><!-- doxytag: member="PA_Interrupt.h::INT_TIMER2" ref="5e0db23f8b48879194ff551b688f6216" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_TIMER2</b>&nbsp;&nbsp;&nbsp;5</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="b9a7f007805d82ff5cba1a04d9a39f7e"></a><!-- doxytag: member="PA_Interrupt.h::INT_TIMER3" ref="b9a7f007805d82ff5cba1a04d9a39f7e" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_TIMER3</b>&nbsp;&nbsp;&nbsp;6</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="786a46ca6c001505bd4fa53175c9426b"></a><!-- doxytag: member="PA_Interrupt.h::INT_COM" ref="786a46ca6c001505bd4fa53175c9426b" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_COM</b>&nbsp;&nbsp;&nbsp;7</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="186886e06c76cbfba736a0e02a366c55"></a><!-- doxytag: member="PA_Interrupt.h::INT_DMA0" ref="186886e06c76cbfba736a0e02a366c55" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_DMA0</b>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="5483e98f83780b12754f93030b905b6e"></a><!-- doxytag: member="PA_Interrupt.h::INT_DMA1" ref="5483e98f83780b12754f93030b905b6e" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_DMA1</b>&nbsp;&nbsp;&nbsp;9</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="8464d854f8e73d2de7d2c724a1d70934"></a><!-- doxytag: member="PA_Interrupt.h::INT_DMA2" ref="8464d854f8e73d2de7d2c724a1d70934" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_DMA2</b>&nbsp;&nbsp;&nbsp;10</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6f9faca929fa0fc31b3808aa7e1b0e8"></a><!-- doxytag: member="PA_Interrupt.h::INT_DMA3" ref="a6f9faca929fa0fc31b3808aa7e1b0e8" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_DMA3</b>&nbsp;&nbsp;&nbsp;11</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="6844acddc9c20f2c939d9384e861825e"></a><!-- doxytag: member="PA_Interrupt.h::INT_KEY" ref="6844acddc9c20f2c939d9384e861825e" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_KEY</b>&nbsp;&nbsp;&nbsp;12</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0077984e0bcdfbc37b2f6b45549a9c10"></a><!-- doxytag: member="PA_Interrupt.h::INT_CART" ref="0077984e0bcdfbc37b2f6b45549a9c10" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_CART</b>&nbsp;&nbsp;&nbsp;13</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="827d75984fa4fdfb861be5a8f048b64e"></a><!-- doxytag: member="PA_Interrupt.h::ENABLE_VBLANK" ref="827d75984fa4fdfb861be5a8f048b64e" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>ENABLE_VBLANK</b>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2502ae81a86da3ed38ca5700eee2e7da"></a><!-- doxytag: member="PA_Interrupt.h::ENABLE_HBLANK" ref="2502ae81a86da3ed38ca5700eee2e7da" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>ENABLE_HBLANK</b>&nbsp;&nbsp;&nbsp;16</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="37bf1de6b047d70d1a51d3d1a54e2f1c"></a><!-- doxytag: member="PA_Interrupt.h::ENABLE_VCOUNT" ref="37bf1de6b047d70d1a51d3d1a54e2f1c" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>ENABLE_VCOUNT</b>&nbsp;&nbsp;&nbsp;32</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="cff8db5342dcc01fa7c26c26661a8ccf"></a><!-- doxytag: member="PA_Interrupt.h::TIMER0COUNT" ref="cff8db5342dcc01fa7c26c26661a8ccf" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0COUNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000100)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="cf53ddf91390f779776fbe6cfc185414"></a><!-- doxytag: member="PA_Interrupt.h::TIMER0CNT" ref="cf53ddf91390f779776fbe6cfc185414" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000102)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="1dc2ac287bc260d55c2e33bf123c1311"></a><!-- doxytag: member="PA_Interrupt.h::TIMER0CNT_TIMER_START" ref="1dc2ac287bc260d55c2e33bf123c1311" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT_TIMER_START</b>&nbsp;&nbsp;&nbsp;(TIMER0CNT |= 0x0080)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="60385612707731a54c1b80cd5ec407b1"></a><!-- doxytag: member="PA_Interrupt.h::TIMER0CNT_IRQ_ENABLE" ref="60385612707731a54c1b80cd5ec407b1" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT_IRQ_ENABLE</b>&nbsp;&nbsp;&nbsp;(TIMER0CNT |= 0x0040)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="18e871ed5bd444cde941ed2ac3c567b5"></a><!-- doxytag: member="PA_Interrupt.h::PA_EnableTimer0" ref="18e871ed5bd444cde941ed2ac3c567b5" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EnableTimer0</b>()&nbsp;&nbsp;&nbsp;{TIMER0CNT_TIMER_START; TIMER0CNT_IRQ_ENABLE;}</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="9f26e4e332309363758b21064ec92bfc"></a><!-- doxytag: member="PA_Interrupt.h::TIMER0CNT_TIMER_STOP" ref="9f26e4e332309363758b21064ec92bfc" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT_TIMER_STOP</b>&nbsp;&nbsp;&nbsp;(TIMER0CNT &amp;= 0xFF7F)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2fe25ebc4f2692fd6c45b3097d8795c5"></a><!-- doxytag: member="PA_Interrupt.h::TIMER0CNT_IRQ_DISABLE" ref="2fe25ebc4f2692fd6c45b3097d8795c5" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT_IRQ_DISABLE</b>&nbsp;&nbsp;&nbsp;(TIMER0CNT &amp;= 0xFFBF)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="dceee5b87ef2ee9fd27f94467636f016"></a><!-- doxytag: member="PA_Interrupt.h::PA_DisableTimer0" ref="dceee5b87ef2ee9fd27f94467636f016" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DisableTimer0</b>()&nbsp;&nbsp;&nbsp;{TIMER0CNT_TIMER_STOP; TIMER0CNT_IRQ_DISABLE;}</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="41d5f1c15b9c62ad86869350b6f6dd2a"></a><!-- doxytag: member="PA_Interrupt.h::TIMER1COUNT" ref="41d5f1c15b9c62ad86869350b6f6dd2a" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1COUNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000104)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="169c4caaa72f8abd2f4c4c823561c20a"></a><!-- doxytag: member="PA_Interrupt.h::TIMER1CNT" ref="169c4caaa72f8abd2f4c4c823561c20a" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000106)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="e1f107a0c256b93eb37579511ce89025"></a><!-- doxytag: member="PA_Interrupt.h::TIMER1CNT_TIMER_START" ref="e1f107a0c256b93eb37579511ce89025" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT_TIMER_START</b>&nbsp;&nbsp;&nbsp;(TIMER1CNT |= 0x0080)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="c07e6f5717c6a46b0fe222f863729edb"></a><!-- doxytag: member="PA_Interrupt.h::TIMER1CNT_IRQ_ENABLE" ref="c07e6f5717c6a46b0fe222f863729edb" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT_IRQ_ENABLE</b>&nbsp;&nbsp;&nbsp;(TIMER1CNT |= 0x0040)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3b02b2cc715773075c2712ecff4d1e1e"></a><!-- doxytag: member="PA_Interrupt.h::PA_EnableTimer1" ref="3b02b2cc715773075c2712ecff4d1e1e" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EnableTimer1</b>()&nbsp;&nbsp;&nbsp;{TIMER1CNT_TIMER_START; TIMER1CNT_IRQ_ENABLE;}</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3f029044859ea8e5a24d9eb8150afffe"></a><!-- doxytag: member="PA_Interrupt.h::TIMER1CNT_TIMER_STOP" ref="3f029044859ea8e5a24d9eb8150afffe" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT_TIMER_STOP</b>&nbsp;&nbsp;&nbsp;(TIMER1CNT &amp;= 0xFF7F)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="eee5257fec02d0386bcb565235e0c082"></a><!-- doxytag: member="PA_Interrupt.h::TIMER1CNT_IRQ_DISABLE" ref="eee5257fec02d0386bcb565235e0c082" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT_IRQ_DISABLE</b>&nbsp;&nbsp;&nbsp;(TIMER1CNT &amp;= 0xFFBF)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="9742aed930c5fd4f9783c0d6a746bb56"></a><!-- doxytag: member="PA_Interrupt.h::PA_DisableTimer1" ref="9742aed930c5fd4f9783c0d6a746bb56" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DisableTimer1</b>()&nbsp;&nbsp;&nbsp;{TIMER1CNT_TIMER_STOP; TIMER1CNT_IRQ_DISABLE;}</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2a0ac3e9c03bf694b01df6ce8212b7fb"></a><!-- doxytag: member="PA_Interrupt.h::TIMER2COUNT" ref="2a0ac3e9c03bf694b01df6ce8212b7fb" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2COUNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000108)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="691cb4276471ef2a6ab79b7ad799b3f2"></a><!-- doxytag: member="PA_Interrupt.h::TIMER2CNT" ref="691cb4276471ef2a6ab79b7ad799b3f2" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x0400010A)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="269537a9be75e4d66ec924fe26dc0310"></a><!-- doxytag: member="PA_Interrupt.h::TIMER2CNT_TIMER_START" ref="269537a9be75e4d66ec924fe26dc0310" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT_TIMER_START</b>&nbsp;&nbsp;&nbsp;(TIMER2CNT |= 0x0080)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="bf5b422ac7a197ba06e64c1eabbed528"></a><!-- doxytag: member="PA_Interrupt.h::TIMER2CNT_IRQ_ENABLE" ref="bf5b422ac7a197ba06e64c1eabbed528" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT_IRQ_ENABLE</b>&nbsp;&nbsp;&nbsp;(TIMER2CNT |= 0x0040)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9278944f535c6ff415ceb4addaac2f3"></a><!-- doxytag: member="PA_Interrupt.h::PA_EnableTimer2" ref="a9278944f535c6ff415ceb4addaac2f3" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EnableTimer2</b>()&nbsp;&nbsp;&nbsp;{TIMER2CNT_TIMER_START; TIMER2CNT_IRQ_ENABLE;}</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="4cb9d65aca68f1974ddb1a042410793b"></a><!-- doxytag: member="PA_Interrupt.h::TIMER2CNT_TIMER_STOP" ref="4cb9d65aca68f1974ddb1a042410793b" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT_TIMER_STOP</b>&nbsp;&nbsp;&nbsp;(TIMER2CNT &amp;= 0xFF7F)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="56bdb12bb289e5d59e98d8fa8ece1739"></a><!-- doxytag: member="PA_Interrupt.h::TIMER2CNT_IRQ_DISABLE" ref="56bdb12bb289e5d59e98d8fa8ece1739" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT_IRQ_DISABLE</b>&nbsp;&nbsp;&nbsp;(TIMER2CNT &amp;= 0xFFBF)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="4dba0b1ee32665eea62f7036d7466fc1"></a><!-- doxytag: member="PA_Interrupt.h::PA_DisableTimer2" ref="4dba0b1ee32665eea62f7036d7466fc1" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DisableTimer2</b>()&nbsp;&nbsp;&nbsp;{TIMER2CNT_TIMER_STOP; TIMER2CNT_IRQ_DISABLE;}</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="31ed563e2bcfc16f1903369efa39cbbe"></a><!-- doxytag: member="PA_Interrupt.h::TIMER3COUNT" ref="31ed563e2bcfc16f1903369efa39cbbe" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3COUNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x0400010C)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="8eef8c8ece304851241b9ea9b390da8d"></a><!-- doxytag: member="PA_Interrupt.h::TIMER3CNT" ref="8eef8c8ece304851241b9ea9b390da8d" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x0400010E)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="2c82a488e72e916fc665b39a80bd6ae7"></a><!-- doxytag: member="PA_Interrupt.h::TIMER3CNT_TIMER_START" ref="2c82a488e72e916fc665b39a80bd6ae7" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT_TIMER_START</b>&nbsp;&nbsp;&nbsp;(TIMER3CNT |= 0x0080)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="e3896314d0138cdfb3ffc285bd1e718d"></a><!-- doxytag: member="PA_Interrupt.h::TIMER3CNT_IRQ_ENABLE" ref="e3896314d0138cdfb3ffc285bd1e718d" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT_IRQ_ENABLE</b>&nbsp;&nbsp;&nbsp;(TIMER3CNT |= 0x0040)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="013caa4b8e819a49f905355ca3e02da1"></a><!-- doxytag: member="PA_Interrupt.h::PA_EnableTimer3" ref="013caa4b8e819a49f905355ca3e02da1" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EnableTimer3</b>()&nbsp;&nbsp;&nbsp;{TIMER3CNT_TIMER_START; TIMER3CNT_IRQ_ENABLE;}</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="63b3022a9bf02899b7a60d5827d75d7a"></a><!-- doxytag: member="PA_Interrupt.h::TIMER3CNT_TIMER_STOP" ref="63b3022a9bf02899b7a60d5827d75d7a" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT_TIMER_STOP</b>&nbsp;&nbsp;&nbsp;(TIMER3CNT &amp;= 0xFF7F)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0dac8333129adf102cb7fb93f317b593"></a><!-- doxytag: member="PA_Interrupt.h::TIMER3CNT_IRQ_DISABLE" ref="0dac8333129adf102cb7fb93f317b593" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT_IRQ_DISABLE</b>&nbsp;&nbsp;&nbsp;(TIMER3CNT &amp;= 0xFFBF)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="993559c0c77278ab318dcf1a4ab7ed7d"></a><!-- doxytag: member="PA_Interrupt.h::PA_DisableTimer3" ref="993559c0c77278ab318dcf1a4ab7ed7d" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DisableTimer3</b>()&nbsp;&nbsp;&nbsp;{TIMER3CNT_TIMER_STOP; TIMER3CNT_IRQ_DISABLE;}</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gb8b1fe8c2810dae63640e98dd7f744ad"></a><!-- doxytag: member="PA_Interrupt.h::PA_InitVBL" ref="gb8b1fe8c2810dae63640e98dd7f744ad" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#gb8b1fe8c2810dae63640e98dd7f744ad">PA_InitVBL</a>()&nbsp;&nbsp;&nbsp;PA_StartInt(INT_VBLANK, PA_vblFunc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise une fonction VBL basique. Très pratique pour l'utilisateur non averti, car met à jour l'OAM (les sprites), les touches, et le stylet... On n'a donc plus besoin d'utiliser PA_UpdateOAM, PA_UpdatePad, PA_UpdateStylus, et PA_UpdateRTC dans ce cas ! <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="g9674eb10a2f61e59cd4b4daa6d0a5a06"></a><!-- doxytag: member="PA_Interrupt.h::PA_GetVcount" ref="g9674eb10a2f61e59cd4b4daa6d0a5a06" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#g9674eb10a2f61e59cd4b4daa6d0a5a06">PA_GetVcount</a>()&nbsp;&nbsp;&nbsp;(REG_VCOUNT&amp;511)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer le numéro de ligne tracée. <br></td></tr>
+<tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="426afce2d3c893938887da4fd8a4afb1"></a><!-- doxytag: member="PA_Interrupt.h::funcpointer" ref="426afce2d3c893938887da4fd8a4afb1" args=")(void)" -->
+typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><b>funcpointer</b> )(void)</td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="8399d35782680b6e6035c148847d7ac5"></a><!-- doxytag: member="PA_Interrupt.h::interruptfunction" ref="8399d35782680b6e6035c148847d7ac5" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>interruptfunction</b> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="g6a8c84ebebe7dbf26e6769bdf9d6a224"></a><!-- doxytag: member="PA_Interrupt.h::PA_ResetInterrupts" ref="g6a8c84ebebe7dbf26e6769bdf9d6a224" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#g6a8c84ebebe7dbf26e6769bdf9d6a224">PA_ResetInterrupts</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Remise à 0 du système d'interruption. Désactive toutes les interruptions. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#g61bee0ad30f45364c3a77431fdcb9157">PA_StartInt</a> (u8 inter, funcpointer interfunc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise une interruption donnée.  <a href="group___interrupts.html#g61bee0ad30f45364c3a77431fdcb9157"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#g89595b8c50cfd0438c6762254e62dd5e">PA_StopInt</a> (u8 inter)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise une interruption donnée.  <a href="group___interrupts.html#g89595b8c50cfd0438c6762254e62dd5e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gb550be1e707b30d9f357659a92e51216"></a><!-- doxytag: member="PA_Interrupt.h::PA_vblFunc" ref="gb550be1e707b30d9f357659a92e51216" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#gb550be1e707b30d9f357659a92e51216">PA_vblFunc</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction standard du VBL PAlib... Ceci met à jour le pad, le stylet, le RTC... Utilisez cette fonction si vous faites votre propre VBL... <br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="d0c295bc84eeb80a39d7ec84755c72de"></a><!-- doxytag: member="PA_Interrupt.h::PA_Newframe" ref="d0c295bc84eeb80a39d7ec84755c72de" args="" -->
+volatile bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Newframe</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ea0400ab2c4bda1619ddececf9fbfa1b"></a><!-- doxytag: member="PA_Interrupt.h::PA_vblok" ref="ea0400ab2c4bda1619ddececf9fbfa1b" args="" -->
+volatile bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_vblok</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="1374c8e559109787db2738f5f558ece5"></a><!-- doxytag: member="PA_Interrupt.h::PA_CPU" ref="1374c8e559109787db2738f5f558ece5" args="" -->
+u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_CPU</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="f834a68e11cd20f96f8df8650cb9b767"></a><!-- doxytag: member="PA_Interrupt.h::PA_MaxCPU" ref="f834a68e11cd20f96f8df8650cb9b767" args="" -->
+u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_MaxCPU</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1624c4c82336b1344b7419f3b3029bd"></a><!-- doxytag: member="PA_Interrupt.h::PA_lines" ref="a1624c4c82336b1344b7419f3b3029bd" args="" -->
+u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_lines</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="cf10040f708c0212bec7abf573741654"></a><!-- doxytag: member="PA_Interrupt.h::PA_VBLCount" ref="cf10040f708c0212bec7abf573741654" args="" -->
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_VBLCount</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="60afefa866df6cbcc9803d2ea9504b52"></a><!-- doxytag: member="PA_Interrupt.h::PA_nVBLs" ref="60afefa866df6cbcc9803d2ea9504b52" args="" -->
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_nVBLs</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="94dda456c58ea90d2126a5e543432bdf"></a><!-- doxytag: member="PA_Interrupt.h::interruptfunc" ref="94dda456c58ea90d2126a5e543432bdf" args="[14]" -->
+funcpointer&nbsp;</td><td class="memItemRight" valign="bottom"><b>interruptfunc</b> [14]</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Interrupt system. 
+<p>
+Current working interrupts are VBlank, HBlank, VCount, and Timers <hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:45 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

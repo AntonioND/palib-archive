@@ -1,8 +1,8 @@
 #include "PA9.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 
-int atoi(char*);
+//int atoi(char*);
 
 void PA_on_irqvideo() 
 {	

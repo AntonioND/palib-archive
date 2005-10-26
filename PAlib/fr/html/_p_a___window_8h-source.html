@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib:  Fichier source de PA_Window.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li id="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Liste&nbsp;des&nbsp;fichiers</span></a></li>
+    <li><a href="globals.html"><span>Portée&nbsp;globale</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_C_3A_2FdevkitPro_2F.html">devkitPro</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2F.html">PAlib</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2F.html">include</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2F.html">NDS</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2Farm9_2F.html">arm9</a></div>
+<h1>PA_Window.h</h1><a href="_p_a___window_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _PA_Window</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_Window</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00011"></a>00011 <span class="comment">// utilisé pour activer ou non les fenetres...</span>
+<a name="l00012"></a>00012 <span class="preprocessor">#define WIN_BG0 1</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span><span class="preprocessor">#define WIN_BG1 2</span>
+<a name="l00014"></a>00014 <span class="preprocessor"></span><span class="preprocessor">#define WIN_BG2 4</span>
+<a name="l00015"></a>00015 <span class="preprocessor"></span><span class="preprocessor">#define WIN_BG3 8</span>
+<a name="l00016"></a>00016 <span class="preprocessor"></span><span class="preprocessor">#define WIN_OBJ 16</span>
+<a name="l00017"></a>00017 <span class="preprocessor"></span><span class="preprocessor">#define WIN_SFX 32</span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span>
+<a name="l00019"></a>00019  
+<a name="l00020"></a>00020 <span class="preprocessor">#define DISPCNTL(screen) _REG16(0x04000000 + (screen * 0x1000))</span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span><span class="preprocessor">#define DISPCNTH(screen) _REG16(0x04000002 + (screen * 0x1000))</span>
+<a name="l00022"></a>00022 <span class="preprocessor"></span>
+<a name="l00023"></a>00023 <span class="preprocessor">#define WINDOW0 (1 &lt;&lt; 13)</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span><span class="preprocessor">#define WINDOW1 (1 &lt;&lt; 14)</span>
+<a name="l00025"></a>00025 <span class="preprocessor"></span><span class="preprocessor">#define WINDOWOBJ (1 &lt;&lt; 15)</span>
+<a name="l00026"></a>00026 <span class="preprocessor"></span>
+<a name="l00027"></a>00027 
+<a name="l00028"></a>00028 
+<a name="l00029"></a>00029 <span class="preprocessor">#define WIN0X(screen) _REG16(0x04000040 + (screen * 0x1000))</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span><span class="preprocessor">#define WIN0Y(screen) _REG16(0x04000044 + (screen * 0x1000))</span>
+<a name="l00031"></a>00031 <span class="preprocessor"></span><span class="preprocessor">#define WIN1X(screen) _REG16(0x04000042 + (screen * 0x1000))</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span><span class="preprocessor">#define WIN1Y(screen) _REG16(0x04000046 + (screen * 0x1000))</span>
+<a name="l00033"></a>00033 <span class="preprocessor"></span>
+<a name="l00034"></a>00034 
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036 <span class="preprocessor">#define WININ(screen) _REG16(0x04000048 + (screen * 0x1000))</span>
+<a name="l00037"></a>00037 <span class="preprocessor"></span><span class="preprocessor">#define WINOUT(screen) _REG16(0x0400004A + (screen * 0x1000))</span>
+<a name="l00038"></a>00038 <span class="preprocessor"></span>
+<a name="l00039"></a>00039 
+<a name="l00040"></a>00040 <span class="keyword">extern</span> <span class="keyword">const</span> s16 winfades[][4];
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043 
+<a name="l00070"></a>00070 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_SetWin0XY(<span class="keywordtype">bool</span> screen, u8 x1, u8 y1, u8 x2, u8 y2) {
+<a name="l00071"></a>00071        WIN0X(screen) = x2 + ((x1) &lt;&lt; 8); 
+<a name="l00072"></a>00072        WIN0Y(screen) = y2 + ((y1) &lt;&lt; 8);
+<a name="l00073"></a>00073 }
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076 
+<a name="l00097"></a><a class="code" href="group___window.html#g1d04fcaabb3cb6992945703909b54ae1">00097</a> <span class="preprocessor">#define PA_SetWin1XY(screen, x1, y1, x2, y2) {WIN1X(screen) = x2 + ((x1) &lt;&lt; 8); WIN1Y(screen) = y2 + ((y1) &lt;&lt; 8);}</span>
+<a name="l00098"></a>00098 <span class="preprocessor"></span>
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100 
+<a name="l00112"></a><a class="code" href="group___window.html#g2012ffe8b08398fb67abd38f72010708">00112</a> <span class="preprocessor">#define PA_EnableWin0(screen, bg_sprites) {DISPCNTL(screen) |= WINDOW0; WININ(screen) &amp;= 255; WININ(screen) |= bg_sprites;}</span>
+<a name="l00113"></a>00113 <span class="preprocessor"></span>
+<a name="l00122"></a><a class="code" href="group___window.html#gb02d59219bc7d9045a4c3323cb86c741">00122</a> <span class="preprocessor">#define PA_DisableWin0(screen) DISPCNTL(screen) &amp;= ~WINDOW0</span>
+<a name="l00123"></a>00123 <span class="preprocessor"></span>
+<a name="l00124"></a>00124 
+<a name="l00136"></a><a class="code" href="group___window.html#ge8b7b1f5d06ca8ccdbf880d5a553166e">00136</a> <span class="preprocessor">#define PA_EnableWin1(screen, bg_sprites) {DISPCNTL(screen) |= WINDOW1; WININ(screen) &amp;= 255; WININ(screen) |= (bg_sprites &lt;&lt; 8);}</span>
+<a name="l00137"></a>00137 <span class="preprocessor"></span>
+<a name="l00138"></a>00138 
+<a name="l00147"></a><a class="code" href="group___window.html#g23928a9881e6e45a00cc7e330a4a3e48">00147</a> <span class="preprocessor">#define PA_DisableWin1(screen) DISPCNTL(screen) &amp;= ~WINDOW1</span>
+<a name="l00148"></a>00148 <span class="preprocessor"></span>
+<a name="l00149"></a>00149 
+<a name="l00161"></a><a class="code" href="group___window.html#g04dba22dbbfb03c8b0b808264efb9fa6">00161</a> <span class="preprocessor">#define PA_EnableWinObj(screen, bg_sprites) {DISPCNTL(screen) |= WINDOWOBJ; WINOUT(screen) &amp;= 255; WINOUT |= (bg_sprites &lt;&lt; 8);}</span>
+<a name="l00162"></a>00162 <span class="preprocessor"></span>
+<a name="l00163"></a>00163 
+<a name="l00172"></a><a class="code" href="group___window.html#gf5d92510cd103ba876d761212eb7963c">00172</a> <span class="preprocessor">#define PA_DisableWinObj(screen) DISPCNTL(screen) &amp;= ~WINDOWOBJ</span>
+<a name="l00173"></a>00173 <span class="preprocessor"></span>
+<a name="l00174"></a>00174 
+<a name="l00186"></a><a class="code" href="group___window.html#g52c8c4d5081255f25aa395077309ab2a">00186</a> <span class="preprocessor">#define PA_SetOutWin(screen, bg_sprites) {WINOUT(screen) &amp;= ~255; WINOUT(screen) |= bg_sprites;}</span>
+<a name="l00187"></a>00187 <span class="preprocessor"></span>
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 
+<a name="l00191"></a>00191 
+<a name="l00206"></a><a class="code" href="group___window.html#g132008f500305a497453bd40023abd03">00206</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___window.html#g132008f500305a497453bd40023abd03">PA_WindowFade</a>(<span class="keywordtype">bool</span> screen, u8 type, u8 time){
+<a name="l00207"></a>00207        <a class="code" href="group___window.html#g2012ffe8b08398fb67abd38f72010708">PA_EnableWin0</a>(screen, WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ);
+<a name="l00208"></a>00208        PA_SetWin0XY(screen, (time*winfades[type][0]), 
+<a name="l00209"></a>00209                                           (time*winfades[type][1]), 
+<a name="l00210"></a>00210                                           (time*winfades[type][2]) + 256, 
+<a name="l00211"></a>00211                                           (time*winfades[type][3]) + 192);
+<a name="l00212"></a>00212        <span class="keywordflow">if</span> (time == 0) <a class="code" href="group___window.html#gb02d59219bc7d9045a4c3323cb86c741">PA_DisableWin0</a>(screen);
+<a name="l00213"></a>00213 }
+<a name="l00214"></a>00214 
+<a name="l00215"></a>00215 
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217 
+<a name="l00218"></a>00218 
+<a name="l00219"></a>00219 
+<a name="l00220"></a>00220 
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222 
+<a name="l00223"></a>00223 
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226  <span class="comment">// end of Window</span>
+<a name="l00229"></a>00229 <span class="comment"></span>
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233 <span class="preprocessor">#endif</span>
+<a name="l00234"></a>00234 <span class="preprocessor"></span>
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:45 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

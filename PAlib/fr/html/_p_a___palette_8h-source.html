@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib:  Fichier source de PA_Palette.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li id="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Liste&nbsp;des&nbsp;fichiers</span></a></li>
+    <li><a href="globals.html"><span>Portée&nbsp;globale</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_C_3A_2FdevkitPro_2F.html">devkitPro</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2F.html">PAlib</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2F.html">include</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2F.html">NDS</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2Farm9_2F.html">arm9</a></div>
+<h1>PA_Palette.h</h1><a href="_p_a___palette_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _PA_Palette</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_Palette</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span>
+<a name="l00004"></a>00004 
+<a name="l00011"></a>00011 <span class="comment">//#include "../PA.h"</span>
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 
+<a name="l00015"></a>00015 <span class="comment">// Système pour les palettes</span>
+<a name="l00017"></a>00017 <span class="comment"></span><span class="preprocessor">#define PAL_BG0 0x05000000 </span>
+<a name="l00018"></a>00018 <span class="preprocessor"></span><span class="preprocessor">#define PAL_SPRITE0 0x05000200 </span>
+<a name="l00019"></a>00019 <span class="preprocessor"></span><span class="preprocessor">#define PAL_BG1 0x05000400 </span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span><span class="preprocessor">#define PAL_SPRITE1 0x05000600 </span>
+<a name="l00021"></a>00021 <span class="preprocessor"></span>
+<a name="l00022"></a>00022 <span class="preprocessor">#define REG_BRIGHT 0x0400006C  // Brightness</span>
+<a name="l00023"></a>00023 <span class="preprocessor"></span>
+<a name="l00024"></a>00024 
+<a name="l00025"></a>00025 
+<a name="l00043"></a><a class="code" href="group___palette.html#g4102c01a6a9c49a259b9700c1e122874">00043</a> <span class="preprocessor">#define PA_LoadPal(palette, source)   DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);</span>
+<a name="l00044"></a>00044 <span class="preprocessor"></span>
+<a name="l00060"></a><a class="code" href="group___palette.html#ga909ed4db7c9a49bfb50863dd9fc5aeb">00060</a> <span class="preprocessor">#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</span>
+<a name="l00061"></a>00061 <span class="preprocessor"></span>
+<a name="l00062"></a>00062 
+<a name="l00078"></a><a class="code" href="group___palette.html#gf3ddecd87ae83fdb774226d87b89de1a">00078</a> <span class="preprocessor">#define PA_RGB(r,g,b) ((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</span>
+<a name="l00079"></a>00079 <span class="preprocessor"></span>
+<a name="l00093"></a>00093 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#gef04c1f748951d050ef01feaa7e3a8ce">PA_SetBrightness</a>(<span class="keywordtype">bool</span> screen, s8 bright);
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096 
+<a name="l00105"></a><a class="code" href="group___palette.html#geb48701f6b9589fcd56b6063ff425668">00105</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___palette.html#geb48701f6b9589fcd56b6063ff425668">PA_SetPalNeg</a>(u32 palette) {
+<a name="l00106"></a>00106 u16* pal = (u16*)palette;
+<a name="l00107"></a>00107 u16 i;
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109 <span class="keywordflow">for</span> (i = 0; i &lt; 256; i++) pal[i] = ~pal[i]; <span class="comment">// On fout le négatif...</span>
+<a name="l00110"></a>00110 }
+<a name="l00111"></a>00111 
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 
+<a name="l00126"></a><a class="code" href="group___palette.html#gb35d574ec6606640215809f92add78a4">00126</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___palette.html#gb35d574ec6606640215809f92add78a4">PA_SetPal16Neg</a>(u32 palette, u8 n_palette) {
+<a name="l00127"></a>00127 u16* pal = (u16*)palette;
+<a name="l00128"></a>00128 u16 i;
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130 <span class="keywordflow">for</span> (i = (n_palette &lt;&lt; 4); i &lt; ((n_palette + 1) &lt;&lt; 4); i++) pal[i] = ~pal[i]; <span class="comment">// On fout le négatif...</span>
+<a name="l00131"></a>00131 }
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133 
+<a name="l00139"></a>00139 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#g5e17876b9bc57c7c0ed8d27a8d93db56">PA_InitSpriteExtPal</a>(<span class="keywordtype">void</span>);
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142 
+<a name="l00148"></a>00148 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#gd576862802bafb2dd7d307bef006bc6e">PA_InitBgExtPal</a>(<span class="keywordtype">void</span>);
+<a name="l00149"></a>00149 
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151 
+<a name="l00166"></a>00166 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#gadf027c35e856526714be6986bca2240">PA_LoadSpriteExtPal</a>(<span class="keywordtype">bool</span> screen, u16 palette_number, <span class="keywordtype">void</span>* palette);
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168 
+<a name="l00183"></a>00183 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#g2c5bea651f26d1e929ab31257893512e">PA_LoadBgExtPal</a>(<span class="keywordtype">bool</span> screen, u16 palette_number, <span class="keywordtype">void</span>* palette);
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185 
+<a name="l00200"></a><a class="code" href="group___palette.html#gda6d1753ea7a68fa089a4e2ce14a486f">00200</a> <span class="preprocessor">#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</span>
+<a name="l00201"></a>00201 <span class="preprocessor"></span><span class="comment">//#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)} ) colorRGB</span>
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203  <span class="comment">// end of Palette</span>
+<a name="l00206"></a>00206 <span class="comment"></span>
+<a name="l00207"></a>00207 
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210 
+<a name="l00211"></a>00211 <span class="preprocessor">#endif</span>
+<a name="l00212"></a>00212 <span class="preprocessor"></span>
+<a name="l00213"></a>00213 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:44 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

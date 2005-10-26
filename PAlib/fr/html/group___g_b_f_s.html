@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib: GBFS wrapper</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<h1>GBFS wrapper</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gc7c5de375dd522335fe0eb420e96d680"></a><!-- doxytag: member="GBFS::PA_InitGBFS" ref="gc7c5de375dd522335fe0eb420e96d680" args="(void)" -->
+u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_b_f_s.html#gc7c5de375dd522335fe0eb420e96d680">PA_InitGBFS</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise GBFS et récupère des infos sur les fichiers. Renvoie le nombre de fichiers trouvés... Stock e les infos sous la forme suivante : PA_GBFSfile[numéro du fichier].File est un pointeur sur le fichier en question, .Name est son nom sans extension, .Ext est l'extension (txt, html, etc...), et .Length la taille du fichier. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_b_f_s.html#g9e9eecffba9c422a9bdac52436f7f695">PA_GetGBFSFile</a> (s16 start, char *name, char *extension)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Chercher un fichier donné dans GBFS. Renvoie le numéro du fichier dans le systeme PA GBFS, ou -1 si le fichier n'a pas été trouvé.  <a href="#g9e9eecffba9c422a9bdac52436f7f695"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_b_f_s.html#ge170a01cd1ddbcc27ae84698d4782aa7">PA_GBFSSearchExt</a> (s16 *array, char *extension)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cherche tous les fichiers de GBFS avec l'extension trouvée, place le numéro dans le tableau, et renvoie le nombre de fichiers trouvés...  <a href="#ge170a01cd1ddbcc27ae84698d4782aa7"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Easily use GBFS... <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="ge170a01cd1ddbcc27ae84698d4782aa7"></a><!-- doxytag: member="PA_GBFS.h::PA_GBFSSearchExt" ref="ge170a01cd1ddbcc27ae84698d4782aa7" args="(s16 *array, char *extension)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">s16 PA_GBFSSearchExt           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">s16 *&nbsp;</td>
+          <td class="mdname" nowrap> <em>array</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>extension</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Cherche tous les fichiers de GBFS avec l'extension trouvée, place le numéro dans le tableau, et renvoie le nombre de fichiers trouvés... 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>array</em>&nbsp;</td><td>Tableau dans lequel stocker la position des fichiers GBFS trouvés </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>extension</em>&nbsp;</td><td>Extension à chercher, comme "txt" </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g9e9eecffba9c422a9bdac52436f7f695"></a><!-- doxytag: member="PA_GBFS.h::PA_GetGBFSFile" ref="g9e9eecffba9c422a9bdac52436f7f695" args="(s16 start, char *name, char *extension)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline s32 PA_GetGBFSFile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">s16&nbsp;</td>
+          <td class="mdname" nowrap> <em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>extension</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Chercher un fichier donné dans GBFS. Renvoie le numéro du fichier dans le systeme PA GBFS, ou -1 si le fichier n'a pas été trouvé. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>start</em>&nbsp;</td><td>A partir de quel fichier commencer la recherche, en général 0... Peut être utile si on cherche tous les fichiers avec une extension donnée </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>name</em>&nbsp;</td><td>Nom du fichier, sans extension. Mettre "" comme nom devrait chercher chaque fichier avec l'extension donnée </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>extension</em>&nbsp;</td><td>Extension du fichier (ex : txt). Mettre "" devrait chercher chaque fichier avec le nom donné </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:45 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

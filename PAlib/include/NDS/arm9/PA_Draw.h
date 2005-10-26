@@ -8,15 +8,40 @@
 
     Draw on screen, either a pixel or a line, or anything ! Load a Bitmap, a Jpeg...
 */
+
+#include "PA_Gif.h"
 #include "PA9.h"
+
 #include "PA_Interrupt.h"
 
+
+#define PA_RGB8(r,g,b)	((((b)>>3)<<10)|(((g)>>3)<<5)|((r)>>3)|(1 << 15))
+
+
+typedef struct{
+	u16 Id; // ?
+	u32 Length;
+	u16 Nothing1, Nothing2; // ?
+	u32 ImageStart; // Offset of start of image
+} BMPHeader0;
+
+typedef struct{
+	u32 SizeofHeader; // 40
+	u32 Width, Height;
+	u16 Colorplanes; // Usually 1
+	u16 BitsperPixel; //1, 2, 4, 8, 16, 24, 32
+	u32 Compression;  // 0 for none, 1...
+	u32 SizeofData; // Not reliable
+	u32 WidthperMeter, HeightperMeter; // Don't care
+	u32 NColors, ImportantColors; // Number of colors used, important colors ?
+} BMP_Headers;
 
 
 extern u16 PA_oldx[2];
 extern u16 PA_oldy[2];
 extern u8 PA_drawsize[2];
 extern u16 *PA_DrawBg[2];
+extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 //extern PA_SCreen
 
 /** @defgroup Bitmap Bitmap mode, for any screen...
@@ -293,7 +318,7 @@ void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
          \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
          \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...
  */
-void PA_8bitDraw(bool screen, u16 color);
+void PA_8bitDraw(bool screen, u8 color);
 
 
 /*! \fn PA_16bitDraw(bool screen, u16 color)
@@ -395,8 +420,49 @@ extern inline void PA_LoadJpeg(bool screen, void *jpeg) {
 }
 
 
+void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp);
 
 
+extern inline void PA_LoadBmp(bool screen, void *bmp){
+	PA_LoadBmpEx(screen, 0, 0, bmp);
+}
+
+
+
+/* // Les différentes fonctions images...
+extern inline void PA_LoadJpeg(bool screen, void *jpeg)
+void PA_LoadBmp(bool screen, s16 x, s16 y, void *bmp);*/
+
+extern inline void PA_LoadGBFSImage(bool screen, s16 GBFSImage){
+	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
+		PA_LoadBmp(screen, PA_GBFSfile[GBFSImage].File);
+	}
+	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "jpg")){ 
+		PA_LoadJpeg(screen, PA_GBFSfile[GBFSImage].File);
+	}	
+	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "gif")){ 
+		PA_LoadGif(screen, PA_GBFSfile[GBFSImage].File);
+	}		
+}
+
+
+
+
+void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
+
+void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color);
+
+
+extern inline u16 PA_GetBmpWidth(void *bmp){
+	u8 *temp = (u8*)bmp;
+	BMP_Headers *Bmpinfo = (BMP_Headers*)(temp+14);
+	return Bmpinfo->Width;
+}
+extern inline u16 PA_GetBmpHeight(void *bmp){
+	u8 *temp = (u8*)bmp;
+	BMP_Headers *Bmpinfo = (BMP_Headers*)(temp+14);
+	return Bmpinfo->Height;
+}
 /** @} */ // end of Draw
 
 

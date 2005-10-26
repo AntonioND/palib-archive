@@ -6,6 +6,8 @@ PA_GBFS_infos PA_GBFSfile[200];
 s16 PA_GBFS_nfiles;
 GBFS_FILE const* PA_GBFS_FILE;
 
+
+
 s16 PA_GBFSSearchExt(s16 *array, char *extension){
 	s16 temp = 0;
 	s16 tempvalue = 0;

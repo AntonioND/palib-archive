@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib: Interrupt system</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<h1>Interrupt system</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gb8b1fe8c2810dae63640e98dd7f744ad"></a><!-- doxytag: member="Interrupts::PA_InitVBL" ref="gb8b1fe8c2810dae63640e98dd7f744ad" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#gb8b1fe8c2810dae63640e98dd7f744ad">PA_InitVBL</a>()&nbsp;&nbsp;&nbsp;PA_StartInt(INT_VBLANK, PA_vblFunc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise une fonction VBL basique. Très pratique pour l'utilisateur non averti, car met à jour l'OAM (les sprites), les touches, et le stylet... On n'a donc plus besoin d'utiliser PA_UpdateOAM, PA_UpdatePad, PA_UpdateStylus, et PA_UpdateRTC dans ce cas ! <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="g9674eb10a2f61e59cd4b4daa6d0a5a06"></a><!-- doxytag: member="Interrupts::PA_GetVcount" ref="g9674eb10a2f61e59cd4b4daa6d0a5a06" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#g9674eb10a2f61e59cd4b4daa6d0a5a06">PA_GetVcount</a>()&nbsp;&nbsp;&nbsp;(REG_VCOUNT&amp;511)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer le numéro de ligne tracée. <br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="g6a8c84ebebe7dbf26e6769bdf9d6a224"></a><!-- doxytag: member="Interrupts::PA_ResetInterrupts" ref="g6a8c84ebebe7dbf26e6769bdf9d6a224" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#g6a8c84ebebe7dbf26e6769bdf9d6a224">PA_ResetInterrupts</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Remise à 0 du système d'interruption. Désactive toutes les interruptions. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#g61bee0ad30f45364c3a77431fdcb9157">PA_StartInt</a> (u8 inter, funcpointer interfunc)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise une interruption donnée.  <a href="#g61bee0ad30f45364c3a77431fdcb9157"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#g89595b8c50cfd0438c6762254e62dd5e">PA_StopInt</a> (u8 inter)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise une interruption donnée.  <a href="#g89595b8c50cfd0438c6762254e62dd5e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gb550be1e707b30d9f357659a92e51216"></a><!-- doxytag: member="Interrupts::PA_vblFunc" ref="gb550be1e707b30d9f357659a92e51216" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#gb550be1e707b30d9f357659a92e51216">PA_vblFunc</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction standard du VBL PAlib... Ceci met à jour le pad, le stylet, le RTC... Utilisez cette fonction si vous faites votre propre VBL... <br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Enable VBL, HBL, etc... <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="g61bee0ad30f45364c3a77431fdcb9157"></a><!-- doxytag: member="PA_Interrupt.h::PA_StartInt" ref="g61bee0ad30f45364c3a77431fdcb9157" args="(u8 inter, funcpointer interfunc)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_StartInt           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>inter</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>funcpointer&nbsp;</td>
+          <td class="mdname" nowrap> <em>interfunc</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Initialise une interruption donnée. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>inter</em>&nbsp;</td><td>Initialise une interruption donnée. Utiliser les macros suivantes : INT_VBLANK, INT_HBLANK, INT_VCOUNT, INT_TIMER0, INT_TIMER1, INT_TIMER2, INT_TIMER3, INT_COM, INT_DMA0, INT_DMA1, INT_DMA2, INT_DMA3, INT_KEY, INT_CART... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>interfunc</em>&nbsp;</td><td>Fonction devant etre executée à chaque interruption </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g89595b8c50cfd0438c6762254e62dd5e"></a><!-- doxytag: member="PA_Interrupt.h::PA_StopInt" ref="g89595b8c50cfd0438c6762254e62dd5e" args="(u8 inter)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_StopInt           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>inter</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Initialise une interruption donnée. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>inter</em>&nbsp;</td><td>ARRETER une interruption donnée. Utiliser les macros suivantes : INT_VBLANK, INT_HBLANK, INT_VCOUNT, INT_TIMER0, INT_TIMER1, INT_TIMER2, INT_TIMER3, INT_COM, INT_DMA0, INT_DMA1, INT_DMA2, INT_DMA3, INT_KEY, INT_CART... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:45 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

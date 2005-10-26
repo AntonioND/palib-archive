@@ -84,6 +84,7 @@ extern inline void PA_WaitForVBL(void);
 #include "arm9/PA_Sound.h"
 #include "arm9/PA_Micro.h"
 #include "arm9/PA_Draw.h"
+#include "arm9/PA_Gif.h"
 #include "arm9/PA_Interrupt.h"
 #include "arm9/PA_Keys.h"
 #include "arm9/PA_API.h"

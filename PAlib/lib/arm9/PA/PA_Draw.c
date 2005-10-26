@@ -8,10 +8,12 @@
 u16 PA_oldx[2], PA_oldy[2];
 u8 PA_drawsize[2];
 u16 *PA_DrawBg[2];
+u8 PA_nBit[2]; // 8 or 16 on each screen...
 
 void PA_Init8bitBg(bool screen, u8 bg_priority){
 
 PA_DeleteBg(screen, 3);
+PA_nBit[screen] = 0; // 8 bit
 
     //set the mode for 2 text layers and two extended background layers
 	if (screen == 0) {
@@ -48,6 +50,65 @@ charblocks[screen][40] = 1; // Block la mémoire
 	_REG16(REG_BGCNT(screen, 3)) = bg_priority | BG_BMP8_256x256 | BG_BMP_BASE(5);
 PA_SetDrawSize(screen, 1);
 }
+
+
+
+
+
+void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp){
+
+	u8 *temp = (u8*)bmp;
+	BMP_Headers *Bmpinfo = (BMP_Headers*)(temp+14);
+	
+	u8 *gfx = temp+54;
+	u16 *gfx2 = (u16*)(temp+54); // Pour le mode 16 bit...
+	s32 r, g, b;  s16 tempx, tempy;
+	s16 lx = Bmpinfo->Width;   s16 ly = Bmpinfo->Height;
+	u16 Bits = Bmpinfo->BitsperPixel;
+	
+	s32 i = 0;
+	if (Bits > 16){ // Pour 24 et 32 bits
+		for (tempy = ly-1; tempy > -1; tempy--){
+			for (tempx = 0; tempx < lx; tempx++){
+				b = (gfx[i] >> 3)&31;	i++;
+				g = (gfx[i] >> 3)&31;	i++;
+				r = (gfx[i] >> 3)&31;	i++;	
+				if (Bits == 32) i++; // On passe le bit alpha
+				PA_Put16bitPixel(screen, x + tempx, y + tempy, PA_RGB(r, g, b));
+			}
+			while(i&3) i++; // Padding....
+		}
+	}
+	if (Bits == 16){
+		for (tempy = ly-1; tempy > -1; tempy--){
+			for (tempx = 0; tempx < lx; tempx++){
+				b = *gfx2&31;
+				g = (*gfx2>>5)&31;
+				r = (*gfx2>>10)&31;		
+				PA_Put16bitPixel(screen, x + tempx, y + tempy, PA_RGB(r, g, b));
+				gfx2++; // On passe au pixel suivant
+			}
+			s32 temp = (s32)gfx2;
+			while(temp&3) temp++; // Padding....
+			gfx2 = (u16*)temp;
+		}	
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -106,6 +167,7 @@ PA_Put8bitPixel(screen, px, py, color);
 void PA_Init16bitBg(bool screen, u8 bg_priority){
 
 PA_DeleteBg(screen, 3);
+PA_nBit[screen] = 1; // 16 bit
 
     //set the mode for 2 text layers and two extended background layers
 	if (screen == 0) {
@@ -143,6 +205,8 @@ charblocks[screen][16] = 1; // Block la mémoire
 
 PA_SetDrawSize(screen, 1);
 }
+
+
 
 
 void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color){
@@ -202,65 +266,175 @@ PA_Put16bitPixel(screen, px, py, color);
 
 
 
-void PA_8bitDraw(bool screen, u16 color){
-s8 i, j, low, high;
+void PA_8bitDraw(bool screen, u8 color){
+s16 i, j, low, high;
 u16 x, y;
+u16 x1, y1, x2, y2;
+
 
 if (Stylus.Held){
-x = Stylus.X;
-y = Stylus.Y;
-i = 0;
-j = 0;
+	x = Stylus.X;
+	y = Stylus.Y;
+	i = 0;
+	j = 0;
+	
+	low = (PA_drawsize[screen] >> 1) - PA_drawsize[screen];
+	high = (PA_drawsize[screen] >> 1);
 
-
-low = (PA_drawsize[screen] >> 1) - PA_drawsize[screen];
-high = (PA_drawsize[screen] >> 1);
-
-// Si nouvelle pression, on fait juste un point. Sinon, on trace un trait entre les 2 points...
-	if (Stylus.Newpress) {
-//		for (i = low; i < high; i++)
-//			for (j = low; j < high; j++)
-				if ((x+i < 256) && (y+j < 192)) PA_Put8bitPixel(screen, x+i, y+j, color);
-	}
-	else {
-//		for (i = low; i < high; i++)
-//			for (j = low; j < high; j++)
-				if ((x+i < 256) && (y+j < 192) && (PA_oldx[screen]+i < 256) && (PA_oldy[screen]+j < 192)) PA_Draw8bitLine(screen, PA_oldx[screen]+i, PA_oldy[screen]+j, x+i, y+j, color);
-	}
-
-PA_oldx[screen] = Stylus.X; PA_oldy[screen] = Stylus.Y;
+	// Si nouvelle pression, on fait juste un point. Sinon, on trace un trait entre les 2 points...
+		if (Stylus.Newpress) {
+			for (i = low; i < high; i++)
+				for (j = low; j < high; j++)
+					if ((x+i > 0) && (y+j > 0) && (x+i < 256) && (y+j < 192))	
+						PA_Put8bitPixel(screen, x+i, y+j, color);
+		}
+		else {
+			for (i = low; i < high; i++)
+				for (j = low; j < high; j++){
+					x1 = x+i; x2 = PA_oldx[screen]+i; y1 = y+j; y2 = PA_oldy[screen]+j;
+					if ((x1 < 256) && (y1 < 192) && (x2 < 256) && (y2 < 192))
+						PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
+				}
+		}
+	
+	PA_oldx[screen] = Stylus.X; PA_oldy[screen] = Stylus.Y;
 }
 }
+
+
+
+
 
 
 void PA_16bitDraw(bool screen, u16 color){
-s8 i, j, low, high;
+s16 i, j, low, high;
 u16 x, y;
 
 if (Stylus.Held){
-x = Stylus.X;
-y = Stylus.Y;
-i = 0;
-j = 0;
+	x = Stylus.X;
+	y = Stylus.Y;
+	i = 0;
+	j = 0;
+	
+	low = (PA_drawsize[screen] >> 1) - PA_drawsize[screen];
+	high = (PA_drawsize[screen] >> 1);
 
-low = (PA_drawsize[screen] >> 1) - PA_drawsize[screen];
-high = (PA_drawsize[screen] >> 1);
-// Si nouvelle pression, on fait juste un point. Sinon, on trace un trait entre les 2 points...
-	if (Stylus.Newpress) {
-//		for (i = low; i < high; i++)
-//			for (j = low; j < high; j++)
-				if ((x+i < 256) && (y+j < 192)) PA_Put16bitPixel(screen, x+i, y+j, color);
-	}
-	else {
-//		for (i = low; i < high; i++)
-//			for (j = low; j < high; j++)
-				if ((x+i < 256) && (y+j < 192) && (PA_oldx[screen]+i < 256) && (PA_oldy[screen]+j < 192)) PA_Draw16bitLine(screen, PA_oldx[screen]+i, PA_oldy[screen]+j, x+i, y+j, color);
-	}
-
-PA_oldx[screen] = Stylus.X; PA_oldy[screen] = Stylus.Y;
+	// Si nouvelle pression, on fait juste un point. Sinon, on trace un trait entre les 2 points...
+		if (Stylus.Newpress) {
+			for (i = low; i < high; i++)
+				for (j = low; j < high; j++)
+					if ((x+i > 0) && (y+j > 0) && (x+i < 256) && (y+j < 192))
+						PA_Put16bitPixel(screen, x+i, y+j, color);
+		}
+		else {
+			PA_Draw16bitLineEx(screen, x, y, PA_oldx[screen], PA_oldy[screen], color, PA_drawsize[screen]);
+		}
+	
+	PA_oldx[screen] = Stylus.X; PA_oldy[screen] = Stylus.Y;
 }
 }
 
+
+void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size){
+s8 low = (size >> 1) - size;
+s8 high = (size >> 1);
+s16 i, j;
+s16 x1, x2, y1, y2;
+
+for (i = low; i < high; i++){
+	for (j = low; j < high; j++){
+		if ((basex+i >= 0) && (basey+j >= 0)&&(basex+i < 256) && (basey+j < 192)){
+			PA_Put16bitPixel(screen, basex+i, basey+j, color);
+		}
+	}
+}
+
+
+for (i = low; i < high; i++){
+	j = low;
+	x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+	while(x1 < 0) x1++;	while(x1 > 255) x1--;
+	while(x2 < 0) x2++;	while(x2 > 255) x2--;
+	while(y1 < 0) y1++;	while(y1 > 191) y1--;
+	while(y2 < 0) y2++;	while(y2 > 191) y2--;		
+	PA_Draw16bitLine(screen, x1, y1, x2, y2, color);
+		
+	j = high-1;
+	x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+	while(x1 < 0) x1++;	while(x1 > 255) x1--;
+	while(x2 < 0) x2++;	while(x2 > 255) x2--;
+	while(y1 < 0) y1++;	while(y1 > 191) y1--;
+	while(y2 < 0) y2++;	while(y2 > 191) y2--;
+	PA_Draw16bitLine(screen, x1, y1, x2, y2, color);		
+}
+
+for (j = low; j < high; j++){
+	i = low;
+	x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+	while(x1 < 0) x1++;	while(x1 > 255) x1--;
+	while(x2 < 0) x2++;	while(x2 > 255) x2--;
+	while(y1 < 0) y1++;	while(y1 > 191) y1--;
+	while(y2 < 0) y2++;	while(y2 > 191) y2--;	
+	PA_Draw16bitLine(screen, x1, y1, x2, y2, color);
+	i = high-1;
+	x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+	while(x1 < 0) x1++;	while(x1 > 255) x1--;
+	while(x2 < 0) x2++;	while(x2 > 255) x2--;
+	while(y1 < 0) y1++;	while(y1 > 191) y1--;
+	while(y2 < 0) y2++;	while(y2 > 191) y2--;	
+	PA_Draw16bitLine(screen, x1, y1, x2, y2, color);		
+}
+
+}
+
+
+
+
+void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size){
+s8 low = (size >> 1) - size;
+s8 high = (size >> 1);
+s16 i, j;
+u16 x1, x2, y1, y2;
+
+	for (i = low; i < high; i++){
+		for (j = low; j < high; j++){
+			x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+			if ((x1 < 256) && (y1 < 192) && (x2 < 256) && (y2 < 192))
+				PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
+		}
+	}
+}
+
+u16 tempvar;
+
+void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color){
+s16 i, j;
+
+// On met dans le bon ordre...
+if (endx < basex) {
+	i = basex;	basex = endx;	endx = i;
+}
+
+
+if (basex < 0) basex = 0;
+if (endx > 255) endx = 255;
+s16 lx = endx - basex;
+
+if (lx){ // Si y'a une surface à faire
+	if (endy < basey) {
+		i = basey;	basey = endy;	endy = i;
+	}
+	if (basey < 0) basey = 0;
+	if (endy > 191) endy = 191;
+	
+	
+	u16 *start = (u16*)PA_DrawBg[screen] + basex;
+	tempvar = color;	
+	for (j = basey; j < endy; j++){
+		DMA_Force(tempvar, (void*)(start + (j << 8)), lx, DMA_16NOW);
+	}
+}
+}
 
 
 /*

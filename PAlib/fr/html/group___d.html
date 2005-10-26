@@ -1,0 +1,872 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib: 3D functions</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<h1>3D functions</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gcd4d105cfe8eb74bcfae52240a69e2c9"></a><!-- doxytag: member="D::PA_Init3D" ref="gcd4d105cfe8eb74bcfae52240a69e2c9" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gcd4d105cfe8eb74bcfae52240a69e2c9">PA_Init3D</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise la 3d !! Un grand merci à Delfare pour toutes les fonctions 3d ! <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga9d00abc5f56aed461231351421a05cc"></a><!-- doxytag: member="D::PA_LoadSplash3D" ref="ga9d00abc5f56aed461231351421a05cc" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga9d00abc5f56aed461231351421a05cc">PA_LoadSplash3D</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche un splash screen PlayerAdvance... C'est toujours sympa de remercier ;). <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#g5bbe6f009b857d4e274ef2e6d807e7d7">PA_Init3DDrawing</a> (float x1, float y1, float z1, float x2, float y2, float z2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gere la perspective, (x1,y1,z1) est la position de la camera, (x2,y2,z2) est la position regardee par la camera,...  <a href="#g5bbe6f009b857d4e274ef2e6d807e7d7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#g78c39578c782fb2c5af0e1f7be3e1ad2">PA_glulookat</a> (float eyex, float eyey, float eyez, float lookAtx, float lookAty, float lookAtz, float upx, float upy, float upz)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gere la position de la camera : (eyex,eyey,eyez) est la position de la camera, (lookAtx,lookAty,lookAtz) est la position regardee par la camera, (upx,upy,upz) est la position du haut  <a href="#g78c39578c782fb2c5af0e1f7be3e1ad2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gc7eead2f0ae161406740cf8aeaec252d"></a><!-- doxytag: member="D::PA_image8to16" ref="gc7eead2f0ae161406740cf8aeaec252d" args="(sImage *img)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_image8to16</b> (sImage *img)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gbcdd1b299a7438e4731a09ffb13a85a4"></a><!-- doxytag: member="D::PA_VueKeys" ref="gbcdd1b299a7438e4731a09ffb13a85a4" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gbcdd1b299a7438e4731a09ffb13a85a4">PA_VueKeys</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gere la vue grace aux fleches, (viseeX,viseeY,viseeZ) est la position a regarder, il vous faut faire un PA_glulookat avec ces valeurs pour positionner la vue <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#g5a36e03fec38e901c68a7ee391e8c7fc">PA_LoadTexture</a> (int numtexture, u8 *nomtexture, int mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">charge une texture  <a href="#g5a36e03fec38e901c68a7ee391e8c7fc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ge56defd3e05b1b62d21878f97b8460f3">PA_Texture</a> (int numtexture)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">utilise une texture  <a href="#ge56defd3e05b1b62d21878f97b8460f3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ge933b489a5e89960a835bf8320e856aa">PA_3DBox</a> (float x, float y, float z, float longueur, float largeur, float hauteur, float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">cree un box en 3d, position : (x,y,z), de taille longueur, largeur et hauteur, et de couleur (red,green,blue)  <a href="#ge933b489a5e89960a835bf8320e856aa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gabe6160107bcbe8a77b5de0e27ff856e">PA_3DBoxTexture</a> (float x, float y, float z, float longueur, float largeur, float hauteur, float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">cree un box en 3d, position : (x,y,z), de taille longueur, largeur et hauteur, et de couleur (red,green,blue) avec coordonnees de texture  <a href="#gabe6160107bcbe8a77b5de0e27ff856e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#g85dc8242f0ff6099d799cf942ee38055">PA_Rotate3D</a> (float x, float y, float z)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">faire une rotation  <a href="#g85dc8242f0ff6099d799cf942ee38055"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gf31a90c1cd0778cc27f9effc242931ab">PA_Translate3D</a> (float x, float y, float z)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">faire une translation  <a href="#gf31a90c1cd0778cc27f9effc242931ab"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#g380e469bfb7c5626ab32677d9263848f">PA_Scale3D</a> (float x, float y, float z)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">changer la taille d'un objet  <a href="#g380e469bfb7c5626ab32677d9263848f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gd6722a97999c06b3d23ee220f4f0c594">PA_Vertex3D</a> (float x, float y, float z)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">creer un vertex sans floatov16  <a href="#gd6722a97999c06b3d23ee220f4f0c594"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gedc6552383289d6f610ccdbe88c290d3"></a><!-- doxytag: member="D::PA_3Dto2D" ref="gedc6552383289d6f610ccdbe88c290d3" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#gedc6552383289d6f610ccdbe88c290d3">PA_3Dto2D</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">vous devez utiliser ceci pour utiliser PA_Vertex2D <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#g1fe1ac2959d6873a2d7c8fabd5f24af5">PA_Vertex2D</a> (int x, int y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">creer un vertex 2D(il faut avoir fait <a class="el" href="group___d.html#gedc6552383289d6f610ccdbe88c290d3">PA_3Dto2D()</a> avant pour que ca marche correctement  <a href="#g1fe1ac2959d6873a2d7c8fabd5f24af5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#g8ea3eed2892ca1f38302de0b1c8ebf44">PA_TexCoord</a> (float x, float y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">utilise les coordonnees de texture en reglant un probleme de ndslib  <a href="#g8ea3eed2892ca1f38302de0b1c8ebf44"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Say thanks to Delfare for all these ! And check out <a href="http://delfare.pizz.biz">http://delfare.pizz.biz</a> for how to use them... <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="ge933b489a5e89960a835bf8320e856aa"></a><!-- doxytag: member="PA_3D.h::PA_3DBox" ref="ge933b489a5e89960a835bf8320e856aa" args="(float x, float y, float z, float longueur, float largeur, float hauteur, float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_3DBox           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>longueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>largeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>hauteur</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>rotatex</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>rotatey</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>rotatez</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>uint8&nbsp;</td>
+          <td class="mdname" nowrap> <em>red</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>uint8&nbsp;</td>
+          <td class="mdname" nowrap> <em>green</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>uint8&nbsp;</td>
+          <td class="mdname" nowrap> <em>blue</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+cree un box en 3d, position : (x,y,z), de taille longueur, largeur et hauteur, et de couleur (red,green,blue) 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du cube </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du cube </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>Position Z du cube </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>longueur</em>&nbsp;</td><td>Longueur du cube </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>largeur</em>&nbsp;</td><td>Largeur de la boite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hauteur</em>&nbsp;</td><td>Hauteur de la boite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotatex</em>&nbsp;</td><td>rotation sur l'axe x </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotatey</em>&nbsp;</td><td>rotation sur l'axe y </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotatez</em>&nbsp;</td><td>rotation sur l'axe z </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>red</em>&nbsp;</td><td>couleur rouge(31 est le maximum) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>green</em>&nbsp;</td><td>couleur verte(31 est le maximum) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>blue</em>&nbsp;</td><td>couleur bleue(31 est le maximum) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="gabe6160107bcbe8a77b5de0e27ff856e"></a><!-- doxytag: member="PA_3D.h::PA_3DBoxTexture" ref="gabe6160107bcbe8a77b5de0e27ff856e" args="(float x, float y, float z, float longueur, float largeur, float hauteur, float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_3DBoxTexture           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>longueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>largeur</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>hauteur</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>rotatex</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>rotatey</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>rotatez</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>uint8&nbsp;</td>
+          <td class="mdname" nowrap> <em>red</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>uint8&nbsp;</td>
+          <td class="mdname" nowrap> <em>green</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>uint8&nbsp;</td>
+          <td class="mdname" nowrap> <em>blue</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+cree un box en 3d, position : (x,y,z), de taille longueur, largeur et hauteur, et de couleur (red,green,blue) avec coordonnees de texture 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du cube </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du cube </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>Position Z du cube </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>longueur</em>&nbsp;</td><td>Longueur du cube </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>largeur</em>&nbsp;</td><td>Largeur de la boite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hauteur</em>&nbsp;</td><td>Hauteur de la boite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotatex</em>&nbsp;</td><td>rotation sur l'axe x </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotatey</em>&nbsp;</td><td>rotation sur l'axe y </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotatez</em>&nbsp;</td><td>rotation sur l'axe z </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>red</em>&nbsp;</td><td>couleur rouge(31 est le maximum) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>green</em>&nbsp;</td><td>couleur verte(31 est le maximum) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>blue</em>&nbsp;</td><td>couleur bleue(31 est le maximum) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g78c39578c782fb2c5af0e1f7be3e1ad2"></a><!-- doxytag: member="PA_3D.h::PA_glulookat" ref="g78c39578c782fb2c5af0e1f7be3e1ad2" args="(float eyex, float eyey, float eyez, float lookAtx, float lookAty, float lookAtz, float upx, float upy, float upz)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_glulookat           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>eyex</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>eyey</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>eyez</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>lookAtx</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>lookAty</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>lookAtz</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>upx</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>upy</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>upz</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+gere la position de la camera : (eyex,eyey,eyez) est la position de la camera, (lookAtx,lookAty,lookAtz) est la position regardee par la camera, (upx,upy,upz) est la position du haut 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>eyex</em>&nbsp;</td><td>Position X de la caméra </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>eyey</em>&nbsp;</td><td>Position Y de la caméra </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>eyez</em>&nbsp;</td><td>Position Z de la caméra </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lookAtx</em>&nbsp;</td><td>Position X à regarder </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lookAty</em>&nbsp;</td><td>Position Y à regarder </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lookAtz</em>&nbsp;</td><td>Position Z à regarder </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>upx</em>&nbsp;</td><td>Position X du haut </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>upy</em>&nbsp;</td><td>Position Y du haut </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>upz</em>&nbsp;</td><td>Position Z du haut </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g5bbe6f009b857d4e274ef2e6d807e7d7"></a><!-- doxytag: member="PA_3D.h::PA_Init3DDrawing" ref="g5bbe6f009b857d4e274ef2e6d807e7d7" args="(float x1, float y1, float z1, float x2, float y2, float z2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_Init3DDrawing           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>z1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>z2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+gere la perspective, (x1,y1,z1) est la position de la camera, (x2,y2,z2) est la position regardee par la camera,... 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Position X de la caméra </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Position Y de la caméra </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z1</em>&nbsp;</td><td>Position Z de la caméra </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Position X à regarder </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Position Y à regarder </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z2</em>&nbsp;</td><td>Position Z à regarder </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g5a36e03fec38e901c68a7ee391e8c7fc"></a><!-- doxytag: member="PA_3D.h::PA_LoadTexture" ref="g5a36e03fec38e901c68a7ee391e8c7fc" args="(int numtexture, u8 *nomtexture, int mode)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_LoadTexture           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap> <em>numtexture</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8 *&nbsp;</td>
+          <td class="mdname" nowrap> <em>nomtexture</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>mode</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+charge une texture 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>numtexture</em>&nbsp;</td><td>numero de la texture à charger... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>nomtexture</em>&nbsp;</td><td>Texture à charger... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mode</em>&nbsp;</td><td>texBIN ou texPCX </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g85dc8242f0ff6099d799cf942ee38055"></a><!-- doxytag: member="PA_3D.h::PA_Rotate3D" ref="g85dc8242f0ff6099d799cf942ee38055" args="(float x, float y, float z)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_Rotate3D           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>z</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+faire une rotation 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>rotation sur l'axe x </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>rotation sur l'axe y </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>rotation sur l'axe z </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g380e469bfb7c5626ab32677d9263848f"></a><!-- doxytag: member="PA_3D.h::PA_Scale3D" ref="g380e469bfb7c5626ab32677d9263848f" args="(float x, float y, float z)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_Scale3D           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>z</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+changer la taille d'un objet 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>redimentionnement sur l'axe x </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>redimentionnement sur l'axe y </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>redimentionnement sur l'axe z </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g8ea3eed2892ca1f38302de0b1c8ebf44"></a><!-- doxytag: member="PA_3D.h::PA_TexCoord" ref="g8ea3eed2892ca1f38302de0b1c8ebf44" args="(float x, float y)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_TexCoord           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+utilise les coordonnees de texture en reglant un probleme de ndslib 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ge56defd3e05b1b62d21878f97b8460f3"></a><!-- doxytag: member="PA_3D.h::PA_Texture" ref="ge56defd3e05b1b62d21878f97b8460f3" args="(int numtexture)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_Texture           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>numtexture</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+utilise une texture 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>numtexture</em>&nbsp;</td><td>numero de la texture à utiliser... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="gf31a90c1cd0778cc27f9effc242931ab"></a><!-- doxytag: member="PA_3D.h::PA_Translate3D" ref="gf31a90c1cd0778cc27f9effc242931ab" args="(float x, float y, float z)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_Translate3D           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>z</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+faire une translation 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>translation sur l'axe x </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>translation sur l'axe y </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>translation sur l'axe z </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g1fe1ac2959d6873a2d7c8fabd5f24af5"></a><!-- doxytag: member="PA_3D.h::PA_Vertex2D" ref="g1fe1ac2959d6873a2d7c8fabd5f24af5" args="(int x, int y)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_Vertex2D           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">int&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+creer un vertex 2D(il faut avoir fait <a class="el" href="group___d.html#gedc6552383289d6f610ccdbe88c290d3">PA_3Dto2D()</a> avant pour que ca marche correctement 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="gd6722a97999c06b3d23ee220f4f0c594"></a><!-- doxytag: member="PA_3D.h::PA_Vertex3D" ref="gd6722a97999c06b3d23ee220f4f0c594" args="(float x, float y, float z)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_Vertex3D           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">float&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>float&nbsp;</td>
+          <td class="mdname" nowrap> <em>z</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+creer un vertex sans floatov16 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>z</em>&nbsp;</td><td>Position Z </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:45 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

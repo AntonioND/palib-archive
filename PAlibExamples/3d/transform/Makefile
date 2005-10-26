@@ -161,7 +161,7 @@ $(OUTPUT).elf	:	$(OFILES)
 #---------------------------------------------------------------------------------
 %.nds: %.bin
 	
-	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(ICON) "$(shell basename $@);By Dovoto;www.drunkencoders.com"
+	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(ICON) "$(shell basename $@);By PAlib;www.mollusk.tk"
 
 
 

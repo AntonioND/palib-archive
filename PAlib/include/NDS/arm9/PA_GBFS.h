@@ -53,6 +53,7 @@ while(PA_GBFSfile[PA_GBFS_nfiles].File != NULL){
 	
 	for (i = 0; PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot] ; i++){
 		PA_GBFSfile[PA_GBFS_nfiles].Ext[i] = PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot];
+		if (('A' <= PA_GBFSfile[PA_GBFS_nfiles].Ext[i])&&(PA_GBFSfile[PA_GBFS_nfiles].Ext[i] <= 'Z')) PA_GBFSfile[PA_GBFS_nfiles].Ext[i] += 'a' - 'A'; // On passe en minuscule
 		PA_GBFSfile[PA_GBFS_nfiles].Ext[i+1] = 0;
 		PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot-1] = 0;
 		if (PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot-2] == '.') PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot-2] = 0;

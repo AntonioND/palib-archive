@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib: Référence du fichier PA_API.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li id="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<div class="tabs">
+  <ul>
+    <li><a href="files.html"><span>Liste&nbsp;des&nbsp;fichiers</span></a></li>
+    <li><a href="globals.html"><span>Portée&nbsp;globale</span></a></li>
+  </ul></div>
+<div class="nav">
+<a class="el" href="dir_C_3A_2FdevkitPro_2F.html">devkitPro</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2F.html">PAlib</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2F.html">include</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2F.html">NDS</a>&nbsp;&raquo&nbsp;<a class="el" href="dir_C_3A_2FdevkitPro_2FPAlib_2Finclude_2FNDS_2Farm9_2F.html">arm9</a></div>
+<h1>Référence du fichier PA_API.h</h1>PA API functions. <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="_p_a___a_p_i_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PAPI_all</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PAPI_checks</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PAPI_buttons</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PAPI_sliders</b></td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_p_i.html#ge569fdb4400ec2d903a87bebfa0776a1">PAPI_Init</a> (bool screen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le systeme d'API PA... DOIT être utilisé avant tout utilisation de l'API. Ne peut être utilisé QUE sur un fond de 8 bit, ne pas oublier de le charger...  <a href="group___p_a_p_i.html#ge569fdb4400ec2d903a87bebfa0776a1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_p_i.html#gd28fdd1aaddc71de438ca731f3ee22f8">PAPI_SetImages</a> (bool screen, void *images, void *palette)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le set d'images utilisé par l'API... Ceci permet d'utiliser ses propres boutons, etc... J'expliquerai un peu plus tard comment utiliser tout ca correctement.  <a href="group___p_a_p_i.html#gd28fdd1aaddc71de438ca731f3ee22f8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_p_i.html#geb3a4d837d5ed3fadf4bf35abd3c7a9d">PAPI_ReInit</a> (bool screen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ReInitialise le systeme d'API PA... Ceci remet à 0 les boutons, les checkbox, etc... Tout ce qu'il reste à faire c'est d'effacer l'écran.  <a href="group___p_a_p_i.html#geb3a4d837d5ed3fadf4bf35abd3c7a9d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_p_i.html#g72ccee0e7c2633632cd0f8110c41fb73">PAPI_LoadPal</a> (bool screen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charge la palette de l'API, dans les couleurs des fonds, position 208. A utiliser à chaque fois que l'on change la palette des fonds.  <a href="group___p_a_p_i.html#g72ccee0e7c2633632cd0f8110c41fb73"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_p_i.html#g68caf507a03990d55ada12bdc4341edc">PAPI_CreateCheck</a> (bool screen, s16 x, s16 y, bool *var)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Créé une nouvelle boite à cocher. Renvoie le numéro de la boite dans l'API.  <a href="group___p_a_p_i.html#g68caf507a03990d55ada12bdc4341edc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="g8fa0fcbe3bf33d32303f08517aee425b"></a><!-- doxytag: member="PA_API.h::PAPI_CheckCheck" ref="g8fa0fcbe3bf33d32303f08517aee425b" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_p_i.html#g8fa0fcbe3bf33d32303f08517aee425b">PAPI_CheckCheck</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie toutes les boites à cocher. <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_p_i.html#gd9087dacea3b8018a36fd5287f261d9a">PAPI_CreateButton</a> (bool screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char *text, u8 color, s8 textsize)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Créé nouveau bouton. Renvoie le numéro du bouton dans l'API.  <a href="group___p_a_p_i.html#gd9087dacea3b8018a36fd5287f261d9a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gde1ae7a20e1bf52b8ff53941ec864914"></a><!-- doxytag: member="PA_API.h::PAPI_CheckButton" ref="gde1ae7a20e1bf52b8ff53941ec864914" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_p_i.html#gde1ae7a20e1bf52b8ff53941ec864914">PAPI_CheckButton</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie toutes les boutons. <br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="g63a49d22e64184eb8925ccc9513335ed"></a><!-- doxytag: member="PA_API.h::PAPI_check" ref="g63a49d22e64184eb8925ccc9513335ed" args="[2][32]" -->
+PAPI_checks&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAPI_check</b> [2][32]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="gaba8a72c35c4d7445a9d0fdf06e37fb5"></a><!-- doxytag: member="PA_API.h::PAPI_checkinfo" ref="gaba8a72c35c4d7445a9d0fdf06e37fb5" args="[2]" -->
+PAPI_all&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAPI_checkinfo</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="g4c7aa6042e63ec7ebb2ed10376ae9639"></a><!-- doxytag: member="PA_API.h::PAPI_button" ref="g4c7aa6042e63ec7ebb2ed10376ae9639" args="[2][64]" -->
+PAPI_buttons&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAPI_button</b> [2][64]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="g44b59e395fe9c83f249ac2d8b2f2c69b"></a><!-- doxytag: member="PA_API.h::PAPI_buttoninfo" ref="g44b59e395fe9c83f249ac2d8b2f2c69b" args="[2]" -->
+PAPI_all&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAPI_buttoninfo</b> [2]</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+PA API functions. 
+<p>
+API functions, to create buttons, checkkboxes, and more to come ! <hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:45 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

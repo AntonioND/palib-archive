@@ -1,0 +1,483 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib: Saving commands !!!</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<h1>Saving commands !!!</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#g6162eead57d456a487049a6b1bb38118">PA_Save8bit</a>(offset, value)&nbsp;&nbsp;&nbsp;SRAM[offset] = value</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauvegarde une valeur 8 bits dans une section donnée de la SRAM. Utilise 1 section.  <a href="#g6162eead57d456a487049a6b1bb38118"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#g0f49de1e08a475d78667ce1b30fba769">PA_Save16bit</a>(offset, value)&nbsp;&nbsp;&nbsp;{PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8)}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauvegarde une valeur 8 bits dans une section donnée de la SRAM. Utilise 2 sections.  <a href="#g0f49de1e08a475d78667ce1b30fba769"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#gbb2031b37b5959a1c4ad313d4a30ed26">PA_Save32bit</a>(offset, value)&nbsp;&nbsp;&nbsp;{PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8); PA_Save8bit(offset + 2, value &gt;&gt; 16); PA_Save8bit(offset + 3, value &gt;&gt; 24);}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauvegarde une valeur 32 bits dans une section donnée de la SRAM. Utilise 4 sections.  <a href="#gbb2031b37b5959a1c4ad313d4a30ed26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#gfb3348c2e6df64d7f69ff0e51ecab5f1">PA_Load8bit</a>(offset)&nbsp;&nbsp;&nbsp;SRAM[offset]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une valeur 8 bits sauvegardée dans une section donnée de la SRAM.  <a href="#gfb3348c2e6df64d7f69ff0e51ecab5f1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#gfcc62bfd2b4a8e7d19f2138a554c343e">PA_Load16bit</a>(offset)&nbsp;&nbsp;&nbsp;(SRAM[offset] + (SRAM[offset+1] &lt;&lt; 8))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une valeur 16 bits sauvegardée dans une section donnée de la SRAM.  <a href="#gfcc62bfd2b4a8e7d19f2138a554c343e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#ga4f35182d154b0051e1a0584c87a768a">PA_Load32bit</a>(offset)&nbsp;&nbsp;&nbsp;(PA_Load8bit(offset) + (PA_Load8bit(offset + 1) &lt;&lt; 8) + (PA_Load8bit(offset + 2) &lt;&lt; 16) + (PA_Load8bit(offset + 3) &lt;&lt; 24))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une valeur 32 bits sauvegardée dans une section donnée de la SRAM.  <a href="#ga4f35182d154b0051e1a0584c87a768a"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#g5112fd9705bd539d8cfc942e27a5f721">PA_SaveString</a> (s32 offset, char *string)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauvegarde une chaine de caractères (un nom par exemple) a u n endroit donné en SRAM. La dernière valeur doit etre 0. Utilise autant de place en SRAM que la longueur de la chaine + 1. Renvoie la longueur.  <a href="#g5112fd9705bd539d8cfc942e27a5f721"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#gfc9c73a8df726e40d05a28c617dfc20c">PA_SaveData</a> (s32 offset, void *Data, u16 NBytes)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sauvegarde N Octets en SRAM. Cette fonction peut être utilisée pour sauvegarder un tableau complet...  <a href="#gfc9c73a8df726e40d05a28c617dfc20c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#gf884d5498e4e9a25138742d4b20822cb">PA_LoadString</a> (s32 offset, char *string)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Retourne une chaine de caractères sauvegardée dans une section donnée de la SRAM. Renvoie la longueur de la chaine.  <a href="#gf884d5498e4e9a25138742d4b20822cb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___saves.html#g2e922a387609be2653a820a3ee765209">PA_LoadData</a> (s32 offset, void *Data, u16 NBytes)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie les données sauvegardées avec PA_SaveData.  <a href="#g2e922a387609be2653a820a3ee765209"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+With these functions you can save data to SRAM :-) <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="gfcc62bfd2b4a8e7d19f2138a554c343e"></a><!-- doxytag: member="PA_Save.h::PA_Load16bit" ref="gfcc62bfd2b4a8e7d19f2138a554c343e" args="(offset)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_Load16bit          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">offset&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(SRAM[offset] + (SRAM[offset+1] &lt;&lt; 8))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Retourne une valeur 16 bits sauvegardée dans une section donnée de la SRAM. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga4f35182d154b0051e1a0584c87a768a"></a><!-- doxytag: member="PA_Save.h::PA_Load32bit" ref="ga4f35182d154b0051e1a0584c87a768a" args="(offset)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_Load32bit          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">offset&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(PA_Load8bit(offset) + (PA_Load8bit(offset + 1) &lt;&lt; 8) + (PA_Load8bit(offset + 2) &lt;&lt; 16) + (PA_Load8bit(offset + 3) &lt;&lt; 24))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Retourne une valeur 32 bits sauvegardée dans une section donnée de la SRAM. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="gfb3348c2e6df64d7f69ff0e51ecab5f1"></a><!-- doxytag: member="PA_Save.h::PA_Load8bit" ref="gfb3348c2e6df64d7f69ff0e51ecab5f1" args="(offset)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_Load8bit          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">offset&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;SRAM[offset]</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Retourne une valeur 8 bits sauvegardée dans une section donnée de la SRAM. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g0f49de1e08a475d78667ce1b30fba769"></a><!-- doxytag: member="PA_Save.h::PA_Save16bit" ref="g0f49de1e08a475d78667ce1b30fba769" args="(offset, value)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_Save16bit          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">offset,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>value&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8)}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sauvegarde une valeur 8 bits dans une section donnée de la SRAM. Utilise 2 sections. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>Valeur à enregistrer... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="gbb2031b37b5959a1c4ad313d4a30ed26"></a><!-- doxytag: member="PA_Save.h::PA_Save32bit" ref="gbb2031b37b5959a1c4ad313d4a30ed26" args="(offset, value)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_Save32bit          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">offset,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>value&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8); PA_Save8bit(offset + 2, value &gt;&gt; 16); PA_Save8bit(offset + 3, value &gt;&gt; 24);}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sauvegarde une valeur 32 bits dans une section donnée de la SRAM. Utilise 4 sections. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>Valeur à enregistrer... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g6162eead57d456a487049a6b1bb38118"></a><!-- doxytag: member="PA_Save.h::PA_Save8bit" ref="g6162eead57d456a487049a6b1bb38118" args="(offset, value)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_Save8bit          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">offset,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>value&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;SRAM[offset] = value</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sauvegarde une valeur 8 bits dans une section donnée de la SRAM. Utilise 1 section. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>value</em>&nbsp;</td><td>Valeur à enregistrer... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="g2e922a387609be2653a820a3ee765209"></a><!-- doxytag: member="PA_Save.h::PA_LoadData" ref="g2e922a387609be2653a820a3ee765209" args="(s32 offset, void *Data, u16 NBytes)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_LoadData           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>void *&nbsp;</td>
+          <td class="mdname" nowrap> <em>Data</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u16&nbsp;</td>
+          <td class="mdname" nowrap> <em>NBytes</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Renvoie les données sauvegardées avec PA_SaveData. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Data</em>&nbsp;</td><td>Données à sauvegarder </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>NBytes</em>&nbsp;</td><td>Nombre d'octets à sauvegarder </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="gf884d5498e4e9a25138742d4b20822cb"></a><!-- doxytag: member="PA_Save.h::PA_LoadString" ref="gf884d5498e4e9a25138742d4b20822cb" args="(s32 offset, char *string)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline s16 PA_LoadString           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>string</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Retourne une chaine de caractères sauvegardée dans une section donnée de la SRAM. Renvoie la longueur de la chaine. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>Chaine dans laquelle copier la chaine en mémoire </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="gfc9c73a8df726e40d05a28c617dfc20c"></a><!-- doxytag: member="PA_Save.h::PA_SaveData" ref="gfc9c73a8df726e40d05a28c617dfc20c" args="(s32 offset, void *Data, u16 NBytes)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SaveData           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>void *&nbsp;</td>
+          <td class="mdname" nowrap> <em>Data</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u16&nbsp;</td>
+          <td class="mdname" nowrap> <em>NBytes</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sauvegarde N Octets en SRAM. Cette fonction peut être utilisée pour sauvegarder un tableau complet... 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Data</em>&nbsp;</td><td>Données à sauvegarder </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>NBytes</em>&nbsp;</td><td>Nombre d'octets à sauvegarder </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g5112fd9705bd539d8cfc942e27a5f721"></a><!-- doxytag: member="PA_Save.h::PA_SaveString" ref="g5112fd9705bd539d8cfc942e27a5f721" args="(s32 offset, char *string)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline s16 PA_SaveString           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>string</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Sauvegarde une chaine de caractères (un nom par exemple) a u n endroit donné en SRAM. La dernière valeur doit etre 0. Utilise autant de place en SRAM que la longueur de la chaine + 1. Renvoie la longueur. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>offset</em>&nbsp;</td><td>Section dans la SRAM, de 0 à beaucoup (dépend de combien on utlise de SRAM) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>string</em>&nbsp;</td><td>Chaine de caractères... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:45 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>

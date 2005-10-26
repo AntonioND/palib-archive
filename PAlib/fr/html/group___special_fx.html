@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib: Special Effects</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.4.5 -->
+<div class="tabs">
+  <ul>
+    <li><a href="index.html"><span>Page&nbsp;principale</span></a></li>
+    <li><a href="modules.html"><span>Modules</span></a></li>
+    <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li><a href="dirs.html"><span>Répertoires</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" callpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+  </ul></div>
+<h1>Special Effects</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___special_fx.html#g8416d9f7e1d0b1f6ac3d392224194503">PA_EnableBgMosaic</a>(screen, bg)&nbsp;&nbsp;&nbsp;_REG16(REG_BGCNT(screen, bg)) |= (1 &lt;&lt; 6)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer l'effet de mosaic pour un fond donné.  <a href="#g8416d9f7e1d0b1f6ac3d392224194503"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___special_fx.html#g6d0460faa53648b86ca7378dd37ebdce">PA_DisableBgMosaic</a>(screen, bg)&nbsp;&nbsp;&nbsp;_REG16(REG_BGCNT(screen, bg)) &amp;= ~(1 &lt;&lt; 6)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Désactiver l'effet de mosaic pour un fond donné.  <a href="#g6d0460faa53648b86ca7378dd37ebdce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___special_fx.html#g5ad253ab3167e5990bc153d830846a94">PA_SetBgMosaicXY</a>(screen, h_size, v_size)&nbsp;&nbsp;&nbsp;{REG_MOSAIC(screen) &amp;= 255; REG_MOSAIC(screen) |= (h_size + (v_size &lt;&lt; 4));}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler les paramètres de la mosaic pour les fonds.  <a href="#g5ad253ab3167e5990bc153d830846a94"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___special_fx.html#g60d94bc10c02debfcf7ce86fade8e109">PA_SetSpriteMosaicXY</a>(screen, h_size, v_size)&nbsp;&nbsp;&nbsp;{REG_MOSAIC(screen) &amp;= (255 &lt;&lt; 8); REG_MOSAIC(screen) |= ((h_size &lt;&lt; 8) + (v_size &lt;&lt; 12));}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler les paramètres de la mosaic pour les sprites.  <a href="#g60d94bc10c02debfcf7ce86fade8e109"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___special_fx.html#g098c96b4540cb40f581693068d31c2d5">PA_EnableSpecialFx</a>(screen, EffectType, FirstTarget, SecondTarget)&nbsp;&nbsp;&nbsp;REG_BLDCNT(screen) = (FirstTarget + (SecondTarget &lt;&lt; 8) + (EffectType &lt;&lt; 6))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer les Effets Speciaux et choisir si les fonds et sprites l'utiliseront ou pas. On choisit aussi au passage quel Effet utiliser.  <a href="#g098c96b4540cb40f581693068d31c2d5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___special_fx.html#ga977ef39b31637ec01bbe37612bcedf3">PA_DisableSpecialFx</a>(screen)&nbsp;&nbsp;&nbsp;REG_BLDCNT(screen) = 0</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Désactiver les Effets Speciaux.  <a href="#ga977ef39b31637ec01bbe37612bcedf3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___special_fx.html#gbe0cbe1857526c02ee13e57b398acb42">PA_SetSFXAlpha</a>(screen, Coeff1, Coeff2)&nbsp;&nbsp;&nbsp;REG_BLDALPHA(screen) = Coeff1 + (Coeff2 &lt;&lt; 8)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler les paramètres pour l'Alpha-Blending.  <a href="#gbe0cbe1857526c02ee13e57b398acb42"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Set the sprite special effects (alpha-blending, luminosity, mosaic effects...) <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="g6d0460faa53648b86ca7378dd37ebdce"></a><!-- doxytag: member="PA_SpecialFx.h::PA_DisableBgMosaic" ref="g6d0460faa53648b86ca7378dd37ebdce" args="(screen, bg)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_DisableBgMosaic          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">screen,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>bg&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;_REG16(REG_BGCNT(screen, bg)) &amp;= ~(1 &lt;&lt; 6)</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Désactiver l'effet de mosaic pour un fond donné. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran du bg (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg</em>&nbsp;</td><td>Numéro du fond </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga977ef39b31637ec01bbe37612bcedf3"></a><!-- doxytag: member="PA_SpecialFx.h::PA_DisableSpecialFx" ref="ga977ef39b31637ec01bbe37612bcedf3" args="(screen)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_DisableSpecialFx          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">screen&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;REG_BLDCNT(screen) = 0</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Désactiver les Effets Speciaux. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g8416d9f7e1d0b1f6ac3d392224194503"></a><!-- doxytag: member="PA_SpecialFx.h::PA_EnableBgMosaic" ref="g8416d9f7e1d0b1f6ac3d392224194503" args="(screen, bg)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_EnableBgMosaic          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">screen,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>bg&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;_REG16(REG_BGCNT(screen, bg)) |= (1 &lt;&lt; 6)</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Activer l'effet de mosaic pour un fond donné. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran du bg (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg</em>&nbsp;</td><td>Numéro du fond </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g098c96b4540cb40f581693068d31c2d5"></a><!-- doxytag: member="PA_SpecialFx.h::PA_EnableSpecialFx" ref="g098c96b4540cb40f581693068d31c2d5" args="(screen, EffectType, FirstTarget, SecondTarget)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_EnableSpecialFx          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">screen,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>EffectType,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>FirstTarget,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>SecondTarget&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;REG_BLDCNT(screen) = (FirstTarget + (SecondTarget &lt;&lt; 8) + (EffectType &lt;&lt; 6))</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Activer les Effets Speciaux et choisir si les fonds et sprites l'utiliseront ou pas. On choisit aussi au passage quel Effet utiliser. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>EffectType</em>&nbsp;</td><td>Type d'effet. 0 pour aucun, 1 pour transparence, 2 pour augmentation de la luminosité, et 3 pour diminution de celle-ci... On peut utiliser les macors SFX_NONE, SFX_ALPHA, SFX_BRIGHTINC, SFX_BRIGHTDEC </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>FirstTarget</em>&nbsp;</td><td>Fond et sprites à afficher aevc l'effet spécial, que l'on choisi de la facon suivante : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (aucune idée !) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>SecondTarget</em>&nbsp;</td><td>Fond et sprites à afficher derrière la transparence, que l'on choisi de la facon suivante : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (aucune idée !) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g5ad253ab3167e5990bc153d830846a94"></a><!-- doxytag: member="PA_SpecialFx.h::PA_SetBgMosaicXY" ref="g5ad253ab3167e5990bc153d830846a94" args="(screen, h_size, v_size)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_SetBgMosaicXY          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">screen,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>h_size,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>v_size&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{REG_MOSAIC(screen) &amp;= 255; REG_MOSAIC(screen) |= (h_size + (v_size &lt;&lt; 4));}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Régler les paramètres de la mosaic pour les fonds. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>h_size</em>&nbsp;</td><td>Taille horizontale de la mosaic (1 pour 1 pixel, 2 pour 2 pixels, etc...) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v_size</em>&nbsp;</td><td>Taille verticale de la mosaic (1 pour 1 pixel, 2 pour 2 pixels, etc...) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="gbe0cbe1857526c02ee13e57b398acb42"></a><!-- doxytag: member="PA_SpecialFx.h::PA_SetSFXAlpha" ref="gbe0cbe1857526c02ee13e57b398acb42" args="(screen, Coeff1, Coeff2)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_SetSFXAlpha          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">screen,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>Coeff1,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>Coeff2&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;REG_BLDALPHA(screen) = Coeff1 + (Coeff2 &lt;&lt; 8)</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Régler les paramètres pour l'Alpha-Blending. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Coeff1</em>&nbsp;</td><td>Coefficient pour la première couche, de 0 à 31. A priori vaut mieux le mettre entre 0 et 16 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Coeff2</em>&nbsp;</td><td>Coefficient pour la deuxième couche, de 0 à 31. A priori vaut mieux le mettre entre 0 et 16 </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="g60d94bc10c02debfcf7ce86fade8e109"></a><!-- doxytag: member="PA_SpecialFx.h::PA_SetSpriteMosaicXY" ref="g60d94bc10c02debfcf7ce86fade8e109" args="(screen, h_size, v_size)" --><p>
+<table class="mdTable" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_SetSpriteMosaicXY          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">screen,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>h_size,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>v_size&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{REG_MOSAIC(screen) &amp;= (255 &lt;&lt; 8); REG_MOSAIC(screen) |= ((h_size &lt;&lt; 8) + (v_size &lt;&lt; 12));}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Régler les paramètres de la mosaic pour les sprites. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>h_size</em>&nbsp;</td><td>Taille horizontale de la mosaic (1 pour 1 pixel, 2 pour 2 pixels, etc...) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v_size</em>&nbsp;</td><td>Taille verticale de la mosaic (1 pour 1 pixel, 2 pour 2 pixels, etc...) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Généré le Tue Oct 18 13:31:45 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.5 </small></address>
+</body>
+</html>
