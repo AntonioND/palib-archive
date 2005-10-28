@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib:  Fichier source de PA_Save.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.3.9.1 -->
+<div class="qindex">  <form class="search" action="search.php" method="get">
+<a class="qindex" href="index.html">Page&nbsp;principale</a> | <a class="qindex" href="modules.html">Modules</a> | <a class="qindex" href="files.html">Liste&nbsp;des&nbsp;fichiers</a> | <a class="qindex" href="globals.html">Portée&nbsp;globale</a>  | <span class="search">Rechercher&nbsp;<input class="search" type="text" name="query" value="" size="20" accesskey="s"/></span></form></div>
+<h1>PA_Save.h</h1><div class="fragment"><pre class="fragment">00001 <span class="preprocessor">#ifndef _PA_Save</span>
+00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_Save</span>
+00003 <span class="preprocessor"></span>
+00004 
+00005 
+00006 
+00007 <span class="preprocessor">  #define REG_SRAM 0x0A000000</span>
+00008 <span class="preprocessor"></span>  
+<a name="l00026"></a><a class="code" href="group___saves.html#ga4">00026</a> <span class="preprocessor">#define PA_Save8bit(offset, value) SRAM[offset] = value</span>
+00027 <span class="preprocessor"></span>
+<a name="l00040"></a><a class="code" href="group___saves.html#ga5">00040</a> <span class="preprocessor">#define PA_Save16bit(offset, value) {PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8)}</span>
+00041 <span class="preprocessor"></span>
+<a name="l00054"></a><a class="code" href="group___saves.html#ga6">00054</a> <span class="preprocessor">#define PA_Save32bit(offset, value) {PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8); PA_Save8bit(offset + 2, value &gt;&gt; 16); PA_Save8bit(offset + 3, value &gt;&gt; 24);}</span>
+00055 <span class="preprocessor"></span>
+00056 
+<a name="l00069"></a><a class="code" href="group___saves.html#ga0">00069</a> <span class="keyword">extern</span> <span class="keyword">inline</span> s16 <a class="code" href="group___saves.html#ga0">PA_SaveString</a>(s32 offset, <span class="keywordtype">char</span> *string) {
+00070 u16 i = 0;
+00071 
+00072        <span class="keywordflow">while</span>(string[i]) {
+00073        SRAM[i + offset] = string[i];
+00074        i++;
+00075        }
+00076    SRAM[i + offset] = string[i];
+00077    <span class="keywordflow">return</span> (i);
+00078 }
+00079 
+00080 
+<a name="l00095"></a><a class="code" href="group___saves.html#ga1">00095</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___saves.html#ga1">PA_SaveData</a>(s32 offset, <span class="keywordtype">void</span>* Data, u16 NBytes) {
+00096 u16 i = 0;
+00097 u8 *adress = (u8*)Data;
+00098        <span class="keywordflow">for</span> (i = 0; i &lt; NBytes; i++) SRAM[i + offset] = adress[i];
+00099 }
+00100 
+00101 
+00102 
+<a name="l00112"></a><a class="code" href="group___saves.html#ga7">00112</a> <span class="preprocessor">#define PA_Load8bit(offset) SRAM[offset]</span>
+00113 <span class="preprocessor"></span>
+<a name="l00122"></a><a class="code" href="group___saves.html#ga8">00122</a> <span class="preprocessor">#define PA_Load16bit(offset) (SRAM[offset] + (SRAM[offset+1] &lt;&lt; 8))</span>
+00123 <span class="preprocessor"></span>
+<a name="l00132"></a><a class="code" href="group___saves.html#ga9">00132</a> <span class="preprocessor">#define PA_Load32bit(offset) (PA_Load8bit(offset) + (PA_Load8bit(offset + 1) &lt;&lt; 8) + (PA_Load8bit(offset + 2) &lt;&lt; 16) + (PA_Load8bit(offset + 3) &lt;&lt; 24))</span>
+00133 <span class="preprocessor"></span>
+00134 
+<a name="l00146"></a><a class="code" href="group___saves.html#ga2">00146</a> <span class="keyword">extern</span> <span class="keyword">inline</span> s16 <a class="code" href="group___saves.html#ga2">PA_LoadString</a>(s32 offset, <span class="keywordtype">char</span> *string) {
+00147 s16 i = -1;
+00148 
+00149        <span class="keywordflow">do</span> {
+00150               i++;   
+00151               string[i] = SRAM[i + offset];
+00152        }
+00153        <span class="keywordflow">while</span>(string[i]);
+00154        <span class="keywordflow">return</span> i;
+00155 }
+00156 
+00157 
+<a name="l00172"></a><a class="code" href="group___saves.html#ga3">00172</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___saves.html#ga3">PA_LoadData</a>(s32 offset, <span class="keywordtype">void</span>* Data, u16 NBytes) {
+00173 u16 i = 0;
+00174 u8 *adress = (u8*)Data;
+00175 <span class="keywordflow">for</span> (i = 0; i &lt; NBytes; i++) adress[i] = SRAM[i + offset];
+00176 }
+00177  <span class="comment">// end of Saves</span>
+00179 
+00180 
+00181 
+00182 
+00183 
+00184 
+00185 
+00186 
+00187 
+00188 
+00189 <span class="preprocessor">#endif</span>
+00190 <span class="preprocessor"></span>
+00191 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 28 23:18:13 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
+</body>
+</html>

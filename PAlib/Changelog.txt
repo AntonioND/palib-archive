@@ -1,3 +1,16 @@
+PAlib 0.64a : 
+
+- The documentation is back !!
+- Fixed the compilation error some seemed to had (well, should be fixed, I hope...)
+- Faster gif decompression
+- Support for animated gifs on 16bit backgrounds
+- Updated the example makefiles, and added the logos for multiboot and wifime
+- Added PA_LoadGBFSImage, for easy loading of Gif, Jpeg, and Bmp from GBFS
+- Added support for exporting Bmp's into buffers
+- Fixed the problem with PA_SetSpriteAnim not working on sprite initialized with PA_CreateSpriteFromGfx... (untested, but should work)
+- Switched the stylus code to the new libnds one... hope it's better for you !
+
+
 PAlib 0.63a : 
 
 - Fixed the Draw functions to work with different drawing sizes

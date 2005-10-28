@@ -114,7 +114,7 @@ extern PA_DrawSprites PA_DrawSprite[MAX_DRAW];
 // Pour le dessin sur sprite
 extern unsigned char *PA_SpriteBuffer[MAX_DRAW]; // Pointeurs vers les buffers  que l'on créera à la volée
 
-extern u16 *PA_SpriteAnimP[2][128];
+extern u16 *PA_SpriteAnimP[2][1024];
 
 
 
@@ -222,7 +222,6 @@ void PA_ResetSpriteSys(void);
          \~french Position Y du sprite
 */
 extern inline void PA_CreateSprite(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
-   PA_SpriteAnimP[screen][obj_number] = (u16*)obj_data; // Store for later use in animations !
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (palette << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (obj_size << 14);
@@ -279,7 +278,6 @@ extern inline void PA_CreateSprite(bool screen, u8 obj_number, void* obj_data, u
          \~french Position Y du sprite
 */
 extern inline void PA_CreateSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y) {
-   PA_SpriteAnimP[screen][obj_number] = (u16*)obj_data;
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (prio << 10) + (palette << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + ((color_mode) << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
@@ -338,7 +336,6 @@ s32 i;
 u16 *data = (u16*)obj_data;
 for (i = 0; i < mem_size; i++) gfx[i] = data[i] + (1 << 15);
 
-   PA_SpriteAnimP[screen][obj_number] = (u16*)obj_data;
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, gfx, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
@@ -1064,25 +1061,6 @@ extern inline void PA_SetSpriteXY(bool screen, u8 sprite, s16 x, s16 y) {
 
 
 
-/*! \fn extern inline void PA_InitSpriteAnim(bool screen, u8 sprite, void* graphics)
-    \brief
-         \~english Initialise the animation system for a given sprite. Use only if your sprite was not created with PA_CreateSprite or PA_CreateSpriteEx
-         \~french Initialise le systeme d'animation pour un sprite donné. A utiliser uniquement si le sprite n'a pas été créé avec PA_CreateSprite ou PA_CreateSpriteEx
-    \param screen
-         \~english Chose de screen (0 or 1)
-         \~french Choix de l'écran (0 ou 1)
-    \param sprite
-         \~english sprite number in the sprite system
-         \~french Numéro du sprite dans le systeme de sprite
-    \param graphics
-         \~english Graphics used by the sprite
-         \~french Graphismes utilisé par le sprite
-*/
-extern inline void PA_InitSpriteAnim(bool screen, u8 sprite, void* graphics){
-	PA_SpriteAnimP[screen][sprite] = (u16*)graphics;
-}
-
-
 
 
 /*! \fn extern inline void PA_SetSpriteAnimEx(bool screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe)
@@ -1109,7 +1087,7 @@ extern inline void PA_InitSpriteAnim(bool screen, u8 sprite, void* graphics){
          \~french Frame de l'animation du sprite (0, 1, 2, etc...)
 */
 extern inline void PA_SetSpriteAnimEx(bool screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe){
-	PA_UpdateSpriteGfx(screen, sprite, (void*)(PA_SpriteAnimP[screen][sprite] + (animframe * (lx * ly) >> (2 - ncolors))));
+	PA_UpdateSpriteGfx(screen, sprite, (void*)(PA_SpriteAnimP[screen][PA_GetSpriteGfx(screen, sprite)] + (animframe * (lx * ly) >> (2 - ncolors))));
 }
 
 /*! \fn extern inline void PA_SetSpriteAnim(bool screen, u8 sprite, s16 animframe)

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PA_lib:  Fichier source de PA_Keys.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.3.9.1 -->
+<div class="qindex">  <form class="search" action="search.php" method="get">
+<a class="qindex" href="index.html">Page&nbsp;principale</a> | <a class="qindex" href="modules.html">Modules</a> | <a class="qindex" href="files.html">Liste&nbsp;des&nbsp;fichiers</a> | <a class="qindex" href="globals.html">Portée&nbsp;globale</a>  | <span class="search">Rechercher&nbsp;<input class="search" type="text" name="query" value="" size="20" accesskey="s"/></span></form></div>
+<h1>PA_Keys.h</h1><a href="_p_a___keys_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment">00001 <span class="preprocessor">#ifndef _PA_KEYS</span>
+00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_KEYS</span>
+00003 <span class="preprocessor"></span>
+00004 <span class="preprocessor">#include "<a class="code" href="_p_a9_8h.html">PA9.h</a>"</span>
+00010 
+00011 <span class="comment">// Système pour les touches</span>
+00013 <span class="comment"></span>
+00014 
+00015 
+00016 
+00017 
+00018 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00019    <span class="keywordtype">bool</span> A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select;
+00020 } PA_Pad;
+00021 
+00022 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00023    <span class="keywordtype">bool</span> Held, Released, Newpress, Newpress0;
+00024    s16 X, Y, altX, altY, Pressure;
+00025 } PA_Stylus;
+00026 
+00027 <span class="keyword">extern</span> PA_Stylus Stylus;
+00028 
+00029 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00030    PA_Pad Held, Released, Newpress; <span class="comment">// Pressed si on appuye, Held si on garde appuyé, et Released si on relache</span>
+00031 } Pads;
+00032 
+00033 <span class="keyword">extern</span> Pads Pad;
+00034 <span class="keyword">extern</span> PA_Pad* PadPointer;
+00035 
+00036 <span class="comment">// Structure pour les sprites que l'on déplace...</span>
+00037 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00038        <span class="keywordtype">bool</span> Moving;
+00039        u8 Sprite;
+00040        s16 X, Y, Vx, Vy;
+00041        u8 Time; <span class="comment">// Si trop longtemps sans bouger le sprite, il décroche...</span>
+00042 } PA_movingsprite;
+00043 
+00044 <span class="keyword">extern</span> PA_movingsprite PA_MovedSprite;
+00045 
+00046 <span class="comment">// Button info</span>
+00047 <span class="preprocessor">#define PA_BUTTONS (*(volatile u16*)0x04000130)</span>
+00048 <span class="preprocessor"></span>
+00049 <span class="preprocessor">#ifndef REG_KEYCNT</span>
+00050 <span class="preprocessor"></span><span class="preprocessor">       #define REG_KEYCNT (*(volatile u16*)0x04000132)</span>
+00051 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+00052 <span class="preprocessor"></span>
+00053 <span class="preprocessor">#define BUTTON_A 1</span>
+00054 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_B 2</span>
+00055 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_SELECT 4</span>
+00056 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_START 8</span>
+00057 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_RIGHT 16</span>
+00058 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_LEFT 32</span>
+00059 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_UP 64</span>
+00060 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_DOWN 128</span>
+00061 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_R 256</span>
+00062 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_L 512</span>
+00063 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_X 1024</span>
+00064 <span class="preprocessor"></span><span class="preprocessor">#define BUTTON_Y 2048</span>
+00065 <span class="preprocessor"></span>
+00066 
+00067 
+00068 <span class="keyword">extern</span> u16 CompletePad, ExPad, TempPad;
+00069 <span class="preprocessor">#define UPDATEPAD(type, pad)  type.A = pad &amp; BUTTON_A;\</span>
+00070 <span class="preprocessor">   type.B = (pad &amp; BUTTON_B) &gt;&gt; 1;\</span>
+00071 <span class="preprocessor">   type.Select = (pad &amp; BUTTON_SELECT) &gt;&gt; 2;\</span>
+00072 <span class="preprocessor">   type.Start = (pad &amp; BUTTON_START) &gt;&gt; 3;\</span>
+00073 <span class="preprocessor">   type.Right = (pad &amp; BUTTON_RIGHT) &gt;&gt; 4;\</span>
+00074 <span class="preprocessor">   type.Left = (pad &amp; BUTTON_LEFT) &gt;&gt; 5;\</span>
+00075 <span class="preprocessor">   type.Up = (pad &amp; BUTTON_UP) &gt;&gt; 6;\</span>
+00076 <span class="preprocessor">   type.Down = (pad &amp; BUTTON_DOWN) &gt;&gt; 7;\</span>
+00077 <span class="preprocessor">   type.R = (pad &amp; BUTTON_R) &gt;&gt; 8;\</span>
+00078 <span class="preprocessor">   type.L = (pad &amp; BUTTON_L) &gt;&gt; 9;\</span>
+00079 <span class="preprocessor">   type.X = (pad &amp; BUTTON_X) &gt;&gt; 10;\</span>
+00080 <span class="preprocessor">   type.Y = (pad &amp; BUTTON_Y) &gt;&gt; 11;</span>
+00081 <span class="preprocessor"></span>  
+00082 <span class="preprocessor">#define COPYPAD(new, old)  new.A = old.A;\</span>
+00083 <span class="preprocessor">   new.B = old.B;\</span>
+00084 <span class="preprocessor">   new.Select = old.Select;\</span>
+00085 <span class="preprocessor">   new.Start = old.Start;\</span>
+00086 <span class="preprocessor">   new.Right = old.Right;\</span>
+00087 <span class="preprocessor">   new.Left = old.Left;\</span>
+00088 <span class="preprocessor">   new.Up = old.Up;\</span>
+00089 <span class="preprocessor">   new.Down = old.Down;\</span>
+00090 <span class="preprocessor">   new.R = old.R;\</span>
+00091 <span class="preprocessor">   new.L =  old.L;\</span>
+00092 <span class="preprocessor">   new.X = old.X;\</span>
+00093 <span class="preprocessor">   new.Y = old.Y;</span>
+00094 <span class="preprocessor"></span><span class="comment">/*</span>
+00095 <span class="comment">#define PA_UpdatePad() ExPad = CompletePad;\</span>
+00096 <span class="comment">   CompletePad = ~(BUTTONS + (((IPC-&gt;buttons)&amp;3) &lt;&lt; 10));\</span>
+00097 <span class="comment">   UPDATEPAD(Pad.Held, CompletePad);\</span>
+00098 <span class="comment">   UPDATEPAD(Pad.Released, (ExPad &amp; (~CompletePad)));\</span>
+00099 <span class="comment">   UPDATEPAD(Pad.Newpress, (CompletePad &amp; (~ExPad)));</span>
+00100 <span class="comment"></span>
+00101 <span class="comment">#define PA_UpdateStylus() bool temp = ((~IPC-&gt;buttons) &gt;&gt; 6) &amp; 1;\</span>
+00102 <span class="comment">       Stylus.Newpress = temp &amp; (!Stylus.Held);\</span>
+00103 <span class="comment">       Stylus.Released = (!temp) &amp; Stylus.Held;\</span>
+00104 <span class="comment">       Stylus.Held = temp;\</span>
+00105 <span class="comment">       if(Stylus.Held)Stylus.altX =  ((IPC-&gt;touchX - 0x0113) / 14);\</span>
+00106 <span class="comment">       if(Stylus.Held)Stylus.altY =  ((IPC-&gt;touchY - 0x00E0) / 19);\</span>
+00107 <span class="comment">       if(Stylus.Held)Stylus.X =  IPC-&gt;touchXpx;\</span>
+00108 <span class="comment">       if(Stylus.Held)Stylus.Y =  IPC-&gt;touchYpx;\</span>
+00109 <span class="comment">       if(Stylus.Held)Stylus.Pressure = (((Stylus.X * IPC-&gt;touchZ2) &gt;&gt; 6) / IPC-&gt;touchZ1) - (Stylus.X &gt;&gt; 6);</span>
+00110 <span class="comment">*/</span>
+00111 <span class="comment">//#define BUTTON_AND 16384</span>
+00112 <span class="comment">//#define BUTTON_OR 0</span>
+00113 
+00125 <span class="keywordtype">void</span> <a class="code" href="group___keys.html#ga0">PA_UpdatePad</a>(<span class="keywordtype">void</span>);
+00126 
+00127 
+00128 
+00135 <span class="keywordtype">void</span> <a class="code" href="group___keys.html#ga1">PA_UpdateStylus</a>(<span class="keywordtype">void</span>);
+00136 
+<a name="l00145"></a><a class="code" href="group___keys.html#ga6">00145</a> <span class="preprocessor">#define PA_MoveSprite(sprite) PA_MoveSpriteEx(PA_Screen, sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteLy(0, sprite))</span>
+00146 <span class="preprocessor"></span>
+00147 
+00148 
+00166 <span class="keywordtype">bool</span> <a class="code" href="group___keys.html#ga2">PA_MoveSpriteEx</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u8 lx, u8 ly);
+00167 
+00168 
+00180 <span class="keywordtype">bool</span> <a class="code" href="group___keys.html#ga3">PA_MoveSpriteDistance</a>(u8 sprite, u8 distance);
+00181 
+<a name="l00188"></a><a class="code" href="group___keys.html#ga4">00188</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keys.html#ga4">PA_UpdateMoveSprite</a>(<span class="keywordtype">void</span>) {
+00189        PA_MovedSprite.Time++;
+00190        <span class="keywordflow">if</span> ((PA_MovedSprite.Time &gt; 2) || Stylus.Released) {
+00191               PA_MovedSprite.Moving = 0;
+00192               PA_MovedSprite.Time = 0;
+00193        }
+00194 }
+00195 
+00196 
+00197 
+<a name="l00213"></a><a class="code" href="group___keys.html#ga5">00213</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="group___keys.html#ga5">PA_SpriteTouchedEx</a>(u8 sprite, u8 lx, u8 ly){
+00214        <span class="keywordflow">if</span> ((Stylus.X &gt; <a class="code" href="group___sprite.html#ga28">PA_GetSpriteX</a>(PA_Screen, sprite)) &amp;&amp; (Stylus.X &lt; <a class="code" href="group___sprite.html#ga28">PA_GetSpriteX</a>(PA_Screen, sprite) + lx)
+00215               &amp;&amp; (Stylus.Y &gt; <a class="code" href="group___sprite.html#ga30">PA_GetSpriteY</a>(PA_Screen, sprite)) &amp;&amp; (Stylus.Y &lt; <a class="code" href="group___sprite.html#ga30">PA_GetSpriteY</a>(PA_Screen, sprite) + ly))
+00216               <span class="keywordflow">return</span> 1;
+00217        <span class="keywordflow">else</span> <span class="keywordflow">return</span> 0;
+00218 }
+00219 
+00220 
+00221 
+<a name="l00230"></a><a class="code" href="group___keys.html#ga7">00230</a> <span class="preprocessor">#define PA_SpriteTouched(sprite) PA_SpriteTouchedEx(sprite, PA_GetSpriteLx(PA_Screen, sprite), PA_GetSpriteLy(PA_Screen, sprite))</span>
+00231 <span class="preprocessor"></span>
+00232 
+00233 
+<a name="l00251"></a><a class="code" href="group___keys.html#ga8">00251</a> <span class="preprocessor">#define PA_StylusInZone(x1, y1, x2, y2) ((Stylus.X&gt;=x1)&amp;&amp;(Stylus.Y&gt;=y1)&amp;&amp;(Stylus.X&lt;x2)&amp;&amp;(Stylus.Y&lt;y2))</span>
+00252 <span class="preprocessor"></span> <span class="comment">// end of Keys</span>
+00254 
+00255 
+00256 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 28 23:18:12 2005 pour PA_lib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
+</body>
+</html>

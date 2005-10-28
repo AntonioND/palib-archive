@@ -55,7 +55,7 @@ PA_SetDrawSize(screen, 1);
 
 
 
-void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp){
+void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth){
 
 	u8 *temp = (u8*)bmp;
 	BMP_Headers *Bmpinfo = (BMP_Headers*)(temp+14);
@@ -65,6 +65,7 @@ void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp){
 	s32 r, g, b;  s16 tempx, tempy;
 	s16 lx = Bmpinfo->Width;   s16 ly = Bmpinfo->Height;
 	u16 Bits = Bmpinfo->BitsperPixel;
+	//Buffer = (u16*)(Buffer + ((x + (y*SWidth)) << 1)); // Position de départ
 	
 	s32 i = 0;
 	if (Bits > 16){ // Pour 24 et 32 bits
@@ -74,7 +75,8 @@ void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp){
 				g = (gfx[i] >> 3)&31;	i++;
 				r = (gfx[i] >> 3)&31;	i++;	
 				if (Bits == 32) i++; // On passe le bit alpha
-				PA_Put16bitPixel(screen, x + tempx, y + tempy, PA_RGB(r, g, b));
+				//PA_Put16bitPixel(screen, x + tempx, y + tempy, PA_RGB(r, g, b));
+				Buffer[x + tempx + ((y + tempy) * SWidth)] = PA_RGB(r, g, b);
 			}
 			while(i&3) i++; // Padding....
 		}
@@ -85,7 +87,8 @@ void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp){
 				b = *gfx2&31;
 				g = (*gfx2>>5)&31;
 				r = (*gfx2>>10)&31;		
-				PA_Put16bitPixel(screen, x + tempx, y + tempy, PA_RGB(r, g, b));
+				//PA_Put16bitPixel(screen, x + tempx, y + tempy, PA_RGB(r, g, b));
+				Buffer[x + tempx + ((y + tempy) * SWidth)] = PA_RGB(r, g, b);
 				gfx2++; // On passe au pixel suivant
 			}
 			s32 temp = (s32)gfx2;

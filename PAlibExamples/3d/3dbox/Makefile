@@ -1,4 +1,12 @@
-PATH := $(DEVKITARM)/bin:$(PATH)
+PATH 		:= $(DEVKITARM)/bin:$(PATH)
+
+ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
+TEXT1 		:= PAlib Demo
+TEXT2 		:= using PAlib
+TEXT3 		:= www.mollusk.tk
+ICON 		:= -b $(CURDIR)/../logo.bmp
+LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
+
 #---------------------------------------------------------------------------------
 .SUFFIXES:
 #---------------------------------------------------------------------------------
@@ -26,8 +34,7 @@ EXPORT_DIR := /c/ndsexamples/
 # 
 #---------------------------------------------------------------------------------
 
-ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
-ICON 		:= -b $(PAPATH)/logo.bmp
+
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -108,8 +115,10 @@ RAWFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.raw)))
 MAPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.map)))
 JPEGFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.jpg)))
 MODFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.mod)))
+GIFFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.gif)))
+BMPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bmp)))
  
-export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o) $(JPEGFILES:.jpg=.o) $(MODFILES:.mod=.o)\
+export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o) $(JPEGFILES:.jpg=.o) $(MODFILES:.mod=.o) $(GIFFILES:.gif=.o) $(BMPFILES:.bmp=.o)\
 					$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
  
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
@@ -161,7 +170,7 @@ $(OUTPUT).elf	:	$(OFILES)
 #---------------------------------------------------------------------------------
 %.nds: %.bin
 	
-	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(ICON) "$(shell basename $@);By PAlib;www.mollusk.tk"
+	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(LOGO) $(ICON) "$(TEXT1);$(TEXT2);$(TEXT3)"
 
 
 
@@ -253,14 +262,25 @@ endef
 #---------------------------------------------------------------------------------
 	@echo $(notdir $<)
 	@$(bin2o)
- 
--include $(DEPENDS)
 
 #---------------------------------------------------------------------------------
 %.o	:	%.mod
 #---------------------------------------------------------------------------------
 	@echo $(notdir $<)
 	@$(bin2o)
+
+#---------------------------------------------------------------------------------
+%.o	:	%.gif
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
+
+#---------------------------------------------------------------------------------
+%.o	:	%.bmp
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
+
  
 -include $(DEPENDS) 
 #---------------------------------------------------------------------------------------

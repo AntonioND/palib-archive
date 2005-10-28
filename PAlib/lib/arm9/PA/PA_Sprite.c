@@ -38,7 +38,7 @@ PA_DrawSprites PA_DrawSprite[MAX_DRAW];  // Infos pour dessiner sur les sprites
 unsigned char *PA_SpriteBuffer[MAX_DRAW]; // Pointeurs vers les buffers  que l'on créera à la volée
 
 
-u16 *PA_SpriteAnimP[2][128]; // Pointer towards the sprite's graphics, allows animation...
+u16 *PA_SpriteAnimP[2][1024]; // Pointer towards the sprite's graphics, allows animation
 
 
 
@@ -111,6 +111,7 @@ for (i = 0; (i < n_free_mem[screen]) & !exit; i++) {
       -- n_free_mem[screen];
    }
    
+   PA_SpriteAnimP[screen][truenumber] = obj_data; // mémorise la source de l'image...
    return truenumber;
 }
 

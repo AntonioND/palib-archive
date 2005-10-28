@@ -57,6 +57,15 @@ void PA_UpdateStylus(void){
 
 s32 x, y, xpx, ypx, z1, z2;
 
+	// New touch code...
+	touchPosition tempPos = touchReadXY();
+
+		x = tempPos.x;
+		y = tempPos.y;
+		xpx = tempPos.px;
+		ypx = tempPos.py;
+		
+		/*
       // Read the touch screen
       x = touchRead(TSC_MEASURE_X);
       y = touchRead(TSC_MEASURE_Y);
@@ -65,7 +74,7 @@ s32 x, y, xpx, ypx, z1, z2;
 	  
 // reading pixel position:
 	xpx = (x - (int16) TOUCH_CAL_X1) * CNTRL_WIDTH  / TOUCH_WIDTH  + (int16) TOUCH_CNTRL_X1;
-	ypx = (y - (int16) TOUCH_CAL_Y1) * CNTRL_HEIGHT / TOUCH_HEIGHT + (int16) TOUCH_CNTRL_Y1;
+	ypx = (y - (int16) TOUCH_CAL_Y1) * CNTRL_HEIGHT / TOUCH_HEIGHT + (int16) TOUCH_CNTRL_Y1;*/
  	  
 	  
 	  if (xpx < 0) xpx = 0;

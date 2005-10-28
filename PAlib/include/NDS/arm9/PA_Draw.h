@@ -9,10 +9,14 @@
     Draw on screen, either a pixel or a line, or anything ! Load a Bitmap, a Jpeg...
 */
 
-#include "PA_Gif.h"
 #include "PA9.h"
 
 #include "PA_Interrupt.h"
+#include "gif/gif_lib.h"
+
+extern GifFileType* gifinfo;
+extern s16 gifwidth, gifheight; 
+extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 
 
 #define PA_RGB8(r,g,b)	((((b)>>3)<<10)|(((g)>>3)<<5)|((r)>>3)|(1 << 15))
@@ -43,6 +47,11 @@ extern u8 PA_drawsize[2];
 extern u16 *PA_DrawBg[2];
 extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 //extern PA_SCreen
+
+void PA_Load16bitGif(bool screen, s16 x, s16 y, void *gif);
+int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
+
+
 
 /** @defgroup Bitmap Bitmap mode, for any screen...
  *  Draw on screen, either a pixel or a line, or anything ! Load a Bitmap, a Jpeg...
@@ -304,10 +313,64 @@ void PA_Draw8bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color);
  */
 void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
 
+/*! \fn void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size)
+    \brief
+         \~english Draw a thick line in Draw mode... for 16 bit drawable background
+         \~french Dessiner une ligne épaisse en mode dessin... pour le mode dessin 16 bit
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1) 
+    \param basex
+         \~english X position of the first point. Be carefull, if X is not between 0 and 255, it'll give unwanted results
+         \~french Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté
+    \param basey
+         \~english Y position of the first point. Be carefull, if Y is not between 0 and 191, it'll give unwanted results
+         \~french Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté
+    \param endx
+         \~english X position of the second point. Be carefull, if X is not between 0 and 255, it'll give unwanted results
+         \~french Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté
+    \param endy
+         \~english Y position of the second point. Be carefull, if Y is not between 0 and 191, it'll give unwanted results
+         \~french Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté
+    \param color
+         \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
+         \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...
+    \param size
+         \~english Width of the line, in pixels
+         \~french Largeur du trait, en pixels		 
+ */
+void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
 
 
 
-/*! \fn PA_8bitDraw(bool screen, u16 color)
+
+/*! \fn void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color)
+    \brief
+         \~english Draw a rectangle in Draw mode... for 16 bit drawable background
+         \~french Dessiner rectangle en mode dessin... pour le mode dessin 16 bit
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1) 
+    \param basex
+         \~english X position of the first point. Be carefull, if X is not between 0 and 255, it'll give unwanted results
+         \~french Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté
+    \param basey
+         \~english Y position of the first point. Be carefull, if Y is not between 0 and 191, it'll give unwanted results
+         \~french Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté
+    \param endx
+         \~english X position of the second point. Be carefull, if X is not between 0 and 255, it'll give unwanted results
+         \~french Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté
+    \param endy
+         \~english Y position of the second point. Be carefull, if Y is not between 0 and 191, it'll give unwanted results
+         \~french Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté
+    \param color
+         \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
+         \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...		 
+ */
+void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color);
+
+
+/*! \fn PA_8bitDraw(bool screen, u8 color)
     \brief
          \~english For 8 bit background : Nice little function that draws on screen ! All you need to do is chose the color, it'll do the rest. If the PA VBL isn't initialised, don't forget to update the stylus position every frame... Juste execute PA_Draw every cycle...
          \~french Pour 8 bit : Jolie petite fonction qui dessine à l'écran ! Tout ce qu'il reste à faire, c'est de choisir la couleur. Si le VBL PA n'est pas initialiser, ne pas oublier de rafraichir le Stylet à chaque cycle (et non, pas avec des glacons !). Il suffit d'executer PA_Draw à chaque cycle pour dessiner...
@@ -354,7 +417,7 @@ void PA_16bitDraw(bool screen, u16 color);
 
 /*! \def PA_Load8bitBitmap(screen, bitmap)
     \brief
-         \~englishLoad a bitmap on the screen for an 8 bit drawable background
+         \~english Load a bitmap on the screen for an 8 bit drawable background
          \~french Charger une image à l'écran... pour une fond dessinable de 8 bits
     \param screen
          \~english Chose de screen (0 or 1)
@@ -367,7 +430,7 @@ void PA_16bitDraw(bool screen, u16 color);
 
 /*! \def PA_Load16bitBitmap(screen, bitmap)
     \brief
-         \~englishLoad a bitmap on the screen for an 16 bit drawable background
+         \~english Load a bitmap on the screen for an 16 bit drawable background
          \~french Charger une image à l'écran... pour une fond dessinable de 16 bits
     \param screen
          \~english Chose de screen (0 or 1)
@@ -420,19 +483,102 @@ extern inline void PA_LoadJpeg(bool screen, void *jpeg) {
 }
 
 
-void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp);
+
+/*! \fn void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth)
+    \brief
+         \~english Load a BMP in a 16 bit Buffer
+         \~french Charger un BMP dans un buffer de 16 bit
+    \param Buffer
+         \~english Buffer...
+         \~french Buffer...
+    \param x
+         \~english X position of the top left corner
+         \~french Position X du coin supérieur gauche	
+    \param y
+         \~english Y position of the top left corner
+         \~french Position Y du coin supérieur gauche		 
+    \param bmp
+         \~english BMP image...
+         \~french image au format BMP...
+    \param SWidth
+         \~english Buffer width to use (256 for screen width...)
+         \~french Largeur du buffer, en pixels (256 pour la taille de l'écran...) 
+*/
+void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth);
 
 
+/*! \fn extern inline void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp)
+    \brief
+         \~english Load a BMP on a 16 bit background... Don't forget to Init the background !
+         \~french Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)	
+    \param x
+         \~english X position of the top left corner
+         \~french Position X du coin supérieur gauche	
+    \param y
+         \~english Y position of the top left corner
+         \~french Position Y du coin supérieur gauche		 
+    \param bmp
+         \~english BMP image...
+         \~french image au format BMP...	 
+*/
+extern inline void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp){
+PA_LoadBmpToBuffer(PA_DrawBg[screen], x, y, bmp, 256);
+}
+
+
+
+/*! \fn extern inline void PA_LoadBmp(bool screen, void *bmp)
+    \brief
+         \~english Load a BMP on a 16 bit background... Don't forget to Init the background !
+         \~french Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)		 
+    \param bmp
+         \~english BMP image...
+         \~french image au format BMP...	 
+*/
 extern inline void PA_LoadBmp(bool screen, void *bmp){
 	PA_LoadBmpEx(screen, 0, 0, bmp);
 }
 
+/*! \fn extern inline void PA_LoadGif(bool screen, void *gif)
+    \brief
+         \~english Load a Gif on a 16 bit background... Don't forget to Init the background !
+         \~french Charger un Gif sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)		 
+    \param gif
+         \~english Gif image...
+         \~french image au format Gif...	 
+*/
+extern inline void PA_LoadGif(bool screen, void *gif){
+	if (PA_nBit[screen]) DecodeGif(gif, (void*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
+	//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...
+	else DecodeGif(gif, (void*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
+}
 
 
 /* // Les différentes fonctions images...
 extern inline void PA_LoadJpeg(bool screen, void *jpeg)
 void PA_LoadBmp(bool screen, s16 x, s16 y, void *bmp);*/
 
+
+/*! \fn extern inline void PA_LoadGBFSImage(bool screen, s16 GBFSImage)
+    \brief
+         \~english Load any image from GBFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP
+         \~french Charger une image depuis GBFS sur l'écran (16 bit). Support le Gif, Jpeg, et BMP
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)		 
+    \param GBFSImage
+         \~english GBFS Image number
+         \~french Numéro de l'image dans GBFS	 
+*/
 extern inline void PA_LoadGBFSImage(bool screen, s16 GBFSImage){
 	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
 		PA_LoadBmp(screen, PA_GBFSfile[GBFSImage].File);
@@ -445,13 +591,17 @@ extern inline void PA_LoadGBFSImage(bool screen, s16 GBFSImage){
 	}		
 }
 
-
-
-
-void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
-
-void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color);
-
+extern inline void PA_LoadGBFSImageToBuffer(void *Buffer, s16 GBFSImage, s16 Width){
+	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
+		PA_LoadBmpToBuffer(Buffer, 0, 0, PA_GBFSfile[GBFSImage].File, Width);
+	}
+	/*if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "jpg")){ 
+		PA_LoadJpeg(screen, PA_GBFSfile[GBFSImage].File);
+	}	*/
+	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "gif")){ 
+		DecodeGif(PA_GBFSfile[GBFSImage].File, Buffer, (u16*)0x05000000, 1, Width);
+	}		
+}
 
 extern inline u16 PA_GetBmpWidth(void *bmp){
 	u8 *temp = (u8*)bmp;
