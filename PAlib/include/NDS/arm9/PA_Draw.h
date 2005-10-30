@@ -557,9 +557,9 @@ extern inline void PA_LoadBmp(bool screen, void *bmp){
          \~french image au format Gif...	 
 */
 extern inline void PA_LoadGif(bool screen, void *gif){
-	if (PA_nBit[screen]) DecodeGif(gif, (void*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
+	if (PA_nBit[screen]) DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
 	//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...
-	else DecodeGif(gif, (void*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
+	else DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
 }
 
 
@@ -593,13 +593,13 @@ extern inline void PA_LoadGBFSImage(bool screen, s16 GBFSImage){
 
 extern inline void PA_LoadGBFSImageToBuffer(void *Buffer, s16 GBFSImage, s16 Width){
 	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
-		PA_LoadBmpToBuffer(Buffer, 0, 0, PA_GBFSfile[GBFSImage].File, Width);
+		PA_LoadBmpToBuffer((u16*)Buffer, 0, 0, (u16*)PA_GBFSfile[GBFSImage].File, Width);
 	}
 	/*if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "jpg")){ 
 		PA_LoadJpeg(screen, PA_GBFSfile[GBFSImage].File);
 	}	*/
 	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "gif")){ 
-		DecodeGif(PA_GBFSfile[GBFSImage].File, Buffer, (u16*)0x05000000, 1, Width);
+		DecodeGif((const u8*)PA_GBFSfile[GBFSImage].File, (u8*)Buffer, (u16*)0x05000000, 1, Width);
 	}		
 }
 
