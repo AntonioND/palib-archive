@@ -28,9 +28,9 @@ u16 PA_Astar(u16 width, u16 height){
   for(j=0;j<height;j++){
   for(i=0;i<width;i++){
   if(maze[i][j]>0){
-  if(j<4)if(maze[i][j+1]==0&&bloc[i][j+1]==0)maze[i][j+1]=maze[i][j]+1;
+  if(j<height)if(maze[i][j+1]==0&&bloc[i][j+1]==0)maze[i][j+1]=maze[i][j]+1;
   if(j>0)if(maze[i][j-1]==0&&bloc[i][j-1]==0)maze[i][j-1]=maze[i][j]+1;
-  if(i<4)if(maze[i+1][j]==0&&bloc[i+1][j]==0)maze[i+1][j]=maze[i][j]+1;
+  if(i<width)if(maze[i+1][j]==0&&bloc[i+1][j]==0)maze[i+1][j]=maze[i][j]+1;
   if(i>0)if(maze[i-1][j]==0&&bloc[i-1][j]==0)maze[i-1][j]=maze[i][j]+1;
   }
   }
@@ -42,9 +42,9 @@ u16 PA_Astar(u16 width, u16 height){
   for(i=0;i<height;i++){
   for(j=0;j<width;j++){
   chemin[arriveex][arriveey]=1;
-  if(arriveey<4&&maze[arriveex][arriveey+1]<maze[arriveex][arriveey]&&bloc[arriveex][arriveey+1]==0)arriveey++;
+  if(arriveey<height&&maze[arriveex][arriveey+1]<maze[arriveex][arriveey]&&bloc[arriveex][arriveey+1]==0)arriveey++;
   else if(arriveey>0&&maze[arriveex][arriveey-1]<maze[arriveex][arriveey]&&bloc[arriveex][arriveey-1]==0)arriveey--;
-  else if(arriveex<4&&maze[arriveex+1][arriveey]<maze[arriveex][arriveey]&&bloc[arriveex+1][arriveey]==0)arriveex++;
+  else if(arriveex<width&&maze[arriveex+1][arriveey]<maze[arriveex][arriveey]&&bloc[arriveex+1][arriveey]==0)arriveex++;
   else if(arriveex>0&&maze[arriveex-1][arriveey]<maze[arriveex][arriveey]&&bloc[arriveex-1][arriveey]==0)arriveex--;
   }
   }
