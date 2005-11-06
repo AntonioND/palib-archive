@@ -344,7 +344,66 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
 
     va_end(varg);           /* Terminaison. */
 }
-
+char *selectchar(char *text,int begin, int end){
+char *text2 = (char*)malloc(sizeof(char)*(end-begin));
+int i;
+for(i=begin;i<end;i++)text2[i-begin]=text[i];
+text2[i-begin+1]='\0';
+return text2;
+}
+//defilement
+void PA_OutputTextSpecial0(bool screen, int x1, int y,char *text){
+int i,k,x2=strlen(text)+x1+1;
+for(i=x2;i>x1;i--){
+PA_OutputSimpleText(screen, i, y, selectchar(text,0,x2-x1-1));
+for(k=0;k<30;k++)PA_WaitForVBL();
+PA_OutputSimpleText(screen, i+strlen(selectchar(text,0,x2-x1-1))-1, y, " ");
+}
+}
+//separation
+void PA_OutputTextSpecial1(bool screen, int x1, int y,char *text){
+int i,k,x2=strlen(text)+x1+1;
+for(i=x2;i>x1;i--){
+PA_OutputSimpleText(screen, i+strlen(selectchar(text,0,i-x1-1)), y, " ");
+PA_OutputSimpleText(screen, i, y, selectchar(text,0,i-x1-1));
+for(k=0;k<30;k++)PA_WaitForVBL();
+}
+}
+//etirement
+void PA_OutputTextSpecial2(bool screen, int x1, int y,char *text){
+int i,k,x2=strlen(text)+x1;
+for(i=x2;i>x1;i--){
+PA_OutputSimpleText(screen, i, y, selectchar(text,0,i-x1));
+for(k=0;k<30;k++)PA_WaitForVBL();
+}
+}
+//etirement + suppression de la fin
+void PA_OutputTextSpecial3(bool screen, int x1, int y,char *text){
+int i,k,x2=strlen(text)+x1+1;
+for(i=x2;i>x1;i--){
+PA_OutputSimpleText(screen, x2+strlen(selectchar(text,0,i-x1-1))+1, y, " ");
+PA_OutputSimpleText(screen, i, y, selectchar(text,0,i-x1-1));
+for(k=0;k<30;k++)PA_WaitForVBL();
+}
+}
+//etirement + separation
+void PA_OutputTextSpecial4(bool screen, int x1, int y,char *text){
+int i,k,x2=strlen(text)+x1+1;
+for(i=x2;i>x1;i--){
+PA_OutputSimpleText(screen, i+strlen(selectchar(text,0,i-x1)), y, " ");
+PA_OutputSimpleText(screen, i, y, selectchar(text,0,i-x1-1));
+for(k=0;k<30;k++)PA_WaitForVBL();
+}
+}
+//defilement + suppression
+void PA_OutputTextSpecial5(bool screen, int x1, int y,char *text){
+int i,k,x2=strlen(text)+x1+1;
+for(i=x2;i>x1;i--){
+PA_OutputSimpleText(screen, i, y, selectchar(text,0,i-x1-1));
+for(k=0;k<30;k++)PA_WaitForVBL();
+PA_OutputSimpleText(screen, i+strlen(selectchar(text,0,i-x1-1))-2, y, "   ");
+}
+}
 
 
 

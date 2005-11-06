@@ -391,7 +391,12 @@ text1[i] = text2[i];
 
 
 
-
+void PA_OutputTextSpecial0(bool screen, int x1, int y,char *text);
+void PA_OutputTextSpecial1(bool screen, int x1, int y,char *text);
+void PA_OutputTextSpecial2(bool screen, int x1, int y,char *text);
+void PA_OutputTextSpecial3(bool screen, int x1, int y,char *text);
+void PA_OutputTextSpecial4(bool screen, int x1, int y,char *text);
+void PA_OutputTextSpecial5(bool screen, int x1, int y,char *text);
 
 /** @} */ // end of Text
 
