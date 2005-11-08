@@ -41,8 +41,7 @@ int main(int argc, char ** argv)
 	// Next we'll scroll, here are the variables...
 	s32 scrollx = 0; 
 	s32 scrolly = 0;
-	PA_InitText(1, 0);
-	s32 var = 0;
+
 	// Infinite loop to keep the program running
 while (1)
 {
@@ -50,10 +49,6 @@ while (1)
 	// We need to change the scroll according to the held keys...
 	scrollx += (Pad.Held.Right - Pad.Held.Left)*4; // scroll 4 pixels at a time
 	scrolly += (Pad.Held.Down - Pad.Held.Up)*4; // Same thing
-	
-	var+= Pad.Newpress.Up - Pad.Newpress.Down;
-	PA_OutputText(1, 0, 0, "%d   ", var%128);
-	
 	
 	PA_InfLargeScrollXY(0, // screen
 					3, // background number

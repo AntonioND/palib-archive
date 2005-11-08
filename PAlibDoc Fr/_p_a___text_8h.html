@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PAlib: Référence du fichier PA_Text.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.3.9.1 -->
+<div class="qindex">  <form class="search" action="search.php" method="get">
+<a class="qindex" href="index.html">Page&nbsp;principale</a> | <a class="qindex" href="modules.html">Modules</a> | <a class="qindex" href="files.html">Liste&nbsp;des&nbsp;fichiers</a> | <a class="qindex" href="globals.html">Portée&nbsp;globale</a>  | <span class="search">Rechercher&nbsp;<input class="search" type="text" name="query" value="" size="20" accesskey="s"/></span></form></div>
+<h1>Référence du fichier PA_Text.h</h1>Text system in tile mode. <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="_p_a___text_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga19">PA_ShowFont</a>(screen)&nbsp;&nbsp;&nbsp;PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret autrement  <a href="group___text.html#ga19"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Text.h::letterfp"></a>
+typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><b>letterfp</b> )(u8 size, bool screen, u16 x, u16 y, char lettertemp, u8 color)</td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga0">PA_InitText</a> (bool screen, u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte à l'écran. Ne marche qu'en modes 0-2  <a href="group___text.html#ga0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga1">PA_SetTileLetter</a> (bool screen, u16 x, u16 y, char letter)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire une lettre à l'écran.  <a href="group___text.html#ga1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga2">PA_OutputText</a> (bool screen, u16 x, u16 y, char *text,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte à l'écran. Ne marche qu'en modes 0-2  <a href="group___text.html#ga2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga3">PA_OutputSimpleText</a> (bool screen, u16 x, u16 y, const char *text)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte tout simple à l'écran. Ne marche qu'en modes 0-2. Beaucoup plus rapide que PA_OutputText, masi aussi beaucoup plus limité... Renvoie le nombre de lettres  <a href="group___text.html#ga3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga4">PA_BoxText</a> (bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nmobre de lettre écrites  <a href="group___text.html#ga4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga5">PA_BoxTextNoWrap</a> (bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nombre de lettre écrites. Cette fonction coupe les mots...  <a href="group___text.html#ga5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga6">PA_SetTextCol</a> (bool screen, u8 r, u8 g, u8 b)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la couleur du texte à l'écran (dernière couleur de la palette)  <a href="group___text.html#ga6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga7">PA_SetTextFont</a> (bool screen, u8 font)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la police d'un des écrans en utilisant une des polices de PA_lib  <a href="group___text.html#ga7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga8">PA_SetTextCustomFont</a> (bool screen, void *tiles, void *map)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la police d'un des écrans en utilisant une police faite-maison  <a href="group___text.html#ga8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga9">PA_SmartText</a> (bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char *text, u8 color, u8 size, u8 transp, s32 limit)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cette fonction permet d'écrire du texte à chasse variable à l'écran. Elle nécessite d'avoir un fond dessinable de 8 bits (cf PA_Init8bitBg). Les options sont la taille, la transparence, et les limites, ainsi que la couleur. Seul inconvénient : il n'accepte pas les commande comme d, etc... La fonction renvoie le nombre de charactères écrits  <a href="group___text.html#ga9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga10">PA_CenterSmartText</a> (bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char *text, u8 color, u8 size, u8 transp)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">En gros la meme chose que SmartText, mais en centré...  <a href="group___text.html#ga10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga11">PA_CompareText</a> (char *text1, char *text2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comparer une chaine de caractère à une autre. Exemple : PA_CompareText(Playname, "Mollusk");  <a href="group___text.html#ga11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga12">PA_CopyText</a> (char *text1, char *text2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comparer une chaine de caractère à une autre. Exemple : PA_CompareText(Playname, "Mollusk");  <a href="group___text.html#ga12"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga13" doxytag="PA_Text.h::PA_OutputTextSpecial0"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial0</b> (bool screen, int x1, int y, char *text)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga14" doxytag="PA_Text.h::PA_OutputTextSpecial1"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial1</b> (bool screen, int x1, int y, char *text)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga15" doxytag="PA_Text.h::PA_OutputTextSpecial2"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial2</b> (bool screen, int x1, int y, char *text)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga16" doxytag="PA_Text.h::PA_OutputTextSpecial3"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial3</b> (bool screen, int x1, int y, char *text)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="PA_Text.h::PA_OutputTextSpecial4"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial4</b> (bool screen, int x1, int y, char *text)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="PA_Text.h::PA_OutputTextSpecial5"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial5</b> (bool screen, int x1, int y, char *text)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_Text.h::PA_font_Map"></a>
+const u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font_Map</b> [256]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_Text.h::PA_font_Tiles"></a>
+const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font_Tiles</b> [6080]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_Text.h::PA_font2_Map"></a>
+const u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font2_Map</b> [256]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_Text.h::PA_font2_Tiles"></a>
+const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font2_Tiles</b> [6016]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_Text.h::textcol"></a>
+u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>textcol</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_Text.h::PAbgtext"></a>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAbgtext</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_Text.h::PA_textmap"></a>
+u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_textmap</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_Text.h::PA_texttiles"></a>
+u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_texttiles</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_Text.h::PA_font"></a>
+s8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_Text.h::textData"></a>
+const u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>textData</b> [5]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_Text.h::policeheight"></a>
+const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>policeheight</b> [5]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a13" doxytag="PA_Text.h::policewidth"></a>
+const u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>policewidth</b> [5]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a14" doxytag="PA_Text.h::policesize"></a>
+const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>policesize</b> [5][256]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_Text.h::letters"></a>
+letterfp&nbsp;</td><td class="memItemRight" valign="bottom"><b>letters</b> [5]</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Text system in tile mode. 
+<p>
+Not much to say, just a good debug option...<hr size="1"><address style="align: right;"><small>Généré le Tue Nov 8 13:19:54 2005 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
+</body>
+</html>
