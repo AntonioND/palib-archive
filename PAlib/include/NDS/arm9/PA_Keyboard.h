@@ -24,10 +24,10 @@ void PA_SetLetterPal(s16 x, s16 y, u8 Pal);
 
 
 
-extern const unsigned char keyboard_Tiles[7264];
+extern const unsigned char keyboard_Tiles[10240];
 extern const unsigned short keyboard_Map[4096];
-extern const unsigned short keyboardPal1[16];
-extern const unsigned short keyboardPal2[16];
+//extern const unsigned short keyboardPal1[16];
+//extern const unsigned short keyboardPal2[16];
 
 typedef struct {
 	u8 Bg; // Numéro du fond
@@ -36,17 +36,18 @@ typedef struct {
 	s16 ScrollX, ScrollY;  // Scroll x et y...
 	s16 Repeat;  // Temps avant de répéter...
 	s16 oldX, oldY; // Ancienne zone touchée
+	u8 Color1, Color2; // Main color, pressed color...
 } Keyboards;
 extern Keyboards Keyboard;
 
-extern const u8 PA_Keyboard[2][5][13];
+extern const u8 PA_Keyboard[2][5][24];
 
 #define PA_BACKSPACE 1    // On va dire que la touche backspace a pour valeur 1...
 #define PA_CAPS      2    // 2 pour CAPS
 #define PA_ENTER     '\n'    // 3 pour Enter
 #define PA_SHIFT     4    // etc
 #define PA_RIEN      0    // Si y'a rien, faudra faire comme si on appuye sur rien
-
+#define PA_TAB       3    // tab...
 
 
 
@@ -176,6 +177,33 @@ PA_EraseLastKey(); // Efface s'il reste une touche pressée...
 
 
 
+
+/*!
+    \fn void PA_ReloadKeyboardCol(void)
+    \brief
+		\~english Reloads the keyboard's palette, usefull if you changed the background palette
+		\~french Recharge la palette du clavier, utile si on a changé de palette pour les fonds
+*/
+void PA_ReloadKeyboardCol(void);
+
+
+/*!
+    \fn extern inline void PA_SetKeyboardColor(u8 color1, u8 color2)
+    \brief
+		\~english You can change the color used by the keyboard... 
+		\~french On peut changer la couleur du clavier !
+    \param color1
+      \~english Normal color, 0 for blue, 1 for red, 2 for green
+      \~french Couleur normale, 0 pour bleu, 1 pour rouge, 2 pour vert
+    \param color2
+      \~english Pressed key color, 0 for blue, 1 for red, 2 for green
+      \~french Couleur de la touche appuyée, 0 pour bleu, 1 pour rouge, 2 pour vert
+*/
+extern inline void PA_SetKeyboardColor(u8 color1, u8 color2){
+	Keyboard.Color1 = color1;
+	Keyboard.Color2 = color2;
+	PA_ReloadKeyboardCol();
+}
 
 
 /** @} */ // end of Keyboard

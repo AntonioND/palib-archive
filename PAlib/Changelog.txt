@@ -1,3 +1,17 @@
+PAlib 0.66a : 
+
+[Freature] Added tons of Dual Sprite functions, but they are completely untested... (too many functions to test, sorry), and for palettes
+
+[Freature] Added PA_SetScreenSpace(space) to set the desired pixel space between the screens, for the dual functions. On emulator, 0 looks the best, but on DS I like to put 48 (which is the default value).
+
+[Update] Updated the keyboard with a modified version of Headspin's keyboard ! It looks pretty good like that :p If you want to modify the keyboard layout, or add some keys (I left some spaces empty), you can edit the keyboard.bmp file in PAlib/lib/arm9/PA, and post it on the forum, and I'll change it if I feel it's better...   I also updated the keyboard code a little... 
+
+[Feature] Added PA_SetKeyboardColor(color1, color2), which changes the keyboard's color. 0 for blue, 1 for red, 2 for green... Basically, color1 is for the unpressed keys, color2 for the pressed keys. Blue and red by default. Updated the keyboard example to take that into account, you can change the keyboard colors with A, B, X, and Y
+
+[Bugfix] Delfare corrected the installer, it now creates the correct environnement variable for everyone. By the way, uninstall is not available simply because it deletes the whole devkitPro folder... which is not quite what we want ! I'll change that to uninstall just the PAlib folder some time
+
+
+
 PAlib 0.65a : 
 
 - Great new installer ! You can chose which components to install (examples, documentation...), and it creates an environnement variable (currently only for c:\devkitPro\PAlib, because NSIS doesn't do it just like I would like, so you'll have to modify the path if you install to another directory...) It uses solid LZMA compression, providing much smaller files than the zip files...
@@ -7,7 +21,8 @@ PAlib 0.65a :
 
 PAlib 0.64e : 
 
-- Updated the version of gfx2gba to remove the extern thing !
+- Delfare's update, with his installer
+- Delfare's new text functions !!
 
 
 PAlib 0.64d : 

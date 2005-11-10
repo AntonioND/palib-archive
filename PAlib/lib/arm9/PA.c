@@ -59,6 +59,8 @@ typedef struct {
 u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
 bool PA_Screen = 0;
 
+s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
+
 
 
 // Pour les fenetres
@@ -147,7 +149,7 @@ PA_SetBrightness(1, 0);
 
 PA_UpdateUserInfo();
 
-
+PA_SetScreenSpace(48);
 
 }
 

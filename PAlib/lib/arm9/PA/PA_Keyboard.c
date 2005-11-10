@@ -2,7 +2,8 @@
 
 #include "keyboard.raw.c"
 #include "keyboard.map.c"
-
+#include "keyboard.pal.c"
+/*
 const unsigned short keyboardPal1[16] = {
 0x7c1f, 0x6f7b, 0x6318, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
@@ -10,7 +11,7 @@ const unsigned short keyboardPal1[16] = {
 const unsigned short keyboardPal2[16] = {
 0x7c1f, 0x6f7b, 0x6318, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
-};
+};*/
 
 
 Keyboards Keyboard;
@@ -34,35 +35,51 @@ for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne pale
 	for (i = 0; i < 32; i++) 
 		PA_SetMapTilePal(0, bg_number, i, j, 15);
 
+PA_SetKeyboardColor(0, 1); // Blue and Red
+
 }
 
+
+
+
 void PA_ReloadKeyboardCol(void){
-	BG_PALETTE[(15 << 4) + 1] = 0;
-	BG_PALETTE[(15 << 4) + 2] = 0x6f7b;
-	BG_PALETTE[(15 << 4) + 3] = 0x6318;
-	BG_PALETTE[(15 << 4) + 4] = 0x7fff;
-	BG_PALETTE[(14 << 4) + 1] = PA_RGB(0, 0, 31);		
-	BG_PALETTE[(14 << 4) + 2] = PA_RGB(25, 25, 31);
-	BG_PALETTE[(14 << 4) + 3] = PA_RGB(20, 20, 31);
-	BG_PALETTE[(14 << 4) + 4] = BG_PALETTE[(15 << 4) + 4];
+u8 i;
+u16 r, g, b, color;
+u8 tempr, tempg, tempb;
+	for (i = 1; i < 11; i++) { // On va mettre appuyé en rouge
+		color = keyboard_Palette[i];
+		
+		tempb = b = (color>>10)&31;	tempg = g = (color>>5)&31;
+		tempr = r = (color)&31;	
+		
+		// Si dominante rouge
+		if (Keyboard.Color1 == 1) {tempr = b; tempb = r;} //rouge
+		else if (Keyboard.Color1 == 2) {tempg = b; tempb = g;} //vert
+		BG_PALETTE[(15 << 4) + i] = PA_RGB(tempr, tempg, tempb);
+		if (Keyboard.Color2 == 1) {tempr = b; tempb = r;} //rouge
+		else if (Keyboard.Color2 == 2) {tempg = b; tempb = g;} //vert		
+		BG_PALETTE[(14 << 4) + i] = PA_RGB(tempr, tempg, tempb);
+	}
 }
 
 //#define SPACE     32   // La vrai valeur d'un espace
 
 // Clavier, avec 5 lignes de 12 touches...
-const u8 PA_Keyboard[2][5][13] = {
-	  {{'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '='}, // Touches de 0 à 9, puis - et =
-	  {PA_RIEN, 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', PA_BACKSPACE, PA_BACKSPACE}, // qwertyuiop, Backspace
-	  {PA_CAPS, 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', PA_ENTER, PA_ENTER}, // Caps, asdfghjkl, Enter
-	  {PA_SHIFT, PA_SHIFT, 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'},  // Shift, zxcvbnm , . /
-	  {PA_RIEN, PA_RIEN, ';', '`', ' ', ' ', ' ', ' ', ' ', '[', ']'}},
-	  
-	  {{'!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+'}, // Touches de 0 à 9, puis - et =
-	  {PA_RIEN, 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', PA_BACKSPACE, PA_BACKSPACE}, // qwertyuiop, Backspace
-	  {PA_CAPS, 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', PA_ENTER, PA_ENTER}, // Caps, asdfghjkl, Enter
-	  {PA_SHIFT, PA_SHIFT, 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?'},  // Shift, zxcvbnm , . /
-	  {PA_RIEN, PA_RIEN, ':', '`', ' ', ' ', ' ', ' ', ' ', '{', '}'}} 
-	  
+const u8 PA_Keyboard[2][5][24] = {
+	  {
+	  {'1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8', '9', '9', '0', '0', '-', '-', '=', '='}, // Touches de 0 à 9, puis - et =  
+	  {PA_TAB, 'q', 'q', 'w', 'w', 'e', 'e', 'r', 'r', 't', 't', 'y', 'y', 'u', 'u', 'i', 'i', 'o', 'o', 'p', 'p',PA_BACKSPACE, PA_BACKSPACE, PA_BACKSPACE}, // qwertyuiop, Backspace
+	  {PA_CAPS, PA_CAPS, 'a', 'a', 's', 's', 'd', 'd', 'f', 'f', 'g', 'g', 'h', 'h', 'j', 'j', 'k', 'k', 'l', 'l', PA_ENTER, PA_ENTER, PA_ENTER, PA_ENTER}, // Caps, asdfghjkl, Enter
+	  {PA_SHIFT, PA_SHIFT, PA_SHIFT, 'z', 'z', 'x', 'x', 'c', 'c', 'v', 'v', 'b', 'b', 'n', 'n', 'm', 'm', ',', ',', '.', '.', '/', '/', PA_RIEN},  // Shift, zxcvbnm , . /
+	  {PA_RIEN, PA_RIEN, ';', ';', '`', '`', '`', '`', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '[', '[', ']', ']', '\\', '\\'}	  	  
+	  },
+	  {
+	  {'!', '!' , '@', '@', '#', '#', '$', '$', '%', '%', '^', '^', '&', '&', '*', '*', '(', '(', ')', ')', '_', '_', '+', '+'}, // Touches de 0 à 9, puis - et =  
+	  {PA_TAB, 'Q', 'Q', 'W', 'W', 'E', 'E', 'R', 'R', 'T', 'T', 'Y', 'Y', 'U', 'U', 'I', 'I', 'O', 'O', 'P', 'P',PA_BACKSPACE, PA_BACKSPACE, PA_BACKSPACE}, // qwertyuiop, Backspace
+	  {PA_CAPS, PA_CAPS, 'A', 'A', 'S', 'S', 'D', 'D', 'F', 'F', 'G', 'G', 'H', 'H', 'J', 'J', 'K', 'K', 'L', 'L', PA_ENTER, PA_ENTER, PA_ENTER, PA_ENTER}, // Caps, asdfghjkl, Enter
+	  {PA_SHIFT, PA_SHIFT, PA_SHIFT, 'Z', 'Z', 'X', 'X', 'C', 'C', 'V', 'V', 'B', 'B', 'N', 'N', 'M', 'M', '<', '<', '>', '>', '?', '?', PA_RIEN},  // Shift, zxcvbnm , . /
+	  {PA_RIEN, PA_RIEN, PA_RIEN, PA_RIEN, ':', ':', '"', '"', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '[', '[', ']', ']', '\\', '\\'}
+	  }
 	  }; // On prend en compte les trous...
 	  
 	  
@@ -97,10 +114,9 @@ s16 y = Stylus.Y;
 		
 	// On commence par vérifier si on est bien sur le clavier... Si ce n'est pas le cas, on renverra 0.
 	if ((x >= 0) && (x < 192) && (y >= 0) && (y < 80)) {		
-		//Les cases font 16 de hauteur/largeur, donc de 0-15 c'est la case 0, de 16-31 la 1, etc... donc faut diviser par 16!
-		y = y >> 4;   // Idem.		
-		if (y&1) x = (x + 8) >> 4;   // En fait, >> 4 ca veut dire diviser par 16 (par 2^4), mais c'est beaucoup plus rapide...
-		else x = x >> 4;
+	   //Les cases font 8 de largeur, donc de 0-7 c'est la case 0... il faut diviser par 8
+		y = y >> 4;  
+		x = x >> 3;
 		
 		if (Stylus.Newpress) {
 			Keyboard.oldX = x;
@@ -153,10 +169,8 @@ u8 value = PA_Keyboard[0][y][x];
 	if (value) {
 		while(PA_Keyboard[0][y][x-1] == value) --x;
 		while(PA_Keyboard[0][y][x] == value) {
-			PA_SetMapTilePal(0, Keyboard.Bg, ((y+1)&1) + (x << 1), 1 + (y << 1), Pal);
-			PA_SetMapTilePal(0, Keyboard.Bg, ((y+1)&1) + 1+(x << 1), 1 + (y << 1), Pal);			
-			PA_SetMapTilePal(0, Keyboard.Bg, ((y+1)&1) + (x << 1), 2 + (y << 1), Pal);				
-			PA_SetMapTilePal(0, Keyboard.Bg, ((y+1)&1) + 1+(x << 1), 2 + (y << 1), Pal);
+			PA_SetMapTilePal(0, Keyboard.Bg, x+1, (y << 1) + 1, Pal);
+			PA_SetMapTilePal(0, Keyboard.Bg, x+1, (y << 1) + 2, Pal);			
 			x++;
 		}
 	}

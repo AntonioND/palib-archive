@@ -116,113 +116,6 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga54">PA_SpriteDrawNot</a>(draw_number)&nbsp;&nbsp;&nbsp;PA_DrawSprite[draw_number].wasdrawing = 0</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas dessus actuellement  <a href="#ga54"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga55">PA_UpdateOAM</a>()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL  <a href="#ga55"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga56" doxytag="Sprite::PA_UpdateOAM0"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga56">PA_UpdateOAM0</a>()&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj, (void*)OAM0, 256, DMA_32NOW)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les infos des sprites pour l'écran 0 uniquement. A faire dans le VBL <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga57" doxytag="Sprite::PA_UpdateOAM1"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga57">PA_UpdateOAM1</a>()&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj + 256, (void*)OAM1, 256, DMA_32NOW)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les infos des sprites pour l'écran 1 uniquement. A faire dans le VBL <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga58">PA_UpdateSpriteGfx</a>(screen, obj_number, obj_data)&nbsp;&nbsp;&nbsp;PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné  <a href="#ga58"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga59">PA_UpdateGfx</a>(screen, gfx_number, obj_data)&nbsp;&nbsp;&nbsp;{DMA_Copy(obj_data, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (gfx_number &lt;&lt; NUMBER_DECAL)), (used_mem[screen][gfx_number] &lt;&lt; MEM_DECAL), DMA_32NOW);}</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné  <a href="#ga59"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga60">PA_SetSpriteRotEnable</a>(screen, sprite, rotset)&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 |= OBJ_ROT;  PA_obj[screen][sprite].atr1 = (PA_obj[screen][sprite].atr1 &amp; ALL_BUT_ROTSET) + ((rotset) &lt;&lt; 9);}</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner et zoomer un sprite  <a href="#ga60"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga61">PA_SetSpriteRotDisable</a>(screen, sprite)&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 &amp;= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &amp;= ALL_BUT_ROTSET;}</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arreter de faire tourner et zoomer un sprite  <a href="#ga61"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga62">PA_SetSpriteX</a>(screen, obj, x)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_X)) + ((x) &amp; OBJ_X)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran  <a href="#ga62"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga63">PA_GetSpriteX</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr1 &amp; (OBJ_X))</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran  <a href="#ga63"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga64">PA_SetSpriteY</a>(screen, obj, y)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_Y)) + ((y) &amp; OBJ_Y)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran  <a href="#ga64"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga65">PA_GetSpriteY</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr0 &amp; OBJ_Y)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran  <a href="#ga65"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga66">PA_SetSpritePal</a>(screen, obj, pal)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT_PAL) + ((pal) &lt;&lt; 12)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette de 16 couleurs d'un sprite  <a href="#ga66"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga67">PA_GetSpritePal</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &gt;&gt; 12)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Palette de 16 couleurs d'un sprite  <a href="#ga67"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga68">PA_SetSpriteDblsize</a>(screen, obj, dblsize)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(DBLSIZE)) + ((dblsize) &lt;&lt; 9)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer ou désactiver le mode Doublesize pour un sprite  <a href="#ga68"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga69">PA_GetSpriteDblsize</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; DBLSIZE) &gt;&gt; 9)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Etat du mode Doublesize pour un sprite  <a href="#ga69"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga70">PA_SetSpriteColors</a>(screen, sprite, n_colors)&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(N_COLORS)) + ((n_colors) &lt;&lt; 13)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le mode de couleur du sprite  <a href="#ga70"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga71">PA_GetSpriteColors</a>(screen, sprite)&nbsp;&nbsp;&nbsp;((PA_obj[screen][sprite].atr0 &amp; N_COLORS) &gt;&gt; 13)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode de couleur d'un sprite  <a href="#ga71"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga72">PA_SetSpriteMode</a>(screen, sprite, obj_mode)&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(OBJ_MODE)) + ((obj_mode) &lt;&lt; 10)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre  <a href="#ga72"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga73">PA_GetSpriteMode</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MODE) &gt;&gt; 10)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre  <a href="#ga73"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga74">PA_SetSpriteMosaic</a>(screen, obj, mosaic)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_MOSAIC)) + ((mosaic) &lt;&lt; 12)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre ou non un sprite en mode mosaic  <a href="#ga74"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga75">PA_GetSpriteMosaic</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MOSAIC) &gt;&gt; 12)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Si un sprite est en mode mosaic  <a href="#ga75"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga76">PA_SetSpriteHflip</a>(screen, obj, hflip)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_HFLIP)) + ((hflip) &lt;&lt; 12)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip horizontal pour un sprite  <a href="#ga76"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga77">PA_GetSpriteHflip</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_HFLIP) &gt;&gt; 12)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">S'il y a un flip horizontal pour un sprite  <a href="#ga77"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga78">PA_SetSpriteVflip</a>(screen, obj, vflip)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_VFLIP)) + ((vflip) &lt;&lt; 13)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip vertical pour un sprite  <a href="#ga78"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga79">PA_GetSpriteVflip</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_VFLIP) &gt;&gt; 13)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Si le flip vertical est utilisé ou non pour un sprite  <a href="#ga79"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga80">PA_SetSpriteGfx</a>(screen, obj, gfx)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_GFX)) + ((gfx) &amp; OBJ_GFX)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Modifier les graphismes utilisés par un sprite  <a href="#ga80"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga81">PA_GetSpriteGfx</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &amp; OBJ_GFX)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer le gfx utilisés par un sprite  <a href="#ga81"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga82">PA_SetSpritePrio</a>(screen, obj, prio)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_PRIO)) + ((prio) &lt;&lt; 10)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler la priorité d'un sprite par rapport au Bg.  <a href="#ga82"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga83">PA_GetSpritePrio</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr2 &amp; OBJ_PRIO) &gt;&gt; 10)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la priorité d'un sprite par rapport au Bg.  <a href="#ga83"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga84">PA_GetSpriteLx</a>(screen, sprite)&nbsp;&nbsp;&nbsp;PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].lx</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un sprite  <a href="#ga84"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga85">PA_GetSpriteLy</a>(screen, sprite)&nbsp;&nbsp;&nbsp;PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].ly</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un sprite  <a href="#ga85"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga86">PA_CloneSprite</a>(screen, obj, target)&nbsp;&nbsp;&nbsp;{PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++obj_per_gfx[screen][PA_GetSpriteGfx(screen, target)];}</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cloner un sprite. Marche uniquement pour les sprites sur un meme écran  <a href="#ga86"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga87">PA_SetSpritePixel</a>(screen, sprite, x, y, color)&nbsp;&nbsp;&nbsp;PA_SetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y, color)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga87"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga88">PA_GetSpritePixel</a>(screen, sprite, x, y)&nbsp;&nbsp;&nbsp;PA_GetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga88"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga89">PA_SpriteDrawNot</a>(draw_number)&nbsp;&nbsp;&nbsp;PA_DrawSprite[draw_number].wasdrawing = 0</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas dessus actuellement  <a href="#ga89"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga0">PA_CreateGfx</a> (bool screen, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)</td></tr>
 
@@ -288,49 +181,6 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Load Sprite, move them around, rotate them... <hr><h2>Documentation des macro</h2>
-<a class="anchor" name="ga86" doxytag="PA_SpriteDual.h::PA_CloneSprite"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_CloneSprite          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>target&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++obj_per_gfx[screen][PA_GetSpriteGfx(screen, target)];}</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Cloner un sprite. Marche uniquement pour les sprites sur un meme écran 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>target</em>&nbsp;</td><td>Numéro de la cible à cloner </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga51" doxytag="PA_Sprite.h::PA_CloneSprite"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -369,45 +219,6 @@ Cloner un sprite. Marche uniquement pour les sprites sur un meme écran
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>target</em>&nbsp;</td><td>Numéro de la cible à cloner </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga71" doxytag="PA_SpriteDual.h::PA_GetSpriteColors"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteColors          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;((PA_obj[screen][sprite].atr0 &amp; N_COLORS) &gt;&gt; 13)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Mode de couleur d'un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
   </table>
 </dl>
     </td>
@@ -452,45 +263,6 @@ Mode de couleur d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga69" doxytag="PA_SpriteDual.h::PA_GetSpriteDblsize"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteDblsize          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; DBLSIZE) &gt;&gt; 9)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Etat du mode Doublesize pour un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga34" doxytag="PA_Sprite.h::PA_GetSpriteDblsize"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -520,45 +292,6 @@ Etat du mode Doublesize pour un sprite
 
 <p>
 Etat du mode Doublesize pour un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga81" doxytag="PA_SpriteDual.h::PA_GetSpriteGfx"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteGfx          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &amp; OBJ_GFX)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Récupérer le gfx utilisés par un sprite 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -608,45 +341,6 @@ Récupérer le gfx utilisés par un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga77" doxytag="PA_SpriteDual.h::PA_GetSpriteHflip"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteHflip          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_HFLIP) &gt;&gt; 12)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-S'il y a un flip horizontal pour un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga42" doxytag="PA_Sprite.h::PA_GetSpriteHflip"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -686,45 +380,6 @@ S'il y a un flip horizontal pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga84" doxytag="PA_SpriteDual.h::PA_GetSpriteLx"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteLx          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].lx</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Récupérer la largeur d'un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga49" doxytag="PA_Sprite.h::PA_GetSpriteLx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -754,45 +409,6 @@ Récupérer la largeur d'un sprite
 
 <p>
 Récupérer la largeur d'un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga85" doxytag="PA_SpriteDual.h::PA_GetSpriteLy"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteLy          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].ly</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Récupérer la hauteur d'un sprite 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -842,45 +458,6 @@ Récupérer la hauteur d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga73" doxytag="PA_SpriteDual.h::PA_GetSpriteMode"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteMode          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MODE) &gt;&gt; 10)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga38" doxytag="PA_Sprite.h::PA_GetSpriteMode"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -910,45 +487,6 @@ Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre
 
 <p>
 Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga75" doxytag="PA_SpriteDual.h::PA_GetSpriteMosaic"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteMosaic          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MOSAIC) &gt;&gt; 12)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Si un sprite est en mode mosaic 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -998,45 +536,6 @@ Si un sprite est en mode mosaic
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga67" doxytag="PA_SpriteDual.h::PA_GetSpritePal"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpritePal          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &gt;&gt; 12)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Palette de 16 couleurs d'un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga32" doxytag="PA_Sprite.h::PA_GetSpritePal"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1071,53 +570,6 @@ Palette de 16 couleurs d'un sprite
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga88" doxytag="PA_SpriteDual.h::PA_GetSpritePixel"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpritePixel          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>x,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>y&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_GetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel </td></tr>
   </table>
 </dl>
     </td>
@@ -1170,45 +622,6 @@ Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moi
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga83" doxytag="PA_SpriteDual.h::PA_GetSpritePrio"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpritePrio          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr2 &amp; OBJ_PRIO) &gt;&gt; 10)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Récupérer la priorité d'un sprite par rapport au Bg. 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga48" doxytag="PA_Sprite.h::PA_GetSpritePrio"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1238,45 +651,6 @@ Récupérer la priorité d'un sprite par rapport au Bg.
 
 <p>
 Récupérer la priorité d'un sprite par rapport au Bg. 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga79" doxytag="PA_SpriteDual.h::PA_GetSpriteVflip"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteVflip          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_VFLIP) &gt;&gt; 13)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Si le flip vertical est utilisé ou non pour un sprite 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -1326,45 +700,6 @@ Si le flip vertical est utilisé ou non pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga63" doxytag="PA_SpriteDual.h::PA_GetSpriteX"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteX          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr1 &amp; (OBJ_X))</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Position X du sprite à l'écran 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga28" doxytag="PA_Sprite.h::PA_GetSpriteX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1394,45 +729,6 @@ Position X du sprite à l'écran
 
 <p>
 Position X du sprite à l'écran 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga65" doxytag="PA_SpriteDual.h::PA_GetSpriteY"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpriteY          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr0 &amp; OBJ_Y)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Position Y du sprite à l'écran 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -1482,49 +778,6 @@ Position Y du sprite à l'écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga70" doxytag="PA_SpriteDual.h::PA_SetSpriteColors"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteColors          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>n_colors&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(N_COLORS)) + ((n_colors) &lt;&lt; 13)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Changer le mode de couleur du sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>n_colors</em>&nbsp;</td><td>0 pour 16 couleurs, 1 pour 256 </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga35" doxytag="PA_Sprite.h::PA_SetSpriteColors"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1563,49 +816,6 @@ Changer le mode de couleur du sprite
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>n_colors</em>&nbsp;</td><td>0 pour 16 couleurs, 1 pour 256 </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga68" doxytag="PA_SpriteDual.h::PA_SetSpriteDblsize"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteDblsize          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>dblsize&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(DBLSIZE)) + ((dblsize) &lt;&lt; 9)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Activer ou désactiver le mode Doublesize pour un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>dblsize</em>&nbsp;</td><td>1 pour l'activer, 0 pour l'inactiver </td></tr>
   </table>
 </dl>
     </td>
@@ -1654,49 +864,6 @@ Activer ou désactiver le mode Doublesize pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga80" doxytag="PA_SpriteDual.h::PA_SetSpriteGfx"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteGfx          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>gfx&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_GFX)) + ((gfx) &amp; OBJ_GFX)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Modifier les graphismes utilisés par un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Numéro du gfx en mémoire ; on peut obtenir un numéro avec PA_CreateGfx ou <a class="el" href="group___sprite.html#ga81">PA_GetSpriteGfx(obj_number)</a>; </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga45" doxytag="PA_Sprite.h::PA_SetSpriteGfx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1734,50 +901,7 @@ Modifier les graphismes utilisés par un sprite
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Numéro du gfx en mémoire ; on peut obtenir un numéro avec PA_CreateGfx ou <a class="el" href="group___sprite.html#ga81">PA_GetSpriteGfx(obj_number)</a>; </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga76" doxytag="PA_SpriteDual.h::PA_SetSpriteHflip"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteHflip          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>hflip&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_HFLIP)) + ((hflip) &lt;&lt; 12)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Utiliser ou non le flip horizontal pour un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Flip horizontal, 1 pour oui, 0 pour non... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Numéro du gfx en mémoire ; on peut obtenir un numéro avec PA_CreateGfx ou <a class="el" href="group___sprite.html#ga46">PA_GetSpriteGfx(obj_number)</a>; </td></tr>
   </table>
 </dl>
     </td>
@@ -1826,49 +950,6 @@ Utiliser ou non le flip horizontal pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga72" doxytag="PA_SpriteDual.h::PA_SetSpriteMode"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteMode          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj_mode&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(OBJ_MODE)) + ((obj_mode) &lt;&lt; 10)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj_mode</em>&nbsp;</td><td>Mode : 0 pour normal, 1 pour transparent, 2 pour fenetre ; ne marche pas encore </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga37" doxytag="PA_Sprite.h::PA_SetSpriteMode"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1907,49 +988,6 @@ Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj_mode</em>&nbsp;</td><td>Mode : 0 pour normal, 1 pour transparent, 2 pour fenetre ; ne marche pas encore </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga74" doxytag="PA_SpriteDual.h::PA_SetSpriteMosaic"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteMosaic          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>mosaic&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_MOSAIC)) + ((mosaic) &lt;&lt; 12)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Mettre ou non un sprite en mode mosaic 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>mosaic</em>&nbsp;</td><td>Mode mosaic activé (1) ou désactivé (0) </td></tr>
   </table>
 </dl>
     </td>
@@ -1998,49 +1036,6 @@ Mettre ou non un sprite en mode mosaic
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga66" doxytag="PA_SpriteDual.h::PA_SetSpritePal"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpritePal          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>pal&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT_PAL) + ((pal) &lt;&lt; 12)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Changer la palette de 16 couleurs d'un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>pal</em>&nbsp;</td><td>Numéro de la palette (de 0 à 15) </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga31" doxytag="PA_Sprite.h::PA_SetSpritePal"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -2079,57 +1074,6 @@ Changer la palette de 16 couleurs d'un sprite
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>pal</em>&nbsp;</td><td>Numéro de la palette (de 0 à 15) </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga87" doxytag="PA_SpriteDual.h::PA_SetSpritePixel"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpritePixel          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>x,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>y,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>color&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_SetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y, color)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel à changer </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel à changer </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Nouvelle couleur de la palette à metrre </td></tr>
   </table>
 </dl>
     </td>
@@ -2186,49 +1130,6 @@ Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, ave
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga82" doxytag="PA_SpriteDual.h::PA_SetSpritePrio"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpritePrio          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>prio&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_PRIO)) + ((prio) &lt;&lt; 10)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Régler la priorité d'un sprite par rapport au Bg. 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>prio</em>&nbsp;</td><td>Priorité du sprite : 0 est au-dessus du fond 0, 1 au-dessus du 1, etc... (0-3) </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga47" doxytag="PA_Sprite.h::PA_SetSpritePrio"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -2272,45 +1173,6 @@ Régler la priorité d'un sprite par rapport au Bg.
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga61" doxytag="PA_SpriteDual.h::PA_SetSpriteRotDisable"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteRotDisable          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 &amp;= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &amp;= ALL_BUT_ROTSET;}</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Arreter de faire tourner et zoomer un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Sprite que l'on veut faire tourner </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga26" doxytag="PA_Sprite.h::PA_SetSpriteRotDisable"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -2345,49 +1207,6 @@ Arreter de faire tourner et zoomer un sprite
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Sprite que l'on veut faire tourner </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga60" doxytag="PA_SpriteDual.h::PA_SetSpriteRotEnable"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteRotEnable          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>rotset&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 |= OBJ_ROT;  PA_obj[screen][sprite].atr1 = (PA_obj[screen][sprite].atr1 &amp; ALL_BUT_ROTSET) + ((rotset) &lt;&lt; 9);}</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Faire tourner et zoomer un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Sprite que l'on veut faire tourner </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>rotset</em>&nbsp;</td><td>Rotset que l'on veut pour un sprite donné (0-31). On peut a priori utiliser un rotset pour plusieurs sprites, s'ils sont zoomés/tournés pareil... </td></tr>
   </table>
 </dl>
     </td>
@@ -2436,49 +1255,6 @@ Faire tourner et zoomer un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga78" doxytag="PA_SpriteDual.h::PA_SetSpriteVflip"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteVflip          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>vflip&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_VFLIP)) + ((vflip) &lt;&lt; 13)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Utiliser ou non le flip vertical pour un sprite 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>vflip</em>&nbsp;</td><td>Flip vertical, 1 pour oui, 0 pour non... </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga43" doxytag="PA_Sprite.h::PA_SetSpriteVflip"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -2517,49 +1293,6 @@ Utiliser ou non le flip vertical pour un sprite
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>vflip</em>&nbsp;</td><td>Flip vertical, 1 pour oui, 0 pour non... </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga62" doxytag="PA_SpriteDual.h::PA_SetSpriteX"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteX          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>x&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_X)) + ((x) &amp; OBJ_X)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Position X du sprite à l'écran 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X </td></tr>
   </table>
 </dl>
     </td>
@@ -2608,49 +1341,6 @@ Position X du sprite à l'écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga64" doxytag="PA_SpriteDual.h::PA_SetSpriteY"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpriteY          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>y&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_Y)) + ((y) &amp; OBJ_Y)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Position Y du sprite à l'écran 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga29" doxytag="PA_Sprite.h::PA_SetSpriteY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -2694,41 +1384,6 @@ Position Y du sprite à l'écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga89" doxytag="PA_SpriteDual.h::PA_SpriteDrawNot"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SpriteDrawNot          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">draw_number&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_DrawSprite[draw_number].wasdrawing = 0</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas dessus actuellement 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>draw_number</em>&nbsp;</td><td>Numéro du sprite dessinable </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga54" doxytag="PA_Sprite.h::PA_SpriteDrawNot"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -2759,49 +1414,6 @@ Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas 
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>draw_number</em>&nbsp;</td><td>Numéro du sprite dessinable </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga59" doxytag="PA_SpriteDual.h::PA_UpdateGfx"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_UpdateGfx          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>gfx_number,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj_data&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{DMA_Copy(obj_data, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (gfx_number &lt;&lt; NUMBER_DECAL)), (used_mem[screen][gfx_number] &lt;&lt; MEM_DECAL), DMA_32NOW);}</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Mettre à jour les Gfx d'un sprite donné 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>gfx_number</em>&nbsp;</td><td>Numéro du Gfx en mémoire </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Graphisme à charger </td></tr>
   </table>
 </dl>
     </td>
@@ -2850,42 +1462,6 @@ Mettre à jour les Gfx d'un sprite donné
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga55" doxytag="PA_SpriteDual.h::PA_UpdateOAM"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_UpdateOAM          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-<b>Valeur:</b><div class="fragment"><pre class="fragment">s16 i;\
-       <span class="keywordflow">for</span> (i = 0; i &lt; 256; i++) {\
-              OAM[(i &lt;&lt; 2)] = PA_obj[0][i].atr0;\
-              OAM[1+(i &lt;&lt; 2)] = PA_obj[0][i].atr1;\
-              OAM[2+(i &lt;&lt; 2)] = PA_obj[0][i].atr2;\
-              OAM[3+(i &lt;&lt; 2)] = PA_obj[0][i].atr3;}
-</pre></div>Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL 
-<p>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga20" doxytag="PA_Sprite.h::PA_UpdateOAM"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -2919,49 +1495,6 @@ Mettre à jour les Gfx d'un sprite donné
               OAM[3+(i &lt;&lt; 2)] = PA_obj[0][i].atr3;}
 </pre></div>Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL 
 <p>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga58" doxytag="PA_SpriteDual.h::PA_UpdateSpriteGfx"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_UpdateSpriteGfx          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj_number,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>obj_data&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Mettre à jour les Gfx d'un sprite donné 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Graphisme à charger </td></tr>
-  </table>
-</dl>
     </td>
   </tr>
 </table>
@@ -3015,7 +1548,7 @@ Mettre à jour les Gfx d'un sprite donné
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_Create16bitSprite           </td>
+          <td class="md" nowrap valign="top">inline void PA_Create16bitSprite           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -3095,7 +1628,7 @@ Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonc
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_Create16bitSpriteEx           </td>
+          <td class="md" nowrap valign="top">inline void PA_Create16bitSpriteEx           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -3276,7 +1809,7 @@ Charger en mémoire un gfx à utiliser plus tard pour un sprite. Renvoie le numéro
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_CreateSprite           </td>
+          <td class="md" nowrap valign="top">inline void PA_CreateSprite           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -3370,7 +1903,7 @@ Creer un sprite avec ses gfx... Ceci est la version simple de la fonction
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_CreateSpriteEx           </td>
+          <td class="md" nowrap valign="top">inline void PA_CreateSpriteEx           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -3506,7 +2039,7 @@ Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_CreateSpriteExFromGfx           </td>
+          <td class="md" nowrap valign="top">inline void PA_CreateSpriteExFromGfx           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -3642,7 +2175,7 @@ Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_CreateSpriteFromGfx           </td>
+          <td class="md" nowrap valign="top">inline void PA_CreateSpriteFromGfx           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -3958,7 +2491,7 @@ Initialise un sprite pour pouvoir dessiner dessus !
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_SetRotset           </td>
+          <td class="md" nowrap valign="top">inline void PA_SetRotset           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -4024,7 +2557,7 @@ Faire tourner et zoomer un sprite
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_SetRotsetNoAngle           </td>
+          <td class="md" nowrap valign="top">inline void PA_SetRotsetNoAngle           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -4083,7 +2616,7 @@ Zoomer un sprite sans le faire tourner. C'est un peu plus rapide que la fonction
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_SetRotsetNoZoom           </td>
+          <td class="md" nowrap valign="top">inline void PA_SetRotsetNoZoom           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -4135,7 +2668,7 @@ Faire tourner un sprite sans zoomer. C'est un peu plus rapide que la fonction PA
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_SetSpriteAnim           </td>
+          <td class="md" nowrap valign="top">inline void PA_SetSpriteAnim           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -4187,7 +2720,7 @@ Régler l'image du sprite dans l'animation. Identique à PA_SetSpriteAnimEx, mais 
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_SetSpriteAnimEx           </td>
+          <td class="md" nowrap valign="top">inline void PA_SetSpriteAnimEx           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -4340,7 +2873,7 @@ Mettre un pixel d'un sprite à une couleur donnée
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_SetSpriteXY           </td>
+          <td class="md" nowrap valign="top">inline void PA_SetSpriteXY           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -4452,7 +2985,7 @@ Dessiner sur un sprite intialisé... Doit etre utilisé à tous les tours, sinon il
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Tue Nov 8 13:19:55 2005 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Thu Nov 10 16:56:01 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -650,7 +650,7 @@ u8 obj_num = (rotset << 2);
 
 
 
-/*! \def PA_SetSpriteX(screnn, obj, x)
+/*! \def PA_SetSpriteX(screen, obj, x)
     \brief
          \~english Set the X position of a sprite on screen
          \~french Position X du sprite à l'écran
@@ -683,7 +683,7 @@ u8 obj_num = (rotset << 2);
 #define PA_GetSpriteX(screen, obj) (PA_obj[screen][obj].atr1 & (OBJ_X))
 
 
-/*! \def PA_SetSpriteY(screnn, obj, y)
+/*! \def PA_SetSpriteY(screen, obj, y)
     \brief
          \~english Set the Y position of a sprite on screen
          \~french Position Y du sprite à l'écran
@@ -699,7 +699,7 @@ u8 obj_num = (rotset << 2);
 */
 #define PA_SetSpriteY(screen, obj, y) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 & ALL_BUT(OBJ_Y)) + ((y) & OBJ_Y)
 
-/*! \def PA_GetSpriteY(screnn, obj)
+/*! \def PA_GetSpriteY(screen, obj)
     \brief
          \~english Get the Y position of a sprite on screen
          \~french Position Y du sprite à l'écran

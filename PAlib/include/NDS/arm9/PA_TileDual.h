@@ -218,7 +218,7 @@ extern inline void PA_DualBGScrollX(u8 bg_number, s16 x){
       \~french Valeur Y à déplacer, verticalement...
 */
 extern inline void PA_DualBGScrollY(u8 bg_number, s16 y){
-	PA_BGScrollY(0, bg_number, y+192);
+	PA_BGScrollY(0, bg_number, y+PA_ScreenSpace);
 	PA_BGScrollY(1, bg_number, y);
 }
 
@@ -354,7 +354,7 @@ extern inline void PA_DualInfLargeScrollX(u8 bg_select, s32 x){
       \~french Valeur Y à déplacer
 */
 extern inline void PA_DualInfLargeScrollY(u8 bg_select, s32 y){
-	PA_InfLargeScrollY(0, bg_select, y+192);
+	PA_InfLargeScrollY(0, bg_select, y+PA_ScreenSpace);
 	PA_InfLargeScrollY(1, bg_select, y);
 }
 
@@ -409,7 +409,7 @@ extern inline void PA_DualLargeScrollX(u8 bg_select, s32 x){
       \~french Valeur Y à déplacer
 */
 extern inline void PA_DualLargeScrollY(u8 bg_select, s32 y){
-	PA_LargeScrollY(0, bg_select, y+192);
+	PA_LargeScrollY(0, bg_select, y+PA_ScreenSpace);
 	PA_LargeScrollY(1, bg_select, y);
 }
 

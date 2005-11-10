@@ -35,7 +35,7 @@ extern RTC PA_RTC;
 
 extern inline void PA_WaitForVBL(void);
 
-
+extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 
 #define BG_GFX1			0x6000000
 #define BG_GFX2			0x6200000
@@ -82,6 +82,7 @@ extern inline void PA_WaitForVBL(void);
 
 #include "arm9/video.h"
 #include "arm9/PA_Sprite.h"
+#include "arm9/PA_SpriteDual.h"
 #include "arm9/PA_Sound.h"
 #include "arm9/PA_Micro.h"
 #include "arm9/PA_Draw.h"
@@ -90,6 +91,7 @@ extern inline void PA_WaitForVBL(void);
 #include "arm9/PA_API.h"
 #include "arm9/PA_Math.h"
 #include "arm9/PA_Palette.h"
+#include "arm9/PA_PaletteDual.h"
 #include "arm9/PA_Save.h"
 #include "arm9/PA_GBFS.h"
 #include "arm9/PA_SpecialFx.h"

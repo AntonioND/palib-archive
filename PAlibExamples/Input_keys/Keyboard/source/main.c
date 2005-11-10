@@ -29,13 +29,19 @@ int main(int argc, char ** argv)
 	// Infinite loop to keep the program running
 	while (1)
 	{
+		// We'll check first for color changes, with A, B, and X
+		if (Pad.Newpress.A) PA_SetKeyboardColor(0, 1); // Blue and Red
+		if (Pad.Newpress.B) PA_SetKeyboardColor(1, 0); // Red and Blue
+		if (Pad.Newpress.X) PA_SetKeyboardColor(2, 1); // Green and Red
+		if (Pad.Newpress.Y) PA_SetKeyboardColor(0, 2); // Blue and Green
+		
 		letter = PA_CheckKeyboard();
 		
 		if (letter > 31) { // there is a new letter
 			text[nletter] = letter;
 			nletter++;
 		}
-		else if (letter == PA_BACKSPACE) { // Backspace pressed
+		else if ((letter == PA_BACKSPACE)&&nletter) { // Backspace pressed
 			nletter--;
 			text[nletter] = ' '; // Erase the last letter
 		}

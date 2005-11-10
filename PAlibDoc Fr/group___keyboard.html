@@ -9,8 +9,8 @@
 <h1>Keyboard...</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga7" doxytag="Keyboard::PA_EraseLastKey"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keyboard.html#ga7">PA_EraseLastKey</a>()&nbsp;&nbsp;&nbsp;PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga9" doxytag="Keyboard::PA_EraseLastKey"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keyboard.html#ga9">PA_EraseLastKey</a>()&nbsp;&nbsp;&nbsp;PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer la dernière touche pressée, si ca ne le fait pas tout seul <br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
@@ -37,6 +37,13 @@ char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keyboard.html#ga6">PA_KeyboardOut</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire sortir le clavier <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga7" doxytag="Keyboard::PA_ReloadKeyboardCol"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keyboard.html#ga7">PA_ReloadKeyboardCol</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Recharge la palette du clavier, utile si on a changé de palette pour les fonds <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keyboard.html#ga8">PA_SetKeyboardColor</a> (u8 color1, u8 color2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">On peut changer la couleur du clavier !  <a href="#ga8"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Load a keyboard and have fun <hr><h2>Documentation des fonctions</h2>
@@ -235,7 +242,52 @@ Placer le Clavier à la position Y
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Tue Nov 8 13:19:54 2005 pour PAlib par&nbsp;
+<a class="anchor" name="ga8" doxytag="PA_Keyboard.h::PA_SetKeyboardColor"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetKeyboardColor           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>color1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>color2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+On peut changer la couleur du clavier ! 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>color1</em>&nbsp;</td><td>Couleur normale, 0 pour bleu, 1 pour rouge, 2 pour vert </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color2</em>&nbsp;</td><td>Couleur de la touche appuyée, 0 pour bleu, 1 pour rouge, 2 pour vert </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Généré le Thu Nov 10 16:56:01 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
