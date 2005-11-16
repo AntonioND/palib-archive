@@ -60,7 +60,7 @@ u8 *temp = (u8*)src;
 }
 
 int DGifGetLineByte(GifFileType *GifFile, GifPixelType *Line, int LineLen){
-    GifPixelType LineBuf[256]; // Buffer temporaire
+    GifPixelType LineBuf[1025]; // Buffer temporaire
     if (GifBits == 0) CopyLine(LineBuf, Line, LineLen); // On fait un backup 
     int result = DGifGetLine(GifFile, LineBuf, LineLen); // Nouvelle ligne
 	if (GifBits == 0)   CopyLine(Line, LineBuf, LineLen); // Copie 8 bit
@@ -97,26 +97,13 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 		Palette = temppalette;
     }
 	
-	GifFile = DGifOpen((void*)userData, readFunc);/*
-    if ((GifFile = DGifOpen((void*)userData, readFunc)) == NULL) {
-	PrintGifError();
-	return EXIT_FAILURE;
-    }*/
-    
-	/* Couleur de fond
-    for (i = 0; i < GifFile->SWidth; i++)  
-		ScreenBuff[0][i] = GifFile->SBackGroundColor;
-    for (i = 1; i < GifFile->SHeight; i++) {
-		memcpy(ScreenBuff[i], ScreenBuff[0], GifFile->SWidth);
-    }*/
+	GifFile = DGifOpen((void*)userData, readFunc);
+
     
     /* Scan the content of the GIF file and load the image(s) in: */
     do { // Je vire les messages d'erreur pour gagner du temps
 	DGifGetRecordType(GifFile, &RecordType);
-	/*if (DGifGetRecordType(GifFile, &RecordType) == GIF_ERROR) {
-	    PrintGifError();
-	    return EXIT_FAILURE;
-	}*/
+
 	switch (RecordType) {
 	case IMAGE_DESC_RECORD_TYPE:
 		DGifGetImageDesc(GifFile);

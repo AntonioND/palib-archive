@@ -49,16 +49,24 @@ s32 rotcentery = 0;
 s16 angle = 0;
 s32 zoom = 256;
 
+PA_OutputSimpleText(1, 2, 2, "Zoom       : Start/Select");
+PA_OutputSimpleText(1, 2, 3, "ScrollX    : Left/Right");
+PA_OutputSimpleText(1, 2, 4, "Scrolly    : Up/Down");
+PA_OutputSimpleText(1, 2, 5, "RotCenterX : A/Y");
+PA_OutputSimpleText(1, 2, 6, "RotCenterY : B/X");
+PA_OutputSimpleText(1, 2, 7, "Angle      : R/L");
+
+
 while (1)
 {
 	zoom += Pad.Held.Start - Pad.Held.Select;
-	scrolly += Pad.Held.Right - Pad.Held.Left;
+	scrollx += Pad.Held.Right - Pad.Held.Left;
 	scrolly += Pad.Held.Down - Pad.Held.Up;
-	rotcenterx += Pad.Held.B - Pad.Held.X;
-	rotcentery += Pad.Held.A - Pad.Held.Y;	
+	rotcenterx += Pad.Held.A - Pad.Held.Y;
+	rotcentery += Pad.Held.B - Pad.Held.X;	
 	angle += Pad.Held.R - Pad.Held.L;
 	
-	PA_OutputText(1, 0, 0, "Zoom : %d  ", zoom);
+	
 	
 	
 	PA_SetBgRot(0, 3, scrollx, scrolly, rotcenterx, rotcentery, angle, zoom);

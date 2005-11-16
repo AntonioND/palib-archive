@@ -341,6 +341,7 @@ void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
  */
 void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
 
+void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
 
 
 
@@ -544,6 +545,44 @@ PA_LoadBmpToBuffer(PA_DrawBg[screen], x, y, bmp, 256);
 extern inline void PA_LoadBmp(bool screen, void *bmp){
 	PA_LoadBmpEx(screen, 0, 0, bmp);
 }
+
+
+
+
+
+
+
+/*! \fn extern inline u16 PA_GetGifWidth(void* gif)
+    \brief
+         \~english Get a Gif's width in pixels
+         \~french Récupérer la largeur d'un Gif en pixels
+    \param gif
+         \~english Gif image...
+         \~french image au format Gif...	 
+*/
+extern inline u16 PA_GetGifWidth(void* gif){
+	u16 *temp = (u16*)gif;
+	temp += 3;
+	return *temp;
+}
+
+
+
+/*! \fn extern inline u16 PA_GetGifHeight(void* gif)
+    \brief
+         \~english Get a Gif's height in pixels
+         \~french Récupérer la hauteur d'un Gif en pixels
+    \param gif
+         \~english Gif image...
+         \~french image au format Gif...	 
+*/
+extern inline u16 PA_GetGifHeight(void* gif){
+	u16 *temp = (u16*)gif;
+	temp += 4;
+	return *temp;
+}
+
+
 
 /*! \fn extern inline void PA_LoadGif(bool screen, void *gif)
     \brief

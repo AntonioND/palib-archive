@@ -83,7 +83,7 @@ return textcount;
 u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit) {
 u16 x = basex;
 u16 y = basey;
-s16 j;
+u16 j;
 u16 textcount = 0; // compte le nombre de lettres...
 bool loop = 1; // On continue...
    
@@ -126,7 +126,7 @@ BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au ca
 
 
 u32 PA_BoxText(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit){
-s16 i, j;
+u16 i, j;
 s16 x, y;
 
 s16 letter; 

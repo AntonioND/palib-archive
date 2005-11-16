@@ -55,13 +55,13 @@ while (1)
 	PA_Mode7Angle(angle);
 	
 	// Move left/right
-	PA_Mode7MoveLeftRight(Pad.Held.Y - Pad.Held.A);
+	PA_Mode7MoveLeftRight(Pad.Held.A - Pad.Held.Y);
 	
 	// Move Forward/backward
 	PA_Mode7MoveForwardBack(Pad.Held.Up - Pad.Held.Down);
 	
 	// Height
-	height += Pad.Held.X - Pad.Held.B;
+	height += (Pad.Held.X - Pad.Held.B)<<7;
 	PA_Mode7Height(height);
 	
 	

@@ -21,24 +21,24 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_Draw.h::PA_RGB8"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_RGB8</b>(r, g, b)&nbsp;&nbsp;&nbsp;((((b)&gt;&gt;3)&lt;&lt;10)|(((g)&gt;&gt;3)&lt;&lt;5)|((r)&gt;&gt;3)|(1 &lt;&lt; 15))</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga23">PA_Get16bitPixel</a>(screen, x, y)&nbsp;&nbsp;&nbsp;PA_DrawBg[screen][x + (y &lt;&lt; 8)]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga26">PA_Get16bitPixel</a>(screen, x, y)&nbsp;&nbsp;&nbsp;PA_DrawBg[screen][x + (y &lt;&lt; 8)]</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the pixel's color in 16 bit Draw mode...  <a href="group___bitmap.html#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga24">PA_SetDrawSize</a>(screen, draw_size)&nbsp;&nbsp;&nbsp;PA_drawsize[screen] = draw_size;</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the pixel's color in 16 bit Draw mode...  <a href="group___bitmap.html#ga26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga27">PA_SetDrawSize</a>(screen, draw_size)&nbsp;&nbsp;&nbsp;PA_drawsize[screen] = draw_size;</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the size of the pen when drawing.  <a href="group___bitmap.html#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga25">PA_Load8bitBitmap</a>(screen, bitmap)&nbsp;&nbsp;&nbsp;DMA_Copy(bitmap, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the size of the pen when drawing.  <a href="group___bitmap.html#ga27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga28">PA_Load8bitBitmap</a>(screen, bitmap)&nbsp;&nbsp;&nbsp;DMA_Copy(bitmap, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a bitmap on the screen for an 8 bit drawable background  <a href="group___bitmap.html#ga25"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga26">PA_Load16bitBitmap</a>(screen, bitmap)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a bitmap on the screen for an 8 bit drawable background  <a href="group___bitmap.html#ga28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga29">PA_Load16bitBitmap</a>(screen, bitmap)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a bitmap on the screen for an 16 bit drawable background  <a href="group___bitmap.html#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga27">PA_Clear8bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a bitmap on the screen for an 16 bit drawable background  <a href="group___bitmap.html#ga29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga30">PA_Clear8bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears the screen... for an 8 bit drawable background  <a href="group___bitmap.html#ga27"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga28">PA_Clear16bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears the screen... for an 8 bit drawable background  <a href="group___bitmap.html#ga30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga31">PA_Clear16bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears the screen... for an 16 bit drawable background  <a href="group___bitmap.html#ga28"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears the screen... for an 16 bit drawable background  <a href="group___bitmap.html#ga31"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_Draw.h::PA_Load16bitGif"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Load16bitGif</b> (bool screen, s16 x, s16 y, void *gif)</td></tr>
@@ -79,43 +79,52 @@ int&nbsp;</td><td class="memItemRight" valign="bottom"><b>DecodeGif</b> (const u
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga10">PA_Draw16bitLineEx</a> (bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Draw a thick line in Draw mode... for 16 bit drawable background  <a href="group___bitmap.html#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga11">PA_Draw16bitRect</a> (bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga11" doxytag="PA_Draw.h::PA_Draw8bitLineEx"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Draw8bitLineEx</b> (bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Draw a rectangle in Draw mode... for 16 bit drawable background  <a href="group___bitmap.html#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga12">PA_8bitDraw</a> (bool screen, u8 color)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga12">PA_Draw16bitRect</a> (bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">For 8 bit background : Nice little function that draws on screen ! All you need to do is chose the color, it'll do the rest. If the PA VBL isn't initialised, don't forget to update the stylus position every frame... Juste execute PA_Draw every cycle...  <a href="group___bitmap.html#ga12"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga13">PA_16bitDraw</a> (bool screen, u16 color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Draw a rectangle in Draw mode... for 16 bit drawable background  <a href="group___bitmap.html#ga12"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga13">PA_8bitDraw</a> (bool screen, u8 color)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">For 16 bit : Nice little function that draws on screen ! All you need to do is chose the color, it'll do the rest. If the PA VBL isn't initialised, don't forget to update the stylus position every frame... Juste execute PA_Draw every cycle...  <a href="group___bitmap.html#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga14">PA_LoadJpeg</a> (bool screen, void *jpeg)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">For 8 bit background : Nice little function that draws on screen ! All you need to do is chose the color, it'll do the rest. If the PA VBL isn't initialised, don't forget to update the stylus position every frame... Juste execute PA_Draw every cycle...  <a href="group___bitmap.html#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga14">PA_16bitDraw</a> (bool screen, u16 color)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a jpeg on a 16 bit background... Don't forget to Init the background !  <a href="group___bitmap.html#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga15">PA_LoadBmpToBuffer</a> (u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">For 16 bit : Nice little function that draws on screen ! All you need to do is chose the color, it'll do the rest. If the PA VBL isn't initialised, don't forget to update the stylus position every frame... Juste execute PA_Draw every cycle...  <a href="group___bitmap.html#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga15">PA_LoadJpeg</a> (bool screen, void *jpeg)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a BMP in a 16 bit Buffer  <a href="group___bitmap.html#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga16">PA_LoadBmpEx</a> (bool screen, s16 x, s16 y, void *bmp)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a jpeg on a 16 bit background... Don't forget to Init the background !  <a href="group___bitmap.html#ga15"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga16">PA_LoadBmpToBuffer</a> (u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a BMP on a 16 bit background... Don't forget to Init the background !  <a href="group___bitmap.html#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga17">PA_LoadBmp</a> (bool screen, void *bmp)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a BMP in a 16 bit Buffer  <a href="group___bitmap.html#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga17">PA_LoadBmpEx</a> (bool screen, s16 x, s16 y, void *bmp)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a BMP on a 16 bit background... Don't forget to Init the background !  <a href="group___bitmap.html#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga18">PA_LoadGif</a> (bool screen, void *gif)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga18">PA_LoadBmp</a> (bool screen, void *bmp)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a Gif on a 16 bit background... Don't forget to Init the background !  <a href="group___bitmap.html#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga19">PA_LoadGBFSImage</a> (bool screen, s16 GBFSImage)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a BMP on a 16 bit background... Don't forget to Init the background !  <a href="group___bitmap.html#ga18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga19">PA_GetGifWidth</a> (void *gif)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load any image from GBFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP  <a href="group___bitmap.html#ga19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="PA_Draw.h::PA_LoadGBFSImageToBuffer"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get a Gif's width in pixels  <a href="group___bitmap.html#ga19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga20">PA_GetGifHeight</a> (void *gif)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get a Gif's height in pixels  <a href="group___bitmap.html#ga20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga21">PA_LoadGif</a> (bool screen, void *gif)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a Gif on a 16 bit background... Don't forget to Init the background !  <a href="group___bitmap.html#ga21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga22">PA_LoadGBFSImage</a> (bool screen, s16 GBFSImage)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load any image from GBFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP  <a href="group___bitmap.html#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga23" doxytag="PA_Draw.h::PA_LoadGBFSImageToBuffer"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_LoadGBFSImageToBuffer</b> (void *Buffer, s16 GBFSImage, s16 Width)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="PA_Draw.h::PA_GetBmpWidth"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga24" doxytag="PA_Draw.h::PA_GetBmpWidth"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GetBmpWidth</b> (void *bmp)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga22" doxytag="PA_Draw.h::PA_GetBmpHeight"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga25" doxytag="PA_Draw.h::PA_GetBmpHeight"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GetBmpHeight</b> (void *bmp)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a40" doxytag="PA_Draw.h::PA_8bit8x8Image"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a43" doxytag="PA_Draw.h::PA_8bit8x8Image"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_8bit8x8Image</b> (bool screen, u16 basex, u16 basey, u8 *data)</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
@@ -147,7 +156,7 @@ u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DrawBg</b> [2]</t
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Bitmap mode, for drawing, loading images in 8 or 16 bit mode... 
 <p>
-Draw on screen, either a pixel or a line, or anything ! Load a Bitmap, a Jpeg...<hr size="1"><address style="align: right;"><small>Generated on Thu Nov 10 16:56:06 2005 for PAlib by&nbsp;
+Draw on screen, either a pixel or a line, or anything ! Load a Bitmap, a Jpeg...<hr size="1"><address style="align: right;"><small>Generated on Wed Nov 16 11:56:25 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

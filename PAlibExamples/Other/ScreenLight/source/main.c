@@ -20,9 +20,9 @@ int main(int argc, char ** argv)
 		if (Pad.Newpress.A) PA_SetScreenLight(0, // screen
 												1); // Turn on bottom light
 		if (Pad.Newpress.B) PA_SetScreenLight(0, 0);
-	
-		if (Pad.Newpress.Y) PA_SetScreenLight(1, 1); // Turn on top light
-		if (Pad.Newpress.X) PA_SetScreenLight(1, 0);											
+		if (Pad.Newpress.X) PA_SetScreenLight(1, 1);// Turn on top light
+		if (Pad.Newpress.Y) PA_SetScreenLight(1, 0); 
+													
 
 		PA_WaitForVBL();
 	}

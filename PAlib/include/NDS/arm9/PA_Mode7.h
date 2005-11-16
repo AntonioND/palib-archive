@@ -9,9 +9,59 @@
 void hbl_mode7(void);
 
 extern const s32 DIV[160];
-extern const s16 _sinLUT[512];
-#define lut_sin(x)	_sinLUT[x]
-#define lut_cos(x)	_sinLUT[(x+128) & 511]
+
+
+#define M7_D_SH        7 // focal shift
+#define M7O_NORM       1 // object renormalization shift (by /2)
+
+// view frustrum limits
+#define M7_NEAR     16
+#define M7_FAR     384
+#define M7_LEFT   -120
+#define M7_RIGHT   120
+#define M7_TOP      80
+#define M7_BOTTOM  -80
+
+// the background uses a different far-plane than objects
+#define M7_FAR_BG  512
+
+
+typedef struct{
+	s32 x, y, z;
+}VECTOR;
+
+typedef struct tagM7CAM
+{
+    VECTOR pos;     
+    int phi;        // yaw
+    int theta;      // pitch
+    VECTOR u;       // local x-axis (right)
+    VECTOR v;       // local y-axis (up)
+    VECTOR w;       // local z-axis (back)
+} M7CAM;
+
+
+typedef struct { 
+	s16 pa, pb, pc, pd; s32 dx, dy; 
+} BGAFF_EX;
+
+/*#define PA_BGXX(screen, bg) _REG32(0x4000008 + (0x1000 * screen) + (bg << 4))
+#define PA_BGXY(screen, bg) _REG32(0x400000C + (0x1000 * screen) + (bg << 4))
+#define PA_BGXPA(screen, bg) _REG16(0x4000000 + (0x1000 * screen) + (bg << 4))
+#define PA_BGXPB(screen, bg) _REG16(0x4000002 + (0x1000 * screen) + (bg << 4))
+#define PA_BGXPC(screen, bg) _REG16(0x4000004 + (0x1000 * screen) + (bg << 4))
+#define PA_BGXPD(screen, bg) _REG16(0x4000006 + (0x1000 * screen) + (bg << 4))
+*/
+
+
+
+// in mode7.c
+extern M7CAM _m7_cam;
+extern int _m7_horizon;
+extern BGAFF_EX _m7_bgaff_ex[192];  // affine parameters for each line
+
+
+
 
 
 #define X0    256<<8
@@ -93,8 +143,8 @@ extern inline void PA_Mode7MoveLeftRight(s16 x_deplac){
 
 */
 extern inline void PA_Mode7MoveForwardBack(s16 z_deplac){
-		mode7cam_x += z_deplac*mode7cos;
-		mode7cam_z += z_deplac*mode7sin;
+		mode7cam_x += z_deplac*mode7sin;
+		mode7cam_z -= z_deplac*mode7cos;
 }
 
 
@@ -162,6 +212,11 @@ extern inline void PA_Mode7Height(s16 mode7y){
 
 /** @} */ // end of Mode7
 
+
+
+void m7_aff_calc(void);
+void m7_hbl_flr(void);
+void m7_horz_calc(void);
 
 #endif
 

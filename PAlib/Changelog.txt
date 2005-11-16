@@ -1,8 +1,24 @@
+PAlib 0.67a :
+
+[Feature] Now works for C++ projects !!!! Added a CPPInstall.bat, which compiles PAlib to work with C++ projects... This hasn't been fully tested yet, but seems to work :-)  By default, the lib compiles to C, so if you use C++, you'll have to recompile after install...
+
+[Feature] Added PA_SetScreenLight(screen, light), to set on/off one of the screens lights, and the example to go with it...
+
+[Feature] PA_GetGifHeight and PA_GetGifWidth added, pretty self-explanatory...
+
+[Feature] Mode7 comes in !! Not much yet, you can check the example, but more will come soon... I'll just have to... well... rewrite tons of that code :p  So it'll take more time than I thought, but you can already play with this code a little...
+
+[Bugfix]  Fixed the Rotations Background, I hadn't seen I had messed them up by putting 32bit registers instead of 16...
+
+[Update] Updated the 8bit Draw function, should be less buggy. The 8bit and 16 bit Draw functions should be even faster now, when used with big drawsizes
+
+
+
 PAlib 0.66a : 
 
-[Freature] Added tons of Dual Sprite functions, but they are completely untested... (too many functions to test, sorry), and for palettes
+[Feature] Added tons of Dual Sprite functions, but they are completely untested... (too many functions to test, sorry), and for palettes
 
-[Freature] Added PA_SetScreenSpace(space) to set the desired pixel space between the screens, for the dual functions. On emulator, 0 looks the best, but on DS I like to put 48 (which is the default value).
+[Feature] Added PA_SetScreenSpace(space) to set the desired pixel space between the screens, for the dual functions. On emulator, 0 looks the best, but on DS I like to put 48 (which is the default value).
 
 [Update] Updated the keyboard with a modified version of Headspin's keyboard ! It looks pretty good like that :p If you want to modify the keyboard layout, or add some keys (I left some spaces empty), you can edit the keyboard.bmp file in PAlib/lib/arm9/PA, and post it on the forum, and I'll change it if I feel it's better...   I also updated the keyboard code a little... 
 

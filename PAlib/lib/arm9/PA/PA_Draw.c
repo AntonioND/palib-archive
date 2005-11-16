@@ -10,31 +10,23 @@ u8 PA_drawsize[2];
 u16 *PA_DrawBg[2];
 u8 PA_nBit[2]; // 8 or 16 on each screen...
 
+
+
+
+void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
+
+
 void PA_Init8bitBg(bool screen, u8 bg_priority){
 
 PA_DeleteBg(screen, 3);
 PA_nBit[screen] = 0; // 8 bit
 
-    //set the mode for 2 text layers and two extended background layers
-	if (screen == 0) {
-		//DISPLAY_CR = MODE_3_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE | 2<<20; 
-        BG3_XDX = 1 << 8;
-        BG3_XDY = 0;
-        BG3_YDX = 0;
-        BG3_YDY = 1 << 8;
-        BG3_CX = 0;
-        BG3_CY = 0;	
-	}
-		
-	else {
-		//SUB_DISPLAY_CR = MODE_3_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE | 2<<20;  
-        SUB_BG3_XDX = 1 << 8;
-        SUB_BG3_XDY = 0;
-        SUB_BG3_YDX = 0;
-        SUB_BG3_YDY = 1 << 8;
-        SUB_BG3_CX = 0;
-        SUB_BG3_CY = 0;	
-	}
+	PA_BGXPA(screen, 3) = 1 << 8;
+	PA_BGXPB(screen, 3) = 0;
+	PA_BGXPC(screen, 3) = 0;
+	PA_BGXPD(screen, 3) = 1 << 8;
+	PA_BGXX(screen, 3) = 0;
+	PA_BGXY(screen, 3) = 0;	
 
 	PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + 320 * 256);
 	DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);
@@ -167,31 +159,19 @@ PA_Put8bitPixel(screen, px, py, color);
 
 
 
+
+
 void PA_Init16bitBg(bool screen, u8 bg_priority){
 
 PA_DeleteBg(screen, 3);
 PA_nBit[screen] = 1; // 16 bit
 
-    //set the mode for 2 text layers and two extended background layers
-	if (screen == 0) {
-		//DISPLAY_CR = MODE_3_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE | 2<<20; 
-        BG3_XDX = 1 << 8;
-        BG3_XDY = 0;
-        BG3_YDX = 0;
-        BG3_YDY = 1 << 8;
-        BG3_CX = 0;
-        BG3_CY = 0;	
-	}
-		
-	else {
-		//SUB_DISPLAY_CR = MODE_3_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE | 2<<20;  
-        SUB_BG3_XDX = 1 << 8;
-        SUB_BG3_XDY = 0;
-        SUB_BG3_YDX = 0;
-        SUB_BG3_YDY = 1 << 8;
-        SUB_BG3_CX = 0;
-        SUB_BG3_CY = 0;	
-	}
+	PA_BGXPA(screen, 3) = 1 << 8;
+	PA_BGXPB(screen, 3) = 0;
+	PA_BGXPC(screen, 3) = 0;
+	PA_BGXPD(screen, 3) = 1 << 8;
+	PA_BGXX(screen, 3) = 0;
+	PA_BGXY(screen, 3) = 0;	
 
 	PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + 128 * 256);
 	DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW);
@@ -208,7 +188,6 @@ charblocks[screen][16] = 1; // Block la mémoire
 
 PA_SetDrawSize(screen, 1);
 }
-
 
 
 
@@ -269,11 +248,18 @@ PA_Put16bitPixel(screen, px, py, color);
 
 
 
+
+
+
+
+
+
+
+
+
 void PA_8bitDraw(bool screen, u8 color){
 s16 i, j, low, high;
 u16 x, y;
-u16 x1, y1, x2, y2;
-
 
 if (Stylus.Held){
 	x = Stylus.X;
@@ -288,21 +274,18 @@ if (Stylus.Held){
 		if (Stylus.Newpress) {
 			for (i = low; i < high; i++)
 				for (j = low; j < high; j++)
-					if ((x+i > 0) && (y+j > 0) && (x+i < 256) && (y+j < 192))	
+					if ((x+i >= 0) && (y+j >= 0) && (x+i < 256) && (y+j < 192))
 						PA_Put8bitPixel(screen, x+i, y+j, color);
 		}
 		else {
-			for (i = low; i < high; i++)
-				for (j = low; j < high; j++){
-					x1 = x+i; x2 = PA_oldx[screen]+i; y1 = y+j; y2 = PA_oldy[screen]+j;
-					if ((x1 < 256) && (y1 < 192) && (x2 < 256) && (y2 < 192))
-						PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
-				}
+			PA_Draw8bitLineEx(screen, x, y, PA_oldx[screen], PA_oldy[screen], color, PA_drawsize[screen]);
 		}
 	
 	PA_oldx[screen] = Stylus.X; PA_oldy[screen] = Stylus.Y;
 }
 }
+
+
 
 
 
@@ -336,6 +319,9 @@ if (Stylus.Held){
 	PA_oldx[screen] = Stylus.X; PA_oldy[screen] = Stylus.Y;
 }
 }
+
+
+
 
 
 void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size){
@@ -394,19 +380,57 @@ for (j = low; j < high; j++){
 
 
 void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size){
-s8 low = (size >> 1) - size;
-s8 high = (size >> 1);
+s8 low, high;
 s16 i, j;
-u16 x1, x2, y1, y2;
+s16 x1, x2, y1, y2, temp1, temp2;
 
-	for (i = low; i < high; i++){
-		for (j = low; j < high; j++){
-			x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
-			if ((x1 < 256) && (y1 < 192) && (x2 < 256) && (y2 < 192))
-				PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
+low = (size >> 1) - size;		high = (size >> 1);
+
+for (i = low; i < high; i++){
+	for (j = low; j < high; j++){
+		if ((basex+i >= 0) && (basey+j >= 0)&&(basex+i < 256) && (basey+j < 192)){
+			PA_Put8bitPixel(screen, basex+i, basey+j, color);
 		}
 	}
 }
+
+low = (size >> 1) - size;		high = (size >> 1);
+y1 = basey+low; 	while (y1 < 0) y1++;	while (y1 > 191) y1--;
+y2 = endy+low; 	while (y2 < 0) y2++;	while (y2 > 191) y2--;
+temp1 = basey+high; 	while (temp1 < 0) temp1++;	while (temp1 > 191) temp1--;
+temp2 = endy+high; 	while (temp2 < 0) temp2++;	while (temp2 > 191) temp2--;
+
+while(basex+low < 0) low++; // On met la limite gauche
+while(endx+low < 0) low++; // On met la limite gauche
+while(basex+high-1 > 255) high--; // limite droite
+while(endx+high-1 > 255) high--; // limite droite
+
+	for (i = low; i < high; i++){
+		x1 = basex+i; x2 = endx+i;
+		PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
+		PA_Draw8bitLine(screen, x1, temp1, x2, temp2, color);		
+	}
+
+low = (size >> 1) - size;		high = (size >> 1);
+x1 = basex+low; 	while (x1 < 0) x1++;	while (x1 > 255) x1--;
+x2 = endx+low; 	while (x2 < 0) x2++;	while (x2 > 255) x2--;
+temp1 = basex+high; 	while (temp1 < 0) temp1++;	while (temp1 > 255) temp1--;
+temp2 = endx+high; 	while (temp2 < 0) temp2++;	while (temp2 > 255) temp2--;
+
+while(basey+low < 0) low++; // On met la limite gauche
+while(endy+low < 0) low++; // On met la limite gauche
+while(basey+high-1 > 255) high--; // limite droite
+while(endy+high-1 > 255) high--; // limite droite
+
+	for (i = low; i < high; i++){
+		y1 = basey+i; y2 = endy+i;
+		PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
+		PA_Draw8bitLine(screen, temp1, y1, temp2, y2, color);		
+	}
+
+}
+
+
 
 u16 tempvar;
 

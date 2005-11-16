@@ -97,7 +97,8 @@ powerON(POWER_ALL);
   POWER_CR = POWER_ALL_2D;
   
  POWER_CR &= ~SWITCH_SCREENS; // on s'assure que l'écran est bien
- //POWER_CR ^= SWITCH_SCREENS; 
+
+//PA_SetScreenLight(0, 1); PA_SetScreenLight(1, 1); // Les 2 écrans sont allumés
 
 //IPC->mailData
 
@@ -137,8 +138,8 @@ Stylus.Y = 96;
 
 PA_ResetInterrupts();
 
-PA_SetBrightness(0, 0);
-PA_SetBrightness(1, 0);
+
+PA_SetBrightness(0, 0); PA_SetBrightness(1, 0); // On affiche les écrans
 
 	PA_font[0] = 0;
 	PA_textmap[0] = (u16*)PA_font_Map;

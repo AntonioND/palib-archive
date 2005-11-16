@@ -115,11 +115,10 @@ void PA_LoadRotBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size);
 
 #define PA_BGXX(screen, bg) _REG32(0x4000008 + (0x1000 * screen) + (bg << 4))
 #define PA_BGXY(screen, bg) _REG32(0x400000C + (0x1000 * screen) + (bg << 4))
-#define PA_BGXPA(screen, bg) _REG32(0x4000000 + (0x1000 * screen) + (bg << 4))
-#define PA_BGXPB(screen, bg) _REG32(0x4000002 + (0x1000 * screen) + (bg << 4))
-#define PA_BGXPC(screen, bg) _REG32(0x4000004 + (0x1000 * screen) + (bg << 4))
-#define PA_BGXPD(screen, bg) _REG32(0x4000006 + (0x1000 * screen) + (bg << 4))
-
+#define PA_BGXPA(screen, bg) _REG16(0x4000000 + (0x1000 * screen) + (bg << 4))
+#define PA_BGXPB(screen, bg) _REG16(0x4000002 + (0x1000 * screen) + (bg << 4))
+#define PA_BGXPC(screen, bg) _REG16(0x4000004 + (0x1000 * screen) + (bg << 4))
+#define PA_BGXPD(screen, bg) _REG16(0x4000006 + (0x1000 * screen) + (bg << 4))
 
 
 

@@ -101,16 +101,16 @@
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXY</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG32(0x400000C + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a28" doxytag="PA_Tile.h::PA_BGXPA"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPA</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG32(0x4000000 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPA</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG16(0x4000000 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a29" doxytag="PA_Tile.h::PA_BGXPB"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPB</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG32(0x4000002 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPB</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG16(0x4000002 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a30" doxytag="PA_Tile.h::PA_BGXPC"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPC</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG32(0x4000004 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPC</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG16(0x4000004 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a31" doxytag="PA_Tile.h::PA_BGXPD"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPD</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG32(0x4000006 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPD</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG16(0x4000006 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga21">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
 
@@ -284,7 +284,7 @@ scrollpositions&nbsp;</td><td class="memItemRight" valign="bottom"><b>scrollpos<
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Everything concerning the Bg Tile modes. 
 <p>
-This file contains all the macros and variables regarding Tile modes (0-2), loading tiles and Bg, etc...<hr size="1"><address style="align: right;"><small>Generated on Thu Nov 10 16:56:07 2005 for PAlib by&nbsp;
+This file contains all the macros and variables regarding Tile modes (0-2), loading tiles and Bg, etc...<hr size="1"><address style="align: right;"><small>Generated on Wed Nov 16 11:56:25 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

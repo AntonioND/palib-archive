@@ -34,6 +34,10 @@ int i;
 }
 
 
+
+
+
+
 //////////////////////////////////////////////////////////////////////
 
 
@@ -41,7 +45,7 @@ void InterruptHandler(void) {
   static int heartbeat = 0;
  
   if (REG_IF & IRQ_VBLANK) {
-    s32 but=0, batt=0, aux=0;
+    s32 but=0, batt=0;// aux=0;
     int t1=0, t2=0;
     uint32 temp=0;
     uint8 ct[sizeof(IPC->curtime)];
@@ -57,8 +61,7 @@ void InterruptHandler(void) {
     }
 
     batt = touchRead(TSC_MEASURE_BATTERY);
-    aux  = touchRead(TSC_MEASURE_AUX);
-
+    
     // Read the time
     rtcGetTime((uint8 *)ct);
     BCDToInteger((uint8 *)&(ct[1]), 7);
@@ -76,7 +79,7 @@ void InterruptHandler(void) {
 //    IPC->touchZ1   = z1;
 //    IPC->touchZ2   = z2;
     IPC->battery   = batt;
-    IPC->aux       = aux;
+    
     u32 i;
     for(i=0; i<sizeof(ct); i++) {
       IPC->curtime[i] = ct[i];
@@ -85,11 +88,16 @@ void InterruptHandler(void) {
     IPC->temperature = temp;
     IPC->tdiode1 = t1;
     IPC->tdiode2 = t2;
-	/*
+	
 	if (screenlights != (IPC->aux&0xC)){
 		screenlights = IPC->aux&0xC;
 		PA_ScreenLight(); // Update the screen lights...
-	}*/
+	}
+	//aux  = touchRead(TSC_MEASURE_AUX); // Re-read the aux mesures
+	//IPC->aux = aux;
+	
+	
+	
 
 /*
     //sound code   :) 

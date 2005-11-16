@@ -19,7 +19,7 @@ u8  tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
 u8  mapchar[2][4];  // Emplacement mémoire de chaque map
 u16 tempsize;
 
-u16 *PA_DrawBg[2]; // Fond dessinable
+extern u16 *PA_DrawBg[2]; // Fond dessinable
 u8 charsetstart[2] = {8, 8};
 
 
@@ -408,23 +408,16 @@ void PA_SetBgRot(bool screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_ro
 s32 center_x = ((x_rotcentre) * (bg_zoom)) >> 8;
 s32 center_y = ((y_rotcentre) * (bg_zoom)) >> 8;
 
-u32 DX = ((x_scroll << 8) - center_y * PA_Sin(bg_angle) - center_x * PA_Cos(bg_angle));
-u32 DY = ((y_scroll << 8) - center_y * PA_Cos(bg_angle) + center_x * PA_Sin(bg_angle));
+PA_BGXX(screen, bg_select) = ((x_scroll << 8) - center_y * PA_Sin(bg_angle) - center_x * PA_Cos(bg_angle));
+PA_BGXY(screen, bg_select) = ((y_scroll << 8) - center_y * PA_Cos(bg_angle) + center_x * PA_Sin(bg_angle));
 
 
-u16 PA = (PA_Cos(bg_angle) * (bg_zoom)) >> 8;
-u16 PB = (PA_Sin(bg_angle) * (bg_zoom)) >> 8;
-u16 PC = (-PA_Sin(bg_angle) * (bg_zoom)) >> 8;
+PA_BGXPD(screen, bg_select) = PA_BGXPA(screen, bg_select) = (PA_Cos(bg_angle) * (bg_zoom)) >> 8;
+PA_BGXPB(screen, bg_select) = (PA_Sin(bg_angle) * (bg_zoom)) >> 8;
+PA_BGXPC(screen, bg_select) = (-PA_Sin(bg_angle) * (bg_zoom)) >> 8;
 
 
 
-PA_BGXX(screen, bg_select) = DX; // REG_BGXX
-PA_BGXY(screen, bg_select) = DY; // REG_BGXY
-
-PA_BGXPA(screen, bg_select) = PA;  //REG_BGXPA
-PA_BGXPB(screen, bg_select) = PB;  //REG_BGXPB
-PA_BGXPC(screen, bg_select) = PC;  //REG_BGXPC
-PA_BGXPD(screen, bg_select) = PA;  //REG_BGXPD
 }
 
 

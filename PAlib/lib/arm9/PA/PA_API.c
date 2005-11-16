@@ -457,7 +457,7 @@ u8 PAPI_CreateCheck(bool screen, s16 x, s16 y, bool *var){
 u8 ncheck; // Numéro que l'on va avoir pour ce Check...
 
 
-PA_8bit8x8Image(screen, x, y, (void*)PAPI_checkinfo[screen].image[*var]);
+PA_8bit8x8Image(screen, x, y, (u8*)PAPI_checkinfo[screen].image[*var]);
 
 ncheck = PAPI_checkinfo[screen].free[PAPI_checkinfo[screen].n]; // Premier des dispos
 
@@ -503,7 +503,7 @@ if(Stylus.Newpress){ // Que si nouvelle pression
 			
 		if (PA_StylusInZone(x, y, x + 8, y + 8)){
 			bool temp = *PAPI_check[screen][n].var = !(*PAPI_check[screen][n].var);
-			PA_8bit8x8Image(screen, x, y, (void*)PAPI_checkinfo[screen].image[temp]);
+			PA_8bit8x8Image(screen, x, y, (u8*)PAPI_checkinfo[screen].image[temp]);
 		}
 		
 		n = PAPI_check[screen][n].next;

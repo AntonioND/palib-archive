@@ -115,245 +115,244 @@
 00115 <span class="preprocessor"></span>
 00116 <span class="preprocessor">#define PA_BGXX(screen, bg) _REG32(0x4000008 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
 00117 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXY(screen, bg) _REG32(0x400000C + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
-00118 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXPA(screen, bg) _REG32(0x4000000 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
-00119 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXPB(screen, bg) _REG32(0x4000002 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
-00120 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXPC(screen, bg) _REG32(0x4000004 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
-00121 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXPD(screen, bg) _REG32(0x4000006 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
+00118 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXPA(screen, bg) _REG16(0x4000000 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
+00119 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXPB(screen, bg) _REG16(0x4000002 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
+00120 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXPC(screen, bg) _REG16(0x4000004 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
+00121 <span class="preprocessor"></span><span class="preprocessor">#define PA_BGXPD(screen, bg) _REG16(0x4000006 + (0x1000 * screen) + (bg &lt;&lt; 4))</span>
 00122 <span class="preprocessor"></span>
 00123 
 00124 
 00125 
 00126 
-00127 
-00139 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga0">PA_ResetBgSys</a>(<span class="keywordtype">void</span>);
-00140 
-00163 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga1">PA_InitBg</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, u8 bg_size, <span class="keywordtype">bool</span> wraparound, <span class="keywordtype">bool</span> color_mode);
-00164 <span class="comment">//#define PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode) {    PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, ((bg_select + 1) &lt;&lt; 3) - bg_place[bg_size]);_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select)); _REG16(REG_BGCNT(screen, bg_select)) = ((bg_select) | (bg_size &lt;&lt; 14) |((((bg_select + 1) &lt;&lt; 3) - bg_place[bg_size]) &lt;&lt; SCREEN_SHIFT) | (wraparound &lt;&lt; 13) | ((bg_select) &lt;&lt; 2)) + (color_mode &lt;&lt; 7);}</span>
+00138 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga0">PA_ResetBgSys</a>(<span class="keywordtype">void</span>);
+00139 
+00162 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga1">PA_InitBg</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, u8 bg_size, <span class="keywordtype">bool</span> wraparound, <span class="keywordtype">bool</span> color_mode);
+00163 <span class="comment">//#define PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode) {    PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, ((bg_select + 1) &lt;&lt; 3) - bg_place[bg_size]);_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select)); _REG16(REG_BGCNT(screen, bg_select)) = ((bg_select) | (bg_size &lt;&lt; 14) |((((bg_select + 1) &lt;&lt; 3) - bg_place[bg_size]) &lt;&lt; SCREEN_SHIFT) | (wraparound &lt;&lt; 13) | ((bg_select) &lt;&lt; 2)) + (color_mode &lt;&lt; 7);}</span>
+00164 
 00165 
-00166 
-<a name="l00179"></a><a class="code" href="group___tile.html#ga21">00179</a> <span class="preprocessor">#define PA_HideBg(screen, bg_select) _REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</span>
-00180 <span class="preprocessor"></span>
-00181 
-<a name="l00194"></a><a class="code" href="group___tile.html#ga22">00194</a> <span class="preprocessor">#define PA_ShowBg(screen, bg_select) _REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</span>
-00195 <span class="preprocessor"></span>
-00196 
-<a name="l00206"></a><a class="code" href="group___tile.html#ga23">00206</a> <span class="preprocessor">#define PA_ResetBg(screen) _REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</span>
-00207 <span class="preprocessor"></span>
+<a name="l00178"></a><a class="code" href="group___tile.html#ga21">00178</a> <span class="preprocessor">#define PA_HideBg(screen, bg_select) _REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</span>
+00179 <span class="preprocessor"></span>
+00180 
+<a name="l00193"></a><a class="code" href="group___tile.html#ga22">00193</a> <span class="preprocessor">#define PA_ShowBg(screen, bg_select) _REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</span>
+00194 <span class="preprocessor"></span>
+00195 
+<a name="l00205"></a><a class="code" href="group___tile.html#ga23">00205</a> <span class="preprocessor">#define PA_ResetBg(screen) _REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</span>
+00206 <span class="preprocessor"></span>
+00207 
 00208 
-00209 
-<a name="l00225"></a><a class="code" href="group___tile.html#ga24">00225</a> <span class="preprocessor">#define PA_LoadBgTiles(screen, bg_select, bg_tiles) PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</span>
-00226 <span class="preprocessor"></span><span class="comment">//#define PA_LoadBgTiles(screen, bg_select, bg_tiles) {DMA_Copy((void*)(bg_tiles), (void*)CharBaseBlock(screen, bg_select),SIZEOF_16BIT(bg_tiles), DMA_16NOW);}</span>
+<a name="l00224"></a><a class="code" href="group___tile.html#ga24">00224</a> <span class="preprocessor">#define PA_LoadBgTiles(screen, bg_select, bg_tiles) PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</span>
+00225 <span class="preprocessor"></span><span class="comment">//#define PA_LoadBgTiles(screen, bg_select, bg_tiles) {DMA_Copy((void*)(bg_tiles), (void*)CharBaseBlock(screen, bg_select),SIZEOF_16BIT(bg_tiles), DMA_16NOW);}</span>
+00226 
 00227 
-00228 
-00248 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga2">PA_LoadBgTilesEx</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, <span class="keywordtype">void</span>* bg_tiles, u16 size);
+00247 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga2">PA_LoadBgTilesEx</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, <span class="keywordtype">void</span>* bg_tiles, u16 size);
+00248 
 00249 
-00250 
-00263 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga3">PA_DeleteTiles</a>(<span class="keywordtype">bool</span> screen, u8 bg_select);
+00262 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga3">PA_DeleteTiles</a>(<span class="keywordtype">bool</span> screen, u8 bg_select);
+00263 
 00264 
-00265 
-00278 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga4">PA_DeleteMap</a>(<span class="keywordtype">bool</span> screen, u8 bg_select);
+00277 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga4">PA_DeleteMap</a>(<span class="keywordtype">bool</span> screen, u8 bg_select);
+00278 
 00279 
 00280 
-00281 
-<a name="l00294"></a><a class="code" href="group___tile.html#ga5">00294</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga5">PA_DeleteBg</a>(<span class="keywordtype">bool</span> screen, u8 bg_select) {
-00295        <a class="code" href="group___tile.html#ga21">PA_HideBg</a>(screen, bg_select);
-00296        <a class="code" href="group___tile.html#ga3">PA_DeleteTiles</a>(screen, bg_select);
-00297        <a class="code" href="group___tile.html#ga4">PA_DeleteMap</a>(screen, bg_select);
-00298 }
-00299 
-00319 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga6">PA_LoadBgMap</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, <span class="keywordtype">void</span>* bg_map, u8 bg_size);
+<a name="l00293"></a><a class="code" href="group___tile.html#ga5">00293</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga5">PA_DeleteBg</a>(<span class="keywordtype">bool</span> screen, u8 bg_select) {
+00294        <a class="code" href="group___tile.html#ga21">PA_HideBg</a>(screen, bg_select);
+00295        <a class="code" href="group___tile.html#ga3">PA_DeleteTiles</a>(screen, bg_select);
+00296        <a class="code" href="group___tile.html#ga4">PA_DeleteMap</a>(screen, bg_select);
+00297 }
+00298 
+00318 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga6">PA_LoadBgMap</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, <span class="keywordtype">void</span>* bg_map, u8 bg_size);
+00319 
 00320 
 00321 
-00322 
-<a name="l00351"></a><a class="code" href="group___tile.html#ga25">00351</a> <span class="preprocessor">#define PA_LoadSimpleBg(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode) {\</span>
-00352 <span class="preprocessor">PA_DeleteBg(screen, bg_select);\</span>
-00353 <span class="preprocessor">PA_LoadBgTiles(screen, bg_select, bg_tiles); \</span>
-00354 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
-00355 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\</span>
-00356 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
-00357 <span class="preprocessor"></span>
-<a name="l00382"></a><a class="code" href="group___tile.html#ga26">00382</a> <span class="preprocessor">#define PA_LoadRotBg(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound) {\</span>
-00383 <span class="preprocessor">PA_DeleteBg(screen, bg_select);\</span>
-00384 <span class="preprocessor">PA_LoadBgTiles(screen, bg_select, bg_tiles); \</span>
-00385 <span class="preprocessor">PA_LoadRotBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
-00386 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, wraparound, 1);\</span>
-00387 <span class="preprocessor">PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\</span>
-00388 <span class="preprocessor">}</span>
-00389 <span class="preprocessor"></span>
-00390 <span class="keywordtype">void</span> PA_SetBgRot(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom);
-00391 
-<a name="l00423"></a><a class="code" href="group___tile.html#ga27">00423</a> <span class="preprocessor">#define PA_LoadBg(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode) {\</span>
-00424 <span class="preprocessor">PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, tile_size); \</span>
-00425 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
-00426 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\</span>
-00427 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
-00428 <span class="preprocessor"></span>
+<a name="l00350"></a><a class="code" href="group___tile.html#ga25">00350</a> <span class="preprocessor">#define PA_LoadSimpleBg(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode) {\</span>
+00351 <span class="preprocessor">PA_DeleteBg(screen, bg_select);\</span>
+00352 <span class="preprocessor">PA_LoadBgTiles(screen, bg_select, bg_tiles); \</span>
+00353 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
+00354 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\</span>
+00355 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
+00356 <span class="preprocessor"></span>
+<a name="l00381"></a><a class="code" href="group___tile.html#ga26">00381</a> <span class="preprocessor">#define PA_LoadRotBg(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound) {\</span>
+00382 <span class="preprocessor">PA_DeleteBg(screen, bg_select);\</span>
+00383 <span class="preprocessor">PA_LoadBgTiles(screen, bg_select, bg_tiles); \</span>
+00384 <span class="preprocessor">PA_LoadRotBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
+00385 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, wraparound, 1);\</span>
+00386 <span class="preprocessor">PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\</span>
+00387 <span class="preprocessor">}</span>
+00388 <span class="preprocessor"></span>
+00389 <span class="keywordtype">void</span> PA_SetBgRot(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom);
+00390 
+<a name="l00422"></a><a class="code" href="group___tile.html#ga27">00422</a> <span class="preprocessor">#define PA_LoadBg(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode) {\</span>
+00423 <span class="preprocessor">PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, tile_size); \</span>
+00424 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
+00425 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\</span>
+00426 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
+00427 <span class="preprocessor"></span>
+00428 
 00429 
-00430 
-<a name="l00446"></a><a class="code" href="group___tile.html#ga28">00446</a> <span class="preprocessor">#define PA_BGScrollX(screen, bg_number, x) _REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</span>
-00447 <span class="preprocessor"></span>
-<a name="l00463"></a><a class="code" href="group___tile.html#ga29">00463</a> <span class="preprocessor">#define PA_BGScrollY(screen, bg_number, y) _REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</span>
-00464 <span class="preprocessor"></span>
+<a name="l00445"></a><a class="code" href="group___tile.html#ga28">00445</a> <span class="preprocessor">#define PA_BGScrollX(screen, bg_number, x) _REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</span>
+00446 <span class="preprocessor"></span>
+<a name="l00462"></a><a class="code" href="group___tile.html#ga29">00462</a> <span class="preprocessor">#define PA_BGScrollY(screen, bg_number, y) _REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</span>
+00463 <span class="preprocessor"></span>
+00464 
 00465 
 00466 
-00467 
-<a name="l00486"></a><a class="code" href="group___tile.html#ga30">00486</a> <span class="preprocessor">#define PA_BGScrollXY(screen, bg_number, x, y) {PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</span>
-00487 <span class="preprocessor"></span>
+<a name="l00485"></a><a class="code" href="group___tile.html#ga30">00485</a> <span class="preprocessor">#define PA_BGScrollXY(screen, bg_number, x, y) {PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</span>
+00486 <span class="preprocessor"></span>
+00487 
 00488 
 00489 
-00490 
-00512 <span class="comment">/*</span>
-00513 <span class="comment">extern inline void PA_SetMapTile(bool screen, u8 bg_select, u16 x, u16 y, u16 tile_number) {</span>
-00514 <span class="comment">u16 *PA_reg;</span>
-00515 <span class="comment">PA_reg = (u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6));</span>
-00516 <span class="comment"></span>
-00517 <span class="comment">       *PA_reg &amp;= ALL_BUT(TILE_N);</span>
-00518 <span class="comment">       *PA_reg |= ((tile_number)&amp;TILE_N);</span>
-00519 <span class="comment">}*/</span>
-<a name="l00520"></a><a class="code" href="group___tile.html#ga31">00520</a> <span class="preprocessor">#define PA_SetMapTile(screen, bg_select, x, y, tile_number) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_N); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((tile_number)&amp;TILE_N);}</span>
-00521 <span class="preprocessor"></span>
-00522 
-<a name="l00544"></a><a class="code" href="group___tile.html#ga32">00544</a> <span class="preprocessor">#define PA_SetMapTileAll(screen, bg_select, x, y, tile_info) *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = tile_info</span>
-00545 <span class="preprocessor"></span>
+00511 <span class="comment">/*</span>
+00512 <span class="comment">extern inline void PA_SetMapTile(bool screen, u8 bg_select, u16 x, u16 y, u16 tile_number) {</span>
+00513 <span class="comment">u16 *PA_reg;</span>
+00514 <span class="comment">PA_reg = (u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6));</span>
+00515 <span class="comment"></span>
+00516 <span class="comment">       *PA_reg &amp;= ALL_BUT(TILE_N);</span>
+00517 <span class="comment">       *PA_reg |= ((tile_number)&amp;TILE_N);</span>
+00518 <span class="comment">}*/</span>
+<a name="l00519"></a><a class="code" href="group___tile.html#ga31">00519</a> <span class="preprocessor">#define PA_SetMapTile(screen, bg_select, x, y, tile_number) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_N); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((tile_number)&amp;TILE_N);}</span>
+00520 <span class="preprocessor"></span>
+00521 
+<a name="l00543"></a><a class="code" href="group___tile.html#ga32">00543</a> <span class="preprocessor">#define PA_SetMapTileAll(screen, bg_select, x, y, tile_info) *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = tile_info</span>
+00544 <span class="preprocessor"></span>
+00545 
 00546 
 00547 
-00548 
-<a name="l00570"></a><a class="code" href="group___tile.html#ga8">00570</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga8">PA_SetLargeMapTile</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x, s32 y, u32 tile_info) {
-00571        u32 truex;
-00572        u32 mapblock = 0;
-00573        truex = x&amp;31;
-00574        mapblock = (x &gt;&gt; 5) &lt;&lt; 11; <span class="comment">// Permet d'avoir le bon block...</span>
-00575        
-00576        *(u16*)(PA_bgmap[screen][bg_select] + ((truex) &lt;&lt; 1) + ((y) &lt;&lt; 6) + mapblock) = tile_info;
-00577 }
+<a name="l00569"></a><a class="code" href="group___tile.html#ga8">00569</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga8">PA_SetLargeMapTile</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x, s32 y, u32 tile_info) {
+00570        u32 truex;
+00571        u32 mapblock = 0;
+00572        truex = x&amp;31;
+00573        mapblock = (x &gt;&gt; 5) &lt;&lt; 11; <span class="comment">// Permet d'avoir le bon block...</span>
+00574        
+00575        *(u16*)(PA_bgmap[screen][bg_select] + ((truex) &lt;&lt; 1) + ((y) &lt;&lt; 6) + mapblock) = tile_info;
+00576 }
+00577 
 00578 
 00579 
-00580 
-<a name="l00602"></a><a class="code" href="group___tile.html#ga33">00602</a> <span class="preprocessor">#define PA_SetMapTileHflip(screen, bg_select, x, y, hflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</span>
-00603 <span class="preprocessor"></span>
-00604 
-<a name="l00626"></a><a class="code" href="group___tile.html#ga34">00626</a> <span class="preprocessor">#define PA_SetMapTileVflip(screen, bg_select, x, y, vflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</span>
-00627 <span class="preprocessor"></span>
-00628 
-<a name="l00650"></a><a class="code" href="group___tile.html#ga35">00650</a> <span class="preprocessor">#define PA_SetMapTilePal(screen, bg_select, x, y, palette_number) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</span>
-00651 <span class="preprocessor"></span>
-00652 
-<a name="l00683"></a><a class="code" href="group___tile.html#ga36">00683</a> <span class="preprocessor">#define PA_SetMapTileEx(screen, bg_select, x, y, tile_number, hflip, vflip, palette_number) *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_number) + ((hflip) &lt;&lt; 10) + ((vflip) &lt;&lt; 11) + ((palette_number) &lt;&lt; 12)</span>
-00684 <span class="preprocessor"></span>
+<a name="l00601"></a><a class="code" href="group___tile.html#ga33">00601</a> <span class="preprocessor">#define PA_SetMapTileHflip(screen, bg_select, x, y, hflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</span>
+00602 <span class="preprocessor"></span>
+00603 
+<a name="l00625"></a><a class="code" href="group___tile.html#ga34">00625</a> <span class="preprocessor">#define PA_SetMapTileVflip(screen, bg_select, x, y, vflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</span>
+00626 <span class="preprocessor"></span>
+00627 
+<a name="l00649"></a><a class="code" href="group___tile.html#ga35">00649</a> <span class="preprocessor">#define PA_SetMapTilePal(screen, bg_select, x, y, palette_number) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</span>
+00650 <span class="preprocessor"></span>
+00651 
+<a name="l00682"></a><a class="code" href="group___tile.html#ga36">00682</a> <span class="preprocessor">#define PA_SetMapTileEx(screen, bg_select, x, y, tile_number, hflip, vflip, palette_number) *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_number) + ((hflip) &lt;&lt; 10) + ((vflip) &lt;&lt; 11) + ((palette_number) &lt;&lt; 12)</span>
+00683 <span class="preprocessor"></span>
+00684 
 00685 
-00686 
-<a name="l00699"></a><a class="code" href="group___tile.html#ga37">00699</a> <span class="preprocessor">#define PA_LoadTiledBitmap(screen, tiled_bitmap) PA_LoadBg(screen, 0, tiled_bitmap, SCREEN_TILES, bitmap, BG_256X256, 1, 1)</span>
-00700 <span class="preprocessor"></span>
+<a name="l00698"></a><a class="code" href="group___tile.html#ga37">00698</a> <span class="preprocessor">#define PA_LoadTiledBitmap(screen, tiled_bitmap) PA_LoadBg(screen, 0, tiled_bitmap, SCREEN_TILES, bitmap, BG_256X256, 1, 1)</span>
+00699 <span class="preprocessor"></span>
+00700 
 00701 
 00702 
 00703 
 00704 
 00705 
 00706 
-00707 
-<a name="l00735"></a><a class="code" href="group___tile.html#ga38">00735</a> <span class="preprocessor">#define PA_LoadLargeBg(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly) {\</span>
-00736 <span class="preprocessor">PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 1, color_mode);\</span>
-00737 <span class="preprocessor">PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}</span>
-00738 <span class="preprocessor"></span>
+<a name="l00734"></a><a class="code" href="group___tile.html#ga38">00734</a> <span class="preprocessor">#define PA_LoadLargeBg(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly) {\</span>
+00735 <span class="preprocessor">PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 1, color_mode);\</span>
+00736 <span class="preprocessor">PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}</span>
+00737 <span class="preprocessor"></span>
+00738 
 00739 
 00740 
-00741 
-<a name="l00772"></a><a class="code" href="group___tile.html#ga39">00772</a> <span class="preprocessor">#define PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\</span>
-00773 <span class="preprocessor">PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 1, color_mode);\</span>
-00774 <span class="preprocessor">PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}</span>
-00775 <span class="preprocessor"></span>
+<a name="l00771"></a><a class="code" href="group___tile.html#ga39">00771</a> <span class="preprocessor">#define PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\</span>
+00772 <span class="preprocessor">PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 1, color_mode);\</span>
+00773 <span class="preprocessor">PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}</span>
+00774 <span class="preprocessor"></span>
+00775 
 00776 
 00777 
-00778 
-00794 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga9">PA_InfLargeScrollX</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x);
+00793 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga9">PA_InfLargeScrollX</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x);
+00794 
 00795 
-00796 
-00812 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga10">PA_InfLargeScrollY</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 y);
+00811 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga10">PA_InfLargeScrollY</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 y);
+00812 
 00813 
 00814 
-00815 
-<a name="l00834"></a><a class="code" href="group___tile.html#ga11">00834</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga11">PA_InfLargeScrollXY</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x, s32 y){
-00835        <a class="code" href="group___tile.html#ga9">PA_InfLargeScrollX</a>(screen, bg_select, x);
-00836        <a class="code" href="group___tile.html#ga10">PA_InfLargeScrollY</a>(screen, bg_select, y);
-00837 }
-00838 
-00854 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga12">PA_LargeScrollX</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x);
+<a name="l00833"></a><a class="code" href="group___tile.html#ga11">00833</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga11">PA_InfLargeScrollXY</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x, s32 y){
+00834        <a class="code" href="group___tile.html#ga9">PA_InfLargeScrollX</a>(screen, bg_select, x);
+00835        <a class="code" href="group___tile.html#ga10">PA_InfLargeScrollY</a>(screen, bg_select, y);
+00836 }
+00837 
+00853 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga12">PA_LargeScrollX</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x);
+00854 
 00855 
-00856 
-00872 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga13">PA_LargeScrollY</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 y);
+00871 <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga13">PA_LargeScrollY</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 y);
+00872 
 00873 
 00874 
-00875 
-<a name="l00894"></a><a class="code" href="group___tile.html#ga14">00894</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga14">PA_LargeScrollXY</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x, s32 y){
-00895        <a class="code" href="group___tile.html#ga12">PA_LargeScrollX</a>(screen, bg_select, x);
-00896        <a class="code" href="group___tile.html#ga13">PA_LargeScrollY</a>(screen, bg_select, y);
-00897 }
+<a name="l00893"></a><a class="code" href="group___tile.html#ga14">00893</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga14">PA_LargeScrollXY</a>(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 x, s32 y){
+00894        <a class="code" href="group___tile.html#ga12">PA_LargeScrollX</a>(screen, bg_select, x);
+00895        <a class="code" href="group___tile.html#ga13">PA_LargeScrollY</a>(screen, bg_select, y);
+00896 }
+00897 
 00898 
 00899 
-00900 
-<a name="l00922"></a><a class="code" href="group___tile.html#ga15">00922</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga15">PA_InitParallaxX</a>(<span class="keywordtype">bool</span> screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
-00923         PA_parallaxX[screen][0] = bg0;
-00924         PA_parallaxX[screen][1] = bg1;
-00925         PA_parallaxX[screen][2] = bg2;
-00926         PA_parallaxX[screen][3] = bg3;
-00927 }
-00928 
-<a name="l00950"></a><a class="code" href="group___tile.html#ga16">00950</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga16">PA_InitParallaxY</a>(<span class="keywordtype">bool</span> screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
-00951         PA_parallaxY[screen][0] = bg0;
-00952         PA_parallaxY[screen][1] = bg1;
-00953         PA_parallaxY[screen][2] = bg2;
-00954         PA_parallaxY[screen][3] = bg3;
-00955 }
+<a name="l00921"></a><a class="code" href="group___tile.html#ga15">00921</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga15">PA_InitParallaxX</a>(<span class="keywordtype">bool</span> screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
+00922         PA_parallaxX[screen][0] = bg0;
+00923         PA_parallaxX[screen][1] = bg1;
+00924         PA_parallaxX[screen][2] = bg2;
+00925         PA_parallaxX[screen][3] = bg3;
+00926 }
+00927 
+<a name="l00949"></a><a class="code" href="group___tile.html#ga16">00949</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga16">PA_InitParallaxY</a>(<span class="keywordtype">bool</span> screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
+00950         PA_parallaxY[screen][0] = bg0;
+00951         PA_parallaxY[screen][1] = bg1;
+00952         PA_parallaxY[screen][2] = bg2;
+00953         PA_parallaxY[screen][3] = bg3;
+00954 }
+00955 
 00956 
 00957 
-00958 
-<a name="l00971"></a><a class="code" href="group___tile.html#ga17">00971</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga17">PA_ParallaxScrollX</a>(<span class="keywordtype">bool</span> screen, s32 x){
-00972 u8 i;
-00973        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
-00974               <span class="keywordflow">if</span> (PA_parallaxX[screen][i])  {
-00975                      <span class="keywordflow">if</span>(scrollpos[screen][i].infscroll) <a class="code" href="group___tile.html#ga9">PA_InfLargeScrollX</a>(screen, i, (PA_parallaxX[screen][i] * x) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
-00976                      <span class="keywordflow">else</span> <a class="code" href="group___tile.html#ga28">PA_BGScrollX</a>(screen, i, (PA_parallaxX[screen][i] * x) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
-00977               }
-00978        }
-00979 }
+<a name="l00970"></a><a class="code" href="group___tile.html#ga17">00970</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga17">PA_ParallaxScrollX</a>(<span class="keywordtype">bool</span> screen, s32 x){
+00971 u8 i;
+00972        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
+00973               <span class="keywordflow">if</span> (PA_parallaxX[screen][i])  {
+00974                      <span class="keywordflow">if</span>(scrollpos[screen][i].infscroll) <a class="code" href="group___tile.html#ga9">PA_InfLargeScrollX</a>(screen, i, (PA_parallaxX[screen][i] * x) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
+00975                      <span class="keywordflow">else</span> <a class="code" href="group___tile.html#ga28">PA_BGScrollX</a>(screen, i, (PA_parallaxX[screen][i] * x) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
+00976               }
+00977        }
+00978 }
+00979 
 00980 
-00981 
-<a name="l00994"></a><a class="code" href="group___tile.html#ga18">00994</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga18">PA_ParallaxScrollY</a>(<span class="keywordtype">bool</span> screen, s32 y){
-00995 u8 i;
-00996        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
-00997               <span class="keywordflow">if</span> (PA_parallaxY[screen][i])  {
-00998                      <span class="keywordflow">if</span>(scrollpos[screen][i].infscroll) <a class="code" href="group___tile.html#ga10">PA_InfLargeScrollY</a>(screen, i, (PA_parallaxY[screen][i] * y) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
-00999                      <span class="keywordflow">else</span> <a class="code" href="group___tile.html#ga29">PA_BGScrollY</a>(screen, i, (PA_parallaxY[screen][i] * y) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
-01000               }
-01001        }
-01002 }
+<a name="l00993"></a><a class="code" href="group___tile.html#ga18">00993</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga18">PA_ParallaxScrollY</a>(<span class="keywordtype">bool</span> screen, s32 y){
+00994 u8 i;
+00995        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
+00996               <span class="keywordflow">if</span> (PA_parallaxY[screen][i])  {
+00997                      <span class="keywordflow">if</span>(scrollpos[screen][i].infscroll) <a class="code" href="group___tile.html#ga10">PA_InfLargeScrollY</a>(screen, i, (PA_parallaxY[screen][i] * y) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
+00998                      <span class="keywordflow">else</span> <a class="code" href="group___tile.html#ga29">PA_BGScrollY</a>(screen, i, (PA_parallaxY[screen][i] * y) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
+00999               }
+01000        }
+01001 }
+01002 
 01003 
-01004 
-<a name="l01020"></a><a class="code" href="group___tile.html#ga19">01020</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga19">PA_ParallaxScrollXY</a>(<span class="keywordtype">bool</span> screen, s32 x, s32 y){
-01021        <a class="code" href="group___tile.html#ga17">PA_ParallaxScrollX</a>(screen, x);
-01022        <a class="code" href="group___tile.html#ga18">PA_ParallaxScrollY</a>(screen, y);
-01023 }
+<a name="l01019"></a><a class="code" href="group___tile.html#ga19">01019</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga19">PA_ParallaxScrollXY</a>(<span class="keywordtype">bool</span> screen, s32 x, s32 y){
+01020        <a class="code" href="group___tile.html#ga17">PA_ParallaxScrollX</a>(screen, x);
+01021        <a class="code" href="group___tile.html#ga18">PA_ParallaxScrollY</a>(screen, y);
+01022 }
+01023 
 01024 
 01025 
-01026 
-<a name="l01042"></a><a class="code" href="group___tile.html#ga20">01042</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga20">PA_SetBgPrio</a>(<span class="keywordtype">bool</span> screen, u8 bg, u8 prio) {
-01043        _REG16(REG_BGCNT(screen, bg)) &amp;= ~3;
-01044        _REG16(REG_BGCNT(screen, bg)) |= prio;
-01045 }
+<a name="l01041"></a><a class="code" href="group___tile.html#ga20">01041</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile.html#ga20">PA_SetBgPrio</a>(<span class="keywordtype">bool</span> screen, u8 bg, u8 prio) {
+01042        _REG16(REG_BGCNT(screen, bg)) &amp;= ~3;
+01043        _REG16(REG_BGCNT(screen, bg)) |= prio;
+01044 }
+01045 
 01046 
-01047 
-01048  <span class="comment">// end of Backgrounds</span>
+01047  <span class="comment">// end of Backgrounds</span>
+01049 
 01050 
 01051 
-01052 
-01053 <span class="comment">// Pas utilisé en direct par le programmaeur</span>
-01054 <span class="keywordtype">void</span> PA_InitLargeBg(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 lx, s32 ly, <span class="keywordtype">void</span>* bg_map);
+01052 <span class="comment">// Pas utilisé en direct par le programmaeur</span>
+01053 <span class="keywordtype">void</span> PA_InitLargeBg(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 lx, s32 ly, <span class="keywordtype">void</span>* bg_map);
+01054 
 01055 
 01056 
-01057 
-01058 <span class="preprocessor">#endif</span>
-01059 <span class="preprocessor"></span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Thu Nov 10 16:56:06 2005 for PAlib by&nbsp;
+01057 <span class="preprocessor">#endif</span>
+01058 <span class="preprocessor"></span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Nov 16 11:56:25 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

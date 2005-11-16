@@ -20,5 +20,8 @@ struct _MOD;	// Forward declaration
 u32 ModFileLoad(const void *modFile, struct _MOD *dest, void *memPool, u32 memPoolSize);
 
 // ----------
+#ifdef __cplusplus
+}
+#endif
 
 #endif	// MODFILE_H

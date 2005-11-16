@@ -75,15 +75,11 @@ static int SortCmpRtn(const VoidPtr Entry1, const VoidPtr Entry2);
  *   Also non of the parameter are allocated by this routine.
  *   This function returns GIF_OK if succesfull, GIF_ERROR otherwise.
  ******************************************************************************/
-int
-QuantizeBuffer(unsigned int Width,
-               unsigned int Height,
-               int *ColorMapSize,
-               GifByteType * RedInput,
-               GifByteType * GreenInput,
-               GifByteType * BlueInput,
-               GifByteType * OutputBuffer,
-               GifColorType * OutputColorMap) {
+int QuantizeBuffer(unsigned int Width, unsigned int Height,
+                   int *ColorMapSize, GifByteType * RedInput,
+                   GifByteType * GreenInput, GifByteType * BlueInput,
+                   GifByteType * OutputBuffer,
+                   GifColorType * OutputColorMap) {
 
     unsigned int Index, NumOfEntries;
     int i, j, MaxRGBError[3];
@@ -150,16 +146,16 @@ QuantizeBuffer(unsigned int Width,
         free((char *)ColorArrayEntries);
         return GIF_ERROR;
     }
-    if (NewColorMapSize < *ColorMapSize) {
+    if ((s32)NewColorMapSize < (s32)*ColorMapSize) {
         /* And clear rest of color map: */
-        for (i = NewColorMapSize; i < *ColorMapSize; i++)
+        for (i = NewColorMapSize; (s32)i < *ColorMapSize; i++)
             OutputColorMap[i].Red = OutputColorMap[i].Green =
                 OutputColorMap[i].Blue = 0;
     }
 
     /* Average the colors in each entry to be the color to be used in the
      * output color map, and plug it into the output color map itself. */
-    for (i = 0; i < NewColorMapSize; i++) {
+    for (i = 0; (u32)i < NewColorMapSize; i++) {
         if ((j = NewColorSubdiv[i].NumEntries) > 0) {
             QuantizedColor = NewColorSubdiv[i].QuantizedColors;
             Red = Green = Blue = 0;

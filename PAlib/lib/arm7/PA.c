@@ -37,6 +37,9 @@ CNTRL_WIDTH  = TOUCH_CNTRL_X2 - TOUCH_CNTRL_X1;
 CNTRL_HEIGHT = TOUCH_CNTRL_Y2 - TOUCH_CNTRL_Y1;
 
 
+//screenlights = (IPC->aux&0xC);  // init the screen lights ok
+
+
 }
 
 

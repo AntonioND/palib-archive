@@ -111,7 +111,7 @@ for (i = 0; (i < n_free_mem[screen]) & !exit; i++) {
       -- n_free_mem[screen];
    }
    
-   PA_SpriteAnimP[screen][truenumber] = obj_data; // mémorise la source de l'image...
+   PA_SpriteAnimP[screen][truenumber] = (u16*)obj_data; // mémorise la source de l'image...
    return truenumber;
 }
 

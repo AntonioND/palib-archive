@@ -508,7 +508,7 @@ EGifPutExtensionFirst(GifFileType * GifFile,
         WRITE(GifFile, Buf, 3);
     }
 
-    WRITE(GifFile, Extension, ExtLen);
+    WRITE(GifFile, (GifByteType *)Extension, ExtLen);
 
     return GIF_OK;
 }
@@ -533,7 +533,7 @@ EGifPutExtensionNext(GifFileType * GifFile,
 
     Buf = ExtLen;
     WRITE(GifFile, &Buf, 1);
-    WRITE(GifFile, Extension, ExtLen);
+    WRITE(GifFile, (GifByteType *)Extension, ExtLen);
 
     return GIF_OK;
 }
@@ -560,7 +560,7 @@ EGifPutExtensionLast(GifFileType * GifFile,
     if (ExtLen > 0) {
         Buf = ExtLen;
         WRITE(GifFile, &Buf, 1);
-        WRITE(GifFile, Extension, ExtLen);
+        WRITE(GifFile, (GifByteType *)Extension, ExtLen);
     }
 
     /* Write the block terminator */
@@ -599,7 +599,7 @@ EGifPutExtension(GifFileType * GifFile,
         Buf[2] = ExtLen;    /* Extension length */
         WRITE(GifFile, Buf, 3);
     }
-    WRITE(GifFile, Extension, ExtLen);
+    WRITE(GifFile, (GifByteType *)Extension, ExtLen);
     Buf[0] = 0;
     WRITE(GifFile, Buf, 1);
 
