@@ -59,14 +59,17 @@ u8 *temp = (u8*)src;
     while (count > 0);
 }
 
+
+
 int DGifGetLineByte(GifFileType *GifFile, GifPixelType *Line, int LineLen){
     GifPixelType LineBuf[1025]; // Buffer temporaire
     if (GifBits == 0) CopyLine(LineBuf, Line, LineLen); // On fait un backup 
     int result = DGifGetLine(GifFile, LineBuf, LineLen); // Nouvelle ligne
-	if (GifBits == 0)   CopyLine(Line, LineBuf, LineLen); // Copie 8 bit
-	if (GifBits == 1)   CopyLine2(Line, LineBuf, LineLen); // Copie 8 bit	
+	if (GifBits == 0) CopyLine(Line, LineBuf, LineLen); // Copie 8 bit
+	if (GifBits == 1) CopyLine2(Line, LineBuf, LineLen); // Copie 8 bit	
     return result;
 }
+
 
 
 #define GAMMA(x)	(x)

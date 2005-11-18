@@ -117,7 +117,17 @@ extern inline void PA_DualLoadSpriteExtPal(u8 palette_number, void* palette){
 	PA_LoadSpriteExtPal(1, palette_number, palette);
 }
 
-
+/*! \fn extern inline void PA_DualSetBgColor(u16 color)
+    \brief
+         \~english Change the background color of both screens
+         \~french Changer la couleur de fond des 2 écrans
+    \param color
+         \~english RGB value, like PA_RGB(31, 31, 31) for white
+         \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
+*/
+extern inline void PA_DualSetBgColor(u16 color){
+	BG_PALETTE[512] = BG_PALETTE[0] = color;
+} 
 
 
 /** @} */ // end of Palette

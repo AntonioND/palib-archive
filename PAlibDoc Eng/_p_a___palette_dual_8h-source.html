@@ -16,14 +16,14 @@
 00014 <span class="preprocessor"></span><span class="preprocessor">#define PAL_SPRITE PAL_SPRITE0</span>
 00015 <span class="preprocessor"></span>
 00016 
-<a name="l00034"></a><a class="code" href="group___palette_dual.html#ga3">00034</a> <span class="preprocessor">#define PA_DualLoadPal(palette, source)  {\</span>
+<a name="l00034"></a><a class="code" href="group___palette_dual.html#ga4">00034</a> <span class="preprocessor">#define PA_DualLoadPal(palette, source)  {\</span>
 00035 <span class="preprocessor">DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);\</span>
 00036 <span class="preprocessor">DMA_Copy((void*)(source+1024), (void*)palette, 256, DMA_16NOW);}</span>
 00037 <span class="preprocessor"></span>
 00038 
 00039 
 00040 
-<a name="l00056"></a><a class="code" href="group___palette_dual.html#ga4">00056</a> <span class="preprocessor">#define PA_DualLoadPal16(palette, n_palette, source) {\</span>
+<a name="l00056"></a><a class="code" href="group___palette_dual.html#ga5">00056</a> <span class="preprocessor">#define PA_DualLoadPal16(palette, n_palette, source) {\</span>
 00057 <span class="preprocessor">DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);\</span>
 00058 <span class="preprocessor">DMA_Copy((void*)source, (void*)(palette + 1024 + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);}</span>
 00059 <span class="preprocessor"></span>
@@ -57,18 +57,20 @@
 00117        <a class="code" href="group___palette.html#ga5">PA_LoadSpriteExtPal</a>(1, palette_number, palette);
 00118 }
 00119 
-00120 
-00121 
-00122  <span class="comment">// end of Palette</span>
-00125 <span class="comment"></span>
-00126 
-00127 
-00128 
-00129 
-00130 <span class="preprocessor">#endif</span>
-00131 <span class="preprocessor"></span>
-00132 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Nov 16 11:56:25 2005 for PAlib by&nbsp;
+<a name="l00128"></a><a class="code" href="group___palette_dual.html#ga3">00128</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___palette_dual.html#ga3">PA_DualSetBgColor</a>(u16 color){
+00129        BG_PALETTE[512] = BG_PALETTE[0] = color;
+00130 } 
+00131 
+00132  <span class="comment">// end of Palette</span>
+00135 <span class="comment"></span>
+00136 
+00137 
+00138 
+00139 
+00140 <span class="preprocessor">#endif</span>
+00141 <span class="preprocessor"></span>
+00142 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Fri Nov 18 14:58:58 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

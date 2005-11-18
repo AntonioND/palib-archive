@@ -370,8 +370,9 @@ DGifGetLine(GifFileType * GifFile,
              * everything before we return: need to flush out all rest of
              * image until empty block (size 0) detected. We use GetCodeNext. */
             do
-                if (DGifGetCodeNext(GifFile, &Dummy) == GIF_ERROR)
-                    return GIF_ERROR;
+				DGifGetCodeNext(GifFile, &Dummy);
+                //if (DGifGetCodeNext(GifFile, &Dummy) == GIF_ERROR)
+                //    return GIF_ERROR;
             while (Dummy != NULL) ;
         }
         return GIF_OK;

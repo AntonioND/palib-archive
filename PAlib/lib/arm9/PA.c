@@ -7,6 +7,7 @@
 #include "PA/PA_Gif.c"
 #include "PA/PA_Interrupt.c"
 #include "PA/PA_Keys.c"
+#include "PA/PA_FS.c"
 #include "PA/PA_GBFS.c"
 #include "PA/video.c"
 #include "PA/PA_Math.c"

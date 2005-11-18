@@ -17,7 +17,7 @@ PA_CreateSprite(0, 0,(void*)vaisseau_Bitmap, OBJ_SIZE_32X32,1, 0, 50, 50);
 
 while(1)
 {
-PA_OutputText(0,0,0,"Stylus X : %d \nStylus Y : %d",Stylus.X,Stylus.Y);
+PA_OutputText(0,0,0,"Stylus X : %d \nStylus Y : %d   ",Stylus.X,Stylus.Y);
 PA_SetSpriteXY(0,0,Stylus.X,Stylus.Y);
 PA_WaitForVBL();
 //La boucle infinie du programme

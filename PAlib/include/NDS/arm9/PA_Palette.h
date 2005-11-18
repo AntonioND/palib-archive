@@ -185,7 +185,7 @@ void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
 
 /*! \def PA_SetBgPalCol(screen, color_number, colorRGB)
     \brief
-         \~english Change de color of one of the background palette colors
+         \~english Change the color of one of the background palette colors
          \~french Changer la couleur d'une des couleurs de la palette des fonds
     \param screen
          \~english Screen...
@@ -201,7 +201,7 @@ void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
 
 /*! \def PA_SetSpritePalCol(screen, color_number, colorRGB)
     \brief
-         \~english Change de color of one of the sprite palette colors
+         \~english Change the color of one of the sprite palette colors
          \~french Changer la couleur d'une des couleurs de la palette des sprites
     \param screen
          \~english Screen...
@@ -214,6 +214,23 @@ void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
          \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
 */
 #define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen << 9)] = colorRGB
+
+
+
+/*! \fn extern inline void PA_SetBgColor(bool screen, u16 color)
+    \brief
+         \~english Change the background color of a given screen
+         \~french Changer la couleur de fond d'un écran
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param color
+         \~english RGB value, like PA_RGB(31, 31, 31) for white
+         \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
+*/
+extern inline void PA_SetBgColor(bool screen, u16 color){
+	BG_PALETTE[screen<<7] = color;
+} 
 
 
 /** @} */ // end of Palette

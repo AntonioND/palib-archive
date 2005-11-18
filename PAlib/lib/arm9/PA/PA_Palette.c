@@ -36,29 +36,34 @@ void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette){
 
 void PA_InitBgExtPal(void) {
 	// Palettes étendus pour les 256 couleurs...
-	vramSetBankF(VRAM_F_BG_EXT_PALETTE);
+	vramSetBankE(VRAM_E_BG_EXT_PALETTE);
 	vramSetBankH(VRAM_H_SUB_BG_EXT_PALETTE);
 	PA_ExtPal[1][0] = 1;
 	PA_ExtPal[1][1] = 1;
 	DISPLAY_CR |= 1 << 30;
 	SUB_DISPLAY_CR |= 1 << 30;
 
-	PA_LoadBgExtPal(0, 0, (void*)PAL_BG0);
-	PA_LoadBgExtPal(1, 0, (void*)PAL_BG1);
+	u8 i;
+	
+	for (i = 0; i < 4; i++){ // On copie la palette partout
+		PA_LoadBgExtPal(0, i, (void*)PAL_BG0);
+		PA_LoadBgExtPal(1, i, (void*)PAL_BG0);	
+	}
+
 }
 
 
 
-void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette){
+void PA_LoadBgExtPal(bool screen, u16 bg_number, void* palette){
 	if (screen == 0) {
-		vramSetBankF(VRAM_F_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
-		DMA_Copy(palette, VRAM_F + (palette_number << 9), 256, DMA_16NOW);
+		vramSetBankF(VRAM_E_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
+		DMA_Copy(palette, VRAM_E + (bg_number << 13), 256, DMA_16NOW);
 
-		vramSetBankF(VRAM_F_BG_EXT_PALETTE);
+		vramSetBankF(VRAM_E_BG_EXT_PALETTE);
 	}
 	else {
 		vramSetBankH(VRAM_H_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
-		DMA_Copy(palette, VRAM_H + (palette_number << 9), 256, DMA_16NOW);
+		DMA_Copy(palette, VRAM_H + (bg_number << 13), 256, DMA_16NOW);
 		vramSetBankH(VRAM_H_SUB_BG_EXT_PALETTE);
 	}
 }

@@ -93,6 +93,7 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 #include "arm9/PA_Palette.h"
 #include "arm9/PA_PaletteDual.h"
 #include "arm9/PA_Save.h"
+#include "arm9/PA_FS.h"
 #include "arm9/PA_GBFS.h"
 #include "arm9/PA_SpecialFx.h"
 

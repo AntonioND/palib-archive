@@ -1,3 +1,22 @@
+PAlib 0.70a : 
+
+[Feature] Here comes the first version of PASpriteConverter !!! Beware, it needs the .Net FrameWork to work... 
+What so great about it ? Nothing much yet, but great things to come... 
+How does it work ? Check out the SpriteConverter example, it's really simple. 
+Why do I think it's better to use it rather than gfx2gba ? 
+	- Because it handles all image formats (jpeg, bmp, png, etc...), and you don't necessarily need to convert your sprite to a 256 paletted sprite... Though if you have too many colors, it'll fail...
+	- You can easily set which color you want as background (Black, White, Green, or Fuschia)
+
+[Feature] PA File System now available !!! What's so great about it ? It's easier to use than GBFS, and takes much less space in Ram (actually, 0, everything goes in the Rom :p), and it supports directories structures !! Currently, only made the PAFS plain example, I'll add the folder example soon, and then convert all the GBFS functions to it. The search functions are already available... PAFS requires the .Net framework in order to work correctly. If you don't have it, either install it, or use GBFS...
+I ended up adding the folder example today, to test if it worked, and saw I had a stupid bug, now everything's perfect :p Haven't converted all the functions yet, though. I'm sort of tired of working on this, so I'll continue next week, and tweak it to have the possibility to add the file system in RAM instead of ROM, for all those WMB users :-)
+
+[Feature] Got extended palettes for backgrounds working !! You can all thank Benny for this, he's the one who got me motivated to do it :p  It took like 5-10 minutes to change the old code I had and make it work, should have done it ages ago !!! Anyways, expect PAlib to have Extended palettes for backgrounds and sprites by default very soon, just the time for me to change the basic palette loading functions...
+
+[Minor Feature] Added PA_SetBgColor(bool screen, u16 color), to set the background color... (thanks to SuperStar again :p), and PA_DualSetBgColor(u16 color), to set it to both screens
+
+[Minor Fix] Corrected the unerased character on some stylus examples, thanks to SuperStar
+
+
 PAlib 0.67a :
 
 [Feature] Now works for C++ projects !!!! Added a CPPInstall.bat, which compiles PAlib to work with C++ projects... This hasn't been fully tested yet, but seems to work :-)  By default, the lib compiles to C, so if you use C++, you'll have to recompile after install...

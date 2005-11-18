@@ -23,12 +23,12 @@
 00023 <span class="preprocessor"></span>
 00024 
 00025 
-<a name="l00043"></a><a class="code" href="group___palette.html#ga7">00043</a> <span class="preprocessor">#define PA_LoadPal(palette, source)   DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);</span>
+<a name="l00043"></a><a class="code" href="group___palette.html#ga8">00043</a> <span class="preprocessor">#define PA_LoadPal(palette, source)   DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);</span>
 00044 <span class="preprocessor"></span>
-<a name="l00060"></a><a class="code" href="group___palette.html#ga8">00060</a> <span class="preprocessor">#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</span>
+<a name="l00060"></a><a class="code" href="group___palette.html#ga9">00060</a> <span class="preprocessor">#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</span>
 00061 <span class="preprocessor"></span>
 00062 
-<a name="l00078"></a><a class="code" href="group___palette.html#ga9">00078</a> <span class="preprocessor">#define PA_RGB(r,g,b) ((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</span>
+<a name="l00078"></a><a class="code" href="group___palette.html#ga10">00078</a> <span class="preprocessor">#define PA_RGB(r,g,b) ((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</span>
 00079 <span class="preprocessor"></span>
 00093 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#ga0">PA_SetBrightness</a>(<span class="keywordtype">bool</span> screen, s8 bright);
 00094 
@@ -66,20 +66,26 @@
 00183 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#ga6">PA_LoadBgExtPal</a>(<span class="keywordtype">bool</span> screen, u16 palette_number, <span class="keywordtype">void</span>* palette);
 00184 
 00185 
-<a name="l00200"></a><a class="code" href="group___palette.html#ga10">00200</a> <span class="preprocessor">#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</span>
+<a name="l00200"></a><a class="code" href="group___palette.html#ga11">00200</a> <span class="preprocessor">#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</span>
 00201 <span class="preprocessor"></span>
-<a name="l00216"></a><a class="code" href="group___palette.html#ga11">00216</a> <span class="preprocessor">#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)] = colorRGB</span>
+<a name="l00216"></a><a class="code" href="group___palette.html#ga12">00216</a> <span class="preprocessor">#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)] = colorRGB</span>
 00217 <span class="preprocessor"></span>
-00218  <span class="comment">// end of Palette</span>
-00221 <span class="comment"></span>
-00222 
-00223 
-00224 
-00225 
-00226 <span class="preprocessor">#endif</span>
-00227 <span class="preprocessor"></span>
-00228 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Nov 16 11:56:25 2005 for PAlib by&nbsp;
+00218 
+00219 
+<a name="l00231"></a><a class="code" href="group___palette.html#ga7">00231</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___palette.html#ga7">PA_SetBgColor</a>(<span class="keywordtype">bool</span> screen, u16 color){
+00232        BG_PALETTE[screen&lt;&lt;7] = color;
+00233 } 
+00234 
+00235  <span class="comment">// end of Palette</span>
+00238 <span class="comment"></span>
+00239 
+00240 
+00241 
+00242 
+00243 <span class="preprocessor">#endif</span>
+00244 <span class="preprocessor"></span>
+00245 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Fri Nov 18 14:58:58 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
