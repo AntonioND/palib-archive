@@ -7,8 +7,9 @@ This second edition demonstrates how to change the animation speed
 
 // Includes, only one sprite
 #include <PA9.h>
-#include "gfx/SpaceShipAnim.raw.c"
-#include "gfx/Sprites.pal.c"
+// PAGfxConverter Include
+#include "gfx/all_gfx.c"
+#include "gfx/all_gfx.h"
 
 
 s16 framecount[4]; //Frame count for 4 different sprites...
@@ -23,12 +24,12 @@ PA_Init();
 PA_InitVBL();
 
 // Load the sprite palette, for both screens
-PA_LoadPal(PAL_SPRITE0, Sprites_Palette);
-PA_LoadPal(PAL_SPRITE1, Sprites_Palette);
+PA_LoadPal(PAL_SPRITE0, sprite0_Pal);
+PA_LoadPal(PAL_SPRITE1, sprite0_Pal);
 
 // Load a few sprites... We'll then animate them at different speeds...
 u8 i = 0;
-for (i = 0; i < 4; i++) PA_CreateSprite(0, i,(void*)SpaceShipAnim_Bitmap, OBJ_SIZE_64X64,1, 0, i << 6, 60);
+for (i = 0; i < 4; i++) PA_CreateSprite(0, i,(void*)SpaceShipAnim_Sprite, OBJ_SIZE_64X64,1, 0, i << 6, 60);
 
 
 

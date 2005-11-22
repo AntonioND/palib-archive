@@ -13,7 +13,7 @@
 // ----------------------
 
 #include <nds.h>
-#include <String.h>
+#include <string.h>
 
 #include "ModFile.h"
 #include "Sound7.h"

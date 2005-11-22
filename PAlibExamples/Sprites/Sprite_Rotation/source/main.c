@@ -2,8 +2,11 @@
 
 // Les Includes
 #include <PA9.h>
-#include "gfx/vaisseau.raw.c"
-#include "gfx/master.pal.c"
+
+
+// PAGfxConverter Include
+#include "gfx/all_gfx.c"
+#include "gfx/all_gfx.h"
 
 //Fonction principale du code
 int main(void)
@@ -14,10 +17,10 @@ PA_Init();
 PA_InitVBL();
 
 // Load the palette
-PA_LoadPal(PAL_SPRITE0, master_Palette);
+PA_LoadPal(PAL_SPRITE0, sprite0_Pal);
 
 // Load the sprite
-PA_CreateSprite(0, 0,(void*)vaisseau_Bitmap, OBJ_SIZE_32X32,1, 0, 50, 50);
+PA_CreateSprite(0, 0,(void*)vaisseau_Sprite, OBJ_SIZE_32X32,1, 0, 50, 50);
 
 // Activate rotations for that sprite
 PA_SetSpriteRotEnable(0,// screen

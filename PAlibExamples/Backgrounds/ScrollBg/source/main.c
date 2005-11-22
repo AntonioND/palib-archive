@@ -5,14 +5,9 @@
 
 
 
-// Graphics Includes
-// *** Backgrounds ***
-// gfx2gba -fsrc -m -pbg.pal -t8 *.bmp
-
-#include "gfx/BG3.map.c" //background files
-#include "gfx/BG3.raw.c"
-#include "gfx/bg.pal.c" // palette file for the background
-
+// Converted using PAGfxConverter
+#include "gfx/all_gfx.c"
+#include "gfx/all_gfx.h"
 
 
 
@@ -23,8 +18,8 @@ int main(int argc, char ** argv)
 	PA_InitVBL(); // Initializes a standard VBL
 	
 	// Load Palettes
-	PA_LoadPal(PAL_BG0, bg_Palette); // Backgrounds
-	PA_LoadPal(PAL_BG1, bg_Palette); // Backgrounds
+	PA_LoadPal(PAL_BG0, bg_Pal); // Backgrounds
+	PA_LoadPal(PAL_BG1, bg_Pal); // Backgrounds
 	
 	PA_InitText(1, 0); // Init text on the top screen, background 0...
 	

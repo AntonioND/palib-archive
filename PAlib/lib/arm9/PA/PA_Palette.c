@@ -56,10 +56,10 @@ void PA_InitBgExtPal(void) {
 
 void PA_LoadBgExtPal(bool screen, u16 bg_number, void* palette){
 	if (screen == 0) {
-		vramSetBankF(VRAM_E_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
+		vramSetBankE(VRAM_E_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
 		DMA_Copy(palette, VRAM_E + (bg_number << 13), 256, DMA_16NOW);
 
-		vramSetBankF(VRAM_E_BG_EXT_PALETTE);
+		vramSetBankE(VRAM_E_BG_EXT_PALETTE);
 	}
 	else {
 		vramSetBankH(VRAM_H_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres

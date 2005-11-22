@@ -11,7 +11,7 @@
 TARGET	    :=	PA_Game
 BUILD		:=	build
 SOURCES	    := data	.
-INCLUDES	:=	../../include/nds ../../include/nds/arm9 build
+INCLUDES	:=	../../include/NDS ../../include/NDS/arm9 build
 
 
 EXPORT_DIR := /c/ndsexamples/

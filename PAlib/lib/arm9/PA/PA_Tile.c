@@ -216,6 +216,7 @@ void PA_DeleteMap(bool screen, u8 bg_select) {
 
 
 
+
 void PA_LargeScrollX(bool screen, u8 bg_select, s32 x){
 s32 i, j, lx, tilex, tempx, tempy;
 lx = scrollpos[screen][bg_select].lx;

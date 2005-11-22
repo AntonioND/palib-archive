@@ -5,13 +5,9 @@
 
 
 
-// Graphics Includes
-// *** Backgrounds ***
-// Be carefull, it's not exactly the same gfx2gba command... 
-// gfx2gba -fsrc -m -pbg.pal -t8 *.bmp 
-#include "gfx/Large.map.c"
-#include "gfx/Large.raw.c"
-#include "gfx/bg.pal.c"
+// Converted using PAGfxConverter
+#include "gfx/all_gfx.c"
+#include "gfx/all_gfx.h"
 
 
 
@@ -25,8 +21,8 @@ int main(int argc, char ** argv)
 	//PA_LoadSplash();  // PA_Lib splash screen
 	
 	// Load Palettes
-	PA_LoadPal(PAL_BG0, bg_Palette); // Backgrounds
-	PA_LoadPal(PAL_BG1, bg_Palette); // Backgrounds
+	PA_LoadPal(PAL_BG0, bg0_Pal); // Backgrounds
+	PA_LoadPal(PAL_BG1, bg0_Pal); // Backgrounds
 	
 	// We'll load this huge (1024x1024) background with a special function 
 	PA_DualLoadLargeBg(3, // background number

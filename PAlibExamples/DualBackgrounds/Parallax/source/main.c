@@ -4,15 +4,8 @@
 
 
 // Graphics Includes
-// *** Backgrounds ***
-// gfx2gba -fsrc -m -pBackgrounds.pal -t8 BG*.bmp
-#include "gfx/BG1.map.c"
-#include "gfx/BG1.raw.c"
-#include "gfx/BG2.map.c"
-#include "gfx/BG2.raw.c"
-#include "gfx/BG3.map.c"
-#include "gfx/BG3.raw.c"
-#include "gfx/Backgrounds.pal.c"
+#include "gfx/all_gfx.c"
+#include "gfx/all_gfx.h"
 
 
 
@@ -26,8 +19,8 @@ int main(int argc, char ** argv)
 	//PA_LoadSplash();  // PA_Lib splash screen
 	
 	// Load Palettes
-	PA_LoadPal(PAL_BG0, Backgrounds_Palette); // Backgrounds
-	PA_LoadPal(PAL_BG1, Backgrounds_Palette); // Backgrounds
+	PA_LoadPal(PAL_BG0, bg_Pal); // Backgrounds
+	PA_LoadPal(PAL_BG1, bg_Pal); // Backgrounds
 	
 	// Load Backgrounds
 	PA_DualLoadSimpleBg(3, BG3_Tiles, BG3_Map, BG_256X256, 0, 1);

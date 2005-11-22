@@ -77,9 +77,9 @@ u32 PA_FSInit(void);
       \~french Extension du fichier (ex : txt). Mettre "" devrait chercher chaque fichier avec le nom donné
 */
 extern inline s32 PA_FSGetFile(s16 start, char *name, char *extension){
-s16 i;
+u16 i;
 
-for (i = start; i < PA_GBFS_nfiles; i++){
+for (i = start; i < PA_FSSys->Nfiles; i++){
 	if (PA_CompareText(PA_FSFile[i].Name, name)&& PA_CompareText(PA_FSFile[i].Ext, extension)) 
 		return i;
 }

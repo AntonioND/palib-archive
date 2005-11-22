@@ -442,7 +442,7 @@ void PA_16bitDraw(bool screen, u16 color);
 */
 #define PA_Load16bitBitmap(screen, bitmap) {u32 PA_temp; \
 for (PA_temp = 0; PA_temp < 256*192; PA_temp++)\
-PA_DrawBg[screen][PA_temp] = bitmap[PA_temp] + (1 << 15);}
+PA_DrawBg[screen][PA_temp] = bitmap[PA_temp] | (1 << 15);}
 
 
 /*! \def PA_Clear8bitBg(screen)

@@ -1,12 +1,12 @@
 // Load an 8 bit bitmap on the DS screen...
-// Gfx2gba command line : gfx2gba -D -fsrc -pbitmap.pal *.bmp
+// Converted using PAlib Gfx Converter
 
 
 // Includes
 #include <PA9.h>       // Include for PA_Lib
 
-#include "bitmap/Photo8bit.raw.c" // Include the picture...
-#include "bitmap/bitmap.pal.c"  // Include the picture's palette...
+#include "bitmap/all_gfx.c" // Include the picture...
+#include "bitmap/all_gfx.h" // Include the picture...
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -21,8 +21,8 @@ int main(int argc, char ** argv)
 	PA_Init8bitBg(0, 3);
 	PA_Init8bitBg(1, 3);
 	
-	PA_LoadPal(PAL_BG0, bitmap_Palette);
-	PA_LoadPal(PAL_BG1, bitmap_Palette);
+	PA_LoadPal(PAL_BG0, bitmap_Pal);
+	PA_LoadPal(PAL_BG1, bitmap_Pal);
 	
 	PA_Load8bitBitmap(0, // screen
 					Photo8bit_Bitmap); // image

@@ -1,3 +1,18 @@
+PAlib 0.71a :
+
+[PAlibTools] Updated PAGfxConverter to version 0.5. This is a MAJOR update, as it supports backgrounds, sprites, and has Kleevah's nice frontend :)
+
+[Examples] Updated all the examples to use PAGfxConverter instead of gfx2gba
+
+[BugFix] Fixed the PA FS Search function, thanks to Seddy :)
+
+[BugFix] Made the changes suggested by Gooler for compiling under linux, sorry for those !
+
+[Bugfix] Corrected the CPPInstall.bat, should work again, sorry !
+
+[Sourceforge] Removed the PAlib minimal and PAlib examples, please use only the complete packages now...
+
+
 PAlib 0.70a : 
 
 [Feature] Here comes the first version of PASpriteConverter !!! Beware, it needs the .Net FrameWork to work... 

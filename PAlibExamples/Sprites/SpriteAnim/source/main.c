@@ -5,8 +5,11 @@ Thanks to http://www.reinerstileset.4players.de:1059/englisch.htm and Arog for t
 
 // Includes, only one sprite
 #include <PA9.h>
-#include "gfx/SpaceShipAnim.raw.c"
-#include "gfx/Sprites.pal.c"
+
+
+// PAGfxConverter Include
+#include "gfx/all_gfx.c"
+#include "gfx/all_gfx.h"
 
 
 s16 framecount; //Frame count...
@@ -21,10 +24,10 @@ PA_Init();
 PA_InitVBL();
 
 // Load the sprite palette, for both screens
-PA_LoadPal(PAL_SPRITE0, Sprites_Palette);
+PA_LoadPal(PAL_SPRITE0, sprite0_Pal);
 
 // Here, we'll load a sprite to animate...
-PA_CreateSprite(0, 0,(void*)SpaceShipAnim_Bitmap, OBJ_SIZE_64X64,1, 0, 64, 64);
+PA_CreateSprite(0, 0,(void*)SpaceShipAnim_Sprite, OBJ_SIZE_64X64,1, 0, 64, 64);
 
 
 
