@@ -23,9 +23,11 @@ int main(void)
 PA_Init();
 PA_InitVBL();
 
-// Load the sprite palette, for both screens
-PA_LoadPal(PAL_SPRITE0, sprite0_Pal);
-PA_LoadPal(PAL_SPRITE1, sprite0_Pal);
+// Load the sprite palette
+	PA_LoadSpritePal(0, // Screen
+					0, // Palette number
+					(void*)sprite0_Pal);	// Palette name
+
 
 // Load a few sprites... We'll then animate them at different speeds...
 u8 i = 0;

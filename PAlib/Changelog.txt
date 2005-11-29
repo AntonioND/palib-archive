@@ -1,3 +1,13 @@
+PAlib 0.72a :
+
+[Feature] Delfare updated the 3d code with some call list functions ! Check the examples :)
+
+[Bugfix] Compilation errors for linux users... again... And added a install.sh for them, too
+
+[Change] Now sets the extended sprites on by default, as it's just better... adapted PA_LoadPal to work with that, and renamed PA_LoadSpriteExtPal to PA_LoadSpritePal (left the ExtPal function for compatibility issues). Updated the sprite examples to take that into account...
+
+
+
 PAlib 0.71a :
 
 [PAlibTools] Updated PAGfxConverter to version 0.5. This is a MAJOR update, as it supports backgrounds, sprites, and has Kleevah's nice frontend :)

@@ -16,9 +16,11 @@ PA_Init();
 PA_InitVBL();
 PA_InitText(1, 0);
 
-// Load the sprite palette, for both screens
-PA_LoadPal(PAL_SPRITE0, master_Palette);
-PA_LoadPal(PAL_SPRITE1, master_Palette);
+// Load the sprite palette
+	PA_LoadSpritePal(0, // Screen
+					0, // Palette number
+					(void*)master_Palette);	// Palette name
+
 
 // Load a few sprites...
 u8 i = 0; 

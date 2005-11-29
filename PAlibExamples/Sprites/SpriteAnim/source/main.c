@@ -23,8 +23,10 @@ int main(void)
 PA_Init();
 PA_InitVBL();
 
-// Load the sprite palette, for both screens
-PA_LoadPal(PAL_SPRITE0, sprite0_Pal);
+// Load the sprite palette, 
+	PA_LoadSpritePal(0, // Screen
+					0, // Palette number
+					(void*)sprite0_Pal);	// Palette name
 
 // Here, we'll load a sprite to animate...
 PA_CreateSprite(0, 0,(void*)SpaceShipAnim_Sprite, OBJ_SIZE_64X64,1, 0, 64, 64);

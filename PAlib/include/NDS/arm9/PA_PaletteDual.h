@@ -32,8 +32,12 @@
          \~french Nom de la palette (ex : master_Palette)
 */
 #define PA_DualLoadPal(palette, source)  {\
-DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);\
-DMA_Copy((void*)(source+1024), (void*)palette, 256, DMA_16NOW);}
+	DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);\
+	DMA_Copy((void*)(source+1024), (void*)palette, 256, DMA_16NOW);\
+	if(palette == PAL_SPRITE){\
+		PA_DualLoadSpriteExtPal(0, (void*)palette);\
+	}\
+}
 
 
 

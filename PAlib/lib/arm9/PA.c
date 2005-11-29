@@ -122,7 +122,9 @@ Blank = (u32*)malloc(130000); // Malloc a big blank chunk
 DMA_Force(temp, Blank, 32500, DMA_32NOW);
 
 
-PA_ResetSpriteSys();
+PA_ResetSpriteSys(); // Init's the sprite system
+PA_InitSpriteExtPal(); // Init's sprite extended palettes
+
 PA_ResetBgSys();
 
 

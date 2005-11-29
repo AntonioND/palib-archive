@@ -308,6 +308,9 @@ glTranslate3f32(floatof32(x),floatof32(y),floatof32(z));
          \~french redimentionnement sur l'axe z
 */
 extern inline void PA_Scale3D(float x, float y, float z){
+if(x==0.0)x=1.0;
+if(y==0.0)y=1.0;
+if(z==0.0)z=1.0;
 MATRIX_SCALE = floatof32(x);
 MATRIX_SCALE = floatof32(y);
 MATRIX_SCALE = floatof32(z);
@@ -369,9 +372,17 @@ extern inline void PA_Vertex2D(int x, int y){
 extern inline void PA_TexCoord(float x, float y){
 glTexCoord1i(TEXTURE_PACK(intot16((int)x),intot16((int)y)));
 }
-
-
-
+struct PA_3DObject{
+u32 *callList;
+float maxx, maxy, maxz, minx, miny, minz;
+float scalex,scaley,scalez;
+};
+int PA_InitCallList(struct PA_3DObject obj);
+int PA_VertexCallList(struct PA_3DObject obj, float x, float y, float z);
+int PA_TexCoordCallList(struct PA_3DObject obj, int x, int y);
+int PA_EndCallList(struct PA_3DObject obj);
+int PA_Draw3Dobject(struct PA_3DObject obj);
+int PA_ScaleCallList(struct PA_3DObject obj, float x, float y, float z);
 /** @} */ // end of 3D
 
 

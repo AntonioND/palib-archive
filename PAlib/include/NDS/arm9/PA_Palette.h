@@ -2,6 +2,9 @@
 #define _PA_Palette
 
 
+void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette);
+
+
 /*! \file PA_Palette.h
     \brief Everything concerning the palette system
 
@@ -40,7 +43,11 @@
          \~english Palette name (ex : master_Palette)
          \~french Nom de la palette (ex : master_Palette)
 */
-#define PA_LoadPal(palette, source)   DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);
+#define PA_LoadPal(palette, source) {\
+	DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);\
+	if (palette == PAL_SPRITE0) PA_LoadSpriteExtPal(0, 0, (void*)source);\
+	if (palette == PAL_SPRITE1) PA_LoadSpriteExtPal(1, 0, (void*)source);\
+}
 
 /*! \def PA_LoadPal16(palette, n_palette, source)
     \brief
@@ -133,8 +140,8 @@ for (i = (n_palette << 4); i < ((n_palette + 1) << 4); i++) pal[i] = ~pal[i]; //
 
 /*! \fn void PA_InitSpriteExtPal(void)
     \brief
-         \~english Initialise 16 palette mode for 256 color sprites
-         \~french Initialise le mode 16 palettes pour sprites de 256 couleurs...
+         \~english Initialise 16 palette mode for 256 color sprites. Done by default
+         \~french Initialise le mode 16 palettes pour sprites de 256 couleurs... Effectué par défaut
 */
 void PA_InitSpriteExtPal(void);
 
@@ -149,10 +156,10 @@ void PA_InitBgExtPal(void);
 
 
 
-/*! \fn void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette)
+/*! \fn void PA_LoadSpritePal(bool screen, u8 palette_number, void* palette)
     \brief
-         \~english Load a 256 color palette in the Sprite extended palettes
-         \~french Charger une palette de 256 couleurs dans les palettes étendues des sprites
+         \~english Load a 256 color palette for Sprites
+         \~french Charger une palette de 256 couleurs pour les sprites
     \param screen
          \~english Screen...
          \~french Ecran...
@@ -163,7 +170,12 @@ void PA_InitBgExtPal(void);
          \~english Palette to load ((void*)palette_name)
          \~french Nom de la palette à charger ((void*)nom_palette)
 */
-void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette);
+extern inline void PA_LoadSpritePal(bool screen, u8 palette_number, void* palette)
+{
+	PA_LoadSpriteExtPal(screen, palette_number, palette);
+}
+
+
 
 
 /*! \fn void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette)
@@ -233,9 +245,9 @@ extern inline void PA_SetBgColor(bool screen, u16 color){
 } 
 
 
+
 /** @} */ // end of Palette
 //////////////////////////////////////////////////////////////////////
-
 
 
 

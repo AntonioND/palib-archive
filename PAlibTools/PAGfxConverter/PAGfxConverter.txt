@@ -37,8 +37,8 @@ Changelog
 
 v0.5
 
-- Better Text output
 - New Frontend, by Kleevah !!
+- Better Text output
 - Completely rewrote lots of the code, new ini format and parser, 
 - Added support for RotScale backgrounds, though untested it should work :)
 - Faster sprite and background conversions, but tile optimising remains desperately slow for backgrounds of more than 1024x1024

@@ -19,7 +19,9 @@ PA_Init();
 PA_InitVBL();
 
 // Load the palette
-PA_LoadPal(PAL_SPRITE0, sprite0_Pal);
+	PA_LoadSpritePal(0, // Screen
+					0, // Palette number
+					(void*)sprite0_Pal);	// Palette name
 
 // Load the sprite
 PA_CreateSprite(0, 0,(void*)vaisseau_Sprite, OBJ_SIZE_32X32,1, 0, 50, 50);

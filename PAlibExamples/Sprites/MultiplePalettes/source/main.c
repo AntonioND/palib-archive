@@ -16,19 +16,12 @@ int main(int argc, char ** argv)
 	PA_Init();    // Initializes PA_Lib
 	PA_InitVBL(); // Initializes a standard VBL
 	
-	//PA_LoadSplash();  // PA_Lib splash screen
 	
-	// Init Extended Palette
-	PA_InitSpriteExtPal();
-	
-	// Load 8bit palettes
-	PA_LoadSpriteExtPal(0,0,(void*)ds_Pal);
-
-	PA_LoadSpriteExtPal(0,1,(void*)giz_Pal);
-	
-	PA_LoadSpriteExtPal(0,2,(void*)gp_Pal);
-	
-	PA_LoadSpriteExtPal(0,3,(void*)psp_Pal);
+	// Load 8bit palettes for sprites...
+	PA_LoadSpritePal(0,0,(void*)ds_Pal);
+	PA_LoadSpritePal(0,1,(void*)giz_Pal);
+	PA_LoadSpritePal(0,2,(void*)gp_Pal);
+	PA_LoadSpritePal(0,3,(void*)psp_Pal);
 	
 	// Create sprites
 	PA_CreateSprite(0,0,(void*)ds_Sprite,OBJ_SIZE_64X64,1,0,PA_Rand()%192,PA_Rand()%128);
