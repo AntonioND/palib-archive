@@ -5,14 +5,14 @@
 #define __ALL_GFX__
 
 
-// Sprite files : 
-
 // Background files : 
-extern const unsigned short BG3_Map[1024];  // Pal : bg_Pal
-extern const unsigned char BG3_Tiles[65536];  // Pal : bg_Pal
+extern int BG3_Width, BG3_Height;
+extern const unsigned short BG3_Map[1024];  // Pal : BG3_Pal
+extern const unsigned char BG3_Tiles[65536];  // Pal : BG3_Pal
+
 
 // Palette files : 
-extern const unsigned short bg_Pal[63];
+extern const unsigned short BG3_Pal[63];
 
 #endif
 

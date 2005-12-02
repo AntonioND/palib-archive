@@ -2,6 +2,10 @@
 #define _PA_PaletteDual
 
 
+// Left for backwards compatibility
+#define PA_DualLoadSpriteExtPal(palette_number, palette) PA_DualLoadSpritePal(u8 palette_number, void* palette)
+
+
 /*! \file PA_PaletteDual.h
     \brief Everything concerning the palette system, for both screens at once
 
@@ -105,10 +109,10 @@ u16 i;
 
 
 
-/*! \fn extern inline void PA_DualLoadSpriteExtPal(u8 palette_number, void* palette)
+/*! \fn extern inline void PA_DualLoadSpritePal(u8 palette_number, void* palette)
     \brief
-         \~english Load a 256 color palette in the Sprite extended palettes
-         \~french Charger une palette de 256 couleurs dans les palettes étendues des sprites
+         \~english Load a 256 color palette in the Sprite palettes
+         \~french Charger une palette de 256 couleurs dans les palettes des sprites
     \param palette_number
          \~english Palette number (0-15)
          \~french Numéro de la palette (0-15)
@@ -116,10 +120,29 @@ u16 i;
          \~english Palette to load ((void*)palette_name)
          \~french Nom de la palette à charger ((void*)nom_palette)
 */
-extern inline void PA_DualLoadSpriteExtPal(u8 palette_number, void* palette){
+extern inline void PA_DualLoadSpritePal(u8 palette_number, void* palette){
 	PA_LoadSpriteExtPal(0, palette_number, palette);
 	PA_LoadSpriteExtPal(1, palette_number, palette);
 }
+
+/*! \fn extern inline void PA_DualLoadBgPal(u8 bg_number, void* palette)
+    \brief
+         \~english Load a 256 color palette for a given background
+         \~french Charger une palette de 256 couleurs pour un fond
+    \param bg_number
+         \~english Background number (0-3)
+         \~french Numéro du fond (0-3)
+    \param palette
+         \~english Palette to load ((void*)palette_name)
+         \~french Nom de la palette à charger ((void*)nom_palette)
+*/
+extern inline void PA_DualLoadBgPal(u8 bg_number, void* palette){
+	PA_LoadBgPal(0, bg_number, palette);
+	PA_LoadBgPal(1, bg_number, palette);
+}
+
+
+
 
 /*! \fn extern inline void PA_DualSetBgColor(u16 color)
     \brief

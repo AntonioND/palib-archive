@@ -8,6 +8,9 @@
 <a class="qindex" href="index.html">Main&nbsp;Page</a> | <a class="qindex" href="modules.html">Modules</a> | <a class="qindex" href="files.html">File&nbsp;List</a> | <a class="qindex" href="globals.html">Globals</a>  | <span class="search"><u>S</u>earch&nbsp;for&nbsp;<input class="search" type="text" name="query" value="" size="20" accesskey="s"/></span></form></div>
 <h1>3D functions</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Data Structures</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_3DObject</b></td></tr>
+
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="D::PA_Init3D"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga0">PA_Init3D</a> (void)</td></tr>
@@ -64,6 +67,24 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga16">PA_TexCoord</a> (float x, float y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">use the tex coord  <a href="#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="D::PA_InitCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_InitCallList</b> (struct PA_3DObject obj)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="D::PA_VertexCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_VertexCallList</b> (struct PA_3DObject obj, float x, float y, float z)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="D::PA_TexCoordCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_TexCoordCallList</b> (struct PA_3DObject obj, int x, int y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="D::PA_EndCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EndCallList</b> (struct PA_3DObject obj)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="D::PA_Draw3Dobject"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Draw3Dobject</b> (struct PA_3DObject obj)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga22" doxytag="D::PA_ScaleCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_ScaleCallList</b> (struct PA_3DObject obj, float x, float y, float z)</td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Say thanks to Delfare for all these ! And check out <a href="http://delfare.pizz.biz">http://delfare.pizz.biz</a> for how to use them... <hr><h2>Function Documentation</h2>
@@ -849,7 +870,7 @@ create a vertex without floatov16
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Fri Nov 18 14:58:59 2005 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Fri Dec 2 13:03:19 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

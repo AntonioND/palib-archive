@@ -9,21 +9,27 @@
 <h1>Bg Modes on 2 Screens</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga20">PA_DualLoadSimpleBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga20">PA_DualLoadTiledBg</a>(bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond sur les 2 écrans  <a href="#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga21">PA_DualLoadRotBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs. Sur 2 écrans, comme un seul grand  <a href="#ga20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga21">PA_DualLoadSimpleBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs  <a href="#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga22">PA_DualLoadBg</a>(bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond sur les 2 écrans  <a href="#ga21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga22">PA_DualLoadRotBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga23">PA_DualLoadLargeBg</a>(bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs  <a href="#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga23">PA_DualLoadBg</a>(bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), sur les 2 écrans  <a href="#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga24">PA_DualLoadLargeBgEx</a>(bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap  <a href="#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga24">PA_DualLoadPAGfxLargeBg</a>(bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles  <a href="#ga24"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx. Fond sur les 2 écrans comme un seul  <a href="#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga25">PA_DualLoadLargeBg</a>(bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), sur les 2 écrans  <a href="#ga25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga26">PA_DualLoadLargeBgEx</a>(bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles  <a href="#ga26"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga0">PA_DualHideBg</a> (u8 bg_select)</td></tr>
 
@@ -89,7 +95,7 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DualLargeScrollY</
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentation des macro</h2>
-<a class="anchor" name="ga22" doxytag="PA_TileDual.h::PA_DualLoadBg"></a><p>
+<a class="anchor" name="ga23" doxytag="PA_TileDual.h::PA_DualLoadBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -133,8 +139,8 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga27">PA_LoadBg</a>(0, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\
-<a class="code" href="group___tile.html#ga27">PA_LoadBg</a>(1, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\
+<a class="code" href="group___tile.html#ga28">PA_LoadBg</a>(0, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\
+<a class="code" href="group___tile.html#ga28">PA_LoadBg</a>(1, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\
 <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_select, 0);}
 </pre></div>Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap 
 <p>
@@ -152,7 +158,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga23" doxytag="PA_TileDual.h::PA_DualLoadLargeBg"></a><p>
+<a class="anchor" name="ga25" doxytag="PA_TileDual.h::PA_DualLoadLargeBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -193,8 +199,8 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga38">PA_LoadLargeBg</a>(0, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\
-<a class="code" href="group___tile.html#ga38">PA_LoadLargeBg</a>(1, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\
+<a class="code" href="group___tile.html#ga39">PA_LoadLargeBg</a>(0, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\
+<a class="code" href="group___tile.html#ga39">PA_LoadLargeBg</a>(1, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\
 <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(bg_select, 0);}
 </pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), sur les 2 écrans 
 <p>
@@ -211,7 +217,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga24" doxytag="PA_TileDual.h::PA_DualLoadLargeBgEx"></a><p>
+<a class="anchor" name="ga26" doxytag="PA_TileDual.h::PA_DualLoadLargeBgEx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -255,8 +261,8 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga39">PA_LoadLargeBgEx</a>(0, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\
-<a class="code" href="group___tile.html#ga39">PA_LoadLargeBgEx</a>(1, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\
+<a class="code" href="group___tile.html#ga41">PA_LoadLargeBgEx</a>(0, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\
+<a class="code" href="group___tile.html#ga41">PA_LoadLargeBgEx</a>(1, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\
 <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(bg_select, 0);}
 </pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles 
 <p>
@@ -274,7 +280,50 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga21" doxytag="PA_TileDual.h::PA_DualLoadRotBg"></a><p>
+<a class="anchor" name="ga24" doxytag="PA_TileDual.h::PA_DualLoadPAGfxLargeBg"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_DualLoadPAGfxLargeBg          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bg_number,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>bg_name&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<b>Valeur:</b><div class="fragment"><pre class="fragment">{\
+       <a class="code" href="group___tile.html#ga40">PA_LoadPAGfxLargeBg</a>(0, bg_number, bg_name);\
+       <a class="code" href="group___tile.html#ga40">PA_LoadPAGfxLargeBg</a>(1, bg_number, bg_name);\
+       <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(bg_number, 0);}
+</pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx. Fond sur les 2 écrans comme un seul 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Nom du fond dans PAGfx </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga22" doxytag="PA_TileDual.h::PA_DualLoadRotBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -312,8 +361,8 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga26">PA_LoadRotBg</a>(0, bg_select, bg_tiles, bg_map, bg_size, wraparound);\
-<a class="code" href="group___tile.html#ga26">PA_LoadRotBg</a>(1, bg_select, bg_tiles, bg_map, bg_size, wraparound);\
+<a class="code" href="group___tile.html#ga27">PA_LoadRotBg</a>(0, bg_select, bg_tiles, bg_map, bg_size, wraparound);\
+<a class="code" href="group___tile.html#ga27">PA_LoadRotBg</a>(1, bg_select, bg_tiles, bg_map, bg_size, wraparound);\
 <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_select, 0);}
 </pre></div>Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs 
 <p>
@@ -329,7 +378,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga20" doxytag="PA_TileDual.h::PA_DualLoadSimpleBg"></a><p>
+<a class="anchor" name="ga21" doxytag="PA_TileDual.h::PA_DualLoadSimpleBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -370,8 +419,8 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga25">PA_LoadSimpleBg</a>(0, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\
-<a class="code" href="group___tile.html#ga25">PA_LoadSimpleBg</a>(1, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\
+<a class="code" href="group___tile.html#ga26">PA_LoadSimpleBg</a>(0, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\
+<a class="code" href="group___tile.html#ga26">PA_LoadSimpleBg</a>(1, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\
 <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_select, 0);}
 </pre></div>Facon la plus simple de cahrger un fond sur les 2 écrans 
 <p>
@@ -383,6 +432,49 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Documentatio
     <tr><td valign="top"></td><td valign="top"><em>bg_size</em>&nbsp;</td><td>Taille du fond. Pour un fond normal, on utilise les macros BG_256X256, BG_256X512, etc... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>wraparound</em>&nbsp;</td><td>Si le fond boucle ou non. C'est plus important pour les fonds rotatifs... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Nombre de couleurs : 0 pour 16 couleurs, 1 pour 256 </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga20" doxytag="PA_TileDual.h::PA_DualLoadTiledBg"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_DualLoadTiledBg          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bg_number,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>bg_name&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<b>Valeur:</b><div class="fragment"><pre class="fragment">{\
+       <a class="code" href="group___tile.html#ga25">PA_LoadTiledBg</a>(0, bg_number, bg_name);\
+       <a class="code" href="group___tile.html#ga25">PA_LoadTiledBg</a>(1, bg_number, bg_name);\
+       <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_number, 0);}
+</pre></div>On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs. Sur 2 écrans, comme un seul grand 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Nom du fond, comme bg0 </td></tr>
   </table>
 </dl>
     </td>
@@ -1153,7 +1245,7 @@ Afficher un fond auparavant caché sur les 2 écrans
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Fri Nov 18 14:59:07 2005 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Fri Dec 2 13:03:28 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

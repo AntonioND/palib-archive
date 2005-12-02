@@ -1,5 +1,8 @@
 //Background converted using Mollusk's PAImageConverter
-//This Background uses bg0_Pal
+//This Background uses Large_Pal
+
+int Large_Width = 1024;
+int Large_Height = 1024;
 
 const unsigned short Large_Map[16384] __attribute__ ((aligned (4))) = {
 0, 1, 2, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 

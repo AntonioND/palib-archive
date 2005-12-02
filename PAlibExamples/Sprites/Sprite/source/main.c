@@ -1,13 +1,9 @@
-//copyright smealum http://jvteamds.free.fr
-// Les Includes
 #include <PA9.h>
-
 
 // PAGfxConverter Include
 #include "gfx/all_gfx.c"
 #include "gfx/all_gfx.h"
 
-//Fonction principale du code
 int main(void){
 
 	PA_Init(); //PAlib inits

@@ -216,18 +216,18 @@
 00570 
 <a name="l00592"></a><a class="code" href="group___sprite.html#ga10">00592</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga10">PA_SetRotset</a>(<span class="keywordtype">bool</span> screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy) {
 00593 u8 obj_num = (rotset &lt;&lt; 2);
-00594        PA_obj[screen][obj_num].atr3 = (<a class="code" href="group___math.html#ga7">PA_Cos</a>(angle) * zoomx) &gt;&gt; 8;
-00595        PA_obj[screen][obj_num + 1].atr3 = (-<a class="code" href="group___math.html#ga8">PA_Sin</a>(angle) * zoomy) &gt;&gt; 8;
-00596        PA_obj[screen][obj_num + 2].atr3 = (<a class="code" href="group___math.html#ga8">PA_Sin</a>(angle) * zoomx) &gt;&gt; 8;
-00597        PA_obj[screen][obj_num + 3].atr3 = (<a class="code" href="group___math.html#ga7">PA_Cos</a>(angle) * zoomy) &gt;&gt; 8;
+00594        PA_obj[screen][obj_num].atr3 = (<a class="code" href="group___math.html#ga9">PA_Cos</a>(angle) * zoomx) &gt;&gt; 8;
+00595        PA_obj[screen][obj_num + 1].atr3 = (-<a class="code" href="group___math.html#ga10">PA_Sin</a>(angle) * zoomy) &gt;&gt; 8;
+00596        PA_obj[screen][obj_num + 2].atr3 = (<a class="code" href="group___math.html#ga10">PA_Sin</a>(angle) * zoomx) &gt;&gt; 8;
+00597        PA_obj[screen][obj_num + 3].atr3 = (<a class="code" href="group___math.html#ga9">PA_Cos</a>(angle) * zoomy) &gt;&gt; 8;
 00598 }
 00599 
 <a name="l00614"></a><a class="code" href="group___sprite.html#ga11">00614</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga11">PA_SetRotsetNoZoom</a>(<span class="keywordtype">bool</span> screen, u8 rotset, s16 angle)   {
 00615 u8 obj_num = (rotset &lt;&lt; 2);
-00616        PA_obj[screen][obj_num].atr3 = <a class="code" href="group___math.html#ga7">PA_Cos</a>(angle);
-00617        PA_obj[screen][obj_num + 1].atr3 = -<a class="code" href="group___math.html#ga8">PA_Sin</a>(angle);
-00618        PA_obj[screen][obj_num + 2].atr3 = <a class="code" href="group___math.html#ga8">PA_Sin</a>(angle);
-00619        PA_obj[screen][obj_num + 3].atr3 = <a class="code" href="group___math.html#ga7">PA_Cos</a>(angle);
+00616        PA_obj[screen][obj_num].atr3 = <a class="code" href="group___math.html#ga9">PA_Cos</a>(angle);
+00617        PA_obj[screen][obj_num + 1].atr3 = -<a class="code" href="group___math.html#ga10">PA_Sin</a>(angle);
+00618        PA_obj[screen][obj_num + 2].atr3 = <a class="code" href="group___math.html#ga10">PA_Sin</a>(angle);
+00619        PA_obj[screen][obj_num + 3].atr3 = <a class="code" href="group___math.html#ga9">PA_Cos</a>(angle);
 00620 }
 00621 
 <a name="l00639"></a><a class="code" href="group___sprite.html#ga12">00639</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga12">PA_SetRotsetNoAngle</a>(<span class="keywordtype">bool</span> screen, u8 rotset, u16 zoomx, u16 zoomy) {
@@ -401,7 +401,7 @@
 01305 <span class="preprocessor">#endif</span>
 01306 <span class="preprocessor"></span>
 01307 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Nov 18 14:59:05 2005 pour PAlib par&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Dec 2 13:03:26 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

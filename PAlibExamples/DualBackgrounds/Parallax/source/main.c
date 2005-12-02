@@ -18,14 +18,10 @@ int main(int argc, char ** argv)
 	
 	//PA_LoadSplash();  // PA_Lib splash screen
 	
-	// Load Palettes
-	PA_LoadPal(PAL_BG0, bg_Pal); // Backgrounds
-	PA_LoadPal(PAL_BG1, bg_Pal); // Backgrounds
-	
-	// Load Backgrounds
-	PA_DualLoadSimpleBg(3, BG3_Tiles, BG3_Map, BG_256X256, 0, 1);
-	PA_DualLoadSimpleBg(2, BG2_Tiles, BG2_Map, BG_256X256, 0, 1);
-	PA_DualLoadSimpleBg(1, BG1_Tiles, BG1_Map, BG_256X256, 0, 1);
+	// Load the 4 Backgrounds on the bottom screen...
+	PA_DualLoadTiledBg(1, BG1);	 //background number, background name
+	PA_DualLoadTiledBg(2, BG2);	
+	PA_DualLoadTiledBg(3, BG3);	
 	
 
 	// Initialise parallax vertically (Y axis) for both backgrounds

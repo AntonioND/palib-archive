@@ -17,18 +17,9 @@ int main(int argc, char ** argv)
 	PA_Init();    // Initializes PA_Lib
 	PA_InitVBL(); // Initializes a standard VBL
 	
-	// Load Palettes
-	PA_LoadPal(PAL_BG0, bg_Pal); // Backgrounds
-	PA_LoadPal(PAL_BG1, bg_Pal); // Backgrounds
-	
-
-	// Load Backgrounds
-	PA_DualLoadSimpleBg(3, // background number (0-3)
-						BG3_Tiles, // name of the background tiles given by gfx2gba
-						BG3_Map, // same thing for the map
-						BG_256X256, // background size (can also be 512X256, 256X512, or 512X512
-					0, // Leave this to 0 :)  only used for rotating backgrounds
-					1); // 256 color mode... set to 0 for 16 color mode
+	// Load the dual background...
+	PA_DualLoadTiledBg(3, //bg number
+						BG3);	//background name
 
 	s32 scrollx = 0; // No X scroll by default...
 	s32 scrolly = 0; // No Y scroll by default...

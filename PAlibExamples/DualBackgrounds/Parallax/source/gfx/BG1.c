@@ -1,5 +1,8 @@
 //Background converted using Mollusk's PAImageConverter
-//This Background uses bg_Pal
+//This Background uses BG1_Pal
+
+int BG1_Width = 256;
+int BG1_Height = 256;
 
 const unsigned short BG1_Map[1024] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 

@@ -9,7 +9,7 @@
 <h1>Palette system</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga8">PA_LoadPal</a>(palette, source)&nbsp;&nbsp;&nbsp;DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga8">PA_LoadPal</a>(palette, source)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 256 couleurs pour les fonds ou les sprites pour l'écran 0 ou 1. Ex : <a class="el" href="group___palette.html#ga8">PA_LoadPal(PALETTE_BG1, bg_pal)</a>;  <a href="#ga8"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga9">PA_LoadPal16</a>(palette, n_palette, source)&nbsp;&nbsp;&nbsp;DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</td></tr>
@@ -37,17 +37,17 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga3" doxytag="Palette::PA_InitSpriteExtPal"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga3">PA_InitSpriteExtPal</a> (void)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le mode 16 palettes pour sprites de 256 couleurs... <br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le mode 16 palettes pour sprites de 256 couleurs... Effectué par défaut <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga4" doxytag="Palette::PA_InitBgExtPal"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga4">PA_InitBgExtPal</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le mode 16 palettes pour fonds de 256 couleurs... <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga5">PA_LoadSpriteExtPal</a> (bool screen, u16 palette_number, void *palette)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga5">PA_LoadSpritePal</a> (bool screen, u8 palette_number, void *palette)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 256 couleurs dans les palettes étendues des sprites  <a href="#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga6">PA_LoadBgExtPal</a> (bool screen, u16 palette_number, void *palette)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 256 couleurs pour les sprites  <a href="#ga5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga6">PA_LoadBgPal</a> (bool screen, u16 bg_number, void *palette)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 256 couleurs dans les palettes étendues les fonds  <a href="#ga6"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 256 couleurs dans les palettes des fonds  <a href="#ga6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga7">PA_SetBgColor</a> (bool screen, u16 color)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la couleur de fond d'un écran  <a href="#ga7"></a><br></td></tr>
@@ -68,7 +68,7 @@ Load palettes, change palette colors, set the gamma, etc... <hr><h2>Documentatio
           <td class="md" nowrap>source&nbsp;</td>
           <td class="mdname1" valign="top" nowrap>          </td>
           <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);</td>
+          <td class="md" nowrap></td>
         </tr>
       </table>
     </td>
@@ -82,7 +82,13 @@ Load palettes, change palette colors, set the gamma, etc... <hr><h2>Documentatio
     <td>
 
 <p>
-Charger une palette de 256 couleurs pour les fonds ou les sprites pour l'écran 0 ou 1. Ex : <a class="el" href="group___palette.html#ga8">PA_LoadPal(PALETTE_BG1, bg_pal)</a>; 
+<b>Valeur:</b><div class="fragment"><pre class="fragment">{\
+       DMA_Copy((<span class="keywordtype">void</span>*)source, (<span class="keywordtype">void</span>*)palette, 256, DMA_16NOW);\
+       <span class="keywordflow">if</span> (palette == PAL_SPRITE0) <a class="code" href="group___palette.html#ga5">PA_LoadSpritePal</a>(0, 0, (<span class="keywordtype">void</span>*)source);\
+       <span class="keywordflow">if</span> (palette == PAL_SPRITE1) <a class="code" href="group___palette.html#ga5">PA_LoadSpritePal</a>(1, 0, (<span class="keywordtype">void</span>*)source);\
+       <span class="keywordflow">if</span> (palette == PAL_BG0) {u8 itemp; <span class="keywordflow">for</span> (itemp = 0; itemp &lt; 4; itemp++) <a class="code" href="group___palette.html#ga6">PA_LoadBgPal</a>(0, itemp, (<span class="keywordtype">void</span>*)source);}\
+       <span class="keywordflow">if</span> (palette == PAL_BG1) {u8 itemp; <span class="keywordflow">for</span> (itemp = 0; itemp &lt; 4; itemp++) <a class="code" href="group___palette.html#ga6">PA_LoadBgPal</a>(1, itemp, (<span class="keywordtype">void</span>*)source);}}
+</pre></div>Charger une palette de 256 couleurs pour les fonds ou les sprites pour l'écran 0 ou 1. Ex : <a class="el" href="group___palette.html#ga8">PA_LoadPal(PALETTE_BG1, bg_pal)</a>; 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -267,13 +273,13 @@ Changer la couleur d'une des couleurs de la palette des sprites
   </tr>
 </table>
 <hr><h2>Documentation des fonctions</h2>
-<a class="anchor" name="ga6" doxytag="PA_Palette.h::PA_LoadBgExtPal"></a><p>
+<a class="anchor" name="ga6" doxytag="PA_Palette.h::PA_LoadBgPal"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_LoadBgExtPal           </td>
+          <td class="md" nowrap valign="top">void PA_LoadBgPal           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -282,7 +288,7 @@ Changer la couleur d'une des couleurs de la palette des sprites
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
           <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>palette_number</em>, </td>
+          <td class="mdname" nowrap> <em>bg_number</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
@@ -293,7 +299,7 @@ Changer la couleur d'une des couleurs de la palette des sprites
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -307,25 +313,25 @@ Changer la couleur d'une des couleurs de la palette des sprites
     <td>
 
 <p>
-Charger une palette de 256 couleurs dans les palettes étendues les fonds 
+Charger une palette de 256 couleurs dans les palettes des fonds 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>palette_number</em>&nbsp;</td><td>Numéro de la palette (0-15) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond (0-3) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Nom de la palette à charger ((void*)nom_palette) </td></tr>
   </table>
 </dl>
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga5" doxytag="PA_Palette.h::PA_LoadSpriteExtPal"></a><p>
+<a class="anchor" name="ga5" doxytag="PA_Palette.h::PA_LoadSpritePal"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_LoadSpriteExtPal           </td>
+          <td class="md" nowrap valign="top">void PA_LoadSpritePal           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -333,7 +339,7 @@ Charger une palette de 256 couleurs dans les palettes étendues les fonds
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>u16&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>palette_number</em>, </td>
         </tr>
         <tr>
@@ -345,7 +351,7 @@ Charger une palette de 256 couleurs dans les palettes étendues les fonds
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -359,7 +365,7 @@ Charger une palette de 256 couleurs dans les palettes étendues les fonds
     <td>
 
 <p>
-Charger une palette de 256 couleurs dans les palettes étendues des sprites 
+Charger une palette de 256 couleurs pour les sprites 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -541,7 +547,7 @@ Négativer une palette donnée. Pour annuler, il suffit de négativer à nouveau.
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Fri Nov 18 14:59:06 2005 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Fri Dec 2 13:03:27 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

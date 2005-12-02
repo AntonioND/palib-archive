@@ -3,8 +3,6 @@
 //This file contains all the .c, for easier inclusion in a project
 
 
-// Sprite files : 
-
 // Background files : 
 #include "bg0.c"
 

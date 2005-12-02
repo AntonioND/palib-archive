@@ -126,6 +126,7 @@ PA_ResetSpriteSys(); // Init's the sprite system
 PA_InitSpriteExtPal(); // Init's sprite extended palettes
 
 PA_ResetBgSys();
+PA_InitBgExtPal(); // Init's bg extended palettes
 
 
 WAIT_CR &= ~(1 << 7);

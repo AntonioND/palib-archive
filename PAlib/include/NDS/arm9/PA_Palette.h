@@ -3,6 +3,7 @@
 
 
 void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette);
+void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
 
 
 /*! \file PA_Palette.h
@@ -45,9 +46,11 @@ void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette);
 */
 #define PA_LoadPal(palette, source) {\
 	DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);\
-	if (palette == PAL_SPRITE0) PA_LoadSpriteExtPal(0, 0, (void*)source);\
-	if (palette == PAL_SPRITE1) PA_LoadSpriteExtPal(1, 0, (void*)source);\
-}
+	if (palette == PAL_SPRITE0) PA_LoadSpritePal(0, 0, (void*)source);\
+	if (palette == PAL_SPRITE1) PA_LoadSpritePal(1, 0, (void*)source);\
+	if (palette == PAL_BG0) {u8 itemp; for (itemp = 0; itemp < 4; itemp++) PA_LoadBgPal(0, itemp, (void*)source);}\
+	if (palette == PAL_BG1) {u8 itemp; for (itemp = 0; itemp < 4; itemp++) PA_LoadBgPal(1, itemp, (void*)source);}}
+
 
 /*! \def PA_LoadPal16(palette, n_palette, source)
     \brief
@@ -178,21 +181,24 @@ extern inline void PA_LoadSpritePal(bool screen, u8 palette_number, void* palett
 
 
 
-/*! \fn void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette)
+/*! \fn void PA_LoadBgPal(bool screen, u16 bg_number, void* palette)
     \brief
-         \~english Load a 256 color palette in the Background extended palettes
-         \~french Charger une palette de 256 couleurs dans les palettes étendues les fonds
+         \~english Load a 256 color palette in the Background palettes
+         \~french Charger une palette de 256 couleurs dans les palettes des fonds
     \param screen
          \~english Screen...
          \~french Ecran...
-    \param palette_number
-         \~english Palette number (0-15)
-         \~french Numéro de la palette (0-15)
+    \param bg_number
+         \~english Background number (0-3)
+         \~french Numéro du fond (0-3)
     \param palette
          \~english Palette to load ((void*)palette_name)
          \~french Nom de la palette à charger ((void*)nom_palette)
 */
-void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
+extern inline void PA_LoadBgPal(bool screen, u16 bg_number, void* palette){
+	PA_LoadBgExtPal(screen, bg_number, palette);
+}
+
 
 
 /*! \def PA_SetBgPalCol(screen, color_number, colorRGB)

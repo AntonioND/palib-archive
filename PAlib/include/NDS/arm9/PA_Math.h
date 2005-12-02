@@ -59,12 +59,45 @@ extern inline void PA_SRand(s32 r) {
    RandomValue = r;
 }
 
+
 /*! \fn u32 PA_Rand(void)
     \brief
          \~english Gives a random number, taken from Ham... This is taken from Ham, I have no credit. 
          \~french Donne un numéro aléatoire... Ceci est pris de Ham, je n'ai aucun mérite. 
 */
 u32 PA_Rand(void);
+
+
+/*! \fn extern inline u32 PA_RandMax(u32 max)
+    \brief
+         \~english Gives a random number, between 0 and the given number (included)
+         \~french Donne un numéro aléatoire... Entre 0 et le nombre donné (inclus)
+    \param max
+         \~english Maximum included value
+         \~french Valeur maximale incluse
+*/
+extern inline u32 PA_RandMax(u32 max)
+{
+    return PA_Rand()%(max + 1);
+}
+
+
+
+/*! \fn extern inline u32 PA_RandMinMax(u32 min,u32 max)
+    \brief
+         \~english Gives a random number, between the 2 given numbers (included)
+         \~french Donne un numéro aléatoire... Entre les 2 nombres donnés (inclus)
+   \param min
+         \~english Minimum included value
+         \~french Valeur minimale incluse 
+   \param max
+         \~english Maximum included value
+         \~french Valeur maximale incluse
+*/
+extern inline u32 PA_RandMinMax(u32 min,u32 max)
+{
+    return ((PA_Rand()%((max + 1)-min)) + min);
+} 
 
 
 /*! \fn extern inline u32 PA_Distance(s32 x1, s32 y1, s32 x2, s32 y2)

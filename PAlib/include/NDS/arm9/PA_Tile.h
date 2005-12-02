@@ -1,6 +1,14 @@
 #ifndef _PA_Tile
 #define _PA_Tile
 
+// Extracts the size from PAGfx convertions
+extern inline u8 PA_GePAGfxBgSize(u16 width, u16 height)
+{
+	u8 bg_size = 0;
+	if (height == 512)	bg_size = 2;
+	if (width == 512)	bg_size ++;	
+	return bg_size;
+}
 
 /*! \file PA_Tile.h
     \brief Everything concerning the Bg Tile modes
@@ -319,11 +327,36 @@ void PA_LoadBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size);
 
 
 
+
+
+/*!
+    \def PA_LoadTiledBg(screen, bg_number, bg_name)
+    \brief
+      \~english This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available. 
+      \~french On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
+    \param bg_name
+      \~english Background name, like bg0
+      \~french Nom du fond, comme bg0
+*/
+
+#define PA_LoadTiledBg(screen, bg_number, bg_name){\
+	PA_LoadBgPal(screen, bg_number, (void*)bg_name##_Pal); \
+	PA_LoadSimpleBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GePAGfxBgSize(bg_name##_Width, bg_name##_Height), 0, 1);}
+
+
+
+
 /*!
     \def PA_LoadSimpleBg(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)
     \brief
-      \~english Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap
-      \~french Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap
+      \~english Simple way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap
+      \~french Facon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -735,6 +768,27 @@ extern inline void PA_SetLargeMapTile(bool screen, u8 bg_select, s32 x, s32 y, u
 PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 1, color_mode);\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
+
+
+
+/*!
+    \def PA_LoadPAGfxLargeBg(screen, bg_number, bg_name)
+    \brief
+      \~english Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx
+      \~french Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (0-3)
+   \param  bg_name
+       \~english Background name, in PAGfx
+      \~french Nom du fond dans PAGfx 
+*/
+#define PA_LoadPAGfxLargeBg(screen, bg_number, bg_name){\
+	PA_LoadBgPal(screen, bg_number, (void*)bg_name##_Pal); \
+	PA_LoadLargeBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Width) >> 3, (bg_name##_Height) >> 3);}
 
 
 

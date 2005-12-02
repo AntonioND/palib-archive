@@ -83,6 +83,30 @@ extern inline void PA_DualDeleteBg(u8 bg_select){
 
 
 
+
+
+/*!
+    \def PA_DualLoadTiledBg(bg_number, bg_name)
+    \brief
+      \~english This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available. On 2 screens as 1...
+      \~french On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs. Sur 2 écrans, comme un seul grand
+    \param bg_number
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
+    \param bg_name
+      \~english Background name, like bg0
+      \~french Nom du fond, comme bg0
+*/
+#define PA_DualLoadTiledBg(bg_number, bg_name){\
+	PA_LoadTiledBg(0, bg_number, bg_name);\
+	PA_LoadTiledBg(1, bg_number, bg_name);\
+	PA_DualBGScrollY(bg_number, 0);}
+
+
+
+
+
+
 /*!
     \def PA_DualLoadSimpleBg(bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)
     \brief
@@ -248,8 +272,22 @@ extern inline void PA_DualBGScrollXY(u8 bg_number, s16 x, s16 y) {
 
 
 
-
-
+/*!
+    \def PA_DualLoadPAGfxLargeBg(bg_number, bg_name)
+    \brief
+      \~english Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx. Background on both screens, as one
+      \~french Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx. Fond sur les 2 écrans comme un seul
+    \param bg_number
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (0-3)
+   \param  bg_name
+       \~english Background name, in PAGfx
+      \~french Nom du fond dans PAGfx 
+*/
+#define PA_DualLoadPAGfxLargeBg(bg_number, bg_name){\
+	PA_LoadPAGfxLargeBg(0, bg_number, bg_name);\
+	PA_LoadPAGfxLargeBg(1, bg_number, bg_name);\
+	PA_DualInfLargeScrollY(bg_number, 0);}
 
 
 

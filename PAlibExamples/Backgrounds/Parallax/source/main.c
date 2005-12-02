@@ -16,19 +16,10 @@ int main(int argc, char ** argv)
 	PA_Init();    // Initializes PA_Lib
 	PA_InitVBL(); // Initializes a standard VBL
 	
-	//PA_LoadSplash();  // PA_Lib splash screen
-	
-	// Load Palettes
-	PA_LoadPal(PAL_BG0, bg_Pal); // Backgrounds
-	PA_LoadPal(PAL_BG1, bg_Pal); // Backgrounds
-	
-	// Load Backgrounds
-	PA_LoadSimpleBg(0, 3, BG3_Tiles, BG3_Map, BG_256X256, 0, 1);
-	PA_LoadSimpleBg(0, 2, BG2_Tiles, BG2_Map, BG_256X256, 0, 1);
-	PA_LoadSimpleBg(0, 1, BG1_Tiles, BG1_Map, BG_256X256, 0, 1);
-	PA_LoadSimpleBg(1, 3, BG3_Tiles, BG3_Map, BG_256X256, 0, 1);
-	PA_LoadSimpleBg(1, 2, BG2_Tiles, BG2_Map, BG_256X256, 0, 1);
-	PA_LoadSimpleBg(1, 1, BG1_Tiles, BG1_Map, BG_256X256, 0, 1);
+	// Load the 4 Backgrounds on the bottom screen...
+	PA_LoadTiledBg(0, 1, BG1);	//screen, background number, background name
+	PA_LoadTiledBg(0, 2, BG2);	
+	PA_LoadTiledBg(0, 3, BG3);	
 	
 
 	// Initialise parallax vertically (Y axis) for both backgrounds
@@ -48,11 +39,9 @@ int main(int argc, char ** argv)
 	{
 		scroll += 1; // Scroll by one pixel... 
 		// Backgrounds with a parallax speed of 256 will scroll 1 pixel, 192 will scroll 0.75, and 128 0.5
-		// We could also have put a negative parallax speed to have some backgrounds scroll in different directions
-		
+		// We could also have put a negative parallax speed to have some backgrounds scroll in different directions	
 		
 		PA_ParallaxScrollY(0, -scroll);  // Scroll the screen 0 backgrounds. 
-		PA_ParallaxScrollY(1, -scroll + 128);	 //	Screen 1... We'll add 128 to make them scroll from a different point
 
 		PA_WaitForVBL();
 	}

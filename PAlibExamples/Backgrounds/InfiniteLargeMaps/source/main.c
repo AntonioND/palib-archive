@@ -5,12 +5,9 @@
 #include <PA9.h>       // Include for PA_Lib
 
 
-
 // Converted using PAGfxConverter
 #include "gfx/all_gfx.c"
 #include "gfx/all_gfx.h"
-
-
 
 
 // Function: main()
@@ -21,18 +18,10 @@ int main(int argc, char ** argv)
 	
 	//PA_LoadSplash();  // PA_Lib splash screen
 	
-	// Load Palettes
-	PA_LoadPal(PAL_BG0, bg0_Pal); // Backgrounds
-	PA_LoadPal(PAL_BG1, bg0_Pal); // Backgrounds
-	
-	// We'll load this huge (1024x1024) background with a special function 
-	PA_LoadLargeBg(0, // screen
-				   3, // background number
-				   Large_Tiles, // Tiles...
-				   Large_Map, // Map...
-				   1, // 256 color mode
-				   128, // width in tiles, 1024/8 => 128
-				   128); // Same thing for height...
+	// Load a large scrolling background converted with PAGfx... 
+	PA_LoadPAGfxLargeBg(0, //screen
+						3, //background number (0-3)
+						Large); // Name
 	
 	// Next we'll scroll, here are the variables...
 	s32 scrollx = 0; 

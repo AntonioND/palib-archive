@@ -1,3 +1,15 @@
+PAlib 0.73a :
+
+[Change] Extended Palettes now used by default for backgrounds (load them with PA_LoadBgPal(screen, bg_number, pal)). The old PA_LoadPal is left for backwards compatibility but should not be used anymore
+
+[PAGfx Update] Integrates better with PAlib Background functions
+
+[Feature] MAJOR update for the background system, has been greatly simplified with PAGfx ! I recommend everyone to go check the simple LoadBgs example to see how it now works. In order to have correct palette names, please do not input palette names for the backgrounds...  PA_LoadTiledBg and PA_LoadPAGfxLargeBg(screen, bg_number, bg_name)...
+
+[Feature] Added 2 random functions (PA_RandMax and PA_RandMinMax), thanks to SuperStar
+
+
+
 PAlib 0.72a :
 
 [Feature] Delfare updated the 3d code with some call list functions ! Check the examples :)

@@ -1,0 +1,12 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+No palette name found for file Large.bmp, the palette Large will be given to him...
+Transparent Color : Magenta
+
+1 backgrounds :
+  Large : LargeMap, 1024x1024, Pal : Large_Pal, 243 tiles -> Large_Tiles and Large_Map
+
+1 palettes :
+  Large_Pal, 28 colors
+
+Finished !

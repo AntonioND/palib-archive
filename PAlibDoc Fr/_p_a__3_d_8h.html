@@ -12,6 +12,9 @@
 <p>
 <a href="_p_a__3_d_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_3DObject</b></td></tr>
+
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_3D.h::texPCX"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>texPCX</b>&nbsp;&nbsp;&nbsp;1</td></tr>
@@ -75,6 +78,24 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga16">PA_TexCoord</a> (float x, float y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">utilise les coordonnees de texture en reglant un probleme de ndslib  <a href="group___d.html#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="PA_3D.h::PA_InitCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_InitCallList</b> (struct PA_3DObject obj)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="PA_3D.h::PA_VertexCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_VertexCallList</b> (struct PA_3DObject obj, float x, float y, float z)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="PA_3D.h::PA_TexCoordCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_TexCoordCallList</b> (struct PA_3DObject obj, int x, int y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="PA_3D.h::PA_EndCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EndCallList</b> (struct PA_3DObject obj)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="PA_3D.h::PA_Draw3Dobject"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Draw3Dobject</b> (struct PA_3DObject obj)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga22" doxytag="PA_3D.h::PA_ScaleCallList"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_ScaleCallList</b> (struct PA_3DObject obj, float x, float y, float z)</td></tr>
+
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_3D.h::PAlib"></a>
 const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAlib</b> []</td></tr>
@@ -104,7 +125,7 @@ float&nbsp;</td><td class="memItemRight" valign="bottom"><b>viseeZ</b></td></tr>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 les fonctions 3D tuto : <a href="http://delfare.pizz.biz/">http://delfare.pizz.biz/</a> 
 <p>
-<hr size="1"><address style="align: right;"><small>Généré le Fri Nov 18 14:59:05 2005 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Fri Dec 2 13:03:26 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
