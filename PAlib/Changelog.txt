@@ -1,3 +1,9 @@
+
+PAlib 0.73b :
+
+[Bugfix] I think I broke the text functions in .73a, with the extended palettes... this is now fixed
+
+
 PAlib 0.73a :
 
 [Change] Extended Palettes now used by default for backgrounds (load them with PA_LoadBgPal(screen, bg_number, pal)). The old PA_LoadPal is left for backwards compatibility but should not be used anymore
