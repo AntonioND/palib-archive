@@ -136,6 +136,47 @@ REG_IME = 0x01;
 }
 
 
+
+
+void PA_UpdateSpriteAnims(void)
+{
+u16 anims = nspriteanims;
+u8 currentsprite = 0;
+u8 screen = 0;
+//	PA_SetSpriteAnimEx(screen, sprite, , PA_GetSpriteLy(screen, sprite), //PA_GetSpriteColors(screen, sprite), animframe);
+
+
+while((anims > 0) && (currentsprite < 128))
+{
+	for (screen = 0; screen < 2; screen++){
+		if (spriteanims[screen][currentsprite].play)
+		{
+			spriteanims[screen][currentsprite].time += spriteanims[screen][currentsprite].speed;
+			if (spriteanims[screen][currentsprite].time >= 60) 
+			{
+				while (spriteanims[screen][currentsprite].time >= 60)
+				{
+					spriteanims[screen][currentsprite].time -= 60;
+					spriteanims[screen][currentsprite].currentframe++;
+					if (spriteanims[screen][currentsprite].currentframe > spriteanims[screen][currentsprite].lastframe)
+						spriteanims[screen][currentsprite].currentframe = spriteanims[screen][currentsprite].firstframe;
+				}
+				
+				PA_SetSpriteAnimEx(screen, currentsprite, spriteanims[screen][currentsprite].lx, spriteanims[screen][currentsprite].ly, spriteanims[screen][currentsprite].colors, spriteanims[screen][currentsprite].currentframe);
+				
+			}
+			anims--; // Une de faite !
+		}
+	}
+	currentsprite++; // next sprite...
+}
+
+}
+
+
+
+
+
 void PA_vblFunc(void){
 
 PA_UpdateOAM(); // Updates the Object on screen
@@ -144,6 +185,9 @@ PA_UpdateStylus(); // Updates the stylus input
 PA_UpdateMoveSprite(); // Met à jour les infos sur les déplacements de sprites
 PA_UpdateRTC(); // Mise à jour de l'horloge...
 PA_Newframe = 1; // Synch prog to screen
+
+PA_UpdateSpriteAnims(); // Update the sprite animations...
+
 /*
 ++PA_nVBLs;
 ++PA_VBLCount;

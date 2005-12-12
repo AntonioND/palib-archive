@@ -22,6 +22,7 @@ extern u8 PA_VBLCount; // Compte le nombre de VBL avant qu'on en arrive à un tou
 extern u8 PA_nVBLs;
 
 
+
 //Interrupt Registers
 #ifndef REG_IME
 	#define REG_IME *(u32*)0x04000208

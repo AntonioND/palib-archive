@@ -117,6 +117,27 @@ extern unsigned char *PA_SpriteBuffer[MAX_DRAW]; // Pointeurs vers les buffers  
 extern u16 *PA_SpriteAnimP[2][1024];
 
 
+extern s16 nspriteanims; // Number of animated sprites currently...
+typedef struct{
+	u16 firstframe, lastframe, currentframe; // frames...
+	u16 time; // Time...
+	u8 lx, ly; // Sprite sizes
+	bool colors; 
+	s16 speed;
+	bool play;
+} spriteanim;
+extern spriteanim *spriteanims[2]; // Init the array on PAlib init...
+
+//#define spriteanimsize 40
+
+
+
+
+
+
+
+
+
 
 #define OAM0 0x07000000
 #define OAM1 0x07000400
@@ -212,8 +233,8 @@ void PA_ResetSpriteSys(void);
          \~english 256 or 16 color mode (1 or 0).
          \~french Mode 256 ou 16 couleurs (1 ou 0).
      \param palette
-         \~english Palette to use (0-15). Leave to 0 if in 256 color mode...
-         \~french Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs.
+         \~english Palette to use (0-15).
+         \~french Palette à utiliser (0-15).
     \param x
          \~english X position of the sprite
          \~french Position X du sprite
@@ -250,8 +271,8 @@ extern inline void PA_CreateSprite(bool screen, u8 obj_number, void* obj_data, u
          \~english 256 or 16 color mode (1 or 0).
          \~french Mode 256 ou 16 couleurs (1 ou 0).
      \param palette
-         \~english Palette to use (0-15). Leave to 0 if in 256 color mode...
-         \~french Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs.
+         \~english Palette to use (0-15). 
+         \~french Palette à utiliser (0-15).
     \param obj_mode
          \~english Object mode (normal, transparent, window). Not functionnal yet, please leave to 0 for now
          \~french Mode du sprite (normal, transparent, fenetre). Pas encore opérationnel, laisser à 0...
@@ -401,8 +422,8 @@ PA_Create16bitSpriteEx(screen, obj_number, obj_data, obj_shape, obj_size, 0, 0, 
          \~english 256 or 16 color mode (1 or 0).
          \~french Mode 256 ou 16 couleurs (1 ou 0).
      \param palette
-         \~english Palette to use (0-15). Leave to 0 if in 256 color mode...
-         \~french Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs.
+         \~english Palette to use (0-15). 
+         \~french Palette à utiliser (0-15). 
     \param x
          \~english X position of the sprite
          \~french Position X du sprite
@@ -440,8 +461,8 @@ extern inline void PA_CreateSpriteFromGfx(bool screen, u8 obj_number, u16 obj_gf
          \~english 256 or 16 color mode (1 or 0).
          \~french Mode 256 ou 16 couleurs (1 ou 0).
      \param palette
-         \~english Palette to use (0-15). Leave to 0 if in 256 color mode...
-         \~french Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs.
+         \~english Palette to use (0-15).
+         \~french Palette à utiliser (0-15).
     \param obj_mode
          \~english Object mode (normal, transparent, window). Not functionnal yet, please leave to 0 for now
          \~french Mode du sprite (normal, transparent, fenetre). Pas encore opérationnel, laisser à 0...
@@ -741,8 +762,8 @@ extern inline void PA_SetSpriteXY(bool screen, u8 sprite, s16 x, s16 y) {
 
 /*! \def PA_SetSpritePal(screen, obj, pal)
     \brief
-         \~english Set the 16 color palette used by a sprite
-         \~french Changer la palette de 16 couleurs d'un sprite
+         \~english Set the sprite's palette number
+         \~french Changer la palette d'un sprite
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -757,8 +778,8 @@ extern inline void PA_SetSpriteXY(bool screen, u8 sprite, s16 x, s16 y) {
 
 /*! \def PA_GetSpritePal(screen, obj)
     \brief
-         \~english Get the 16 color palette used by a sprite
-         \~french Palette de 16 couleurs d'un sprite
+         \~english Get thepalette used by a sprite
+         \~french Palette d'un sprite
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -1108,6 +1129,90 @@ extern inline void PA_SetSpriteAnim(bool screen, u8 sprite, s16 animframe){
 	PA_SetSpriteAnimEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteLy(screen, sprite), PA_GetSpriteColors(screen, sprite), animframe);
 }
 
+
+
+
+/*! \fn void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)
+    \brief
+         \~english Start a sprite animation. Once started, it continues on and on by itself until you stop it !
+         \~french Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	 
+    \param firstframe
+         \~english First frame of the animation sequence, most of the time 0...
+         \~french Premières image de l'animation, généralement 0....
+    \param lastframe
+         \~english Last frame to be displayed. When it gets there, it loops back to the first frame
+         \~french Dernière image à afficher. Une fois atteinte, ca retourne à la première
+    \param speed
+         \~english Speed, in frames per second. So speed 1 would mean 1 image per second, so 1 image every game frame
+         \~french Vitesse, en frames par seconde (fps). 1 signifie donc 1 image par seconde... 
+*/
+void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed);
+
+
+
+/*! \fn extern inline void PA_StopSpriteAnim(bool screen, u8 sprite)
+    \brief
+         \~english Stop a sprite animation
+         \~french Arrêter une animation de sprite
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	
+*/
+extern inline void PA_StopSpriteAnim(bool screen, u8 sprite)
+{
+	if (spriteanims[screen][sprite].play) nspriteanims--;
+	spriteanims[screen][sprite].play = 0;
+}
+
+
+
+
+/*! \fn extern inline u16 PA_GetSpriteAnimFrame(bool screen, u8 sprite)
+    \brief
+         \~english Returns the current animation frame number
+         \~french Renvoie le numéro actuel de la frame d'animation
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	 
+*/
+extern inline u16 PA_GetSpriteAnimFrame(bool screen, u8 sprite)
+{
+	return spriteanims[screen][sprite].currentframe;
+}
+
+
+/*! \fn extern inline u16 PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)
+    \brief
+         \~english Pause or UnPause a sprite animation
+         \~french Mettre en Pause en remettre en lecture une animation de sprite
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	
+     \param pause
+         \~english 1 for pause, 0 for unpause
+         \~french 1 pour pause, 0 pour reprendre la lecture...
+*/
+extern inline void PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)
+{
+	if (pause&&spriteanims[screen][sprite].play) nspriteanims--;
+	else if ((!pause)&&(!spriteanims[screen][sprite].play)) nspriteanims++;
+	spriteanims[screen][sprite].play = !pause;
+}
 
 
 

@@ -1,0 +1,12 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+No palette name found for file PA_text.png, the palette PA_text will be given to him...
+Transparent Color : Black
+
+1 backgrounds :
+  PA_text : TileBg, 256x72, Pal : PA_text_Pal, 94 tiles -> PA_text_Tiles and PA_text_Map
+
+1 palettes :
+  PA_text_Pal, 6 colors
+
+Finished !

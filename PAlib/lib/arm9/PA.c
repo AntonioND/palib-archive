@@ -122,6 +122,9 @@ Blank = (u32*)malloc(130000); // Malloc a big blank chunk
 DMA_Force(temp, Blank, 32500, DMA_32NOW);
 
 
+// Sprite inits...
+spriteanims[0] = (spriteanim*)malloc(sizeof(spriteanim)<<7); // Allocate the sprite animation memory
+spriteanims[1] = (spriteanim*)malloc(sizeof(spriteanim)<<7);
 PA_ResetSpriteSys(); // Init's the sprite system
 PA_InitSpriteExtPal(); // Init's sprite extended palettes
 
@@ -134,27 +137,27 @@ WAIT_CR &= ~(1 << 7);
 PA_UpdateRTC();
 PA_SRand(35329 + PA_RTC.Minutes + PA_RTC.Seconds + PA_RTC.Hour + PA_RTC.Day);
 
-PA_SetTextCol(0, 31, 31, 31);
-PA_SetTextCol(1, 31, 31, 31);
-
 Stylus.X = 128;
 Stylus.Y = 96;
 
 PA_ResetInterrupts();
 
 
-PA_SetBrightness(0, 0); PA_SetBrightness(1, 0); // On affiche les écrans
+u8 i;
 
-	PA_font[0] = 0;
-	PA_textmap[0] = (u16*)PA_font_Map;
-	PA_texttiles[0] = (u16*)PA_font_Tiles;
-	PA_font[1] = 0;
-	PA_textmap[1] = (u16*)PA_font_Map;
-	PA_texttiles[1] = (u16*)PA_font_Tiles;
+for (i = 0; i < 2; i++){
+	PA_SetBrightness(i, 0); // On affiche les écrans
+
+	PA_font[i] = 0;
+	PA_textmap[i] = (u16*)PA_text_Map;
+	PA_texttiles[i] = (u8*)PA_text_Tiles;
+	PA_textpal[i] = (u16*)PA_text_Pal;	
+}
+
 
 PA_UpdateUserInfo();
 
-PA_SetScreenSpace(48);
+PA_SetScreenSpace(48); // Default spacing
 
 }
 

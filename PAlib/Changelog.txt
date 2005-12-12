@@ -1,3 +1,14 @@
+PAlib 0.74a :
+
+[Feature] Added the new sprite animation code ! Check out the example to see how to use 
+PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed (in fps)), PA_StopSpriteAnim(bool screen, u8 sprite), PA_GetSpriteAnimFrame(bool screen, u8 sprite), PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)
+
+[Bugfix] The Text was still broken on hardware, in fact !!! Now it works better... andThis is a temporary fix, which removes custom fonts
+
+[Bugfix] Added the semicolon to PA_Save16bit (yes !)
+
+[Examples] Reworte part of some examples to remove french text and organize them better, added a few examples to go with the wiki...
+
 
 PAlib 0.73b :
 

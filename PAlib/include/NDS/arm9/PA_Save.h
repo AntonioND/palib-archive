@@ -37,7 +37,7 @@
          \~french Valeur à enregistrer...
 */
 
-#define PA_Save16bit(offset, value) {PA_Save8bit(offset, value&255); PA_Save8bit(offset + 1, value >> 8)}
+#define PA_Save16bit(offset, value) {PA_Save8bit(offset, value&255); PA_Save8bit(offset + 1, value >> 8);}
 
 /*! \def PA_Save32bit(offset, value)
     \brief

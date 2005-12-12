@@ -104,6 +104,16 @@ void PA_ScreenLight(void){
 }
 
 
+void PA_Poweroff(void)
+{
+	SerialWaitBusy();
+    REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz | SPI_CONTINUOUS;
+    REG_SPIDATA = 0;
+    SerialWaitBusy();
+    REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz;
+    REG_SPIDATA = PM_SYSTEM_PWR;
+}
+
 
 /*
 void InterruptHandler(void) {

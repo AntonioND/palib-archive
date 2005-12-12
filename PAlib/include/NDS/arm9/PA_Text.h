@@ -12,23 +12,21 @@
 //#include "../PA.h"
 #include "PA_Tile.h"
 
+#include "../../../lib/arm9/PA/Text/all_gfx.h" // Include the text !
+
 
 //////////////////////////////////////////////////////////////////////
 // Système pour le texte
 //////////////////////////////////////////////////////////////////////
 
-extern const u16 PA_font_Map[256];
-extern const u8 PA_font_Tiles[6080];
-
-extern const u16 PA_font2_Map[256];
-extern const u8 PA_font2_Tiles[6016];
 
 extern u16 textcol[2]; // Garde en mémoire la couleur du texte
 extern u8 PAbgtext[2];
 
 
 extern u16 *PA_textmap[2]; //Pointeur vers la map et les tiles...
-extern u16 *PA_texttiles[2];
+extern u8 *PA_texttiles[2];
+extern u16 *PA_textpal[2];
 
 extern s8 PA_font[2];  // 0 pour normal, 1 pour dégradé, -1 pour custom
 

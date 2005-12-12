@@ -75,8 +75,8 @@ s16 y0 = 192; s16 y1 = 192;
          \~english 256 or 16 color mode (1 or 0).
          \~french Mode 256 ou 16 couleurs (1 ou 0).
      \param palette
-         \~english Palette to use (0-15). Leave to 0 if in 256 color mode...
-         \~french Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs.
+         \~english Palette to use (0-15).
+         \~french Palette à utiliser (0-15). 
     \param x
          \~english X position of the sprite
          \~french Position X du sprite
@@ -110,8 +110,8 @@ extern inline void PA_DualCreateSprite(u8 obj_number, void* obj_data, u8 obj_sha
          \~english 256 or 16 color mode (1 or 0).
          \~french Mode 256 ou 16 couleurs (1 ou 0).
      \param palette
-         \~english Palette to use (0-15). Leave to 0 if in 256 color mode...
-         \~french Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs.
+         \~english Palette to use (0-15). 
+         \~french Palette à utiliser (0-15). 
     \param obj_mode
          \~english Object mode (normal, transparent, window). Not functionnal yet, please leave to 0 for now
          \~french Mode du sprite (normal, transparent, fenetre). Pas encore opérationnel, laisser à 0...
@@ -254,8 +254,8 @@ PA_DualCreate16bitSpriteEx(obj_number, obj_data, obj_shape, obj_size, 0, 0, 0, 0
          \~english 256 or 16 color mode (1 or 0).
          \~french Mode 256 ou 16 couleurs (1 ou 0).
      \param palette
-         \~english Palette to use (0-15). Leave to 0 if in 256 color mode...
-         \~french Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs.
+         \~english Palette to use (0-15). 
+         \~french Palette à utiliser (0-15). 
     \param x
          \~english X position of the sprite
          \~french Position X du sprite
@@ -289,8 +289,8 @@ PA_DualSetSpriteY(obj_number, y);
          \~english 256 or 16 color mode (1 or 0).
          \~french Mode 256 ou 16 couleurs (1 ou 0).
      \param palette
-         \~english Palette to use (0-15). Leave to 0 if in 256 color mode...
-         \~french Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs.
+         \~english Palette to use (0-15). 
+         \~french Palette à utiliser (0-15). 
     \param obj_mode
          \~english Object mode (normal, transparent, window). Not functionnal yet, please leave to 0 for now
          \~french Mode du sprite (normal, transparent, fenetre). Pas encore opérationnel, laisser à 0...
@@ -525,8 +525,8 @@ extern inline void PA_DualSetSpriteXY(u8 sprite, s16 x, s16 y) {
 
 /*! \fn extern inline void PA_DualSetSpritePal(u8 obj, u8 pal)
     \brief
-         \~english Set the 16 color palette used by a sprite
-         \~french Changer la palette de 16 couleurs d'un sprite
+         \~english Set the color palette used by a sprite
+         \~french Changer la palette d'un sprite
     \param obj
          \~english Object number in the sprite system
          \~french Numéro de l'objet dans le systeme de sprite

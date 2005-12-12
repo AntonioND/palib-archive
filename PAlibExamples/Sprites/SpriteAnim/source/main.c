@@ -16,40 +16,38 @@ s16 framecount; //Frame count...
 
 
 // Main function
-int main(void)
-
-{
-// PAlib init
-PA_Init();
-PA_InitVBL();
-
-// Load the sprite palette, 
+int main(void)	{
+	// PAlib init
+	PA_Init();
+	PA_InitVBL();
+	
+	PA_InitText(1, 0);
+	
+	// Load the sprite palette, 
 	PA_LoadSpritePal(0, // Screen
 					0, // Palette number
 					(void*)sprite0_Pal);	// Palette name
-
-// Here, we'll load a sprite to animate...
-PA_CreateSprite(0, 0,(void*)SpaceShipAnim_Sprite, OBJ_SIZE_64X64,1, 0, 64, 64);
-
-
-
-
-while(1)
-{
-	++framecount;
-	if (framecount == 4) framecount = 0; // There are 4 different frames, return to 0 when at the last frame...
-
-	PA_SetSpriteAnim(0, // Screen
-					0, // Sprite to animate
-					framecount); // and the frame to set !
-	// Note that there's a 	PA_SetSpriteAnimEx function. It works the same, but is faster, because
-	// you input yourself the sprite dimensions and color mode.
-	// PA_SetSpriteAnimEx(screen, sprite, lx, ly, color_mode, anim);
-					
 	
-PA_WaitForVBL();
+	// Here, we'll load a few similar sprites sprite to animate... at different speed
+	PA_CreateSprite(0, 0,(void*)SpaceShipAnim_Sprite, OBJ_SIZE_64X64,1, 0, 0, 64);
+	PA_CreateSprite(0, 1,(void*)SpaceShipAnim_Sprite, OBJ_SIZE_64X64,1, 0, 64, 64);	
+	PA_CreateSprite(0, 2,(void*)SpaceShipAnim_Sprite, OBJ_SIZE_64X64,1, 0, 128, 64);	
+	PA_CreateSprite(0, 3,(void*)SpaceShipAnim_Sprite, OBJ_SIZE_64X64,1, 0, 196, 64);		
+	
+	// Start the animation. Once started, it works on its own !
+	PA_StartSpriteAnim(0, // screen
+						0, // sprite number
+						0, // first frame is 0
+						3, // last frame is 3, since we have 4 frames...
+						5); // Speed, set to 5 frames per second						
+	PA_StartSpriteAnim(0, 1, 0, 3, 15); // for the second one, speed of 15 fps...	
+	PA_StartSpriteAnim(0, 2, 0, 3, 30); // for the third one, speed of 30 fps...	
+	PA_StartSpriteAnim(0, 3, 0, 3, 60); // for the last one, speed of 60 fps...
 
-
-}
-return 0;
+	while(1)
+	{
+		PA_WaitForVBL();
+	}
+	
+	return 0;
 }

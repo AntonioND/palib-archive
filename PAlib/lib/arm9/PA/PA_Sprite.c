@@ -12,6 +12,10 @@ mem_usage free_mem[2][1024];
 u16 FirstGfx[2] = {0, 0};
 
 
+s16 nspriteanims = 0; // Number of animated sprites currently...
+spriteanim *spriteanims[2]; // Init the array on PAlib init...
+
+
 const PA_sizes PA_size[3][4] = {{{8, 8}, {16, 16}, {32, 32}, {64, 64}}, {{16, 8}, {32, 8}, {32, 16}, {64, 32}}, {{8, 16}, {8, 32}, {16, 32}, {32, 64}}};
 
 
@@ -74,6 +78,13 @@ for (i = 0; i < 2; i++) {
 }
 FirstGfx[0] = 0;
 FirstGfx[1] = 0;
+
+nspriteanims = 0; // No animations...
+for (i = 0; i < 2; i++) {
+	for(n = 0; n < 128; n++) {
+		spriteanims[i][n].play = 0;
+	}
+}
 
 }
 
@@ -381,6 +392,44 @@ PA_DrawSprite[draw_number].x = x;
 PA_DrawSprite[draw_number].y = y;
 //PA_UpdateSpriteGfx(PA_DrawSprite[draw_number].screen, PA_DrawSprite[draw_number].sprite, PA_SpriteBuffer[draw_number]);
 }
+
+
+
+
+
+
+
+
+
+
+
+void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)
+{
+	spriteanims[screen][sprite].lx = PA_GetSpriteLx(screen, sprite);
+	spriteanims[screen][sprite].ly = PA_GetSpriteLy(screen, sprite);
+	spriteanims[screen][sprite].colors = PA_GetSpriteColors(screen, sprite);	
+	spriteanims[screen][sprite].currentframe = spriteanims[screen][sprite].firstframe = firstframe;
+	spriteanims[screen][sprite].lastframe = lastframe;
+	spriteanims[screen][sprite].speed = speed;	
+	spriteanims[screen][sprite].time = 0;
+	if (!spriteanims[screen][sprite].play){ // If wasn't playing, say to play...
+		spriteanims[screen][sprite].play = 1;	// playing...
+		nspriteanims += 1;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
