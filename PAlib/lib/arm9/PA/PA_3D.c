@@ -16,8 +16,8 @@ return 1;
 }
 int PA_VertexCallList(struct PA_3DObject obj, float x, float y, float z){
 obj.callList[obj.callList[0]+1]=FIFO_COMMAND_PACK(FIFO_VERTEX16, FIFO_NOP, FIFO_NOP, FIFO_NOP);
-obj.callList[obj.callList[0]+2]=VERTEX_PACK(floatov16(x),floatov16(y));
-obj.callList[obj.callList[0]+3]=VERTEX_PACK(floatov16(z),0);
+obj.callList[obj.callList[0]+2]=VERTEX_PACK(floattov16(x),floattov16(y));
+obj.callList[obj.callList[0]+3]=VERTEX_PACK(floattov16(z),0);
 obj.callList[0]+=3;
 if(x>obj.maxx)obj.maxx=x;
 else if(x<obj.minx)obj.minx=x;
@@ -29,7 +29,7 @@ return 1;
 }
 int PA_TexCoordCallList(struct PA_3DObject obj, int x, int y){
 obj.callList[obj.callList[0]+1]=FIFO_COMMAND_PACK(FIFO_TEX_COORD, FIFO_NOP, FIFO_NOP, FIFO_NOP);
-obj.callList[obj.callList[0]+2]=TEXTURE_PACK(floatot16(x),floatot16(y)); 
+obj.callList[obj.callList[0]+2]=TEXTURE_PACK(floattot16(x),floattot16(y)); 
 obj.callList[0]+=2;
 return 1;
 }
@@ -81,8 +81,8 @@ PA_UpdatePad();
 }
 void PA_glulookat(float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3) 
 { 
-   f32 eyex = floatof32(x1), eyey = floatof32(y1), eyez = floatof32(z1), lookAtx = floatof32(x2);
-   f32 lookAty = floatof32(y2), lookAtz = floatof32(z2), upx = floatof32(x3), upy = floatof32(y3), upz = floatof32(z3);
+   f32 eyex = floattof32(x1), eyey = floattof32(y1), eyez = floattof32(z1), lookAtx = floattof32(x2);
+   f32 lookAty = floattof32(y2), lookAtz = floattof32(z2), upx = floattof32(x3), upy = floattof32(y3), upz = floattof32(z3);
    f32 side[3], forward[3], up[3]; 
 
    forward[0] = lookAtx - eyex; 
@@ -115,7 +115,7 @@ void PA_glulookat(float x1, float y1, float z1, float x2, float y2, float z2, fl
 
    MATRIX_LOAD4x3 = 0; 
    MATRIX_LOAD4x3 = 0; 
-   MATRIX_LOAD4x3 = floatof32(-1.0); 
+   MATRIX_LOAD4x3 = floattof32(-1.0); 
 
    glTranslate3f32(-eyex, -eyey, -eyez); 
 }
@@ -131,9 +131,9 @@ vramSetBankA(VRAM_A_TEXTURE);
 void PA_Init3DDrawing(float x1, float y1, float z1, float x2, float y2, float z2){
 glReset();
 gluPerspective(35, 256.0 / 192.0, 0.1, 40);
-		glLight(0, RGB15(31,31,31) , 0,				  floatov10(-1.0),		 0);
-		glLight(1, RGB15(31,31,31) , 0,				  0,	floatov10(-1.0));
-		glLight(2, RGB15(31,31,31) , 0,				  0,	floatov10(1.0));
+		glLight(0, RGB15(31,31,31) , 0,				  floattov10(-1.0),		 0);
+		glLight(1, RGB15(31,31,31) , 0,				  0,	floattov10(-1.0));
+		glLight(2, RGB15(31,31,31) , 0,				  0,	floattov10(1.0));
 PA_glulookat( x1, y1, z1,      //position de la camera
 x2, y2, z2,     //regarder vers
 0.0, 1.0, 0.0);//le haut
@@ -157,99 +157,99 @@ PA_Rotate3D(rotatex, rotatey, rotatez);
 glColor3b(red,green,blue);
 glBegin(GL_QUAD);
 //1
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(1.0));
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(1.0));
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(1.0));
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(1.0));
 //2
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(-1.0));
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(-1.0));
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(-1.0));
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(-1.0));
 //3
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(1.0));
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(-1.0));
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(-1.0));
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(1.0));
 //4
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(1.0));
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(-1.0));
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(-1.0));
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(1.0));
 //5
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(1.0));
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(-1.0));
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(-1.0));
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(1.0));
 //6
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(1.0));
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(-1.0));
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(-1.0));
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(1.0));
 glEnd();
 glPopMatrix(1);
 }
 void PA_3DBoxTexture(float x, float y, float z, float longueur, float largeur, float hauteur,float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue){
 glPushMatrix();
-glTranslate3f32(floatof32(x),floatof32(y),floatof32(z));
+glTranslate3f32(floattof32(x),floattof32(y),floattof32(z));
 PA_Scale3D(longueur,largeur, hauteur);
 PA_Rotate3D(rotatex, rotatey, rotatez);
 glColor3b(red,green,blue);
 glBegin(GL_QUAD);
 //1
 PA_TexCoord(128.0,128.0);
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(1.0));
 PA_TexCoord(128.0,0.0);
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(1.0));
 PA_TexCoord(0.0,0.0);
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(1.0));
 PA_TexCoord(0.0,128.0);
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(1.0));
 //2
 PA_TexCoord(128.0,0.0);
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(-1.0));
 PA_TexCoord(128.0,128.0);
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(-1.0));
 PA_TexCoord(0.0,128.0);
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(-1.0));
 PA_TexCoord(0.0,0.0);
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(-1.0));
 //3
 PA_TexCoord(128.0,128.0);
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(1.0));
 PA_TexCoord(128.0,0.0);
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(-1.0));
 PA_TexCoord(0.0,0.0);
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(-1.0));
 PA_TexCoord(0.0,128.0);
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(1.0));
 //4
 PA_TexCoord(128.0,0.0);
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(1.0));
 PA_TexCoord(128.0,128.0);
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(-1.0));
 PA_TexCoord(0.0,128.0);
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(-1.0));
 PA_TexCoord(0.0,0.0);
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(1.0));
 //5
 PA_TexCoord(0.0,128.0);
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(1.0));
 PA_TexCoord(128.0,128.0);
-glVertex3v16(floatov16(1.0),floatov16(1.0),floatov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(-1.0));
 PA_TexCoord(128.0,0.0);
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(-1.0));
 PA_TexCoord(0.0,0.0);
-glVertex3v16(floatov16(-1.0),floatov16(1.0),floatov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(1.0));
 //6
 PA_TexCoord(128.0,128.0);
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(1.0));
 PA_TexCoord(0.0,128.0);
-glVertex3v16(floatov16(1.0),floatov16(-1.0),floatov16(-1.0));
+glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(-1.0));
 PA_TexCoord(0.0,0.0);
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(-1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(-1.0));
 PA_TexCoord(128.0,0.0);
-glVertex3v16(floatov16(-1.0),floatov16(-1.0),floatov16(1.0));
+glVertex3v16(floattov16(-1.0),floattov16(-1.0),floattov16(1.0));
 glEnd();
 glPopMatrix(1);
 }

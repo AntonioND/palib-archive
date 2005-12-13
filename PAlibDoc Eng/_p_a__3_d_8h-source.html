@@ -74,18 +74,18 @@
 00277        glRotateZ(z);
 00278 }
 <a name="l00293"></a><a class="code" href="group___d.html#ga11">00293</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga11">PA_Translate3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
-00294 glTranslate3f32(floatof32(x),floatof32(y),floatof32(z));
+00294 glTranslate3f32(floattof32(x),floattof32(y),floattof32(z));
 00295 }
 <a name="l00310"></a><a class="code" href="group___d.html#ga12">00310</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga12">PA_Scale3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
 00311 <span class="keywordflow">if</span>(x==0.0)x=1.0;
 00312 <span class="keywordflow">if</span>(y==0.0)y=1.0;
 00313 <span class="keywordflow">if</span>(z==0.0)z=1.0;
-00314 MATRIX_SCALE = floatof32(x);
-00315 MATRIX_SCALE = floatof32(y);
-00316 MATRIX_SCALE = floatof32(z);
+00314 MATRIX_SCALE = floattof32(x);
+00315 MATRIX_SCALE = floattof32(y);
+00316 MATRIX_SCALE = floattof32(z);
 00317 }
 <a name="l00332"></a><a class="code" href="group___d.html#ga13">00332</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga13">PA_Vertex3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
-00333 glVertex3v16(floatov16(x),floatov16(y),floatov16(z));
+00333 glVertex3v16(floattov16(x),floattov16(y),floattov16(z));
 00334 }
 <a name="l00340"></a><a class="code" href="group___d.html#ga14">00340</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga14">PA_3Dto2D</a>(){
 00341 MATRIX_IDENTITY = 0;
@@ -95,10 +95,10 @@
 <a name="l00356"></a><a class="code" href="group___d.html#ga15">00356</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga15">PA_Vertex2D</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y){
 00357        <span class="keywordtype">float</span> x1 = (float)((x*0.36)/256)-0.18;
 00358        <span class="keywordtype">float</span> y1 = (float)((y*0.28)/192)-0.14;
-00359        glVertex3v16(floatov16(x1),floatov16(y1),floatov16(-0.2));
+00359        glVertex3v16(floattov16(x1),floattov16(y1),floattov16(-0.2));
 00360 }
 <a name="l00372"></a><a class="code" href="group___d.html#ga16">00372</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga16">PA_TexCoord</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y){
-00373 glTexCoord1i(TEXTURE_PACK(intot16((<span class="keywordtype">int</span>)x),intot16((<span class="keywordtype">int</span>)y)));
+00373 glTexCoord1i(TEXTURE_PACK(inttot16((<span class="keywordtype">int</span>)x),inttot16((<span class="keywordtype">int</span>)y)));
 00374 }
 00375 <span class="keyword">struct </span>PA_3DObject{
 00376 u32 *callList;
@@ -114,7 +114,7 @@
 00387 
 00388 
 00389 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Fri Dec 2 13:03:18 2005 for PAlib by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Tue Dec 13 11:52:55 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

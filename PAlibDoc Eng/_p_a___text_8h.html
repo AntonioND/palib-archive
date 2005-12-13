@@ -17,7 +17,7 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Show the current font used. This is just for debug, no real use ingame  <a href="group___text.html#ga19"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Text.h::letterfp"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_Text.h::letterfp"></a>
 typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><b>letterfp</b> )(u8 size, bool screen, u16 x, u16 y, char lettertemp, u8 color)</td></tr>
 
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
@@ -79,53 +79,44 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial4
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial5</b> (bool screen, int x1, int y, char *text)</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_Text.h::PA_font_Map"></a>
-const u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font_Map</b> [256]</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_Text.h::PA_font_Tiles"></a>
-const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font_Tiles</b> [6080]</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_Text.h::PA_font2_Map"></a>
-const u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font2_Map</b> [256]</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_Text.h::PA_font2_Tiles"></a>
-const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font2_Tiles</b> [6016]</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_Text.h::textcol"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_Text.h::textcol"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>textcol</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_Text.h::PAbgtext"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_Text.h::PAbgtext"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAbgtext</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_Text.h::PA_textmap"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_Text.h::PA_textmap"></a>
 u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_textmap</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_Text.h::PA_texttiles"></a>
-u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_texttiles</b> [2]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_Text.h::PA_texttiles"></a>
+u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_texttiles</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_Text.h::PA_font"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_Text.h::PA_textpal"></a>
+u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_textpal</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_Text.h::PA_font"></a>
 s8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_Text.h::textData"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_Text.h::textData"></a>
 const u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>textData</b> [5]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_Text.h::policeheight"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_Text.h::policeheight"></a>
 const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>policeheight</b> [5]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a13" doxytag="PA_Text.h::policewidth"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Text.h::policewidth"></a>
 const u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>policewidth</b> [5]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a14" doxytag="PA_Text.h::policesize"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_Text.h::policesize"></a>
 const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>policesize</b> [5][256]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_Text.h::letters"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_Text.h::letters"></a>
 letterfp&nbsp;</td><td class="memItemRight" valign="bottom"><b>letters</b> [5]</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Text system in tile mode. 
 <p>
-Not much to say, just a good debug option...<hr size="1"><address style="align: right;"><small>Generated on Fri Dec 2 13:03:19 2005 for PAlib by&nbsp;
+Not much to say, just a good debug option...<hr size="1"><address style="align: right;"><small>Generated on Tue Dec 13 11:52:56 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

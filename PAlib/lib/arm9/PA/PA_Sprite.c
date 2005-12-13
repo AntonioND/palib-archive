@@ -412,7 +412,8 @@ void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s
 	spriteanims[screen][sprite].lastframe = lastframe;
 	spriteanims[screen][sprite].speed = speed;	
 	spriteanims[screen][sprite].time = 0;
-	if (!spriteanims[screen][sprite].play){ // If wasn't playing, say to play...
+	if (!spriteanims[screen][sprite].play){ // If wasn't playing, say to play and display the first image
+		PA_SetSpriteAnimEx(screen, sprite, spriteanims[screen][sprite].lx, spriteanims[screen][sprite].ly, spriteanims[screen][sprite].colors, spriteanims[screen][sprite].currentframe);
 		spriteanims[screen][sprite].play = 1;	// playing...
 		nspriteanims += 1;
 	}
@@ -420,7 +421,40 @@ void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s
 
 
 
+void PA_UpdateSpriteAnims(void)
+{
+u16 anims = nspriteanims;
+u8 currentsprite = 0;
+u8 screen = 0;
+//	PA_SetSpriteAnimEx(screen, sprite, , PA_GetSpriteLy(screen, sprite), //PA_GetSpriteColors(screen, sprite), animframe);
 
+
+while((anims > 0) && (currentsprite < 128))
+{
+	for (screen = 0; screen < 2; screen++){
+		if (spriteanims[screen][currentsprite].play)
+		{
+			spriteanims[screen][currentsprite].time += spriteanims[screen][currentsprite].speed;
+			if (spriteanims[screen][currentsprite].time >= 60) 
+			{
+				while (spriteanims[screen][currentsprite].time >= 60)
+				{
+					spriteanims[screen][currentsprite].time -= 60;
+					spriteanims[screen][currentsprite].currentframe++;
+					if (spriteanims[screen][currentsprite].currentframe > spriteanims[screen][currentsprite].lastframe)
+						spriteanims[screen][currentsprite].currentframe = spriteanims[screen][currentsprite].firstframe;
+				}
+				
+				PA_SetSpriteAnimEx(screen, currentsprite, spriteanims[screen][currentsprite].lx, spriteanims[screen][currentsprite].ly, spriteanims[screen][currentsprite].colors, spriteanims[screen][currentsprite].currentframe);
+				
+			}
+			anims--; // Une de faite !
+		}
+	}
+	currentsprite++; // next sprite...
+}
+
+}
 
 
 

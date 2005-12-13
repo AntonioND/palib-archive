@@ -65,7 +65,7 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X et Y du sprite à l'écran  <a href="#ga17"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#ga18">PA_DualSetSpritePal</a> (u8 obj, u8 pal)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette de 16 couleurs d'un sprite  <a href="#ga18"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette d'un sprite  <a href="#ga18"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#ga19">PA_DualSetSpriteDblsize</a> (u8 obj, bool dblsize)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer ou désactiver le mode Doublesize pour un sprite  <a href="#ga19"></a><br></td></tr>
@@ -413,7 +413,7 @@ Creer un sprite avec ses gfxsur les 2 écrans
     <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0). </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
   </table>
@@ -536,7 +536,7 @@ Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
     <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0). </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj_mode</em>&nbsp;</td><td>Mode du sprite (normal, transparent, fenetre). Pas encore opérationnel, laisser à 0... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>mosaic</em>&nbsp;</td><td>Activer le mode mosaique pour ce sprite. Pas encore au point... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Flip horizontal activé ou non. </td></tr>
@@ -665,7 +665,7 @@ Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
     <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0). </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj_mode</em>&nbsp;</td><td>Mode du sprite (normal, transparent, fenetre). Pas encore opérationnel, laisser à 0... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>mosaic</em>&nbsp;</td><td>Activer le mode mosaique pour ce sprite. Pas encore au point... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Flip horizontal activé ou non. </td></tr>
@@ -758,7 +758,7 @@ Creer un sprite avec ses gfx... Ceci est la version simple de la fonction
     <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0). </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). Laisser à 0 si en mode 256 couleurs. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
   </table>
@@ -1197,7 +1197,7 @@ Modifier les graphismes utilisés par un sprite
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Numéro du gfx en mémoire ; on peut obtenir un numéro avec PA_CreateGfx ou <a class="el" href="group___sprite.html#ga46">PA_GetSpriteGfx(obj_number)</a>; </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Numéro du gfx en mémoire ; on peut obtenir un numéro avec PA_CreateGfx ou <a class="el" href="group___sprite.html#ga50">PA_GetSpriteGfx(obj_number)</a>; </td></tr>
   </table>
 </dl>
     </td>
@@ -1372,7 +1372,7 @@ Mettre ou non un sprite en mode mosaic
     <td>
 
 <p>
-Changer la palette de 16 couleurs d'un sprite 
+Changer la palette d'un sprite 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -1952,7 +1952,7 @@ Désigner l'espace entre les 2 écrans, 48 pixels par défaut
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Fri Dec 2 13:03:27 2005 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Tue Dec 13 11:53:04 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -291,7 +291,7 @@ extern inline void PA_Rotate3D(float x,float y,float z){
          \~french translation sur l'axe z
 */
 extern inline void PA_Translate3D(float x, float y, float z){
-glTranslate3f32(floatof32(x),floatof32(y),floatof32(z));
+glTranslate3f32(floattof32(x),floattof32(y),floattof32(z));
 }
 /*! \fn void PA_Scale3D(float x,float y,float z)
     \brief
@@ -311,14 +311,14 @@ extern inline void PA_Scale3D(float x, float y, float z){
 if(x==0.0)x=1.0;
 if(y==0.0)y=1.0;
 if(z==0.0)z=1.0;
-MATRIX_SCALE = floatof32(x);
-MATRIX_SCALE = floatof32(y);
-MATRIX_SCALE = floatof32(z);
+MATRIX_SCALE = floattof32(x);
+MATRIX_SCALE = floattof32(y);
+MATRIX_SCALE = floattof32(z);
 }
 /*! \fn extern inline void PA_Vertex3D(float x,float y,float z)
     \brief
-         \~english create a vertex without floatov16
-         \~french creer un vertex sans floatov16
+         \~english create a vertex without floattov16
+         \~french creer un vertex sans floattov16
     \param x
          \~english  X position
          \~french Position X 
@@ -330,7 +330,7 @@ MATRIX_SCALE = floatof32(z);
          \~french Position Z
 */
 extern inline void PA_Vertex3D(float x, float y, float z){
-glVertex3v16(floatov16(x),floatov16(y),floatov16(z));
+glVertex3v16(floattov16(x),floattov16(y),floattov16(z));
 }
 /*! \fn extern inline void PA_3Dto2D(void)
     \brief
@@ -356,7 +356,7 @@ MATRIX_IDENTITY = 0;
 extern inline void PA_Vertex2D(int x, int y){
 	float x1 = (float)((x*0.36)/256)-0.18;
 	float y1 = (float)((y*0.28)/192)-0.14;
-	glVertex3v16(floatov16(x1),floatov16(y1),floatov16(-0.2));
+	glVertex3v16(floattov16(x1),floattov16(y1),floattov16(-0.2));
 }
 /*! \fn void PA_TexCoord(float x,float y)
     \brief
@@ -370,7 +370,7 @@ extern inline void PA_Vertex2D(int x, int y){
          \~french Position Y
 */
 extern inline void PA_TexCoord(float x, float y){
-glTexCoord1i(TEXTURE_PACK(intot16((int)x),intot16((int)y)));
+glTexCoord1i(TEXTURE_PACK(inttot16((int)x),inttot16((int)y)));
 }
 struct PA_3DObject{
 u32 *callList;

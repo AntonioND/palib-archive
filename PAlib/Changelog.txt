@@ -1,3 +1,14 @@
+PAlib 0.74b :
+
+[libnds] Updated to work on the latest libnds update
+
+[Bugfix] Better Sprite Animation code when rapidly changing animation sets
+
+[Examples] Added a nice SpriteAnim2 (using animations, sprite movement, and sprite flipping), and an AlphaBlending example for 1 sprite...
+
+[Doc] Updated the doc
+
+
 PAlib 0.74a :
 
 [Feature] Added the new sprite animation code ! Check out the example to see how to use 

@@ -16,7 +16,7 @@
 00008 <span class="preprocessor"></span>  
 <a name="l00026"></a><a class="code" href="group___saves.html#ga4">00026</a> <span class="preprocessor">#define PA_Save8bit(offset, value) SRAM[offset] = value</span>
 00027 <span class="preprocessor"></span>
-<a name="l00040"></a><a class="code" href="group___saves.html#ga5">00040</a> <span class="preprocessor">#define PA_Save16bit(offset, value) {PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8)}</span>
+<a name="l00040"></a><a class="code" href="group___saves.html#ga5">00040</a> <span class="preprocessor">#define PA_Save16bit(offset, value) {PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8);}</span>
 00041 <span class="preprocessor"></span>
 <a name="l00054"></a><a class="code" href="group___saves.html#ga6">00054</a> <span class="preprocessor">#define PA_Save32bit(offset, value) {PA_Save8bit(offset, value&amp;255); PA_Save8bit(offset + 1, value &gt;&gt; 8); PA_Save8bit(offset + 2, value &gt;&gt; 16); PA_Save8bit(offset + 3, value &gt;&gt; 24);}</span>
 00055 <span class="preprocessor"></span>
@@ -79,7 +79,7 @@
 00189 <span class="preprocessor">#endif</span>
 00190 <span class="preprocessor"></span>
 00191 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Dec 2 13:03:26 2005 pour PAlib par&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Dec 13 11:53:03 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

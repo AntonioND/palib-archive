@@ -1386,7 +1386,7 @@ void PA_SpriteDraw(u8 draw_number, s16 x, s16 y, u16 color);
 
 
 
-
+void PA_UpdateSpriteAnims(void);
 
 
 
