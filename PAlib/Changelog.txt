@@ -1,3 +1,12 @@
+PAlib 0.74c :
+
+[Animations] Added PA_SetSpriteAnimFrame(screen, sprite, frame) and Added PA_SetSpriteAnimSpeed(screen, sprite, speed)
+
+[Bugfix] Fixed the stylus position error...
+
+[MODIFICATION] Changed PA_PlaySimpleSound(channel, sound), doesn't require '(void*)' and the size anymore ! Changed the example to reflect this...
+
+
 PAlib 0.74b :
 
 [libnds] Updated to work on the latest libnds update

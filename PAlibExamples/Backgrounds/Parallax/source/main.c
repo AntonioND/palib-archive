@@ -1,14 +1,9 @@
 // Includes
 #include <PA9.h>       // Include for PA_Lib
 
-
-
 // Converted using PAGfxConverter
 #include "gfx/all_gfx.c"
 #include "gfx/all_gfx.h"
-
-
-
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -20,7 +15,6 @@ int main(int argc, char ** argv)
 	PA_LoadTiledBg(0, 1, BG1);	//screen, background number, background name
 	PA_LoadTiledBg(0, 2, BG2);	
 	PA_LoadTiledBg(0, 3, BG3);	
-	
 
 	// Initialise parallax vertically (Y axis) for both backgrounds
 	// 256 is normal speed, 128 half speed, 512 twice as fast...

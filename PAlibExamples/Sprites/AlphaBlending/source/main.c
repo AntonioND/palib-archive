@@ -39,7 +39,6 @@ int main(void){
 						15); // Leave this to 15
 		
 		PA_WaitForVBL();
-	
 	}
 	
 return 0;

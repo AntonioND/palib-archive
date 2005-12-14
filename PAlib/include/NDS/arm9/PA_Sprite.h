@@ -1173,7 +1173,27 @@ extern inline void PA_StopSpriteAnim(bool screen, u8 sprite)
 	spriteanims[screen][sprite].play = 0;
 }
 
-
+/*! \fn extern inline void PA_SetSpriteAnimFrame(bool screen, u8 sprite, u16 frame)
+    \brief
+         \~english Set the current animation frame number
+         \~french Changer le numéro actuel de la frame d'animation
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	
+    \param frame
+         \~english Frame number to use...
+         \~french Numéro de frame...	 
+*/
+extern inline void PA_SetSpriteAnimFrame(bool screen, u8 sprite, u16 frame)
+{
+	if(spriteanims[screen][sprite].currentframe != frame){
+		PA_SetSpriteAnimEx(screen, sprite, spriteanims[screen][sprite].lx, spriteanims[screen][sprite].ly, spriteanims[screen][sprite].colors, spriteanims[screen][sprite].currentframe);
+		spriteanims[screen][sprite].currentframe = frame;
+	}
+}
 
 
 /*! \fn extern inline u16 PA_GetSpriteAnimFrame(bool screen, u8 sprite)
@@ -1191,6 +1211,51 @@ extern inline u16 PA_GetSpriteAnimFrame(bool screen, u8 sprite)
 {
 	return spriteanims[screen][sprite].currentframe;
 }
+
+
+
+/*! \fn extern inline void PA_SetSpriteAnimSpeed(bool screen, u8 sprite, s16 speed)
+    \brief
+         \~english Set the current animation speed
+         \~french Changer la vitesse de l'animation
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	
+    \param speed
+         \~english Speed, in fps...
+         \~french Vitesse, en fps...		 
+*/
+extern inline void PA_SetSpriteAnimSpeed(bool screen, u8 sprite, s16 speed)
+{
+	spriteanims[screen][sprite].speed = speed;
+}
+
+/*! \fn extern inline u16 PA_GetSpriteAnimSpeed(bool screen, u8 sprite)
+    \brief
+         \~english Returns the current animation speed
+         \~french Renvoie la vitesse de l'animation
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	
+*/
+extern inline u16 PA_GetSpriteAnimSpeed(bool screen, u8 sprite)
+{
+	return spriteanims[screen][sprite].speed;
+}
+
+
+
+
+
+
+
+
 
 
 /*! \fn extern inline u16 PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)

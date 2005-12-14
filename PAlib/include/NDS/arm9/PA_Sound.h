@@ -183,23 +183,19 @@ s32 length = (PA_GBFSfile[GBFS_wav_number].Length >> 2) + 1; // Pour etre sur...
 	PA_PlaySound(PA_Channel, (void*)GBFS_wav[PA_Channel], length << 2, volume, freq);
 }
 
-/*! \fn extern inline void PA_PlaySimpleSound(u8 PA_Channel, const void* data, u32 length)
+/*! \def PA_PlaySimpleSound(PA_Channel, sound)
     \brief
          \~english Simplest sound playing function... Takes the default options for volume, format, and rate (11025). You can change these options by using PA_SetDefaultSound
          \~french Fonction la plus simple pour jouer un son... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound
     \param PA_Channel
          \~english Audio channel, from 0 to 7
          \~french Canal audio, de 0 à 7
-    \param data
-         \~english Sound data
-         \~french Données du son
-    \param length
-         \~english Sound length, with (u32)sound_size
-         \~french Longueur du son, avec (u32)sound_size
+    \param sound
+         \~english Sound name...
+         \~french Nom du son...
 */
-extern inline void PA_PlaySimpleSound(u8 PA_Channel, const void* data, u32 length){
-PA_PlaySoundEx(PA_Channel, data, length, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format);
-}
+
+#define PA_PlaySimpleSound(PA_Channel, sound) PA_PlaySoundEx(PA_Channel, (void*)sound, (u32)sound##_size, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format)
 
 
 /*! \fn extern inline void PA_PlayGBFSSimpleSound(u8 PA_Channel, u16 GBFS_wav_number)
@@ -219,8 +215,8 @@ s32 length = (PA_GBFSfile[GBFS_wav_number].Length >> 2) + 1; // Pour etre sur...
 	GBFS_wav[PA_Channel] = (u8*)malloc(length << 2);
 	
 	DMA_Copy(PA_GBFSfile[GBFS_wav_number].File, GBFS_wav[PA_Channel], length, DMA_32NOW);
-
-	PA_PlaySimpleSound(PA_Channel, (void*)GBFS_wav[PA_Channel], length << 2);
+	
+	PA_PlaySound(PA_Channel, (void*)GBFS_wav[PA_Channel], length << 2, PA_SoundOption.volume, PA_SoundOption.freq);
 }
 
 

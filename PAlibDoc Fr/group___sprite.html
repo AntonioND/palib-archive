@@ -9,113 +9,113 @@
 <h1>Sprite system</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga24">PA_UpdateOAM</a>()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga27">PA_UpdateOAM</a>()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL  <a href="#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga25" doxytag="Sprite::PA_UpdateOAM0"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga25">PA_UpdateOAM0</a>()&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj, (void*)OAM0, 256, DMA_32NOW)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL  <a href="#ga27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga28" doxytag="Sprite::PA_UpdateOAM0"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga28">PA_UpdateOAM0</a>()&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj, (void*)OAM0, 256, DMA_32NOW)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les infos des sprites pour l'écran 0 uniquement. A faire dans le VBL <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga26" doxytag="Sprite::PA_UpdateOAM1"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga26">PA_UpdateOAM1</a>()&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj + 256, (void*)OAM1, 256, DMA_32NOW)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga29" doxytag="Sprite::PA_UpdateOAM1"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga29">PA_UpdateOAM1</a>()&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj + 256, (void*)OAM1, 256, DMA_32NOW)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les infos des sprites pour l'écran 1 uniquement. A faire dans le VBL <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga27">PA_UpdateSpriteGfx</a>(screen, obj_number, obj_data)&nbsp;&nbsp;&nbsp;PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga30">PA_UpdateSpriteGfx</a>(screen, obj_number, obj_data)&nbsp;&nbsp;&nbsp;PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné  <a href="#ga27"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga28">PA_UpdateGfx</a>(screen, gfx_number, obj_data)&nbsp;&nbsp;&nbsp;{DMA_Copy(obj_data, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (gfx_number &lt;&lt; NUMBER_DECAL)), (used_mem[screen][gfx_number] &lt;&lt; MEM_DECAL), DMA_32NOW);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné  <a href="#ga30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga31">PA_UpdateGfx</a>(screen, gfx_number, obj_data)&nbsp;&nbsp;&nbsp;{DMA_Copy(obj_data, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (gfx_number &lt;&lt; NUMBER_DECAL)), (used_mem[screen][gfx_number] &lt;&lt; MEM_DECAL), DMA_32NOW);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné  <a href="#ga28"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga29">PA_SetSpriteRotEnable</a>(screen, sprite, rotset)&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 |= OBJ_ROT;  PA_obj[screen][sprite].atr1 = (PA_obj[screen][sprite].atr1 &amp; ALL_BUT_ROTSET) + ((rotset) &lt;&lt; 9);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné  <a href="#ga31"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga32">PA_SetSpriteRotEnable</a>(screen, sprite, rotset)&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 |= OBJ_ROT;  PA_obj[screen][sprite].atr1 = (PA_obj[screen][sprite].atr1 &amp; ALL_BUT_ROTSET) + ((rotset) &lt;&lt; 9);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner et zoomer un sprite  <a href="#ga29"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga30">PA_SetSpriteRotDisable</a>(screen, sprite)&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 &amp;= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &amp;= ALL_BUT_ROTSET;}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner et zoomer un sprite  <a href="#ga32"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga33">PA_SetSpriteRotDisable</a>(screen, sprite)&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 &amp;= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &amp;= ALL_BUT_ROTSET;}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arreter de faire tourner et zoomer un sprite  <a href="#ga30"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga31">PA_SetSpriteX</a>(screen, obj, x)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_X)) + ((x) &amp; OBJ_X)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arreter de faire tourner et zoomer un sprite  <a href="#ga33"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga34">PA_SetSpriteX</a>(screen, obj, x)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_X)) + ((x) &amp; OBJ_X)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran  <a href="#ga31"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga32">PA_GetSpriteX</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr1 &amp; (OBJ_X))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran  <a href="#ga34"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga35">PA_GetSpriteX</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr1 &amp; (OBJ_X))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran  <a href="#ga32"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga33">PA_SetSpriteY</a>(screen, obj, y)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_Y)) + ((y) &amp; OBJ_Y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran  <a href="#ga35"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga36">PA_SetSpriteY</a>(screen, obj, y)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_Y)) + ((y) &amp; OBJ_Y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran  <a href="#ga33"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga34">PA_GetSpriteY</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr0 &amp; OBJ_Y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran  <a href="#ga36"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga37">PA_GetSpriteY</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr0 &amp; OBJ_Y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran  <a href="#ga34"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga35">PA_SetSpritePal</a>(screen, obj, pal)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT_PAL) + ((pal) &lt;&lt; 12)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran  <a href="#ga37"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga38">PA_SetSpritePal</a>(screen, obj, pal)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT_PAL) + ((pal) &lt;&lt; 12)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette d'un sprite  <a href="#ga35"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga36">PA_GetSpritePal</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &gt;&gt; 12)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette d'un sprite  <a href="#ga38"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga39">PA_GetSpritePal</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &gt;&gt; 12)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Palette d'un sprite  <a href="#ga36"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga37">PA_SetSpriteDblsize</a>(screen, obj, dblsize)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(DBLSIZE)) + ((dblsize) &lt;&lt; 9)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Palette d'un sprite  <a href="#ga39"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga40">PA_SetSpriteDblsize</a>(screen, obj, dblsize)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(DBLSIZE)) + ((dblsize) &lt;&lt; 9)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer ou désactiver le mode Doublesize pour un sprite  <a href="#ga37"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga38">PA_GetSpriteDblsize</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; DBLSIZE) &gt;&gt; 9)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer ou désactiver le mode Doublesize pour un sprite  <a href="#ga40"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga41">PA_GetSpriteDblsize</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; DBLSIZE) &gt;&gt; 9)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Etat du mode Doublesize pour un sprite  <a href="#ga38"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga39">PA_SetSpriteColors</a>(screen, sprite, n_colors)&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(N_COLORS)) + ((n_colors) &lt;&lt; 13)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Etat du mode Doublesize pour un sprite  <a href="#ga41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga42">PA_SetSpriteColors</a>(screen, sprite, n_colors)&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(N_COLORS)) + ((n_colors) &lt;&lt; 13)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le mode de couleur du sprite  <a href="#ga39"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga40">PA_GetSpriteColors</a>(screen, sprite)&nbsp;&nbsp;&nbsp;((PA_obj[screen][sprite].atr0 &amp; N_COLORS) &gt;&gt; 13)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le mode de couleur du sprite  <a href="#ga42"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga43">PA_GetSpriteColors</a>(screen, sprite)&nbsp;&nbsp;&nbsp;((PA_obj[screen][sprite].atr0 &amp; N_COLORS) &gt;&gt; 13)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode de couleur d'un sprite  <a href="#ga40"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga41">PA_SetSpriteMode</a>(screen, sprite, obj_mode)&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(OBJ_MODE)) + ((obj_mode) &lt;&lt; 10)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode de couleur d'un sprite  <a href="#ga43"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga44">PA_SetSpriteMode</a>(screen, sprite, obj_mode)&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(OBJ_MODE)) + ((obj_mode) &lt;&lt; 10)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre  <a href="#ga41"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga42">PA_GetSpriteMode</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MODE) &gt;&gt; 10)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre  <a href="#ga44"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga45">PA_GetSpriteMode</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MODE) &gt;&gt; 10)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre  <a href="#ga42"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga43">PA_SetSpriteMosaic</a>(screen, obj, mosaic)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_MOSAIC)) + ((mosaic) &lt;&lt; 12)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre  <a href="#ga45"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga46">PA_SetSpriteMosaic</a>(screen, obj, mosaic)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_MOSAIC)) + ((mosaic) &lt;&lt; 12)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre ou non un sprite en mode mosaic  <a href="#ga43"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga44">PA_GetSpriteMosaic</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MOSAIC) &gt;&gt; 12)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre ou non un sprite en mode mosaic  <a href="#ga46"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga47">PA_GetSpriteMosaic</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MOSAIC) &gt;&gt; 12)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Si un sprite est en mode mosaic  <a href="#ga44"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga45">PA_SetSpriteHflip</a>(screen, obj, hflip)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_HFLIP)) + ((hflip) &lt;&lt; 12)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Si un sprite est en mode mosaic  <a href="#ga47"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga48">PA_SetSpriteHflip</a>(screen, obj, hflip)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_HFLIP)) + ((hflip) &lt;&lt; 12)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip horizontal pour un sprite  <a href="#ga45"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga46">PA_GetSpriteHflip</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_HFLIP) &gt;&gt; 12)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip horizontal pour un sprite  <a href="#ga48"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga49">PA_GetSpriteHflip</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_HFLIP) &gt;&gt; 12)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">S'il y a un flip horizontal pour un sprite  <a href="#ga46"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga47">PA_SetSpriteVflip</a>(screen, obj, vflip)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_VFLIP)) + ((vflip) &lt;&lt; 13)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">S'il y a un flip horizontal pour un sprite  <a href="#ga49"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga50">PA_SetSpriteVflip</a>(screen, obj, vflip)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_VFLIP)) + ((vflip) &lt;&lt; 13)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip vertical pour un sprite  <a href="#ga47"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga48">PA_GetSpriteVflip</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_VFLIP) &gt;&gt; 13)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip vertical pour un sprite  <a href="#ga50"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga51">PA_GetSpriteVflip</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_VFLIP) &gt;&gt; 13)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Si le flip vertical est utilisé ou non pour un sprite  <a href="#ga48"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga49">PA_SetSpriteGfx</a>(screen, obj, gfx)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_GFX)) + ((gfx) &amp; OBJ_GFX)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Si le flip vertical est utilisé ou non pour un sprite  <a href="#ga51"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga52">PA_SetSpriteGfx</a>(screen, obj, gfx)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_GFX)) + ((gfx) &amp; OBJ_GFX)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Modifier les graphismes utilisés par un sprite  <a href="#ga49"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga50">PA_GetSpriteGfx</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &amp; OBJ_GFX)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Modifier les graphismes utilisés par un sprite  <a href="#ga52"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga53">PA_GetSpriteGfx</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &amp; OBJ_GFX)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer le gfx utilisés par un sprite  <a href="#ga50"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga51">PA_SetSpritePrio</a>(screen, obj, prio)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_PRIO)) + ((prio) &lt;&lt; 10)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer le gfx utilisés par un sprite  <a href="#ga53"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga54">PA_SetSpritePrio</a>(screen, obj, prio)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_PRIO)) + ((prio) &lt;&lt; 10)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler la priorité d'un sprite par rapport au Bg.  <a href="#ga51"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga52">PA_GetSpritePrio</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr2 &amp; OBJ_PRIO) &gt;&gt; 10)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler la priorité d'un sprite par rapport au Bg.  <a href="#ga54"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga55">PA_GetSpritePrio</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr2 &amp; OBJ_PRIO) &gt;&gt; 10)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la priorité d'un sprite par rapport au Bg.  <a href="#ga52"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga53">PA_GetSpriteLx</a>(screen, sprite)&nbsp;&nbsp;&nbsp;PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].lx</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la priorité d'un sprite par rapport au Bg.  <a href="#ga55"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga56">PA_GetSpriteLx</a>(screen, sprite)&nbsp;&nbsp;&nbsp;PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].lx</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un sprite  <a href="#ga53"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga54">PA_GetSpriteLy</a>(screen, sprite)&nbsp;&nbsp;&nbsp;PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].ly</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un sprite  <a href="#ga56"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga57">PA_GetSpriteLy</a>(screen, sprite)&nbsp;&nbsp;&nbsp;PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].ly</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un sprite  <a href="#ga54"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga55">PA_CloneSprite</a>(screen, obj, target)&nbsp;&nbsp;&nbsp;{PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++obj_per_gfx[screen][PA_GetSpriteGfx(screen, target)];}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un sprite  <a href="#ga57"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga58">PA_CloneSprite</a>(screen, obj, target)&nbsp;&nbsp;&nbsp;{PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++obj_per_gfx[screen][PA_GetSpriteGfx(screen, target)];}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cloner un sprite. Marche uniquement pour les sprites sur un meme écran  <a href="#ga55"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga56">PA_SetSpritePixel</a>(screen, sprite, x, y, color)&nbsp;&nbsp;&nbsp;PA_SetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y, color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cloner un sprite. Marche uniquement pour les sprites sur un meme écran  <a href="#ga58"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga59">PA_SetSpritePixel</a>(screen, sprite, x, y, color)&nbsp;&nbsp;&nbsp;PA_SetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y, color)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga56"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga57">PA_GetSpritePixel</a>(screen, sprite, x, y)&nbsp;&nbsp;&nbsp;PA_GetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga59"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga60">PA_GetSpritePixel</a>(screen, sprite, x, y)&nbsp;&nbsp;&nbsp;PA_GetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga57"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga58">PA_SpriteDrawNot</a>(draw_number)&nbsp;&nbsp;&nbsp;PA_DrawSprite[draw_number].wasdrawing = 0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga60"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga61">PA_SpriteDrawNot</a>(draw_number)&nbsp;&nbsp;&nbsp;PA_DrawSprite[draw_number].wasdrawing = 0</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas dessus actuellement  <a href="#ga58"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas dessus actuellement  <a href="#ga61"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga0">PA_CreateGfx</a> (bool screen, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)</td></tr>
 
@@ -172,28 +172,37 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga17">PA_StopSpriteAnim</a> (bool screen, u8 sprite)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter une animation de sprite  <a href="#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga18">PA_GetSpriteAnimFrame</a> (bool screen, u8 sprite)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga18">PA_SetSpriteAnimFrame</a> (bool screen, u8 sprite, u16 frame)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le numéro actuel de la frame d'animation  <a href="#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga19">PA_SpriteAnimPause</a> (bool screen, u8 sprite, bool pause)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le numéro actuel de la frame d'animation  <a href="#ga18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga19">PA_GetSpriteAnimFrame</a> (bool screen, u8 sprite)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre en Pause en remettre en lecture une animation de sprite  <a href="#ga19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga20">PA_SetSpritePixelEx</a> (bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le numéro actuel de la frame d'animation  <a href="#ga19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga20">PA_SetSpriteAnimSpeed</a> (bool screen, u8 sprite, s16 speed)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée  <a href="#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga21">PA_GetSpritePixelEx</a> (bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la vitesse de l'animation  <a href="#ga20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga21">PA_GetSpriteAnimSpeed</a> (bool screen, u8 sprite)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite  <a href="#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga22">PA_InitSpriteDraw</a> (bool screen, u8 sprite, u8 draw_number, u8 drawsize)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la vitesse de l'animation  <a href="#ga21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga22">PA_SpriteAnimPause</a> (bool screen, u8 sprite, bool pause)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise un sprite pour pouvoir dessiner dessus !  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga23">PA_SpriteDraw</a> (u8 draw_number, s16 x, s16 y, u16 color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre en Pause en remettre en lecture une animation de sprite  <a href="#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga23">PA_SetSpritePixelEx</a> (bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessiner sur un sprite intialisé... Doit etre utilisé à tous les tours, sinon il faut faire PA_SpriteDrawNot si on ne dessine pas...  <a href="#ga23"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée  <a href="#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga24">PA_GetSpritePixelEx</a> (bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite  <a href="#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga25">PA_InitSpriteDraw</a> (bool screen, u8 sprite, u8 draw_number, u8 drawsize)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise un sprite pour pouvoir dessiner dessus !  <a href="#ga25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga26">PA_SpriteDraw</a> (u8 draw_number, s16 x, s16 y, u16 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessiner sur un sprite intialisé... Doit etre utilisé à tous les tours, sinon il faut faire PA_SpriteDrawNot si on ne dessine pas...  <a href="#ga26"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Load Sprite, move them around, rotate them... <hr><h2>Documentation des macro</h2>
-<a class="anchor" name="ga55" doxytag="PA_Sprite.h::PA_CloneSprite"></a><p>
+<a class="anchor" name="ga58" doxytag="PA_Sprite.h::PA_CloneSprite"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -236,7 +245,7 @@ Cloner un sprite. Marche uniquement pour les sprites sur un meme écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga40" doxytag="PA_Sprite.h::PA_GetSpriteColors"></a><p>
+<a class="anchor" name="ga43" doxytag="PA_Sprite.h::PA_GetSpriteColors"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -275,7 +284,7 @@ Mode de couleur d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga38" doxytag="PA_Sprite.h::PA_GetSpriteDblsize"></a><p>
+<a class="anchor" name="ga41" doxytag="PA_Sprite.h::PA_GetSpriteDblsize"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -314,7 +323,7 @@ Etat du mode Doublesize pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga50" doxytag="PA_Sprite.h::PA_GetSpriteGfx"></a><p>
+<a class="anchor" name="ga53" doxytag="PA_Sprite.h::PA_GetSpriteGfx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -353,7 +362,7 @@ Récupérer le gfx utilisés par un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga46" doxytag="PA_Sprite.h::PA_GetSpriteHflip"></a><p>
+<a class="anchor" name="ga49" doxytag="PA_Sprite.h::PA_GetSpriteHflip"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -392,7 +401,7 @@ S'il y a un flip horizontal pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga53" doxytag="PA_Sprite.h::PA_GetSpriteLx"></a><p>
+<a class="anchor" name="ga56" doxytag="PA_Sprite.h::PA_GetSpriteLx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -431,7 +440,7 @@ Récupérer la largeur d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga54" doxytag="PA_Sprite.h::PA_GetSpriteLy"></a><p>
+<a class="anchor" name="ga57" doxytag="PA_Sprite.h::PA_GetSpriteLy"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -470,7 +479,7 @@ Récupérer la hauteur d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga42" doxytag="PA_Sprite.h::PA_GetSpriteMode"></a><p>
+<a class="anchor" name="ga45" doxytag="PA_Sprite.h::PA_GetSpriteMode"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -509,7 +518,7 @@ Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga44" doxytag="PA_Sprite.h::PA_GetSpriteMosaic"></a><p>
+<a class="anchor" name="ga47" doxytag="PA_Sprite.h::PA_GetSpriteMosaic"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -548,7 +557,7 @@ Si un sprite est en mode mosaic
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga36" doxytag="PA_Sprite.h::PA_GetSpritePal"></a><p>
+<a class="anchor" name="ga39" doxytag="PA_Sprite.h::PA_GetSpritePal"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -587,7 +596,7 @@ Palette d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga57" doxytag="PA_Sprite.h::PA_GetSpritePixel"></a><p>
+<a class="anchor" name="ga60" doxytag="PA_Sprite.h::PA_GetSpritePixel"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -634,7 +643,7 @@ Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moi
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga52" doxytag="PA_Sprite.h::PA_GetSpritePrio"></a><p>
+<a class="anchor" name="ga55" doxytag="PA_Sprite.h::PA_GetSpritePrio"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -673,7 +682,7 @@ Récupérer la priorité d'un sprite par rapport au Bg.
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga48" doxytag="PA_Sprite.h::PA_GetSpriteVflip"></a><p>
+<a class="anchor" name="ga51" doxytag="PA_Sprite.h::PA_GetSpriteVflip"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -712,7 +721,7 @@ Si le flip vertical est utilisé ou non pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga32" doxytag="PA_Sprite.h::PA_GetSpriteX"></a><p>
+<a class="anchor" name="ga35" doxytag="PA_Sprite.h::PA_GetSpriteX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -751,7 +760,7 @@ Position X du sprite à l'écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga34" doxytag="PA_Sprite.h::PA_GetSpriteY"></a><p>
+<a class="anchor" name="ga37" doxytag="PA_Sprite.h::PA_GetSpriteY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -790,7 +799,7 @@ Position Y du sprite à l'écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga39" doxytag="PA_Sprite.h::PA_SetSpriteColors"></a><p>
+<a class="anchor" name="ga42" doxytag="PA_Sprite.h::PA_SetSpriteColors"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -833,7 +842,7 @@ Changer le mode de couleur du sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga37" doxytag="PA_Sprite.h::PA_SetSpriteDblsize"></a><p>
+<a class="anchor" name="ga40" doxytag="PA_Sprite.h::PA_SetSpriteDblsize"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -876,7 +885,7 @@ Activer ou désactiver le mode Doublesize pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga49" doxytag="PA_Sprite.h::PA_SetSpriteGfx"></a><p>
+<a class="anchor" name="ga52" doxytag="PA_Sprite.h::PA_SetSpriteGfx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -913,13 +922,13 @@ Modifier les graphismes utilisés par un sprite
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Numéro du gfx en mémoire ; on peut obtenir un numéro avec PA_CreateGfx ou <a class="el" href="group___sprite.html#ga50">PA_GetSpriteGfx(obj_number)</a>; </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Numéro du gfx en mémoire ; on peut obtenir un numéro avec PA_CreateGfx ou <a class="el" href="group___sprite.html#ga53">PA_GetSpriteGfx(obj_number)</a>; </td></tr>
   </table>
 </dl>
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga45" doxytag="PA_Sprite.h::PA_SetSpriteHflip"></a><p>
+<a class="anchor" name="ga48" doxytag="PA_Sprite.h::PA_SetSpriteHflip"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -962,7 +971,7 @@ Utiliser ou non le flip horizontal pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga41" doxytag="PA_Sprite.h::PA_SetSpriteMode"></a><p>
+<a class="anchor" name="ga44" doxytag="PA_Sprite.h::PA_SetSpriteMode"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1005,7 +1014,7 @@ Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga43" doxytag="PA_Sprite.h::PA_SetSpriteMosaic"></a><p>
+<a class="anchor" name="ga46" doxytag="PA_Sprite.h::PA_SetSpriteMosaic"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1048,7 +1057,7 @@ Mettre ou non un sprite en mode mosaic
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga35" doxytag="PA_Sprite.h::PA_SetSpritePal"></a><p>
+<a class="anchor" name="ga38" doxytag="PA_Sprite.h::PA_SetSpritePal"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1091,7 +1100,7 @@ Changer la palette d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga56" doxytag="PA_Sprite.h::PA_SetSpritePixel"></a><p>
+<a class="anchor" name="ga59" doxytag="PA_Sprite.h::PA_SetSpritePixel"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1142,7 +1151,7 @@ Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, ave
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga51" doxytag="PA_Sprite.h::PA_SetSpritePrio"></a><p>
+<a class="anchor" name="ga54" doxytag="PA_Sprite.h::PA_SetSpritePrio"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1185,7 +1194,7 @@ Régler la priorité d'un sprite par rapport au Bg.
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga30" doxytag="PA_Sprite.h::PA_SetSpriteRotDisable"></a><p>
+<a class="anchor" name="ga33" doxytag="PA_Sprite.h::PA_SetSpriteRotDisable"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1224,7 +1233,7 @@ Arreter de faire tourner et zoomer un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga29" doxytag="PA_Sprite.h::PA_SetSpriteRotEnable"></a><p>
+<a class="anchor" name="ga32" doxytag="PA_Sprite.h::PA_SetSpriteRotEnable"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1267,7 +1276,7 @@ Faire tourner et zoomer un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga47" doxytag="PA_Sprite.h::PA_SetSpriteVflip"></a><p>
+<a class="anchor" name="ga50" doxytag="PA_Sprite.h::PA_SetSpriteVflip"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1310,7 +1319,7 @@ Utiliser ou non le flip vertical pour un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga31" doxytag="PA_Sprite.h::PA_SetSpriteX"></a><p>
+<a class="anchor" name="ga34" doxytag="PA_Sprite.h::PA_SetSpriteX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1353,7 +1362,7 @@ Position X du sprite à l'écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga33" doxytag="PA_Sprite.h::PA_SetSpriteY"></a><p>
+<a class="anchor" name="ga36" doxytag="PA_Sprite.h::PA_SetSpriteY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1396,7 +1405,7 @@ Position Y du sprite à l'écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga58" doxytag="PA_Sprite.h::PA_SpriteDrawNot"></a><p>
+<a class="anchor" name="ga61" doxytag="PA_Sprite.h::PA_SpriteDrawNot"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1431,7 +1440,7 @@ Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas 
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga28" doxytag="PA_Sprite.h::PA_UpdateGfx"></a><p>
+<a class="anchor" name="ga31" doxytag="PA_Sprite.h::PA_UpdateGfx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1474,7 +1483,7 @@ Mettre à jour les Gfx d'un sprite donné
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga24" doxytag="PA_Sprite.h::PA_UpdateOAM"></a><p>
+<a class="anchor" name="ga27" doxytag="PA_Sprite.h::PA_UpdateOAM"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1510,7 +1519,7 @@ Mettre à jour les Gfx d'un sprite donné
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga27" doxytag="PA_Sprite.h::PA_UpdateSpriteGfx"></a><p>
+<a class="anchor" name="ga30" doxytag="PA_Sprite.h::PA_UpdateSpriteGfx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2365,7 +2374,7 @@ Effacer un sprite. S'il était le seul à utiliser un gfx, il sera effacé lui auss
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga18" doxytag="PA_Sprite.h::PA_GetSpriteAnimFrame"></a><p>
+<a class="anchor" name="ga19" doxytag="PA_Sprite.h::PA_GetSpriteAnimFrame"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2410,7 +2419,52 @@ Renvoie le numéro actuel de la frame d'animation
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga21" doxytag="PA_Sprite.h::PA_GetSpritePixelEx"></a><p>
+<a class="anchor" name="ga21" doxytag="PA_Sprite.h::PA_GetSpriteAnimSpeed"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline u16 PA_GetSpriteAnimSpeed           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="mdname" nowrap> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>sprite</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Renvoie la vitesse de l'animation 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga24" doxytag="PA_Sprite.h::PA_GetSpritePixelEx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2483,7 +2537,7 @@ Récupérer la couleur d'un pixel d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga22" doxytag="PA_Sprite.h::PA_InitSpriteDraw"></a><p>
+<a class="anchor" name="ga25" doxytag="PA_Sprite.h::PA_InitSpriteDraw"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2844,7 +2898,111 @@ Régler l'image du sprite dans l'animation. Cette fonction est plus rapide que PA
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga20" doxytag="PA_Sprite.h::PA_SetSpritePixelEx"></a><p>
+<a class="anchor" name="ga18" doxytag="PA_Sprite.h::PA_SetSpriteAnimFrame"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetSpriteAnimFrame           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="mdname" nowrap> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u16&nbsp;</td>
+          <td class="mdname" nowrap> <em>frame</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Changer le numéro actuel de la frame d'animation 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>frame</em>&nbsp;</td><td>Numéro de frame... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga20" doxytag="PA_Sprite.h::PA_SetSpriteAnimSpeed"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetSpriteAnimSpeed           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="mdname" nowrap> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="mdname" nowrap> <em>speed</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Changer la vitesse de l'animation 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>speed</em>&nbsp;</td><td>Vitesse, en fps... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga23" doxytag="PA_Sprite.h::PA_SetSpritePixelEx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2983,7 +3141,7 @@ Position X et Y du sprite à l'écran
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga19" doxytag="PA_Sprite.h::PA_SpriteAnimPause"></a><p>
+<a class="anchor" name="ga22" doxytag="PA_Sprite.h::PA_SpriteAnimPause"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -3035,7 +3193,7 @@ Mettre en Pause en remettre en lecture une animation de sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga23" doxytag="PA_Sprite.h::PA_SpriteDraw"></a><p>
+<a class="anchor" name="ga26" doxytag="PA_Sprite.h::PA_SpriteDraw"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -3205,7 +3363,7 @@ Arrêter une animation de sprite
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Tue Dec 13 11:53:04 2005 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Wed Dec 14 11:51:01 2005 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -3,17 +3,12 @@
 // Includes
 #include <PA9.h>       // Include for PA_Lib
 
-
-
 // Converted using PAGfxConverter
 #include "gfx/all_gfx.c"
 #include "gfx/all_gfx.h"
 
-
-
 // Function: main()
-int main(int argc, char ** argv)
-{
+int main(int argc, char ** argv){
 	PA_Init();    // Initializes PA_Lib
 	PA_InitVBL(); // Initializes a standard VBL
 		

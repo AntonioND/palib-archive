@@ -19,7 +19,7 @@ int main(int argc, char ** argv)
 	// Infinite loop to keep the program running
 	while (1)
 	{		// Play the sound if A is pressed...
-		if (Pad.Newpress.A) PA_PlaySimpleSound(0, (void*)saberoff, (u32)saberoff_size);
+		if (Pad.Newpress.A) PA_PlaySimpleSound(0, saberoff);
 
 		PA_WaitForVBL();
 	}
