@@ -1,3 +1,10 @@
+PAlib 0.74d :
+
+[Bugfix] Fixed the background rotations ! 
+
+[Feature] Updated the rotating backgrounds to work easily with PAGfx -> PA_LoadPAGfxRotBg(screen, background number, bg name, wraparound (0-1))
+
+
 PAlib 0.74c :
 
 [Animations] Added PA_SetSpriteAnimFrame(screen, sprite, frame) and Added PA_SetSpriteAnimSpeed(screen, sprite, speed)

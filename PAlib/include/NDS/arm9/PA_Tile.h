@@ -2,11 +2,23 @@
 #define _PA_Tile
 
 // Extracts the size from PAGfx convertions
-extern inline u8 PA_GePAGfxBgSize(u16 width, u16 height)
+extern inline u8 PA_GetPAGfxBgSize(u16 width, u16 height)
 {
 	u8 bg_size = 0;
 	if (height == 512)	bg_size = 2;
 	if (width == 512)	bg_size ++;	
+	return bg_size;
+}
+
+// Extracts the size from PAGfx convertions
+extern inline u8 PA_GetPAGfxRotBgSize(u16 width)
+{
+	u8 bg_size = 1; //256x256 by default
+	if (width <= 128)	bg_size = 0;	
+	else if (width <= 256)	bg_size = 1;	
+	else if (width <= 512)	bg_size = 2;		
+	else if (width <= 1024) bg_size = 3;		
+	
 	return bg_size;
 }
 
@@ -347,7 +359,7 @@ void PA_LoadBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size);
 
 #define PA_LoadTiledBg(screen, bg_number, bg_name){\
 	PA_LoadBgPal(screen, bg_number, (void*)bg_name##_Pal); \
-	PA_LoadSimpleBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GePAGfxBgSize(bg_name##_Width, bg_name##_Height), 0, 1);}
+	PA_LoadSimpleBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Width, bg_name##_Height), 0, 1);}
 
 
 
@@ -732,6 +744,28 @@ extern inline void PA_SetLargeMapTile(bool screen, u8 bg_select, s32 x, s32 y, u
 
 
 
+/*!
+    \def PA_LoadPAGfxRotBg(screen, bg_select, bg_name, wraparound)
+    \brief
+      \~english Load a background fit for rotating/scaling ! Warning, you must use PA_SetVideoMode to 1 if you want 1 rotating background (Bg3 only !), or 2 for 2 rotating backgrounds (Bg2 and 3). The background MUST be in 256 colors
+      \~french Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_select
+      \~english Background number to load
+      \~french Numéro du fond que l'on veut charger
+    \param bg_name
+      \~english Background name, like bg0
+      \~french Nom du fond, comme bg0
+    \param wraparound
+      \~english If the background wraps around or not. 
+      \~french Si le fond boucle ou non. 
+*/
+#define PA_LoadPAGfxRotBg(screen, bg_select, bg_name, wraparound) {\
+PA_LoadBgPal(screen, bg_select, (void*)bg_name##_Pal); \
+PA_LoadRotBg(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\
+}
 
 
 

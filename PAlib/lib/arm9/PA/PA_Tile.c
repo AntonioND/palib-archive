@@ -135,6 +135,8 @@ while ((charset < 31 ) && (!charsetok)) {
 }
 
 
+
+
 void PA_LoadRotBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size) {
 s16 charset = -1;
 bool charsetok = 0;
@@ -166,12 +168,16 @@ while ((charset < 31 ) && (!charsetok)) {
 
 
 
+
+
 void PA_InitBg(bool screen, u8 bg_select, u8 bg_size, bool wraparound, bool color_mode) {	
 	scrollpos[screen][bg_select].infscroll = 0; // Par défaut pas de scrolling infini...
 	PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, mapchar[screen][bg_select]);
 	_REG16(REG_BGSCREEN(screen)) |= (0x100 << (bg_select));
 	_REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(mapchar[screen][bg_select] << SCREEN_SHIFT) | (wraparound << 13) | (tilesetchar[screen][bg_select] << 2) | (color_mode << 7);
 }
+
+
 
 
 
@@ -192,6 +198,8 @@ void PA_DeleteTiles(bool screen, u8 bg_select) {
 		}
 	}
 }
+
+
 
 
 
@@ -253,6 +261,9 @@ if (lx >= 64) { // Si moins de 64, pas besoin de faire du scrolling spécial, ca 
 }
 }
 
+
+
+
 void PA_LargeScrollY(bool screen, u8 bg_select, s32 y){
 s32 i, j, lx, ly, tiley, tempx, tempy;
 lx = scrollpos[screen][bg_select].lx;
@@ -292,6 +303,8 @@ if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca 
 }	
 
 }
+
+
 
 
 
@@ -335,6 +348,8 @@ if (lx >= 64) { // Si moins de 64, pas besoin de faire du scrolling spécial, ca 
 }
 }
 
+
+
 void PA_InfLargeScrollY(bool screen, u8 bg_select, s32 y){
 s32 i, j, lx, ly, tiley, tempx, tempy;
 lx = scrollpos[screen][bg_select].lx >> 3;
@@ -377,6 +392,8 @@ if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca 
 
 
 
+
+
 void PA_InitLargeBg(bool screen, u8 bg_select, s32 lx, s32 ly, void* bg_map){
 s32 i, j;
 
@@ -406,17 +423,24 @@ for (i = -2; i < scrollpos[screen][bg_select].maxx; i++)
 
 void PA_SetBgRot(bool screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom){
 
+/*
 s32 center_x = ((x_rotcentre) * (bg_zoom)) >> 8;
-s32 center_y = ((y_rotcentre) * (bg_zoom)) >> 8;
+s32 center_y = ((y_rotcentre) * (bg_zoom)) >> 8;*/
 
-PA_BGXX(screen, bg_select) = ((x_scroll << 8) - center_y * PA_Sin(bg_angle) - center_x * PA_Cos(bg_angle));
-PA_BGXY(screen, bg_select) = ((y_scroll << 8) - center_y * PA_Cos(bg_angle) + center_x * PA_Sin(bg_angle));
+s32 pa, pb, pc, pd;
 
+pa = (PA_Cos(bg_angle) * (bg_zoom)) >> 8;
+pb = (-PA_Sin(bg_angle) * (bg_zoom)) >> 8;
+pc = (PA_Sin(bg_angle) * (bg_zoom)) >> 8;
+pd = pa;
 
-PA_BGXPD(screen, bg_select) = PA_BGXPA(screen, bg_select) = (PA_Cos(bg_angle) * (bg_zoom)) >> 8;
-PA_BGXPB(screen, bg_select) = (PA_Sin(bg_angle) * (bg_zoom)) >> 8;
-PA_BGXPC(screen, bg_select) = (-PA_Sin(bg_angle) * (bg_zoom)) >> 8;
+PA_BGXX(screen, bg_select) = (x_scroll << 8) - (x_rotcentre * pa + y_rotcentre * pb);
+PA_BGXY(screen, bg_select) = (y_scroll << 8) - (x_rotcentre * pc + y_rotcentre * pd);
 
+PA_BGXPA(screen, bg_select) = pa;
+PA_BGXPB(screen, bg_select) = pb;
+PA_BGXPC(screen, bg_select) = pc;
+PA_BGXPD(screen, bg_select) = pd;
 
 
 }
