@@ -17,7 +17,7 @@ int main(int argc, char ** argv)
 	PA_OutputText(1, 0, 0, "Loading PAFS...");
 	
 
-	u32 FileNumer = PA_FSInit(); // Inits PA File System, and returns the number of files
+	u32 FileNumber = PA_FSInit(); // Inits PA File System, and returns the number of files
 
 	PA_OutputText(1, 0, 1, "  Files   : %d    ", FileNumer);		
 	//PA_OutputText(1, 0, 2, "  Folders : %d    ", PA_FSSys->Nfolders);	
@@ -30,7 +30,8 @@ int main(int argc, char ** argv)
 	
 	// Output the first file text on the top screen, just to test...
 	PA_OutputText(1, 0, 5, "File 0 : %s", PA_PAFSFile(0));
-
+	PA_OutputText(1, 0, 7, "File 1 : %s", PA_PAFSFile(1));
+	PA_OutputText(1, 0, 9, "File 2 : %s", PA_PAFSFile(2));	
 	// Infinite loop to keep the program running
 	while (1)
 	{ 
@@ -41,3 +42,15 @@ int main(int argc, char ** argv)
 	
 	return 0;
 } // End of main()
+
+
+
+
+
+
+
+
+
+
+
+

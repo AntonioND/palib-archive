@@ -2,6 +2,12 @@
 #define _PA_Text
 
 
+#define PA_InitCustomTextEx(screen, bg_select, tiles, map, pal) {\
+   PAbgtext[screen] = bg_select;\
+   PA_LoadSimpleBg(screen, bg_select, tiles, Blank, BG_256X256, 0, 1);\
+   PA_LoadBgPal(screen, bg_select, (void*)pal);\
+   PA_textmap[screen] = (u16*)map;PA_textpal[screen] = (u16*)pal;}
+
 
 /*! \file PA_Text.h
     \brief Text system in tile mode
@@ -34,21 +40,22 @@ extern s8 PA_font[2];  // 0 pour normal, 1 pour dégradé, -1 pour custom
 
 
 // Texte à taille variable
-
-#include "text0.h" // La police à taille variable...
-#include "text1.h" // La police à taille variable...
-#include "text2.h" // La police à taille variable...
-#include "text3.h" // La police à taille variable...
-#include "text4.h" // La police à taille variable...
-
+#ifdef TEXT_ALLSIZES
+	#include "text0.h" // La police à taille variable...
+	#include "text1.h" // La police à taille variable...
+	#include "text2.h" // La police à taille variable...
+	#include "text3.h" // La police à taille variable...
+	#include "text4.h" // La police à taille variable...
+	extern const u8 *textData[5];
+	extern const u8 policeheight[5];
+	extern const u16 policewidth[5];
+	extern const u8 policesize[5][256];	
+#endif
 
 
 typedef void(*letterfp)(u8 size, bool screen, u16 x, u16 y, char lettertemp, u8 color);
 
-extern const u8 *textData[5];
-extern const u8 policeheight[5];
-extern 	const u16 policewidth[5];
-extern const u8 policesize[5][256];
+
 
 
 extern letterfp letters[5];
@@ -216,25 +223,30 @@ u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, cons
       \~english Blue amount (0-31)
       \~french Quantité de bleu (0-31)
 */
-void PA_SetTextCol(bool screen, u8 r, u8 g, u8 b);
+void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b);
 
+
+
+//void PA_InitCustomTextEx(bool screen, u8 bg_select, void *tiles, void *map, void *pal);
 
 
 /*!
-    \fn void PA_SetTextFont(bool screen, u8 font)
+    \def PA_InitCustomText(screen, bg_select, text)
     \brief
-      \~english Change the screen's font, using one of those given in PA_lib...
-      \~french Changer la police d'un des écrans en utilisant une des polices de PA_lib
+      \~english Init the text using one of your own fonts ! 
+      \~french Initialiser le texte en utilisant une police perso
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
-    \param font
-      \~english Font (0 for normal, 1 for 3 colored font)
-      \~french Police (0 pour normale, 1 pour tri-color
+    \param bg_select
+         \~english Background number...
+         \~french Numéro du fond...	 
+    \param text
+      \~english Font image file name converted with PAGfx
+      \~french Image de la police, converti avec PAGfx
 
 */
-void PA_SetTextFont(bool screen, u8 font);
-
+#define PA_InitCustomText(screen, bg_select, text) PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)
 
 /*!
     \def PA_ShowFont(screen)
@@ -248,24 +260,6 @@ void PA_SetTextFont(bool screen, u8 font);
 #define PA_ShowFont(screen) PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)
 
 
-
-/*!
-    \fn void PA_SetTextCustomFont(bool screen, void* tiles, void* map)
-    \brief
-      \~english Change the screen's font using a custom font
-      \~french Changer la police d'un des écrans en utilisant une police faite-maison
-    \param screen
-         \~english Chose de screen (0 or 1)
-         \~french Choix de l'écran (0 ou 1)
-    \param tiles
-      \~english Font tiles
-      \~french Tiles de la police
-    \param map
-      \~english Font map
-      \~french Map de la police
-
-*/
-void PA_SetTextCustomFont(bool screen, void* tiles, void* map);
 
 
 

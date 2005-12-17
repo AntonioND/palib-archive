@@ -25,19 +25,19 @@ int main(int argc, char ** argv)
 	s32 scrolly = 0;
 	
 	// Infinite loop to keep the program running
-while (1)
-{
-
-	// We need to change the scroll according to the held keys...
-	scrollx += (Pad.Held.Right - Pad.Held.Left)*4; // scroll 4 pixels at a time
-	scrolly += (Pad.Held.Down - Pad.Held.Up)*4; // Same thing
+	while (1)
+	{
 	
-	PA_LargeScrollXY(0, // screen
-					3, // background number
-					scrollx, // X scroll
-					scrolly); // and Y scroll
-	PA_WaitForVBL();
-}
+		// We need to change the scroll according to the held keys...
+		scrollx += (Pad.Held.Right - Pad.Held.Left)*4; // scroll 4 pixels at a time
+		scrolly += (Pad.Held.Down - Pad.Held.Up)*4; // Same thing
+		
+		PA_LargeScrollXY(0, // screen
+						3, // background number
+						scrollx, // X scroll
+						scrolly); // and Y scroll
+		PA_WaitForVBL();
+	}
 	
 	return 0;
 } // End of main()

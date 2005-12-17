@@ -6,12 +6,12 @@ extern "C" {
 #endif
 
 
+#include "../../PA_Config.h"
 
-#define USE_PA_SPLASH
 
-// Comment out this line to limit the text sizes to only a single size, size 2... 
-// This will make you gain 200-300ko
-//#define TEXT_ALLSIZES
+#ifdef USE_8BITTEXT  
+	#define TEXT_ALLSIZES   
+#endif
 
 
 #include <nds.h>
@@ -88,7 +88,11 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 #include "arm9/PA_Draw.h"
 #include "arm9/PA_Interrupt.h"
 #include "arm9/PA_Keys.h"
-#include "arm9/PA_API.h"
+
+#ifdef TEXT_ALLSIZES
+	#include "arm9/PA_API.h"  // API only if has text...
+#endif
+
 #include "arm9/PA_Math.h"
 #include "arm9/PA_Palette.h"
 #include "arm9/PA_PaletteDual.h"

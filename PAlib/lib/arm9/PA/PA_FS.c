@@ -29,7 +29,7 @@ u32 PA_FSInit(void){
 	
 	while (!((PAFSStart[0] == 'B') && (PAFSStart[1] == 'I') && (PAFSStart[2] == 'N') && (PAFSStart[3] == '0') && (PAFSStart[4] == '0') && (PAFSStart[5] == '0'))) PAFSStart++;
 
-	PAFSStart+=8;
+	PAFSStart+=4;
 	
 	return (PA_FSSys->Nfiles);
 }

@@ -1,3 +1,17 @@
+PAlib 0.75a :
+
+[Bugfix] Text colors now work (emulator+DS)
+
+[Feature fix] Added PA_InitCustomText(screen, bg_select, text) to replace the custom text functions... Text must be converted using PAGfx as TileBg... (the loading function works like LoadTiledBg)
+
+[Feature] Much Lighter roms (lost like 100k) by removing the neoflash and palib splash screens... Moreover, they were added by default (they shouldn't have been). I'll replace them later on with jpegs, which will be way lighter...
+
+[PAFS] Updated PAFS to add 32bit padding to files, should solve some problems. Added mod and sound playing functions and the corresponding example... Will use all that to do the filesystem tutorial on the wiki...
+
+[Examples] Added the gravity example
+
+
+
 PAlib 0.74d :
 
 [Bugfix] Fixed the background rotations ! 

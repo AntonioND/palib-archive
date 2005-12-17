@@ -1,8 +1,3 @@
-/* This will be the shortest example ever ! It just turns of the scren when the lid is closed...
-Therefore, usable only on DS, duh...
-*/
-
-
 // Includes
 #include <PA9.h>       // Include for PA_Lib
 
@@ -12,7 +7,6 @@ int main(int argc, char ** argv)
 {
 	PA_Init();    // Initializes PA_Lib
 	PA_InitVBL(); // Initializes a standard VBL
-	
 	
 	// Infinite loop to keep the program running
 	while (1)

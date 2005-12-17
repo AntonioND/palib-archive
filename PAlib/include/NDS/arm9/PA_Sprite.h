@@ -126,7 +126,7 @@ typedef struct{
 	s16 speed;
 	bool play;
 } spriteanim;
-extern spriteanim *spriteanims[2]; // Init the array on PAlib init...
+extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
 
 //#define spriteanimsize 40
 
