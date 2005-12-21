@@ -68,3 +68,21 @@ void PA_LoadBgExtPal(bool screen, u16 bg_number, void* palette){
 	}
 }
 
+
+void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette)
+{
+	if (screen == 0) {
+		vramSetBankE(VRAM_E_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
+		DMA_Copy(palette, VRAM_E + (bg_number << 13) + (pal_number << 9), 256, DMA_16NOW);
+
+		vramSetBankE(VRAM_E_BG_EXT_PALETTE);
+	}
+	else {
+		vramSetBankH(VRAM_H_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
+		DMA_Copy(palette, VRAM_H + (bg_number << 13) + (pal_number << 9), 256, DMA_16NOW);
+		vramSetBankH(VRAM_H_SUB_BG_EXT_PALETTE);
+	}
+}
+
+
+

@@ -358,7 +358,7 @@ s32 length = (PA_FSFile[PAFS_mod_number].Length >> 2) + 1; // Pour etre sur...
 	u8 *file = (u8*)PA_PAFSFile(PAFS_mod_number);
 	file = file+4;
 
-	u32 i;
+	s32 i;
 	for (i = 0; i < length<<2; i++) FS_mod[i] = file[i];
 
 	PA_PlayMod(FS_mod);

@@ -61,7 +61,7 @@ typedef void(*letterfp)(u8 size, bool screen, u16 x, u16 y, char lettertemp, u8 
 extern letterfp letters[5];
 
 
-
+extern u8 PAtext_pal[2];
 
 
 
@@ -107,8 +107,16 @@ void PA_InitText(bool screen, u8 bg_select);
          \~french Lettre... 'a', 'Z', etc...
 */
 extern inline void PA_SetTileLetter(bool screen, u16 x, u16 y, char letter) {
-	PA_SetMapTileAll(screen, PAbgtext[screen], x, y, PA_textmap[screen][(u16)letter]);
+	PA_SetMapTileAll(screen, PAbgtext[screen], x, y, PA_textmap[screen][(u16)letter] + (PAtext_pal[screen] << 12));
 }
+
+extern inline void PA_SetTextTileCol(bool screen, u8 color)
+{
+	PAtext_pal[screen] = color;
+}
+
+
+
 
 /*! \fn void PA_OutputText(bool screen, u16 x, u16 y, char* text, ...)
     \brief

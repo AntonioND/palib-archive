@@ -1,9 +1,13 @@
-/* This shows how to use the basic PAFS functions ! PAFS is a file system for nintendo DS, which supports multiple files in multiple directories... See the PAFSFolders to see how to detect the different folders
+/* This shows how to use the basic PAFS functions ! PAFS is a file system for nintendo DS, which supports multiple files in multiple directories... The Ram version works in emulators and WMB !!
 
 */
 
 // Includes
 #include <PA9.h>       // Include for PA_Lib
+
+
+PA_FSRam(1000000);  // This defines the size of the memory you allocate for files at the maximum ... I set it to 1 Meg, here. You can use more (like 2 megs, but not much more) or as little as a few KB if you don't need to put much in it...
+
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -15,9 +19,9 @@ int main(int argc, char ** argv)
 	PA_InitText(1, 0);  // Initialise the text system on the top screen
 	
 	PA_OutputText(1, 0, 0, "Loading PAFS...");
-	
 
-	u32 FileNumber = PA_FSInit(); // Inits PA File System, and returns the number of files
+	PAFSStart = (char*)PA_FileSystem; // Tells to use the ram...
+	u32 FileNumber = PA_FSRamInit(); // Inits PA Ram File System, and returns the number of files
 
 	PA_OutputText(1, 0, 1, "  Files   : %d    ", FileNumber);		
 	//PA_OutputText(1, 0, 2, "  Folders : %d    ", PA_FSSys->Nfolders);	

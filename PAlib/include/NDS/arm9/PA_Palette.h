@@ -199,6 +199,10 @@ extern inline void PA_LoadBgPal(bool screen, u16 bg_number, void* palette){
 	PA_LoadBgExtPal(screen, bg_number, palette);
 }
 
+// Load to a given palette number
+void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette);
+
+
 
 
 /*! \def PA_SetBgPalCol(screen, color_number, colorRGB)

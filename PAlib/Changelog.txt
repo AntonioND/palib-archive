@@ -1,3 +1,12 @@
+PAlib 0.76a :
+
+[PAFS Feature] Started to test some PAFS in ram... this should make it work in emulators and WMB, but is still a work in progress... it works well on one example, but seems to fail on another one, not sure why... Check out the PAFS_Ram example to see how to use it...
+
+[Text Feature] PA_SetTextTileCol(screen, color) is out ! What is it ? It changes the color of the next texts to come... this means you can start writing in white, tell that the rest will be in blue, and have both colors on the screen !!! For now, there are only predefined colors, and color is a number form 0 to 6... Check the TextColors example...
+
+[Minor Fix] Fixed a C++ compilation warning
+
+
 PAlib 0.75a :
 
 [Bugfix] Text colors now work (emulator+DS)

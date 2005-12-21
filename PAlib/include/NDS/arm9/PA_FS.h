@@ -36,7 +36,11 @@ extern PAFSFolders *PA_FSFolder;
 
 extern char *PAFSStart;
 
+// PAFS Start if in Ram...
+#define PA_FSRam(size) char PA_FileSystem[size] = "PAFS007"; 
 
+
+void PA_FSAllInit(void);// Inits for all systems
 
 
 
@@ -45,12 +49,49 @@ extern char *PAFSStart;
  *  @{
  */
 
-/*! \fn extern inline void PA_FSInit(void)
+/*! \fn extern inline u32 PA_FSInit(void)
     \brief
          \~english Initialises PAFS and returns the number of files found... Stores the file infos in the following form : PA_FSFile[file number].Name is the file name without the extension, .Ext si the file extension (txt, html, etc...), and .Length is the file length. PA_PAFSFile(FileNumber) is a pointer towards a given file
          \~french Initialise PAFS et renvoie le nombre de fichiers trouvés... Stock e les infos sous la forme suivante : PA_FSFile[numéro du fichier].Name est son nom sans extension, .Ext est l'extension (txt, html, etc...), et .Length la taille du fichier. PA_PAFSFile(FileNumber) est un pointeur vers le fichier
 */
-u32 PA_FSInit(void);
+extern inline u32 PA_FSInit(void)
+{
+	PA_FSAllInit();
+	return (PA_FSSys->Nfiles);
+}
+
+
+
+/*! \fn extern inline u32 PA_FSRamInit(void)
+    \brief
+         \~english Initialises PAFS and returns the number of files found... Stores the file infos in the following form : PA_FSFile[file number].Name is the file name without the extension, .Ext si the file extension (txt, html, etc...), and .Length is the file length. PA_PAFSFile(FileNumber) is a pointer towards a given file. This version stores the files in the ram, which makes it work in emulators and on WMB, but is limited to a few megs...
+         \~french Initialise PAFS et renvoie le nombre de fichiers trouvés... Stock e les infos sous la forme suivante : PA_FSFile[numéro du fichier].Name est son nom sans extension, .Ext est l'extension (txt, html, etc...), et .Length la taille du fichier. PA_PAFSFile(FileNumber) est un pointeur vers le fichier. Cette version cope les fichiers en ram au lieu de la rom, et marche donc pour les emulateurs et sur WMB, mais est limité à quelques Mo du coup...
+*/
+extern inline u32 PA_FSRamInit(void)
+{
+	PAFSStart-=8;
+	
+	while (!((PAFSStart[0] == 'P') && (PAFSStart[1] == 'A') && (PAFSStart[2] == 'F') && (PAFSStart[3] == 'S') && (PAFSStart[4] == '0') && (PAFSStart[5] == '0'))) PAFSStart++;
+	
+	PAFSStart += 8;
+	PA_FSSys = (PAFSSystems*)PAFSStart;
+
+	while (!((PAFSStart[0] == 'D') && (PAFSStart[1] == 'I') && (PAFSStart[2] == 'R') && (PAFSStart[3] == '0') && (PAFSStart[4] == '0') && (PAFSStart[5] == '0'))) PAFSStart++;
+	
+	PAFSStart += 8;
+	PA_FSFolder = (PAFSFolders*)PAFSStart;
+	
+	while (!((PAFSStart[0] == 'F') && (PAFSStart[1] == 'I') && (PAFSStart[2] == 'L') && (PAFSStart[3] == '0') && (PAFSStart[4] == '0') && (PAFSStart[5] == '0'))) PAFSStart++;
+	
+	PAFSStart+=8;
+	PA_FSFile = (PAFSFiles*)PAFSStart;
+	
+	while (!((PAFSStart[0] == 'B') && (PAFSStart[1] == 'I') && (PAFSStart[2] == 'N') && (PAFSStart[3] == '0') && (PAFSStart[4] == '0') && (PAFSStart[5] == '0'))) PAFSStart++;
+
+	PAFSStart+=4;
+	return (PA_FSSys->Nfiles);
+}
+
 
 /*! \def PA_PAFSFile(FileN)
     \brief

@@ -14,59 +14,46 @@ s8 PA_font[2] = {};  // 0 pour normal, 1 pour dégradé, -1 pour custom
 // Text system
 u16 TextPal[256];
 
+ u8 PAtext_pal[2]; // text colors...
+
+
+void PA_CreateTextPal(bool screen, u16 r, u16 g, u16 b) {
+	u16 baser, baseg, baseb;
+	u16 i;
+	
+	for (i = 1; i < 256; i++)
+	{
+		baser = 1+(PA_textpal[screen][i]&31)*r;
+		baseg = 1+((PA_textpal[screen][i]>>5)&31)*g;
+		baseb = 1+((PA_textpal[screen][i]>>10)&31)*b;
+		TextPal[i] = PA_RGB((baser>>5), (baseg>>5), (baseb>>5));
+	}	
+}
+
 
 void PA_InitText(bool screen, u8 bg_select) {
-
-PA_InitCustomText(screen, bg_select, PA_text);
-/*
-   PAbgtext[screen] = bg_select;
+	PA_InitCustomText(screen, bg_select, PA_text);
+	PA_SetTextTileCol(screen, 0);
 	
-   PA_LoadSimpleBg(screen, bg_select, PA_text_Tiles, Blank, BG_256X256, 0, 1);
-   PA_LoadBgPal(screen, bg_select, (void*)PA_text_Pal);   
-   
-   PA_textmap[screen] = (u16*)PA_text_Map;
-   PA_textpal[screen] = (u16*)PA_text_Pal;*/
+	PA_CreateTextPal(screen, 31, 31, 31);
+	PA_LoadBgPalN(screen, bg_select, 0, (void*)TextPal);
+	PA_CreateTextPal(screen, 31, 0, 0);
+	PA_LoadBgPalN(screen, bg_select, 1, (void*)TextPal);	
+	PA_CreateTextPal(screen, 0, 31, 0);
+	PA_LoadBgPalN(screen, bg_select, 2, (void*)TextPal);	
+	PA_CreateTextPal(screen, 0, 0, 31);
+	PA_LoadBgPalN(screen, bg_select, 3, (void*)TextPal);	
+	PA_CreateTextPal(screen, 31, 0, 31);
+	PA_LoadBgPalN(screen, bg_select, 4, (void*)TextPal);	
+	PA_CreateTextPal(screen, 0, 31, 31);
+	PA_LoadBgPalN(screen, bg_select, 5, (void*)TextPal);
+	PA_CreateTextPal(screen, 31, 31, 0);
+	PA_LoadBgPalN(screen, bg_select, 6, (void*)TextPal);	
+	PA_CreateTextPal(screen, 25, 25, 25);
+	PA_LoadBgPalN(screen, bg_select, 7, (void*)TextPal);	
+	PA_CreateTextPal(screen, 31, 20, 20);
+	PA_LoadBgPalN(screen, bg_select, 8, (void*)TextPal);		
 }
-/*
-void PA_InitCustomTextEx(bool screen, u8 bg_select, void *tiles, void *map, void *pal) {
-
-   PAbgtext[screen] = bg_select;
-	
-   PA_LoadSimpleBg(screen, bg_select, tiles, Blank, BG_256X256, 0, 1);
-   PA_LoadBgPal(screen, bg_select, pal);   
-   
-   PA_textmap[screen] = (u16*)map;
-   PA_textpal[screen] = (u16*)pal;
-}*/
-
-
-
-/*
-void PA_SetTextFont(bool screen, u8 font) {
-	PA_font[screen] = font;
-	if (font == 0) {
-		PA_textmap[screen] = (u16*)PA_font_Map;
-		PA_texttiles[screen] = (u16*)PA_font_Tiles;
-	}
-	else {
-		PA_textmap[screen] = (u16*)PA_font2_Map;
-		PA_texttiles[screen] = (u16*)PA_font2_Tiles;
-	}
-
-	PA_InitText(screen, PAbgtext[screen]); // On recharge le tout en mémoire
-}
-
-
-
-void PA_SetTextCustomFontEx(bool screen, void* tiles, void* map, void* pal) {
-	PA_font[screen] = -1;
-
-	PA_textmap[screen] = (u16*)map;
-	PA_texttiles[screen] = (u8*)tiles;
-	PA_textpal[screen] = (u16*)pal;
-	
-	PA_InitText(screen, PAbgtext[screen]); // On recharge le tout en mémoire
-}*/
 
 
 void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b) {
@@ -83,6 +70,13 @@ void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b) {
 	PA_LoadBgPal(screen, PAbgtext[screen], (void*)TextPal);
 }
 
+
+
+
+void PA_TextAllPal(bool screen)
+{
+
+}
 
 u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text) {
 s16 j;
