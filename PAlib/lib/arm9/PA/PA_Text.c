@@ -1,6 +1,14 @@
 #include "PA9.h"
 
-#include "Text/all_gfx.c" // Include the text !
+#ifndef TEXT_ALLCHARACTERS
+	#include "Text/PA_text.c" // Include the text !
+	#include "Text/PA_text.pal.c" // Include the text !	
+#endif
+#ifdef TEXT_ALLCHARACTERS
+	#include "Text/PA_text2.c" // Include the text !
+	#include "Text/PA_text2.pal.c" // Include the text !	
+#endif
+
 
 u8 PAbgtext[2];
 u16 textcol[2];
@@ -12,53 +20,63 @@ u16 *PA_textpal[2]; // Palette !
 s8 PA_font[2] = {};  // 0 pour normal, 1 pour dégradé, -1 pour custom
 
 // Text system
-u16 TextPal[256];
+//u16 TextPal[256];
 
- u8 PAtext_pal[2]; // text colors...
+ u16 PAtext_pal[2] = {0, 0}; // text colors...
 
 
-void PA_CreateTextPal(bool screen, u16 r, u16 g, u16 b) {
+void PA_CreateTextPal(bool screen, u8 pal_number, u16 r, u16 g, u16 b) {
 	u16 baser, baseg, baseb;
 	u16 i;
 	
-	for (i = 1; i < 256; i++)
+	for (i = 1; i < 7; i++) // Just do the first colors...
 	{
 		baser = 1+(PA_textpal[screen][i]&31)*r;
 		baseg = 1+((PA_textpal[screen][i]>>5)&31)*g;
 		baseb = 1+((PA_textpal[screen][i]>>10)&31)*b;
-		TextPal[i] = PA_RGB((baser>>5), (baseg>>5), (baseb>>5));
+//		TextPal[i] = PA_RGB((baser>>5), (baseg>>5), (baseb>>5));
+		PA_SetBgPalNCol(screen, PAbgtext[screen], pal_number, i, PA_RGB((baser>>5), (baseg>>5), (baseb>>5)));
 	}	
 }
 
 
 void PA_InitText(bool screen, u8 bg_select) {
+#ifndef TEXT_ALLCHARACTERS
 	PA_InitCustomText(screen, bg_select, PA_text);
 	PA_SetTextTileCol(screen, 0);
+#endif
+#ifdef TEXT_ALLCHARACTERS
+	PA_InitCustomText(screen, bg_select, PA_text2);
+	PA_SetTextTileCol(screen, 0);
+#endif
 	
-	PA_CreateTextPal(screen, 31, 31, 31);
-	PA_LoadBgPalN(screen, bg_select, 0, (void*)TextPal);
-	PA_CreateTextPal(screen, 31, 0, 0);
-	PA_LoadBgPalN(screen, bg_select, 1, (void*)TextPal);	
-	PA_CreateTextPal(screen, 0, 31, 0);
-	PA_LoadBgPalN(screen, bg_select, 2, (void*)TextPal);	
-	PA_CreateTextPal(screen, 0, 0, 31);
-	PA_LoadBgPalN(screen, bg_select, 3, (void*)TextPal);	
-	PA_CreateTextPal(screen, 31, 0, 31);
-	PA_LoadBgPalN(screen, bg_select, 4, (void*)TextPal);	
-	PA_CreateTextPal(screen, 0, 31, 31);
-	PA_LoadBgPalN(screen, bg_select, 5, (void*)TextPal);
-	PA_CreateTextPal(screen, 31, 31, 0);
-	PA_LoadBgPalN(screen, bg_select, 6, (void*)TextPal);	
-	PA_CreateTextPal(screen, 25, 25, 25);
-	PA_LoadBgPalN(screen, bg_select, 7, (void*)TextPal);	
-	PA_CreateTextPal(screen, 31, 20, 20);
-	PA_LoadBgPalN(screen, bg_select, 8, (void*)TextPal);		
+	PA_CreateTextPal(screen, 0, 31, 31, 31);
+	//PA_LoadBgPalN(screen, bg_select, 0, (void*)TextPal);
+	PA_CreateTextPal(screen, 1, 31, 0, 0);
+	//PA_LoadBgPalN(screen, bg_select, 1, (void*)TextPal);	
+	PA_CreateTextPal(screen, 2, 0, 31, 0);
+	//PA_LoadBgPalN(screen, bg_select, 2, (void*)TextPal);	
+	PA_CreateTextPal(screen, 3, 0, 0, 31);
+	//PA_LoadBgPalN(screen, bg_select, 3, (void*)TextPal);	
+	PA_CreateTextPal(screen, 4, 31, 0, 31);
+	//PA_LoadBgPalN(screen, bg_select, 4, (void*)TextPal);	
+	PA_CreateTextPal(screen, 5, 0, 31, 31);
+	//PA_LoadBgPalN(screen, bg_select, 5, (void*)TextPal);
+	PA_CreateTextPal(screen, 6, 31, 31, 0);
+	//PA_LoadBgPalN(screen, bg_select, 6, (void*)TextPal);	
+	PA_CreateTextPal(screen, 7, 25, 25, 25);
+	//PA_LoadBgPalN(screen, bg_select, 7, (void*)TextPal);	
+	PA_CreateTextPal(screen, 8, 31, 20, 20);
+	//PA_LoadBgPalN(screen, bg_select, 8, (void*)TextPal);		
 }
 
 
+/*
 void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b) {
 	u16 baser, baseg, baseb;
 	u16 i;
+	
+	
 	
 	for (i = 1; i < 256; i++)
 	{
@@ -69,7 +87,7 @@ void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b) {
 	}	
 	PA_LoadBgPal(screen, PAbgtext[screen], (void*)TextPal);
 }
-
+*/
 
 
 
@@ -107,6 +125,7 @@ BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au ca
 			y++;
 			if (y > maxy) loop = 0;
 		}
+		//else if (text[j] == '\r')
 		else{			
 			PA_SetTileLetter(screen, x, y, text[j]);
 			x++;
@@ -243,7 +262,6 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
    for (j = 0; text[j]; j++) {
       if (text[j] == '%') {
          if (text[j+1] == 's') {  // S'il y a %s, c'est une chaine de caractères...
-
             PAextext = (u8*)va_arg(varg, const u8 *);  // Pointeur vers la chaine de charactères...
             for (i = 0; PAextext[i]; i++) {
 				PA_SetTileLetter(screen, x + textcount, y, PAextext[i]);

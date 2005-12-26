@@ -1,6 +1,10 @@
 #ifndef _PA_KEYS
 #define _PA_KEYS
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "PA9.h"
 /*! \file PA_Keys.h
     \brief Everything concerning the keys and stylus
@@ -252,5 +256,7 @@ extern inline bool PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly){
 
 /** @} */ // end of Keys
 
-
+#ifdef __cplusplus
+}
+#endif
 #endif

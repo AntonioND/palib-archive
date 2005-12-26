@@ -162,8 +162,6 @@ extern inline void PA_DualSetBgColor(u16 color){
 
 
 
-
-
 #endif
 
 

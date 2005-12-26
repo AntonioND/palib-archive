@@ -2,6 +2,7 @@
 #define _PA_Palette
 
 
+
 void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette);
 void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
 
@@ -207,8 +208,8 @@ void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette);
 
 /*! \def PA_SetBgPalCol(screen, color_number, colorRGB)
     \brief
-         \~english Change the color of one of the background palette colors
-         \~french Changer la couleur d'une des couleurs de la palette des fonds
+         \~english Change the color of one of the main background palette colors. Not used anymore
+         \~french Changer la couleur d'une des couleurs de la palette des fonds. Ne plus utiliser
     \param screen
          \~english Screen...
          \~french Ecran...
@@ -220,6 +221,31 @@ void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette);
          \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
 */
 #define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen << 9)] = colorRGB
+
+
+
+/*! \fn void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color)
+    \brief
+         \~english Change the color of one of the backgrounds' palettes' colors
+         \~french Changer la couleur d'une des couleurs d'une palette d'un fonds
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param bg_number
+         \~english Background number (0-3)
+         \~french Numéro du fond (0-3)		 
+    \param pal_number
+         \~english Palette number (0-15). Leave to 0 if unsure
+         \~french Numéro de palette (0-15), laisser à 0 si pas sur...		 
+    \param color_number
+         \~english Color number in palette (0-255)
+         \~french Numéro de la couleur dans la palette (0-255)
+    \param color
+         \~english RGB value, like PA_RGB(31, 31, 31) for white
+         \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
+*/
+void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color);
+
 
 /*! \def PA_SetSpritePalCol(screen, color_number, colorRGB)
     \brief
@@ -258,8 +284,6 @@ extern inline void PA_SetBgColor(bool screen, u16 color){
 
 /** @} */ // end of Palette
 //////////////////////////////////////////////////////////////////////
-
-
 
 
 #endif

@@ -103,23 +103,22 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 
 #include "arm9/PA_Tile.h"
 #include "arm9/PA_TileDual.h"
-#include "arm9/PA_Keyboard.h"
+
+#ifdef USE_KEYBOARD
+	#include "arm9/PA_Keyboard.h"
+#endif
 
 #include "arm9/PA_Text.h"
 #include "arm9/PA_Window.h"
 
 #include "arm9/PA_Mode7.h"
 
-#include "arm9/PA_3D.h"
+#ifdef USE_3D
+	#include "arm9/PA_3D.h"
+#endif
+
+
 #include "arm9/PA_IA.h"
-
-#include "arm9/splash.h"
-#include "arm9/splash2.h"
-#include "arm9/PApalet.h"
-extern const unsigned short bitmap[768];
-
-
-#include "arm9/NeoSplash.h"  // Splash NeoFlash
 
 
 #define SWITCH_SCREENS  (1<<15)
@@ -388,10 +387,14 @@ void PA_Splash(void* tiles0, void* map0, void* tiles1, void* map1, s16 color0, s
 void PA_SetScreenLight(bool screen, bool light);
 
 
+
+
+
 /** @} */ // end of General
 
 
 void PA_Nothing(void);
+
 
 #ifdef __cplusplus
 }

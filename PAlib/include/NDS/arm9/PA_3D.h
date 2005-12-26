@@ -4,6 +4,9 @@
 #include <malloc.h>
 #include <nds/arm9/image.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 extern const u8 PAlib[];
 extern const u32 PAlib_size[];
@@ -385,5 +388,8 @@ int PA_Draw3Dobject(struct PA_3DObject obj);
 int PA_ScaleCallList(struct PA_3DObject obj, float x, float y, float z);
 /** @} */ // end of 3D
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -1,6 +1,7 @@
 #ifndef _PA_Window
 #define _PA_Window
 
+
 /*! \file PA_Window.h
     \brief Window options...
 
@@ -226,7 +227,6 @@ extern inline void PA_WindowFade(bool screen, u8 type, u8 time){
 
 /** @} */ // end of Window
 //////////////////////////////////////////////////////////////////////
-
 
 
 

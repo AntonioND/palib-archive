@@ -18,19 +18,18 @@ int main(int argc, char ** argv)
 	
 	// Initialise the text system on the top screen
 	PA_InitText(0, // Bootom screen
-				0);  	// Background number, from 0-3, on which to load the text system
+				1);  	// Background number, from 0-3, on which to load the text system
 	PA_InitText(1, 0);  // Initialise the text system on the top screen
 
-
 	u8 i;
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < 8; i++)
 	{
 		PA_SetTextTileCol(1, i); // Change the color on the top screen, values 0 to 6
 		PA_OutputSimpleText(1, 2, i, "Color test...");  // Screen 1 has different colors
-		PA_OutputSimpleText(0, 2, i, "Color test...");  // Screen 0 was not modified...
+		PA_OutputSimpleText(0, 2, i, "No Color test...");  // Screen 0 was not modified...
 	}
 	
-
+	//PA_LoadTiledBg(0, 0, PA_text2);
 
 	
 	// Infinite loop to keep the program running

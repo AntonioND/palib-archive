@@ -14,13 +14,18 @@ int main(int argc, char ** argv){
 	
 	PA_InitText(1, 0);  // Initialise the text system on the top screen
 
-	u8 nfiles = PA_FSInit(); // Inits PA File System, and returns the number of files
+	u32 nfiles = PA_FSInit(); // Inits PA File System, and returns the number of files
 	PA_OutputText(1, 0, 0, "Files : %d", nfiles); // Show the number of files we added
-		
-	PA_PlayFSMod(0);	// Play the mod in PAFS, slot 1...
 
+	PA_PlayFSMod(0);	// Play the mod in PAFS, slot 1...
 	
 	while(1){	// Infinite loop
+	
+		if (Pad.Newpress.A){
+			//file++;
+			//for (i = 0; i < length<<2; i++) FS_mod[i] = file[i];
+			PA_PlayMod(FS_mod);
+		}
 
 		PA_WaitForVBL();
 	}

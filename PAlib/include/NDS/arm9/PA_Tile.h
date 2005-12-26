@@ -1,6 +1,8 @@
 #ifndef _PA_Tile
 #define _PA_Tile
 
+
+
 // Extracts the size from PAGfx convertions
 extern inline u8 PA_GetPAGfxBgSize(u16 width, u16 height)
 {

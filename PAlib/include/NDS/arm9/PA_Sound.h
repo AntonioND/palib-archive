@@ -1,6 +1,8 @@
 #ifndef _PA_Sound9
 #define _PA_Sound9
 
+
+
 /*! \file PA_Sound.h
     \brief Sound info
 
@@ -30,8 +32,8 @@ typedef struct{ // Default sound format
 
 extern PA_SoundOptions PA_SoundOption;
 
-extern u8 *FS_mod;
-extern u8 *FS_wav[16]; // 16 channels...
+extern u32 *FS_mod;
+extern u32 *FS_wav[16]; // 16 channels...
 
 //plays an 8 bit mono sample at 11025Hz
 
@@ -73,12 +75,14 @@ extern inline void PA_InitSound(void) {
 	sndMemPool = (u32*)0x2200000;
 	SndSetMemPool(sndMemPool, SND_MEM_POOL_SIZE);
 	PA_SetDefaultSound(127, 11025, 1);
-	FS_mod = (u8*)malloc(2); // Initialise a small portion of memory, will make it bigger later on...
+	FS_mod = NULL; // Initialise a small portion of memory, will make it bigger later on...
+	u8 i;
+	for (i = 0; i < 16; i++) FS_wav[i] = NULL; // to be able to free
 }
 
 
 
-/*! \fn void PA_PlaySoundEx(u8 PA_Channel, const void* data, u32 length, u8 volume, s16 freq, s16 format)
+/*! \fn void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq, s16 format)
     \brief
          \~english Play a given sound effect, but chose your format
          \~french Joue une fois un son, mais en choisissant le format
@@ -101,7 +105,7 @@ extern inline void PA_InitSound(void) {
          \~english Sound format.
          \~french Format du son.
 */
-void PA_PlaySoundEx(u8 PA_Channel, const void* data, u32 length, u8 volume, s16 freq, s16 format);
+void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq, s16 format);
 
 /*! \fn extern inline void PA_PlayGBFSSoundEx(u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq, s16 format)
     \brief
@@ -126,7 +130,7 @@ void PA_PlaySoundEx(u8 PA_Channel, const void* data, u32 length, u8 volume, s16 
 extern inline void PA_PlayGBFSSoundEx(u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq, s16 format){
 s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 	free(FS_wav[PA_Channel]);
-	FS_wav[PA_Channel] = (u8*)malloc(length << 2);
+	FS_wav[PA_Channel] = (u32*)malloc(length << 2);
 	
 	DMA_Copy(PA_GBFSfile[FS_wav_number].File, FS_wav[PA_Channel], length, DMA_32NOW);
 
@@ -156,17 +160,17 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~french Format du son.
 */
 extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s16 freq, s16 format){
-s32 length = (PA_FSFile[PAFS_wav_number].Length >> 2) + 1; // Pour etre sur...
-	free(FS_wav[PA_Channel]);
-	FS_wav[PA_Channel] = (u8*)malloc(length << 2);
-	
-	DMA_Copy(PA_PAFSFile(PAFS_wav_number), FS_wav[PA_Channel], length, DMA_32NOW);
+	PA_Malloc((void**)&FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
 
+	s32 i;
+	s32 length = (PA_FSFile[PAFS_wav_number].Length>>2) + 1; // Pour etre sur...
+	for (i = 0; i < length; i++) FS_wav[PA_Channel][i] = ((u32*)PA_PAFSFile(PAFS_wav_number))[i];
+	
 	PA_PlaySoundEx(PA_Channel, (void*)FS_wav[PA_Channel], length << 2, volume, freq, format);
 }
 
 
-/*! \fn extern inline void PA_PlaySound(u8 PA_Channel, const void* data, u32 length, u8 volume, s16 freq)
+/*! \fn extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq)
     \brief
          \~english Play a given sound effect, with default format (raw)
          \~french Joue une fois un son, avec format par défaut (raw)
@@ -186,7 +190,7 @@ s32 length = (PA_FSFile[PAFS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~english Sound frequence, depends on the sound... 11025 by default
          \~french Fréquence du son...11025 par défaut
 */
-extern inline void PA_PlaySound(u8 PA_Channel, const void* data, u32 length, u8 volume, s16 freq){
+extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq){
 PA_PlaySoundEx(PA_Channel, data, length, volume, freq, 1);
 }
 
@@ -210,7 +214,7 @@ PA_PlaySoundEx(PA_Channel, data, length, volume, freq, 1);
 extern inline void PA_PlayGBFSSound(u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq){
 s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 	free(FS_wav[PA_Channel]);
-	FS_wav[PA_Channel] = (u8*)malloc(length << 2);
+	FS_wav[PA_Channel] = (u32*)malloc(length << 2);
 	
 	DMA_Copy(PA_GBFSfile[FS_wav_number].File, FS_wav[PA_Channel], length, DMA_32NOW);
 
@@ -237,12 +241,12 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~french Fréquence du son...11025 par défaut
 */
 extern inline void PA_PlayFSSound(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s16 freq){
-s32 length = (PA_FSFile[PAFS_wav_number].Length >> 2) + 1; // Pour etre sur...
-	free(FS_wav[PA_Channel]);
-	FS_wav[PA_Channel] = (u8*)malloc(length << 2);
-	
-	DMA_Copy(PA_PAFSFile(PAFS_wav_number), FS_wav[PA_Channel], length, DMA_32NOW);
+	PA_Malloc((void**)(&FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
 
+	s32 i;
+	s32 length = (PA_FSFile[PAFS_wav_number].Length>>2) + 1; // Pour etre sur...
+	for (i = 0; i < length; i++) FS_wav[PA_Channel][i] = ((u32*)PA_PAFSFile(PAFS_wav_number))[i];
+	
 	PA_PlaySound(PA_Channel, (void*)FS_wav[PA_Channel], length << 2, volume, freq);
 }
 
@@ -277,10 +281,10 @@ s32 length = (PA_FSFile[PAFS_wav_number].Length >> 2) + 1; // Pour etre sur...
 extern inline void PA_PlayGBFSSimpleSound(u8 PA_Channel, u16 FS_wav_number){
 s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 	free(FS_wav[PA_Channel]);
-	FS_wav[PA_Channel] = (u8*)malloc(length << 2);
+	FS_wav[PA_Channel] = (u32*)malloc(length << 2);
 	
 	DMA_Copy(PA_GBFSfile[FS_wav_number].File, FS_wav[PA_Channel], length, DMA_32NOW);
-	
+
 	PA_PlaySound(PA_Channel, (void*)FS_wav[PA_Channel], length << 2, PA_SoundOption.volume, PA_SoundOption.freq);
 }
 
@@ -299,13 +303,13 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~french Numéro du son RAW dans PA GBFS
 */
 extern inline void PA_PlayFSSimpleSound(u8 PA_Channel, u16 PAFS_wav_number){
-s32 length = (PA_FSFile[PAFS_wav_number].Length >> 2) + 1; // Pour etre sur...
-	free(FS_wav[PA_Channel]);
-	FS_wav[PA_Channel] = (u8*)malloc(length << 2);
+	PA_Malloc((void**)(&FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
+
+	s32 i;
+	s32 length = (PA_FSFile[PAFS_wav_number].Length>>2) + 1; // Pour etre sur...
+	for (i = 0; i < length; i++) FS_wav[PA_Channel][i] = ((u32*)PA_PAFSFile(PAFS_wav_number))[i];
 	
-	DMA_Copy(PA_PAFSFile(PAFS_wav_number), FS_wav[PA_Channel], length, DMA_32NOW);
-	
-	PA_PlaySound(PA_Channel, (void*)FS_wav[PA_Channel], length << 2, PA_SoundOption.volume, PA_SoundOption.freq);
+	PA_PlaySound(PA_Channel, (void*)FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length, PA_SoundOption.volume, PA_SoundOption.freq);
 }
 
 
@@ -335,7 +339,7 @@ s32 length = (PA_FSFile[PAFS_wav_number].Length >> 2) + 1; // Pour etre sur...
 extern inline void PA_PlayGBFSMod(u16 FS_mod_number){
 s32 length = (PA_GBFSfile[FS_mod_number].Length >> 2) + 1; // Pour etre sur...
 	free(FS_mod);
-	FS_mod = (u8*)malloc(length << 2);
+	FS_mod = (u32*)malloc(length << 2);
 
 	DMA_Copy(PA_GBFSfile[FS_mod_number].File, FS_mod, length, DMA_32NOW);
 
@@ -352,15 +356,12 @@ s32 length = (PA_GBFSfile[FS_mod_number].Length >> 2) + 1; // Pour etre sur...
          \~french Numéro de fichier PA GBFS du mod que l'on veut jouer
 */
 extern inline void PA_PlayFSMod(u16 PAFS_mod_number){
-s32 length = (PA_FSFile[PAFS_mod_number].Length >> 2) + 1; // Pour etre sur...
-	free(FS_mod);
-	FS_mod = (u8*)malloc(length << 2);
-	u8 *file = (u8*)PA_PAFSFile(PAFS_mod_number);
-	file = file+4;
+	PA_Malloc((void**)((u32)(&FS_mod)), PA_FSFile[PAFS_mod_number].Length+4);
 
 	s32 i;
-	for (i = 0; i < length<<2; i++) FS_mod[i] = file[i];
-
+	s32 length = (PA_FSFile[PAFS_mod_number].Length>>2) + 1; // Pour etre sur...
+	for (i = 0; i < length; i++) FS_mod[i] = ((u32*)PA_PAFSFile(PAFS_mod_number))[i];
+	
 	PA_PlayMod(FS_mod);
 }
 
@@ -390,7 +391,6 @@ s32 length = (PA_FSFile[PAFS_mod_number].Length >> 2) + 1; // Pour etre sur...
 
 
 /** @} */ // end of SoundARM9
-
 
 
 

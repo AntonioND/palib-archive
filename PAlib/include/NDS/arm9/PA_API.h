@@ -1,6 +1,9 @@
 #ifndef _PA_PAPI
 #define _PA_API
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /*! \file PA_API.h
     \brief PA API functions
@@ -187,8 +190,9 @@ void PAPI_CheckButton(void);
 
 
 /** @} */ // end of PAPI
-
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

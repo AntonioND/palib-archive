@@ -1,0 +1,19 @@
+PAlib 0.77a :
+
+[Bugfix] MAJOR bugfix for the text, appeared screwed up on the screen sometimes on DS (not on emulator), now fixed
+
+[PA_Config] Added a 3Ddefinition to PA_COnfig.h, saves 60k when you remove it ! I might turn the 3d off by default for now on...
+
+[PA_Config] Added a keyboard definition to PA_COnfig.h, saves 20k when you remove it, but it will stay on by default in PAlib
+
+[Bugfix] A stylus bug had slipped in when getting at the bottom of the screen ! now fixed thanks to Morian (DS only bug)
+
+[PAFS] Major Bugfix, now should work both in Ram AND Rom... (it used to work only depending on the number of files for some reason)
+
+[PAFS] Removed the press key to exit if you add a '/silence' after the path, puts a log instead, and replaced the old buggy PAFS.exe in all examples but the ram one, had forgotten those !
+
+[PAGfx] Corrected the frontend, which had TiledBg instead of TileBg... minor bugfixes to both the converter and the frontend
+
+[Text] Added #define TEXT_ALLCHARACTERS  to the config file : Replaces the normal default text by a similar one which has pretty much all the special characters... thanks to Morian for that one ! But it takes twice as much memory in video ram, so you can choose which one to include... Will be on by default in PAlib updates... Also updated the small font with a few more characters (like € and others)
+
+[Palettes] Added PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color);

@@ -2,6 +2,7 @@
 #define _PA_SpriteDual
 
 
+
 /*! \file PA_SpriteDual.h
     \brief Everything concerning the sprite system, but for 2 screens !
 
@@ -838,11 +839,6 @@ PA_DualSetSpritePixelEx(sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteColors(0,
 
 
 /** @} */ // end of Sprite
-
-
-
-
-
 
 
 

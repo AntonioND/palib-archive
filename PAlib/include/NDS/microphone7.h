@@ -1,5 +1,10 @@
 #if !defined(MICROPHONE7_H)
 #define MICROPHONE7_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
    microphone code based on neimod's microphone example.
    See: http://neimod.com/dstek/ 
@@ -24,5 +29,9 @@ int StopRecording();
 
 /* This must be called during IRQ_TIMER0 */
 void ProcessMicrophoneTimerIRQ();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

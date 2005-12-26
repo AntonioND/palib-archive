@@ -3,6 +3,8 @@
 #include "PA9.h"
 #include "palib.h"
 
+
+
 int textureID;
 float angle3dX = 0.5,angle3dY = 0.0, viseeX = 0.0, viseeY = 0.0, viseeZ = 1.0;
 int PA_InitCallList(struct PA_3DObject obj){

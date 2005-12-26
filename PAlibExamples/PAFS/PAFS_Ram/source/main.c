@@ -6,7 +6,7 @@
 #include <PA9.h>       // Include for PA_Lib
 
 
-PA_FSRam(1000000);  // This defines the size of the memory you allocate for files at the maximum ... I set it to 1 Meg, here. You can use more (like 2 megs, but not much more) or as little as a few KB if you don't need to put much in it...
+PA_FSRam(100000);  // This defines the size of the memory you allocate for files at the maximum ... I set it to 100kb, here. You can use more (like 2 megs, but not much more) or as little as a few KB if you don't need to put much in it...
 
 
 // Function: main()
@@ -36,6 +36,7 @@ int main(int argc, char ** argv)
 	PA_OutputText(1, 0, 5, "File 0 : %s", PA_PAFSFile(0));
 	PA_OutputText(1, 0, 7, "File 1 : %s", PA_PAFSFile(1));
 	PA_OutputText(1, 0, 9, "File 2 : %s", PA_PAFSFile(2));	
+	
 	// Infinite loop to keep the program running
 	while (1)
 	{ 

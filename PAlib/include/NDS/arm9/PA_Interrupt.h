@@ -1,6 +1,9 @@
 #ifndef _PA_Interrupt
 #define _PA_Interrupt
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /*! \file PA_Interrupt.h
     \brief Interrupt system
@@ -196,7 +199,9 @@ void PA_vblFunc(void);
 
 /** @} */ // end of Interrupts
 
-
+#ifdef __cplusplus
+}
+#endif
 #endif
 
 

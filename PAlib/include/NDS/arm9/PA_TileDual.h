@@ -2,6 +2,7 @@
 #define _PA_TileDual
 
 
+
 /*! \file PA_TileDual.h
     \brief Everything concerning the Bg Tile modes on 2 screens
 
@@ -608,7 +609,6 @@ extern inline void PA_DualSetBgPrio(u8 bg, u8 prio) {
 
 // Pas utilisé en direct par le programmeur
 void PA_InitLargeBg(bool screen, u8 bg_select, s32 lx, s32 ly, void* bg_map);
-
 
 
 #endif

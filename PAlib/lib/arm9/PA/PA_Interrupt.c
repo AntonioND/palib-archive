@@ -106,14 +106,18 @@ REG_IME = 0x00;
 
 Int_Flag = REG_IF;
 
-
 // Check for all possible interrupts...
 /*PA_OutputText(PA2 * 3, PAtest, "%d", Int_Flag);
 ++PAtest;
 if (PAtest > 19) {PAtest = 0; ++PA2;}
 */
 
-if(Int_Flag & INTVBLANK)  {PA_vblok = 1; VBLANK_INTR_WAIT_FLAGS |= IRQ_VBLANK; interruptfunc[0](); }
+if(Int_Flag & INTVBLANK)  {
+	PA_vblok = 1; 
+	VBLANK_INTR_WAIT_FLAGS |= IRQ_VBLANK; 
+	interruptfunc[0](); 
+}
+
 if(Int_Flag & INTHBLANK)   interruptfunc[1]();
 if(Int_Flag & INTVCOUNT)   interruptfunc[2]();
 if(Int_Flag & INTTIMER0)   interruptfunc[3]();
@@ -128,11 +132,11 @@ if(Int_Flag & INTDMA3)     interruptfunc[11]();
 if(Int_Flag & INTBUTTON)   interruptfunc[12]();
 if(Int_Flag & INTCART)     interruptfunc[13]();
 
-
 //restore the interrupt flags
 REG_IF = Int_Flag;
 //enable interrupts
 REG_IME = 0x01;
+
 }
 
 
@@ -141,7 +145,6 @@ REG_IME = 0x01;
 
 
 void PA_vblFunc(void){
-
 PA_UpdateOAM(); // Updates the Object on screen
 PA_UpdatePad(); // Updates the Keypad...
 PA_UpdateStylus(); // Updates the stylus input
@@ -150,9 +153,9 @@ PA_UpdateRTC(); // Mise à jour de l'horloge...
 PA_Newframe = 1; // Synch prog to screen
 
 PA_UpdateSpriteAnims(); // Update the sprite animations...
+++PA_nVBLs;
 
 /*
-++PA_nVBLs;
 ++PA_VBLCount;
 
 if (PA_nVBLs == 64) { // Arrivé à 64, on calcule une moyenne de temps CPU...

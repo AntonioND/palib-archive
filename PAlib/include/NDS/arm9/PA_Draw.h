@@ -1,7 +1,9 @@
 #ifndef _PA_Buffer
 #define _PA_Buffer
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /*! \file PA_Draw.h
     \brief Bitmap mode, for drawing, loading images in 8 or 16 bit mode...
@@ -698,9 +700,9 @@ if (!((i + x)&1)){ // Dernier pixel à mettre tout seul peut-etre
 
 
 
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 
 

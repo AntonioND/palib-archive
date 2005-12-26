@@ -1,5 +1,7 @@
 #include "PA7.h"
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include "PA/PA_Sound.c"
 #include "command.h"
 #include "microphone7.h"
@@ -106,7 +108,7 @@ void PA_UpdateStylus(void){
 	if ( px < 0) px = 0;
 	if ( py < 0) py = 0;
 	if ( px > (SCREEN_WIDTH -1)) px = SCREEN_WIDTH -1;
-	if ( py > (SCREEN_HEIGHT -1)) px = SCREEN_HEIGHT -1;
+	if ( py > (SCREEN_HEIGHT -1)) py = SCREEN_HEIGHT -1;
 
 	touchPos.px = px;
 	touchPos.py = py;
@@ -261,3 +263,11 @@ u8 i;
   IF = IF;
 }
 */
+
+
+
+
+#ifdef __cplusplus
+}
+#endif
+

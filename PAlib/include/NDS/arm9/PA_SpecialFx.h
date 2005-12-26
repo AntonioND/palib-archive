@@ -3,7 +3,6 @@
 
 
 
-
  
 #define REG_MOSAIC(screen) _REG16(0x0400004C + (screen * 0x1000))
 #define REG_BLDCNT(screen) _REG16(0x04000050 + (screen * 0x1000))
@@ -154,6 +153,7 @@
 
 
 /** @} */ // end of SpecialFx
+
 
 
 #endif

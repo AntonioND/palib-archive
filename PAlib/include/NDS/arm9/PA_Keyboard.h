@@ -1,6 +1,9 @@
 #ifndef _PA_Keyboard
 #define _PA_Keyboard
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "PA9.h"
 
@@ -208,7 +211,9 @@ extern inline void PA_SetKeyboardColor(u8 color1, u8 color2){
 
 /** @} */ // end of Keyboard
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

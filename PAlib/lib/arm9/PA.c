@@ -1,7 +1,9 @@
 #include "PA9.h"
 #include <nds.h>
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "PA/PA_Draw.c"
 #include "PA/PA_Gif.c"
@@ -23,15 +25,20 @@
 
 #include "PA/PA_Tile.c"
 #include "PA/PA_Mode7.c"
-#include "PA/PA_Keyboard.c"
 
-#include "PA/PA_3D.c"
+#ifdef USE_KEYBOARD
+	#include "PA/PA_Keyboard.c"
+#endif
+
+
+#ifdef USE_3D
+	#include "PA/PA_3D.c"
+#endif
+
 #include "PA/PA_IA.c"
 
 #include "PA/PA_Micro.c"
 
-
-#include "PA/bitmap.map.c"
 #include "PA/jpeg.c"
 
 
@@ -112,7 +119,7 @@ u8 i;
 vramSetMainBanks(VRAM_A_MAIN_BG,VRAM_B_MAIN_SPRITE,VRAM_C_SUB_BG,VRAM_D_SUB_SPRITE);
 
 u32 temp = 0;
-free(Blank); // Free, just in case it's a ReInit...
+if (Blank) free(Blank); // Free, just in case it's a ReInit...
 Blank = (u32*)malloc(130000); // Malloc a big blank chunk
 DMA_Force(temp, Blank, 32500, DMA_32NOW);
 
@@ -140,9 +147,16 @@ for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans
 
 	PA_font[i] = 0;
-	PA_textmap[i] = (u16*)PA_text_Map;
-	PA_texttiles[i] = (u8*)PA_text_Tiles;
-	PA_textpal[i] = (u16*)PA_text_Pal;	
+	#ifndef TEXT_ALLCHARACTERS
+		PA_textmap[i] = (u16*)PA_text_Map;
+		PA_texttiles[i] = (u8*)PA_text_Tiles;
+		PA_textpal[i] = (u16*)PA_text_Pal;	
+	#endif
+	#ifdef TEXT_ALLCHARACTERS
+		PA_textmap[i] = (u16*)PA_text2_Map;
+		PA_texttiles[i] = (u8*)PA_text2_Tiles;
+		PA_textpal[i] = (u16*)PA_text2_Pal;	
+	#endif	
 }
 
 
@@ -291,9 +305,9 @@ void PA_Nothing(void){}
 
 
 
-
-
-
+#ifdef __cplusplus
+}
+#endif
 
 
 

@@ -2,9 +2,9 @@
 
 #include "gif/dev2gif.c"
 #include "gif/dgif_lib.c"
-#include "gif/egif_lib.c"
-#include "gif/gif_err.c"
-#include "gif/gif_font.c"
+//#include "gif/egif_lib.c"
+//#include "gif/gif_err.c"
+//#include "gif/gif_font.c"
 #include "gif/gifalloc.c"
 #include "gif/quantize.c"
 

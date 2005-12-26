@@ -1,6 +1,9 @@
 #ifndef _PA_FS
 #define _PA_FS
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /*! \file PA_FS.h
     \brief PA File System
@@ -88,7 +91,7 @@ extern inline u32 PA_FSRamInit(void)
 	
 	while (!((PAFSStart[0] == 'B') && (PAFSStart[1] == 'I') && (PAFSStart[2] == 'N') && (PAFSStart[3] == '0') && (PAFSStart[4] == '0') && (PAFSStart[5] == '0'))) PAFSStart++;
 
-	PAFSStart+=4;
+	PAFSStart+=8;
 	return (PA_FSSys->Nfiles);
 }
 
@@ -143,10 +146,31 @@ return -1;
 s16 PA_FSSearchExt(s16 *array, char *extension);
 
 
+
+/*! \fn extern inline void PA_Malloc(void **pointer, u32 size)
+    \brief
+         \~english Safe malloc, checks and frees the memory if necessary first
+         \~french Malloc sûr, vérifie et libère la mémoire avant si nécessaire
+    \param pointer
+         \~english Pointer...
+         \~french Pointer...
+    \param size
+         \~english Malloc size
+         \~french Taille du malloc
+*/
+extern inline void PA_Malloc(void **pointer, u32 size){
+	if (*pointer) {
+		free(*pointer);
+	}
+	*pointer = (void*)malloc(size);
+}
+
 /** @} */ // end of PAFS
 
 
-
+#ifdef __cplusplus
+}
+#endif
 #endif
 
 

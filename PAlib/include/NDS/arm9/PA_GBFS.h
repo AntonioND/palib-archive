@@ -1,6 +1,9 @@
 #ifndef _PA_GBFS
 #define _PA_GBFS
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /*! \file PA_GBFS.h
     \brief Easy GBFS wrapper
@@ -113,6 +116,9 @@ s16 PA_GBFSSearchExt(s16 *array, char *extension);
 /** @} */ // end of GBFS
 
 
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

@@ -12,9 +12,10 @@ int main(int argc, char ** argv){
 	PA_InitVBL();	// VBL Init...
 	
 	PA_InitSound(); 	// Sound Init, for the mod player...
-	
+	PA_InitText(1, 0);
+
 	PA_PlayMod(modfile);  		// Play a given mod
-	
+
 	while(1){	// Infinite loop
 		PA_WaitForVBL();
 	}

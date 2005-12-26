@@ -1,6 +1,9 @@
 #ifndef _PA_Sound7
 #define _PA_Sound7
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "../PA7.h"
 
@@ -176,6 +179,11 @@ extern inline void PA_SetChannelVolume(u8 Channel, u8 Volume) {
 
 /** @} */ // end of SoundARM7
 
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 

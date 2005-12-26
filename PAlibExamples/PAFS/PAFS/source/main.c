@@ -12,6 +12,7 @@ int main(int argc, char ** argv)
 	PA_InitVBL(); // Initializes a standard VBL
 	
 	PA_InitText(0, 0);  // Initialise the text system on the bottom screen	
+	
 	PA_InitText(1, 0);  // Initialise the text system on the top screen
 	
 	PA_OutputText(1, 0, 0, "Loading PAFS...");

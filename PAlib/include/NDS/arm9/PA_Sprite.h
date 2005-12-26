@@ -2,6 +2,7 @@
 #define _PA_Sprite
 
 
+
 /*! \file PA_Sprite.h
     \brief Everything concerning the sprite system
 
@@ -1452,15 +1453,6 @@ void PA_SpriteDraw(u8 draw_number, s16 x, s16 y, u16 color);
 
 
 void PA_UpdateSpriteAnims(void);
-
-
-
-
-
-
-
-
-
 
 
 

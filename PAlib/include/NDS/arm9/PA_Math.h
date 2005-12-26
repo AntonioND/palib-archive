@@ -1,6 +1,9 @@
-
 #ifndef _PA_Math
 #define _PA_Math
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "PA9.h"
 
@@ -199,7 +202,9 @@ while(var < 0) var += modulo;
 return (var%modulo);
 }
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

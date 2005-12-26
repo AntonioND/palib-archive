@@ -2,11 +2,15 @@
 #define _PA_Text
 
 
+
 #define PA_InitCustomTextEx(screen, bg_select, tiles, map, pal) {\
    PAbgtext[screen] = bg_select;\
    PA_LoadSimpleBg(screen, bg_select, tiles, Blank, BG_256X256, 0, 1);\
    PA_LoadBgPal(screen, bg_select, (void*)pal);\
-   PA_textmap[screen] = (u16*)map;PA_textpal[screen] = (u16*)pal;}
+   PA_textmap[screen] = (u16*)map;PA_textpal[screen] = (u16*)pal;PAtext_pal[screen]=0;\
+   u32 PAtexttempvar = 0; for (PAtexttempvar = 0; PAtexttempvar < 32*24; PAtexttempvar++) PA_SetTileLetter(screen, PAtexttempvar, 0, 0);   }
+
+void PA_CreateTextPal(bool screen, u8 pal_number, u16 r, u16 g, u16 b);
 
 
 /*! \file PA_Text.h
@@ -61,7 +65,7 @@ typedef void(*letterfp)(u8 size, bool screen, u16 x, u16 y, char lettertemp, u8 
 extern letterfp letters[5];
 
 
-extern u8 PAtext_pal[2];
+extern u16 PAtext_pal[2];
 
 
 
@@ -107,9 +111,21 @@ void PA_InitText(bool screen, u8 bg_select);
          \~french Lettre... 'a', 'Z', etc...
 */
 extern inline void PA_SetTileLetter(bool screen, u16 x, u16 y, char letter) {
-	PA_SetMapTileAll(screen, PAbgtext[screen], x, y, PA_textmap[screen][(u16)letter] + (PAtext_pal[screen] << 12));
+	PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&((1<<12)-1)) + (PAtext_pal[screen] << 12));
 }
 
+
+/*! \fn extern inline void PA_SetTextTileCol(bool screen, u8 color)
+    \brief
+         \~english Change the text writing color (does not change the current text's color)
+         \~french Change la couleur du texte à écrire (ne change pas la couleur du texte déjà écrit)
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param color
+         \~english Color, from 0 to 6, just test to see the result...
+         \~french Couleur de 0 à 6, suffit de tester pour voir le résultat :)
+*/
 extern inline void PA_SetTextTileCol(bool screen, u8 color)
 {
 	PAtext_pal[screen] = color;
@@ -214,10 +230,10 @@ u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, cons
 
 
 /*!
-    \fn void PA_SetTextCol(bool screen, u8 r, u8 g, u8 b)
+    \fn extern inline void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b)
     \brief
-      \~english Change the screen text's color (last color in the palette)
-      \~french Changer la couleur du texte à l'écran (dernière couleur de la palette)
+      \~english Change the screen text's default color
+      \~french Changer la couleur de base du texte à l'écran
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -231,7 +247,9 @@ u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, cons
       \~english Blue amount (0-31)
       \~french Quantité de bleu (0-31)
 */
-void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b);
+extern inline void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b){
+	PA_CreateTextPal(screen, 0, r, g, b);
+}
 
 
 
@@ -401,7 +419,7 @@ void PA_OutputTextSpecial5(bool screen, int x1, int y,char *text);
 /** @} */ // end of Text
 
 
-
 #endif
+
 
 

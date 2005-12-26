@@ -84,5 +84,20 @@ void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette)
 	}
 }
 
-
+void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color)
+{
+	u16 *palcolor;
+	if (screen == 0) {
+		vramSetBankE(VRAM_E_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
+		palcolor = (u16*)(VRAM_E + (bg_number << 12) + (pal_number << 8));
+		palcolor[color_number] = color;
+		vramSetBankE(VRAM_E_BG_EXT_PALETTE);
+	}
+	else {
+		vramSetBankH(VRAM_H_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
+		palcolor = (u16*)(VRAM_H + (bg_number << 12) + (pal_number << 8));
+		palcolor[color_number] = color;
+		vramSetBankH(VRAM_H_SUB_BG_EXT_PALETTE);
+	}
+}
 

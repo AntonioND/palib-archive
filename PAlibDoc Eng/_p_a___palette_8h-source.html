@@ -27,7 +27,7 @@
 00027 <span class="preprocessor"></span>
 00028 
 00029 
-<a name="l00047"></a><a class="code" href="group___palette.html#ga8">00047</a> <span class="preprocessor">#define PA_LoadPal(palette, source) {\</span>
+<a name="l00047"></a><a class="code" href="group___palette.html#ga9">00047</a> <span class="preprocessor">#define PA_LoadPal(palette, source) {\</span>
 00048 <span class="preprocessor">       DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);\</span>
 00049 <span class="preprocessor">       if (palette == PAL_SPRITE0) PA_LoadSpritePal(0, 0, (void*)source);\</span>
 00050 <span class="preprocessor">       if (palette == PAL_SPRITE1) PA_LoadSpritePal(1, 0, (void*)source);\</span>
@@ -35,10 +35,10 @@
 00052 <span class="preprocessor">       if (palette == PAL_BG1) {u8 itemp; for (itemp = 0; itemp &lt; 4; itemp++) PA_LoadBgPal(1, itemp, (void*)source);}}</span>
 00053 <span class="preprocessor"></span>
 00054 
-<a name="l00070"></a><a class="code" href="group___palette.html#ga9">00070</a> <span class="preprocessor">#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</span>
+<a name="l00070"></a><a class="code" href="group___palette.html#ga10">00070</a> <span class="preprocessor">#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</span>
 00071 <span class="preprocessor"></span>
 00072 
-<a name="l00088"></a><a class="code" href="group___palette.html#ga10">00088</a> <span class="preprocessor">#define PA_RGB(r,g,b) ((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</span>
+<a name="l00088"></a><a class="code" href="group___palette.html#ga11">00088</a> <span class="preprocessor">#define PA_RGB(r,g,b) ((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</span>
 00089 <span class="preprocessor"></span>
 00103 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#ga0">PA_SetBrightness</a>(<span class="keywordtype">bool</span> screen, s8 bright);
 00104 
@@ -82,28 +82,32 @@
 00199        PA_LoadBgExtPal(screen, bg_number, palette);
 00200 }
 00201 
-00202 
-00203 
-<a name="l00218"></a><a class="code" href="group___palette.html#ga11">00218</a> <span class="preprocessor">#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</span>
-00219 <span class="preprocessor"></span>
-<a name="l00234"></a><a class="code" href="group___palette.html#ga12">00234</a> <span class="preprocessor">#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)] = colorRGB</span>
-00235 <span class="preprocessor"></span>
-00236 
-00237 
-<a name="l00249"></a><a class="code" href="group___palette.html#ga7">00249</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___palette.html#ga7">PA_SetBgColor</a>(<span class="keywordtype">bool</span> screen, u16 color){
-00250        BG_PALETTE[screen&lt;&lt;7] = color;
-00251 } 
-00252 
-00253 
-00254  <span class="comment">// end of Palette</span>
-00257 <span class="comment"></span>
-00258 
-00259 
-00260 
-00261 <span class="preprocessor">#endif</span>
-00262 <span class="preprocessor"></span>
+00202 <span class="comment">// Load to a given palette number</span>
+00203 <span class="keywordtype">void</span> PA_LoadBgPalN(<span class="keywordtype">bool</span> screen, u8 bg_number, u8 pal_number, <span class="keywordtype">void</span>* palette);
+00204 
+00205 
+00206 
+00207 
+<a name="l00222"></a><a class="code" href="group___palette.html#ga12">00222</a> <span class="preprocessor">#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</span>
+00223 <span class="preprocessor"></span>
+<a name="l00238"></a><a class="code" href="group___palette.html#ga13">00238</a> <span class="preprocessor">#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)] = colorRGB</span>
+00239 <span class="preprocessor"></span>
+00240 
+00241 
+<a name="l00253"></a><a class="code" href="group___palette.html#ga8">00253</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___palette.html#ga8">PA_SetBgColor</a>(<span class="keywordtype">bool</span> screen, u16 color){
+00254        BG_PALETTE[screen&lt;&lt;7] = color;
+00255 } 
+00256 
+00257 
+00258  <span class="comment">// end of Palette</span>
+00261 <span class="comment"></span>
+00262 
 00263 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Dec 14 14:14:29 2005 for PAlib by&nbsp;
+00264 
+00265 <span class="preprocessor">#endif</span>
+00266 <span class="preprocessor"></span>
+00267 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Dec 21 17:41:56 2005 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
