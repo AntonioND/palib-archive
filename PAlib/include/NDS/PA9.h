@@ -81,6 +81,7 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 #define _REG32 *(volatile u32 *)
 
 #include "arm9/video.h"
+#include "arm9/vidfile.h"
 #include "arm9/PA_Sprite.h"
 #include "arm9/PA_SpriteDual.h"
 #include "arm9/PA_Sound.h"

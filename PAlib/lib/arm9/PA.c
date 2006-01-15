@@ -17,6 +17,7 @@ extern "C" {
 #include "PA/PA_Sprite.c"
 #include "PA/PA_Sound.c"
 #include "PA/PA_Text.c"
+#include "PA/vidfile.c"
 
 #ifdef TEXT_ALLSIZES
 	#include "PA/PA_API.c"
