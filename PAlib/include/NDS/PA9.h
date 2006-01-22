@@ -80,7 +80,6 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 #define _REG16 *(volatile u16 *)
 #define _REG32 *(volatile u32 *)
 
-#include "arm9/video.h"
 #include "arm9/vidfile.h"
 #include "arm9/PA_Sprite.h"
 #include "arm9/PA_SpriteDual.h"
@@ -238,8 +237,8 @@ extern inline void PA_SetVideoMode(bool screen, u8 mode) {
 
 /*! \fn void PA_UpdateUserInfo(void)
     \brief
-         \~english Updates the user info. This is automatically done in PA_Init. You can then get any info with the following variables : PA_UserInfo.Color (favorite color), .BdayDay, .BdayMonth, .AlarmHour, .AlarmMinute, .Name, .NameLength, .Message, .MessageLength
-         \~french Met à jour les infos sur l'utilisateur... C'est fait automatiquement dans PA_Init. On peut ensuite récupérer toutes les infos avec PA_UserInfo.Color (couleur favorite), .BdayDay, .BdayMonth, .AlarmHour, .AlarmMinute, .Name, .NameLength, .Message, .MessageLength
+         \~english Updates the user info. This is automatically done in PA_Init. You can then get any info with the following variables : PA_UserInfo.Color (favorite color), .BdayDay, .BdayMonth, .AlarmHour, .AlarmMinute, .Name, .NameLength, .Message, .MessageLength, .Language
+         \~french Met à jour les infos sur l'utilisateur... C'est fait automatiquement dans PA_Init. On peut ensuite récupérer toutes les infos avec PA_UserInfo.Color (couleur favorite), .BdayDay, .BdayMonth, .AlarmHour, .AlarmMinute, .Name, .NameLength, .Message, .MessageLength, .Language
 */
 void PA_UpdateUserInfo(void);
 

@@ -47,6 +47,9 @@ typedef struct {
 
 extern PA_movingsprite PA_MovedSprite;
 
+extern bool PA_MoveSpriteType; 
+
+
 // Button info
 #define PA_BUTTONS (*(volatile u16*)0x04000130)
 
@@ -181,7 +184,12 @@ bool PA_MoveSpriteEx(bool screen, u8 sprite, u8 lx, u8 ly);
          \~english Hooking distance
          \~french Distance d'accrochage
 */
-bool PA_MoveSpriteDistance(u8 sprite, u8 distance);
+extern inline bool PA_MoveSpriteDistance(u8 sprite, u8 distance){
+	PA_MoveSpriteType = 1; // mode distance
+	bool touched = PA_MoveSpriteEx(PA_Screen, sprite, distance, distance);
+	PA_MoveSpriteType = 0; // normal mode
+	return touched;
+}
 
 /*! \fn void PA_UpdateMoveSprite(void)
     \brief

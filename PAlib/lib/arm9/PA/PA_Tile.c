@@ -102,6 +102,16 @@ if (!charsetok) { // Si jamais on n'a pas trouvé de créneaux, on affiche un mess
 }
 
 
+void PA_ReLoadBgTiles(bool screen, u8 bg_select, void* bg_tiles) {
+	s8 charset = tilesetchar[screen][bg_select]; 
+	u32 size = tilesetsize[screen][bg_select];    
+
+	DMA_Copy(bg_tiles, (void*)CharBaseBlock(screen, charset), size, DMA_16NOW);
+}
+
+
+
+
 
 
 

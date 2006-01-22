@@ -24,12 +24,14 @@ int main(int argc, char ** argv)
 	u8 i;
 	for (i = 0; i < 8; i++)
 	{
-		PA_SetTextTileCol(1, i); // Change the color on the top screen, values 0 to 6
+		PA_SetTextTileCol(1, i); // Change the color on the top screen, values 0 to 7
 		PA_OutputSimpleText(1, 2, i, "Color test...");  // Screen 1 has different colors
-		PA_OutputSimpleText(0, 2, i, "No Color test...");  // Screen 0 was not modified...
 	}
 	
-	//PA_LoadTiledBg(0, 0, PA_text2);
+	
+	// You can also change the text color in a given text (either in OutputText or BoxText) :
+	PA_OutputText(0, 0, 0, "Color test...%c1another one, %c2again, %c3 again...");  // Screen 1 has different colors
+	//%c tells to change color, and the number gives the color number (0-7)
 
 	
 	// Infinite loop to keep the program running

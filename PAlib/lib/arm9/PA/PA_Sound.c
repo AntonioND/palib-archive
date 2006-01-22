@@ -4,13 +4,13 @@ PA_SoundOptions PA_SoundOption; // Default sound formats...
 u32 *FS_mod;
 u32 *FS_wav[16];
 
-void PA_SetDefaultSound(u8 volume, s16 freq, s16 format){
+void PA_SetDefaultSound(u8 volume, s32 freq, s16 format){
 	PA_SoundOption.volume = volume;
 	PA_SoundOption.freq = freq;
 	PA_SoundOption.format = format;
 }
 	 
-void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq, s16 format){
+void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s32 freq, s16 format){
 //		PA_Channel = 15 - PA_Channel;
         snd.data[PA_Channel].data = data;
         snd.data[PA_Channel].len = length;

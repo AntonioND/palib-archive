@@ -172,12 +172,21 @@ s16 length = 0;
 s16 wordx = 0; // Longueur de mot
 s16 wordletter = 0;
 
-BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au cas où on ait chargé du texte par-dessus...
+//BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au cas où on ait chargé du texte par-dessus...
 
 bool loop = 1; // On continue...
-
+   u8 textcolor = PAtext_pal[screen]; // save the screen color
+   
+   
 for (i = 0; (text[i] && y <= maxy && i < limit && loop); i++) {
-	if (text[i] == '\n'){
+      if (text[i] == '%') {
+		if (text[i+1] == 'c'){ // change color !
+			PA_SetTextTileCol(screen, text[i+2]-'0');
+			i+=2;
+		}
+	}
+		
+	else if (text[i] == '\n'){
 		while(x < maxx) { // On efface tout ce qui suit
 			PA_SetTileLetter(screen, x, y, 0);
 			x++;
@@ -233,7 +242,7 @@ for (i = 0; (text[i] && y <= maxy && i < limit && loop); i++) {
 	}
 }
 length = i;
-
+PA_SetTextTileCol(screen, textcolor);
 return length;
 
 }
@@ -251,7 +260,7 @@ u8 *PAextext; // Extra text
 s32 PAtextnumber;
 double tempdouble = 0;
      
-BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au cas où on ait chargé du texte par-dessus...
+//BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au cas où on ait chargé du texte par-dessus...
 
 va_list varg;           /* Variable identifiant le prochain paramètre. */
 
@@ -259,9 +268,18 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
    
    PAtextcount = 0;
    
+   u8 textcolor = PAtext_pal[screen];
+
+   
+   
+   
    for (j = 0; text[j]; j++) {
       if (text[j] == '%') {
-         if (text[j+1] == 's') {  // S'il y a %s, c'est une chaine de caractères...
+		if (text[j+1] == 'c'){ // change color !
+			PA_SetTextTileCol(screen, text[j+2]-'0');
+			j+=2;
+		}
+        else if (text[j+1] == 's') {  // S'il y a %s, c'est une chaine de caractères...
             PAextext = (u8*)va_arg(varg, const u8 *);  // Pointeur vers la chaine de charactères...
             for (i = 0; PAextext[i]; i++) {
 				PA_SetTileLetter(screen, x + textcount, y, PAextext[i]);
@@ -373,6 +391,10 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
 
 
     va_end(varg);           /* Terminaison. */
+
+   PA_SetTextTileCol(screen, textcolor); // put back the old color
+	
+	
 }
 char *selectchar(char *text,int begin, int end){
 char *text2 = (char*)malloc(sizeof(char)*(end-begin));

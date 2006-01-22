@@ -9,49 +9,61 @@
 <h1>Sound ARM9 functions</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga8">PA_PlaySimpleSound</a>(PA_Channel, sound)&nbsp;&nbsp;&nbsp;PA_PlaySoundEx(PA_Channel, (void*)sound, (u32)sound##_size, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga12">PA_PlaySimpleSound</a>(PA_Channel, sound)&nbsp;&nbsp;&nbsp;PA_PlaySoundEx(PA_Channel, (void*)sound, (u32)sound##_size, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="#ga8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga9">PA_PlayMod</a>(mod_snd)&nbsp;&nbsp;&nbsp;SndPlayMOD((u8*)mod_snd)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="#ga12"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga13">PA_PlayMod</a>(mod_snd)&nbsp;&nbsp;&nbsp;SndPlayMOD((u8*)mod_snd)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Jouer un mod ! Merci à Deku pour le mod player !  <a href="#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga10" doxytag="SoundARM9::PA_StopMod"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga10">PA_StopMod</a>()&nbsp;&nbsp;&nbsp;SndStopMOD()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Jouer un mod ! Merci à Deku pour le mod player !  <a href="#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga14" doxytag="SoundARM9::PA_StopMod"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga14">PA_StopMod</a>()&nbsp;&nbsp;&nbsp;SndStopMOD()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter de jouer le mod ! Merci à Deku pour le mod player ! <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga11">PA_PauseMod</a>(bool)&nbsp;&nbsp;&nbsp;SndPauseMOD(bool)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga15">PA_PauseMod</a>(bool)&nbsp;&nbsp;&nbsp;SndPauseMOD(bool)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre le mod en pause ! Merci à Deku pour le mod player !  <a href="#ga11"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre le mod en pause ! Merci à Deku pour le mod player !  <a href="#ga15"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga0">PA_SetDefaultSound</a> (u8 volume, s16 freq, s16 format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga0">PA_SetDefaultSound</a> (u8 volume, s32 freq, s16 format)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet de régler options par défaut pour la fonction PlaySimpleSound  <a href="#ga0"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga1" doxytag="SoundARM9::PA_InitSound"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga1">PA_InitSound</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser les sons, pour le mod player et les effets sonores <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga2">PA_PlaySoundEx</a> (u8 PA_Channel, const void *data, u32 length, u8 volume, s16 freq, s16 format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga2">PA_PlaySoundEx</a> (u8 PA_Channel, const void *data, s32 length, u8 volume, s32 freq, s16 format)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, mais en choisissant le format  <a href="#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga3">PA_PlayGBFSSoundEx</a> (u8 PA_Channel, u16 GBFS_wav_number, u8 volume, s16 freq, s16 format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga3">PA_PlayGBFSSoundEx</a> (u8 PA_Channel, u16 FS_wav_number, u8 volume, s32 freq, s16 format)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, mais en choisissant le format, depuis GBFS  <a href="#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga4">PA_PlaySound</a> (u8 PA_Channel, const void *data, u32 length, u8 volume, s16 freq)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga4">PA_PlayFSSoundEx</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s32 freq, s16 format)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw)  <a href="#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga5">PA_PlayGBFSSound</a> (u8 PA_Channel, u16 GBFS_wav_number, u8 volume, s16 freq)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, mais en choisissant le format, depuis PAFS  <a href="#ga4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga5">PA_PlaySound</a> (u8 PA_Channel, const void *data, s32 length, u8 volume, s32 freq)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw), depuis GBFS  <a href="#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga6">PA_PlayGBFSSimpleSound</a> (u8 PA_Channel, u16 GBFS_wav_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw)  <a href="#ga5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga6">PA_PlayGBFSSound</a> (u8 PA_Channel, u16 FS_wav_number, u8 volume, s32 freq)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga7">PA_PlayGBFSMod</a> (u16 GBFS_mod_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw), depuis GBFS  <a href="#ga6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga7">PA_PlayFSSound</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s32 freq)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue un mod à partir de GBFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS  <a href="#ga7"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw), depuis PAFS  <a href="#ga7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga8">PA_PlayGBFSSimpleSound</a> (u8 PA_Channel, u16 FS_wav_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="#ga8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga9">PA_PlayFSSimpleSound</a> (u8 PA_Channel, u16 PAFS_wav_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Depuis PAFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="#ga9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga10">PA_PlayGBFSMod</a> (u16 FS_mod_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue un mod à partir de GBFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS  <a href="#ga10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga11">PA_PlayFSMod</a> (u16 PAFS_mod_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue un mod à partir de PAFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS  <a href="#ga11"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Play sounds, etc... <hr><h2>Documentation des macro</h2>
-<a class="anchor" name="ga11" doxytag="PA_Sound.h::PA_PauseMod"></a><p>
+<a class="anchor" name="ga15" doxytag="PA_Sound.h::PA_PauseMod"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -86,7 +98,7 @@ Mettre le mod en pause ! Merci à Deku pour le mod player !
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga9" doxytag="PA_Sound.h::PA_PlayMod"></a><p>
+<a class="anchor" name="ga13" doxytag="PA_Sound.h::PA_PlayMod"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -121,7 +133,7 @@ Jouer un mod ! Merci à Deku pour le mod player !
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga8" doxytag="PA_Sound.h::PA_PlaySimpleSound"></a><p>
+<a class="anchor" name="ga12" doxytag="PA_Sound.h::PA_PlaySimpleSound"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -161,7 +173,212 @@ Fonction la plus simple pour jouer un son... Utiliser les options par défaut pou
   </tr>
 </table>
 <hr><h2>Documentation des fonctions</h2>
-<a class="anchor" name="ga7" doxytag="PA_Sound.h::PA_PlayGBFSMod"></a><p>
+<a class="anchor" name="ga11" doxytag="PA_Sound.h::PA_PlayFSMod"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_PlayFSMod           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u16&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>PAFS_mod_number</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Joue un mod à partir de PAFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>FS_mod_number</em>&nbsp;</td><td>Numéro de fichier PA GBFS du mod que l'on veut jouer </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga9" doxytag="PA_Sound.h::PA_PlayFSSimpleSound"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_PlayFSSimpleSound           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>PA_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u16&nbsp;</td>
+          <td class="mdname" nowrap> <em>PAFS_wav_number</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Fonction la plus simple pour jouer un son... Depuis PAFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 0 à 7 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>PAFS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga7" doxytag="PA_Sound.h::PA_PlayFSSound"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_PlayFSSound           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>PA_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u16&nbsp;</td>
+          <td class="mdname" nowrap> <em>PAFS_wav_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>freq</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Joue une fois un son, avec format par défaut (raw), depuis PAFS 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 0 à 7 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>PAFS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>volume</em>&nbsp;</td><td>Volume, de 0 à 127. 64 si rien n'est mis </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>freq</em>&nbsp;</td><td>Fréquence du son...11025 par défaut </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga4" doxytag="PA_Sound.h::PA_PlayFSSoundEx"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_PlayFSSoundEx           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>PA_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u16&nbsp;</td>
+          <td class="mdname" nowrap> <em>PAFS_wav_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>freq</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="mdname" nowrap> <em>format</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Joue une fois un son, mais en choisissant le format, depuis PAFS 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 0 à 7 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>PAFS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>volume</em>&nbsp;</td><td>Volume, de 0 à 127. 64 si rien n'est mis </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>freq</em>&nbsp;</td><td>Fréquence du son...11025 par défaut </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>Format du son. </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga10" doxytag="PA_Sound.h::PA_PlayGBFSMod"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -170,7 +387,7 @@ Fonction la plus simple pour jouer un son... Utiliser les options par défaut pou
           <td class="md" nowrap valign="top">inline void PA_PlayGBFSMod           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">u16&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap> <em>GBFS_mod_number</em>          </td>
+          <td class="mdname1" valign="top" nowrap> <em>FS_mod_number</em>          </td>
           <td class="md" valign="top">&nbsp;)&nbsp;</td>
           <td class="md" nowrap><code> [inline]</code></td>
         </tr>
@@ -190,13 +407,13 @@ Joue un mod à partir de GBFS... Attention, ca le copie dans la RAM, donc un trop
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>GBFS_mod_number</em>&nbsp;</td><td>Numéro de fichier PA GBFS du mod que l'on veut jouer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>FS_mod_number</em>&nbsp;</td><td>Numéro de fichier PA GBFS du mod que l'on veut jouer </td></tr>
   </table>
 </dl>
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga6" doxytag="PA_Sound.h::PA_PlayGBFSSimpleSound"></a><p>
+<a class="anchor" name="ga8" doxytag="PA_Sound.h::PA_PlayGBFSSimpleSound"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -211,7 +428,7 @@ Joue un mod à partir de GBFS... Attention, ca le copie dans la RAM, donc un trop
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
           <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>GBFS_wav_number</em></td>
+          <td class="mdname" nowrap> <em>FS_wav_number</em></td>
         </tr>
         <tr>
           <td class="md"></td>
@@ -235,13 +452,13 @@ Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 0 à 7 </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>GBFS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>FS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
   </table>
 </dl>
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga5" doxytag="PA_Sound.h::PA_PlayGBFSSound"></a><p>
+<a class="anchor" name="ga6" doxytag="PA_Sound.h::PA_PlayGBFSSound"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -256,7 +473,7 @@ Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
           <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>GBFS_wav_number</em>, </td>
+          <td class="mdname" nowrap> <em>FS_wav_number</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
@@ -267,7 +484,7 @@ Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em></td>
         </tr>
         <tr>
@@ -292,7 +509,7 @@ Joue une fois un son, avec format par défaut (raw), depuis GBFS
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 0 à 7 </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>GBFS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>FS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>volume</em>&nbsp;</td><td>Volume, de 0 à 127. 64 si rien n'est mis </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>freq</em>&nbsp;</td><td>Fréquence du son...11025 par défaut </td></tr>
   </table>
@@ -315,7 +532,7 @@ Joue une fois un son, avec format par défaut (raw), depuis GBFS
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
           <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>GBFS_wav_number</em>, </td>
+          <td class="mdname" nowrap> <em>FS_wav_number</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
@@ -326,7 +543,7 @@ Joue une fois un son, avec format par défaut (raw), depuis GBFS
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em>, </td>
         </tr>
         <tr>
@@ -357,7 +574,7 @@ Joue une fois un son, mais en choisissant le format, depuis GBFS
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 0 à 7 </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>GBFS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>FS_wav_number</em>&nbsp;</td><td>Numéro du son RAW dans PA GBFS </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>volume</em>&nbsp;</td><td>Volume, de 0 à 127. 64 si rien n'est mis </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>freq</em>&nbsp;</td><td>Fréquence du son...11025 par défaut </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>format</em>&nbsp;</td><td>Format du son. </td></tr>
@@ -366,7 +583,7 @@ Joue une fois un son, mais en choisissant le format, depuis GBFS
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga4" doxytag="PA_Sound.h::PA_PlaySound"></a><p>
+<a class="anchor" name="ga5" doxytag="PA_Sound.h::PA_PlaySound"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -386,7 +603,7 @@ Joue une fois un son, mais en choisissant le format, depuis GBFS
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>u32&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>length</em>, </td>
         </tr>
         <tr>
@@ -398,7 +615,7 @@ Joue une fois un son, mais en choisissant le format, depuis GBFS
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em></td>
         </tr>
         <tr>
@@ -452,7 +669,7 @@ Joue une fois un son, avec format par défaut (raw)
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>u32&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>length</em>, </td>
         </tr>
         <tr>
@@ -464,7 +681,7 @@ Joue une fois un son, avec format par défaut (raw)
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em>, </td>
         </tr>
         <tr>
@@ -519,7 +736,7 @@ Joue une fois un son, mais en choisissant le format
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em>, </td>
         </tr>
         <tr>
@@ -557,7 +774,7 @@ Permet de régler options par défaut pour la fonction PlaySimpleSound
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Wed Dec 14 14:15:01 2005 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Sun Jan 22 11:46:52 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

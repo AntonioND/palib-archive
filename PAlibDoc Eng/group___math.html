@@ -9,12 +9,12 @@
 <h1>Some math functions...</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga9" doxytag="Math::PA_Cos"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga9">PA_Cos</a>(angle)&nbsp;&nbsp;&nbsp;PA_SIN[((angle) + 128)&amp;511]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga10" doxytag="Math::PA_Cos"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga10">PA_Cos</a>(angle)&nbsp;&nbsp;&nbsp;PA_SIN[((angle) + 128)&amp;511]</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the Cos value for an angle. The value goes from -256 to 256... Watch out though : the angle is not in 360 degrees, but in 512 ! <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga10" doxytag="Math::PA_Sin"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga10">PA_Sin</a>(angle)&nbsp;&nbsp;&nbsp;PA_SIN[((angle))&amp;511]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga11" doxytag="Math::PA_Sin"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga11">PA_Sin</a>(angle)&nbsp;&nbsp;&nbsp;PA_SIN[((angle))&amp;511]</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the Sin value for an angle. The value goes from -256 to 256... Watch out though : the angle is not in 360 degrees, but in 256 ! <br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
@@ -38,12 +38,15 @@ u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group
 <tr><td class="memItemLeft" nowrap align="right" valign="top">u64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga6">PA_Distance</a> (s32 x1, s32 y1, s32 x2, s32 y2)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calculate the distance (squared) between 2 points  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga7">PA_AdjustAngle</a> (u16 angle, s16 anglerot, s32 startx, s32 starty, s32 targetx, s32 targety)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga7">PA_TrueDistance</a> (s32 x1, s32 y1, s32 x2, s32 y2)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adjust an angle, for example to calculate in which direction an object shoudl turn  <a href="#ga7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga8">PA_GetAngle</a> (s32 startx, s32 starty, s32 targetx, s32 targety)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calculate the real distance between 2 points. Much slower than PA_Distance  <a href="#ga7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga8">PA_AdjustAngle</a> (u16 angle, s16 anglerot, s32 startx, s32 starty, s32 targetx, s32 targety)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the angle, from 0 to 511, formed between the horizontal and the line  <a href="#ga8"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adjust an angle, for example to calculate in which direction an object shoudl turn  <a href="#ga8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga9">PA_GetAngle</a> (s32 startx, s32 starty, s32 targetx, s32 targety)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the angle, from 0 to 511, formed between the horizontal and the line  <a href="#ga9"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="Math::RandomValue"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>RandomValue</b></td></tr>
@@ -51,7 +54,7 @@ u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>RandomValue</b></td></
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Adjust angles, get random values... <hr><h2>Function Documentation</h2>
-<a class="anchor" name="ga7" doxytag="PA_Math.h::PA_AdjustAngle"></a><p>
+<a class="anchor" name="ga8" doxytag="PA_Math.h::PA_AdjustAngle"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -183,7 +186,7 @@ Calculate the distance (squared) between 2 points
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga8" doxytag="PA_Math.h::PA_GetAngle"></a><p>
+<a class="anchor" name="ga9" doxytag="PA_Math.h::PA_GetAngle"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -357,7 +360,66 @@ Set the random's seed. This is taken from Ham, I have no credit. I just made it 
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Wed Dec 21 17:41:57 2005 for PAlib by&nbsp;
+<a class="anchor" name="ga7" doxytag="PA_Math.h::PA_TrueDistance"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline u32 PA_TrueDistance           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>y2</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Calculate the real distance between 2 points. Much slower than PA_Distance 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>X coordinate of the fist point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Y coordinate of the first point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>X coordinate of the second point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Y coordinate of the second point </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Generated on Sun Jan 22 11:46:41 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

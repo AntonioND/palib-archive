@@ -23,29 +23,29 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pause the mod ! Thanks to Deku for that :p  <a href="#ga15"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga0">PA_SetDefaultSound</a> (u8 volume, s16 freq, s16 format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga0">PA_SetDefaultSound</a> (u8 volume, s32 freq, s16 format)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the default sound options (for the PlaySimpleSound function)  <a href="#ga0"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga1" doxytag="SoundARM9::PA_InitSound"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga1">PA_InitSound</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise the Sound system, for mods and sound effects <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga2">PA_PlaySoundEx</a> (u8 PA_Channel, const void *data, u32 length, u8 volume, s16 freq, s16 format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga2">PA_PlaySoundEx</a> (u8 PA_Channel, const void *data, s32 length, u8 volume, s32 freq, s16 format)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a given sound effect, but chose your format  <a href="#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga3">PA_PlayGBFSSoundEx</a> (u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq, s16 format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga3">PA_PlayGBFSSoundEx</a> (u8 PA_Channel, u16 FS_wav_number, u8 volume, s32 freq, s16 format)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a given sound effect, but chose your format, from GBFS  <a href="#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga4">PA_PlayFSSoundEx</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s16 freq, s16 format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga4">PA_PlayFSSoundEx</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s32 freq, s16 format)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a given sound effect, but chose your format, from PAFS  <a href="#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga5">PA_PlaySound</a> (u8 PA_Channel, const void *data, u32 length, u8 volume, s16 freq)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga5">PA_PlaySound</a> (u8 PA_Channel, const void *data, s32 length, u8 volume, s32 freq)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a given sound effect, with default format (raw)  <a href="#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga6">PA_PlayGBFSSound</a> (u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga6">PA_PlayGBFSSound</a> (u8 PA_Channel, u16 FS_wav_number, u8 volume, s32 freq)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a given sound effect, with default format (raw), from GBFS  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga7">PA_PlayFSSound</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s16 freq)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga7">PA_PlayFSSound</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s32 freq)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a given sound effect, with default format (raw), from PAFS  <a href="#ga7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga8">PA_PlayGBFSSimpleSound</a> (u8 PA_Channel, u16 FS_wav_number)</td></tr>
@@ -279,7 +279,7 @@ Simplest sound playing function... From PAFS... Takes the default options for vo
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em></td>
         </tr>
         <tr>
@@ -338,7 +338,7 @@ Play a given sound effect, with default format (raw), from PAFS
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em>, </td>
         </tr>
         <tr>
@@ -484,7 +484,7 @@ Simplest sound playing function... From GBFS... Takes the default options for vo
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em></td>
         </tr>
         <tr>
@@ -543,7 +543,7 @@ Play a given sound effect, with default format (raw), from GBFS
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em>, </td>
         </tr>
         <tr>
@@ -603,7 +603,7 @@ Play a given sound effect, but chose your format, from GBFS
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>u32&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>length</em>, </td>
         </tr>
         <tr>
@@ -615,7 +615,7 @@ Play a given sound effect, but chose your format, from GBFS
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em></td>
         </tr>
         <tr>
@@ -669,7 +669,7 @@ Play a given sound effect, with default format (raw)
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>u32&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>length</em>, </td>
         </tr>
         <tr>
@@ -681,7 +681,7 @@ Play a given sound effect, with default format (raw)
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em>, </td>
         </tr>
         <tr>
@@ -736,7 +736,7 @@ Play a given sound effect, but chose your format
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="md" nowrap>s32&nbsp;</td>
           <td class="mdname" nowrap> <em>freq</em>, </td>
         </tr>
         <tr>
@@ -774,7 +774,7 @@ Set the default sound options (for the PlaySimpleSound function)
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Wed Dec 21 17:41:57 2005 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Sun Jan 22 11:46:41 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

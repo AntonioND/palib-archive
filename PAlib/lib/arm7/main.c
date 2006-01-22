@@ -21,7 +21,8 @@ void startSound(int sampleRate, const void* data, uint32 bytes, u8 channel, u8 v
   SCHANNEL_SOURCE(channel) = (uint32)data;
   SCHANNEL_LENGTH(channel) = bytes >> 2;
   SCHANNEL_REPEAT_POINT(channel) = 0;
-  SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(vol) | SOUND_PAN(pan) | ((format == 1) ? SOUND_8BIT : SOUND_16BIT);
+  SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(vol) | SOUND_PAN(pan) | (format << 29);
+ // ((format == 1) ? SOUND_8BIT : SOUND_16BIT);
 }
 
 
@@ -169,6 +170,8 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
   REG_IME = 1;
 
   SndInit7 ();
+  
+   //IPC->aux = touchRead(TSC_MEASURE_AUX); // Re-read the aux mesures
   
   // Keep the ARM7 out of main RAM
   while (1) swiWaitForVBlank();

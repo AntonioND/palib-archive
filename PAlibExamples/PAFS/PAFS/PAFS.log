@@ -1,17 +1,19 @@
 PA File System, by Mollusk
  
-No folder given, taking Files/ by default
-
+No file or folder given, taking PAFS.ds.gba and Files/ by default
 
 Copying files to Rom
 
-1 files in 1 folders
+4 files in 1 folders
  
-.                     : 1 files
+.                     : 4 files
  
 1
-Including 1 files :
+Including 4 files :
  
 aa.txt                : 50 bytes
+ok.txt                : 37 bytes
+test.txt              : 10 bytes
+test2.txt             : 11 bytes
  
 Files included ! NewPAFS.ds.gba created. Press any key to exit...

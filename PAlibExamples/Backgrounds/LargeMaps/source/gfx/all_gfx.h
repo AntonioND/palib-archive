@@ -6,13 +6,13 @@
 
 
 // Background files : 
-extern int Large_Width, Large_Height;
-extern const unsigned short Large_Map[16384];  // Pal : Large_Pal
-extern const unsigned char Large_Tiles[15552];  // Pal : Large_Pal
+extern int zelda_Width, zelda_Height;
+extern const unsigned short zelda_Map[65536];  // Pal : zelda_Pal
+extern const unsigned char zelda_Tiles[15552];  // Pal : zelda_Pal
 
 
 // Palette files : 
-extern const unsigned short Large_Pal[28];
+extern const unsigned short zelda_Pal[28];
 
 #endif
 

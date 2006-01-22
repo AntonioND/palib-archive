@@ -1,4 +1,4 @@
-// Welcome to the magic of large and very large maps !
+// Welcome to the magic of large and very large maps ! (2048x2048 in this example)
 
 // Includes
 #include <PA9.h>       // Include for PA_Lib
@@ -18,7 +18,7 @@ int main(int argc, char ** argv)
 	// Load a large scrolling background converted with PAGfx... 
 	PA_LoadPAGfxLargeBg(0, //screen
 						3, //background number (0-3)
-						Large); // Name
+						zelda); // Name
 		
 	// Next we'll scroll, here are the variables...
 	s32 scrollx = 0; 

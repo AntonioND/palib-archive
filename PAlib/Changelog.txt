@@ -1,3 +1,28 @@
+PAlib 0.78a
+
+[Gif] Fixed a few bugs with 8bit gifs
+
+[Bug] Fixed a few stuff for linux compatibility, not sure I got everything though
+
+[Examples] Added a simple gif example, as well as a 2048x2048 map in the largemap example
+
+[Examples] Added a Sin and Cos Trajectory example
+
+[Text Colors] Added %cn as text color trigger in functions OutputText and BoxText... n is the color number (0-7)... Check out the textcolors example to see how to use it... (I just updated it)
+
+[MoveSprite] Optimized PA_MoveSprite code (1 function instead of 2 ! :p) and now works even if isprite is partly out of screen
+
+[Sound] Corrected sound (player too fast depending on the function used to play it !)
+
+[Demos] Added tons of new demos (and removed the original Frisbee one, replaced by a new one) with their comments on the wiki (day 12 and day 13). These demos show how to use the stylus at best, and treat about collisions...
+
+[PAFS] Corrected the bug when the filename wasn't PAFS.ds.gba and you still wanted to use the /silence command... Added the possibility to put /silent instead
+
+[PAGfx] Kleevah updated PAGfx and the Frontend, to solve some issues, add an icon, and have a better about box...
+
+[Doc] Updated
+
+
 PAlib 0.77a : Christmas Release
 
 [Bugfix] MAJOR bugfix for the text, appeared screwed up on the top screen sometimes on DS (not on emulator), now fixed

@@ -1,0 +1,22 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+No palette name found for file mario_world.png, the palette mario_world will be given to him...
+No palette name found for file hills.png, the palette hills will be given to him...
+No palette name found for file back.png, the palette back will be given to him...
+Transparent Color : Magenta
+
+1 sprites :
+  mario : 256colors, 32x96, Pal : sprite0_Pal, -> mario_Sprite
+
+3 backgrounds :
+  mario_world : LargeMap, 1024x192, Pal : mario_world_Pal, 16 tiles -> mario_world_Tiles and mario_world_Map
+  hills : LargeMap, 768x192, Pal : hills_Pal, 38 tiles -> hills_Tiles and hills_Map
+  back : LargeMap, 512x192, Pal : back_Pal, 4 tiles -> back_Tiles and back_Map
+
+4 palettes :
+  sprite0_Pal, 20 colors
+  mario_world_Pal, 10 colors
+  hills_Pal, 24 colors
+  back_Pal, 6 colors
+
+Finished !

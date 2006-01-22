@@ -28,21 +28,21 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_Palette.h::REG_BRIGHT"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_BRIGHT</b>&nbsp;&nbsp;&nbsp;0x0400006C</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga9">PA_LoadPal</a>(palette, source)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga10">PA_LoadPal</a>(palette, source)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a 256 color palette in the Bg or Sprite palette of screen 0 or 1. Ex : <a class="el" href="group___palette.html#ga9">PA_LoadPal(PALETTE_BG1, bg_pal)</a>;  <a href="group___palette.html#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga10">PA_LoadPal16</a>(palette, n_palette, source)&nbsp;&nbsp;&nbsp;DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a 256 color palette in the Bg or Sprite palette of screen 0 or 1. Ex : <a class="el" href="group___palette.html#ga10">PA_LoadPal(PALETTE_BG1, bg_pal)</a>;  <a href="group___palette.html#ga10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga11">PA_LoadPal16</a>(palette, n_palette, source)&nbsp;&nbsp;&nbsp;DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a 16 color palette in the Bg or Sprite palette of screen 0 or 1. Ex : <a class="el" href="group___palette.html#ga10">PA_LoadPal16(PALETTE_BG1, 4, bg_pal)</a>;  <a href="group___palette.html#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga11">PA_RGB</a>(r, g, b)&nbsp;&nbsp;&nbsp;((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a 16 color palette in the Bg or Sprite palette of screen 0 or 1. Ex : <a class="el" href="group___palette.html#ga11">PA_LoadPal16(PALETTE_BG1, 4, bg_pal)</a>;  <a href="group___palette.html#ga11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga12">PA_RGB</a>(r, g, b)&nbsp;&nbsp;&nbsp;((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Convert Red, Green, and Blue color indexes into a number used in the palette system. Careful : the R, G, B values range from 0 to 31 on gba !  <a href="group___palette.html#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga12">PA_SetBgPalCol</a>(screen, color_number, colorRGB)&nbsp;&nbsp;&nbsp;BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Convert Red, Green, and Blue color indexes into a number used in the palette system. Careful : the R, G, B values range from 0 to 31 on gba !  <a href="group___palette.html#ga12"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga13">PA_SetBgPalCol</a>(screen, color_number, colorRGB)&nbsp;&nbsp;&nbsp;BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the color of one of the background palette colors  <a href="group___palette.html#ga12"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga13">PA_SetSpritePalCol</a>(screen, color_number, colorRGB)&nbsp;&nbsp;&nbsp;BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)] = colorRGB</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the color of one of the main background palette colors. Not used anymore  <a href="group___palette.html#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga14">PA_SetSpritePalCol</a>(screen, color_number, colorRGB)&nbsp;&nbsp;&nbsp;BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)] = colorRGB</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the color of one of the sprite palette colors  <a href="group___palette.html#ga13"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the color of one of the sprite palette colors  <a href="group___palette.html#ga14"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Palette.h::PA_LoadSpriteExtPal"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_LoadSpriteExtPal</b> (bool screen, u16 palette_number, void *palette)</td></tr>
@@ -76,14 +76,17 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga7" doxytag="PA_Palette.h::PA_LoadBgPalN"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_LoadBgPalN</b> (bool screen, u8 bg_number, u8 pal_number, void *palette)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga8">PA_SetBgColor</a> (bool screen, u16 color)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga8">PA_SetBgPalNCol</a> (bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the background color of a given screen  <a href="group___palette.html#ga8"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the color of one of the backgrounds' palettes' colors  <a href="group___palette.html#ga8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___palette.html#ga9">PA_SetBgColor</a> (bool screen, u16 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the background color of a given screen  <a href="group___palette.html#ga9"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Everything concerning the palette system. 
 <p>
-Not much for now, only a function to load a complete palette to a given palette<hr size="1"><address style="align: right;"><small>Generated on Wed Dec 21 17:41:56 2005 for PAlib by&nbsp;
+Not much for now, only a function to load a complete palette to a given palette<hr size="1"><address style="align: right;"><small>Generated on Sun Jan 22 11:46:40 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

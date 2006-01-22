@@ -26,7 +26,7 @@ extern u32 *sndMemPool;
 
 typedef struct{ // Default sound format
 	u8 volume;
-	s16 freq;
+	s32 freq;
 	s16 format;
 } PA_SoundOptions;
 
@@ -48,7 +48,7 @@ extern u32 *FS_wav[16]; // 16 channels...
  */
 
 
-/*! \fn void PA_SetDefaultSound(u8 volume, s16 freq, s16 format)
+/*! \fn void PA_SetDefaultSound(u8 volume, s32 freq, s16 format)
     \brief
          \~english Set the default sound options (for the PlaySimpleSound function)
          \~french Permet de régler options par défaut pour la fonction PlaySimpleSound
@@ -62,7 +62,7 @@ extern u32 *FS_wav[16]; // 16 channels...
          \~english Sound format.
          \~french Format du son.
 */
-void PA_SetDefaultSound(u8 volume, s16 freq, s16 format);
+void PA_SetDefaultSound(u8 volume, s32 freq, s16 format);
 
 
 /*! \fn extern inline void PA_InitSound(void)
@@ -74,7 +74,7 @@ extern inline void PA_InitSound(void) {
 	SndInit9 ();
 	sndMemPool = (u32*)0x2200000;
 	SndSetMemPool(sndMemPool, SND_MEM_POOL_SIZE);
-	PA_SetDefaultSound(127, 11025, 1);
+	PA_SetDefaultSound(127, 11025, 0);
 	FS_mod = NULL; // Initialise a small portion of memory, will make it bigger later on...
 	u8 i;
 	for (i = 0; i < 16; i++) FS_wav[i] = NULL; // to be able to free
@@ -82,7 +82,7 @@ extern inline void PA_InitSound(void) {
 
 
 
-/*! \fn void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq, s16 format)
+/*! \fn void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s32 freq, s16 format)
     \brief
          \~english Play a given sound effect, but chose your format
          \~french Joue une fois un son, mais en choisissant le format
@@ -105,9 +105,9 @@ extern inline void PA_InitSound(void) {
          \~english Sound format.
          \~french Format du son.
 */
-void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq, s16 format);
+void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s32 freq, s16 format);
 
-/*! \fn extern inline void PA_PlayGBFSSoundEx(u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq, s16 format)
+/*! \fn extern inline void PA_PlayGBFSSoundEx(u8 PA_Channel, u16 FS_wav_number, u8 volume, s32 freq, s16 format)
     \brief
          \~english Play a given sound effect, but chose your format, from GBFS
          \~french Joue une fois un son, mais en choisissant le format, depuis GBFS
@@ -127,7 +127,7 @@ void PA_PlaySoundEx(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 
          \~english Sound format.
          \~french Format du son.
 */
-extern inline void PA_PlayGBFSSoundEx(u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq, s16 format){
+extern inline void PA_PlayGBFSSoundEx(u8 PA_Channel, u16 FS_wav_number, u8 volume, s32 freq, s16 format){
 s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 	free(FS_wav[PA_Channel]);
 	FS_wav[PA_Channel] = (u32*)malloc(length << 2);
@@ -139,7 +139,7 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 
 
 
-/*! \fn extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s16 freq, s16 format)
+/*! \fn extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s32 freq, s16 format)
     \brief
          \~english Play a given sound effect, but chose your format, from PAFS
          \~french Joue une fois un son, mais en choisissant le format, depuis PAFS
@@ -159,7 +159,7 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~english Sound format.
          \~french Format du son.
 */
-extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s16 freq, s16 format){
+extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s32 freq, s16 format){
 	PA_Malloc((void**)&FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
 
 	s32 i;
@@ -170,7 +170,7 @@ extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volum
 }
 
 
-/*! \fn extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq)
+/*! \fn extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, s32 freq)
     \brief
          \~english Play a given sound effect, with default format (raw)
          \~french Joue une fois un son, avec format par défaut (raw)
@@ -190,11 +190,11 @@ extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volum
          \~english Sound frequence, depends on the sound... 11025 by default
          \~french Fréquence du son...11025 par défaut
 */
-extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq){
-PA_PlaySoundEx(PA_Channel, data, length, volume, freq, 1);
+extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, s32 freq){
+PA_PlaySoundEx(PA_Channel, data, length, volume, freq, 0);
 }
 
-/*! \fn extern inline void PA_PlayGBFSSound(u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq)
+/*! \fn extern inline void PA_PlayGBFSSound(u8 PA_Channel, u16 FS_wav_number, u8 volume, s32 freq)
     \brief
          \~english Play a given sound effect, with default format (raw), from GBFS
          \~french Joue une fois un son, avec format par défaut (raw), depuis GBFS
@@ -211,7 +211,7 @@ PA_PlaySoundEx(PA_Channel, data, length, volume, freq, 1);
          \~english Sound frequence, depends on the sound... 11025 by default
          \~french Fréquence du son...11025 par défaut
 */
-extern inline void PA_PlayGBFSSound(u8 PA_Channel, u16 FS_wav_number, u8 volume, s16 freq){
+extern inline void PA_PlayGBFSSound(u8 PA_Channel, u16 FS_wav_number, u8 volume, s32 freq){
 s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 	free(FS_wav[PA_Channel]);
 	FS_wav[PA_Channel] = (u32*)malloc(length << 2);
@@ -223,7 +223,7 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 
 
 
-/*! \fn extern inline void PA_PlayFSSound(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s16 freq)
+/*! \fn extern inline void PA_PlayFSSound(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s32 freq)
     \brief
          \~english Play a given sound effect, with default format (raw), from PAFS
          \~french Joue une fois un son, avec format par défaut (raw), depuis PAFS
@@ -240,7 +240,7 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~english Sound frequence, depends on the sound... 11025 by default
          \~french Fréquence du son...11025 par défaut
 */
-extern inline void PA_PlayFSSound(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s16 freq){
+extern inline void PA_PlayFSSound(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, s32 freq){
 	PA_Malloc((void**)(&FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
 
 	s32 i;

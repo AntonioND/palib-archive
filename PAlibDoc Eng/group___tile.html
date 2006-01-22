@@ -9,72 +9,63 @@
 <h1>Bg Modes 0-2</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga21">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga26">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Hide a screen's background.  <a href="#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga22">PA_ShowBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Hide a screen's background.  <a href="#ga26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga27">PA_ShowBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Show a hidden background.  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga23">PA_ResetBg</a>(screen)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Show a hidden background.  <a href="#ga27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga28">PA_ResetBg</a>(screen)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialize de Bg system of a screen. It only hides all the backgrounds in reality...  <a href="#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga24">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles)&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialize de Bg system of a screen. It only hides all the backgrounds in reality...  <a href="#ga28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga29">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles)&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a tileset into memory  <a href="#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga25">PA_LoadTiledBg</a>(screen, bg_number, bg_name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a tileset into memory  <a href="#ga29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga30">PA_LoadTiledBg</a>(screen, bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available.  <a href="#ga25"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga26">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available.  <a href="#ga30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga31">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simple way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga27">PA_LoadRotBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simple way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="#ga31"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga32">PA_LoadRotBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background fit for rotating/scaling ! Warning, you must use PA_SetVideoMode to 1 if you want 1 rotating background (Bg3 only !), or 2 for 2 rotating backgrounds (Bg2 and 3). The background MUST be in 256 colors  <a href="#ga27"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga28">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background fit for rotating/scaling ! Warning, you must use PA_SetVideoMode to 1 if you want 1 rotating background (Bg3 only !), or 2 for 2 rotating backgrounds (Bg2 and 3). The background MUST be in 256 colors  <a href="#ga32"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga33">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="#ga28"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga29">PA_BGScrollX</a>(screen, bg_number, x)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="#ga33"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga34">PA_BGScrollX</a>(screen, bg_number, x)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly any background  <a href="#ga29"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga30">PA_BGScrollY</a>(screen, bg_number, y)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly any background  <a href="#ga34"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga35">PA_BGScrollY</a>(screen, bg_number, y)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertically any background  <a href="#ga30"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga31">PA_BGScrollXY</a>(screen, bg_number, x, y)&nbsp;&nbsp;&nbsp;{PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertically any background  <a href="#ga35"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga36">PA_BGScrollXY</a>(screen, bg_number, x, y)&nbsp;&nbsp;&nbsp;{PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly and vertically any background  <a href="#ga31"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga32">PA_SetMapTile</a>(screen, bg_select, x, y, tile_number)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_N); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((tile_number)&amp;TILE_N);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly and vertically any background  <a href="#ga36"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga37">PA_SetMapTileHflip</a>(screen, bg_select, x, y, hflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile gfx used by a given tile in the map  <a href="#ga32"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga33">PA_SetMapTileAll</a>(screen, bg_select, x, y, tile_info)&nbsp;&nbsp;&nbsp;*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = tile_info</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flip a given tile horizontaly  <a href="#ga37"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga38">PA_SetMapTileVflip</a>(screen, bg_select, x, y, vflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile info used by a given tile in the map  <a href="#ga33"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga34">PA_SetMapTileHflip</a>(screen, bg_select, x, y, hflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flip a given tile verticaly  <a href="#ga38"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga39">PA_SetMapTilePal</a>(screen, bg_select, x, y, palette_number)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flip a given tile horizontaly  <a href="#ga34"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga35">PA_SetMapTileVflip</a>(screen, bg_select, x, y, vflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the 16 color palette used by a tile. Works only if the Bg is in 16 colors...  <a href="#ga39"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga40">PA_LoadTiledBitmap</a>(screen, tiled_bitmap)&nbsp;&nbsp;&nbsp;PA_LoadBg(screen, 0, tiled_bitmap, SCREEN_TILES, bitmap, BG_256X256, 1, 1)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flip a given tile verticaly  <a href="#ga35"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga36">PA_SetMapTilePal</a>(screen, bg_select, x, y, palette_number)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a bitmap converted using gfx2gba, converted like a tileset but without any optimisations. No use to include the map. Carefull, takes the whole tile memory...  <a href="#ga40"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga41">PA_LoadPAGfxRotBg</a>(screen, bg_select, bg_name, wraparound)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the 16 color palette used by a tile. Works only if the Bg is in 16 colors...  <a href="#ga36"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga37">PA_SetMapTileEx</a>(screen, bg_select, x, y, tile_number, hflip, vflip, palette_number)&nbsp;&nbsp;&nbsp;*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_number) + ((hflip) &lt;&lt; 10) + ((vflip) &lt;&lt; 11) + ((palette_number) &lt;&lt; 12)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background fit for rotating/scaling ! Warning, you must use PA_SetVideoMode to 1 if you want 1 rotating background (Bg3 only !), or 2 for 2 rotating backgrounds (Bg2 and 3). The background MUST be in 256 colors  <a href="#ga41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga42">PA_LoadLargeBg</a>(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change every aspect of a given map tile  <a href="#ga37"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga38">PA_LoadTiledBitmap</a>(screen, tiled_bitmap)&nbsp;&nbsp;&nbsp;PA_LoadBg(screen, 0, tiled_bitmap, SCREEN_TILES, bitmap, BG_256X256, 1, 1)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels)  <a href="#ga42"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga43">PA_LoadPAGfxLargeBg</a>(screen, bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a bitmap converted using gfx2gba, converted like a tileset but without any optimisations. No use to include the map. Carefull, takes the whole tile memory...  <a href="#ga38"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga39">PA_LoadPAGfxRotBg</a>(screen, bg_select, bg_name, wraparound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx  <a href="#ga43"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga44">PA_LoadLargeBgEx</a>(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background fit for rotating/scaling ! Warning, you must use PA_SetVideoMode to 1 if you want 1 rotating background (Bg3 only !), or 2 for 2 rotating backgrounds (Bg2 and 3). The background MUST be in 256 colors  <a href="#ga39"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga40">PA_LoadLargeBg</a>(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels)  <a href="#ga40"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga41">PA_LoadPAGfxLargeBg</a>(screen, bg_number, bg_name)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx  <a href="#ga41"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga42">PA_LoadLargeBgEx</a>(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), but here you can put yourself the tile size...  <a href="#ga42"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), but here you can put yourself the tile size...  <a href="#ga44"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="Tile::PA_ResetBgSys"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga0">PA_ResetBgSys</a> (void)</td></tr>
@@ -86,64 +77,79 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga2">PA_LoadBgTilesEx</a> (bool screen, u8 bg_select, void *bg_tiles, u16 size)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a tileset into memory with a given size  <a href="#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga3">PA_DeleteTiles</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga3">PA_ReLoadBgTiles</a> (bool screen, u8 bg_select, void *bg_tiles)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a tilest in memory. Note that loading a tileset automatically deletes the preceding one, so you won't need to use this function often  <a href="#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga4">PA_DeleteMap</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ReLoad a tileset into memory  <a href="#ga3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga4">PA_DeleteTiles</a> (bool screen, u8 bg_select)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a map in memory. Note that loading a map automatically deletes the preceding one, so you won't need to use this function often  <a href="#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga5">PA_DeleteBg</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a tilest in memory. Note that loading a tileset automatically deletes the preceding one, so you won't need to use this function often  <a href="#ga4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga5">PA_DeleteMap</a> (bool screen, u8 bg_select)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a complete background (tiles + map + hide it...)  <a href="#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga6">PA_LoadBgMap</a> (bool screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a map in memory. Note that loading a map automatically deletes the preceding one, so you won't need to use this function often  <a href="#ga5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga6">PA_DeleteBg</a> (bool screen, u8 bg_select)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background's map info  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga7" doxytag="Tile::PA_SetBgRot"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a complete background (tiles + map + hide it...)  <a href="#ga6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga7">PA_LoadBgMap</a> (bool screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background's map info  <a href="#ga7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga8" doxytag="Tile::PA_SetBgRot"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetBgRot</b> (bool screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga8">PA_SetLargeMapTile</a> (bool screen, u8 bg_select, s32 x, s32 y, u32 tile_info)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga9">PA_SetMapTile</a> (bool screen, u8 bg_select, s16 x, s16 y, s16 tile_number)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile info used by a given tile in the map, only for big background (512 large or wide)  <a href="#ga8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga9">PA_InfLargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile gfx used by a given tile in the map  <a href="#ga9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga10">PA_SetMapTileAll</a> (bool screen, u8 bg_select, s16 x, s16 y, u16 tile_info)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly. It must have been initialised with PA_LoadLargeBg.  <a href="#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga10">PA_InfLargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile info used by a given tile in the map  <a href="#ga10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga11">PA_SetLargeMapTile</a> (bool screen, u8 bg_select, s32 x, s32 y, u32 tile_info)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga11">PA_InfLargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile info used by a given tile in the map, only for big background (512 large or wide)  <a href="#ga11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga12" doxytag="Tile::PA_SetMapTileEx"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetMapTileEx</b> (bool screen, u8 bg_select, s16 x, s16 y, u16 tile_number, bool hflip, bool vflip, u8 palette_number)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga12">PA_LargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga13">PA_InfLargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga12"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga13">PA_LargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly. It must have been initialised with PA_LoadLargeBg.  <a href="#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga14">PA_InfLargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga14">PA_LargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga15">PA_InfLargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga15">PA_InitParallaxX</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga15"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga16">PA_LargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga16">PA_InitParallaxY</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga17">PA_LargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga17">PA_ParallaxScrollX</a> (bool screen, s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga18">PA_LargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga18">PA_ParallaxScrollY</a> (bool screen, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga19">PA_InitParallaxX</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga19">PA_ParallaxScrollXY</a> (bool screen, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga20">PA_InitParallaxY</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga20">PA_SetBgPrio</a> (bool screen, u8 bg, u8 prio)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga21">PA_ParallaxScrollX</a> (bool screen, s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change a backgrounds priority  <a href="#ga20"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga22">PA_ParallaxScrollY</a> (bool screen, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga23">PA_ParallaxScrollXY</a> (bool screen, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga24">PA_SetBgPrio</a> (bool screen, u8 bg, u8 prio)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change a backgrounds priority  <a href="#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga25" doxytag="Tile::PA_CreateBgFromTiles"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_CreateBgFromTiles</b> (bool screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size)</td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Load tiles, a map, scroll it... <hr><h2>Define Documentation</h2>
-<a class="anchor" name="ga29" doxytag="PA_Tile.h::PA_BGScrollX"></a><p>
+<a class="anchor" name="ga34" doxytag="PA_Tile.h::PA_BGScrollX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -186,7 +192,7 @@ Scroll horizontaly any background
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga31" doxytag="PA_Tile.h::PA_BGScrollXY"></a><p>
+<a class="anchor" name="ga36" doxytag="PA_Tile.h::PA_BGScrollXY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -233,7 +239,7 @@ Scroll horizontaly and vertically any background
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga30" doxytag="PA_Tile.h::PA_BGScrollY"></a><p>
+<a class="anchor" name="ga35" doxytag="PA_Tile.h::PA_BGScrollY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -276,7 +282,7 @@ Scroll vertically any background
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga21" doxytag="PA_Tile.h::PA_HideBg"></a><p>
+<a class="anchor" name="ga26" doxytag="PA_Tile.h::PA_HideBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -315,7 +321,7 @@ Hide a screen's background.
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga28" doxytag="PA_Tile.h::PA_LoadBg"></a><p>
+<a class="anchor" name="ga33" doxytag="PA_Tile.h::PA_LoadBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -363,9 +369,9 @@ Hide a screen's background.
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
 <a class="code" href="group___tile.html#ga2">PA_LoadBgTilesEx</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_tiles, tile_size); \
-<a class="code" href="group___tile.html#ga6">PA_LoadBgMap</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
+<a class="code" href="group___tile.html#ga7">PA_LoadBgMap</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
 <a class="code" href="group___tile.html#ga1">PA_InitBg</a>(screen, bg_select, bg_size, wraparound, color_mode);\
-<a class="code" href="group___tile.html#ga31">PA_BGScrollXY</a>(screen, bg_select, 0, 0);}
+<a class="code" href="group___tile.html#ga36">PA_BGScrollXY</a>(screen, bg_select, 0, 0);}
 </pre></div>Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
@@ -383,7 +389,7 @@ Hide a screen's background.
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga24" doxytag="PA_Tile.h::PA_LoadBgTiles"></a><p>
+<a class="anchor" name="ga29" doxytag="PA_Tile.h::PA_LoadBgTiles"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -426,7 +432,7 @@ Load a tileset into memory
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga40" doxytag="PA_Tile.h::PA_LoadLargeBg"></a><p>
+<a class="anchor" name="ga42" doxytag="PA_Tile.h::PA_LoadLargeBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -470,7 +476,7 @@ Load a tileset into memory
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga26">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, Blank, BG_512X256, 1, color_mode);\
+<a class="code" href="group___tile.html#ga31">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, Blank, BG_512X256, 1, color_mode);\
 PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>*)bg_map);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels) 
 <p>
@@ -488,7 +494,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga42" doxytag="PA_Tile.h::PA_LoadLargeBgEx"></a><p>
+<a class="anchor" name="ga44" doxytag="PA_Tile.h::PA_LoadLargeBgEx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -535,7 +541,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga28">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 1, color_mode);\
+<a class="code" href="group___tile.html#ga33">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 1, color_mode);\
 PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>*)bg_map);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), but here you can put yourself the tile size... 
 <p>
@@ -554,7 +560,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga41" doxytag="PA_Tile.h::PA_LoadPAGfxLargeBg"></a><p>
+<a class="anchor" name="ga43" doxytag="PA_Tile.h::PA_LoadPAGfxLargeBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -587,7 +593,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
        <a class="code" href="group___palette.html#ga6">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
-       <a class="code" href="group___tile.html#ga40">PA_LoadLargeBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Width) &gt;&gt; 3, (bg_name##_Height) &gt;&gt; 3);}
+       <a class="code" href="group___tile.html#ga42">PA_LoadLargeBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Width) &gt;&gt; 3, (bg_name##_Height) &gt;&gt; 3);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
@@ -600,7 +606,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga39" doxytag="PA_Tile.h::PA_LoadPAGfxRotBg"></a><p>
+<a class="anchor" name="ga41" doxytag="PA_Tile.h::PA_LoadPAGfxRotBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -636,7 +642,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
 <a class="code" href="group___palette.html#ga6">PA_LoadBgPal</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
-<a class="code" href="group___tile.html#ga27">PA_LoadRotBg</a>(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\
+<a class="code" href="group___tile.html#ga32">PA_LoadRotBg</a>(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\
 }
 </pre></div>Load a background fit for rotating/scaling ! Warning, you must use PA_SetVideoMode to 1 if you want 1 rotating background (Bg3 only !), or 2 for 2 rotating backgrounds (Bg2 and 3). The background MUST be in 256 colors 
 <p>
@@ -651,7 +657,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga27" doxytag="PA_Tile.h::PA_LoadRotBg"></a><p>
+<a class="anchor" name="ga32" doxytag="PA_Tile.h::PA_LoadRotBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -692,8 +698,8 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga5">PA_DeleteBg</a>(screen, bg_select);\
-<a class="code" href="group___tile.html#ga24">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles); \
+<a class="code" href="group___tile.html#ga6">PA_DeleteBg</a>(screen, bg_select);\
+<a class="code" href="group___tile.html#ga29">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles); \
 PA_LoadRotBgMap(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
 <a class="code" href="group___tile.html#ga1">PA_InitBg</a>(screen, bg_select, bg_size, wraparound, 1);\
 PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
@@ -713,7 +719,7 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga26" doxytag="PA_Tile.h::PA_LoadSimpleBg"></a><p>
+<a class="anchor" name="ga31" doxytag="PA_Tile.h::PA_LoadSimpleBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -757,11 +763,11 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___tile.html#ga5">PA_DeleteBg</a>(screen, bg_select);\
-<a class="code" href="group___tile.html#ga24">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles); \
-<a class="code" href="group___tile.html#ga6">PA_LoadBgMap</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
+<a class="code" href="group___tile.html#ga6">PA_DeleteBg</a>(screen, bg_select);\
+<a class="code" href="group___tile.html#ga29">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles); \
+<a class="code" href="group___tile.html#ga7">PA_LoadBgMap</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
 <a class="code" href="group___tile.html#ga1">PA_InitBg</a>(screen, bg_select, bg_size, wraparound, color_mode);\
-<a class="code" href="group___tile.html#ga31">PA_BGScrollXY</a>(screen, bg_select, 0, 0);}
+<a class="code" href="group___tile.html#ga36">PA_BGScrollXY</a>(screen, bg_select, 0, 0);}
 </pre></div>Simple way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
@@ -778,7 +784,7 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga25" doxytag="PA_Tile.h::PA_LoadTiledBg"></a><p>
+<a class="anchor" name="ga30" doxytag="PA_Tile.h::PA_LoadTiledBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -811,7 +817,7 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
        <a class="code" href="group___palette.html#ga6">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
-       <a class="code" href="group___tile.html#ga26">PA_LoadSimpleBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Width, bg_name##_Height), 0, 1);}
+       <a class="code" href="group___tile.html#ga31">PA_LoadSimpleBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Width, bg_name##_Height), 0, 1);}
 </pre></div>This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available. 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
@@ -824,7 +830,7 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga38" doxytag="PA_Tile.h::PA_LoadTiledBitmap"></a><p>
+<a class="anchor" name="ga40" doxytag="PA_Tile.h::PA_LoadTiledBitmap"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -863,7 +869,7 @@ Load a bitmap converted using gfx2gba, converted like a tileset but without any 
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga23" doxytag="PA_Tile.h::PA_ResetBg"></a><p>
+<a class="anchor" name="ga28" doxytag="PA_Tile.h::PA_ResetBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -898,172 +904,7 @@ Reinitialize de Bg system of a screen. It only hides all the backgrounds in real
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga32" doxytag="PA_Tile.h::PA_SetMapTile"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetMapTile          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>bg_select,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>x,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>y,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>tile_number&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_N); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((tile_number)&amp;TILE_N);}</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Change the tile gfx used by a given tile in the map 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Chose de screen (0 or 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number (0-3) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X value of the tile to change </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y value of the map tile to change </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>tile_number</em>&nbsp;</td><td>New tile number to put </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga33" doxytag="PA_Tile.h::PA_SetMapTileAll"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetMapTileAll          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>bg_select,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>x,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>y,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>tile_info&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = tile_info</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Change the tile info used by a given tile in the map 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Chose de screen (0 or 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number (0-3) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X value of the tile to change </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y value of the map tile to change </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>tile_info</em>&nbsp;</td><td>New tile to put (tile + palette + flips...) </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga37" doxytag="PA_Tile.h::PA_SetMapTileEx"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetMapTileEx          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>bg_select,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>x,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>y,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>tile_number,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>hflip,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>vflip,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>palette_number&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_number) + ((hflip) &lt;&lt; 10) + ((vflip) &lt;&lt; 11) + ((palette_number) &lt;&lt; 12)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Change every aspect of a given map tile 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Chose de screen (0 or 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number (0-3) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X value of the tile to change </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y value of the map tile to change </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>tile_number</em>&nbsp;</td><td>New tile number to put </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Set the map tile to horizontal flip </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>vflip</em>&nbsp;</td><td>Set the map tile to vertical flip </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>palette_number</em>&nbsp;</td><td>Palette number (0-15) </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga34" doxytag="PA_Tile.h::PA_SetMapTileHflip"></a><p>
+<a class="anchor" name="ga37" doxytag="PA_Tile.h::PA_SetMapTileHflip"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1114,7 +955,7 @@ Flip a given tile horizontaly
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga36" doxytag="PA_Tile.h::PA_SetMapTilePal"></a><p>
+<a class="anchor" name="ga39" doxytag="PA_Tile.h::PA_SetMapTilePal"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1165,7 +1006,7 @@ Change the 16 color palette used by a tile. Works only if the Bg is in 16 colors
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga35" doxytag="PA_Tile.h::PA_SetMapTileVflip"></a><p>
+<a class="anchor" name="ga38" doxytag="PA_Tile.h::PA_SetMapTileVflip"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1216,7 +1057,7 @@ Flip a given tile verticaly
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga22" doxytag="PA_Tile.h::PA_ShowBg"></a><p>
+<a class="anchor" name="ga27" doxytag="PA_Tile.h::PA_ShowBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1256,7 +1097,7 @@ Show a hidden background.
   </tr>
 </table>
 <hr><h2>Function Documentation</h2>
-<a class="anchor" name="ga5" doxytag="PA_Tile.h::PA_DeleteBg"></a><p>
+<a class="anchor" name="ga6" doxytag="PA_Tile.h::PA_DeleteBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1301,7 +1142,7 @@ Delete a complete background (tiles + map + hide it...)
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga4" doxytag="PA_Tile.h::PA_DeleteMap"></a><p>
+<a class="anchor" name="ga5" doxytag="PA_Tile.h::PA_DeleteMap"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1346,7 +1187,7 @@ Delete a map in memory. Note that loading a map automatically deletes the preced
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga3" doxytag="PA_Tile.h::PA_DeleteTiles"></a><p>
+<a class="anchor" name="ga4" doxytag="PA_Tile.h::PA_DeleteTiles"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1391,7 +1232,7 @@ Delete a tilest in memory. Note that loading a tileset automatically deletes the
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga9" doxytag="PA_Tile.h::PA_InfLargeScrollX"></a><p>
+<a class="anchor" name="ga13" doxytag="PA_Tile.h::PA_InfLargeScrollX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1443,7 +1284,7 @@ Scroll a large infinite scrolling background horizontaly. It must have been init
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga11" doxytag="PA_Tile.h::PA_InfLargeScrollXY"></a><p>
+<a class="anchor" name="ga15" doxytag="PA_Tile.h::PA_InfLargeScrollXY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1502,7 +1343,7 @@ Scroll a large infinite scrolling background horizontaly and vertically. It must
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga10" doxytag="PA_Tile.h::PA_InfLargeScrollY"></a><p>
+<a class="anchor" name="ga14" doxytag="PA_Tile.h::PA_InfLargeScrollY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1620,7 +1461,7 @@ Initialise a given background. Do this only after having loaded a tileset and a 
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga15" doxytag="PA_Tile.h::PA_InitParallaxX"></a><p>
+<a class="anchor" name="ga19" doxytag="PA_Tile.h::PA_InitParallaxX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1686,7 +1527,7 @@ Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the s
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga16" doxytag="PA_Tile.h::PA_InitParallaxY"></a><p>
+<a class="anchor" name="ga20" doxytag="PA_Tile.h::PA_InitParallaxY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1752,7 +1593,7 @@ Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the s
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga12" doxytag="PA_Tile.h::PA_LargeScrollX"></a><p>
+<a class="anchor" name="ga16" doxytag="PA_Tile.h::PA_LargeScrollX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1804,7 +1645,7 @@ Scroll a large background horizontaly. It must have been initialised with PA_Loa
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga14" doxytag="PA_Tile.h::PA_LargeScrollXY"></a><p>
+<a class="anchor" name="ga18" doxytag="PA_Tile.h::PA_LargeScrollXY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1863,7 +1704,7 @@ Scroll a large background horizontaly and vertically. It must have been initiali
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga13" doxytag="PA_Tile.h::PA_LargeScrollY"></a><p>
+<a class="anchor" name="ga17" doxytag="PA_Tile.h::PA_LargeScrollY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1915,7 +1756,7 @@ Scroll a large background vertically. It must have been initialised with PA_Load
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga6" doxytag="PA_Tile.h::PA_LoadBgMap"></a><p>
+<a class="anchor" name="ga7" doxytag="PA_Tile.h::PA_LoadBgMap"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2033,7 +1874,7 @@ Load a tileset into memory with a given size
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga17" doxytag="PA_Tile.h::PA_ParallaxScrollX"></a><p>
+<a class="anchor" name="ga21" doxytag="PA_Tile.h::PA_ParallaxScrollX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2078,7 +1919,7 @@ Scroll the backgrounds
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga19" doxytag="PA_Tile.h::PA_ParallaxScrollXY"></a><p>
+<a class="anchor" name="ga23" doxytag="PA_Tile.h::PA_ParallaxScrollXY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2130,7 +1971,7 @@ Scroll the backgrounds
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga18" doxytag="PA_Tile.h::PA_ParallaxScrollY"></a><p>
+<a class="anchor" name="ga22" doxytag="PA_Tile.h::PA_ParallaxScrollY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2175,7 +2016,59 @@ Scroll the backgrounds
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga20" doxytag="PA_Tile.h::PA_SetBgPrio"></a><p>
+<a class="anchor" name="ga3" doxytag="PA_Tile.h::PA_ReLoadBgTiles"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_ReLoadBgTiles           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="mdname" nowrap> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>void *&nbsp;</td>
+          <td class="mdname" nowrap> <em>bg_tiles</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+ReLoad a tileset into memory 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Chose de screen (0 or 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number to load (from 0 to 3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Name of the tiles' info (example: ship_Tiles) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga24" doxytag="PA_Tile.h::PA_SetBgPrio"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2227,7 +2120,7 @@ Change a backgrounds priority
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga8" doxytag="PA_Tile.h::PA_SetLargeMapTile"></a><p>
+<a class="anchor" name="ga11" doxytag="PA_Tile.h::PA_SetLargeMapTile"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -2293,7 +2186,139 @@ Change the tile info used by a given tile in the map, only for big background (5
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Wed Dec 21 17:41:58 2005 for PAlib by&nbsp;
+<a class="anchor" name="ga9" doxytag="PA_Tile.h::PA_SetMapTile"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetMapTile           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="mdname" nowrap> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="mdname" nowrap> <em>tile_number</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Change the tile gfx used by a given tile in the map 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Chose de screen (0 or 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X value of the tile to change </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y value of the map tile to change </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tile_number</em>&nbsp;</td><td>New tile number to put </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga10" doxytag="PA_Tile.h::PA_SetMapTileAll"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetMapTileAll           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="mdname" nowrap> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s16&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u16&nbsp;</td>
+          <td class="mdname" nowrap> <em>tile_info</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Change the tile info used by a given tile in the map 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Chose de screen (0 or 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X value of the tile to change </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y value of the map tile to change </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tile_info</em>&nbsp;</td><td>New tile to put (tile + palette + flips...) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr size="1"><address style="align: right;"><small>Generated on Sun Jan 22 11:46:42 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

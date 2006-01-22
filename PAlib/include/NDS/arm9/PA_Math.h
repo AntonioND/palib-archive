@@ -126,6 +126,29 @@ extern inline u64 PA_Distance(s32 x1, s32 y1, s32 x2, s32 y2) {
    return(h*h + v*v);
 }
 
+/*! \fn extern inline u32 PA_TrueDistance(s32 x1, s32 y1, s32 x2, s32 y2)
+    \brief
+         \~english Calculate the real distance between 2 points. Much slower than PA_Distance
+         \~french Calculer la vraie distance entre 2 points. Beaucoup plus lent que PA_Distance
+    \param x1
+         \~english X coordinate of the fist point
+         \~french Coordonnée X du premier point
+    \param y1
+         \~english Y coordinate of the first point
+         \~french Coordonnée Y du premier point
+    \param x2
+         \~english X coordinate of the second point
+         \~french Coordonnée X du deuxième point
+    \param y2
+         \~english Y coordinate of the second point
+         \~french Coordonnée Y du deuxième point
+*/
+extern inline u64 PA_TrueDistance(s32 x1, s32 y1, s32 x2, s32 y2) {
+   s64 h = x1 - x2;
+   s64 v = y1 - y2;
+   return(swiSqrt(h*h + v*v));
+}
+
 
 
 /*! \fn u16 PA_AdjustAngle(u16 angle, s16 anglerot, s32 startx, s32 starty, s32 targetx, s32 targety)

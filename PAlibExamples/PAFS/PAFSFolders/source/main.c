@@ -43,7 +43,7 @@ int main(int argc, char ** argv)
 	u32 FileNumer = PA_FSInit(); // Inits PA File System, and returns the number of files
 
 	PA_OutputText(1, 0, 1, "  Files   : %d    ", FileNumer);		
-	//PA_OutputText(1, 0, 2, "  Folders : %d    ", PA_FSSys->Nfolders);	
+	PA_OutputText(1, 0, 2, "  Folders : %d    ", PA_FSSys->Nfolders);	
 			
 	// For each file, we'll draw it's name on the bottom screen...
 

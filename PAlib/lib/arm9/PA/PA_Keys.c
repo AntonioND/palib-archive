@@ -17,7 +17,7 @@ u16 CompletePad, ExPad, TempPad;
 
 PA_movingsprite  PA_MovedSprite; // Pour les sprites que l'on bouge...
 
-
+bool PA_MoveSpriteType = 0;
 
 void PA_UpdatePad(void) {
    ExPad = CompletePad;
@@ -68,8 +68,6 @@ bool temp = ((~IPC->buttons) >> 6) & 1;
 }
 
 
-
-
 bool PA_MoveSpriteEx(bool screen, u8 sprite, u8 lx, u8 ly) {
 u8 truelx = (PA_GetSpriteLx(screen, sprite) >>1);
 u8 truely = (PA_GetSpriteLy(screen, sprite) >>1);
@@ -79,16 +77,22 @@ s16 y = PA_GetSpriteY(screen, sprite) + truely;
 lx = lx >> 1;
 ly = ly >> 1;
 
+if (x >= 458) x -=511; // normalize the X coordinate...
+if (y >= 220) y -=256; // normalize the X coordinate...
+
 
 	if (Stylus.Released) PA_MovedSprite.Moving = 0;
 
 	if (Stylus.Held & !PA_MovedSprite.Moving) { // Si nouvelle pression, on regarde si on touche ou pas le truc
-		if ((Stylus.X > x - lx) && (Stylus.X < x + lx) && (Stylus.Y > y - ly) && (Stylus.Y < y + ly)){				
+		if ((PA_MoveSpriteType == 0) && (Stylus.X > x - lx) && (Stylus.X < x + lx) && (Stylus.Y > y - ly) && (Stylus.Y < y + ly)){			  // Square collision	
 			PA_MovedSprite.Moving = 1;
 			PA_MovedSprite.Sprite = sprite;
 		}
-	}
-	
+		else if (PA_MoveSpriteType && (PA_Distance(Stylus.X, Stylus.Y, x, y) < lx*ly)){	// Distance collision		
+			PA_MovedSprite.Moving = 1;
+			PA_MovedSprite.Sprite = sprite;
+		}
+	}	
 
 
 	if (PA_MovedSprite.Moving && (PA_MovedSprite.Sprite == sprite)) { // Si on peut le déplacer...
@@ -104,7 +108,7 @@ ly = ly >> 1;
 }
 
 
-
+/*
 bool PA_MoveSpriteDistance(u8 sprite, u8 distance) {
 u8 truelx = (PA_GetSpriteLx(0, sprite) >>1);
 u8 truely = (PA_GetSpriteLy(0, sprite) >>1);
@@ -135,3 +139,6 @@ s16 y = PA_GetSpriteY(0, sprite) + truely;
 	}
 	return(0);
 }
+*/
+
+

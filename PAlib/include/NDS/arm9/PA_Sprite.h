@@ -110,6 +110,7 @@ typedef struct {
 } PA_DrawSprites;
 
 
+
 extern PA_DrawSprites PA_DrawSprite[MAX_DRAW];
 
 // Pour le dessin sur sprite
@@ -513,10 +514,10 @@ extern inline void PA_CreateSpriteExFromGfx(bool screen, u8 obj_number, u16 obj_
 */
 #define PA_UpdateSpriteGfx(screen, obj_number, obj_data) PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)
 
-/*! \def PA_UpdateGfx(screen, gfx_number, obj_data)
+/*! \fn extern inline void PA_UpdateGfx(bool screen, u8 gfx_number, void *obj_data) 
     \brief
-         \~english Update the Gfx of a given sprite
-         \~french Mettre à jour les Gfx d'un sprite donné
+         \~english Update a given Gfx
+         \~french Mettre à jour les Gfx donnés
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -527,7 +528,31 @@ extern inline void PA_CreateSpriteExFromGfx(bool screen, u8 obj_number, u16 obj_
          \~english Gfx to load
          \~french Graphisme à charger
 */
-#define PA_UpdateGfx(screen, gfx_number, obj_data) {DMA_Copy(obj_data, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (gfx_number << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);}
+extern inline void PA_UpdateGfx(bool screen, u8 gfx_number, void *obj_data) {
+	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);
+}
+
+
+/*! \fn extern inline void PA_UpdateGfxAndMem(bool screen, u8 gfx_number, void *obj_data)
+    \brief
+         \~english Update the Gfx of a given sprite and updates the PAlib animation pointer... Only for advanced users
+         \~french Mettre à jour les Gfx donnés et le pointer d'animation dans PAlib... Uniquement pour utilisateurs avertis
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param gfx_number
+         \~english Gfx number in memory
+         \~french Numéro du Gfx en mémoire
+    \param obj_data
+         \~english Gfx to load
+         \~french Graphisme à charger
+*/
+
+extern inline void PA_UpdateGfxAndMem(bool screen, u8 gfx_number, void *obj_data){
+	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);
+	PA_SpriteAnimP[screen][gfx_number] = (u16*)obj_data; // mémorise la source de l'image...
+}
+
 
 
 

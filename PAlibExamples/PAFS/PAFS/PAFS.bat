@@ -1,1 +1,1 @@
-PAFS PAFS.ds.gba
+PAFS PAFS.ds.gba Files/ /silence

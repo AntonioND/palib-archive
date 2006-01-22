@@ -10,228 +10,228 @@
 00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_TileDual</span>
 00003 <span class="preprocessor"></span>
 00004 
-00011 <span class="preprocessor">#include "<a class="code" href="_p_a___tile_8h.html">PA_Tile.h</a>"</span>
-00012 
+00005 
+00012 <span class="preprocessor">#include "<a class="code" href="_p_a___tile_8h.html">PA_Tile.h</a>"</span>
 00013 
 00014 
 00015 
 00016 
 00017 
 00018 
-<a name="l00034"></a><a class="code" href="group___tile_dual.html#ga0">00034</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga0">PA_DualHideBg</a>(u8 bg_select){
-00035        <a class="code" href="group___tile.html#ga21">PA_HideBg</a>(0, bg_select);
-00036        <a class="code" href="group___tile.html#ga21">PA_HideBg</a>(1, bg_select);    
-00037 }
-00038 
-<a name="l00048"></a><a class="code" href="group___tile_dual.html#ga1">00048</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga1">PA_DualShowBg</a>(u8 bg_select){
-00049        <a class="code" href="group___tile.html#ga22">PA_ShowBg</a>(0, bg_select);
-00050        <a class="code" href="group___tile.html#ga22">PA_ShowBg</a>(1, bg_select);
-00051 }
-00052 
+00019 
+<a name="l00035"></a><a class="code" href="group___tile_dual.html#ga0">00035</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga0">PA_DualHideBg</a>(u8 bg_select){
+00036        <a class="code" href="group___tile.html#ga26">PA_HideBg</a>(0, bg_select);
+00037        <a class="code" href="group___tile.html#ga26">PA_HideBg</a>(1, bg_select);    
+00038 }
+00039 
+<a name="l00049"></a><a class="code" href="group___tile_dual.html#ga1">00049</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga1">PA_DualShowBg</a>(u8 bg_select){
+00050        <a class="code" href="group___tile.html#ga27">PA_ShowBg</a>(0, bg_select);
+00051        <a class="code" href="group___tile.html#ga27">PA_ShowBg</a>(1, bg_select);
+00052 }
 00053 
 00054 
-<a name="l00061"></a><a class="code" href="group___tile_dual.html#ga2">00061</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga2">PA_DualResetBg</a>(<span class="keywordtype">void</span>){
-00062        <a class="code" href="group___tile.html#ga23">PA_ResetBg</a>(0);
-00063        <a class="code" href="group___tile.html#ga23">PA_ResetBg</a>(1);
-00064 }
-00065 
+00055 
+<a name="l00062"></a><a class="code" href="group___tile_dual.html#ga2">00062</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga2">PA_DualResetBg</a>(<span class="keywordtype">void</span>){
+00063        <a class="code" href="group___tile.html#ga28">PA_ResetBg</a>(0);
+00064        <a class="code" href="group___tile.html#ga28">PA_ResetBg</a>(1);
+00065 }
 00066 
 00067 
 00068 
 00069 
-<a name="l00079"></a><a class="code" href="group___tile_dual.html#ga3">00079</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga3">PA_DualDeleteBg</a>(u8 bg_select){
-00080        <a class="code" href="group___tile.html#ga5">PA_DeleteBg</a>(0, bg_select);
-00081        <a class="code" href="group___tile.html#ga5">PA_DeleteBg</a>(1, bg_select);
-00082 }
-00083 
+00070 
+<a name="l00080"></a><a class="code" href="group___tile_dual.html#ga3">00080</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga3">PA_DualDeleteBg</a>(u8 bg_select){
+00081        <a class="code" href="group___tile.html#ga6">PA_DeleteBg</a>(0, bg_select);
+00082        <a class="code" href="group___tile.html#ga6">PA_DeleteBg</a>(1, bg_select);
+00083 }
 00084 
 00085 
 00086 
 00087 
-<a name="l00100"></a><a class="code" href="group___tile_dual.html#ga20">00100</a> <span class="preprocessor">#define PA_DualLoadTiledBg(bg_number, bg_name){\</span>
-00101 <span class="preprocessor">       PA_LoadTiledBg(0, bg_number, bg_name);\</span>
-00102 <span class="preprocessor">       PA_LoadTiledBg(1, bg_number, bg_name);\</span>
-00103 <span class="preprocessor">       PA_DualBGScrollY(bg_number, 0);}</span>
-00104 <span class="preprocessor"></span>
-00105 
+00088 
+<a name="l00101"></a><a class="code" href="group___tile_dual.html#ga20">00101</a> <span class="preprocessor">#define PA_DualLoadTiledBg(bg_number, bg_name){\</span>
+00102 <span class="preprocessor">       PA_LoadTiledBg(0, bg_number, bg_name);\</span>
+00103 <span class="preprocessor">       PA_LoadTiledBg(1, bg_number, bg_name);\</span>
+00104 <span class="preprocessor">       PA_DualBGScrollY(bg_number, 0);}</span>
+00105 <span class="preprocessor"></span>
 00106 
 00107 
 00108 
 00109 
-<a name="l00135"></a><a class="code" href="group___tile_dual.html#ga21">00135</a> <span class="preprocessor">#define PA_DualLoadSimpleBg(bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode) {\</span>
-00136 <span class="preprocessor">PA_LoadSimpleBg(0, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\</span>
-00137 <span class="preprocessor">PA_LoadSimpleBg(1, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\</span>
-00138 <span class="preprocessor">PA_DualBGScrollY(bg_select, 0);}</span>
-00139 <span class="preprocessor"></span>
-00140 
+00110 
+<a name="l00136"></a><a class="code" href="group___tile_dual.html#ga21">00136</a> <span class="preprocessor">#define PA_DualLoadSimpleBg(bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode) {\</span>
+00137 <span class="preprocessor">PA_LoadSimpleBg(0, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\</span>
+00138 <span class="preprocessor">PA_LoadSimpleBg(1, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\</span>
+00139 <span class="preprocessor">PA_DualBGScrollY(bg_select, 0);}</span>
+00140 <span class="preprocessor"></span>
 00141 
-<a name="l00163"></a><a class="code" href="group___tile_dual.html#ga22">00163</a> <span class="preprocessor">#define PA_DualLoadRotBg(bg_select, bg_tiles, bg_map, bg_size, wraparound) {\</span>
-00164 <span class="preprocessor">PA_LoadRotBg(0, bg_select, bg_tiles, bg_map, bg_size, wraparound);\</span>
-00165 <span class="preprocessor">PA_LoadRotBg(1, bg_select, bg_tiles, bg_map, bg_size, wraparound);\</span>
-00166 <span class="preprocessor">PA_DualBGScrollY(bg_select, 0);}</span>
-00167 <span class="preprocessor"></span>
-00168 
+00142 
+<a name="l00164"></a><a class="code" href="group___tile_dual.html#ga22">00164</a> <span class="preprocessor">#define PA_DualLoadRotBg(bg_select, bg_tiles, bg_map, bg_size, wraparound) {\</span>
+00165 <span class="preprocessor">PA_LoadRotBg(0, bg_select, bg_tiles, bg_map, bg_size, wraparound);\</span>
+00166 <span class="preprocessor">PA_LoadRotBg(1, bg_select, bg_tiles, bg_map, bg_size, wraparound);\</span>
+00167 <span class="preprocessor">PA_DualBGScrollY(bg_select, 0);}</span>
+00168 <span class="preprocessor"></span>
 00169 
-00170 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_DualSetBgRot(u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom){
-00171 PA_SetBgRot(0, bg_select, x_scroll, y_scroll, x_rotcentre, y_rotcentre, bg_angle, bg_zoom);
-00172 PA_SetBgRot(1, bg_select, x_scroll, y_scroll, x_rotcentre, y_rotcentre, bg_angle, bg_zoom);
-00173 }
-00174 
+00170 
+00171 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_DualSetBgRot(u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom){
+00172 PA_SetBgRot(0, bg_select, x_scroll, y_scroll, x_rotcentre, y_rotcentre, bg_angle, bg_zoom);
+00173 PA_SetBgRot(1, bg_select, x_scroll, y_scroll, x_rotcentre, y_rotcentre, bg_angle, bg_zoom);
+00174 }
 00175 
 00176 
-<a name="l00205"></a><a class="code" href="group___tile_dual.html#ga23">00205</a> <span class="preprocessor">#define PA_DualLoadBg(bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode) {\</span>
-00206 <span class="preprocessor">PA_LoadBg(0, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\</span>
-00207 <span class="preprocessor">PA_LoadBg(1, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\</span>
-00208 <span class="preprocessor">PA_DualBGScrollY(bg_select, 0);}</span>
-00209 <span class="preprocessor"></span>
-00210 
+00177 
+<a name="l00206"></a><a class="code" href="group___tile_dual.html#ga23">00206</a> <span class="preprocessor">#define PA_DualLoadBg(bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode) {\</span>
+00207 <span class="preprocessor">PA_LoadBg(0, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\</span>
+00208 <span class="preprocessor">PA_LoadBg(1, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\</span>
+00209 <span class="preprocessor">PA_DualBGScrollY(bg_select, 0);}</span>
+00210 <span class="preprocessor"></span>
 00211 
-<a name="l00224"></a><a class="code" href="group___tile_dual.html#ga5">00224</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga5">PA_DualBGScrollX</a>(u8 bg_number, s16 x){
-00225        <a class="code" href="group___tile.html#ga29">PA_BGScrollX</a>(0, bg_number, x);
-00226        <a class="code" href="group___tile.html#ga29">PA_BGScrollX</a>(1, bg_number, x);
-00227 }
-00228 
+00212 
+<a name="l00225"></a><a class="code" href="group___tile_dual.html#ga5">00225</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga5">PA_DualBGScrollX</a>(u8 bg_number, s16 x){
+00226        <a class="code" href="group___tile.html#ga34">PA_BGScrollX</a>(0, bg_number, x);
+00227        <a class="code" href="group___tile.html#ga34">PA_BGScrollX</a>(1, bg_number, x);
+00228 }
 00229 
 00230 
 00231 
-<a name="l00244"></a><a class="code" href="group___tile_dual.html#ga6">00244</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(u8 bg_number, s16 y){
-00245        <a class="code" href="group___tile.html#ga30">PA_BGScrollY</a>(0, bg_number, y+PA_ScreenSpace);
-00246        <a class="code" href="group___tile.html#ga30">PA_BGScrollY</a>(1, bg_number, y);
-00247 }
-00248 
+00232 
+<a name="l00245"></a><a class="code" href="group___tile_dual.html#ga6">00245</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(u8 bg_number, s16 y){
+00246        <a class="code" href="group___tile.html#ga35">PA_BGScrollY</a>(0, bg_number, y+PA_ScreenSpace);
+00247        <a class="code" href="group___tile.html#ga35">PA_BGScrollY</a>(1, bg_number, y);
+00248 }
 00249 
 00250 
 00251 
-<a name="l00267"></a><a class="code" href="group___tile_dual.html#ga7">00267</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga7">PA_DualBGScrollXY</a>(u8 bg_number, s16 x, s16 y) {
-00268        <a class="code" href="group___tile_dual.html#ga5">PA_DualBGScrollX</a>(bg_number, x); 
-00269        <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_number, y);
-00270 }
-00271 
+00252 
+<a name="l00268"></a><a class="code" href="group___tile_dual.html#ga7">00268</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga7">PA_DualBGScrollXY</a>(u8 bg_number, s16 x, s16 y) {
+00269        <a class="code" href="group___tile_dual.html#ga5">PA_DualBGScrollX</a>(bg_number, x); 
+00270        <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_number, y);
+00271 }
 00272 
 00273 
 00274 
-<a name="l00287"></a><a class="code" href="group___tile_dual.html#ga24">00287</a> <span class="preprocessor">#define PA_DualLoadPAGfxLargeBg(bg_number, bg_name){\</span>
-00288 <span class="preprocessor">       PA_LoadPAGfxLargeBg(0, bg_number, bg_name);\</span>
-00289 <span class="preprocessor">       PA_LoadPAGfxLargeBg(1, bg_number, bg_name);\</span>
-00290 <span class="preprocessor">       PA_DualInfLargeScrollY(bg_number, 0);}</span>
-00291 <span class="preprocessor"></span>
-00292 
+00275 
+<a name="l00288"></a><a class="code" href="group___tile_dual.html#ga24">00288</a> <span class="preprocessor">#define PA_DualLoadPAGfxLargeBg(bg_number, bg_name){\</span>
+00289 <span class="preprocessor">       PA_LoadPAGfxLargeBg(0, bg_number, bg_name);\</span>
+00290 <span class="preprocessor">       PA_LoadPAGfxLargeBg(1, bg_number, bg_name);\</span>
+00291 <span class="preprocessor">       PA_DualInfLargeScrollY(bg_number, 0);}</span>
+00292 <span class="preprocessor"></span>
 00293 
 00294 
-<a name="l00319"></a><a class="code" href="group___tile_dual.html#ga25">00319</a> <span class="preprocessor">#define PA_DualLoadLargeBg(bg_select, bg_tiles, bg_map, color_mode, lx, ly){\</span>
-00320 <span class="preprocessor">PA_LoadLargeBg(0, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\</span>
-00321 <span class="preprocessor">PA_LoadLargeBg(1, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\</span>
-00322 <span class="preprocessor">PA_DualInfLargeScrollY(bg_select, 0);}</span>
-00323 <span class="preprocessor"></span>
-00324 
+00295 
+<a name="l00320"></a><a class="code" href="group___tile_dual.html#ga25">00320</a> <span class="preprocessor">#define PA_DualLoadLargeBg(bg_select, bg_tiles, bg_map, color_mode, lx, ly){\</span>
+00321 <span class="preprocessor">PA_LoadLargeBg(0, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\</span>
+00322 <span class="preprocessor">PA_LoadLargeBg(1, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\</span>
+00323 <span class="preprocessor">PA_DualInfLargeScrollY(bg_select, 0);}</span>
+00324 <span class="preprocessor"></span>
 00325 
 00326 
 00327 
-<a name="l00355"></a><a class="code" href="group___tile_dual.html#ga26">00355</a> <span class="preprocessor">#define PA_DualLoadLargeBgEx(bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\</span>
-00356 <span class="preprocessor">PA_LoadLargeBgEx(0, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\</span>
-00357 <span class="preprocessor">PA_LoadLargeBgEx(1, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\</span>
-00358 <span class="preprocessor">PA_DualInfLargeScrollY(bg_select, 0);}</span>
-00359 <span class="preprocessor"></span>
-00360 
+00328 
+<a name="l00356"></a><a class="code" href="group___tile_dual.html#ga26">00356</a> <span class="preprocessor">#define PA_DualLoadLargeBgEx(bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\</span>
+00357 <span class="preprocessor">PA_LoadLargeBgEx(0, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\</span>
+00358 <span class="preprocessor">PA_LoadLargeBgEx(1, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\</span>
+00359 <span class="preprocessor">PA_DualInfLargeScrollY(bg_select, 0);}</span>
+00360 <span class="preprocessor"></span>
 00361 
 00362 
-<a name="l00375"></a><a class="code" href="group___tile_dual.html#ga8">00375</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga8">PA_DualInfLargeScrollX</a>(u8 bg_select, s32 x){
-00376        <a class="code" href="group___tile.html#ga9">PA_InfLargeScrollX</a>(0, bg_select, x);
-00377        <a class="code" href="group___tile.html#ga9">PA_InfLargeScrollX</a>(1, bg_select, x);
-00378 }
-00379 
+00363 
+<a name="l00376"></a><a class="code" href="group___tile_dual.html#ga8">00376</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga8">PA_DualInfLargeScrollX</a>(u8 bg_select, s32 x){
+00377        <a class="code" href="group___tile.html#ga13">PA_InfLargeScrollX</a>(0, bg_select, x);
+00378        <a class="code" href="group___tile.html#ga13">PA_InfLargeScrollX</a>(1, bg_select, x);
+00379 }
 00380 
 00381 
-<a name="l00394"></a><a class="code" href="group___tile_dual.html#ga9">00394</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(u8 bg_select, s32 y){
-00395        <a class="code" href="group___tile.html#ga10">PA_InfLargeScrollY</a>(0, bg_select, y+PA_ScreenSpace);
-00396        <a class="code" href="group___tile.html#ga10">PA_InfLargeScrollY</a>(1, bg_select, y);
-00397 }
-00398 
+00382 
+<a name="l00395"></a><a class="code" href="group___tile_dual.html#ga9">00395</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(u8 bg_select, s32 y){
+00396        <a class="code" href="group___tile.html#ga14">PA_InfLargeScrollY</a>(0, bg_select, y+PA_ScreenSpace);
+00397        <a class="code" href="group___tile.html#ga14">PA_InfLargeScrollY</a>(1, bg_select, y);
+00398 }
 00399 
-<a name="l00415"></a><a class="code" href="group___tile_dual.html#ga10">00415</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga10">PA_DualInfLargeScrollXY</a>(u8 bg_select, s32 x, s32 y){
-00416        <a class="code" href="group___tile_dual.html#ga8">PA_DualInfLargeScrollX</a>(bg_select, x);
-00417        <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(bg_select, y);
-00418 }
-00419 
-<a name="l00432"></a><a class="code" href="group___tile_dual.html#ga11">00432</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga11">PA_DualLargeScrollX</a>(u8 bg_select, s32 x){
-00433        <a class="code" href="group___tile.html#ga12">PA_LargeScrollX</a>(0, bg_select, x);
-00434        <a class="code" href="group___tile.html#ga12">PA_LargeScrollX</a>(1, bg_select, x);
-00435 }
-00436 
-00449 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_DualLargeScrollY(u8 bg_select, s32 y){
-00450        <a class="code" href="group___tile.html#ga13">PA_LargeScrollY</a>(0, bg_select, y+PA_ScreenSpace);
-00451        <a class="code" href="group___tile.html#ga13">PA_LargeScrollY</a>(1, bg_select, y);
-00452 }
-00453 
+00400 
+<a name="l00416"></a><a class="code" href="group___tile_dual.html#ga10">00416</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga10">PA_DualInfLargeScrollXY</a>(u8 bg_select, s32 x, s32 y){
+00417        <a class="code" href="group___tile_dual.html#ga8">PA_DualInfLargeScrollX</a>(bg_select, x);
+00418        <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(bg_select, y);
+00419 }
+00420 
+<a name="l00433"></a><a class="code" href="group___tile_dual.html#ga11">00433</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga11">PA_DualLargeScrollX</a>(u8 bg_select, s32 x){
+00434        <a class="code" href="group___tile.html#ga16">PA_LargeScrollX</a>(0, bg_select, x);
+00435        <a class="code" href="group___tile.html#ga16">PA_LargeScrollX</a>(1, bg_select, x);
+00436 }
+00437 
+00450 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_DualLargeScrollY(u8 bg_select, s32 y){
+00451        <a class="code" href="group___tile.html#ga17">PA_LargeScrollY</a>(0, bg_select, y+PA_ScreenSpace);
+00452        <a class="code" href="group___tile.html#ga17">PA_LargeScrollY</a>(1, bg_select, y);
+00453 }
 00454 
-<a name="l00470"></a><a class="code" href="group___tile_dual.html#ga13">00470</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga13">PA_DualLargeScrollXY</a>(u8 bg_select, s32 x, s32 y){
-00471        <a class="code" href="group___tile_dual.html#ga11">PA_DualLargeScrollX</a>(bg_select, x);
-00472        PA_DualLargeScrollY(bg_select, y);
-00473 }
-00474 
+00455 
+<a name="l00471"></a><a class="code" href="group___tile_dual.html#ga13">00471</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga13">PA_DualLargeScrollXY</a>(u8 bg_select, s32 x, s32 y){
+00472        <a class="code" href="group___tile_dual.html#ga11">PA_DualLargeScrollX</a>(bg_select, x);
+00473        PA_DualLargeScrollY(bg_select, y);
+00474 }
 00475 
 00476 
-<a name="l00495"></a><a class="code" href="group___tile_dual.html#ga14">00495</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga14">PA_DualInitParallaxX</a>(s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
-00496         <a class="code" href="group___tile.html#ga15">PA_InitParallaxX</a>(0, bg0, bg1, bg2, bg3);
-00497         <a class="code" href="group___tile.html#ga15">PA_InitParallaxX</a>(1, bg0, bg1, bg2, bg3);
-00498 }
-00499 
+00477 
+<a name="l00496"></a><a class="code" href="group___tile_dual.html#ga14">00496</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga14">PA_DualInitParallaxX</a>(s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
+00497         <a class="code" href="group___tile.html#ga19">PA_InitParallaxX</a>(0, bg0, bg1, bg2, bg3);
+00498         <a class="code" href="group___tile.html#ga19">PA_InitParallaxX</a>(1, bg0, bg1, bg2, bg3);
+00499 }
 00500 
 00501 
-<a name="l00520"></a><a class="code" href="group___tile_dual.html#ga15">00520</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga15">PA_DualInitParallaxY</a>(s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
-00521        <a class="code" href="group___tile.html#ga16">PA_InitParallaxY</a>(0, bg0, bg1, bg2, bg3);
-00522        <a class="code" href="group___tile.html#ga16">PA_InitParallaxY</a>(1, bg0, bg1, bg2, bg3);  
-00523 }
-00524 
+00502 
+<a name="l00521"></a><a class="code" href="group___tile_dual.html#ga15">00521</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga15">PA_DualInitParallaxY</a>(s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
+00522        <a class="code" href="group___tile.html#ga20">PA_InitParallaxY</a>(0, bg0, bg1, bg2, bg3);
+00523        <a class="code" href="group___tile.html#ga20">PA_InitParallaxY</a>(1, bg0, bg1, bg2, bg3);  
+00524 }
 00525 
 00526 
-<a name="l00536"></a><a class="code" href="group___tile_dual.html#ga16">00536</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga16">PA_DualParallaxScrollX</a>(s32 x){
-00537 u8 i;
-00538        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
-00539               <span class="keywordflow">if</span> (PA_parallaxX[0][i])  {
-00540                      <span class="keywordflow">if</span>(scrollpos[0][i].infscroll) <a class="code" href="group___tile_dual.html#ga8">PA_DualInfLargeScrollX</a>(i, (PA_parallaxX[0][i] * x) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
-00541                      <span class="keywordflow">else</span> <a class="code" href="group___tile_dual.html#ga5">PA_DualBGScrollX</a>(i, (PA_parallaxX[0][i] * x) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
-00542               }
-00543        }
-00544 }
-00545 
+00527 
+<a name="l00537"></a><a class="code" href="group___tile_dual.html#ga16">00537</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga16">PA_DualParallaxScrollX</a>(s32 x){
+00538 u8 i;
+00539        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
+00540               <span class="keywordflow">if</span> (PA_parallaxX[0][i])  {
+00541                      <span class="keywordflow">if</span>(scrollpos[0][i].infscroll) <a class="code" href="group___tile_dual.html#ga8">PA_DualInfLargeScrollX</a>(i, (PA_parallaxX[0][i] * x) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
+00542                      <span class="keywordflow">else</span> <a class="code" href="group___tile_dual.html#ga5">PA_DualBGScrollX</a>(i, (PA_parallaxX[0][i] * x) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
+00543               }
+00544        }
+00545 }
 00546 
-<a name="l00556"></a><a class="code" href="group___tile_dual.html#ga17">00556</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga17">PA_DualParallaxScrollY</a>(s32 y){
-00557 u8 i;
-00558        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
-00559               <span class="keywordflow">if</span> (PA_parallaxY[0][i])  {
-00560                      <span class="keywordflow">if</span>(scrollpos[0][i].infscroll) <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(i, (PA_parallaxY[0][i] * y) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
-00561                      <span class="keywordflow">else</span> <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(i, (PA_parallaxY[0][i] * y) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
-00562               }
-00563        }
-00564 }
-00565 
+00547 
+<a name="l00557"></a><a class="code" href="group___tile_dual.html#ga17">00557</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga17">PA_DualParallaxScrollY</a>(s32 y){
+00558 u8 i;
+00559        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
+00560               <span class="keywordflow">if</span> (PA_parallaxY[0][i])  {
+00561                      <span class="keywordflow">if</span>(scrollpos[0][i].infscroll) <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(i, (PA_parallaxY[0][i] * y) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
+00562                      <span class="keywordflow">else</span> <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(i, (PA_parallaxY[0][i] * y) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
+00563               }
+00564        }
+00565 }
 00566 
-<a name="l00579"></a><a class="code" href="group___tile_dual.html#ga18">00579</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga18">PA_DualParallaxScrollXY</a>(s32 x, s32 y){
-00580        <a class="code" href="group___tile_dual.html#ga16">PA_DualParallaxScrollX</a>(x);
-00581        <a class="code" href="group___tile_dual.html#ga17">PA_DualParallaxScrollY</a>(y);
-00582 }
-00583 
+00567 
+<a name="l00580"></a><a class="code" href="group___tile_dual.html#ga18">00580</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga18">PA_DualParallaxScrollXY</a>(s32 x, s32 y){
+00581        <a class="code" href="group___tile_dual.html#ga16">PA_DualParallaxScrollX</a>(x);
+00582        <a class="code" href="group___tile_dual.html#ga17">PA_DualParallaxScrollY</a>(y);
+00583 }
 00584 
 00585 
-<a name="l00598"></a><a class="code" href="group___tile_dual.html#ga19">00598</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga19">PA_DualSetBgPrio</a>(u8 bg, u8 prio) {
-00599        <a class="code" href="group___tile.html#ga20">PA_SetBgPrio</a>(0, bg, prio);
-00600        <a class="code" href="group___tile.html#ga20">PA_SetBgPrio</a>(1, bg, prio);
-00601 }
-00602 
+00586 
+<a name="l00599"></a><a class="code" href="group___tile_dual.html#ga19">00599</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___tile_dual.html#ga19">PA_DualSetBgPrio</a>(u8 bg, u8 prio) {
+00600        <a class="code" href="group___tile.html#ga24">PA_SetBgPrio</a>(0, bg, prio);
+00601        <a class="code" href="group___tile.html#ga24">PA_SetBgPrio</a>(1, bg, prio);
+00602 }
 00603 
-00604  <span class="comment">// end of Backgrounds</span>
-00606 
+00604 
+00605  <span class="comment">// end of Backgrounds</span>
 00607 
 00608 
-00609 <span class="comment">// Pas utilisé en direct par le programmeur</span>
-00610 <span class="keywordtype">void</span> PA_InitLargeBg(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 lx, s32 ly, <span class="keywordtype">void</span>* bg_map);
-00611 
+00609 
+00610 <span class="comment">// Pas utilisé en direct par le programmeur</span>
+00611 <span class="keywordtype">void</span> PA_InitLargeBg(<span class="keywordtype">bool</span> screen, u8 bg_select, s32 lx, s32 ly, <span class="keywordtype">void</span>* bg_map);
 00612 
 00613 
 00614 <span class="preprocessor">#endif</span>
 00615 <span class="preprocessor"></span>
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Wed Dec 14 14:15:00 2005 pour PAlib par&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Jan 22 11:46:51 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

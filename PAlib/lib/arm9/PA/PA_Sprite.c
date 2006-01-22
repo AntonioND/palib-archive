@@ -86,6 +86,8 @@ for (i = 0; i < 2; i++) {
 	}
 }
 
+PA_MoveSpriteType = 0; 
+
 }
 
 

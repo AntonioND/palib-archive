@@ -22,7 +22,7 @@ endif
 TARGET	:=	$(shell basename $(CURDIR))
 BUILD		:=	build
 SOURCES	:=	gfx source data
-INCLUDES	:=	include build
+INCLUDES	:=	include build data
 
 EXPORT_DIR := /c/ndsexamples/
 #---------------------------------------------------------------------------------

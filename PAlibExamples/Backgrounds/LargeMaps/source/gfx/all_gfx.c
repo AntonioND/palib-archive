@@ -4,7 +4,7 @@
 
 
 // Background files : 
-#include "Large.c"
+#include "zelda.c"
 
 // Palette files : 
-#include "Large.pal.c"
+#include "zelda.pal.c"

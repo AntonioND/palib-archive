@@ -112,80 +112,71 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a31" doxytag="PA_Tile.h::PA_BGXPD"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BGXPD</b>(screen, bg)&nbsp;&nbsp;&nbsp;_REG16(0x4000006 + (0x1000 * screen) + (bg &lt;&lt; 4))</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga21">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga26">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cacher un fond.  <a href="group___tile.html#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga22">PA_ShowBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cacher un fond.  <a href="group___tile.html#ga26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga27">PA_ShowBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher un fond auparavant caché.  <a href="group___tile.html#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga23">PA_ResetBg</a>(screen)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher un fond auparavant caché.  <a href="group___tile.html#ga27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga28">PA_ResetBg</a>(screen)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialiser les fonds d'un écran. En fait ca ne fait que cacher tous les fonds  <a href="group___tile.html#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga24">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles)&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialiser les fonds d'un écran. En fait ca ne fait que cacher tous les fonds  <a href="group___tile.html#ga28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga29">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles)&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un tileset en mémoire  <a href="group___tile.html#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga25">PA_LoadTiledBg</a>(screen, bg_number, bg_name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un tileset en mémoire  <a href="group___tile.html#ga29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga30">PA_LoadTiledBg</a>(screen, bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs  <a href="group___tile.html#ga25"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga26">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs  <a href="group___tile.html#ga30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga31">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap  <a href="group___tile.html#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga27">PA_LoadRotBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap  <a href="group___tile.html#ga31"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga32">PA_LoadRotBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs  <a href="group___tile.html#ga27"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga28">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs  <a href="group___tile.html#ga32"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga33">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap  <a href="group___tile.html#ga28"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga29">PA_BGScrollX</a>(screen, bg_number, x)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap  <a href="group___tile.html#ga33"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga34">PA_BGScrollX</a>(screen, bg_number, x)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal de n'importe quel fond  <a href="group___tile.html#ga29"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga30">PA_BGScrollY</a>(screen, bg_number, y)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal de n'importe quel fond  <a href="group___tile.html#ga34"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga35">PA_BGScrollY</a>(screen, bg_number, y)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertical de n'importe quel fond  <a href="group___tile.html#ga30"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga31">PA_BGScrollXY</a>(screen, bg_number, x, y)&nbsp;&nbsp;&nbsp;{PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertical de n'importe quel fond  <a href="group___tile.html#ga35"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga36">PA_BGScrollXY</a>(screen, bg_number, x, y)&nbsp;&nbsp;&nbsp;{PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal et vertical de n'importe quel fond  <a href="group___tile.html#ga31"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga32">PA_SetMapTile</a>(screen, bg_select, x, y, tile_number)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_N); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((tile_number)&amp;TILE_N);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal et vertical de n'importe quel fond  <a href="group___tile.html#ga36"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga37">PA_SetMapTileHflip</a>(screen, bg_select, x, y, hflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change la tile gfx utilisée pour une tile donnée dans la map  <a href="group___tile.html#ga32"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga33">PA_SetMapTileAll</a>(screen, bg_select, x, y, tile_info)&nbsp;&nbsp;&nbsp;*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = tile_info</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flipper une tile de la carte, horizontalement  <a href="group___tile.html#ga37"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga38">PA_SetMapTileVflip</a>(screen, bg_select, x, y, vflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change les infos tiles utilisée pour une tile donnée dans la map  <a href="group___tile.html#ga33"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga34">PA_SetMapTileHflip</a>(screen, bg_select, x, y, hflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flipper une tile de la carte, verticalement  <a href="group___tile.html#ga38"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga39">PA_SetMapTilePal</a>(screen, bg_select, x, y, palette_number)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flipper une tile de la carte, horizontalement  <a href="group___tile.html#ga34"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga35">PA_SetMapTileVflip</a>(screen, bg_select, x, y, vflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette de 16 couleurs utilisée par une tile de la carte. Marche uniquement en mode 16 couleurs pour le Bg.  <a href="group___tile.html#ga39"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga40">PA_LoadTiledBitmap</a>(screen, tiled_bitmap)&nbsp;&nbsp;&nbsp;PA_LoadBg(screen, 0, tiled_bitmap, SCREEN_TILES, bitmap, BG_256X256, 1, 1)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flipper une tile de la carte, verticalement  <a href="group___tile.html#ga35"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga36">PA_SetMapTilePal</a>(screen, bg_select, x, y, palette_number)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un bitmap converti avec gfx2gba, comme pour un fond normal, mais sans aucune optimisation. Plus la peine d'inclure la map dans ce cas. Attention, prend tout la mémoire des fonds.  <a href="group___tile.html#ga40"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga41">PA_LoadPAGfxRotBg</a>(screen, bg_select, bg_name, wraparound)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette de 16 couleurs utilisée par une tile de la carte. Marche uniquement en mode 16 couleurs pour le Bg.  <a href="group___tile.html#ga36"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga37">PA_SetMapTileEx</a>(screen, bg_select, x, y, tile_number, hflip, vflip, palette_number)&nbsp;&nbsp;&nbsp;*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_number) + ((hflip) &lt;&lt; 10) + ((vflip) &lt;&lt; 11) + ((palette_number) &lt;&lt; 12)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs  <a href="group___tile.html#ga41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga42">PA_LoadLargeBg</a>(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer tous les aspect d'une tile donnée dans la map.  <a href="group___tile.html#ga37"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga38">PA_LoadTiledBitmap</a>(screen, tiled_bitmap)&nbsp;&nbsp;&nbsp;PA_LoadBg(screen, 0, tiled_bitmap, SCREEN_TILES, bitmap, BG_256X256, 1, 1)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large)  <a href="group___tile.html#ga42"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga43">PA_LoadPAGfxLargeBg</a>(screen, bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un bitmap converti avec gfx2gba, comme pour un fond normal, mais sans aucune optimisation. Plus la peine d'inclure la map dans ce cas. Attention, prend tout la mémoire des fonds.  <a href="group___tile.html#ga38"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga39">PA_LoadPAGfxRotBg</a>(screen, bg_select, bg_name, wraparound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx  <a href="group___tile.html#ga43"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga44">PA_LoadLargeBgEx</a>(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs  <a href="group___tile.html#ga39"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga40">PA_LoadLargeBg</a>(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large)  <a href="group___tile.html#ga40"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga41">PA_LoadPAGfxLargeBg</a>(screen, bg_number, bg_name)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx  <a href="group___tile.html#ga41"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga42">PA_LoadLargeBgEx</a>(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles  <a href="group___tile.html#ga42"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles  <a href="group___tile.html#ga44"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a67" doxytag="PA_Tile.h::PA_GetPAGfxBgSize"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a64" doxytag="PA_Tile.h::PA_GetPAGfxBgSize"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GetPAGfxBgSize</b> (u16 width, u16 height)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a68" doxytag="PA_Tile.h::PA_GetPAGfxRotBgSize"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a65" doxytag="PA_Tile.h::PA_GetPAGfxRotBgSize"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GetPAGfxRotBgSize</b> (u16 width)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a69" doxytag="PA_Tile.h::PA_LoadRotBgMap"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a66" doxytag="PA_Tile.h::PA_LoadRotBgMap"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_LoadRotBgMap</b> (bool screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="PA_Tile.h::PA_ResetBgSys"></a>
@@ -198,108 +189,123 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga2">PA_LoadBgTilesEx</a> (bool screen, u8 bg_select, void *bg_tiles, u16 size)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un tileset en mémoire avec une taille donnée  <a href="group___tile.html#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga3">PA_DeleteTiles</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga3">PA_ReLoadBgTiles</a> (bool screen, u8 bg_select, void *bg_tiles)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un tileset en mémoire. A noter que charger un tileset efface automatiquement le tileset précédent, donc on n'aura pas souvent besoin de cette fonction...  <a href="group___tile.html#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga4">PA_DeleteMap</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ReCharger un tileset en mémoire  <a href="group___tile.html#ga3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga4">PA_DeleteTiles</a> (bool screen, u8 bg_select)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer une map en mémoire. A noter que charger une map efface automatiquement la map précédent, donc on n'aura pas souvent besoin de cette fonction...  <a href="group___tile.html#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga5">PA_DeleteBg</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un tileset en mémoire. A noter que charger un tileset efface automatiquement le tileset précédent, donc on n'aura pas souvent besoin de cette fonction...  <a href="group___tile.html#ga4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga5">PA_DeleteMap</a> (bool screen, u8 bg_select)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un fond complètement (tiles + map + cacher)  <a href="group___tile.html#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga6">PA_LoadBgMap</a> (bool screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer une map en mémoire. A noter que charger une map efface automatiquement la map précédent, donc on n'aura pas souvent besoin de cette fonction...  <a href="group___tile.html#ga5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga6">PA_DeleteBg</a> (bool screen, u8 bg_select)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charge la carte d'un fond  <a href="group___tile.html#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga7" doxytag="PA_Tile.h::PA_SetBgRot"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un fond complètement (tiles + map + cacher)  <a href="group___tile.html#ga6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga7">PA_LoadBgMap</a> (bool screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charge la carte d'un fond  <a href="group___tile.html#ga7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga8" doxytag="PA_Tile.h::PA_SetBgRot"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetBgRot</b> (bool screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga8">PA_SetLargeMapTile</a> (bool screen, u8 bg_select, s32 x, s32 y, u32 tile_info)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga9">PA_SetMapTile</a> (bool screen, u8 bg_select, s16 x, s16 y, s16 tile_number)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change les infos tiles utilisée pour une tile donnée dans la map, seulement pour les grands fonds (512 de large ou haut)  <a href="group___tile.html#ga8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga9">PA_InfLargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change la tile gfx utilisée pour une tile donnée dans la map  <a href="group___tile.html#ga9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga10">PA_SetMapTileAll</a> (bool screen, u8 bg_select, s16 x, s16 y, u16 tile_info)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' horizontalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile.html#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga10">PA_InfLargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change les infos tiles utilisée pour une tile donnée dans la map  <a href="group___tile.html#ga10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga11">PA_SetLargeMapTile</a> (bool screen, u8 bg_select, s32 x, s32 y, u32 tile_info)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' verticalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile.html#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga11">PA_InfLargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change les infos tiles utilisée pour une tile donnée dans la map, seulement pour les grands fonds (512 de large ou haut)  <a href="group___tile.html#ga11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga12" doxytag="PA_Tile.h::PA_SetMapTileEx"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetMapTileEx</b> (bool screen, u8 bg_select, s16 x, s16 y, u16 tile_number, bool hflip, bool vflip, u8 palette_number)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile.html#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga12">PA_LargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga13">PA_InfLargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling horizontalement.Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="group___tile.html#ga12"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga13">PA_LargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' horizontalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile.html#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga14">PA_InfLargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="group___tile.html#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga14">PA_LargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' verticalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile.html#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga15">PA_InfLargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="group___tile.html#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga15">PA_InitParallaxX</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile.html#ga15"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga16">PA_LargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller  <a href="group___tile.html#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga16">PA_InitParallaxY</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling horizontalement.Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="group___tile.html#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga17">PA_LargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller  <a href="group___tile.html#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga17">PA_ParallaxScrollX</a> (bool screen, s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="group___tile.html#ga17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga18">PA_LargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile.html#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga18">PA_ParallaxScrollY</a> (bool screen, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="group___tile.html#ga18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga19">PA_InitParallaxX</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile.html#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga19">PA_ParallaxScrollXY</a> (bool screen, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller  <a href="group___tile.html#ga19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga20">PA_InitParallaxY</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile.html#ga19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga20">PA_SetBgPrio</a> (bool screen, u8 bg, u8 prio)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller  <a href="group___tile.html#ga20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga21">PA_ParallaxScrollX</a> (bool screen, s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la priorité d'un fond  <a href="group___tile.html#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a91" doxytag="PA_Tile.h::PA_InitLargeBg"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile.html#ga21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga22">PA_ParallaxScrollY</a> (bool screen, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile.html#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga23">PA_ParallaxScrollXY</a> (bool screen, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile.html#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga24">PA_SetBgPrio</a> (bool screen, u8 bg, u8 prio)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la priorité d'un fond  <a href="group___tile.html#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga25" doxytag="PA_Tile.h::PA_CreateBgFromTiles"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_CreateBgFromTiles</b> (bool screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a93" doxytag="PA_Tile.h::PA_InitLargeBg"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_InitLargeBg</b> (bool screen, u8 bg_select, s32 lx, s32 ly, void *bg_map)</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a54" doxytag="PA_Tile.h::PA_bgmap"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a51" doxytag="PA_Tile.h::PA_bgmap"></a>
 u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_bgmap</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a55" doxytag="PA_Tile.h::tilesetchar"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a52" doxytag="PA_Tile.h::tilesetchar"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>tilesetchar</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a56" doxytag="PA_Tile.h::bg_sizes"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a53" doxytag="PA_Tile.h::bg_sizes"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>bg_sizes</b> [4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a57" doxytag="PA_Tile.h::bg_place"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a54" doxytag="PA_Tile.h::bg_place"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>bg_place</b> [4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a58" doxytag="PA_Tile.h::PA_DrawBg"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a55" doxytag="PA_Tile.h::PA_DrawBg"></a>
 u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DrawBg</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a59" doxytag="PA_Tile.h::charblocks"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a56" doxytag="PA_Tile.h::charblocks"></a>
 bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>charblocks</b> [2][70]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a60" doxytag="PA_Tile.h::tilesetsize"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a57" doxytag="PA_Tile.h::tilesetsize"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>tilesetsize</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a61" doxytag="PA_Tile.h::mapsize"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a58" doxytag="PA_Tile.h::mapsize"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>mapsize</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a62" doxytag="PA_Tile.h::mapchar"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a59" doxytag="PA_Tile.h::mapchar"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>mapchar</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a63" doxytag="PA_Tile.h::charsetstart"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a60" doxytag="PA_Tile.h::charsetstart"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>charsetstart</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a64" doxytag="PA_Tile.h::PA_parallaxX"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a61" doxytag="PA_Tile.h::PA_parallaxX"></a>
 s32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_parallaxX</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a65" doxytag="PA_Tile.h::PA_parallaxY"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a62" doxytag="PA_Tile.h::PA_parallaxY"></a>
 s32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_parallaxY</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a66" doxytag="PA_Tile.h::scrollpos"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a63" doxytag="PA_Tile.h::scrollpos"></a>
 scrollpositions&nbsp;</td><td class="memItemRight" valign="bottom"><b>scrollpos</b> [2][4]</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Everything concerning the Bg Tile modes. 
 <p>
-This file contains all the macros and variables regarding Tile modes (0-2), loading tiles and Bg, etc...<hr size="1"><address style="align: right;"><small>Généré le Wed Dec 14 14:15:00 2005 pour PAlib par&nbsp;
+This file contains all the macros and variables regarding Tile modes (0-2), loading tiles and Bg, etc...<hr size="1"><address style="align: right;"><small>Généré le Sun Jan 22 11:46:51 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -9,116 +9,121 @@
 <h1>PA_Keyboard.h</h1><a href="_p_a___keyboard_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment">00001 <span class="preprocessor">#ifndef _PA_Keyboard</span>
 00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_Keyboard</span>
 00003 <span class="preprocessor"></span>
-00004 
-00005 <span class="preprocessor">#include "<a class="code" href="_p_a9_8h.html">PA9.h</a>"</span>
-00006 
-00007 
-00008 
+00004 <span class="preprocessor">#ifdef __cplusplus</span>
+00005 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+00006 <span class="preprocessor">#endif</span>
+00007 <span class="preprocessor"></span>
+00008 <span class="preprocessor">#include "<a class="code" href="_p_a9_8h.html">PA9.h</a>"</span>
 00009 
-00018 <span class="keywordtype">void</span> PA_SetLetterPal(s16 x, s16 y, u8 Pal);
-00019 
-00020 
-00022 <span class="comment">// Système de Tiles</span>
-00024 <span class="comment"></span>
-00025 
-00026 
-00027 <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> keyboard_Tiles[10240];
-00028 <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> keyboard_Map[4096];
-00029 <span class="comment">//extern const unsigned short keyboardPal1[16];</span>
-00030 <span class="comment">//extern const unsigned short keyboardPal2[16];</span>
-00031 
-00032 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-00033        u8 Bg; <span class="comment">// Numéro du fond</span>
-00034        u8 Type; <span class="comment">// 0 pour normal, 1 pour majuscules..</span>
-00035        <span class="keywordtype">char</span> Letter;  <span class="comment">// Lettre</span>
-00036        s16 ScrollX, ScrollY;  <span class="comment">// Scroll x et y...</span>
-00037        s16 Repeat;  <span class="comment">// Temps avant de répéter...</span>
-00038        s16 oldX, oldY; <span class="comment">// Ancienne zone touchée</span>
-00039        u8 Color1, Color2; <span class="comment">// Main color, pressed color...</span>
-00040 } Keyboards;
-00041 <span class="keyword">extern</span> Keyboards Keyboard;
-00042 
-00043 <span class="keyword">extern</span> <span class="keyword">const</span> u8 PA_Keyboard[2][5][24];
-00044 
-00045 <span class="preprocessor">#define PA_BACKSPACE 1    // On va dire que la touche backspace a pour valeur 1...</span>
-00046 <span class="preprocessor"></span><span class="preprocessor">#define PA_CAPS      2    // 2 pour CAPS</span>
-00047 <span class="preprocessor"></span><span class="preprocessor">#define PA_ENTER     '\n'    // 3 pour Enter</span>
-00048 <span class="preprocessor"></span><span class="preprocessor">#define PA_SHIFT     4    // etc</span>
-00049 <span class="preprocessor"></span><span class="preprocessor">#define PA_RIEN      0    // Si y'a rien, faudra faire comme si on appuye sur rien</span>
-00050 <span class="preprocessor"></span><span class="preprocessor">#define PA_TAB       3    // tab...</span>
-00051 <span class="preprocessor"></span>
-00052 
-00053 
-00054 
-00069 <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga0">PA_InitKeyboard</a>(u8 bg_number);
-00070 
-00071 
-00078 <span class="keywordtype">char</span> <a class="code" href="group___keyboard.html#ga1">PA_CheckKeyboard</a>(<span class="keywordtype">void</span>);
-00079 
-00080 
-00081 
-<a name="l00091"></a><a class="code" href="group___keyboard.html#ga2">00091</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga2">PA_ScrollKeyboardX</a>(s16 x) {
-00092        <a class="code" href="group___tile.html#ga29">PA_BGScrollX</a>(0, Keyboard.Bg, -x);
-00093        Keyboard.ScrollX = x;
-00094 }
-00095 
-00096 
-<a name="l00106"></a><a class="code" href="group___keyboard.html#ga3">00106</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga3">PA_ScrollKeyboardY</a>(s16 y) {
-00107        <a class="code" href="group___tile.html#ga30">PA_BGScrollY</a>(0, Keyboard.Bg, -y);
-00108        Keyboard.ScrollY = y;
-00109 }
-00110 
-00111 
-<a name="l00124"></a><a class="code" href="group___keyboard.html#ga4">00124</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga4">PA_ScrollKeyboardXY</a>(s16 x, s16 y) {
-00125        <a class="code" href="group___tile.html#ga31">PA_BGScrollXY</a>(0, Keyboard.Bg, -x, -y);
-00126        Keyboard.ScrollX = x;
-00127        Keyboard.ScrollY = y;
-00128 }
-00129 
-00130 
-<a name="l00137"></a><a class="code" href="group___keyboard.html#ga9">00137</a> <span class="preprocessor">#define PA_EraseLastKey() PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15)</span>
-00138 <span class="preprocessor"></span>
-00139 
-<a name="l00152"></a><a class="code" href="group___keyboard.html#ga5">00152</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga5">PA_KeyboardIn</a>(s16 x, s16 y){  <span class="comment">// Faire rentrer le clavier... </span>
-00153 s16 i;
-00154        <a class="code" href="group___keyboard.html#ga4">PA_ScrollKeyboardXY</a>(x, 192);  <span class="comment">// On le sort et met en X. Puis on fait glisser...</span>
-00155        <span class="keywordflow">for</span> (i = 192; i &gt; y; i-=8){
-00156               <a class="code" href="group___keyboard.html#ga3">PA_ScrollKeyboardY</a>(i);
-00157               <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>();
-00158        }
-00159        <a class="code" href="group___keyboard.html#ga3">PA_ScrollKeyboardY</a>(y);  <span class="comment">// On amène pile au bon y...           </span>
-00160 }
-00161 
-00162 
-<a name="l00169"></a><a class="code" href="group___keyboard.html#ga6">00169</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga6">PA_KeyboardOut</a>(<span class="keywordtype">void</span>){  <span class="comment">// Faire sortir le clavier... </span>
-00170 s16 i;
-00171 <a class="code" href="group___keyboard.html#ga9">PA_EraseLastKey</a>(); <span class="comment">// Efface s'il reste une touche pressée...</span>
-00172        <span class="keywordflow">for</span> (i = Keyboard.ScrollY; i &lt; 200; i+=8){
-00173               <a class="code" href="group___keyboard.html#ga3">PA_ScrollKeyboardY</a>(i);
-00174               <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>();
-00175        }
-00176 }
-00177 
-00178 
-00179 
+00010 
+00011 
+00012 
+00021 <span class="keywordtype">void</span> PA_SetLetterPal(s16 x, s16 y, u8 Pal);
+00022 
+00023 
+00025 <span class="comment">// Système de Tiles</span>
+00027 <span class="comment"></span>
+00028 
+00029 
+00030 <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> keyboard_Tiles[10240];
+00031 <span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> keyboard_Map[4096];
+00032 <span class="comment">//extern const unsigned short keyboardPal1[16];</span>
+00033 <span class="comment">//extern const unsigned short keyboardPal2[16];</span>
+00034 
+00035 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00036        u8 Bg; <span class="comment">// Numéro du fond</span>
+00037        u8 Type; <span class="comment">// 0 pour normal, 1 pour majuscules..</span>
+00038        <span class="keywordtype">char</span> Letter;  <span class="comment">// Lettre</span>
+00039        s16 ScrollX, ScrollY;  <span class="comment">// Scroll x et y...</span>
+00040        s16 Repeat;  <span class="comment">// Temps avant de répéter...</span>
+00041        s16 oldX, oldY; <span class="comment">// Ancienne zone touchée</span>
+00042        u8 Color1, Color2; <span class="comment">// Main color, pressed color...</span>
+00043 } Keyboards;
+00044 <span class="keyword">extern</span> Keyboards Keyboard;
+00045 
+00046 <span class="keyword">extern</span> <span class="keyword">const</span> u8 PA_Keyboard[2][5][24];
+00047 
+00048 <span class="preprocessor">#define PA_BACKSPACE 1    // On va dire que la touche backspace a pour valeur 1...</span>
+00049 <span class="preprocessor"></span><span class="preprocessor">#define PA_CAPS      2    // 2 pour CAPS</span>
+00050 <span class="preprocessor"></span><span class="preprocessor">#define PA_ENTER     '\n'    // 3 pour Enter</span>
+00051 <span class="preprocessor"></span><span class="preprocessor">#define PA_SHIFT     4    // etc</span>
+00052 <span class="preprocessor"></span><span class="preprocessor">#define PA_RIEN      0    // Si y'a rien, faudra faire comme si on appuye sur rien</span>
+00053 <span class="preprocessor"></span><span class="preprocessor">#define PA_TAB       3    // tab...</span>
+00054 <span class="preprocessor"></span>
+00055 
+00056 
+00057 
+00072 <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga0">PA_InitKeyboard</a>(u8 bg_number);
+00073 
+00074 
+00081 <span class="keywordtype">char</span> <a class="code" href="group___keyboard.html#ga1">PA_CheckKeyboard</a>(<span class="keywordtype">void</span>);
+00082 
+00083 
+00084 
+<a name="l00094"></a><a class="code" href="group___keyboard.html#ga2">00094</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga2">PA_ScrollKeyboardX</a>(s16 x) {
+00095        <a class="code" href="group___tile.html#ga34">PA_BGScrollX</a>(0, Keyboard.Bg, -x);
+00096        Keyboard.ScrollX = x;
+00097 }
+00098 
+00099 
+<a name="l00109"></a><a class="code" href="group___keyboard.html#ga3">00109</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga3">PA_ScrollKeyboardY</a>(s16 y) {
+00110        <a class="code" href="group___tile.html#ga35">PA_BGScrollY</a>(0, Keyboard.Bg, -y);
+00111        Keyboard.ScrollY = y;
+00112 }
+00113 
+00114 
+<a name="l00127"></a><a class="code" href="group___keyboard.html#ga4">00127</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga4">PA_ScrollKeyboardXY</a>(s16 x, s16 y) {
+00128        <a class="code" href="group___tile.html#ga36">PA_BGScrollXY</a>(0, Keyboard.Bg, -x, -y);
+00129        Keyboard.ScrollX = x;
+00130        Keyboard.ScrollY = y;
+00131 }
+00132 
+00133 
+<a name="l00140"></a><a class="code" href="group___keyboard.html#ga9">00140</a> <span class="preprocessor">#define PA_EraseLastKey() PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15)</span>
+00141 <span class="preprocessor"></span>
+00142 
+<a name="l00155"></a><a class="code" href="group___keyboard.html#ga5">00155</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga5">PA_KeyboardIn</a>(s16 x, s16 y){  <span class="comment">// Faire rentrer le clavier... </span>
+00156 s16 i;
+00157        <a class="code" href="group___keyboard.html#ga4">PA_ScrollKeyboardXY</a>(x, 192);  <span class="comment">// On le sort et met en X. Puis on fait glisser...</span>
+00158        <span class="keywordflow">for</span> (i = 192; i &gt; y; i-=8){
+00159               <a class="code" href="group___keyboard.html#ga3">PA_ScrollKeyboardY</a>(i);
+00160               <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>();
+00161        }
+00162        <a class="code" href="group___keyboard.html#ga3">PA_ScrollKeyboardY</a>(y);  <span class="comment">// On amène pile au bon y...           </span>
+00163 }
+00164 
+00165 
+<a name="l00172"></a><a class="code" href="group___keyboard.html#ga6">00172</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga6">PA_KeyboardOut</a>(<span class="keywordtype">void</span>){  <span class="comment">// Faire sortir le clavier... </span>
+00173 s16 i;
+00174 <a class="code" href="group___keyboard.html#ga9">PA_EraseLastKey</a>(); <span class="comment">// Efface s'il reste une touche pressée...</span>
+00175        <span class="keywordflow">for</span> (i = Keyboard.ScrollY; i &lt; 200; i+=8){
+00176               <a class="code" href="group___keyboard.html#ga3">PA_ScrollKeyboardY</a>(i);
+00177               <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>();
+00178        }
+00179 }
 00180 
-00187 <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga7">PA_ReloadKeyboardCol</a>(<span class="keywordtype">void</span>);
-00188 
-00189 
-<a name="l00202"></a><a class="code" href="group___keyboard.html#ga8">00202</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga8">PA_SetKeyboardColor</a>(u8 color1, u8 color2){
-00203        Keyboard.Color1 = color1;
-00204        Keyboard.Color2 = color2;
-00205        <a class="code" href="group___keyboard.html#ga7">PA_ReloadKeyboardCol</a>();
-00206 }
-00207 
-00208  <span class="comment">// end of Keyboard</span>
+00181 
+00182 
+00183 
+00190 <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga7">PA_ReloadKeyboardCol</a>(<span class="keywordtype">void</span>);
+00191 
+00192 
+<a name="l00205"></a><a class="code" href="group___keyboard.html#ga8">00205</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___keyboard.html#ga8">PA_SetKeyboardColor</a>(u8 color1, u8 color2){
+00206        Keyboard.Color1 = color1;
+00207        Keyboard.Color2 = color2;
+00208        <a class="code" href="group___keyboard.html#ga7">PA_ReloadKeyboardCol</a>();
+00209 }
 00210 
-00211 
-00212 
-00213 <span class="preprocessor">#endif</span>
-00214 <span class="preprocessor"></span>
-00215 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Dec 21 17:41:56 2005 for PAlib by&nbsp;
+00211  <span class="comment">// end of Keyboard</span>
+00213 
+00214 <span class="preprocessor">#ifdef __cplusplus</span>
+00215 <span class="preprocessor"></span>}
+00216 <span class="preprocessor">#endif</span>
+00217 <span class="preprocessor"></span>
+00218 <span class="preprocessor">#endif</span>
+00219 <span class="preprocessor"></span>
+00220 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sun Jan 22 11:46:39 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -270,6 +270,24 @@ void PA_LoadBgTilesEx(bool screen, u8 bg_select, void* bg_tiles, u16 size);
 
 
 /*!
+    \fn void PA_ReLoadBgTiles(bool screen, u8 bg_select, void* bg_tiles)
+    \brief
+      \~english ReLoad a tileset into memory
+      \~french ReCharger un tileset en mémoire
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_select
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
+    \param bg_tiles
+      \~english Name of the tiles' info (example: ship_Tiles)
+      \~french Nom du tableau contenant les tiles (exemple: ship_Tiles)
+*/
+void PA_ReLoadBgTiles(bool screen, u8 bg_select, void* bg_tiles);
+
+
+/*!
     \fn void PA_DeleteTiles(bool screen, u8 bg_select)
     \brief
       \~english Delete a tilest in memory. Note that loading a tileset automatically deletes the preceding one, so you won't need to use this function often
@@ -400,6 +418,8 @@ PA_LoadBgTiles(screen, bg_select, bg_tiles); \
 PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \
 PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\
 PA_BGScrollXY(screen, bg_select, 0, 0);}
+
+
 
 /*!
     \def PA_LoadRotBg(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound)
@@ -535,7 +555,7 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
 
 
 /*!
-    \def PA_SetMapTile(screen, bg_select, x, y, tile_number)
+    \fn extern inline void PA_SetMapTile(bool screen, u8 bg_select, s16 x, s16 y, s16 tile_number)
     \brief
       \~english Change the tile gfx used by a given tile in the map
       \~french Change la tile gfx utilisée pour une tile donnée dans la map
@@ -555,19 +575,14 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
       \~english New tile number to put
       \~french Nouveau numéro de tile que l'on veut mettre
 */
-/*
-extern inline void PA_SetMapTile(bool screen, u8 bg_select, u16 x, u16 y, u16 tile_number) {
-u16 *PA_reg;
-PA_reg = (u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6));
-
-	*PA_reg &= ALL_BUT(TILE_N);
-	*PA_reg |= ((tile_number)&TILE_N);
-}*/
-#define PA_SetMapTile(screen, bg_select, x, y, tile_number) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ALL_BUT(TILE_N); *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) |= ((tile_number)&TILE_N);}
+extern inline void PA_SetMapTile(bool screen, u8 bg_select, s16 x, s16 y, s16 tile_number) {
+*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ALL_BUT(TILE_N); 
+*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) |= ((tile_number)&TILE_N);
+}
 
 
 /*!
-    \def PA_SetMapTileAll(screen, bg_select, x, y, tile_info)
+    \fn extern inline void PA_SetMapTileAll(bool screen, u8 bg_select, s16 x, s16 y, u16 tile_info)
     \brief
       \~english Change the tile info used by a given tile in the map
       \~french Change les infos tiles utilisée pour une tile donnée dans la map
@@ -587,7 +602,9 @@ PA_reg = (u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6));
       \~english New tile to put (tile + palette + flips...)
       \~french Nouveau numéro de tile que l'on veut mettre (tile + palette + flips...)
 */
-#define PA_SetMapTileAll(screen, bg_select, x, y, tile_info) *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) = tile_info
+extern inline void PA_SetMapTileAll(bool screen, u8 bg_select, s16 x, s16 y, u16 tile_info){
+	*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) = tile_info;
+}
 
 
 
@@ -697,7 +714,7 @@ extern inline void PA_SetLargeMapTile(bool screen, u8 bg_select, s32 x, s32 y, u
 
 
 /*!
-    \def PA_SetMapTileEx(bg_select, x, y, tile_number, hflip, vflip, palette_number)
+    \def PA_SetMapTileEx(screen, bg_select, x, y, tile_number, hflip, vflip, palette_number)
     \brief
       \~english Change every aspect of a given map tile
       \~french Changer tous les aspect d'une tile donnée dans la map.
@@ -726,7 +743,9 @@ extern inline void PA_SetLargeMapTile(bool screen, u8 bg_select, s32 x, s32 y, u
       \~english Palette number (0-15)
       \~french Numéro de la palette (0-15)
 */
-#define PA_SetMapTileEx(screen, bg_select, x, y, tile_number, hflip, vflip, palette_number) *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) = (tile_number) + ((hflip) << 10) + ((vflip) << 11) + ((palette_number) << 12)
+extern inline void PA_SetMapTileEx(bool screen, u8 bg_select, s16 x, s16 y, u16 tile_number, bool hflip, bool vflip, u8 palette_number) {
+	*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) = (tile_number) + ((hflip) << 10) + ((vflip) << 11) + ((palette_number) << 12);
+}
 
 
 
@@ -1133,7 +1152,17 @@ extern inline void PA_SetBgPrio(bool screen, u8 bg, u8 prio) {
 	_REG16(REG_BGCNT(screen, bg)) |= prio;
 }
 
+extern inline void PA_CreateBgFromTiles(bool screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size){
+PA_LoadBgMap(screen, bg_select, bg_map, bg_size);
+scrollpos[screen][bg_select].infscroll = 0; // Par défaut pas de scrolling infini...
+PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, mapchar[screen][bg_select]);
+tilesetchar[screen][bg_select] = tilesetchar[screen][bg_tiles];
+tilesetsize[screen][bg_select] = tilesetsize[screen][bg_tiles];
 
+_REG16(REG_BGSCREEN(screen)) |= (0x100 << (bg_select));
+_REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(mapchar[screen][bg_select] << SCREEN_SHIFT) | (1 << 13) | (tilesetchar[screen][bg_select] << 2) | (1 << 7);
+PA_BGScrollXY(screen, bg_select, 0, 0);	
+}
 
 /** @} */ // end of Backgrounds
 
