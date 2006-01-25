@@ -2,7 +2,7 @@
 
 int *vidsizes, vidpos=0, *tab;
 s8 hvidfile=0;
-u8 *bufferjpg;
+u8 bufferjpg[256*192*3];
 int deja0;
 char *buffer2;
 char *ligne(char *buffer, int start, int *end){
@@ -40,8 +40,6 @@ return 0;
 
 int jpgcorrect(u8* video,int num, int *size){
 int i;
-free(bufferjpg);
-bufferjpg = malloc(256*192);
 int final=size[num+1],depart=size[num];
 i=1;
 while(depart==1){
@@ -76,7 +74,7 @@ tab = (int*)malloc(sizeof(int)*500);
 int a,j;
 for(a=0;a<500;a++)tab[a]=taille[a+depart];
 int i=0;
-remplacesize(0);
+//remplacesize(0);
 while(tab[i]>0){
 if(tab[i]==1)PA_WaitForVBL();
 else if(jpgcorrect(PA_GBFSfile[file].File,i,tab))PA_LoadJpeg(1, (void*)bufferjpg);	
