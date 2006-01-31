@@ -1,0 +1,12 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+No palette name found for file newfont.gif, the palette newfont will be given to him...
+Transparent Color : Magenta
+
+1 backgrounds :
+  newfont : TileBg, 256x72, Pal : newfont_Pal, 68 tiles -> newfont_Tiles and newfont_Map
+
+1 palettes :
+  newfont_Pal, 16 colors
+
+Finished !

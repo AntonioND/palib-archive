@@ -25,6 +25,10 @@ s8 PA_font[2] = {};  // 0 pour normal, 1 pour dégradé, -1 pour custom
  u16 PAtext_pal[2] = {0, 0}; // text colors...
 
 
+textborders PA_TextBox[2];
+
+
+
 void PA_CreateTextPal(bool screen, u8 pal_number, u16 r, u16 g, u16 b) {
 	u16 baser, baseg, baseb;
 	u16 i;
@@ -51,23 +55,15 @@ void PA_InitText(bool screen, u8 bg_select) {
 #endif
 	
 	PA_CreateTextPal(screen, 0, 31, 31, 31);
-	//PA_LoadBgPalN(screen, bg_select, 0, (void*)TextPal);
 	PA_CreateTextPal(screen, 1, 31, 0, 0);
-	//PA_LoadBgPalN(screen, bg_select, 1, (void*)TextPal);	
 	PA_CreateTextPal(screen, 2, 0, 31, 0);
-	//PA_LoadBgPalN(screen, bg_select, 2, (void*)TextPal);	
 	PA_CreateTextPal(screen, 3, 0, 0, 31);
-	//PA_LoadBgPalN(screen, bg_select, 3, (void*)TextPal);	
 	PA_CreateTextPal(screen, 4, 31, 0, 31);
-	//PA_LoadBgPalN(screen, bg_select, 4, (void*)TextPal);	
 	PA_CreateTextPal(screen, 5, 0, 31, 31);
-	//PA_LoadBgPalN(screen, bg_select, 5, (void*)TextPal);
-	PA_CreateTextPal(screen, 6, 31, 31, 0);
-	//PA_LoadBgPalN(screen, bg_select, 6, (void*)TextPal);	
+	PA_CreateTextPal(screen, 6, 31, 31, 0);	
 	PA_CreateTextPal(screen, 7, 25, 25, 25);
-	//PA_LoadBgPalN(screen, bg_select, 7, (void*)TextPal);	
-	PA_CreateTextPal(screen, 8, 31, 20, 20);
-	//PA_LoadBgPalN(screen, bg_select, 8, (void*)TextPal);		
+	PA_CreateTextPal(screen, 8, 20, 20, 20);
+	PA_CreateTextPal(screen, 9, 0, 0, 0);	
 }
 
 
@@ -96,6 +92,57 @@ void PA_TextAllPal(bool screen)
 
 }
 
+
+
+
+
+void PA_EraseTextBox(bool screen){
+s16 i, j;
+	for (j = PA_TextBox[screen].y1+1; j < PA_TextBox[screen].y2; j++)
+		for (i = PA_TextBox[screen].x1+1; i < PA_TextBox[screen].x2; i++)
+			PA_SetTileLetter(screen, i, j, ' ');
+}
+
+void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2){
+
+	// Fill the text border info
+	PA_TextBox[screen].x1 = x1;
+	PA_TextBox[screen].x2 = x2;
+	PA_TextBox[screen].y1 = y1;
+	PA_TextBox[screen].y2 = y2;
+
+	// Init the text with border and all...
+	PA_SetMapTileEx(screen, PAbgtext[screen], x1, y1, 1, 0, 0, 0); // Top left corner
+	PA_SetMapTileEx(screen, PAbgtext[screen], x2, y1, 1, 1, 0, 0); // Top right corner flipped
+	PA_SetMapTileEx(screen, PAbgtext[screen], x1, y2, 1, 0, 1, 0); // Bottom left corner vflip
+	PA_SetMapTileEx(screen, PAbgtext[screen], x2, y2, 1, 1, 1, 0); // Bottom right corner vflip+hflip
+
+	s16 i, j; // Fill in the borders...
+	for (i = x1+1; i < x2; i++) {
+		PA_SetMapTileEx(screen, PAbgtext[screen], i, y1, 2, 0, 0, 0);
+		PA_SetMapTileEx(screen, PAbgtext[screen], i, y2, 2, 0, 1, 0);
+	}
+	for (j = y1+1; j < y2; j++){
+		PA_SetMapTileEx(screen, PAbgtext[screen], x1, j, 3, 0, 0, 0);
+		PA_SetMapTileEx(screen, PAbgtext[screen], x2, j, 3, 1, 0, 0);	
+	}
+	
+	PA_EraseTextBox(screen);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text) {
 s16 j;
 u16 textcount = 0; // compte le nombre de lettres...
@@ -108,6 +155,9 @@ BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au ca
 	}
 return textcount; 
 }
+
+
+
 
 
 u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit) {
@@ -156,6 +206,9 @@ BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au ca
 */
 
 
+
+
+
 u32 PA_BoxText(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit){
 u16 i, j;
 s16 x, y;
@@ -174,24 +227,29 @@ s16 wordletter = 0;
 
 //BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au cas où on ait chargé du texte par-dessus...
 
-bool loop = 1; // On continue...
+//bool loop = 1; // On continue...
    u8 textcolor = PAtext_pal[screen]; // save the screen color
    
    
-for (i = 0; (text[i] && y <= maxy && i < limit && loop); i++) {
-      if (text[i] == '%') {
+for (i = 0; (text[i] && (y <= maxy) && (i < limit)); i++) {
+    if (text[i] == '%') {
 		if (text[i+1] == 'c'){ // change color !
 			PA_SetTextTileCol(screen, text[i+2]-'0');
 			i+=2;
+			limit+=3; // Don't count it in the limit
+			length-=3; // Don't count them in the length
 		}
 	}
-		
 	else if (text[i] == '\n'){
 		while(x < maxx) { // On efface tout ce qui suit
-			PA_SetTileLetter(screen, x, y, 0);
+			PA_SetTileLetter(screen, x, y, ' ');
 			x++;
 		}
-		if (text[i+1] == ' ') i++; // On vire s'il y a un espace	
+		if (text[i+1] == ' ') {
+			i++; // On vire s'il y a un espace	
+			limit++;
+			length--;
+		}
 		x = basex;
 		y ++;	
 	}
@@ -199,16 +257,17 @@ for (i = 0; (text[i] && y <= maxy && i < limit && loop); i++) {
 		wordletter = 1;
 		wordx = 0;
 		
-		while(!((text[i+wordletter] <= 32))) { // >= 32, donc si 0, '\n', on ' ' :)
+		while(!((text[i+wordletter] <= 32) || ((text[i+wordletter] == '%') && (text[i+wordletter+1] == 'c')))) { // >= 32, donc si 0, '\n', on ' ' :)
 			letter = text[i+wordletter] - 32;
-			wordx += 1;
+			wordx++;
 			wordletter++;
 		}
+		
 		//if (text[i+wordletter] == 0) loop = 0;
 
 		if (x + wordx > maxx ) {  // On dépasse en X...
 			while(x < maxx) { // On efface tout ce qui suit
-				PA_SetTileLetter(screen, x, y, 0);
+				PA_SetTileLetter(screen, x, y, ' ');
 				x++;
 			}
 			x = basex;
@@ -241,7 +300,7 @@ for (i = 0; (text[i] && y <= maxy && i < limit && loop); i++) {
 
 	}
 }
-length = i;
+length += i;
 PA_SetTextTileCol(screen, textcolor);
 return length;
 

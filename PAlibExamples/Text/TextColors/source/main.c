@@ -22,9 +22,9 @@ int main(int argc, char ** argv)
 	PA_InitText(1, 0);  // Initialise the text system on the top screen
 
 	u8 i;
-	for (i = 0; i < 8; i++)
+	for (i = 0; i < 10; i++)
 	{
-		PA_SetTextTileCol(1, i); // Change the color on the top screen, values 0 to 7
+		PA_SetTextTileCol(1, i); // Change the color on the top screen, values 0 to 9 (9 is black, so invisible)
 		PA_OutputSimpleText(1, 2, i, "Color test...");  // Screen 1 has different colors
 	}
 	

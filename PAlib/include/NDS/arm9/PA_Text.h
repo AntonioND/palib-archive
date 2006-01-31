@@ -68,6 +68,12 @@ extern letterfp letters[5];
 extern u16 PAtext_pal[2];
 
 
+typedef struct{
+	u8 x1, x2, y1, y2;
+} textborders;
+extern textborders PA_TextBox[2];
+
+
 
 
 
@@ -406,6 +412,16 @@ text1[i] = text2[i];
 	}
 	while (text2[i]);
 }
+
+void PA_EraseTextBox(bool screen);
+void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2);
+
+
+extern inline u32 PA_SimpleBoxText(bool screen, const char *text, u32 limit){
+return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
+}
+
+
 
 
 

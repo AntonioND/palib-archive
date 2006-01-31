@@ -28,7 +28,7 @@
 00028 <span class="preprocessor"></span>
 00029 
 00030 
-<a name="l00048"></a><a class="code" href="group___palette.html#ga10">00048</a> <span class="preprocessor">#define PA_LoadPal(palette, source) {\</span>
+<a name="l00048"></a><a class="code" href="group___palette.html#ga11">00048</a> <span class="preprocessor">#define PA_LoadPal(palette, source) {\</span>
 00049 <span class="preprocessor">       DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);\</span>
 00050 <span class="preprocessor">       if (palette == PAL_SPRITE0) PA_LoadSpritePal(0, 0, (void*)source);\</span>
 00051 <span class="preprocessor">       if (palette == PAL_SPRITE1) PA_LoadSpritePal(1, 0, (void*)source);\</span>
@@ -36,10 +36,10 @@
 00053 <span class="preprocessor">       if (palette == PAL_BG1) {u8 itemp; for (itemp = 0; itemp &lt; 4; itemp++) PA_LoadBgPal(1, itemp, (void*)source);}}</span>
 00054 <span class="preprocessor"></span>
 00055 
-<a name="l00071"></a><a class="code" href="group___palette.html#ga11">00071</a> <span class="preprocessor">#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</span>
+<a name="l00071"></a><a class="code" href="group___palette.html#ga12">00071</a> <span class="preprocessor">#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);</span>
 00072 <span class="preprocessor"></span>
 00073 
-<a name="l00089"></a><a class="code" href="group___palette.html#ga12">00089</a> <span class="preprocessor">#define PA_RGB(r,g,b) ((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</span>
+<a name="l00089"></a><a class="code" href="group___palette.html#ga13">00089</a> <span class="preprocessor">#define PA_RGB(r,g,b) ((1 &lt;&lt; 15) + (r) + ((g)&lt;&lt;5) + ((b)&lt;&lt;10))</span>
 00090 <span class="preprocessor"></span>
 00104 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#ga0">PA_SetBrightness</a>(<span class="keywordtype">bool</span> screen, s8 bright);
 00105 
@@ -89,14 +89,14 @@
 00206 
 00207 
 00208 
-<a name="l00223"></a><a class="code" href="group___palette.html#ga13">00223</a> <span class="preprocessor">#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</span>
+<a name="l00223"></a><a class="code" href="group___palette.html#ga14">00223</a> <span class="preprocessor">#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen &lt;&lt; 9)] = colorRGB</span>
 00224 <span class="preprocessor"></span>
 00225 
 00226 
 00247 <span class="keywordtype">void</span> <a class="code" href="group___palette.html#ga8">PA_SetBgPalNCol</a>(<span class="keywordtype">bool</span> screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color);
 00248 
 00249 
-<a name="l00264"></a><a class="code" href="group___palette.html#ga14">00264</a> <span class="preprocessor">#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)] = colorRGB</span>
+<a name="l00264"></a><a class="code" href="group___palette.html#ga15">00264</a> <span class="preprocessor">#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen &lt;&lt; 9)] = colorRGB</span>
 00265 <span class="preprocessor"></span>
 00266 
 00267 
@@ -105,13 +105,19 @@
 00281 } 
 00282 
 00283 
-00284  <span class="comment">// end of Palette</span>
-00287 <span class="comment"></span>
+00284 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span>* PA_GetBgPal(<span class="keywordtype">bool</span> screen, u8 bg_number){
+00285        <span class="keywordflow">if</span> (screen == 0) <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)(VRAM_E + (bg_number &lt;&lt; 12));
+00286        <span class="keywordflow">else</span> <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)(VRAM_H + (bg_number &lt;&lt; 12));
+00287 }
 00288 
-00289 <span class="preprocessor">#endif</span>
-00290 <span class="preprocessor"></span>
-00291 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Jan 22 11:46:50 2006 pour PAlib par&nbsp;
+00289 
+00290  <span class="comment">// end of Palette</span>
+00293 <span class="comment"></span>
+00294 
+00295 <span class="preprocessor">#endif</span>
+00296 <span class="preprocessor"></span>
+00297 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Jan 31 17:31:19 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -22,13 +22,13 @@ void TurnOffMicrophone();
    signed sound data at 16kHz. Once the length of the buffer is
    reached, no more data will be stored. Uses ARM7 timer 0.  
 */
-void StartRecording(u8* buffer, int length);
+void PA_StartRecording(s8* buffer, int length);
 
 /* Stop recording data, and return the length of data recorded. */
-int StopRecording();
+int PA_StopRecording();
 
 /* This must be called during IRQ_TIMER0 */
-void ProcessMicrophoneTimerIRQ();
+void PA_ProcessMicrophoneTimerIRQ();
 
 #ifdef __cplusplus
 }

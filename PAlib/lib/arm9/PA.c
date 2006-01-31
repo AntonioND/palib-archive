@@ -16,6 +16,7 @@ extern "C" {
 #include "PA/PA_Palette.c"
 #include "PA/PA_Sprite.c"
 #include "PA/PA_Sound.c"
+#include "PA/PA_Timer.c"
 #include "PA/PA_Text.c"
 
 #ifdef TEXT_ALLSIZES

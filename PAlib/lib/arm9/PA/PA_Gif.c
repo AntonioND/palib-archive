@@ -1,10 +1,10 @@
 #include <PA9.h>
 
-#include "gif/dev2gif.c"
+//#include "gif/dev2gif.c"
 #include "gif/dgif_lib.c"
 //#include "gif/egif_lib.c"
-//#include "gif/gif_err.c"
-//#include "gif/gif_font.c"
+#include "gif/gif_err.c"
+#include "gif/gif_font.c"
 #include "gif/gifalloc.c"
 #include "gif/quantize.c"
 
@@ -23,7 +23,7 @@ const short InterlacedJumps[] = { 8, 8, 4, 2 };    /* be read - offsets and jump
 
 int m;
 
-
+   GifPixelType LineBuf[1025]; // Buffer temporaire
 
 
 int readFunc(GifFileType* GifFile, GifByteType* buf, int count)
@@ -38,30 +38,20 @@ void CopyLine(void* dst, void* src, int count){ // Pour 8 bit
 /*s16 temp = (count +1) >> 1;
 	DMA_Copy(src, dst, temp, DMA_16NOW); // Copy rapide*/
 
- /*   do {
-	*(u32*) dst = *(u32*) src;
-	src = (u8*)src + 4;
-	dst = (u8*)dst + 4;
-	count -= 4;
-    }
-    while (count >= 2); // On fait 4 par 4, puis 2 par 2...
-	if (count >= 0) *(u16*) dst = *(u16*) src; // On finit les 2 derniers*/
-	
     do {
 	*(u16*) dst = *(u16*) src;
 	src = (u8*)src + 2;
 	dst = (u8*)dst + 2;
 	count -= 2;
     }
-	while (count > 1);
-	
-	
+    while (count > 0); // On fait 4 par 4, puis 2 par 2...
+//	if (count >= 0) *(u16*) dst = *(u16*) src; // On finit les 2 derniers
 }
 
 void CopyLine2(void* dst, void* src, int count){ // Pour 16 bit
 u8 *temp = (u8*)src;
     do {
-	*(u16*)dst = temppalette[temp[0]]; // On prend la couleur de la palette
+	*(u16*)dst = temppalette[*temp]; // On prend la couleur de la palette
 	temp++;
 	dst = (u8*)dst + 2;
 	count -= 1;
@@ -72,12 +62,10 @@ u8 *temp = (u8*)src;
 
 
 int DGifGetLineByte(GifFileType *GifFile, GifPixelType *Line, int LineLen){
-    //GifPixelType LineBuf[1024]; // Buffer temporaire
-	u16 LineBuf[512]; // Buffer temporaire
-    if (GifBits == 0) CopyLine((GifPixelType*)LineBuf, Line, LineLen); // On fait un backup 
-    int result = DGifGetLine(GifFile, (GifPixelType*)LineBuf, LineLen); // Nouvelle ligne
-	if (GifBits == 0) CopyLine(Line, (GifPixelType*)LineBuf, LineLen); // Copie 8 bit
-	if (GifBits == 1) CopyLine2(Line, (GifPixelType*)LineBuf, LineLen); // Copie 8 bit	
+    if (GifBits == 0) CopyLine(LineBuf, Line, LineLen); // On fait un backup 
+    int result = DGifGetLine(GifFile, LineBuf, LineLen); // Nouvelle ligne
+	if (GifBits == 0) CopyLine(Line, LineBuf, LineLen); // Copie 8 bit
+	if (GifBits == 1) CopyLine2(Line, LineBuf, LineLen); // Copie 8 bit	
     return result;
 }
 

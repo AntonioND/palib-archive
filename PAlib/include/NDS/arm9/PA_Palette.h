@@ -281,6 +281,12 @@ extern inline void PA_SetBgColor(bool screen, u16 color){
 } 
 
 
+extern inline void* PA_GetBgPal(bool screen, u8 bg_number){
+	if (screen == 0) return (void*)(VRAM_E + (bg_number << 12));
+	else return (void*)(VRAM_H + (bg_number << 12));
+}
+
+
 
 /** @} */ // end of Palette
 //////////////////////////////////////////////////////////////////////

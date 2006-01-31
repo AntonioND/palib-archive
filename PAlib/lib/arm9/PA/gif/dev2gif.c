@@ -501,11 +501,10 @@ GetScanLine(GifPixelType * ScanLine,
 static int
 HandleGifError(GifFileType * GifFile) {
 
-/*    int i = GifLastError();
+    int i = GifLastError();
 
     if (EGifCloseFile(GifFile) == GIF_ERROR) {
         GifLastError();
     }
-    return i;*/
-	return 0;
+    return i;
 }

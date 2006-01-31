@@ -1,3 +1,35 @@
+PAlib 0.99a
+
+[Vham] New IDE included, still in beta test !
+
+[Sound] New sound system, by JiaLing !
+
+[Linux] Forgot one of the changes, corrected thanks to Morian
+
+[C++] Corrected the compilation errors
+
+[PAGfx] Updated to correct errors in PAGfx and the frontend
+
+[Gif] Gif repaired, not sure why it didn't work though :/
+
+[TextColors] Added a black color (number 9)
+
+[TextBox] Fixed the "\n " bug and and colors, everything works now
+
+[TextBox] New simplified textbox functions with borders and all ! Check out the 2 new examples
+
+[Text] Added a custom font loading example
+
+[8bit] Fixed an 8bit pixel plotting bug, not sure when it actually got there
+
+[Video] Corrected C++ compilation errors
+
+
+PAlib 0.78b
+
+[Video] Works again...
+
+
 PAlib 0.78a
 
 [Gif] Fixed a few bugs with 8bit gifs

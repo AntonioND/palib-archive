@@ -29,7 +29,7 @@ int main(int argc, char ** argv)
 	PA_Init8bitBg(0, 3);
 	PA_Init8bitBg(1, 3);
 	
-	
+
 	// Infinite loop to keep the program running
 	while (1)
 	{
@@ -39,6 +39,7 @@ int main(int argc, char ** argv)
 		// (The first shooting line on emu is a bug from the emu, I don't have it on DS)	
 					
 		PA_Put8bitPixel(1, Stylus.X, Stylus.Y, 2); // Draws a pixel on the top screen, corresponding to the stylus's position
+
 		PA_WaitForVBL();
 	}
 	

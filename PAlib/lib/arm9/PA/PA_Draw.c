@@ -5,15 +5,21 @@
 // Buffer mode
 //////////////////////////////////////////////////////////////////////
 
+
 u16 PA_oldx[2], PA_oldy[2];
 u8 PA_drawsize[2];
 u16 *PA_DrawBg[2];
 u8 PA_nBit[2]; // 8 or 16 on each screen...
 
+u16 PA_temppal[256];
 
 
 
-void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
+u16 tempvar;
+
+
+
+void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
 
 
 void PA_Init8bitBg(bool screen, u8 bg_priority){
@@ -379,12 +385,11 @@ for (j = low; j < high; j++){
 
 
 
-void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size){
-s8 low, high;
+void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size){
+s8 low = (size >> 1) - size;
+s8 high = (size >> 1);
 s16 i, j;
-s16 x1, x2, y1, y2, temp1, temp2;
-
-low = (size >> 1) - size;		high = (size >> 1);
+s16 x1, x2, y1, y2;
 
 for (i = low; i < high; i++){
 	for (j = low; j < high; j++){
@@ -394,45 +399,47 @@ for (i = low; i < high; i++){
 	}
 }
 
-low = (size >> 1) - size;		high = (size >> 1);
-y1 = basey+low; 	while (y1 < 0) y1++;	while (y1 > 191) y1--;
-y2 = endy+low; 	while (y2 < 0) y2++;	while (y2 > 191) y2--;
-temp1 = basey+high; 	while (temp1 < 0) temp1++;	while (temp1 > 191) temp1--;
-temp2 = endy+high; 	while (temp2 < 0) temp2++;	while (temp2 > 191) temp2--;
 
-while(basex+low < 0) low++; // On met la limite gauche
-while(endx+low < 0) low++; // On met la limite gauche
-while(basex+high-1 > 255) high--; // limite droite
-while(endx+high-1 > 255) high--; // limite droite
+for (i = low; i < high; i++){
+	j = low;
+	x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+	while(x1 < 0) x1++;	while(x1 > 255) x1--;
+	while(x2 < 0) x2++;	while(x2 > 255) x2--;
+	while(y1 < 0) y1++;	while(y1 > 191) y1--;
+	while(y2 < 0) y2++;	while(y2 > 191) y2--;		
+	PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
+		
+	j = high-1;
+	x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+	while(x1 < 0) x1++;	while(x1 > 255) x1--;
+	while(x2 < 0) x2++;	while(x2 > 255) x2--;
+	while(y1 < 0) y1++;	while(y1 > 191) y1--;
+	while(y2 < 0) y2++;	while(y2 > 191) y2--;
+	PA_Draw8bitLine(screen, x1, y1, x2, y2, color);		
+}
 
-	for (i = low; i < high; i++){
-		x1 = basex+i; x2 = endx+i;
-		PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
-		PA_Draw8bitLine(screen, x1, temp1, x2, temp2, color);		
-	}
-
-low = (size >> 1) - size;		high = (size >> 1);
-x1 = basex+low; 	while (x1 < 0) x1++;	while (x1 > 255) x1--;
-x2 = endx+low; 	while (x2 < 0) x2++;	while (x2 > 255) x2--;
-temp1 = basex+high; 	while (temp1 < 0) temp1++;	while (temp1 > 255) temp1--;
-temp2 = endx+high; 	while (temp2 < 0) temp2++;	while (temp2 > 255) temp2--;
-
-while(basey+low < 0) low++; // On met la limite gauche
-while(endy+low < 0) low++; // On met la limite gauche
-while(basey+high-1 > 255) high--; // limite droite
-while(endy+high-1 > 255) high--; // limite droite
-
-	for (i = low; i < high; i++){
-		y1 = basey+i; y2 = endy+i;
-		PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
-		PA_Draw8bitLine(screen, temp1, y1, temp2, y2, color);		
-	}
+for (j = low; j < high; j++){
+	i = low;
+	x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+	while(x1 < 0) x1++;	while(x1 > 255) x1--;
+	while(x2 < 0) x2++;	while(x2 > 255) x2--;
+	while(y1 < 0) y1++;	while(y1 > 191) y1--;
+	while(y2 < 0) y2++;	while(y2 > 191) y2--;	
+	PA_Draw8bitLine(screen, x1, y1, x2, y2, color);
+	i = high-1;
+	x1 = basex+i; x2 = endx+i; y1 = basey+j; y2 = endy+j;
+	while(x1 < 0) x1++;	while(x1 > 255) x1--;
+	while(x2 < 0) x2++;	while(x2 > 255) x2--;
+	while(y1 < 0) y1++;	while(y1 > 191) y1--;
+	while(y2 < 0) y2++;	while(y2 > 191) y2--;	
+	PA_Draw8bitLine(screen, x1, y1, x2, y2, color);		
+}
 
 }
 
 
 
-u16 tempvar;
+
 
 void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color){
 s16 i, j;

@@ -89,6 +89,8 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 #include "arm9/PA_Interrupt.h"
 #include "arm9/PA_Keys.h"
 
+#include "arm9/PA_Timer.h"
+
 #ifdef TEXT_ALLSIZES
 	#include "arm9/PA_API.h"  // API only if has text...
 #endif

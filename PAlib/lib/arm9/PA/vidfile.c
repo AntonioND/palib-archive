@@ -27,9 +27,9 @@ return buffer2;
 }
 
 int remplacesize(int num){
-if(deja0==0&&vidpos<strlen(PA_GBFSfile[hvidfile].File)){
+if(deja0==0&&vidpos<(int)strlen((char*)PA_GBFSfile[hvidfile].File)){
 int end;
-vidsizes[num]=atoi(ligne(PA_GBFSfile[hvidfile].File,vidpos,&end));
+vidsizes[num]=atoi(ligne((char*)PA_GBFSfile[hvidfile].File,vidpos,&end));
 if(vidsizes[num]==0)deja0=1;
 vidpos=end;
 //PA_OutputText(0, 0, 23, "%d",vidsizes[num]);
@@ -77,7 +77,7 @@ int i=0;
 //remplacesize(0);
 while(tab[i]>0){
 if(tab[i]==1)PA_WaitForVBL();
-else if(jpgcorrect(PA_GBFSfile[file].File,i,tab))PA_LoadJpeg(1, (void*)bufferjpg);	
+else if(jpgcorrect((u8*)PA_GBFSfile[file].File,i,tab))PA_LoadJpeg(1, (void*)bufferjpg);	
 remplacesize(i);
 i++;
 //PA_OutputText(0, 0, 17, "num : %d :\n %d  \n %d   \n %d   %d ",i, tab[i],tab[i+1],tab[i+2]);
@@ -103,13 +103,13 @@ int soustrait=0;
 int PA_GBFSVidfps(s8 file){
 int fps;
 char rien[255];
-sscanf(PA_GBFSfile[file].File,"int %s = %d;",rien,&fps);
+sscanf((char*)PA_GBFSfile[file].File,"int %s = %d;",rien,&fps);
 return fps;
 }
 
 int numligne(char *buffer){
 int i,count=0;
-for(i=0;i<strlen(buffer);i++)if(buffer[i]=='\n')count++;
+for(i=0;i<(int)strlen(buffer);i++)if(buffer[i]=='\n')count++;
 //PA_OutputText(0, 0, 0, "numligne : %d",count);
 return count;
 }
@@ -119,12 +119,12 @@ vidsizes = (int*)malloc(sizeof(int)*500);
 memset(vidsizes,0,sizeof(vidsizes));
 int i=0;
 int start=start1, end=0;
-ligne(PA_GBFSfile[file].File,start,&end);
+ligne((char*)PA_GBFSfile[file].File,start,&end);
 //PA_OutputText(0, 0, 5, "ligne en cours : %d",i);
 start=end;
 //PA_OutputText(0, 0, 15, "start : %d         ",start);
-for(i=0;i<numligne(PA_GBFSfile[file].File)-1;i++){
-temp=atoi(ligne(PA_GBFSfile[file].File,start,&end));
+for(i=0;i<numligne((char*)PA_GBFSfile[file].File)-1;i++){
+temp=atoi(ligne((char*)PA_GBFSfile[file].File,start,&end));
 vidsizes[i]=temp;
 start=end;
 PA_OutputText(0, 0, 5, "                             \n                               ");

@@ -14,6 +14,7 @@ extern "C" {
 #include "PA9.h"
 
 #include "PA_Interrupt.h"
+#include "PA_Palette.h"
 #include "gif/gif_lib.h"
 
 extern GifFileType* gifinfo;
@@ -49,6 +50,9 @@ extern u8 PA_drawsize[2];
 extern u16 *PA_DrawBg[2];
 extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 //extern PA_SCreen
+
+extern u16 PA_temppal[256];
+
 
 void PA_Load16bitGif(bool screen, s16 x, s16 y, void *gif);
 int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
@@ -108,16 +112,16 @@ void PA_Init16bitBg(bool screen, u8 bg_priority);
          \~french Couleur de la palette du fond (0-255) 
 */
 extern inline void PA_Put8bitPixel(bool screen, s16 x, s16 y, u8 color) {
-	u16 pos = 	(x >> 1) + (y << 7);
+	s32 pos = (x >> 1) + (y << 7);
+	u16 pixel = PA_DrawBg[screen][pos];
 	if (x&1){
-		PA_DrawBg[screen][pos] &= 255;
-		PA_DrawBg[screen][pos] |= color << 8;			
+		PA_DrawBg[screen][pos] = (color << 8) | (pixel&0x00FF);			
 	}
 	else {
-		PA_DrawBg[screen][pos] &= 255 << 8;
-		PA_DrawBg[screen][pos] |= color;
+		PA_DrawBg[screen][pos] = color | (pixel&0xFF00);	
 	}
 }
+
 
 
 /*! \fn extern inline void PA_Put2_8bitPixels(bool screen, s16 x, s16 y, u16 colors)
@@ -343,7 +347,7 @@ void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
  */
 void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
 
-void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
+void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
 
 
 
@@ -602,6 +606,17 @@ extern inline void PA_LoadGif(bool screen, void *gif){
 	//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...
 	else DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
 }
+/*
+extern inline void PA_LoadGif(bool screen, void *gif){
+	if (PA_nBit[screen]) {
+		DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], PA_temppal, 1, 256);
+		
+	}
+	else {
+		DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], PA_GetBgPal(screen, 3), 0, 256);
+		PA_LoadBgPal(screen, 3, (void*)PA_temppal);
+	}
+}*/
 
 
 /* // Les différentes fonctions images...

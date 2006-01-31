@@ -37,18 +37,6 @@ typedef enum _MOD_STATE
 
 // ----- Structures -----
 
-typedef struct _SOUND_CHANNEL
-{
-	const s8	*data;
-	u32			length;
-	u16			loopStart;
-	u16			loopLength;
-	u16			timer;
-	u8			vol;
-	u8			pan;
-
-} SOUND_CHANNEL;
-
 typedef struct _SOUND_VARS
 {
 	void	*memPool;				// Reserved memory area to load songs

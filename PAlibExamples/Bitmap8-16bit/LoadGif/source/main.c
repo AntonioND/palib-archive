@@ -17,9 +17,9 @@ int main(int argc, char ** argv){
 	
 	PA_LoadGif(	1, // Screen, which is 8 bit...
 				(void*)Mollusk); // Gif File
+
 	PA_LoadGif(	0, // Screen, which is 16 bit
 				(void*)trans); // Gif File
-
 
 
 
