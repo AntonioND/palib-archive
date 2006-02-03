@@ -7,6 +7,7 @@ extern "C" {
 
 #include "PA9.h"
 
+#include "PA_Interrupt.h"
 
 
 

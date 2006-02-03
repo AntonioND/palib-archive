@@ -57,6 +57,7 @@ for (i = 0; i < 10; i++){
 	{
 		for (i = 0; i < 10; i++){
 			// Move with the stylus, or move on...
+			
 			if (PA_MoveSprite(FRISBEE+i)){
 				frisbee[i].x = PA_MovedSprite.X;
 				frisbee[i].y = PA_MovedSprite.Y + 192 + SCREENHOLE;

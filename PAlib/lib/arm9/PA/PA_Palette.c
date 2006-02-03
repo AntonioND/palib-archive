@@ -12,8 +12,8 @@ void PA_InitSpriteExtPal(void) {
 	DISPLAY_CR |= 1 << 31;
 	SUB_DISPLAY_CR |= 1 << 31;
 
-	PA_LoadSpriteExtPal(0, 0, (void*)PAL_SPRITE0);
-	PA_LoadSpriteExtPal(1, 0, (void*)PAL_SPRITE1);
+	PA_LoadSpritePal(0, 0, (void*)PAL_SPRITE0);
+	PA_LoadSpritePal(1, 0, (void*)PAL_SPRITE1);
 }
 
 

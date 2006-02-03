@@ -7,7 +7,7 @@ PATH 		:= $(DEVKITARM)/bin:$(PATH)
 ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
 TEXT1 		:= PAlib Demo
 TEXT2 		:= using PAlib
-TEXT3 		:= www.mollusk.tk
+TEXT3 		:= www.palib.com
 ICON 		:= -b $(CURDIR)/../logo.bmp
 LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
 

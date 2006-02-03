@@ -1,9 +1,13 @@
+PROGNAME = PAlib
+OFILES   +=
+ADD_LIBS +=
+
 PATH 		:= $(DEVKITARM)/bin:$(PATH)
 
 ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
 TEXT1 		:= PAlib Demo
 TEXT2 		:= using PAlib
-TEXT3 		:= www.mollusk.tk
+TEXT3 		:= www.palib.com
 ICON 		:= -b $(CURDIR)/../logo.bmp
 LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
 
@@ -22,7 +26,7 @@ endif
 TARGET	:=	$(shell basename $(CURDIR))
 BUILD		:=	build
 SOURCES	:=	gfx source data
-INCLUDES	:=	include build
+INCLUDES	:=	include build data
 
 EXPORT_DIR := /c/ndsexamples/
 #---------------------------------------------------------------------------------
@@ -52,7 +56,6 @@ CFLAGS	+=	$(INCLUDE) -DARM9 -I$(DEVKITPRO)/PAlib/include/nds
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	:=	-g $(ARCH) -mno-fpu -L$(DEVKITPRO)/PAlib/lib
-
 
 
 #---------------------------------------------------------------------------------
@@ -123,8 +126,8 @@ export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(B
  
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
-					$(foreach dir,$(LIBDIRS),-I$(dir)/include/NDS) \
-					-I$(PAPATH)/include/NDS\
+					$(foreach dir,$(LIBDIRS),-I$(dir)/include/nds) \
+					-I$(PAPATH)/include/nds\
 					-I$(CURDIR)/$(BUILD)
  
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)

@@ -127,6 +127,7 @@ typedef struct{
 	bool colors; 
 	s16 speed;
 	bool play;
+	u16 *gfx; // gfx pointer
 } spriteanim;
 extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
 
@@ -514,7 +515,7 @@ extern inline void PA_CreateSpriteExFromGfx(bool screen, u8 obj_number, u16 obj_
 */
 #define PA_UpdateSpriteGfx(screen, obj_number, obj_data) PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)
 
-/*! \fn extern inline void PA_UpdateGfx(bool screen, u8 gfx_number, void *obj_data) 
+/*! \fn extern inline void PA_UpdateGfx(bool screen, u16 gfx_number, void *obj_data) 
     \brief
          \~english Update a given Gfx
          \~french Mettre à jour les Gfx donnés
@@ -528,8 +529,12 @@ extern inline void PA_CreateSpriteExFromGfx(bool screen, u8 obj_number, u16 obj_
          \~english Gfx to load
          \~french Graphisme à charger
 */
-extern inline void PA_UpdateGfx(bool screen, u8 gfx_number, void *obj_data) {
+#include "PA_Text.h"
+#include "PA_Math.h"
+
+extern inline void PA_UpdateGfx(bool screen, u16 gfx_number, void *obj_data) {
 	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);
+//	PA_OutputText(1, 25, PA_Rand()&15, "%dgfx   ", gfx_number);
 }
 
 
@@ -1134,7 +1139,9 @@ extern inline void PA_SetSpriteXY(bool screen, u8 sprite, s16 x, s16 y) {
          \~french Frame de l'animation du sprite (0, 1, 2, etc...)
 */
 extern inline void PA_SetSpriteAnimEx(bool screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe){
-	PA_UpdateSpriteGfx(screen, sprite, (void*)(PA_SpriteAnimP[screen][PA_GetSpriteGfx(screen, sprite)] + (animframe * (lx * ly) >> (2 - ncolors))));
+	u16 gfx = PA_GetSpriteGfx(screen, sprite);
+	//PA_OutputText(1, 0, PA_Rand()&15, "%03d - %03d   ", gfx, sprite);
+	PA_UpdateGfx(screen, gfx, (void*)(PA_SpriteAnimP[screen][gfx] + (animframe * (lx * ly) >> (2 - ncolors))));
 }
 
 /*! \fn extern inline void PA_SetSpriteAnim(bool screen, u8 sprite, s16 animframe)
@@ -1310,38 +1317,7 @@ extern inline void PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)
 
 
 
-
-/*! \fn void PA_SetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color)
-    \brief
-         \~english Set a sprite's pixel to a given palette color
-         \~french Mettre un pixel d'un sprite à une couleur donnée
-    \param screen
-         \~english Chose de screen (0 or 1)
-         \~french Choix de l'écran (0 ou 1)
-    \param sprite
-         \~english Sprite number in the sprite system
-         \~french Numéro du sprite dans le systeme de sprite
-    \param hsize
-         \~english Horizontal size '8, 16, 32...)
-         \~french Taille horizontale (8, 16...)
-    \param n_colors
-         \~english 0 or 1 for 16 or 256 colors...
-         \~french 0 ou 1 pour 16 ou 256 couleurs
-    \param x
-         \~english X coordinate of the pixel to change
-         \~french Coordonnée X du pixel à changer
-    \param y
-         \~english Y coordinate of the pixel to change
-         \~french Coordonnée Y du pixel à changer
-    \param color
-         \~english New palette color to put
-         \~french Nouvelle couleur de la palette à metrre
-*/
-void PA_SetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color);
-
-
-
-/*! \def PA_SetSpritePixel(screen, sprite, x, y, color)
+/*! \fn extern inline void PA_SetSpritePixel(bool screen, u8 sprite, u8 x, u8 y, u8 color)
     \brief
          \~english Set a sprite's pixel to a given palette color. Like PA_SetSpritePixelEx, with less options, but a little slower
          \~french Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent
@@ -1361,36 +1337,26 @@ void PA_SetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8
          \~english New palette color to put
          \~french Nouvelle couleur de la palette à metrre
 */
-#define PA_SetSpritePixel(screen, sprite, x, y, color) PA_SetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y, color)
+extern inline void PA_SetSpritePixel(bool screen, u8 sprite, u8 x, u8 y, u8 color){
+u8 hsize = spriteanims[screen][sprite].lx>>3;
+
+	s32 pos = (x >> 3) + ((y >> 3) * hsize);
+	x&=7; y&=7;
+	
+	pos = (pos << 5) + (x >> 1) + (y << 2);
+	
+	u16 pixel = spriteanims[screen][sprite].gfx[pos];
+	
+	if (x&1){
+		spriteanims[screen][sprite].gfx[pos] = (color << 8) | (pixel&0x00FF);			
+	}
+	else {
+		spriteanims[screen][sprite].gfx[pos] = color | (pixel&0xFF00);	
+	}
+}
 
 
-/*! \fn u8 PA_GetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y)
-    \brief
-         \~english Get a sprite's pixel color
-         \~french Récupérer la couleur d'un pixel d'un sprite
-    \param screen
-         \~english Chose de screen (0 or 1)
-         \~french Choix de l'écran (0 ou 1)
-    \param sprite
-         \~english Sprite number in the sprite system
-         \~french Numéro du sprite dans le systeme de sprite
-    \param hsize
-         \~english Horizontal size '8, 16, 32...)
-         \~french Taille horizontale (8, 16...)
-    \param n_colors
-         \~english 0 or 1 for 16 or 256 colors...
-         \~french 0 ou 1 pour 16 ou 256 couleurs
-    \param x
-         \~english X coordinate of the pixel
-         \~french Coordonnée X du pixel
-    \param y
-         \~english Y coordinate of the pixel
-         \~french Coordonnée Y du pixel
-*/
-u8 PA_GetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y);
-
-
-/*! \def PA_GetSpritePixel(screen, sprite, x, y)
+/*! \fn extern inline u8 PA_GetSpritePixel(bool screen, u8 sprite, u8 x, u8 y)
     \brief
          \~english Get a sprite's pixel color. Like PA_GetSpritePixelEx, with less options, but a little slower
          \~french Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent
@@ -1407,10 +1373,26 @@ u8 PA_GetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y
          \~english Y coordinate of the pixel
          \~french Coordonnée Y du pixel
 */
-#define PA_GetSpritePixel(screen, sprite, x, y) PA_GetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y)
+extern inline u8 PA_GetSpritePixel(bool screen, u8 sprite, u8 x, u8 y) {
+u8 hsize = spriteanims[screen][sprite].lx>>3;
+
+	s32 pos = (x >> 3) + ((y >> 3) * hsize);
+	x&=7; y&=7;
+	
+	pos = (pos << 5) + (x >> 1) + (y << 2);
+	
+	u16 pixel = spriteanims[screen][sprite].gfx[pos];
+	
+	if (x&1){
+		return ((pixel>>8)&255);			
+	}
+	else {
+		return (pixel&255);
+	}
+}
 
 
-/*! \fn void PA_InitSpriteDraw(bool screen, u8 sprite, u8 draw_number, u8 drawsize)
+/*! \fn void PA_InitSpriteDraw(bool screen, u8 sprite)
     \brief
          \~english Initialise a sprite to be able to draw on it !
          \~french Initialise un sprite pour pouvoir dessiner dessus ! 
@@ -1420,45 +1402,22 @@ u8 PA_GetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y
     \param sprite
          \~english Sprite number in the sprite system
          \~french Numéro du sprite dans le systeme de sprite
-    \param draw_number
-         \~english Sprite number you want to use in the drawing system (0-15)
-         \~french Numéro du sprite que l'on veut dans le systeme de dessin (0-15)
-    \param drawsize
-         \~english Size of the pixel when drawing... 0 for 1 pixel, 1 for 2 pixels, etc... 
-         \~french Taille du trait quand on dessine. 0 pour 1 pixel, 1 pour 2...
 */
-void PA_InitSpriteDraw(bool screen, u8 sprite, u8 draw_number, u8 drawsize);
+void PA_InitSpriteDraw(bool screen, u8 sprite);
 
 
-/*! \fn void PA_SpriteDraw(u8 draw_number, s16 x, s16 y, u16 color)
+
+/*! \fn extern inline void PA_InitAllSpriteDraw(void)
     \brief
-         \~english Draw on a given Drawable sprite... Must be used every frame, or else use PA_SpriteDrawNot if you are not drawing...
-         \~french Dessiner sur un sprite intialisé... Doit etre utilisé à tous les tours, sinon il faut faire PA_SpriteDrawNot si on ne dessine pas...
-    \param draw_number
-         \~english Number of the drawable sprite
-         \~french Numéro du sprite dessinable
-    \param x
-         \~english X position on the sprite
-         \~french Position X sur le sprite
-    \param y
-         \~english Y position on the sprite
-         \~french Position Y sur le sprite
-    \param color
-         \~english Palette drawing color
-         \~french Couleur du trait de la palette
+         \~english Initialise all the onscreen sprites to draw on them
+         \~french Initialise tous les sprites à l'écran pour dessiner dessus
 */
-void PA_SpriteDraw(u8 draw_number, s16 x, s16 y, u16 color);
-
-
-/*! \def PA_SpriteDrawNot(draw_number)
-    \brief
-         \~english Must be used if a drawing sprite is initialised and you are not drawing on it
-         \~french Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas dessus actuellement
-    \param draw_number
-         \~english Number of the drawable sprite
-         \~french Numéro du sprite dessinable
-*/
-#define PA_SpriteDrawNot(draw_number)  PA_DrawSprite[draw_number].wasdrawing = 0
+extern inline void PA_InitAllSpriteDraw(void){
+u8 i, j;
+for (j = 0; j < 2; j++)
+	for (i = 0; i < 128; i++)
+		PA_InitSpriteDraw(j, i);
+}
 
 
 

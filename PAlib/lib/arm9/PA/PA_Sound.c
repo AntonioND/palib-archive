@@ -82,13 +82,56 @@ void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int 
 
 	Stream_Length[PA_Channel] = PA_GBFSfile[FS_wav_number].Length;//Real Length
 	Stream_End[PA_Channel] = (u32*)(((u32)(FS_wav[PA_Channel])) + Alloc);
-	Stream_Datas[PA_Channel] =  (u32*)PA_GBFSfile[FS_wav_number].File;
+	Stream_Datas[PA_Channel] =  PA_GBFSfile[FS_wav_number].File;
 	if(repeat == true)
 		Stream_Repeat[PA_Channel] = repeatPoint;//Repeat if we can
 	else
 		Stream_Repeat[PA_Channel] = -1;//No repeat
 
 	DMA_Copy(PA_GBFSfile[FS_wav_number].File, FS_wav[PA_Channel], Alloc / 4, DMA_32NOW);
+	Stream_Last_Tick[PA_Channel] = 1000;
+
+	//sending datas
+	PA_PlaySoundEx2(PA_Channel, (void*)FS_wav[PA_Channel], Alloc, volume, freq, format, true, 0);
+
+	//launch timer
+	Stream_Timer[PA_Channel] = NewTimer(true);
+}
+
+void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)
+{
+	u32 Alloc;
+
+	free(FS_wav[PA_Channel]);
+
+	if((freq == 11025) || ((freq == 22050) && (format == 0))) // Ptr have to be divided by 4
+	{
+		Alloc = freq*4;
+		if(format == 1)
+			Alloc *=2;
+		FS_wav[PA_Channel] = (u32*)malloc(Alloc+4);//3s allocation
+		Stream_Gap[PA_Channel] = (u32*)(((u32)(FS_wav[PA_Channel])) + (Alloc/4)*3);
+		Stream_Regen_Ptr[PA_Channel] = (u32*)(((u32)(PA_PAFSFile(FS_wav_number))) + (Alloc/4)*3);
+	}
+	else
+	{
+        Alloc = freq*3;
+		if(format == 1)
+			Alloc *=2;
+		FS_wav[PA_Channel] = (u32*)malloc(Alloc+4);//3s allocation
+		Stream_Gap[PA_Channel] = (u32*)(((u32)(FS_wav[PA_Channel])) + (Alloc/3)*2);
+		Stream_Regen_Ptr[PA_Channel] = (u32*)(((u32)(PA_PAFSFile(FS_wav_number))) + (Alloc/3)*2);
+	}
+
+	Stream_Length[PA_Channel] = PA_FSFile[FS_wav_number].Length;//Real Length
+	Stream_End[PA_Channel] = (u32*)(((u32)(FS_wav[PA_Channel])) + Alloc);
+	Stream_Datas[PA_Channel] =  PA_PAFSFile(FS_wav_number);
+	if(repeat == true)
+		Stream_Repeat[PA_Channel] = repeatPoint;//Repeat if we can
+	else
+		Stream_Repeat[PA_Channel] = -1;//No repeat
+
+	DMA_Copy(PA_PAFSFile(FS_wav_number), FS_wav[PA_Channel], Alloc / 4, DMA_32NOW);
 	Stream_Last_Tick[PA_Channel] = 1000;
 
 	//sending datas

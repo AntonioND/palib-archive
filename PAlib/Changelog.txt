@@ -1,6 +1,27 @@
+PAlib 0.99b
+
+[MoveSprite] Vx and Vy values fixed on DS (worked on emulator but not on DS for some reason)
+
+[LargeMap] Fixed a palette bug on background 1
+
+[SpriteAnim] Fixed a nasty bug in the sprite gfx updating if you had too many sprites, it would update the wrong one
+
+[DeleteSprite] Fixed a bug in DeleteSprite, should work better now
+
+[SpriteDraw] Completely rewrote the draw routines and init. You can init all onscreen sprites with PA_InitAllSpriteDraw(), and you can draw with PA_SetSpritePixel(bool screen, u8 sprite, u8 x, u8 y, u8 color). Only supports 256 colors for now. Check the example given for more details
+
+[Emus] Added DeSmuME, by Yopyop :p
+
+[Vham IDE] Added Launch (+/- Build) in Dualis or DeSmuME (which will soon work better than Dualis... :p)
+
+[Jialing Sound] Updated to work with PAFS
+
+[Libnds] Updated stylus code, please update libnds to the latest version to avoid false values
+
+
 PAlib 0.99a
 
-[Vham] New IDE included, still in beta test !
+[Vham] New IDE included, still in beta test ! Now using Vham ! I take NO credit for this, all the credit goes to Peter from http://console-dev.de/ for doing this nive IDE
 
 [Sound] New sound system, by JiaLing !
 

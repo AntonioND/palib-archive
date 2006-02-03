@@ -37,7 +37,7 @@ int main(void)	{
 	PA_InitText(1, 0);
 
 	PA_LoadSpritePal(0, 0, (void*)sprite0_Pal);	// Palette....	
-	
+
 	PA_LoadPAGfxLargeBg(0, 1, mario_world); // platfroms...
 	PA_LoadPAGfxLargeBg(0, 3, back); // back
 	

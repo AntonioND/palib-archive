@@ -41,7 +41,7 @@ extern PA_Pad* PadPointer;
 typedef struct {
 	bool Moving;
 	u8 Sprite;
-	s16 X, Y, Vx, Vy;
+	s16 X, Y, Vx, Vy, NextVx, NextVy;
 	u8 Time; // Si trop longtemps sans bouger le sprite, il décroche...
 } PA_movingsprite;
 

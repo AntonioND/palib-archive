@@ -36,10 +36,6 @@ void PA_UpdateStylus(void) {
 //bool temp = (((~IPC->buttons) << 6) & (1<<12));
 bool temp = ((~IPC->buttons) >> 6) & 1;
 
-	#ifdef EMUSTYLUS   // Emulation of the stylus...
-		temp = (IPC->touchX && IPC->touchY);
-	#endif
-
 	Stylus.Newpress = temp & (!Stylus.Held);
 	Stylus.Released = (!temp) & Stylus.Held;
 	Stylus.Held = temp;
@@ -81,28 +77,36 @@ if (x >= 458) x -=511; // normalize the X coordinate...
 if (y >= 220) y -=256; // normalize the X coordinate...
 
 
-	if (Stylus.Released) PA_MovedSprite.Moving = 0;
+	if (Stylus.Released) {
+		PA_MovedSprite.Moving = 0;
+	}
+	else{
+		if (Stylus.Held & !PA_MovedSprite.Moving) { // Si nouvelle pression, on regarde si on touche ou pas le truc
+			PA_MovedSprite.NextVx = 0;
+			PA_MovedSprite.NextVx = 0;
+			
+			if ((PA_MoveSpriteType == 0) && (Stylus.X > x - lx) && (Stylus.X < x + lx) && (Stylus.Y > y - ly) && (Stylus.Y < y + ly)){			  // Square collision	
+				PA_MovedSprite.Moving = 1;
+				PA_MovedSprite.Sprite = sprite;
+			}
+			else if (PA_MoveSpriteType && (PA_Distance(Stylus.X, Stylus.Y, x, y) < lx*ly)){	// Distance collision		
+				PA_MovedSprite.Moving = 1;
+				PA_MovedSprite.Sprite = sprite;
+			}
+		}	
+	
+		if (PA_MovedSprite.Moving && (PA_MovedSprite.Sprite == sprite)) { // Si on peut le déplacer...
+			PA_MovedSprite.Vx = PA_MovedSprite.NextVx;
+			PA_MovedSprite.Vy = PA_MovedSprite.NextVy;			
+			PA_MovedSprite.NextVx = Stylus.X - PA_MovedSprite.X;
+			PA_MovedSprite.NextVy = Stylus.Y - PA_MovedSprite.Y;
 
-	if (Stylus.Held & !PA_MovedSprite.Moving) { // Si nouvelle pression, on regarde si on touche ou pas le truc
-		if ((PA_MoveSpriteType == 0) && (Stylus.X > x - lx) && (Stylus.X < x + lx) && (Stylus.Y > y - ly) && (Stylus.Y < y + ly)){			  // Square collision	
-			PA_MovedSprite.Moving = 1;
-			PA_MovedSprite.Sprite = sprite;
+			PA_MovedSprite.X = Stylus.X;
+			PA_MovedSprite.Y = Stylus.Y;
+			PA_SetSpriteXY(screen, sprite, Stylus.X - truelx, Stylus.Y - truely);
+			PA_MovedSprite.Time = 0; //Si on passe 2 vbl sans le bouger, on changera de cible
+			return(1); // On a bougé...
 		}
-		else if (PA_MoveSpriteType && (PA_Distance(Stylus.X, Stylus.Y, x, y) < lx*ly)){	// Distance collision		
-			PA_MovedSprite.Moving = 1;
-			PA_MovedSprite.Sprite = sprite;
-		}
-	}	
-
-
-	if (PA_MovedSprite.Moving && (PA_MovedSprite.Sprite == sprite)) { // Si on peut le déplacer...
-		PA_MovedSprite.Vx = Stylus.X - PA_MovedSprite.X;
-		PA_MovedSprite.Vy = Stylus.Y - PA_MovedSprite.Y;
-		PA_MovedSprite.X = Stylus.X;
-		PA_MovedSprite.Y = Stylus.Y;
-		PA_SetSpriteXY(screen, sprite, Stylus.X - truelx, Stylus.Y - truely);
-		PA_MovedSprite.Time = 0; //Si on passe 2 vbl sans le bouger, on changera de cible
-		return(1); // On a bougé...
 	}
 	return(0);
 }

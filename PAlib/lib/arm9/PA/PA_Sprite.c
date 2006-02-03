@@ -1,4 +1,7 @@
+
 #include "PA9.h"
+
+
 //#include "PA_Sprite.h"
 
 //////////////////////////////////////////////////////////////////////
@@ -133,14 +136,14 @@ void PA_DeleteSprite(bool screen, u8 obj_number){
 u16 obj_gfx = PA_GetSpriteGfx(screen, obj_number);
 
 // Si aucun objet n'utilise cet emplacement, on libère la mémoire... Sinon on signale qu'un de moins s'en sert
-   if (obj_per_gfx[screen][obj_gfx] == 0) PA_DeleteGfx(screen, obj_gfx);
-   else --obj_per_gfx[screen][obj_gfx];
+	if (obj_per_gfx[screen][obj_gfx] > 0) {
+		--obj_per_gfx[screen][obj_gfx];
+		if (obj_per_gfx[screen][obj_gfx] == 0) PA_DeleteGfx(screen, obj_gfx);
+	}
 
 	PA_obj[screen][obj_number].atr0 = 192;
 	PA_obj[screen][obj_number].atr1 = 256;
 	PA_obj[screen][obj_number].atr2 = 0;
-   
-
 }
 
 
@@ -199,51 +202,7 @@ obj_gfx -= FirstGfx[screen];
 
 
 
-void PA_SetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color) {
-hsize = hsize >> 3;
-//		PA_SetSpritePixelEx(PA_DrawSprite[draw_number].screen, PA_DrawSprite[draw_number].sprite, PA_DrawSprite[draw_number].hsize, PA_DrawSprite[draw_number].n_colors, x, y, color);
 
-	u16 ncase = (x >> 3) + ((y >> 3) * hsize);
-	x&=7; y&=7;
-	u32 *gfx = (u32*)(SPRITE_GFX1 + (0x200000 *  screen) + (PA_GetSpriteGfx(screen, sprite) << 5));
-
-	if (n_colors) { // 256 couleurs
-		ncase = (ncase << 4) + (x >> 2) + (y << 1);
-//			PA_DrawSprite[draw_number].gfxpointer[ncase] = color;
-		x &=3; x <<= 3;
-		gfx[ncase] &= ~(255 << x);
-		gfx[ncase] |= color << x;
-	}
-	else {
-		ncase = (ncase << 3) + (x >> 3) + y;
-		x &=3; x <<= 2;
-		gfx[ncase] &= ~(15 << x);
-		gfx[ncase] |= color << x;
-	}
-}
-
-
-u8 PA_GetSpritePixelEx(bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y) {
-hsize = hsize >> 3;
-//		PA_SetSpritePixelEx(PA_DrawSprite[draw_number].screen, PA_DrawSprite[draw_number].sprite, PA_DrawSprite[draw_number].hsize, PA_DrawSprite[draw_number].n_colors, x, y, color);
-
-	u16 ncase = (x >> 3) + ((y >> 3) * hsize);
-	x&=7; y&=7;
-	u32 *gfx = (u32*)(SPRITE_GFX1 + (0x200000 *  screen) + (PA_GetSpriteGfx(screen, sprite) << 5));
-
-	if (n_colors) { // 256 couleurs
-		ncase = (ncase << 4) + (x >> 2) + (y << 1);
-//			PA_DrawSprite[draw_number].gfxpointer[ncase] = color;
-		x &=3; x <<= 3;
-		return ((gfx[ncase] >> x) &255);
-	}
-	else {
-		ncase = (ncase << 3) + (x >> 3) + y;
-		x &=3; x <<= 2;
-		return ((gfx[ncase] >> x) & 15);
-
-	}
-}
 
 /*
 void PA_SetBufferPixelEx(u8 drawsprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color) {
@@ -273,7 +232,7 @@ typedef struct {
 } PA_DrawSprites;
 */
 
-
+/*
 void PA_DrawSpritePixel(u8 draw_number, s16 x, s16 y, u8 color){
 	if ((x > -1) && (x < PA_DrawSprite[draw_number].hsize) && (y > -1) && (y < PA_DrawSprite[draw_number].vsize)) {
 //		PA_SetSpritePixelEx(PA_DrawSprite[draw_number].screen, PA_DrawSprite[draw_number].sprite, PA_DrawSprite[draw_number].hsize, PA_DrawSprite[draw_number].n_colors, x, y, color);
@@ -296,19 +255,15 @@ void PA_DrawSpritePixel(u8 draw_number, s16 x, s16 y, u8 color){
 		}
 	}
 
-}
+}*/
 
-
+/*
 void PA_DrawSpriteLine(u8 draw_number, s16 x1, s16 y1, s16 x2, s16 y2, u16 color){
-/*if (x1 < 0) x1 = 0;
-if (y1 < 0) y1 = 0;
-if (x2 < 0) x2 = 0;
-if (y2 < 0) y2 = 0;*/
 
   int i,dx,dy,sdx,sdy,dxabs,dyabs,x,y,px,py;
 
-  dx=x2-x1;      /* the horizontal distance of the line */
-  dy=y2-y1;      /* the vertical distance of the line */
+  dx=x2-x1;   
+  dy=y2-y1;   
   dxabs = dx;
   sdx = 1;
   if (dx < 0) {
@@ -352,25 +307,17 @@ if (y2 < 0) y2 = 0;*/
     }
   }
 }
+*/
 
-void PA_InitSpriteDraw(bool screen, u8 sprite, u8 draw_number, u8 drawsize) {
-	PA_DrawSprite[draw_number].screen = screen;
-	PA_DrawSprite[draw_number].sprite = sprite;
-	PA_DrawSprite[draw_number].wasdrawing = 0;
-	PA_DrawSprite[draw_number].hsize = PA_GetSpriteLx(screen, sprite);
-	PA_DrawSprite[draw_number].vsize = PA_GetSpriteLy(screen, sprite);
-	PA_DrawSprite[draw_number].n_colors = PA_GetSpriteColors(screen, sprite);
-	PA_DrawSprite[draw_number].drawsize = drawsize;
-	PA_DrawSprite[draw_number].gfxpointer = (u32*)(SPRITE_GFX1 + (0x200000 *  screen) + (PA_GetSpriteGfx(screen, sprite) << 5));
-
-//u16 size = PA_DrawSprite[draw_number].hsize * PA_DrawSprite[draw_number].vsize;
-//PA_SpriteBuffer[draw_number] = (unsigned char*) malloc (size);
-//DMA_Copy(Blank, PA_SpriteBuffer[draw_number], size >> 2, DMA_32NOW);
-
+void PA_InitSpriteDraw(bool screen, u8 sprite) {
+	spriteanims[screen][sprite].lx = PA_GetSpriteLx(screen, sprite);
+	spriteanims[screen][sprite].ly = PA_GetSpriteLy(screen, sprite);
+	spriteanims[screen][sprite].colors = PA_GetSpriteColors(screen, sprite);
+	spriteanims[screen][sprite].gfx = (u16*)(SPRITE_GFX1 + (0x200000 *  screen) + (PA_GetSpriteGfx(screen, sprite) << 7));
 }
 
 
-
+/*
 void PA_SpriteDraw(u8 draw_number, s16 x, s16 y, u16 color){
 s8 i, j, low, high;
 
@@ -393,10 +340,7 @@ PA_DrawSprite[draw_number].wasdrawing = 1;
 PA_DrawSprite[draw_number].x = x;
 PA_DrawSprite[draw_number].y = y;
 //PA_UpdateSpriteGfx(PA_DrawSprite[draw_number].screen, PA_DrawSprite[draw_number].sprite, PA_SpriteBuffer[draw_number]);
-}
-
-
-
+}*/
 
 
 
@@ -419,6 +363,9 @@ void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s
 		spriteanims[screen][sprite].play = 1;	// playing...
 		nspriteanims += 1;
 	}
+	
+	//PA_OutputText(1, 0, nanim+12, "%d : %d, %d   ", sprite, PA_GetSpriteX(0, sprite), PA_GetSpriteY(0, sprite));
+	//nanim++;
 }
 
 
@@ -430,12 +377,21 @@ u8 currentsprite = 0;
 u8 screen = 0;
 //	PA_SetSpriteAnimEx(screen, sprite, , PA_GetSpriteLy(screen, sprite), //PA_GetSpriteColors(screen, sprite), animframe);
 
+//nanim = 0;
+/*
+u8 i;
+for (i = 0; i < 128; i++) {
+	if(PA_SpriteTouched(i))
+		PA_OutputText(1, 0, 23, "%d : %d, %d, gfx : %d   ", i, PA_GetSpriteX(0, i), PA_GetSpriteY(0, i), PA_GetSpriteGfx(0, i));
+}*/
 
 while((anims > 0) && (currentsprite < 128))
 {
 	for (screen = 0; screen < 2; screen++){
 		if (spriteanims[screen][currentsprite].play)
 		{
+			
+			//++nanim;
 			spriteanims[screen][currentsprite].time += spriteanims[screen][currentsprite].speed;
 			if (spriteanims[screen][currentsprite].time >= 60) 
 			{
@@ -446,7 +402,7 @@ while((anims > 0) && (currentsprite < 128))
 					if (spriteanims[screen][currentsprite].currentframe > spriteanims[screen][currentsprite].lastframe)
 						spriteanims[screen][currentsprite].currentframe = spriteanims[screen][currentsprite].firstframe;
 				}
-				
+				//PA_OutputText(1, 0, nanim+18, "%d : %d, %d %d  ", currentsprite, PA_GetSpriteX(0, currentsprite), PA_GetSpriteY(0, currentsprite), PA_GetSpriteGfx(0, currentsprite));
 				PA_SetSpriteAnimEx(screen, currentsprite, spriteanims[screen][currentsprite].lx, spriteanims[screen][currentsprite].ly, spriteanims[screen][currentsprite].colors, spriteanims[screen][currentsprite].currentframe);
 				
 			}

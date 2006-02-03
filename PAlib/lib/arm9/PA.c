@@ -48,7 +48,7 @@ TransferSound snd;
 
 u32 *sndMemPool;
 
-u32 *Blank;
+u32 Blank[130000>>2];
 
 typedef struct {
    s16 x, y, oldx, oldy, vx, vy;  // Coordonnées
@@ -101,7 +101,7 @@ powerON(POWER_ALL);
   
  POWER_CR &= ~SWITCH_SCREENS; // on s'assure que l'écran est bien
 
-u8 i;
+s32 i;
 //PA_SetScreenLight(0, 1); PA_SetScreenLight(1, 1); // Les 2 écrans sont allumés
 
 //IPC->mailData
@@ -119,15 +119,15 @@ u8 i;
 
 vramSetMainBanks(VRAM_A_MAIN_BG,VRAM_B_MAIN_SPRITE,VRAM_C_SUB_BG,VRAM_D_SUB_SPRITE);
 
-u32 temp = 0;
-if (Blank) free(Blank); // Free, just in case it's a ReInit...
-Blank = (u32*)malloc(130000); // Malloc a big blank chunk
-DMA_Force(temp, Blank, 32500, DMA_32NOW);
-
-
+//u32 temp = 0;
+//if (Blank) free(Blank); // Free, just in case it's a ReInit...
+//Blank = (u32*)malloc(130000); // Malloc a big blank chunk
+for (i = 0; i < 130000>>2; i++) Blank[i] = 0;
+ 
 // Sprite inits...
 PA_ResetSpriteSys(); // Init's the sprite system
 PA_InitSpriteExtPal(); // Init's sprite extended palettes
+
 
 PA_ResetBgSys();
 PA_InitBgExtPal(); // Init's bg extended palettes
@@ -142,7 +142,6 @@ Stylus.X = 128;
 Stylus.Y = 96;
 
 PA_ResetInterrupts();
-
 
 for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans
@@ -164,7 +163,6 @@ for (i = 0; i < 2; i++){
 PA_UpdateUserInfo();
 
 PA_SetScreenSpace(48); // Default spacing
-
 }
 
 

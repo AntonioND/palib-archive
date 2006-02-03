@@ -11,7 +11,6 @@
 
 
 #include "../Sound9.h"
-#include "PA_Timer.h"
 #include "PA_GBFS.h"
 #include "PA_FS.h"
 #include <PA9.h>
@@ -337,6 +336,34 @@ extern inline void PA_PlayFSSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volu
 	
 	PA_PlaySoundEx2(PA_Channel, (void*)FS_wav[PA_Channel], length << 2, volume, freq, format, repeat, repeatPoint);
 }
+
+/*! \fn extern inline void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)
+    \brief
+         \~english Play a given sound effect, but chose your format and how to loop it, from PAFS with a stream effect
+         \~french Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis PAFS avec un effet de streaming
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param PAFS_wav_number
+         \~english Number of your sound RAW file in the PA GBFS system
+         \~french Numéro du son RAW dans PA GBFS
+    \param volume
+         \~english Volume, from 0 to 127. 64 if not used
+         \~french Volume, de 0 à 127. 64 si rien n'est mis
+    \param freq
+         \~english Sound frequence, depends on the sound... 11025 by default
+         \~french Fréquence du son...11025 par défaut
+    \param format
+         \~english Sound format.
+         \~french Format du son.
+    \param format
+         \~english Loop true/false
+         \~french  Boucle true/false
+    \param format
+         \~english Repeat point
+         \~french  Point de répétition
+*/
+extern inline void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
 
 /*! \fn extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, u32 freq)
     \brief

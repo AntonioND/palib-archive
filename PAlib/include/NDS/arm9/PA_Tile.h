@@ -416,7 +416,7 @@ void PA_LoadBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size);
 PA_DeleteBg(screen, bg_select);\
 PA_LoadBgTiles(screen, bg_select, bg_tiles); \
 PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \
-PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\
+PA_InitBg(screen, bg_select, bg_size, 0, color_mode);\
 PA_BGScrollXY(screen, bg_select, 0, 0);}
 
 
@@ -489,7 +489,7 @@ void PA_SetBgRot(bool screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_ro
 #define PA_LoadBg(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode) {\
 PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, tile_size); \
 PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \
-PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\
+PA_InitBg(screen, bg_select, bg_size, 0, color_mode);\
 PA_BGScrollXY(screen, bg_select, 0, 0);}
 
 
@@ -820,7 +820,7 @@ PA_LoadRotBg(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBg
       \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
 */
 #define PA_LoadLargeBg(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly) {\
-PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 1, color_mode);\
+PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
 
@@ -878,7 +878,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
       \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
 */
 #define PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\
-PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 1, color_mode);\
+PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
 

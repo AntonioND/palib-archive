@@ -801,11 +801,11 @@ bool ncolors = PA_GetSpriteColors(0, sprite);
     \param color
          \~english New palette color to put
          \~french Nouvelle couleur de la palette à metrre
-*/
+*//*
 extern inline void PA_DualSetSpritePixelEx(u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color){
 	PA_SetSpritePixelEx(0, sprite, hsize, n_colors, x, y, color);
 	PA_SetSpritePixelEx(1, sprite, hsize, n_colors, x, y, color);	
-}
+}*/
 
 
 
@@ -828,10 +828,10 @@ extern inline void PA_DualSetSpritePixelEx(u8 sprite, u8 hsize, u8 n_colors, u8 
     \param color
          \~english New palette color to put
          \~french Nouvelle couleur de la palette à metrre
-*/
+*//*
 extern inline void PA_DualSetSpritePixel(u8 sprite, s16 x, s16 y, bool color){
 PA_DualSetSpritePixelEx(sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteColors(0, sprite), x, y, color);
-}
+}*/
 
 
 
