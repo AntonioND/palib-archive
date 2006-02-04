@@ -8,8 +8,6 @@
 // Sprite files : 
 extern const unsigned char vaisseau_Sprite[1024];  // Pal : sprite0_Pal
 
-// Background files : 
-
 // Palette files : 
 extern const unsigned short sprite0_Pal[12];
 

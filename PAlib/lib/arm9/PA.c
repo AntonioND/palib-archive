@@ -37,6 +37,7 @@ extern "C" {
 #endif
 
 #include "PA/PA_IA.c"
+#include "PA/PA_Reco.c"
 
 #include "PA/PA_Micro.c"
 
@@ -161,6 +162,8 @@ for (i = 0; i < 2; i++){
 
 
 PA_UpdateUserInfo();
+
+PA_ResetRecoSys(); // Reco system init
 
 PA_SetScreenSpace(48); // Default spacing
 }

@@ -13,7 +13,7 @@ extern "C" {
 /*! \file PA_Keyboard.h
     \brief Keyboard functions
 
-    This will allow you to suma keyboard, use it, etc...
+    This will allow you to show a keyboard, use it, etc...
 */
 
 
@@ -44,13 +44,6 @@ typedef struct {
 extern Keyboards Keyboard;
 
 extern const u8 PA_Keyboard[2][5][24];
-
-#define PA_BACKSPACE 1    // On va dire que la touche backspace a pour valeur 1...
-#define PA_CAPS      2    // 2 pour CAPS
-#define PA_ENTER     '\n'    // 3 pour Enter
-#define PA_SHIFT     4    // etc
-#define PA_RIEN      0    // Si y'a rien, faudra faire comme si on appuye sur rien
-#define PA_TAB       3    // tab...
 
 
 

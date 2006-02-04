@@ -86,7 +86,7 @@ extern inline void PA_InitSound(void) {
 	SndInit9 ();
 	sndMemPool = (u32*)0x2200000;
 	SndSetMemPool(sndMemPool, SND_MEM_POOL_SIZE);
-	PA_SetDefaultSound(127, 11025, 1);
+	PA_SetDefaultSound(127, 11025, 0);
 	FS_mod = NULL; // Initialise a small portion of memory, will make it bigger later on...
 	u8 i;
 	for (i = 0; i < 16; i++)

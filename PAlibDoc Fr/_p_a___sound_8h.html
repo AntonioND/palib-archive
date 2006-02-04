@@ -19,21 +19,21 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_Sound.h::SND_MEM_POOL_SIZE"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>SND_MEM_POOL_SIZE</b>&nbsp;&nbsp;&nbsp;256*1024</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga23">PA_PlaySimpleSound</a>(PA_Channel, sound)&nbsp;&nbsp;&nbsp;PA_PlaySoundEx(PA_Channel, (void*)sound, (u32)sound##_size, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga24">PA_PlaySimpleSound</a>(PA_Channel, sound)&nbsp;&nbsp;&nbsp;PA_PlaySoundEx(PA_Channel, (void*)sound, (u32)sound##_size, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="group___sound_a_r_m9.html#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga24">PA_PlayMod</a>(mod_snd)&nbsp;&nbsp;&nbsp;SndPlayMOD((u8*)mod_snd)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="group___sound_a_r_m9.html#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga25">PA_PlayMod</a>(mod_snd)&nbsp;&nbsp;&nbsp;SndPlayMOD((u8*)mod_snd)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Jouer un mod ! Merci à Deku pour le mod player !  <a href="group___sound_a_r_m9.html#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga25" doxytag="PA_Sound.h::PA_StopMod"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga25">PA_StopMod</a>()&nbsp;&nbsp;&nbsp;SndStopMOD()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Jouer un mod ! Merci à Deku pour le mod player !  <a href="group___sound_a_r_m9.html#ga25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga26" doxytag="PA_Sound.h::PA_StopMod"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga26">PA_StopMod</a>()&nbsp;&nbsp;&nbsp;SndStopMOD()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter de jouer le mod ! Merci à Deku pour le mod player ! <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga26">PA_PauseMod</a>(bool)&nbsp;&nbsp;&nbsp;SndPauseMOD(bool)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga27">PA_PauseMod</a>(bool)&nbsp;&nbsp;&nbsp;SndPauseMOD(bool)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre le mod en pause ! Merci à Deku pour le mod player !  <a href="group___sound_a_r_m9.html#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga27" doxytag="PA_Sound.h::PA_MicStopRecording"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga27">PA_MicStopRecording</a>()&nbsp;&nbsp;&nbsp;StopRecording()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre le mod en pause ! Merci à Deku pour le mod player !  <a href="group___sound_a_r_m9.html#ga27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga28" doxytag="PA_Sound.h::PA_MicStopRecording"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga28">PA_MicStopRecording</a>()&nbsp;&nbsp;&nbsp;StopRecording()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrete l'enregistrement <br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
@@ -76,37 +76,40 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_PlayGBFSStreamSoun
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga11">PA_PlayFSSoundEx2</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, mais en choisissant le format, depuis PAFS  <a href="group___sound_a_r_m9.html#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga12">PA_PlaySound</a> (u8 PA_Channel, const void *data, s32 length, u8 volume, u32 freq)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga12">PA_PlayFSStreamSoundEx2</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw)  <a href="group___sound_a_r_m9.html#ga12"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga13">PA_PlayGBFSSound</a> (u8 PA_Channel, u16 FS_wav_number, u8 volume, u32 freq)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis PAFS avec un effet de streaming  <a href="group___sound_a_r_m9.html#ga12"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga13">PA_PlaySound</a> (u8 PA_Channel, const void *data, s32 length, u8 volume, u32 freq)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw), depuis GBFS  <a href="group___sound_a_r_m9.html#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga14">PA_PlayFSSound</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, u32 freq)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw)  <a href="group___sound_a_r_m9.html#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga14">PA_PlayGBFSSound</a> (u8 PA_Channel, u16 FS_wav_number, u8 volume, u32 freq)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw), depuis PAFS  <a href="group___sound_a_r_m9.html#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga15">PA_PlayGBFSSimpleSound</a> (u8 PA_Channel, u16 FS_wav_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw), depuis GBFS  <a href="group___sound_a_r_m9.html#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga15">PA_PlayFSSound</a> (u8 PA_Channel, u16 PAFS_wav_number, u8 volume, u32 freq)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="group___sound_a_r_m9.html#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga16">PA_PlayFSSimpleSound</a> (u8 PA_Channel, u16 PAFS_wav_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue une fois un son, avec format par défaut (raw), depuis PAFS  <a href="group___sound_a_r_m9.html#ga15"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga16">PA_PlayGBFSSimpleSound</a> (u8 PA_Channel, u16 FS_wav_number)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Depuis PAFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="group___sound_a_r_m9.html#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga17">PA_PlayGBFSMod</a> (u16 FS_mod_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="group___sound_a_r_m9.html#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga17">PA_PlayFSSimpleSound</a> (u8 PA_Channel, u16 PAFS_wav_number)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue un mod à partir de GBFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS  <a href="group___sound_a_r_m9.html#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga18">PA_PlayFSMod</a> (u16 PAFS_mod_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Depuis PAFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="group___sound_a_r_m9.html#ga17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga18">PA_PlayGBFSMod</a> (u16 FS_mod_number)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue un mod à partir de PAFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS  <a href="group___sound_a_r_m9.html#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="PA_Sound.h::PA_StopStream"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue un mod à partir de GBFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS  <a href="group___sound_a_r_m9.html#ga18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga19">PA_PlayFSMod</a> (u16 PAFS_mod_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Joue un mod à partir de PAFS... Attention, ca le copie dans la RAM, donc un trop gros mod fera planter la DS  <a href="group___sound_a_r_m9.html#ga19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="PA_Sound.h::PA_StopStream"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_StopStream</b> (u8 PA_Channel)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="PA_Sound.h::PA_PauseStream"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="PA_Sound.h::PA_PauseStream"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_PauseStream</b> (u8 PA_Channel)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga21">PA_UnpauseStream</a> (u8 PA_Channel)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga22">PA_UnpauseStream</a> (u8 PA_Channel)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stoppe un stream  <a href="group___sound_a_r_m9.html#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga22" doxytag="PA_Sound.h::PA_MicStartRecording"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stoppe un stream  <a href="group___sound_a_r_m9.html#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga23" doxytag="PA_Sound.h::PA_MicStartRecording"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_MicStartRecording</b> (s8 *buffer, int length)</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
@@ -153,7 +156,7 @@ u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>Stream_Timer</b> [16]</
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Sound info. 
 <p>
-Play sounds ! Arm9 only<hr size="1"><address style="align: right;"><small>Généré le Tue Jan 31 17:31:20 2006 pour PAlib par&nbsp;
+Play sounds ! Arm9 only<hr size="1"><address style="align: right;"><small>Généré le Sat Feb 4 17:33:06 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

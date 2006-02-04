@@ -413,13 +413,62 @@ text1[i] = text2[i];
 	while (text2[i]);
 }
 
-void PA_EraseTextBox(bool screen);
+
+
+
+/*! \fn void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2)
+    \brief
+         \~english Initialise a text box with it's borders. This makes writing in a delimited area much easier...
+         \~french Initialise une boite à texte, avec la bordure. Ceci rend l'utilisation des textes délimités bien plus simple
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param x1
+         \~english Left limit in tiles
+         \~french Limite gauche en tiles
+    \param y1
+         \~english Top
+         \~french Haut
+    \param x2
+         \~english Right
+         \~french Droite
+    \param y2
+         \~english Bottom
+         \~french Bas 
+*/
 void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2);
 
 
+/*! \fn void PA_EraseTextBox(bool screen)
+    \brief
+         \~english Erases the text in a textbox. Requires that that box be initialized with PA_InitTextBorders
+         \~french Efface le text d'un boite à texte... Nécessite qu'il ait été initialisé avec PA_InitTextBorders
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+*/
+void PA_EraseTextBox(bool screen);
+
+
+
+/*! \fn extern inline u32 PA_SimpleBoxText(bool screen, const char *text, u32 limit)
+    \brief
+         \~english Write text in an initiliazed textbox. Similar to PA_BoxText, but without needing the text limits
+         \~french Ecrit du texte dans une zone délimitée. Similaire à PA_BoxText, mais sans avoir besoin de délimiter
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param text
+         \~english String to output. 
+         \~french Chaine de caractère à écrire.
+    \param limit
+         \~english Maximum number of letters to show this time
+         \~french Nombre maximum de lettres à afficher pour ce coup-ci 		 
+*/
 extern inline u32 PA_SimpleBoxText(bool screen, const char *text, u32 limit){
 return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
 }
+
 
 
 

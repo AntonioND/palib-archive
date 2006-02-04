@@ -36,6 +36,13 @@ extern "C" {
 
 extern u16 RandomValue;  // Seed pour la fonction random
 
+/*! \fn u32 PA_Rand(void)
+    \brief
+         \~english Gives a random number, taken from Ham... This is taken from Ham, I have no credit. 
+         \~french Donne un numéro aléatoire... Ceci est pris de Ham, je n'ai aucun mérite. 
+*/
+u32 PA_Rand(void);
+
 
 /*! \fn extern inline void PA_InitRand(void)
     \brief
@@ -44,9 +51,8 @@ extern u16 RandomValue;  // Seed pour la fonction random
 */
 // Les fonctions randoms sont prises de Ham, je n'ai strictement AUCUN mérite ! Désolé ! Je l'ai un peu modifiée, elle doit etre plus rapide
 extern inline void PA_InitRand(void) {
-	PA_vblok = 0;  while ((volatile bool)PA_vblok == 0);
-	PA_vblok = 0;  while ((volatile bool)PA_vblok == 0); // Pour laisser le temps de mettre à jour...
-   RandomValue = PA_RTC.Minutes*7 + PA_RTC.Seconds*23 + PA_RTC.Hour + PA_RTC.Day;
+   RandomValue = PA_RTC.Minutes*60 + PA_RTC.Seconds + PA_RTC.Hour*3600 + PA_RTC.Day*3600*24+PA_RTC.Month*3600*24*30;
+   PA_Rand(); PA_Rand(); PA_Rand(); // On fait plusieurs fois de base
 }
 
 /*! \fn void PA_SRand(s32 r)
@@ -64,12 +70,7 @@ extern inline void PA_SRand(s32 r) {
 }
 
 
-/*! \fn u32 PA_Rand(void)
-    \brief
-         \~english Gives a random number, taken from Ham... This is taken from Ham, I have no credit. 
-         \~french Donne un numéro aléatoire... Ceci est pris de Ham, je n'ai aucun mérite. 
-*/
-u32 PA_Rand(void);
+
 
 
 /*! \fn extern inline u32 PA_RandMax(u32 max)

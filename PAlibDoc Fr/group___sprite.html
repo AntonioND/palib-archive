@@ -104,15 +104,6 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga59">PA_CloneSprite</a>(screen, obj, target)&nbsp;&nbsp;&nbsp;{PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++obj_per_gfx[screen][PA_GetSpriteGfx(screen, target)];}</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cloner un sprite. Marche uniquement pour les sprites sur un meme écran  <a href="#ga59"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga60">PA_SetSpritePixel</a>(screen, sprite, x, y, color)&nbsp;&nbsp;&nbsp;PA_SetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y, color)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga60"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga61">PA_GetSpritePixel</a>(screen, sprite, x, y)&nbsp;&nbsp;&nbsp;PA_GetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga61"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga62">PA_SpriteDrawNot</a>(draw_number)&nbsp;&nbsp;&nbsp;PA_DrawSprite[draw_number].wasdrawing = 0</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas dessus actuellement  <a href="#ga62"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga0">PA_CreateGfx</a> (bool screen, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)</td></tr>
 
@@ -139,7 +130,7 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga7">PA_CreateSpriteExFromGfx</a> (bool screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction  <a href="#ga7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga8">PA_UpdateGfx</a> (bool screen, u8 gfx_number, void *obj_data)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga8">PA_UpdateGfx</a> (bool screen, u16 gfx_number, void *obj_data)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx donnés  <a href="#ga8"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga9">PA_UpdateGfxAndMem</a> (bool screen, u8 gfx_number, void *obj_data)</td></tr>
@@ -190,18 +181,19 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga24">PA_SpriteAnimPause</a> (bool screen, u8 sprite, bool pause)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre en Pause en remettre en lecture une animation de sprite  <a href="#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga25">PA_SetSpritePixelEx</a> (bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga25">PA_SetSpritePixel</a> (bool screen, u8 sprite, u8 x, u8 y, u8 color)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée  <a href="#ga25"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga26">PA_GetSpritePixelEx</a> (bool screen, u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga26">PA_GetSpritePixel</a> (bool screen, u8 sprite, u8 x, u8 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite  <a href="#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga27">PA_InitSpriteDraw</a> (bool screen, u8 sprite, u8 draw_number, u8 drawsize)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga27">PA_InitSpriteDraw</a> (bool screen, u8 sprite)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise un sprite pour pouvoir dessiner dessus !  <a href="#ga27"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga28">PA_SpriteDraw</a> (u8 draw_number, s16 x, s16 y, u16 color)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga28" doxytag="Sprite::PA_InitAllSpriteDraw"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga28">PA_InitAllSpriteDraw</a> (void)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessiner sur un sprite intialisé... Doit etre utilisé à tous les tours, sinon il faut faire PA_SpriteDrawNot si on ne dessine pas...  <a href="#ga28"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise tous les sprites à l'écran pour dessiner dessus <br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Load Sprite, move them around, rotate them... <hr><h2>Documentation des macro</h2>
@@ -594,53 +586,6 @@ Palette d'un sprite
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga61" doxytag="PA_Sprite.h::PA_GetSpritePixel"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_GetSpritePixel          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>x,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>y&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_GetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel </td></tr>
   </table>
 </dl>
     </td>
@@ -1103,57 +1048,6 @@ Changer la palette d'un sprite
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga60" doxytag="PA_Sprite.h::PA_SetSpritePixel"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SetSpritePixel          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">screen,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>sprite,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>x,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>y,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>color&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_SetSpritePixelEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteColors(screen, sprite), x, y, color)</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel à changer </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel à changer </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Nouvelle couleur de la palette à metrre </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga55" doxytag="PA_Sprite.h::PA_SetSpritePrio"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1403,41 +1297,6 @@ Position Y du sprite à l'écran
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga62" doxytag="PA_Sprite.h::PA_SpriteDrawNot"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define PA_SpriteDrawNot          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">draw_number&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;PA_DrawSprite[draw_number].wasdrawing = 0</td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Doit etre mis si un sprite dessinable est initialisé et que l'on ne dessine pas dessus actuellement 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>draw_number</em>&nbsp;</td><td>Numéro du sprite dessinable </td></tr>
   </table>
 </dl>
     </td>
@@ -2424,13 +2283,13 @@ Renvoie la vitesse de l'animation
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga26" doxytag="PA_Sprite.h::PA_GetSpritePixelEx"></a><p>
+<a class="anchor" name="ga26" doxytag="PA_Sprite.h::PA_GetSpritePixel"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">u8 PA_GetSpritePixelEx           </td>
+          <td class="md" nowrap valign="top">inline u8 PA_GetSpritePixel           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -2440,18 +2299,6 @@ Renvoie la vitesse de l'animation
           <td class="md"></td>
           <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>sprite</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>hsize</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>n_colors</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
@@ -2468,7 +2315,7 @@ Renvoie la vitesse de l'animation
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -2482,14 +2329,12 @@ Renvoie la vitesse de l'animation
     <td>
 
 <p>
-Récupérer la couleur d'un pixel d'un sprite 
+Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>hsize</em>&nbsp;</td><td>Taille horizontale (8, 16...) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>n_colors</em>&nbsp;</td><td>0 ou 1 pour 16 ou 256 couleurs </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel </td></tr>
   </table>
@@ -2512,19 +2357,7 @@ Récupérer la couleur d'un pixel d'un sprite
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
           <td class="md" nowrap>u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>sprite</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>draw_number</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>drawsize</em></td>
+          <td class="mdname" nowrap> <em>sprite</em></td>
         </tr>
         <tr>
           <td class="md"></td>
@@ -2549,8 +2382,6 @@ Initialise un sprite pour pouvoir dessiner dessus !
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>draw_number</em>&nbsp;</td><td>Numéro du sprite que l'on veut dans le systeme de dessin (0-15) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>drawsize</em>&nbsp;</td><td>Taille du trait quand on dessine. 0 pour 1 pixel, 1 pour 2... </td></tr>
   </table>
 </dl>
     </td>
@@ -2962,13 +2793,13 @@ Changer la vitesse de l'animation
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga25" doxytag="PA_Sprite.h::PA_SetSpritePixelEx"></a><p>
+<a class="anchor" name="ga25" doxytag="PA_Sprite.h::PA_SetSpritePixel"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_SetSpritePixelEx           </td>
+          <td class="md" nowrap valign="top">inline void PA_SetSpritePixel           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">bool&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -2978,18 +2809,6 @@ Changer la vitesse de l'animation
           <td class="md"></td>
           <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>sprite</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>hsize</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>n_colors</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
@@ -3012,7 +2831,7 @@ Changer la vitesse de l'animation
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -3026,14 +2845,12 @@ Changer la vitesse de l'animation
     <td>
 
 <p>
-Mettre un pixel d'un sprite à une couleur donnée 
+Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>hsize</em>&nbsp;</td><td>Taille horizontale (8, 16...) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>n_colors</em>&nbsp;</td><td>0 ou 1 pour 16 ou 256 couleurs </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel à changer </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel à changer </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Nouvelle couleur de la palette à metrre </td></tr>
@@ -3148,65 +2965,6 @@ Mettre en Pause en remettre en lecture une animation de sprite
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>pause</em>&nbsp;</td><td>1 pour pause, 0 pour reprendre la lecture... </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga28" doxytag="PA_Sprite.h::PA_SpriteDraw"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">void PA_SpriteDraw           </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>draw_number</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
-          <td class="mdname" nowrap> <em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
-          <td class="mdname" nowrap> <em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>color</em></td>
-        </tr>
-        <tr>
-          <td class="md"></td>
-          <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Dessiner sur un sprite intialisé... Doit etre utilisé à tous les tours, sinon il faut faire PA_SpriteDrawNot si on ne dessine pas... 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>draw_number</em>&nbsp;</td><td>Numéro du sprite dessinable </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X sur le sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y sur le sprite </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur du trait de la palette </td></tr>
   </table>
 </dl>
     </td>
@@ -3337,7 +3095,7 @@ Arrêter une animation de sprite
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="md" nowrap>u16&nbsp;</td>
           <td class="mdname" nowrap> <em>gfx_number</em>, </td>
         </tr>
         <tr>
@@ -3427,7 +3185,7 @@ Mettre à jour les Gfx donnés et le pointer d'animation dans PAlib... Uniquement 
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Tue Jan 31 17:31:21 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Sat Feb 4 17:33:08 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

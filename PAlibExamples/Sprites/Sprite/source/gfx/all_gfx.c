@@ -6,7 +6,5 @@
 // Sprite files : 
 #include "vaisseau.c"
 
-// Background files : 
-
 // Palette files : 
 #include "sprite0.pal.c"

@@ -1,3 +1,15 @@
+
+PAlib 0.995a
+
+[Shape Recognition] Beta testing a shape recognition system ! Added 2 examples in the input folder and updated the wiki...
+
+[Random] New Random Init function, should give better results
+
+[PAGfx] Corrected the Green color bug
+
+[Doc] Added text and recognition stuff
+
+
 PAlib 0.99b
 
 [MoveSprite] Vx and Vy values fixed on DS (worked on emulator but not on DS for some reason)

@@ -15,103 +15,105 @@
 00007 <span class="preprocessor"></span>
 00008 <span class="preprocessor">#include "<a class="code" href="_p_a9_8h.html">PA9.h</a>"</span>
 00009 
-00010 
+00010 <span class="preprocessor">#include "<a class="code" href="_p_a___interrupt_8h.html">PA_Interrupt.h</a>"</span>
 00011 
 00012 
-<a name="l00023"></a><a class="code" href="group___math.html#ga10">00023</a> <span class="preprocessor">#define PA_Cos(angle) PA_SIN[((angle) + 128)&amp;511]</span>
-00024 <span class="preprocessor"></span>
-00025 
-<a name="l00031"></a><a class="code" href="group___math.html#ga11">00031</a> <span class="preprocessor">#define PA_Sin(angle) PA_SIN[((angle))&amp;511]</span>
-00032 <span class="preprocessor"></span>
-00033 
+00013 
+<a name="l00024"></a><a class="code" href="group___math.html#ga10">00024</a> <span class="preprocessor">#define PA_Cos(angle) PA_SIN[((angle) + 128)&amp;511]</span>
+00025 <span class="preprocessor"></span>
+00026 
+<a name="l00032"></a><a class="code" href="group___math.html#ga11">00032</a> <span class="preprocessor">#define PA_Sin(angle) PA_SIN[((angle))&amp;511]</span>
+00033 <span class="preprocessor"></span>
 00034 
 00035 
-00036 <span class="keyword">extern</span> u16 RandomValue;  <span class="comment">// Seed pour la fonction random</span>
-00037 
+00036 
+00037 <span class="keyword">extern</span> u16 RandomValue;  <span class="comment">// Seed pour la fonction random</span>
 00038 
-00044 <span class="comment">// Les fonctions randoms sont prises de Ham, je n'ai strictement AUCUN mérite ! Désolé ! Je l'ai un peu modifiée, elle doit etre plus rapide</span>
-<a name="l00045"></a><a class="code" href="group___math.html#ga1">00045</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___math.html#ga1">PA_InitRand</a>(<span class="keywordtype">void</span>) {
-00046        PA_vblok = 0;  <span class="keywordflow">while</span> ((<span class="keyword">volatile</span> bool)PA_vblok == 0);
-00047        PA_vblok = 0;  <span class="keywordflow">while</span> ((<span class="keyword">volatile</span> bool)PA_vblok == 0); <span class="comment">// Pour laisser le temps de mettre à jour...</span>
-00048    RandomValue = PA_RTC.Minutes*7 + PA_RTC.Seconds*23 + PA_RTC.Hour + PA_RTC.Day;
-00049 }
-00050 
-00060 <span class="comment">// Les fonctions randoms sont prises de Ham, je n'ai strictement AUCUN mérite ! Désolé ! Je l'ai un peu modifiée, elle doit etre plus rapide</span>
-<a name="l00061"></a><a class="code" href="group___math.html#ga2">00061</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___math.html#ga2">PA_SRand</a>(s32 r) {
-00062    RandomValue = r;
-00063 }
-00064 
-00065 
-00071 u32 <a class="code" href="group___math.html#ga3">PA_Rand</a>(<span class="keywordtype">void</span>);
+00044 u32 <a class="code" href="group___math.html#ga1">PA_Rand</a>(<span class="keywordtype">void</span>);
+00045 
+00046 
+00052 <span class="comment">// Les fonctions randoms sont prises de Ham, je n'ai strictement AUCUN mérite ! Désolé ! Je l'ai un peu modifiée, elle doit etre plus rapide</span>
+<a name="l00053"></a><a class="code" href="group___math.html#ga2">00053</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___math.html#ga2">PA_InitRand</a>(<span class="keywordtype">void</span>) {
+00054    RandomValue = PA_RTC.Minutes*60 + PA_RTC.Seconds + PA_RTC.Hour*3600 + PA_RTC.Day*3600*24+PA_RTC.Month*3600*24*30;
+00055    <a class="code" href="group___math.html#ga1">PA_Rand</a>(); <a class="code" href="group___math.html#ga1">PA_Rand</a>(); <a class="code" href="group___math.html#ga1">PA_Rand</a>(); <span class="comment">// On fait plusieurs fois de base</span>
+00056 }
+00057 
+00067 <span class="comment">// Les fonctions randoms sont prises de Ham, je n'ai strictement AUCUN mérite ! Désolé ! Je l'ai un peu modifiée, elle doit etre plus rapide</span>
+<a name="l00068"></a><a class="code" href="group___math.html#ga3">00068</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___math.html#ga3">PA_SRand</a>(s32 r) {
+00069    RandomValue = r;
+00070 }
+00071 
 00072 
 00073 
-<a name="l00082"></a><a class="code" href="group___math.html#ga4">00082</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___math.html#ga4">PA_RandMax</a>(u32 max)
-00083 {
-00084     <span class="keywordflow">return</span> <a class="code" href="group___math.html#ga3">PA_Rand</a>()%(max + 1);
-00085 }
-00086 
-00087 
+00074 
+00075 
+<a name="l00084"></a><a class="code" href="group___math.html#ga4">00084</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___math.html#ga4">PA_RandMax</a>(u32 max)
+00085 {
+00086     <span class="keywordflow">return</span> <a class="code" href="group___math.html#ga1">PA_Rand</a>()%(max + 1);
+00087 }
 00088 
-<a name="l00100"></a><a class="code" href="group___math.html#ga5">00100</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___math.html#ga5">PA_RandMinMax</a>(u32 min,u32 max)
-00101 {
-00102     <span class="keywordflow">return</span> ((<a class="code" href="group___math.html#ga3">PA_Rand</a>()%((max + 1)-min)) + min);
-00103 } 
-00104 
-00105 
-<a name="l00123"></a><a class="code" href="group___math.html#ga6">00123</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u64 <a class="code" href="group___math.html#ga6">PA_Distance</a>(s32 x1, s32 y1, s32 x2, s32 y2) {
-00124    s64 h = x1 - x2;
-00125    s64 v = y1 - y2;
-00126    <span class="keywordflow">return</span>(h*h + v*v);
-00127 }
-00128 
-<a name="l00146"></a><a class="code" href="group___math.html#ga7">00146</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u64 <a class="code" href="group___math.html#ga7">PA_TrueDistance</a>(s32 x1, s32 y1, s32 x2, s32 y2) {
-00147    s64 h = x1 - x2;
-00148    s64 v = y1 - y2;
-00149    <span class="keywordflow">return</span>(swiSqrt(h*h + v*v));
-00150 }
-00151 
-00152 
+00089 
+00090 
+<a name="l00102"></a><a class="code" href="group___math.html#ga5">00102</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___math.html#ga5">PA_RandMinMax</a>(u32 min,u32 max)
+00103 {
+00104     <span class="keywordflow">return</span> ((<a class="code" href="group___math.html#ga1">PA_Rand</a>()%((max + 1)-min)) + min);
+00105 } 
+00106 
+00107 
+<a name="l00125"></a><a class="code" href="group___math.html#ga6">00125</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u64 <a class="code" href="group___math.html#ga6">PA_Distance</a>(s32 x1, s32 y1, s32 x2, s32 y2) {
+00126    s64 h = x1 - x2;
+00127    s64 v = y1 - y2;
+00128    <span class="keywordflow">return</span>(h*h + v*v);
+00129 }
+00130 
+<a name="l00148"></a><a class="code" href="group___math.html#ga7">00148</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u64 <a class="code" href="group___math.html#ga7">PA_TrueDistance</a>(s32 x1, s32 y1, s32 x2, s32 y2) {
+00149    s64 h = x1 - x2;
+00150    s64 v = y1 - y2;
+00151    <span class="keywordflow">return</span>(swiSqrt(h*h + v*v));
+00152 }
 00153 
-00178 u16 <a class="code" href="group___math.html#ga8">PA_AdjustAngle</a>(u16 angle, s16 anglerot, s32 startx, s32 starty, s32 targetx, s32 targety);
-00179 
-00180 
+00154 
+00155 
+00180 u16 <a class="code" href="group___math.html#ga8">PA_AdjustAngle</a>(u16 angle, s16 anglerot, s32 startx, s32 starty, s32 targetx, s32 targety);
 00181 
-<a name="l00199"></a><a class="code" href="group___math.html#ga9">00199</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___math.html#ga9">PA_GetAngle</a>(s32 startx, s32 starty, s32 targetx, s32 targety) {
-00200 u16 angle = 0;
-00201 u16 anglerot = 180;
-00202 
-00203 
-00204 <span class="keywordflow">while</span>(anglerot &gt; 5) {
-00205        angle = <a class="code" href="group___math.html#ga8">PA_AdjustAngle</a>(angle, anglerot, startx, starty, targetx, targety);
-00206        anglerot = (anglerot - ((3 * anglerot) &gt;&gt; 3)); <span class="comment">// On diminue petit à petit la rotation...</span>
-00207 }
-00208 
-00209 <span class="comment">// Ajustement encore plus précis...</span>
-00210 anglerot = 4;
-00211 angle = <a class="code" href="group___math.html#ga8">PA_AdjustAngle</a>(angle, anglerot, startx, starty, targetx, targety);
-00212 anglerot = 2;
+00182 
+00183 
+<a name="l00201"></a><a class="code" href="group___math.html#ga9">00201</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___math.html#ga9">PA_GetAngle</a>(s32 startx, s32 starty, s32 targetx, s32 targety) {
+00202 u16 angle = 0;
+00203 u16 anglerot = 180;
+00204 
+00205 
+00206 <span class="keywordflow">while</span>(anglerot &gt; 5) {
+00207        angle = <a class="code" href="group___math.html#ga8">PA_AdjustAngle</a>(angle, anglerot, startx, starty, targetx, targety);
+00208        anglerot = (anglerot - ((3 * anglerot) &gt;&gt; 3)); <span class="comment">// On diminue petit à petit la rotation...</span>
+00209 }
+00210 
+00211 <span class="comment">// Ajustement encore plus précis...</span>
+00212 anglerot = 4;
 00213 angle = <a class="code" href="group___math.html#ga8">PA_AdjustAngle</a>(angle, anglerot, startx, starty, targetx, targety);
-00214 anglerot = 1;
+00214 anglerot = 2;
 00215 angle = <a class="code" href="group___math.html#ga8">PA_AdjustAngle</a>(angle, anglerot, startx, starty, targetx, targety);
-00216 
-00217 <span class="keywordflow">return</span> angle;
-00218 }
-00219  <span class="comment">// end of Math</span>
-00221 
-00222 
-00223 <span class="keyword">extern</span> <span class="keyword">inline</span> s32 PA_Modulo(s32 var, s32 modulo){
-00224 <span class="keywordflow">while</span>(var &lt; 0) var += modulo;
-00225 <span class="keywordflow">return</span> (var%modulo);
-00226 }
-00227 
-00228 <span class="preprocessor">#ifdef __cplusplus</span>
-00229 <span class="preprocessor"></span>}
-00230 <span class="preprocessor">#endif</span>
-00231 <span class="preprocessor"></span>
+00216 anglerot = 1;
+00217 angle = <a class="code" href="group___math.html#ga8">PA_AdjustAngle</a>(angle, anglerot, startx, starty, targetx, targety);
+00218 
+00219 <span class="keywordflow">return</span> angle;
+00220 }
+00221  <span class="comment">// end of Math</span>
+00223 
+00224 
+00225 <span class="keyword">extern</span> <span class="keyword">inline</span> s32 PA_Modulo(s32 var, s32 modulo){
+00226 <span class="keywordflow">while</span>(var &lt; 0) var += modulo;
+00227 <span class="keywordflow">return</span> (var%modulo);
+00228 }
+00229 
+00230 <span class="preprocessor">#ifdef __cplusplus</span>
+00231 <span class="preprocessor"></span>}
 00232 <span class="preprocessor">#endif</span>
 00233 <span class="preprocessor"></span>
-00234 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Jan 31 17:31:19 2006 pour PAlib par&nbsp;
+00234 <span class="preprocessor">#endif</span>
+00235 <span class="preprocessor"></span>
+00236 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sat Feb 4 17:33:05 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

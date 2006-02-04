@@ -121,7 +121,7 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 
 
 #include "arm9/PA_IA.h"
-
+#include "arm9/PA_Reco.h"
 
 #define SWITCH_SCREENS  (1<<15)
 

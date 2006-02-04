@@ -202,7 +202,7 @@
 00416 <span class="preprocessor">PA_DeleteBg(screen, bg_select);\</span>
 00417 <span class="preprocessor">PA_LoadBgTiles(screen, bg_select, bg_tiles); \</span>
 00418 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
-00419 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\</span>
+00419 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, 0, color_mode);\</span>
 00420 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
 00421 <span class="preprocessor"></span>
 00422 
@@ -220,7 +220,7 @@
 <a name="l00489"></a><a class="code" href="group___tile.html#ga33">00489</a> <span class="preprocessor">#define PA_LoadBg(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode) {\</span>
 00490 <span class="preprocessor">PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, tile_size); \</span>
 00491 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
-00492 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode);\</span>
+00492 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, 0, color_mode);\</span>
 00493 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
 00494 <span class="preprocessor"></span>
 00495 
@@ -290,7 +290,7 @@
 00793 
 00794 
 <a name="l00822"></a><a class="code" href="group___tile.html#ga42">00822</a> <span class="preprocessor">#define PA_LoadLargeBg(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly) {\</span>
-00823 <span class="preprocessor">PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 1, color_mode);\</span>
+00823 <span class="preprocessor">PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);\</span>
 00824 <span class="preprocessor">PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}</span>
 00825 <span class="preprocessor"></span>
 00826 
@@ -303,7 +303,7 @@
 00848 
 00849 
 <a name="l00880"></a><a class="code" href="group___tile.html#ga44">00880</a> <span class="preprocessor">#define PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\</span>
-00881 <span class="preprocessor">PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 1, color_mode);\</span>
+00881 <span class="preprocessor">PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);\</span>
 00882 <span class="preprocessor">PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}</span>
 00883 <span class="preprocessor"></span>
 00884 
@@ -407,7 +407,7 @@
 01175 
 01176 <span class="preprocessor">#endif</span>
 01177 <span class="preprocessor"></span>
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Jan 31 17:31:19 2006 pour PAlib par&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sat Feb 4 17:33:05 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

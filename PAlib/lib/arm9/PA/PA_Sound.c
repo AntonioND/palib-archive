@@ -82,7 +82,7 @@ void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int 
 
 	Stream_Length[PA_Channel] = PA_GBFSfile[FS_wav_number].Length;//Real Length
 	Stream_End[PA_Channel] = (u32*)(((u32)(FS_wav[PA_Channel])) + Alloc);
-	Stream_Datas[PA_Channel] =  PA_GBFSfile[FS_wav_number].File;
+	Stream_Datas[PA_Channel] =  (u32*)PA_GBFSfile[FS_wav_number].File;
 	if(repeat == true)
 		Stream_Repeat[PA_Channel] = repeatPoint;//Repeat if we can
 	else
@@ -125,7 +125,7 @@ void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int fr
 
 	Stream_Length[PA_Channel] = PA_FSFile[FS_wav_number].Length;//Real Length
 	Stream_End[PA_Channel] = (u32*)(((u32)(FS_wav[PA_Channel])) + Alloc);
-	Stream_Datas[PA_Channel] =  PA_PAFSFile(FS_wav_number);
+	Stream_Datas[PA_Channel] =  (u32*)PA_PAFSFile(FS_wav_number);
 	if(repeat == true)
 		Stream_Repeat[PA_Channel] = repeatPoint;//Repeat if we can
 	else

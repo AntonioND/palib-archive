@@ -148,32 +148,39 @@
 00413        <span class="keywordflow">while</span> (text2[i]);
 00414 }
 00415 
-00416 <span class="keywordtype">void</span> PA_EraseTextBox(<span class="keywordtype">bool</span> screen);
-00417 <span class="keywordtype">void</span> PA_InitTextBorders(<span class="keywordtype">bool</span> screen, u8 x1, u8 y1, u8 x2, u8 y2);
+00416 
+00417 
 00418 
-00419 
-00420 <span class="keyword">extern</span> <span class="keyword">inline</span> u32 PA_SimpleBoxText(<span class="keywordtype">bool</span> screen, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit){
-00421 <span class="keywordflow">return</span> <a class="code" href="group___text.html#ga5">PA_BoxText</a>(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
-00422 }
-00423 
-00424 
-00425 
-00426 
-00427 
-00428 <span class="keywordtype">void</span> PA_OutputTextSpecial0(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00429 <span class="keywordtype">void</span> PA_OutputTextSpecial1(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00430 <span class="keywordtype">void</span> PA_OutputTextSpecial2(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00431 <span class="keywordtype">void</span> PA_OutputTextSpecial3(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00432 <span class="keywordtype">void</span> PA_OutputTextSpecial4(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00433 <span class="keywordtype">void</span> PA_OutputTextSpecial5(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00434  <span class="comment">// end of Text</span>
-00436 
-00437 
-00438 <span class="preprocessor">#endif</span>
-00439 <span class="preprocessor"></span>
+00439 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga12">PA_InitTextBorders</a>(<span class="keywordtype">bool</span> screen, u8 x1, u8 y1, u8 x2, u8 y2);
 00440 
 00441 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Tue Jan 31 17:31:30 2006 for PAlib by&nbsp;
+00450 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga13">PA_EraseTextBox</a>(<span class="keywordtype">bool</span> screen);
+00451 
+00452 
+00453 
+<a name="l00468"></a><a class="code" href="group___text.html#ga14">00468</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___text.html#ga14">PA_SimpleBoxText</a>(<span class="keywordtype">bool</span> screen, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit){
+00469 <span class="keywordflow">return</span> <a class="code" href="group___text.html#ga5">PA_BoxText</a>(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
+00470 }
+00471 
+00472 
+00473 
+00474 
+00475 
+00476 
+00477 <span class="keywordtype">void</span> PA_OutputTextSpecial0(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00478 <span class="keywordtype">void</span> PA_OutputTextSpecial1(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00479 <span class="keywordtype">void</span> PA_OutputTextSpecial2(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00480 <span class="keywordtype">void</span> PA_OutputTextSpecial3(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00481 <span class="keywordtype">void</span> PA_OutputTextSpecial4(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00482 <span class="keywordtype">void</span> PA_OutputTextSpecial5(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00483  <span class="comment">// end of Text</span>
+00485 
+00486 
+00487 <span class="preprocessor">#endif</span>
+00488 <span class="preprocessor"></span>
+00489 
+00490 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sat Feb 4 17:32:54 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
