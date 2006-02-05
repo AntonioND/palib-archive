@@ -1,3 +1,11 @@
+PAlib 0.995b
+
+[C++] Fixed a compilation error
+
+[RotBg] Fixed the rotating backgrounds not showing, was a palette bug (they don't use extended palettes like the others...)
+
+[Reco] Added infos to the shape reco : 	PA_RecoInfo;.Length, minX, minY, maxX, maxY, startX, startY, endX, endY, Angle and an example to go with it. Updated the wiki...
+
 
 PAlib 0.995a
 

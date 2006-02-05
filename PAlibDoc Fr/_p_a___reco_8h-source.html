@@ -25,69 +25,75 @@
 00025 
 00026 <span class="preprocessor">#define PA_RECOTESTS 30</span>
 00027 <span class="preprocessor"></span>
-00028 <span class="keywordtype">char</span> text[1000];
-00029 
-00030 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00031    <span class="keywordtype">char</span> letter;
-00032        <span class="keywordtype">char</span> code[16];
-00033 } PA_FormType;
-00034 
-00035    
-00036 <span class="keyword">extern</span> PA_FormType PA_Graffiti[PA_RECOTESTS];           
-00037 
-00038 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00039        u32 nvalues, oldn, veryold;
-00040 } PA_RecoValues;
-00041 <span class="keyword">extern</span> PA_RecoValues PA_Reco;
-00042 
-00043 
-00044 
-00045 
-00046 <span class="keyword">extern</span> <span class="keywordtype">char</span> PA_RecoShape[16]; <span class="comment">// Stores the recognized pattern</span>
-00047 
-00048 <span class="keyword">extern</span> <span class="keywordtype">bool</span> PA_UseGraffiti;
+00028 
+00029 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00030    <span class="keywordtype">char</span> letter;
+00031        <span class="keywordtype">char</span> code[16];
+00032 } PA_FormType;
+00033 
+00034    
+00035 <span class="keyword">extern</span> PA_FormType PA_Graffiti[PA_RECOTESTS];           
+00036 
+00037 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00038        u32 nvalues, oldn, veryold;
+00039 } PA_RecoValues;
+00040 <span class="keyword">extern</span> PA_RecoValues PA_Reco;
+00041 
+00042 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00043        u32 Length;
+00044        u8 minX, minY, maxX, maxY; <span class="comment">// Shape limits</span>
+00045        u8 startX, startY, endX, endY; <span class="comment">// Start and end position</span>
+00046        s16 Angle;
+00047 } PA_RecoInfos;
+00048 <span class="keyword">extern</span> PA_RecoInfos PA_RecoInfo;
 00049 
-00050 <span class="keyword">extern</span> u8 PA_CustomReco; <span class="comment">// number of custom shapes</span>
-00051 <span class="keyword">extern</span> PA_FormType PA_CustomShape[200];
-00052 
+00050 
+00051 
+00052 <span class="keyword">extern</span> <span class="keywordtype">char</span> PA_RecoShape[16]; <span class="comment">// Stores the recognized pattern</span>
 00053 
-00054 
+00054 <span class="keyword">extern</span> <span class="keywordtype">bool</span> PA_UseGraffiti;
 00055 
-00067 <span class="keywordtype">char</span> <a class="code" href="group___reco.html#ga0">PA_CheckLetter</a>(<span class="keywordtype">void</span>);
-00068 
-00069 
-<a name="l00082"></a><a class="code" href="group___reco.html#ga1">00082</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___reco.html#ga1">PA_RecoAddShape</a>(<span class="keywordtype">char</span> letter, <span class="keywordtype">char</span> *shape){
-00083 
-00084 PA_CustomShape[PA_CustomReco].letter = letter;
-00085 u8 i;
-00086 <span class="keywordflow">for</span> (i = 0; i &lt; 16; i++) PA_CustomShape[PA_CustomReco].code[i] = shape[i];
-00087 PA_CustomReco++;
-00088 }
+00056 <span class="keyword">extern</span> u8 PA_CustomReco; <span class="comment">// number of custom shapes</span>
+00057 <span class="keyword">extern</span> PA_FormType PA_CustomShape[200];
+00058 
+00059 
+00060 
+00061 
+00073 <span class="keywordtype">char</span> <a class="code" href="group___reco.html#ga0">PA_CheckLetter</a>(<span class="keywordtype">void</span>);
+00074 
+00075 
+<a name="l00088"></a><a class="code" href="group___reco.html#ga1">00088</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___reco.html#ga1">PA_RecoAddShape</a>(<span class="keywordtype">char</span> letter, <span class="keywordtype">char</span> *shape){
 00089 
-00090 
-00091 
-<a name="l00098"></a><a class="code" href="group___reco.html#ga2">00098</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___reco.html#ga2">PA_ResetRecoSys</a>(<span class="keywordtype">void</span>){
-00099 PA_CustomReco = 0;
-00100 PA_UseGraffiti = 1;
-00101 }
-00102 
-00103 
-<a name="l00113"></a><a class="code" href="group___reco.html#ga3">00113</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___reco.html#ga3">PA_UsePAGraffiti</a>(<span class="keywordtype">bool</span> use){
-00114 PA_UseGraffiti = use;
-00115 }
-00116 
-00117 
-00118 
-00119  <span class="comment">// end of Reco</span>
-00121 
-00122 <span class="preprocessor">#ifdef __cplusplus</span>
-00123 <span class="preprocessor"></span>}
-00124 <span class="preprocessor">#endif</span>
-00125 <span class="preprocessor"></span>
-00126 <span class="preprocessor">#endif</span>
-00127 <span class="preprocessor"></span>
-00128 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sat Feb 4 17:33:05 2006 pour PAlib par&nbsp;
+00090 PA_CustomShape[PA_CustomReco].letter = letter;
+00091 u8 i;
+00092 <span class="keywordflow">for</span> (i = 0; i &lt; 16; i++) PA_CustomShape[PA_CustomReco].code[i] = shape[i];
+00093 PA_CustomReco++;
+00094 }
+00095 
+00096 
+00097 
+<a name="l00104"></a><a class="code" href="group___reco.html#ga2">00104</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___reco.html#ga2">PA_ResetRecoSys</a>(<span class="keywordtype">void</span>){
+00105 PA_CustomReco = 0;
+00106 PA_UseGraffiti = 1;
+00107 }
+00108 
+00109 
+<a name="l00119"></a><a class="code" href="group___reco.html#ga3">00119</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___reco.html#ga3">PA_UsePAGraffiti</a>(<span class="keywordtype">bool</span> use){
+00120 PA_UseGraffiti = use;
+00121 }
+00122 
+00123 
+00124 
+00125  <span class="comment">// end of Reco</span>
+00127 
+00128 <span class="preprocessor">#ifdef __cplusplus</span>
+00129 <span class="preprocessor"></span>}
+00130 <span class="preprocessor">#endif</span>
+00131 <span class="preprocessor"></span>
+00132 <span class="preprocessor">#endif</span>
+00133 <span class="preprocessor"></span>
+00134 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Feb 5 18:34:13 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

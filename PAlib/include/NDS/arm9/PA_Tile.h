@@ -784,7 +784,7 @@ extern inline void PA_SetMapTileEx(bool screen, u8 bg_select, s16 x, s16 y, u16 
       \~french Si le fond boucle ou non. 
 */
 #define PA_LoadPAGfxRotBg(screen, bg_select, bg_name, wraparound) {\
-PA_LoadBgPal(screen, bg_select, (void*)bg_name##_Pal); \
+PA_LoadNormalBgPal(screen, (void*)bg_name##_Pal);\
 PA_LoadRotBg(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\
 }
 

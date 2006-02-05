@@ -25,7 +25,6 @@ extern PA_StylusPosition PA_StylusPos[20000];
 
 #define PA_RECOTESTS 30
 
-char text[1000];
 
 typedef struct{
    char letter;
@@ -40,6 +39,13 @@ typedef struct{
 } PA_RecoValues;
 extern PA_RecoValues PA_Reco;
 
+typedef struct{
+	u32 Length;
+	u8 minX, minY, maxX, maxY; // Shape limits
+	u8 startX, startY, endX, endY; // Start and end position
+	s16 Angle;
+} PA_RecoInfos;
+extern PA_RecoInfos PA_RecoInfo;
 
 
 

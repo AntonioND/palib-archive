@@ -1,3 +1,4 @@
+
 #include "PA9.h"
 
 
@@ -12,6 +13,7 @@ bool PA_UseGraffiti = true;
 u8 PA_CustomReco = 0; // number of custom shapes
 PA_FormType PA_CustomShape[200];
 
+PA_RecoInfos PA_RecoInfo;
 
 PA_FormType PA_Graffiti[PA_RECOTESTS] = {
 	{' ', "AAAAAAAAAAAAAAA"},	   
@@ -109,6 +111,12 @@ PA_AddStylusPos(px, py);
 }
 
 
+#define PA_ShapeAddPoint(i, value){\
+	points[i] = PA_StylusPos[value];\
+	if (points[i].x < PA_RecoInfo.minX) PA_RecoInfo.minX = points[i].x;\
+	else if (points[i].x > PA_RecoInfo.maxX) PA_RecoInfo.maxX = points[i].x;\
+	if (points[i].y < PA_RecoInfo.minY) PA_RecoInfo.minY = points[i].y;\
+	else if (points[i].y > PA_RecoInfo.maxY) PA_RecoInfo.maxY = points[i].y;	}
 
 
 
@@ -119,20 +127,20 @@ char PA_AnalyzeShape(void){
    
    PA_StylusPosition points[17];
    for (i = 0; i < 16; i++){
-      points[i] = PA_StylusPos[(PA_Reco.nvalues*i)>>4];
-      //PA_Put8bitPixel(0, points[i].x, points[i].y, 2);
-      //PA_Put8bitPixel(0, points[i].x+1, points[i].y, 2);     
-      //PA_Put8bitPixel(0, points[i].x, points[i].y+1, 2);     
-      //PA_Put8bitPixel(0, points[i].x+1, points[i].y+1, 2);      
+      PA_ShapeAddPoint(i, (PA_Reco.nvalues*i)>>4)
 	}   
-      points[16] = PA_StylusPos[PA_Reco.nvalues-1];
-      //PA_Put8bitPixel(0, points[16].x, points[16].y, 2);
-      //PA_Put8bitPixel(0, points[16].x+1, points[16].y, 2);     
-      //PA_Put8bitPixel(0, points[16].x, points[16].y+1, 2);     
-      //PA_Put8bitPixel(0, points[16].x+1, points[16].y+1, 2); 	
-	
-	
-	
+	PA_ShapeAddPoint(16, PA_Reco.nvalues-1)
+    //points[16] = PA_StylusPos[PA_Reco.nvalues-1];
+	PA_RecoInfo.endX = PA_StylusPos[PA_Reco.nvalues-1].x; // last values
+	PA_RecoInfo.endY = PA_StylusPos[PA_Reco.nvalues-1].y; // last values
+	PA_RecoInfo.Length = PA_Reco.nvalues; // Total length
+	PA_RecoInfo.Angle = PA_GetAngle(points[0].x, points[0].y, points[16].x, points[16].y);
+
+//Better values		
+	if (PA_RecoInfo.minX > 1) PA_RecoInfo.minX-=2;
+	if (PA_RecoInfo.maxX <254) PA_RecoInfo.maxX+=2;	
+	if (PA_RecoInfo.minY > 1) PA_RecoInfo.minY-=2;
+	if (PA_RecoInfo.maxY <190) PA_RecoInfo.maxY+=2;	
 	
 	u16 angles[15];
 	for (i = 0; i < 15; i++) angles[i] = PA_GetAngle(points[i+2].x, points[i+2].y, points[i].x, points[i].y);
@@ -187,19 +195,22 @@ char PA_AnalyzeShape(void){
 
 
 
-
-
-
 char PA_CheckLetter(void){
 	   if(Stylus.Newpress){
 			PA_Reco.nvalues = 0; // Start over again
 			PA_Reco.oldn = 0;
 			PA_Reco.veryold = 0;
-			PA_StylusPos[PA_Reco.nvalues].x = Stylus.X;
-			PA_StylusPos[PA_Reco.nvalues].y = Stylus.Y;  
+			
+			PA_RecoInfo.startX = PA_StylusPos[PA_Reco.nvalues].x = Stylus.X; // start values
+			PA_RecoInfo.startY = PA_StylusPos[PA_Reco.nvalues].y = Stylus.Y;  
+			PA_RecoInfo.minX = PA_RecoInfo.maxX = PA_RecoInfo.startX;
+			PA_RecoInfo.minY = PA_RecoInfo.maxY = PA_RecoInfo.startY;			
   			PA_Reco.nvalues++;
 		}
-		else	if(Stylus.Held) PA_StylusLine(PA_StylusPos[PA_Reco.nvalues-1].x, PA_StylusPos[PA_Reco.nvalues-1].y, Stylus.X, Stylus.Y);
+		else if(Stylus.Held) {
+			PA_StylusLine(PA_StylusPos[PA_Reco.nvalues-1].x, PA_StylusPos[PA_Reco.nvalues-1].y, Stylus.X, Stylus.Y);
+			
+		}
 
 		      
 		if(Stylus.Released){ // Start analyzing...

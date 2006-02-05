@@ -592,7 +592,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-       <a class="code" href="group___palette.html#ga6">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
+       <a class="code" href="group___palette.html#ga7">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
        <a class="code" href="group___tile.html#ga42">PA_LoadLargeBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Width) &gt;&gt; 3, (bg_name##_Height) &gt;&gt; 3);}
 </pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx 
 <p>
@@ -641,7 +641,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___palette.html#ga6">PA_LoadBgPal</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
+PA_LoadNormalBgPal(screen, (<span class="keywordtype">void</span>*)bg_name##_Pal);\
 <a class="code" href="group___tile.html#ga32">PA_LoadRotBg</a>(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\
 }
 </pre></div>Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs 
@@ -816,7 +816,7 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-       <a class="code" href="group___palette.html#ga6">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
+       <a class="code" href="group___palette.html#ga7">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
        <a class="code" href="group___tile.html#ga31">PA_LoadSimpleBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Width, bg_name##_Height), 0, 1);}
 </pre></div>On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs 
 <p>
@@ -2318,7 +2318,7 @@ Change les infos tiles utilisée pour une tile donnée dans la map
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Sat Feb 4 17:33:08 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Sun Feb 5 18:34:16 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -16,8 +16,7 @@ int main(int argc, char ** argv)
 	PA_InitText(1, 0);  // Initialise the text system on the top screen
 	PA_Init8bitBg(0, 0); // We'll draw the characters on the screen...
 	
-	u16 *pal = (u16*)PAL_BG0;
-	pal[1] = PA_RGB(31, 31, 31); // colors...
+	PA_SetBgPalCol(0, 1, PA_RGB(31, 31, 31)); // Set the writing color to white
 
 	PA_UsePAGraffiti(0); // Do not use the provided Graffiti shapes...
 	

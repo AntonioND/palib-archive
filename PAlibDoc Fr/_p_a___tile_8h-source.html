@@ -281,7 +281,7 @@
 00766 
 00767 
 <a name="l00786"></a><a class="code" href="group___tile.html#ga41">00786</a> <span class="preprocessor">#define PA_LoadPAGfxRotBg(screen, bg_select, bg_name, wraparound) {\</span>
-00787 <span class="preprocessor">PA_LoadBgPal(screen, bg_select, (void*)bg_name##_Pal); \</span>
+00787 <span class="preprocessor">PA_LoadNormalBgPal(screen, (void*)bg_name##_Pal);\</span>
 00788 <span class="preprocessor">PA_LoadRotBg(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\</span>
 00789 <span class="preprocessor">}</span>
 00790 <span class="preprocessor"></span>
@@ -407,7 +407,7 @@
 01175 
 01176 <span class="preprocessor">#endif</span>
 01177 <span class="preprocessor"></span>
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sat Feb 4 17:33:05 2006 pour PAlib par&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Feb 5 18:34:14 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

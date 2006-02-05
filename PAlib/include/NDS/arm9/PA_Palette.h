@@ -53,6 +53,25 @@ void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
 	if (palette == PAL_BG1) {u8 itemp; for (itemp = 0; itemp < 4; itemp++) PA_LoadBgPal(1, itemp, (void*)source);}}
 
 
+/*! \def PA_LoadNormalBgPal(palette, source)
+    \brief
+         \~english Load a 256 color palette in the Bg or Sprite palette of screen 0 or 1. Ex : PA_LoadPal(PALETTE_BG1, bg_pal);
+         \~french Charger une palette de 256 couleurs pour les fonds ou les sprites pour l'écran 0 ou 1. Ex : PA_LoadPal(PALETTE_BG1, bg_pal);
+    \param palette
+         \~english Set the Bg palette or Obj palette, screen 0 or 1 : PAL_BG0, PAL_SPRITE0, PAL_BG1, or PAL_SPRITE1
+         \~french Charger pour les Bg ou les Sprites, sur l'écran 0 ou 1 : PAL_BG0, PAL_SPRITE0, PAL_BG1, ou PAL_SPRITE1
+    \param source
+         \~english Palette name (ex : master_Palette)
+         \~french Nom de la palette (ex : master_Palette)
+*/
+extern inline void PA_LoadNormalBgPal(bool screen, void *Pal){
+u32 dest = PAL_BG0 + (screen<<10);
+	DMA_Copy((void*)Pal, (void*)dest, 256, DMA_16NOW);\
+
+} 
+
+
+
 /*! \def PA_LoadPal16(palette, n_palette, source)
     \brief
          \~english Load a 16 color palette in the Bg or Sprite palette of screen 0 or 1. Ex : PA_LoadPal16(PALETTE_BG1, 4, bg_pal);

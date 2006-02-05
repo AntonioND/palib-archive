@@ -16,7 +16,7 @@ int main(int argc, char ** argv){
 	PA_InitVBL(); // Initializes a standard VBL
 	
 	PA_SetVideoMode(0, 2);  //screen, mode
-	
+
 	PA_LoadPAGfxRotBg(0, //screen
 					  3, // background number
 					  Rot, // background name in PAGfx
@@ -38,8 +38,8 @@ int main(int argc, char ** argv){
 	PA_OutputSimpleText(1, 2, 5, "RotCenterX : A/Y");
 	PA_OutputSimpleText(1, 2, 6, "RotCenterY : B/X");
 	PA_OutputSimpleText(1, 2, 7, "Angle      : R/L");
-	
-	
+
+
 	while (1)
 	{
 		zoom += Pad.Held.Start - Pad.Held.Select;
