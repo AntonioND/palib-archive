@@ -349,7 +349,7 @@ PA_DrawSprite[draw_number].y = y;
 
 
 
-void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)
+void PA_StartSpriteAnimEx(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)
 {
 	spriteanims[screen][sprite].lx = PA_GetSpriteLx(screen, sprite);
 	spriteanims[screen][sprite].ly = PA_GetSpriteLy(screen, sprite);
@@ -358,6 +358,9 @@ void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s
 	spriteanims[screen][sprite].lastframe = lastframe;
 	spriteanims[screen][sprite].speed = speed;	
 	spriteanims[screen][sprite].time = 0;
+	spriteanims[screen][sprite].type = type;
+	spriteanims[screen][sprite].ncycles = ncycles;
+	spriteanims[screen][sprite].framechange = 1; // normal change to start
 	if (!spriteanims[screen][sprite].play){ // If wasn't playing, say to play and display the first image
 		PA_SetSpriteAnimEx(screen, sprite, spriteanims[screen][sprite].lx, spriteanims[screen][sprite].ly, spriteanims[screen][sprite].colors, spriteanims[screen][sprite].currentframe);
 		spriteanims[screen][sprite].play = 1;	// playing...
@@ -367,6 +370,7 @@ void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s
 	//PA_OutputText(1, 0, nanim+12, "%d : %d, %d   ", sprite, PA_GetSpriteX(0, sprite), PA_GetSpriteY(0, sprite));
 	//nanim++;
 }
+
 
 
 
@@ -387,29 +391,44 @@ for (i = 0; i < 128; i++) {
 
 while((anims > 0) && (currentsprite < 128))
 {
-	for (screen = 0; screen < 2; screen++){
-		if (spriteanims[screen][currentsprite].play)
+for (screen = 0; screen < 2; screen++){
+	if (spriteanims[screen][currentsprite].play)
+	{
+		
+		//++nanim;
+		spriteanims[screen][currentsprite].time += spriteanims[screen][currentsprite].speed;
+		if (spriteanims[screen][currentsprite].time >= 60) 
 		{
-			
-			//++nanim;
-			spriteanims[screen][currentsprite].time += spriteanims[screen][currentsprite].speed;
-			if (spriteanims[screen][currentsprite].time >= 60) 
+			while (spriteanims[screen][currentsprite].time >= 60)
 			{
-				while (spriteanims[screen][currentsprite].time >= 60)
-				{
-					spriteanims[screen][currentsprite].time -= 60;
-					spriteanims[screen][currentsprite].currentframe++;
-					if (spriteanims[screen][currentsprite].currentframe > spriteanims[screen][currentsprite].lastframe)
-						spriteanims[screen][currentsprite].currentframe = spriteanims[screen][currentsprite].firstframe;
+				spriteanims[screen][currentsprite].time -= 60;
+				spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange;
+				if (((spriteanims[screen][currentsprite].framechange > 0) && (spriteanims[screen][currentsprite].currentframe > spriteanims[screen][currentsprite].lastframe))||((spriteanims[screen][currentsprite].framechange < 0) && (spriteanims[screen][currentsprite].currentframe < spriteanims[screen][currentsprite].firstframe))){
+					if (spriteanims[screen][currentsprite].type == ANIM_LOOP){ // Loop
+						spriteanims[screen][currentsprite].currentframe = spriteanims[screen][currentsprite].firstframe;	
+					}
+					else { // Don't loop, go back -> switch speed and first/last frames
+						spriteanims[screen][currentsprite].framechange = -spriteanims[screen][currentsprite].framechange;
+						spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange<<1;
+						
+					}	
+
+					// In all cases :
+					spriteanims[screen][currentsprite].ncycles--; // 1 less to do
+					if (spriteanims[screen][currentsprite].ncycles == 0) {
+						PA_StopSpriteAnim(screen, currentsprite);
+					}
+					else if (spriteanims[screen][currentsprite].ncycles<0) spriteanims[screen][currentsprite].ncycles = -1; // Inifinite
 				}
-				//PA_OutputText(1, 0, nanim+18, "%d : %d, %d %d  ", currentsprite, PA_GetSpriteX(0, currentsprite), PA_GetSpriteY(0, currentsprite), PA_GetSpriteGfx(0, currentsprite));
-				PA_SetSpriteAnimEx(screen, currentsprite, spriteanims[screen][currentsprite].lx, spriteanims[screen][currentsprite].ly, spriteanims[screen][currentsprite].colors, spriteanims[screen][currentsprite].currentframe);
-				
 			}
-			anims--; // Une de faite !
+			//PA_OutputText(1, 0, nanim+18, "%d : %d, %d %d  ", currentsprite, PA_GetSpriteX(0, currentsprite), PA_GetSpriteY(0, currentsprite), PA_GetSpriteGfx(0, currentsprite));
+			PA_SetSpriteAnimEx(screen, currentsprite, spriteanims[screen][currentsprite].lx, spriteanims[screen][currentsprite].ly, spriteanims[screen][currentsprite].colors, spriteanims[screen][currentsprite].currentframe);
+			
 		}
+		anims--; // Une de faite !
 	}
-	currentsprite++; // next sprite...
+}
+currentsprite++; // next sprite...
 }
 
 }

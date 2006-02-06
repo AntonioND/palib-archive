@@ -1,0 +1,13 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+No palette name found for file explosion.png, the palette explosion will be given to him...
+Transparent Color : Green
+
+1 sprites :
+  explosion : 256colors, 64x448, Pal : explosion_Pal, -> explosion_Sprite
+
+1 palettes :
+  explosion_Pal, 15 colors
+
+Finished !

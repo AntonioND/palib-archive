@@ -102,6 +102,17 @@ extern s16 mode7_distance;
 */
 void PA_InitMode7(u8 bg_select);
 
+/*! \fn extern inline void PA_DeInitMode7(void)
+    \brief
+         \~english DeInitialize Mode 7
+         \~french DesInitialise le Mode 7
+*/
+extern inline void PA_DeInitMode7(void) {
+
+PA_StopInt(INT_HBLANK);
+
+}
+
 
 /*! \fn extern inline void PA_Mode7Angle(s16 angle)
     \brief
@@ -209,6 +220,10 @@ extern inline void PA_Mode7SetPointXZ(s16 mode7x, s16 mode7z){
 extern inline void PA_Mode7Height(s16 mode7y){
 		mode7cam_y = mode7y;
 }
+
+
+
+
 
 
 

@@ -35,6 +35,10 @@ Formats 8bit or 16bit
 
 Changelog
 
+v0.7
+- Bugfixes
+
+
 v0.6
 - Fixed a typo : a 16bit bitmap was called Sprite in all_gfx.h
 - Added bg_Width and bg_Heigth to the background files

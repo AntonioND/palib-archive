@@ -1,3 +1,23 @@
+PAlib 0.996a
+
+[Backgrounds] Added PA_ClearBg(screen, bg) and extern inline void PA_ClearTextBg(screen) to clear a given background map
+
+[ResetBgSys] Now resets the video mode, fixes some rare issues
+
+[Mode7] Added PA_DeInitMode7, when your finished using it, lol
+
+[Examples] Updated the Mode7 examples to upgrade to PAGfx functions
+
+[LargeMap] Fixed bug when loading not-so-large maps, lol
+
+[SpriteTouched] Added the Stylus.Held check in it because everyone seems to want it, lol
+
+[Linux] Some compilation errors fixed, thanks to Gooler... I hope it works now !
+
+[Animations] Extended the sprite animation system, check out SpriteAnim3 and the wiki !
+
+
+
 PAlib 0.995b
 
 [C++] Fixed a compilation error

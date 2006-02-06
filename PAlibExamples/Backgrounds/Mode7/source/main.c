@@ -3,15 +3,8 @@
 // Includes
 #include <PA9.h>       // Include for PA_Lib
 
-
-
-// Graphics Includes
-// *** Backgrounds ***
-// Be carefull, it's not exactly the same gfx2gba command... 
-// gfx2gba -m -mm -fsrc -rs -t8 -T8 -pbg.pal *.bmp
-#include "gfx/Rot.map.c"
-#include "gfx/Rot.raw.c"
-#include "gfx/bg.pal.c"
+#include "gfx/all_gfx.c"
+#include "gfx/all_gfx.h"
 
 
 
@@ -22,22 +15,15 @@ int main(int argc, char ** argv)
 	PA_Init();    // Initializes PA_Lib
 	PA_InitVBL(); // Initializes a standard VBL
 	
-	//PA_LoadSplash();  // PA_Lib splash screen
-	
-	// Load Palettes
-	PA_LoadPal(PAL_BG0, bg_Palette); // Backgrounds
-	PA_LoadPal(PAL_BG1, bg_Palette); // Backgrounds
 	
 	PA_SetVideoMode(0, 2);  //screen, mode
 	PA_SetVideoMode(1, 2);  //screen, mode
 	
-PA_LoadRotBg(0, // screen
-			3, // background number
-			Rot_Tiles, // Tiles
-			Rot_Map,  // Map
-			BG_ROT_256X256, // Size
-			1);  // Wraparound
-PA_LoadRotBg(1, 3, Rot_Tiles, Rot_Map, BG_ROT_256X256, 1);  // Wraparound
+	PA_LoadPAGfxRotBg(0, //screen
+					  3, // background number
+					  Rot, // background name in PAGfx
+					  1); // wraparound !
+	PA_LoadPAGfxRotBg(1, 3, Rot, 1); // wraparound !
 			
 			
 PA_InitText(1, 0);

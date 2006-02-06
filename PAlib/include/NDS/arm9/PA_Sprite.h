@@ -119,15 +119,26 @@ extern unsigned char *PA_SpriteBuffer[MAX_DRAW]; // Pointeurs vers les buffers  
 extern u16 *PA_SpriteAnimP[2][1024];
 
 
+#define ANIM_LOOP 0 // loop around
+#define ANIM_UPDOWN 1 // back and forth animation
+
+#define ANIM_ONESHOT ANIM_LOOP, 1
+#define ANIM_INFINITE ANIM_LOOP, -1
+
+
+
 extern s16 nspriteanims; // Number of animated sprites currently...
 typedef struct{
-	u16 firstframe, lastframe, currentframe; // frames...
-	u16 time; // Time...
+	s32 firstframe, lastframe, currentframe; // frames...
+	s8 framechange; // 1 by default, -1 to go back...
+	s32 time; // Time...
 	u8 lx, ly; // Sprite sizes
 	bool colors; 
 	s16 speed;
 	bool play;
 	u16 *gfx; // gfx pointer
+	u8 type;
+	s32 ncycles;
 } spriteanim;
 extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
 
@@ -1164,8 +1175,38 @@ extern inline void PA_SetSpriteAnim(bool screen, u8 sprite, s16 animframe){
 
 
 
+/*! \fn void PA_StartSpriteAnimEx(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)
+    \brief
+         \~english Start a sprite animation. Once started, it continues on and on by itself until you stop it !
+         \~french Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	 
+    \param firstframe
+         \~english First frame of the animation sequence, most of the time 0...
+         \~french Premières image de l'animation, généralement 0....
+    \param lastframe
+         \~english Last frame to be displayed. When it gets there, it loops back to the first frame
+         \~french Dernière image à afficher. Une fois atteinte, ca retourne à la première
+    \param speed
+         \~english Speed, in frames per second. So speed 1 would mean 1 image per second, so 1 image every game frame
+         \~french Vitesse, en frames par seconde (fps). 1 signifie donc 1 image par seconde... 
+    \param type
+         \~english Defines how you want it to loop. ANIM_LOOP (0) for a normal loop, ANIM_UPDOWN (1) for back and forth animation.
+         \~french Défini de quelle manière on veut boucler. ANIM_LOOP (0) pour normal, et ANIM_UPDOWN (1) pour d'avant en arrière
+    \param ncycles
+         \~english Number of animation cycles before stopping. If using ANIM_UPDOWN, it takes 2 cycles to come back to the original image
+         \~french Nombres de cycles d'animations avant l'arrêt. Si on utilise ANIM_UPDOWN, il faut 2 cycles pour que l'animation revienne à l'image de base
+*/
+void PA_StartSpriteAnimEx(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles);
 
-/*! \fn void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)
+
+
+
+/*! \fn extern inline void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)
     \brief
          \~english Start a sprite animation. Once started, it continues on and on by itself until you stop it !
          \~french Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !
@@ -1185,7 +1226,10 @@ extern inline void PA_SetSpriteAnim(bool screen, u8 sprite, s16 animframe){
          \~english Speed, in frames per second. So speed 1 would mean 1 image per second, so 1 image every game frame
          \~french Vitesse, en frames par seconde (fps). 1 signifie donc 1 image par seconde... 
 */
-void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed);
+extern inline void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed){
+	PA_StartSpriteAnimEx(screen, sprite, firstframe, lastframe, speed, ANIM_INFINITE);
+}
+
 
 
 

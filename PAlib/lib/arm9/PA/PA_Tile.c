@@ -26,6 +26,9 @@ u8 charsetstart[2] = {8, 8};
 
 void PA_ResetBgSys(void) {
 u8 i, j;
+
+	PA_SetVideoMode(0, 0);	PA_SetVideoMode(1, 0);
+
 	for (i = 0; i < 4; i++){
 		PA_DeleteBg(0, i);
 		PA_DeleteBg(1, i);
@@ -416,7 +419,10 @@ scrollpos[screen][bg_select].lx = lx << 3; // Tailles en pixels...
 scrollpos[screen][bg_select].ly = ly << 3;	
 
 if (lx > 62) scrollpos[screen][bg_select].maxx = 62;
-else scrollpos[screen][bg_select].maxx = lx; // pas de scrolling infini en largeur necessaire...
+else {
+	scrollpos[screen][bg_select].maxx = lx; // pas de scrolling infini en largeur necessaire...
+	if(scrollpos[screen][bg_select].maxx<42) scrollpos[screen][bg_select].maxx = 42;
+}
 
 
 scrollpos[screen][bg_select].bg_map = (u16*)bg_map;	

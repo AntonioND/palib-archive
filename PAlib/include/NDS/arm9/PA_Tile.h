@@ -1164,6 +1164,24 @@ _REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(mapchar[scr
 PA_BGScrollXY(screen, bg_select, 0, 0);	
 }
 
+
+/*! \fn extern inline void PA_ClearBg(bool screen, u8 bg_select)
+    \brief
+         \~english Erase a given background (just the tilemap)
+         \~french Effacer un fond donné (juste la map)
+    \param screen
+         \~english Choose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_select
+         \~english Background...
+         \~french Fond...	 
+*/
+extern inline void PA_ClearBg(bool screen, u8 bg_select){
+u8 i, j;
+for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_select, i, j, 0);
+}
+
+
 /** @} */ // end of Backgrounds
 
 

@@ -1,0 +1,13 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+No palette name found for file Rot.PNG, the palette Rot will be given to him...
+Transparent Color : Black
+
+1 backgrounds :
+  Rot : RotBg, 256x256, Pal : Rot_Pal, 16 tiles -> Rot_Tiles and Rot_Map
+
+1 palettes :
+  Rot_Pal, 17 colors
+
+Finished !

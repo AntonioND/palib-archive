@@ -11,6 +11,8 @@
 
 
 
+void PA_Test(bool screen, u8 bg_select, s32 y);
+
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -18,15 +20,15 @@ int main(int argc, char ** argv)
 	PA_Init();    // Initializes PA_Lib
 	PA_InitVBL(); // Initializes a standard VBL
 	
-	//PA_LoadSplash();  // PA_Lib splash screen
-	
 	// Load on both screens at once...
 	PA_DualLoadPAGfxLargeBg(3, //background number (0-3)
-						Large); // Name
+						zelda); // Name
 
 	// Next we'll scroll, here are the variables...
 	s32 scrollx = 0; 
 	s32 scrolly = 0;
+
+	
 	
 	// Infinite loop to keep the program running
 while (1)
@@ -39,8 +41,61 @@ while (1)
 	PA_DualLargeScrollXY(3, // background number
 						scrollx, // X scroll
 						scrolly); // and Y scroll
+
 	PA_WaitForVBL();
 }
 	
 	return 0;
 } // End of main()
+
+
+
+
+
+
+
+/*
+void PA_Test(bool screen, u8 bg_select, s32 y){
+s32 i, j, lx, ly, tiley, tempx, tempy;
+lx = scrollpos[screen][bg_select].lx;
+ly = scrollpos[screen][bg_select].ly;
+if (y < 0) y = 0;
+if (y >= ly-192) y = ly-192;
+
+lx = lx >> 3;
+ly = ly >> 3;
+
+PA_BGScrollY(screen,bg_select,y&255);
+
+tempx = scrollpos[screen][bg_select].scrollx >> 3;
+tempy = scrollpos[screen][bg_select].scrolly >> 3;
+
+
+if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca passe en hard !
+// Verticalement
+// Dans un sens...
+    while (y - scrollpos[screen][bg_select].scrolly >= 8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
+        scrollpos[screen][bg_select].scrolly += 8; // On a décalé de la taille d'un tile...
+		tempy = scrollpos[screen][bg_select].scrolly >> 3;
+		// On fait le decallage en copiant tout comme il faut
+		j = (tempy+26)&31;
+		tiley = tempy+26;
+		for (i = -2; i < scrollpos[screen][bg_select].maxx-10; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[(tempx + i) + (tiley * lx)]);
+	}
+// Et dans l'autre
+    while (y - scrollpos[screen][bg_select].scrolly <= -8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
+        scrollpos[screen][bg_select].scrolly -= 8; // On a décalé de la taille d'un tile...
+		tempy = scrollpos[screen][bg_select].scrolly >> 3;
+		// On fait le decallage en copiant tout comme il faut
+		j = (tempy-2)&31;
+		tiley = tempy-2;
+		for (i = -2; i < scrollpos[screen][bg_select].maxx-10; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[(tempx + i) + (tiley * lx)]);
+	}
+}	
+
+}
+
+*/
+
+
+

@@ -469,8 +469,18 @@ extern inline u32 PA_SimpleBoxText(bool screen, const char *text, u32 limit){
 return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
 }
 
-
-
+/*! \fn extern inline void PA_ClearTextBg(bool screen)
+    \brief
+         \~english Erase all the text on a given screen
+         \~french Effacer tout le texte sur un écran donné
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+*/
+extern inline void PA_ClearTextBg(bool screen){
+u8 i, j;
+for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, PAbgtext[screen], i, j, 0);
+}
 
 
 
