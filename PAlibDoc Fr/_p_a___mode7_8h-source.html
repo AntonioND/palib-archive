@@ -96,62 +96,72 @@
 00088 
 00103 <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga0">PA_InitMode7</a>(u8 bg_select);
 00104 
-00105 
-<a name="l00115"></a><a class="code" href="group___mode7.html#ga1">00115</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga1">PA_Mode7Angle</a>(s16 angle){
-00116     mode7alpha = angle&amp;511;
-00117        mode7cos = <a class="code" href="group___math.html#ga10">PA_Cos</a>(mode7alpha);
-00118        mode7sin = <a class="code" href="group___math.html#ga11">PA_Sin</a>(mode7alpha);
-00119 }
-00120 
-00121 
-00122 
-<a name="l00132"></a><a class="code" href="group___mode7.html#ga2">00132</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga2">PA_Mode7MoveLeftRight</a>(s16 x_deplac){
-00133               mode7cam_x += x_deplac*mode7cos;
-00134               mode7cam_z += x_deplac*mode7sin;
-00135 }
-00136 
-00137 
-<a name="l00147"></a><a class="code" href="group___mode7.html#ga3">00147</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga3">PA_Mode7MoveForwardBack</a>(s16 z_deplac){
-00148               mode7cam_x += z_deplac*mode7sin;
-00149               mode7cam_z -= z_deplac*mode7cos;
-00150 }
-00151 
-00152 
-00153 
-<a name="l00163"></a><a class="code" href="group___mode7.html#ga4">00163</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga4">PA_Mode7X</a>(s16 mode7x){
-00164               mode7cam_x = mode7x;
-00165 }
-00166 
-00167 
-<a name="l00177"></a><a class="code" href="group___mode7.html#ga5">00177</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga5">PA_Mode7Z</a>(s16 mode7z){
-00178               mode7cam_z = mode7z;
-00179 }
-00180 
-00181 
-00182 
-<a name="l00194"></a><a class="code" href="group___mode7.html#ga6">00194</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga6">PA_Mode7SetPointXZ</a>(s16 mode7x, s16 mode7z){
-00195               mode7cam_x = mode7x;
-00196               mode7cam_z = mode7z;
-00197 }
-00198 
-00199 
-<a name="l00209"></a><a class="code" href="group___mode7.html#ga7">00209</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga7">PA_Mode7Height</a>(s16 mode7y){
-00210               mode7cam_y = mode7y;
-00211 }
-00212 
-00213 
-00214  <span class="comment">// end of Mode7</span>
-00216 
-00217 
-00218 
-00219 <span class="keywordtype">void</span> m7_aff_calc(<span class="keywordtype">void</span>);
-00220 <span class="keywordtype">void</span> m7_hbl_flr(<span class="keywordtype">void</span>);
-00221 <span class="keywordtype">void</span> m7_horz_calc(<span class="keywordtype">void</span>);
-00222 
-00223 <span class="preprocessor">#endif</span>
-00224 <span class="preprocessor"></span>
+<a name="l00110"></a><a class="code" href="group___mode7.html#ga1">00110</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga1">PA_DeInitMode7</a>(<span class="keywordtype">void</span>) {
+00111 
+00112 <a class="code" href="group___interrupts.html#ga2">PA_StopInt</a>(INT_HBLANK);
+00113 
+00114 }
+00115 
+00116 
+<a name="l00126"></a><a class="code" href="group___mode7.html#ga2">00126</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga2">PA_Mode7Angle</a>(s16 angle){
+00127     mode7alpha = angle&amp;511;
+00128        mode7cos = <a class="code" href="group___math.html#ga10">PA_Cos</a>(mode7alpha);
+00129        mode7sin = <a class="code" href="group___math.html#ga11">PA_Sin</a>(mode7alpha);
+00130 }
+00131 
+00132 
+00133 
+<a name="l00143"></a><a class="code" href="group___mode7.html#ga3">00143</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga3">PA_Mode7MoveLeftRight</a>(s16 x_deplac){
+00144               mode7cam_x += x_deplac*mode7cos;
+00145               mode7cam_z += x_deplac*mode7sin;
+00146 }
+00147 
+00148 
+<a name="l00158"></a><a class="code" href="group___mode7.html#ga4">00158</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga4">PA_Mode7MoveForwardBack</a>(s16 z_deplac){
+00159               mode7cam_x += z_deplac*mode7sin;
+00160               mode7cam_z -= z_deplac*mode7cos;
+00161 }
+00162 
+00163 
+00164 
+<a name="l00174"></a><a class="code" href="group___mode7.html#ga5">00174</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga5">PA_Mode7X</a>(s16 mode7x){
+00175               mode7cam_x = mode7x;
+00176 }
+00177 
+00178 
+<a name="l00188"></a><a class="code" href="group___mode7.html#ga6">00188</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga6">PA_Mode7Z</a>(s16 mode7z){
+00189               mode7cam_z = mode7z;
+00190 }
+00191 
+00192 
+00193 
+<a name="l00205"></a><a class="code" href="group___mode7.html#ga7">00205</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga7">PA_Mode7SetPointXZ</a>(s16 mode7x, s16 mode7z){
+00206               mode7cam_x = mode7x;
+00207               mode7cam_z = mode7z;
+00208 }
+00209 
+00210 
+<a name="l00220"></a><a class="code" href="group___mode7.html#ga8">00220</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___mode7.html#ga8">PA_Mode7Height</a>(s16 mode7y){
+00221               mode7cam_y = mode7y;
+00222 }
+00223 
+00224 
 00225 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Feb 5 18:34:13 2006 pour PAlib par&nbsp;
+00226 
+00227 
+00228 
+00229  <span class="comment">// end of Mode7</span>
+00231 
+00232 
+00233 
+00234 <span class="keywordtype">void</span> m7_aff_calc(<span class="keywordtype">void</span>);
+00235 <span class="keywordtype">void</span> m7_hbl_flr(<span class="keywordtype">void</span>);
+00236 <span class="keywordtype">void</span> m7_horz_calc(<span class="keywordtype">void</span>);
+00237 
+00238 <span class="preprocessor">#endif</span>
+00239 <span class="preprocessor"></span>
+00240 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Thu Feb 9 15:38:26 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

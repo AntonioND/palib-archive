@@ -11,7 +11,7 @@
 TARGET	:=	arm7
 BUILD		:=	build
 SOURCES	:=	.
-INCLUDES	:=	../../include/NDS/arm7 ../../include/nds build
+INCLUDES	:=	../../include/nds/arm7 ../../include/nds build
  
 #---------------------------------------------------------------------------------
 # options for code generation

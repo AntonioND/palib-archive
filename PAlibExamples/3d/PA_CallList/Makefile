@@ -1,9 +1,13 @@
+PROGNAME = PAlib
+OFILES   +=
+ADD_LIBS +=
+
 PATH 		:= $(DEVKITARM)/bin:$(PATH)
 
 ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
 TEXT1 		:= PAlib Demo
 TEXT2 		:= using PAlib
-TEXT3 		:= www.mollusk.tk
+TEXT3 		:= www.palib.com
 ICON 		:= -b $(CURDIR)/../logo.bmp
 LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
 
@@ -22,7 +26,7 @@ endif
 TARGET	:=	$(shell basename $(CURDIR))
 BUILD		:=	build
 SOURCES	:=	gfx source data
-INCLUDES	:=	include build
+INCLUDES	:=	include build data
 
 EXPORT_DIR := /c/ndsexamples/
 #---------------------------------------------------------------------------------
@@ -52,7 +56,6 @@ CFLAGS	+=	$(INCLUDE) -DARM9 -I$(DEVKITPRO)/PAlib/include/nds
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	:=	-g $(ARCH) -mno-fpu -L$(DEVKITPRO)/PAlib/lib
-
 
 
 #---------------------------------------------------------------------------------
@@ -109,7 +112,6 @@ CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
 CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 PCXFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.pcx)))
-TXTFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.txt)))
 BINFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bin)))
 PALFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.pal)))
 RAWFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.raw)))
@@ -119,13 +121,13 @@ MODFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.mod)))
 GIFFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.gif)))
 BMPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bmp)))
  
-export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o) $(TXTFILES:.txt=.o) $(JPEGFILES:.jpg=.o) $(MODFILES:.mod=.o) $(GIFFILES:.gif=.o) $(BMPFILES:.bmp=.o)\
+export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o) $(JPEGFILES:.jpg=.o) $(MODFILES:.mod=.o) $(GIFFILES:.gif=.o) $(BMPFILES:.bmp=.o)\
 					$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
  
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
-					$(foreach dir,$(LIBDIRS),-I$(dir)/include/NDS) \
-					-I$(PAPATH)/include/NDS\
+					$(foreach dir,$(LIBDIRS),-I$(dir)/include/nds) \
+					-I$(PAPATH)/include/nds\
 					-I$(CURDIR)/$(BUILD)
  
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
@@ -166,13 +168,13 @@ $(OUTPUT).elf	:	$(OFILES)
 #---------------------------------------------------------------------------------
 %.ds.gba: %.nds
 	@echo built ... $(notdir $@)
-	@dsbuild $<  
+	@dsbuild $< 
+	@cp $(CURDIR)/../$(notdir $@) ../$(notdir $(OUTPUT)).sc.nds 
 
 #---------------------------------------------------------------------------------
 %.nds: %.bin
 	
 	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(LOGO) $(ICON) "$(TEXT1);$(TEXT2);$(TEXT3)"
-
 
 
 #---------------------------------------------------------------------------------
@@ -221,11 +223,6 @@ define bin2o
 	echo "extern const u32" $(*)_size[]";" >> $(*).h
 	rm $(*).tmp
 endef
-#---------------------------------------------------------------------------------
-%.o	:	%.txt
-#---------------------------------------------------------------------------------
-	@echo $(notdir $<)
-	@$(bin2o)
  
 #---------------------------------------------------------------------------------
 %.o	:	%.pcx
@@ -286,6 +283,7 @@ endef
 #---------------------------------------------------------------------------------
 	@echo $(notdir $<)
 	@$(bin2o)
+
  
 -include $(DEPENDS) 
 #---------------------------------------------------------------------------------------

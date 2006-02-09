@@ -36,31 +36,40 @@ void PA_UpdateStylus(void) {
 //bool temp = (((~IPC->buttons) << 6) & (1<<12));
 bool temp = ((~IPC->buttons) >> 6) & 1;
 
+	Stylus.Pressure = (((IPC->touchXpx * IPC->touchZ2) >> 6) / IPC->touchZ1) - (IPC->touchXpx >> 6);
+	//if (Stylus.Pressure > 10) temp = 0; // limit to good pressures
+
+
+	
+	Stylus.Released = ((!temp) & Stylus.Held);
 	Stylus.Newpress = temp & (!Stylus.Held);
-	Stylus.Released = (!temp) & Stylus.Held;
 	Stylus.Held = temp;
 
 	if (Stylus.Held) { // On en met à jour que si on touche l'écran, histoire de pas avoir un truc faussé
 		Stylus.altX =  ((IPC->touchX - 0x0113) / 14);
 		Stylus.altY =  ((IPC->touchY - 0x00E0) / 19);
-		Stylus.X =  IPC->touchXpx;
-		Stylus.Y =  IPC->touchYpx;
-		#ifdef EMUSTYLUS
-			Stylus.X =  Stylus.altX+14;
-			float tempx = Stylus.X * 1.03;
-			Stylus.X = (s16)tempx;
-			if (Stylus.X < 0) Stylus.X = 0;
-			else if (Stylus.X > 255) Stylus.X = 255;
-			
-			Stylus.Y =  Stylus.altY-2;
-			float tempy = Stylus.Y * 1.09;
-			Stylus.Y = (s16)tempy;
-			if (Stylus.Y < 0) Stylus.Y = 0;
-			else if (Stylus.Y > 191) Stylus.Y = 191;
-		#endif
-		
-		Stylus.Pressure = (((Stylus.X * IPC->touchZ2) >> 6) / IPC->touchZ1) - (Stylus.X >> 6);
+	
+		if(Stylus.Newpress){
+			Stylus.X =  IPC->touchXpx;
+			Stylus.Y =  IPC->touchYpx;
+			Stylus.Vx = Stylus.oldVx = 0;
+			Stylus.Vy = Stylus.oldVy = 0;
+		}
+		else if (PA_Distance (Stylus.oldVx, Stylus.oldVy, Stylus.Vx, Stylus.Vy) < 2500){ // Limit speed change
+			Stylus.oldVx = Stylus.Vx;
+			Stylus.oldVy = Stylus.Vy;	
+			Stylus.Vx = IPC->touchXpx - Stylus.X;
+			Stylus.Vy = IPC->touchYpx - Stylus.Y;					
+			Stylus.X = IPC->touchXpx;
+			Stylus.Y = IPC->touchYpx;
+		}
+		else {
+			Stylus.Vx = Stylus.oldVx;
+			Stylus.Vy = Stylus.oldVy;
+		}
 	}
+		
+	
 }
 
 
@@ -110,6 +119,50 @@ if (y >= 220) y -=256; // normalize the X coordinate...
 	}
 	return(0);
 }
+
+
+
+bool PA_MoveSpritePix(u8 sprite){
+
+	if (Stylus.Released) {
+		PA_MovedSprite.Moving = 0;
+	}
+	else{
+		if (Stylus.Held & !PA_MovedSprite.Moving) { // Si nouvelle pression, on regarde si on touche ou pas le truc
+			PA_MovedSprite.NextVx = 0;
+			PA_MovedSprite.NextVx = 0;
+			
+			if ((PA_MoveSpriteType == 0) && PA_SpriteTouchedPix(sprite)){		//New sprite moving !
+				PA_MovedSprite.Moving = 1;
+				PA_MovedSprite.Sprite = sprite;
+				PA_MovedSprite.X = PA_GetSpriteX(PA_Screen, sprite);
+				PA_MovedSprite.Y = PA_GetSpriteY(PA_Screen, sprite);
+				
+			}
+		}	
+		else if ((!Stylus.Newpress) && PA_MovedSprite.Moving && (PA_MovedSprite.Sprite == sprite)) { // Si on peut le déplacer...
+			PA_MovedSprite.Vx = PA_MovedSprite.NextVx;
+			PA_MovedSprite.Vy = PA_MovedSprite.NextVy;			
+			PA_MovedSprite.NextVx = Stylus.Vx;
+			PA_MovedSprite.NextVy = Stylus.Vy;
+
+			PA_MovedSprite.X += Stylus.Vx;
+			PA_MovedSprite.Y += Stylus.Vy;
+			PA_SetSpriteXY(PA_Screen, sprite, PA_MovedSprite.X, PA_MovedSprite.Y);
+			PA_MovedSprite.Time = 0; //Si on passe 2 vbl sans le bouger, on changera de cible
+			return(1); // On a bougé...
+		}
+	}
+	return(0);
+}
+
+
+
+
+
+
+
+
 
 
 /*

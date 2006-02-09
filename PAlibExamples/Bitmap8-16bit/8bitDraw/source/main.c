@@ -21,14 +21,13 @@ int main(int argc, char ** argv)
 	PA_SetBgPalCol(1, 3, PA_RGB(0, 0, 31));
 	PA_SetBgPalCol(1, 4, PA_RGB(0, 31, 0));
 	
-	// Let's not load any backgrounds :p
-	
+
 	// This will initialise an  bit background on each screen. This must be loaded before any other background.
 	// If you need to load this after a backgrounds, you'll have to use PA_ResetBgSys, PA_Init8bit, then reload
 	// your backgrounds...
 	PA_Init8bitBg(0, 3);
 	PA_Init8bitBg(1, 3);
-	
+		
 
 	// Infinite loop to keep the program running
 	while (1)
@@ -36,7 +35,6 @@ int main(int argc, char ** argv)
 		// Simple draw function, draws on the screen...
 		PA_8bitDraw(0, // Screen
 					1);  // Palette color
-		// (The first shooting line on emu is a bug from the emu, I don't have it on DS)	
 					
 		PA_Put8bitPixel(1, Stylus.X, Stylus.Y, 2); // Draws a pixel on the top screen, corresponding to the stylus's position
 

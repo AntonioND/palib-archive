@@ -6,6 +6,4 @@
 // Sprite files : 
 #include "ship.c"
 
-// Background files : 
-
 // Palette files : 

@@ -1,3 +1,33 @@
+PAlib 0.997a
+
+[Doc] Updated
+
+[DeSmuME] Updated, perfect backgrounds and nice sprites !! Forget about dualis ;)
+
+[PAGfx] Sprite optimisation and 16bit fixes
+
+[SpecialFx] Fixed a rare compilation error
+
+[Vham IDE] Removed Dualis support... I tested the latest version and it still doesn't work with my Bg+Sprite tester it seems...
+
+[Linux] NDS/nds fixes... again... thanks Gooler... /me hangs himself
+
+[Linux] Added Gooler's compilation script
+
+[Supercard] Added Akuma's makefile to compile a .sc.nds for supercard users, thanks !
+
+[DualSprites] Added all the animation functions
+
+[SpriteTouched] Speed optimisation
+
+[SpriteTouchedPix] New function, similar to SpriteTouched, but with pixel precision ! Require InitSpriteDraw prior to usage, and is MUCH slower than the normal SpriteTouched function (as you could guess)
+
+[MoveSpritePix] New MoveSprite function, which requires InitSpriteDraw (like TouchedPix), but has pixel-perfect detection, and does not center the sprite on the stylus
+
+[Stylus] Slightly better coordinates (I hope, tried to remove eronous values), and added Stylus.Vx and Stylus.Vy !
+
+
+
 PAlib 0.996a
 
 [Backgrounds] Added PA_ClearBg(screen, bg) and extern inline void PA_ClearTextBg(screen) to clear a given background map

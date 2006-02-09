@@ -8,8 +8,6 @@
 // Sprite files : 
 extern const unsigned short ship_Sprite[4096];  // 16bit sprite
 
-// Background files : 
-
 // Palette files : 
 
 #endif

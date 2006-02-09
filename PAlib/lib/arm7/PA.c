@@ -72,9 +72,9 @@ void PA_UpdateStylus(void){
     IPC->touchY    = tempPos.y;
     IPC->touchXpx  = tempPos.px;
     IPC->touchYpx  = tempPos.py;	
-
-	//return touchPos;
-
+	
+	IPC->touchZ1 = touchRead(TSC_MEASURE_Z1);
+	IPC->touchZ2 = touchRead(TSC_MEASURE_Z2);
 }
 
 

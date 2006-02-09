@@ -12,10 +12,10 @@ int main(void){
 	
 	// No palettes !
 	
-	PA_Create16bitSprite(1, // Screen
+	PA_Create16bitSprite(0, // Screen
 						0,	// Sprite number
 						(void*)ship_Sprite, // image to load, 128 pixels wide !
-						OBJ_SIZE_64X64, // sprite size
+						OBJ_SIZE_32X32, // sprite size
 						0, // x
 						50);	//y
 
