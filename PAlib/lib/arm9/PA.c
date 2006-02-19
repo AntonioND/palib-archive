@@ -43,6 +43,7 @@ extern "C" {
 
 #include "PA/jpeg.c"
 
+#include "PA/PA_FAT.c"
 
 #define VAR_IN_EXRAM __attribute__ ((section (".ewram")))
 TransferSound snd;

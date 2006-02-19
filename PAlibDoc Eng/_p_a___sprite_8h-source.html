@@ -11,517 +11,574 @@
 00003 <span class="preprocessor"></span>
 00004 
 00005 
-00012 <span class="comment">//#include "../PA.h"</span>
+00012 <span class="comment">//#include &lt;PA9.h&gt;</span>
 00013 
 00014 
-00015 <span class="preprocessor">#define EWRAM_DATA   __attribute__((section(".ewram")))</span>
-00016 <span class="preprocessor"></span><span class="preprocessor">#define EWRAM_BSS    __attribute__((section(".sbss")))</span>
-00017 <span class="preprocessor"></span><span class="preprocessor">#define PA_Cos(angle) PA_SIN[((angle) + 128)&amp;511]</span>
-00018 <span class="preprocessor"></span><span class="preprocessor">#define PA_Sin(angle) PA_SIN[((angle))&amp;511]</span>
-00019 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="keyword">const</span> s16 PA_SIN[512]; 
-00020 
-00021 <span class="preprocessor">#define MAX_DRAW 16  // Maximum 16 sprites dessinables...</span>
-00022 <span class="preprocessor"></span>
-00023 
-00025 <span class="comment">// Système de sprites</span>
-00027 <span class="comment"></span>
-00028 
-00029 <span class="preprocessor">#define OBJ_SIZE_8X8      0,0</span>
-00030 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_16X16    0,1</span>
-00031 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_32X32    0,2</span>
-00032 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_64X64    0,3</span>
-00033 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_16X8     1,0</span>
-00034 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_32X8     1,1</span>
-00035 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_32X16    1,2</span>
-00036 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_64X32    1,3</span>
-00037 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_8X16     2,0</span>
-00038 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_8X32     2,1</span>
-00039 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_16X32    2,2</span>
-00040 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_32X64    2,3</span>
-00041 <span class="preprocessor"></span>
-00042 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-00043        u8 lx, ly;
-00044 } PA_sizes;
-00045 
-00046 <span class="keyword">extern</span> <span class="keyword">const</span> PA_sizes PA_size[3][4];
-00047 
+00015 
+00016 <span class="preprocessor">#define EWRAM_DATA   __attribute__((section(".ewram")))</span>
+00017 <span class="preprocessor"></span><span class="preprocessor">#define EWRAM_BSS    __attribute__((section(".sbss")))</span>
+00018 <span class="preprocessor"></span><span class="preprocessor">#define PA_Cos(angle) PA_SIN[((angle) + 128)&amp;511]</span>
+00019 <span class="preprocessor"></span><span class="preprocessor">#define PA_Sin(angle) PA_SIN[((angle))&amp;511]</span>
+00020 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="keyword">const</span> s16 PA_SIN[512]; 
+00021 
+00022 <span class="preprocessor">#define MAX_DRAW 16  // Maximum 16 sprites dessinables...</span>
+00023 <span class="preprocessor"></span>
+00024 
+00026 <span class="comment">// Système de sprites</span>
+00028 <span class="comment"></span>
+00029 
+00030 <span class="preprocessor">#define OBJ_SIZE_8X8      0,0</span>
+00031 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_16X16    0,1</span>
+00032 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_32X32    0,2</span>
+00033 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_64X64    0,3</span>
+00034 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_16X8     1,0</span>
+00035 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_32X8     1,1</span>
+00036 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_32X16    1,2</span>
+00037 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_64X32    1,3</span>
+00038 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_8X16     2,0</span>
+00039 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_8X32     2,1</span>
+00040 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_16X32    2,2</span>
+00041 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_SIZE_32X64    2,3</span>
+00042 <span class="preprocessor"></span>
+00043 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00044        u8 lx, ly;
+00045 } PA_sizes;
+00046 
+00047 <span class="keyword">extern</span> <span class="keyword">const</span> PA_sizes PA_size[3][4];
 00048 
-00049 <span class="preprocessor">#define BITS_16 65535</span>
-00050 <span class="preprocessor"></span><span class="preprocessor">#define ALL_BUT(ATR) (BITS_16 - ATR)</span>
-00051 <span class="preprocessor"></span>
-00052 <span class="preprocessor">#define OBJ_X 511 //511, debugging...</span>
-00053 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_Y 255</span>
-00054 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_ROT 256</span>
-00055 <span class="preprocessor"></span><span class="preprocessor">#define ALL_BUT_ROTSET 49663  // Numéro du rotset</span>
-00056 <span class="preprocessor"></span><span class="preprocessor">#define ALL_BUT_PAL 4095</span>
-00057 <span class="preprocessor"></span>
-00058 <span class="preprocessor">#define DBLSIZE 512</span>
-00059 <span class="preprocessor"></span><span class="preprocessor">#define N_COLORS (1 &lt;&lt; 13)</span>
-00060 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_MODE 3072</span>
-00061 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_MOSAIC 4096</span>
-00062 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_HFLIP 4096</span>
-00063 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_VFLIP 8192</span>
-00064 <span class="preprocessor"></span>
-00065 <span class="preprocessor">#define OBJ_GFX 1023</span>
-00066 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_PRIO 3072</span>
-00067 <span class="preprocessor"></span>
-00068 <span class="preprocessor">#define COLORS_256 1</span>
-00069 <span class="preprocessor"></span><span class="preprocessor">#define COLORS_16 0</span>
-00070 <span class="preprocessor"></span>
-00071 
+00049 
+00050 <span class="preprocessor">#define BITS_16 65535</span>
+00051 <span class="preprocessor"></span><span class="preprocessor">#define ALL_BUT(ATR) (BITS_16 - ATR)</span>
+00052 <span class="preprocessor"></span>
+00053 <span class="preprocessor">#define OBJ_X 511 //511, debugging...</span>
+00054 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_Y 255</span>
+00055 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_ROT 256</span>
+00056 <span class="preprocessor"></span><span class="preprocessor">#define ALL_BUT_ROTSET 49663  // Numéro du rotset</span>
+00057 <span class="preprocessor"></span><span class="preprocessor">#define ALL_BUT_PAL 4095</span>
+00058 <span class="preprocessor"></span>
+00059 <span class="preprocessor">#define DBLSIZE 512</span>
+00060 <span class="preprocessor"></span><span class="preprocessor">#define N_COLORS (1 &lt;&lt; 13)</span>
+00061 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_MODE 3072</span>
+00062 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_MOSAIC 4096</span>
+00063 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_HFLIP 4096</span>
+00064 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_VFLIP 8192</span>
+00065 <span class="preprocessor"></span>
+00066 <span class="preprocessor">#define OBJ_GFX 1023</span>
+00067 <span class="preprocessor"></span><span class="preprocessor">#define OBJ_PRIO 3072</span>
+00068 <span class="preprocessor"></span>
+00069 <span class="preprocessor">#define COLORS_256 1</span>
+00070 <span class="preprocessor"></span><span class="preprocessor">#define COLORS_16 0</span>
+00071 <span class="preprocessor"></span>
 00072 
-00073 <span class="preprocessor">#define MEM_DECAL 5</span>
-00074 <span class="preprocessor"></span><span class="preprocessor">#define NUMBER_DECAL 7</span>
-00075 <span class="preprocessor"></span>
-00076 
+00073 
+00074 <span class="preprocessor">#define MEM_DECAL 5</span>
+00075 <span class="preprocessor"></span><span class="preprocessor">#define NUMBER_DECAL 7</span>
+00076 <span class="preprocessor"></span>
 00077 
-00078 <span class="comment">// Mémoire gfx</span>
-00079 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-00080    u16 mem_block;  <span class="comment">// Emplacement en mémoire, de 0 à 1023</span>
-00081    u16 free; <span class="comment">// Doonées libres en ce point</span>
-00082 } mem_usage;
-00083 
-00084 <span class="keyword">extern</span> u16 n_free_mem[2]; <span class="comment">// nombre d'emplacements libres</span>
-00085 <span class="keyword">extern</span> u8 used_mem[2][1024]; <span class="comment">// Note la quantité de mémoire utilisée en chaque point de la mémoire pour pouvoir effacer les gfx...</span>
-00086 <span class="keyword">extern</span> u8 obj_per_gfx[2][1024]; <span class="comment">// Nombre de sprites utilisant un gfx donné...</span>
-00087 <span class="keyword">extern</span> mem_usage free_mem[2][1024];
-00088 
-00089 <span class="keyword">extern</span> u16 FirstGfx[2];
-00090 
-00091 <span class="keyword">extern</span> <span class="keyword">const</span> u16 PA_obj_sizes[4][3];
-00092 
-00093 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-00094    u16 atr0, atr1, atr2, atr3;
-00095 }obj_inf;
-00096 <span class="keyword">extern</span> obj_inf PA_obj[2][128];  <span class="comment">// Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...</span>
-00097 
+00078 
+00079 <span class="comment">// Mémoire gfx</span>
+00080 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00081    u16 mem_block;  <span class="comment">// Emplacement en mémoire, de 0 à 1023</span>
+00082    u16 free; <span class="comment">// Doonées libres en ce point</span>
+00083 } mem_usage;
+00084 
+00085 <span class="keyword">extern</span> u16 n_free_mem[2]; <span class="comment">// nombre d'emplacements libres</span>
+00086 <span class="keyword">extern</span> u8 used_mem[2][1024]; <span class="comment">// Note la quantité de mémoire utilisée en chaque point de la mémoire pour pouvoir effacer les gfx...</span>
+00087 <span class="keyword">extern</span> u8 obj_per_gfx[2][1024]; <span class="comment">// Nombre de sprites utilisant un gfx donné...</span>
+00088 <span class="keyword">extern</span> mem_usage free_mem[2][1024];
+00089 
+00090 <span class="keyword">extern</span> u16 FirstGfx[2];
+00091 
+00092 <span class="keyword">extern</span> <span class="keyword">const</span> u16 PA_obj_sizes[4][3];
+00093 
+00094 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00095    u16 atr0, atr1, atr2, atr3;
+00096 }obj_inf;
+00097 <span class="keyword">extern</span> obj_inf PA_obj[2][128];  <span class="comment">// Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...</span>
 00098 
-00099 <span class="comment">// Infos pour dessiner sur les sprites</span>
-00100 <span class="comment">/*</span>
-00101 <span class="comment">typedef struct {</span>
-00102 <span class="comment">       bool screen; // Ecran</span>
-00103 <span class="comment">       u8 sprite;           // Numéro du sprite</span>
-00104 <span class="comment">       bool wasdrawing; // Si on dessinait dessus ou pas avant</span>
-00105 <span class="comment">       s8 x, y;  // Position x et y d'avant</span>
-00106 <span class="comment">       u8 hsize, vsize; // Tailles</span>
-00107 <span class="comment">       u8 n_colors; // Nombre de couleurs</span>
-00108 <span class="comment">       u8 drawsize;</span>
-00109 <span class="comment">       u32 *gfxpointer; // Pour dessiner à l'écran directement</span>
-00110 <span class="comment">} PA_DrawSprites;</span>
-00111 <span class="comment">*/</span>
-00112 
-00113 
-00114 <span class="comment">//extern PA_DrawSprites PA_DrawSprite[MAX_DRAW];</span>
+00099 <span class="keyword">extern</span> u8 PA_SpritePrio[2][128]; <span class="comment">// Set the sprite priorities...</span>
+00100 
+00101 <span class="comment">// Infos pour dessiner sur les sprites</span>
+00102 <span class="comment">/*</span>
+00103 <span class="comment">typedef struct {</span>
+00104 <span class="comment">       bool screen; // Ecran</span>
+00105 <span class="comment">       u8 sprite;           // Numéro du sprite</span>
+00106 <span class="comment">       bool wasdrawing; // Si on dessinait dessus ou pas avant</span>
+00107 <span class="comment">       s8 x, y;  // Position x et y d'avant</span>
+00108 <span class="comment">       u8 hsize, vsize; // Tailles</span>
+00109 <span class="comment">       u8 n_colors; // Nombre de couleurs</span>
+00110 <span class="comment">       u8 drawsize;</span>
+00111 <span class="comment">       u32 *gfxpointer; // Pour dessiner à l'écran directement</span>
+00112 <span class="comment">} PA_DrawSprites;</span>
+00113 <span class="comment">*/</span>
+00114 
 00115 
-00116 <span class="comment">// Pour le dessin sur sprite</span>
-00117 <span class="keyword">extern</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *PA_SpriteBuffer[MAX_DRAW]; <span class="comment">// Pointeurs vers les buffers  que l'on créera à la volée</span>
-00118 
-00119 <span class="keyword">extern</span> u16 *PA_SpriteAnimP[2][1024];
+00116 <span class="comment">//extern PA_DrawSprites PA_DrawSprite[MAX_DRAW];</span>
+00117 
+00118 <span class="comment">// Pour le dessin sur sprite</span>
+00119 <span class="keyword">extern</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *PA_SpriteBuffer[MAX_DRAW]; <span class="comment">// Pointeurs vers les buffers  que l'on créera à la volée</span>
 00120 
-00121 
-00122 <span class="preprocessor">#define ANIM_LOOP 0 // loop around</span>
-00123 <span class="preprocessor"></span><span class="preprocessor">#define ANIM_UPDOWN 1 // back and forth animation</span>
-00124 <span class="preprocessor"></span>
-00125 <span class="preprocessor">#define ANIM_ONESHOT ANIM_LOOP, 1</span>
-00126 <span class="preprocessor"></span><span class="preprocessor">#define ANIM_INFINITE ANIM_LOOP, -1</span>
-00127 <span class="preprocessor"></span>
-00128 
-00129 
-00130 <span class="keyword">extern</span> s16 nspriteanims; <span class="comment">// Number of animated sprites currently...</span>
-00131 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00132        s32 firstframe, lastframe, currentframe; <span class="comment">// frames...</span>
-00133        s8 framechange; <span class="comment">// 1 by default, -1 to go back...</span>
-00134        s32 time; <span class="comment">// Time...</span>
-00135        u8 lx, ly; <span class="comment">// Sprite sizes</span>
-00136        <span class="keywordtype">bool</span> colors; 
-00137        s16 speed;
-00138        <span class="keywordtype">bool</span> play;
-00139        u16 *gfx; <span class="comment">// gfx pointer</span>
-00140        u8 type;
-00141        s32 ncycles;
-00142 } spriteanim;
-00143 <span class="keyword">extern</span> spriteanim spriteanims[2][128]; <span class="comment">// Init the array on PAlib init...</span>
-00144 
-00145 <span class="comment">//#define spriteanimsize 40</span>
+00121 <span class="keyword">extern</span> u16 *PA_SpriteAnimP[2][1024];
+00122 
+00123 
+00124 <span class="preprocessor">#define ANIM_LOOP 0 // loop around</span>
+00125 <span class="preprocessor"></span><span class="preprocessor">#define ANIM_UPDOWN 1 // back and forth animation</span>
+00126 <span class="preprocessor"></span>
+00127 <span class="preprocessor">#define ANIM_ONESHOT ANIM_LOOP, 1</span>
+00128 <span class="preprocessor"></span><span class="preprocessor">#define ANIM_INFINITE ANIM_LOOP, -1</span>
+00129 <span class="preprocessor"></span>
+00130 
+00131 
+00132 <span class="keyword">extern</span> s16 nspriteanims; <span class="comment">// Number of animated sprites currently...</span>
+00133 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00134        s32 firstframe, lastframe, currentframe; <span class="comment">// frames...</span>
+00135        s8 framechange; <span class="comment">// 1 by default, -1 to go back...</span>
+00136        s32 time; <span class="comment">// Time...</span>
+00137        u8 lx, ly; <span class="comment">// Sprite sizes</span>
+00138        <span class="keywordtype">bool</span> colors; 
+00139        s16 speed;
+00140        <span class="keywordtype">bool</span> play;
+00141        u16 *gfx; <span class="comment">// gfx pointer</span>
+00142        u8 type;
+00143        s32 ncycles;
+00144 } spriteanim;
+00145 <span class="keyword">extern</span> spriteanim spriteanims[2][128]; <span class="comment">// Init the array on PAlib init...</span>
 00146 
-00147 
+00147 <span class="comment">//#define spriteanimsize 40</span>
 00148 
 00149 
 00150 
-00151 
+00151 <span class="keyword">extern</span> <span class="keywordtype">bool</span> PA_SpriteExtPrio;
 00152 
 00153 
 00154 
 00155 
-00156 <span class="preprocessor">#define OAM0 0x07000000</span>
-00157 <span class="preprocessor"></span><span class="preprocessor">#define OAM1 0x07000400</span>
-00158 <span class="preprocessor"></span>
-00159 
-00171 <span class="comment">//#define PA_UpdateOAM() DMA_Copy((void*)PA_obj, (void*)OAM0, 512, DMA_32NOW)</span>
-<a name="l00172"></a><a class="code" href="group___sprite.html#ga30">00172</a> <span class="preprocessor">#define PA_UpdateOAM()s16 i;\</span>
-00173 <span class="preprocessor">       for (i = 0; i &lt; 256; i++) {\</span>
-00174 <span class="preprocessor">              OAM[(i &lt;&lt; 2)] = PA_obj[0][i].atr0;\</span>
-00175 <span class="preprocessor">              OAM[1+(i &lt;&lt; 2)] = PA_obj[0][i].atr1;\</span>
-00176 <span class="preprocessor">              OAM[2+(i &lt;&lt; 2)] = PA_obj[0][i].atr2;\</span>
-00177 <span class="preprocessor">              OAM[3+(i &lt;&lt; 2)] = PA_obj[0][i].atr3;}</span>
-00178 <span class="preprocessor"></span>
-00179 
-<a name="l00185"></a><a class="code" href="group___sprite.html#ga31">00185</a> <span class="preprocessor">#define PA_UpdateOAM0() DMA_Copy((void*)PA_obj, (void*)OAM0, 256, DMA_32NOW)</span>
-00186 <span class="preprocessor"></span>
-<a name="l00192"></a><a class="code" href="group___sprite.html#ga32">00192</a> <span class="preprocessor">#define PA_UpdateOAM1() DMA_Copy((void*)PA_obj + 256, (void*)OAM1, 256, DMA_32NOW)</span>
-00193 <span class="preprocessor"></span>
-00194 
-00216 u16 <a class="code" href="group___sprite.html#ga0">PA_CreateGfx</a>(<span class="keywordtype">bool</span> screen, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode);
-00217 
-00223 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga1">PA_ResetSpriteSys</a>(<span class="keywordtype">void</span>);
-00224 
-00225 
-00226 
-<a name="l00259"></a><a class="code" href="group___sprite.html#ga2">00259</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga2">PA_CreateSprite</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
-00260    PA_obj[screen][obj_number].atr2 = <a class="code" href="group___sprite.html#ga0">PA_CreateGfx</a>(screen, obj_data, obj_shape, obj_size, color_mode) + (palette &lt;&lt; 12);
-00261    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (color_mode &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
-00262    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (obj_size &lt;&lt; 14);
-00263 };
+00156 
+00157 
+00158 <span class="preprocessor">#define OAM0 0x07000000</span>
+00159 <span class="preprocessor"></span><span class="preprocessor">#define OAM1 0x07000400</span>
+00160 <span class="preprocessor"></span>
+00161 
+<a name="l00174"></a><a class="code" href="group___sprite.html#ga36">00174</a> <span class="preprocessor">#define PA_UpdateOAM0() DMA_Copy((void*)PA_obj, (void*)OAM0, 256, DMA_32NOW)</span>
+00175 <span class="preprocessor"></span>
+<a name="l00181"></a><a class="code" href="group___sprite.html#ga37">00181</a> <span class="preprocessor">#define PA_UpdateOAM1() DMA_Copy((void*)PA_obj + 256, (void*)OAM1, 256, DMA_32NOW)</span>
+00182 <span class="preprocessor"></span>
+00183 
+00184 
+00185 
+00186 
+00187 
+00194 <span class="comment">//#define PA_UpdateOAM() DMA_Copy((void*)PA_obj, (void*)OAM0, 512, DMA_32NOW)</span>
+<a name="l00195"></a><a class="code" href="group___sprite.html#ga0">00195</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga0">PA_UpdateOAM</a>(<span class="keywordtype">void</span>){
+00196 <span class="comment">// Update OAM</span>
+00197 <a class="code" href="group___sprite.html#ga36">PA_UpdateOAM0</a>();
+00198 <a class="code" href="group___sprite.html#ga37">PA_UpdateOAM1</a>();
+00199 
+00200 <span class="keywordflow">if</span> (PA_SpriteExtPrio){ <span class="comment">// Use the extended priorities</span>
+00201        s8 next[2][128];
+00202        s8 first[2][256]; <span class="comment">// Sprite at given priority...</span>
+00203        
+00204        u16 i, screen;
+00205        u16 value = 0;
+00206        s8 sprite;
+00207 
+00208        <span class="keywordflow">for</span> (i = 0; i &lt; 256; i++) first[0][i] = first[1][i] = -1;
+00209        <span class="keywordflow">for</span> (i = 0; i &lt; 128; i++){ <span class="comment">// sort</span>
+00210               next[0][i] = first[0][PA_SpritePrio[0][i]];
+00211               first[0][PA_SpritePrio[0][i]] = i;
+00212               next[1][i] = first[1][PA_SpritePrio[1][i]];
+00213               first[1][PA_SpritePrio[1][i]] = i;        
+00214        }
+00215        <span class="keywordflow">for</span> (screen = 0; screen &lt; 2; screen++){
+00216               value = screen &lt;&lt; 9; <span class="comment">// 512 start for the top screen</span>
+00217               <span class="keywordflow">for</span> (i = 0; i &lt; 256; i++){ <span class="comment">// copy</span>
+00218                      sprite = first[screen][i];
+00219                      <span class="keywordflow">while</span>(sprite != -1){
+00220                             <span class="comment">//PA_OutputText(1, value, 0, "%d   ", sprite);</span>
+00221                             OAM[value] = PA_obj[screen][sprite].atr0;
+00222                             OAM[value + 1] = PA_obj[screen][sprite].atr1;
+00223                             OAM[value + 2] = PA_obj[screen][sprite].atr2;
+00224                             value += 4;
+00225                             sprite = next[screen][sprite];
+00226                      }
+00227               }
+00228        }
+00229 }
+00230 
+00231 }
+00232 
+00233 
+00255 u16 <a class="code" href="group___sprite.html#ga1">PA_CreateGfx</a>(<span class="keywordtype">bool</span> screen, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode);
+00256 
+00262 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga2">PA_ResetSpriteSys</a>(<span class="keywordtype">void</span>);
+00263 
 00264 
-<a name="l00315"></a><a class="code" href="group___sprite.html#ga3">00315</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga3">PA_CreateSpriteEx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y) {
-00316    PA_obj[screen][obj_number].atr2 = <a class="code" href="group___sprite.html#ga0">PA_CreateGfx</a>(screen, obj_data, obj_shape, obj_size, color_mode) + (prio &lt;&lt; 10) + (palette &lt;&lt; 12);
-00317    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (dblsize &lt;&lt; 9) + (obj_mode &lt;&lt; 10) + (mosaic &lt;&lt; 12) + ((color_mode) &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
-00318    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (hflip &lt;&lt; 12) + (vflip &lt;&lt; 13) + (obj_size &lt;&lt; 14);
-00319 };
-00320 
-00321 
-00322 
-00323 
-00324 
-<a name="l00366"></a><a class="code" href="group___sprite.html#ga4">00366</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga4">PA_Create16bitSpriteEx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y){
-00367    PA_obj[screen][obj_number].atr2 = <a class="code" href="group___sprite.html#ga0">PA_CreateGfx</a>(screen, obj_data, obj_shape, obj_size, 2) + (prio &lt;&lt; 10) + (15 &lt;&lt; 12);
-00368    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (dblsize &lt;&lt; 9) + (3 &lt;&lt; 10) + (mosaic &lt;&lt; 12) + (0 &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
-00369    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (hflip &lt;&lt; 12) + (vflip &lt;&lt; 13) + (obj_size &lt;&lt; 14);
-00370 }
-00371 
-00372 
-00373 
-<a name="l00400"></a><a class="code" href="group___sprite.html#ga5">00400</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga5">PA_Create16bitSprite</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y){
-00401 <a class="code" href="group___sprite.html#ga4">PA_Create16bitSpriteEx</a>(screen, obj_number, obj_data, obj_shape, obj_size, 0, 0, 0, 0, 0, x, y);
-00402 }
-00403 
-00404 
-00405 
-00406 
-<a name="l00439"></a><a class="code" href="group___sprite.html#ga6">00439</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga6">PA_CreateSpriteFromGfx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
-00440    PA_obj[screen][obj_number].atr2 = obj_gfx + (palette &lt;&lt; 12);
-00441    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (color_mode &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
-00442    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (obj_size &lt;&lt; 14);
-00443    ++obj_per_gfx[screen][obj_gfx];
-00444 };
+00265 
+<a name="l00298"></a><a class="code" href="group___sprite.html#ga3">00298</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga3">PA_CreateSprite</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
+00299    PA_obj[screen][obj_number].atr2 = <a class="code" href="group___sprite.html#ga1">PA_CreateGfx</a>(screen, obj_data, obj_shape, obj_size, color_mode) + (palette &lt;&lt; 12);
+00300    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (color_mode &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
+00301    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (obj_size &lt;&lt; 14);
+00302 };
+00303 
+<a name="l00354"></a><a class="code" href="group___sprite.html#ga4">00354</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga4">PA_CreateSpriteEx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y) {
+00355    PA_obj[screen][obj_number].atr2 = <a class="code" href="group___sprite.html#ga1">PA_CreateGfx</a>(screen, obj_data, obj_shape, obj_size, color_mode) + (prio &lt;&lt; 10) + (palette &lt;&lt; 12);
+00356    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (dblsize &lt;&lt; 9) + (obj_mode &lt;&lt; 10) + (mosaic &lt;&lt; 12) + ((color_mode) &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
+00357    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (hflip &lt;&lt; 12) + (vflip &lt;&lt; 13) + (obj_size &lt;&lt; 14);
+00358 };
+00359 
+00360 
+00361 
+00362 
+00363 
+<a name="l00405"></a><a class="code" href="group___sprite.html#ga5">00405</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga5">PA_Create16bitSpriteEx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y){
+00406    PA_obj[screen][obj_number].atr2 = <a class="code" href="group___sprite.html#ga1">PA_CreateGfx</a>(screen, obj_data, obj_shape, obj_size, 2) + (prio &lt;&lt; 10) + (15 &lt;&lt; 12);
+00407    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (dblsize &lt;&lt; 9) + (3 &lt;&lt; 10) + (mosaic &lt;&lt; 12) + (0 &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
+00408    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (hflip &lt;&lt; 12) + (vflip &lt;&lt; 13) + (obj_size &lt;&lt; 14);
+00409 }
+00410 
+00411 
+00412 
+00413 
+<a name="l00440"></a><a class="code" href="group___sprite.html#ga6">00440</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga6">PA_Create16bitSpriteFromGfx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y){
+00441    PA_obj[screen][obj_number].atr2 = gfx + (15 &lt;&lt; 12);
+00442    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (3 &lt;&lt; 10) + (obj_shape &lt;&lt; 14);
+00443    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (obj_size &lt;&lt; 14);
+00444 }
 00445 
-<a name="l00496"></a><a class="code" href="group___sprite.html#ga7">00496</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga7">PA_CreateSpriteExFromGfx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y) {
-00497    PA_obj[screen][obj_number].atr2 = obj_gfx + (prio &lt;&lt; 10) + (palette &lt;&lt; 12);
-00498    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (dblsize &lt;&lt; 9) + (obj_mode &lt;&lt; 10) + (mosaic &lt;&lt; 12) + (color_mode &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
-00499    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (hflip &lt;&lt; 12) + (vflip &lt;&lt; 13) + (obj_size &lt;&lt; 14);
-00500    ++obj_per_gfx[screen][obj_gfx];
-00501 };
-00502 
-00503 
-<a name="l00518"></a><a class="code" href="group___sprite.html#ga33">00518</a> <span class="preprocessor">#define PA_UpdateSpriteGfx(screen, obj_number, obj_data) PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)</span>
-00519 <span class="preprocessor"></span>
-00534 <span class="preprocessor">#include "<a class="code" href="_p_a___text_8h.html">PA_Text.h</a>"</span>
-00535 <span class="preprocessor">#include "PA_Math.h"</span>
-00536 
-<a name="l00537"></a><a class="code" href="group___sprite.html#ga8">00537</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga8">PA_UpdateGfx</a>(<span class="keywordtype">bool</span> screen, u16 gfx_number, <span class="keywordtype">void</span> *obj_data) {
-00538        DMA_Copy((obj_data), (<span class="keywordtype">void</span>*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) &lt;&lt; NUMBER_DECAL)), (used_mem[screen][gfx_number] &lt;&lt; MEM_DECAL), DMA_32NOW);
-00539 <span class="comment">//     PA_OutputText(1, 25, PA_Rand()&amp;15, "%dgfx   ", gfx_number);</span>
-00540 }
-00541 
-00542 
-<a name="l00558"></a><a class="code" href="group___sprite.html#ga9">00558</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga9">PA_UpdateGfxAndMem</a>(<span class="keywordtype">bool</span> screen, u8 gfx_number, <span class="keywordtype">void</span> *obj_data){
-00559        DMA_Copy((obj_data), (<span class="keywordtype">void</span>*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) &lt;&lt; NUMBER_DECAL)), (used_mem[screen][gfx_number] &lt;&lt; MEM_DECAL), DMA_32NOW);
-00560        PA_SpriteAnimP[screen][gfx_number] = (u16*)obj_data; <span class="comment">// mémorise la source de l'image...</span>
-00561 }
-00562 
-00563 
-00564 
-00565 
-00577 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga10">PA_DeleteGfx</a>(<span class="keywordtype">bool</span> screen, u16 obj_gfx);
+00446 
+00447 
+00448 
+00449 
+<a name="l00476"></a><a class="code" href="group___sprite.html#ga7">00476</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga7">PA_Create16bitSprite</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y){
+00477 <a class="code" href="group___sprite.html#ga5">PA_Create16bitSpriteEx</a>(screen, obj_number, obj_data, obj_shape, obj_size, 0, 0, 0, 0, 0, x, y);
+00478 }
+00479 
+00480 
+00481 
+00482 
+<a name="l00515"></a><a class="code" href="group___sprite.html#ga8">00515</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga8">PA_CreateSpriteFromGfx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
+00516    PA_obj[screen][obj_number].atr2 = obj_gfx + (palette &lt;&lt; 12);
+00517    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (color_mode &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
+00518    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (obj_size &lt;&lt; 14);
+00519    ++obj_per_gfx[screen][obj_gfx];
+00520 };
+00521 
+<a name="l00572"></a><a class="code" href="group___sprite.html#ga9">00572</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga9">PA_CreateSpriteExFromGfx</a>(<span class="keywordtype">bool</span> screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y) {
+00573    PA_obj[screen][obj_number].atr2 = obj_gfx + (prio &lt;&lt; 10) + (palette &lt;&lt; 12);
+00574    PA_obj[screen][obj_number].atr0 = (y&amp;OBJ_Y) + (dblsize &lt;&lt; 9) + (obj_mode &lt;&lt; 10) + (mosaic &lt;&lt; 12) + (color_mode &lt;&lt; 13) + (obj_shape &lt;&lt; 14);
+00575    PA_obj[screen][obj_number].atr1 = (x &amp; OBJ_X) + (hflip &lt;&lt; 12) + (vflip &lt;&lt; 13) + (obj_size &lt;&lt; 14);
+00576    ++obj_per_gfx[screen][obj_gfx];
+00577 };
 00578 
 00579 
-00591 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga11">PA_DeleteSprite</a>(<span class="keywordtype">bool</span> screen, u8 obj_number);
-00592 
-00593 
-<a name="l00609"></a><a class="code" href="group___sprite.html#ga34">00609</a> <span class="preprocessor">#define PA_SetSpriteRotEnable(screen, sprite, rotset) {PA_obj[screen][sprite].atr0 |= OBJ_ROT;  PA_obj[screen][sprite].atr1 = (PA_obj[screen][sprite].atr1 &amp; ALL_BUT_ROTSET) + ((rotset) &lt;&lt; 9);}</span>
-00610 <span class="preprocessor"></span>
-<a name="l00622"></a><a class="code" href="group___sprite.html#ga35">00622</a> <span class="preprocessor">#define PA_SetSpriteRotDisable(screen, sprite) {PA_obj[screen][sprite].atr0 &amp;= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &amp;= ALL_BUT_ROTSET;}</span>
-00623 <span class="preprocessor"></span>
-00624 
-<a name="l00646"></a><a class="code" href="group___sprite.html#ga12">00646</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga12">PA_SetRotset</a>(<span class="keywordtype">bool</span> screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy) {
-00647 u8 obj_num = (rotset &lt;&lt; 2);
-00648        PA_obj[screen][obj_num].atr3 = (<a class="code" href="group___math.html#ga10">PA_Cos</a>(angle) * zoomx) &gt;&gt; 8;
-00649        PA_obj[screen][obj_num + 1].atr3 = (-<a class="code" href="group___math.html#ga11">PA_Sin</a>(angle) * zoomy) &gt;&gt; 8;
-00650        PA_obj[screen][obj_num + 2].atr3 = (<a class="code" href="group___math.html#ga11">PA_Sin</a>(angle) * zoomx) &gt;&gt; 8;
-00651        PA_obj[screen][obj_num + 3].atr3 = (<a class="code" href="group___math.html#ga10">PA_Cos</a>(angle) * zoomy) &gt;&gt; 8;
-00652 }
-00653 
-<a name="l00668"></a><a class="code" href="group___sprite.html#ga13">00668</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga13">PA_SetRotsetNoZoom</a>(<span class="keywordtype">bool</span> screen, u8 rotset, s16 angle)   {
-00669 u8 obj_num = (rotset &lt;&lt; 2);
-00670        PA_obj[screen][obj_num].atr3 = <a class="code" href="group___math.html#ga10">PA_Cos</a>(angle);
-00671        PA_obj[screen][obj_num + 1].atr3 = -<a class="code" href="group___math.html#ga11">PA_Sin</a>(angle);
-00672        PA_obj[screen][obj_num + 2].atr3 = <a class="code" href="group___math.html#ga11">PA_Sin</a>(angle);
-00673        PA_obj[screen][obj_num + 3].atr3 = <a class="code" href="group___math.html#ga10">PA_Cos</a>(angle);
-00674 }
-00675 
-<a name="l00693"></a><a class="code" href="group___sprite.html#ga14">00693</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga14">PA_SetRotsetNoAngle</a>(<span class="keywordtype">bool</span> screen, u8 rotset, u16 zoomx, u16 zoomy) {
-00694 u8 obj_num = (rotset &lt;&lt; 2);
-00695        PA_obj[screen][obj_num].atr3 = zoomx;
-00696        PA_obj[screen][obj_num + 1].atr3 = 0;
-00697        PA_obj[screen][obj_num + 2].atr3 = 0;
-00698        PA_obj[screen][obj_num + 3].atr3 = zoomy;
-00699 }
+<a name="l00594"></a><a class="code" href="group___sprite.html#ga38">00594</a> <span class="preprocessor">#define PA_UpdateSpriteGfx(screen, obj_number, obj_data) PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)</span>
+00595 <span class="preprocessor"></span>
+00610 <span class="preprocessor">#include "<a class="code" href="_p_a___text_8h.html">PA_Text.h</a>"</span>
+00611 <span class="preprocessor">#include "PA_Math.h"</span>
+00612 
+<a name="l00613"></a><a class="code" href="group___sprite.html#ga10">00613</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga10">PA_UpdateGfx</a>(<span class="keywordtype">bool</span> screen, u16 gfx_number, <span class="keywordtype">void</span> *obj_data) {
+00614        DMA_Copy((obj_data), (<span class="keywordtype">void</span>*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) &lt;&lt; NUMBER_DECAL)), (used_mem[screen][gfx_number] &lt;&lt; MEM_DECAL), DMA_32NOW);
+00615 <span class="comment">//     PA_OutputText(1, 25, PA_Rand()&amp;15, "%dgfx   ", gfx_number);</span>
+00616 }
+00617 
+00618 
+<a name="l00634"></a><a class="code" href="group___sprite.html#ga11">00634</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga11">PA_UpdateGfxAndMem</a>(<span class="keywordtype">bool</span> screen, u8 gfx_number, <span class="keywordtype">void</span> *obj_data){
+00635        DMA_Copy((obj_data), (<span class="keywordtype">void</span>*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) &lt;&lt; NUMBER_DECAL)), (used_mem[screen][gfx_number] &lt;&lt; MEM_DECAL), DMA_32NOW);
+00636        PA_SpriteAnimP[screen][gfx_number] = (u16*)obj_data; <span class="comment">// mémorise la source de l'image...</span>
+00637 }
+00638 
+00639 
+00640 
+00641 
+00653 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga12">PA_DeleteGfx</a>(<span class="keywordtype">bool</span> screen, u16 obj_gfx);
+00654 
+00655 
+00667 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga13">PA_DeleteSprite</a>(<span class="keywordtype">bool</span> screen, u8 obj_number);
+00668 
+00669 
+<a name="l00685"></a><a class="code" href="group___sprite.html#ga39">00685</a> <span class="preprocessor">#define PA_SetSpriteRotEnable(screen, sprite, rotset) {PA_obj[screen][sprite].atr0 |= OBJ_ROT;  PA_obj[screen][sprite].atr1 = (PA_obj[screen][sprite].atr1 &amp; ALL_BUT_ROTSET) + ((rotset) &lt;&lt; 9);}</span>
+00686 <span class="preprocessor"></span>
+<a name="l00698"></a><a class="code" href="group___sprite.html#ga40">00698</a> <span class="preprocessor">#define PA_SetSpriteRotDisable(screen, sprite) {PA_obj[screen][sprite].atr0 &amp;= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &amp;= ALL_BUT_ROTSET;}</span>
+00699 <span class="preprocessor"></span>
 00700 
-00701 
-00702 
-00703 
-00704 
-00705 
-00706 
-<a name="l00723"></a><a class="code" href="group___sprite.html#ga36">00723</a> <span class="preprocessor">#define PA_SetSpriteX(screen, obj, x) PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_X)) + ((x) &amp; OBJ_X)</span>
-00724 <span class="preprocessor"></span>
-<a name="l00737"></a><a class="code" href="group___sprite.html#ga37">00737</a> <span class="preprocessor">#define PA_GetSpriteX(screen, obj) (PA_obj[screen][obj].atr1 &amp; (OBJ_X))</span>
-00738 <span class="preprocessor"></span>
-00739 
-<a name="l00754"></a><a class="code" href="group___sprite.html#ga38">00754</a> <span class="preprocessor">#define PA_SetSpriteY(screen, obj, y) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_Y)) + ((y) &amp; OBJ_Y)</span>
-00755 <span class="preprocessor"></span>
-<a name="l00768"></a><a class="code" href="group___sprite.html#ga39">00768</a> <span class="preprocessor">#define PA_GetSpriteY(screen, obj) (PA_obj[screen][obj].atr0 &amp; OBJ_Y)</span>
-00769 <span class="preprocessor"></span>
-00770 
-00771 
-<a name="l00789"></a><a class="code" href="group___sprite.html#ga15">00789</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga15">PA_SetSpriteXY</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 x, s16 y) {
-00790        <a class="code" href="group___sprite.html#ga36">PA_SetSpriteX</a>(screen, sprite, x); 
-00791        <a class="code" href="group___sprite.html#ga38">PA_SetSpriteY</a>(screen, sprite, y);
-00792 }
-00793 
-00794 
-00795 
-<a name="l00810"></a><a class="code" href="group___sprite.html#ga40">00810</a> <span class="preprocessor">#define PA_SetSpritePal(screen, obj, pal) PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT_PAL) + ((pal) &lt;&lt; 12)</span>
-00811 <span class="preprocessor"></span>
-<a name="l00823"></a><a class="code" href="group___sprite.html#ga41">00823</a> <span class="preprocessor">#define PA_GetSpritePal(screen, obj) (PA_obj[screen][obj].atr2 &gt;&gt; 12)</span>
-00824 <span class="preprocessor"></span>
-00825 
-<a name="l00840"></a><a class="code" href="group___sprite.html#ga42">00840</a> <span class="preprocessor">#define PA_SetSpriteDblsize(screen, obj, dblsize) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(DBLSIZE)) + ((dblsize) &lt;&lt; 9)</span>
-00841 <span class="preprocessor"></span>
-<a name="l00853"></a><a class="code" href="group___sprite.html#ga43">00853</a> <span class="preprocessor">#define PA_GetSpriteDblsize(screen, obj) ((PA_obj[screen][obj].atr0 &amp; DBLSIZE) &gt;&gt; 9)</span>
-00854 <span class="preprocessor"></span>
-00855 
-<a name="l00870"></a><a class="code" href="group___sprite.html#ga44">00870</a> <span class="preprocessor">#define PA_SetSpriteColors(screen, sprite, n_colors) PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(N_COLORS)) + ((n_colors) &lt;&lt; 13)</span>
-00871 <span class="preprocessor"></span>
-<a name="l00883"></a><a class="code" href="group___sprite.html#ga45">00883</a> <span class="preprocessor">#define PA_GetSpriteColors(screen, sprite) ((PA_obj[screen][sprite].atr0 &amp; N_COLORS) &gt;&gt; 13)</span>
-00884 <span class="preprocessor"></span>
-00885 
-00886 
-<a name="l00901"></a><a class="code" href="group___sprite.html#ga46">00901</a> <span class="preprocessor">#define PA_SetSpriteMode(screen, sprite, obj_mode) PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(OBJ_MODE)) + ((obj_mode) &lt;&lt; 10)</span>
-00902 <span class="preprocessor"></span>
-<a name="l00914"></a><a class="code" href="group___sprite.html#ga47">00914</a> <span class="preprocessor">#define PA_GetSpriteMode(screen, obj) ((PA_obj[screen][obj].atr0 &amp; OBJ_MODE) &gt;&gt; 10)</span>
-00915 <span class="preprocessor"></span>
-00916 
-<a name="l00931"></a><a class="code" href="group___sprite.html#ga48">00931</a> <span class="preprocessor">#define PA_SetSpriteMosaic(screen, obj, mosaic) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_MOSAIC)) + ((mosaic) &lt;&lt; 12)</span>
-00932 <span class="preprocessor"></span>
-<a name="l00944"></a><a class="code" href="group___sprite.html#ga49">00944</a> <span class="preprocessor">#define PA_GetSpriteMosaic(screen, obj) ((PA_obj[screen][obj].atr0 &amp; OBJ_MOSAIC) &gt;&gt; 12)</span>
-00945 <span class="preprocessor"></span>
-00946 
-00947 
-<a name="l00962"></a><a class="code" href="group___sprite.html#ga50">00962</a> <span class="preprocessor">#define PA_SetSpriteHflip(screen, obj, hflip) PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_HFLIP)) + ((hflip) &lt;&lt; 12)</span>
-00963 <span class="preprocessor"></span>
-<a name="l00975"></a><a class="code" href="group___sprite.html#ga51">00975</a> <span class="preprocessor">#define PA_GetSpriteHflip(screen, obj) ((PA_obj[screen][obj].atr1 &amp; OBJ_HFLIP) &gt;&gt; 12)</span>
-00976 <span class="preprocessor"></span>
-00977 
-<a name="l00992"></a><a class="code" href="group___sprite.html#ga52">00992</a> <span class="preprocessor">#define PA_SetSpriteVflip(screen, obj, vflip) PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_VFLIP)) + ((vflip) &lt;&lt; 13)</span>
-00993 <span class="preprocessor"></span>
-<a name="l01005"></a><a class="code" href="group___sprite.html#ga53">01005</a> <span class="preprocessor">#define PA_GetSpriteVflip(screen, obj) ((PA_obj[screen][obj].atr1 &amp; OBJ_VFLIP) &gt;&gt; 13)</span>
-01006 <span class="preprocessor"></span>
-01007 
-<a name="l01022"></a><a class="code" href="group___sprite.html#ga54">01022</a> <span class="preprocessor">#define PA_SetSpriteGfx(screen, obj, gfx) PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_GFX)) + ((gfx) &amp; OBJ_GFX)</span>
-01023 <span class="preprocessor"></span>
-<a name="l01035"></a><a class="code" href="group___sprite.html#ga55">01035</a> <span class="preprocessor">#define PA_GetSpriteGfx(screen, obj) (PA_obj[screen][obj].atr2 &amp; OBJ_GFX)</span>
-01036 <span class="preprocessor"></span>
-01037 
-01038 
-<a name="l01053"></a><a class="code" href="group___sprite.html#ga56">01053</a> <span class="preprocessor">#define PA_SetSpritePrio(screen, obj, prio) PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_PRIO)) + ((prio) &lt;&lt; 10)</span>
-01054 <span class="preprocessor"></span>
-<a name="l01066"></a><a class="code" href="group___sprite.html#ga57">01066</a> <span class="preprocessor">#define PA_GetSpritePrio(screen, obj) ((PA_obj[screen][obj].atr2 &amp; OBJ_PRIO) &gt;&gt; 10)</span>
-01067 <span class="preprocessor"></span>
-01068 
-<a name="l01080"></a><a class="code" href="group___sprite.html#ga58">01080</a> <span class="preprocessor">#define PA_GetSpriteLx(screen, sprite) PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].lx</span>
-01081 <span class="preprocessor"></span>
-01082 
-<a name="l01094"></a><a class="code" href="group___sprite.html#ga59">01094</a> <span class="preprocessor">#define PA_GetSpriteLy(screen, sprite)PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].ly</span>
-01095 <span class="preprocessor"></span>
-01096 
-<a name="l01111"></a><a class="code" href="group___sprite.html#ga60">01111</a> <span class="preprocessor">#define PA_CloneSprite(screen, obj, target) {PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++obj_per_gfx[screen][PA_GetSpriteGfx(screen, target)];}</span>
+<a name="l00722"></a><a class="code" href="group___sprite.html#ga14">00722</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga14">PA_SetRotset</a>(<span class="keywordtype">bool</span> screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy) {
+00723 u8 obj_num = (rotset &lt;&lt; 2);
+00724        PA_obj[screen][obj_num].atr3 = (<a class="code" href="group___math.html#ga10">PA_Cos</a>(angle) * zoomx) &gt;&gt; 8;
+00725        PA_obj[screen][obj_num + 1].atr3 = (-<a class="code" href="group___math.html#ga11">PA_Sin</a>(angle) * zoomy) &gt;&gt; 8;
+00726        PA_obj[screen][obj_num + 2].atr3 = (<a class="code" href="group___math.html#ga11">PA_Sin</a>(angle) * zoomx) &gt;&gt; 8;
+00727        PA_obj[screen][obj_num + 3].atr3 = (<a class="code" href="group___math.html#ga10">PA_Cos</a>(angle) * zoomy) &gt;&gt; 8;
+00728 }
+00729 
+<a name="l00744"></a><a class="code" href="group___sprite.html#ga15">00744</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga15">PA_SetRotsetNoZoom</a>(<span class="keywordtype">bool</span> screen, u8 rotset, s16 angle)   {
+00745 u8 obj_num = (rotset &lt;&lt; 2);
+00746        PA_obj[screen][obj_num].atr3 = <a class="code" href="group___math.html#ga10">PA_Cos</a>(angle);
+00747        PA_obj[screen][obj_num + 1].atr3 = -<a class="code" href="group___math.html#ga11">PA_Sin</a>(angle);
+00748        PA_obj[screen][obj_num + 2].atr3 = <a class="code" href="group___math.html#ga11">PA_Sin</a>(angle);
+00749        PA_obj[screen][obj_num + 3].atr3 = <a class="code" href="group___math.html#ga10">PA_Cos</a>(angle);
+00750 }
+00751 
+<a name="l00769"></a><a class="code" href="group___sprite.html#ga16">00769</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga16">PA_SetRotsetNoAngle</a>(<span class="keywordtype">bool</span> screen, u8 rotset, u16 zoomx, u16 zoomy) {
+00770 u8 obj_num = (rotset &lt;&lt; 2);
+00771        PA_obj[screen][obj_num].atr3 = zoomx;
+00772        PA_obj[screen][obj_num + 1].atr3 = 0;
+00773        PA_obj[screen][obj_num + 2].atr3 = 0;
+00774        PA_obj[screen][obj_num + 3].atr3 = zoomy;
+00775 }
+00776 
+00777 
+00778 
+00779 
+00780 
+00781 
+00782 
+<a name="l00799"></a><a class="code" href="group___sprite.html#ga41">00799</a> <span class="preprocessor">#define PA_SetSpriteX(screen, obj, x) PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_X)) + ((x) &amp; OBJ_X)</span>
+00800 <span class="preprocessor"></span>
+<a name="l00813"></a><a class="code" href="group___sprite.html#ga42">00813</a> <span class="preprocessor">#define PA_GetSpriteX(screen, obj) (PA_obj[screen][obj].atr1 &amp; (OBJ_X))</span>
+00814 <span class="preprocessor"></span>
+00815 
+<a name="l00830"></a><a class="code" href="group___sprite.html#ga43">00830</a> <span class="preprocessor">#define PA_SetSpriteY(screen, obj, y) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_Y)) + ((y) &amp; OBJ_Y)</span>
+00831 <span class="preprocessor"></span>
+<a name="l00844"></a><a class="code" href="group___sprite.html#ga44">00844</a> <span class="preprocessor">#define PA_GetSpriteY(screen, obj) (PA_obj[screen][obj].atr0 &amp; OBJ_Y)</span>
+00845 <span class="preprocessor"></span>
+00846 
+00847 
+<a name="l00865"></a><a class="code" href="group___sprite.html#ga17">00865</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga17">PA_SetSpriteXY</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 x, s16 y) {
+00866        <a class="code" href="group___sprite.html#ga41">PA_SetSpriteX</a>(screen, sprite, x); 
+00867        <a class="code" href="group___sprite.html#ga43">PA_SetSpriteY</a>(screen, sprite, y);
+00868 }
+00869 
+00870 
+00871 
+<a name="l00886"></a><a class="code" href="group___sprite.html#ga45">00886</a> <span class="preprocessor">#define PA_SetSpritePal(screen, obj, pal) PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT_PAL) + ((pal) &lt;&lt; 12)</span>
+00887 <span class="preprocessor"></span>
+<a name="l00899"></a><a class="code" href="group___sprite.html#ga46">00899</a> <span class="preprocessor">#define PA_GetSpritePal(screen, obj) (PA_obj[screen][obj].atr2 &gt;&gt; 12)</span>
+00900 <span class="preprocessor"></span>
+00901 
+<a name="l00916"></a><a class="code" href="group___sprite.html#ga47">00916</a> <span class="preprocessor">#define PA_SetSpriteDblsize(screen, obj, dblsize) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(DBLSIZE)) + ((dblsize) &lt;&lt; 9)</span>
+00917 <span class="preprocessor"></span>
+<a name="l00929"></a><a class="code" href="group___sprite.html#ga48">00929</a> <span class="preprocessor">#define PA_GetSpriteDblsize(screen, obj) ((PA_obj[screen][obj].atr0 &amp; DBLSIZE) &gt;&gt; 9)</span>
+00930 <span class="preprocessor"></span>
+00931 
+<a name="l00946"></a><a class="code" href="group___sprite.html#ga49">00946</a> <span class="preprocessor">#define PA_SetSpriteColors(screen, sprite, n_colors) PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(N_COLORS)) + ((n_colors) &lt;&lt; 13)</span>
+00947 <span class="preprocessor"></span>
+<a name="l00959"></a><a class="code" href="group___sprite.html#ga50">00959</a> <span class="preprocessor">#define PA_GetSpriteColors(screen, sprite) ((PA_obj[screen][sprite].atr0 &amp; N_COLORS) &gt;&gt; 13)</span>
+00960 <span class="preprocessor"></span>
+00961 
+00962 
+<a name="l00977"></a><a class="code" href="group___sprite.html#ga51">00977</a> <span class="preprocessor">#define PA_SetSpriteMode(screen, sprite, obj_mode) PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(OBJ_MODE)) + ((obj_mode) &lt;&lt; 10)</span>
+00978 <span class="preprocessor"></span>
+<a name="l00990"></a><a class="code" href="group___sprite.html#ga52">00990</a> <span class="preprocessor">#define PA_GetSpriteMode(screen, obj) ((PA_obj[screen][obj].atr0 &amp; OBJ_MODE) &gt;&gt; 10)</span>
+00991 <span class="preprocessor"></span>
+00992 
+<a name="l01007"></a><a class="code" href="group___sprite.html#ga53">01007</a> <span class="preprocessor">#define PA_SetSpriteMosaic(screen, obj, mosaic) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_MOSAIC)) + ((mosaic) &lt;&lt; 12)</span>
+01008 <span class="preprocessor"></span>
+<a name="l01020"></a><a class="code" href="group___sprite.html#ga54">01020</a> <span class="preprocessor">#define PA_GetSpriteMosaic(screen, obj) ((PA_obj[screen][obj].atr0 &amp; OBJ_MOSAIC) &gt;&gt; 12)</span>
+01021 <span class="preprocessor"></span>
+01022 
+01023 
+<a name="l01038"></a><a class="code" href="group___sprite.html#ga55">01038</a> <span class="preprocessor">#define PA_SetSpriteHflip(screen, obj, hflip) PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_HFLIP)) + ((hflip) &lt;&lt; 12)</span>
+01039 <span class="preprocessor"></span>
+<a name="l01051"></a><a class="code" href="group___sprite.html#ga56">01051</a> <span class="preprocessor">#define PA_GetSpriteHflip(screen, obj) ((PA_obj[screen][obj].atr1 &amp; OBJ_HFLIP) &gt;&gt; 12)</span>
+01052 <span class="preprocessor"></span>
+01053 
+<a name="l01068"></a><a class="code" href="group___sprite.html#ga57">01068</a> <span class="preprocessor">#define PA_SetSpriteVflip(screen, obj, vflip) PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_VFLIP)) + ((vflip) &lt;&lt; 13)</span>
+01069 <span class="preprocessor"></span>
+<a name="l01081"></a><a class="code" href="group___sprite.html#ga58">01081</a> <span class="preprocessor">#define PA_GetSpriteVflip(screen, obj) ((PA_obj[screen][obj].atr1 &amp; OBJ_VFLIP) &gt;&gt; 13)</span>
+01082 <span class="preprocessor"></span>
+01083 
+<a name="l01098"></a><a class="code" href="group___sprite.html#ga59">01098</a> <span class="preprocessor">#define PA_SetSpriteGfx(screen, obj, gfx) PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_GFX)) + ((gfx) &amp; OBJ_GFX)</span>
+01099 <span class="preprocessor"></span>
+<a name="l01111"></a><a class="code" href="group___sprite.html#ga60">01111</a> <span class="preprocessor">#define PA_GetSpriteGfx(screen, obj) (PA_obj[screen][obj].atr2 &amp; OBJ_GFX)</span>
 01112 <span class="preprocessor"></span>
 01113 
 01114 
-01115 
-01116 
-01117 
-01118 
-01119 
-<a name="l01143"></a><a class="code" href="group___sprite.html#ga16">01143</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga16">PA_SetSpriteAnimEx</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe){
-01144        u16 gfx = <a class="code" href="group___sprite.html#ga55">PA_GetSpriteGfx</a>(screen, sprite);
-01145        <span class="comment">//PA_OutputText(1, 0, PA_Rand()&amp;15, "%03d - %03d   ", gfx, sprite);</span>
-01146        <a class="code" href="group___sprite.html#ga8">PA_UpdateGfx</a>(screen, gfx, (<span class="keywordtype">void</span>*)(PA_SpriteAnimP[screen][gfx] + (animframe * (lx * ly) &gt;&gt; (2 - ncolors))));
-01147 }
-01148 
-<a name="l01163"></a><a class="code" href="group___sprite.html#ga17">01163</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga17">PA_SetSpriteAnim</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 animframe){
-01164        <a class="code" href="group___sprite.html#ga16">PA_SetSpriteAnimEx</a>(screen, sprite, <a class="code" href="group___sprite.html#ga58">PA_GetSpriteLx</a>(screen, sprite), <a class="code" href="group___sprite.html#ga59">PA_GetSpriteLy</a>(screen, sprite), <a class="code" href="group___sprite.html#ga45">PA_GetSpriteColors</a>(screen, sprite), animframe);
-01165 }
-01166 
-01167 
-01168 
-01195 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga18">PA_StartSpriteAnimEx</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles);
-01196 
-01197 
-01198 
-01199 
-<a name="l01220"></a><a class="code" href="group___sprite.html#ga19">01220</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga19">PA_StartSpriteAnim</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed){
-01221        <a class="code" href="group___sprite.html#ga18">PA_StartSpriteAnimEx</a>(screen, sprite, firstframe, lastframe, speed, ANIM_INFINITE);
-01222 }
-01223 
+<a name="l01129"></a><a class="code" href="group___sprite.html#ga61">01129</a> <span class="preprocessor">#define PA_SetSpritePrio(screen, obj, prio) PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_PRIO)) + ((prio) &lt;&lt; 10)</span>
+01130 <span class="preprocessor"></span>
+<a name="l01142"></a><a class="code" href="group___sprite.html#ga62">01142</a> <span class="preprocessor">#define PA_GetSpritePrio(screen, obj) ((PA_obj[screen][obj].atr2 &amp; OBJ_PRIO) &gt;&gt; 10)</span>
+01143 <span class="preprocessor"></span>
+01144 
+<a name="l01156"></a><a class="code" href="group___sprite.html#ga63">01156</a> <span class="preprocessor">#define PA_GetSpriteLx(screen, sprite) PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].lx</span>
+01157 <span class="preprocessor"></span>
+01158 
+<a name="l01170"></a><a class="code" href="group___sprite.html#ga64">01170</a> <span class="preprocessor">#define PA_GetSpriteLy(screen, sprite)PA_size[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].ly</span>
+01171 <span class="preprocessor"></span>
+01172 
+<a name="l01187"></a><a class="code" href="group___sprite.html#ga65">01187</a> <span class="preprocessor">#define PA_CloneSprite(screen, obj, target) {PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++obj_per_gfx[screen][PA_GetSpriteGfx(screen, target)];}</span>
+01188 <span class="preprocessor"></span>
+01189 
+01190 
+01191 
+01192 
+01193 
+01194 
+01195 
+<a name="l01219"></a><a class="code" href="group___sprite.html#ga18">01219</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe){
+01220        u16 gfx = <a class="code" href="group___sprite.html#ga60">PA_GetSpriteGfx</a>(screen, sprite);
+01221        <span class="comment">//PA_OutputText(1, 0, PA_Rand()&amp;15, "%03d - %03d   ", gfx, sprite);</span>
+01222        <a class="code" href="group___sprite.html#ga10">PA_UpdateGfx</a>(screen, gfx, (<span class="keywordtype">void</span>*)(PA_SpriteAnimP[screen][gfx] + (animframe * (lx * ly) &gt;&gt; (2 - ncolors))));
+01223 }
 01224 
-01225 
-01226 
-<a name="l01238"></a><a class="code" href="group___sprite.html#ga20">01238</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga20">PA_StopSpriteAnim</a>(<span class="keywordtype">bool</span> screen, u8 sprite)
-01239 {
-01240        <span class="keywordflow">if</span> (spriteanims[screen][sprite].play) nspriteanims--;
-01241        spriteanims[screen][sprite].play = 0;
-01242 }
+<a name="l01239"></a><a class="code" href="group___sprite.html#ga19">01239</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga19">PA_SetSpriteAnim</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 animframe){
+01240        <a class="code" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a>(screen, sprite, <a class="code" href="group___sprite.html#ga63">PA_GetSpriteLx</a>(screen, sprite), <a class="code" href="group___sprite.html#ga64">PA_GetSpriteLy</a>(screen, sprite), <a class="code" href="group___sprite.html#ga50">PA_GetSpriteColors</a>(screen, sprite), animframe);
+01241 }
+01242 
 01243 
-<a name="l01258"></a><a class="code" href="group___sprite.html#ga21">01258</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga21">PA_SetSpriteAnimFrame</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u16 frame)
-01259 {
-01260        <span class="keywordflow">if</span>(spriteanims[screen][sprite].currentframe != frame){
-01261               <a class="code" href="group___sprite.html#ga16">PA_SetSpriteAnimEx</a>(screen, sprite, spriteanims[screen][sprite].lx, spriteanims[screen][sprite].ly, spriteanims[screen][sprite].colors, spriteanims[screen][sprite].currentframe);
-01262               spriteanims[screen][sprite].currentframe = frame;
-01263        }
-01264 }
-01265 
-01266 
-<a name="l01278"></a><a class="code" href="group___sprite.html#ga22">01278</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite.html#ga22">PA_GetSpriteAnimFrame</a>(<span class="keywordtype">bool</span> screen, u8 sprite)
-01279 {
-01280        <span class="keywordflow">return</span> spriteanims[screen][sprite].currentframe;
-01281 }
-01282 
-01283 
-01284 
-<a name="l01299"></a><a class="code" href="group___sprite.html#ga23">01299</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga23">PA_SetSpriteAnimSpeed</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 speed)
-01300 {
-01301        spriteanims[screen][sprite].speed = speed;
-01302 }
-01303 
-<a name="l01315"></a><a class="code" href="group___sprite.html#ga24">01315</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite.html#ga24">PA_GetSpriteAnimSpeed</a>(<span class="keywordtype">bool</span> screen, u8 sprite)
-01316 {
-01317        <span class="keywordflow">return</span> spriteanims[screen][sprite].speed;
+01244 
+01271 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga20">PA_StartSpriteAnimEx</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles);
+01272 
+01273 
+01274 
+01275 
+<a name="l01296"></a><a class="code" href="group___sprite.html#ga21">01296</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga21">PA_StartSpriteAnim</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed){
+01297        <a class="code" href="group___sprite.html#ga20">PA_StartSpriteAnimEx</a>(screen, sprite, firstframe, lastframe, speed, ANIM_INFINITE);
+01298 }
+01299 
+01300 
+01301 
+01302 
+<a name="l01314"></a><a class="code" href="group___sprite.html#ga22">01314</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga22">PA_StopSpriteAnim</a>(<span class="keywordtype">bool</span> screen, u8 sprite)
+01315 {
+01316        <span class="keywordflow">if</span> (spriteanims[screen][sprite].play) nspriteanims--;
+01317        spriteanims[screen][sprite].play = 0;
 01318 }
 01319 
-01320 
-01321 
-01322 
-01323 
-01324 
-01325 
-01326 
-01327 
-01328 
-<a name="l01343"></a><a class="code" href="group___sprite.html#ga25">01343</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga25">PA_SpriteAnimPause</a>(<span class="keywordtype">bool</span> screen, u8 sprite, <span class="keywordtype">bool</span> pause)
-01344 {
-01345        <span class="keywordflow">if</span> (pause&amp;&amp;spriteanims[screen][sprite].play) nspriteanims--;
-01346        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!pause)&amp;&amp;(!spriteanims[screen][sprite].play)) nspriteanims++;
-01347        spriteanims[screen][sprite].play = !pause;
-01348 }
-01349 
-01350 
-01351 
-01352 
-01353 
-01354 
-<a name="l01375"></a><a class="code" href="group___sprite.html#ga26">01375</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga26">PA_SetSpritePixel</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u8 x, u8 y, u8 color){
-01376 u8 hsize = spriteanims[screen][sprite].lx&gt;&gt;3;
-01377 
-01378        s32 pos = (x &gt;&gt; 3) + ((y &gt;&gt; 3) * hsize);
-01379        x&amp;=7; y&amp;=7;
-01380        
-01381        pos = (pos &lt;&lt; 5) + (x &gt;&gt; 1) + (y &lt;&lt; 2);
-01382        
-01383        u16 pixel = spriteanims[screen][sprite].gfx[pos];
-01384        
-01385        <span class="keywordflow">if</span> (x&amp;1){
-01386               spriteanims[screen][sprite].gfx[pos] = (color &lt;&lt; 8) | (pixel&amp;0x00FF);               
-01387        }
-01388        <span class="keywordflow">else</span> {
-01389               spriteanims[screen][sprite].gfx[pos] = color | (pixel&amp;0xFF00); 
-01390        }
-01391 }
-01392 
-01393 
-<a name="l01411"></a><a class="code" href="group___sprite.html#ga27">01411</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___sprite.html#ga27">PA_GetSpritePixel</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u8 x, u8 y) {
-01412 u8 hsize = spriteanims[screen][sprite].lx&gt;&gt;3;
-01413 
-01414        s32 pos = (x &gt;&gt; 3) + ((y &gt;&gt; 3) * hsize);
-01415        x&amp;=7; y&amp;=7;
-01416        
-01417        pos = (pos &lt;&lt; 5) + (x &gt;&gt; 1) + (y &lt;&lt; 2);
-01418        
-01419        u16 pixel = spriteanims[screen][sprite].gfx[pos];
-01420        
-01421        <span class="keywordflow">if</span> (x&amp;1){
-01422               <span class="keywordflow">return</span> ((pixel&gt;&gt;8)&amp;255);                  
-01423        }
-01424        <span class="keywordflow">else</span> {
-01425               <span class="keywordflow">return</span> (pixel&amp;255);
-01426        }
-01427 }
-01428 
-01429 
-01441 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga28">PA_InitSpriteDraw</a>(<span class="keywordtype">bool</span> screen, u8 sprite);
-01442 
-01443 
-01444 
-<a name="l01450"></a><a class="code" href="group___sprite.html#ga29">01450</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga29">PA_InitAllSpriteDraw</a>(<span class="keywordtype">void</span>){
-01451 u8 i, j;
-01452 <span class="keywordflow">for</span> (j = 0; j &lt; 2; j++)
-01453        <span class="keywordflow">for</span> (i = 0; i &lt; 128; i++)
-01454               <a class="code" href="group___sprite.html#ga28">PA_InitSpriteDraw</a>(j, i);
-01455 }
-01456 
-01457 
+<a name="l01334"></a><a class="code" href="group___sprite.html#ga23">01334</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga23">PA_SetSpriteAnimFrame</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u16 frame)
+01335 {
+01336        <span class="keywordflow">if</span>(spriteanims[screen][sprite].currentframe != frame){
+01337               <a class="code" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a>(screen, sprite, spriteanims[screen][sprite].lx, spriteanims[screen][sprite].ly, spriteanims[screen][sprite].colors, spriteanims[screen][sprite].currentframe);
+01338               spriteanims[screen][sprite].currentframe = frame;
+01339        }
+01340 }
+01341 
+01342 
+<a name="l01354"></a><a class="code" href="group___sprite.html#ga24">01354</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite.html#ga24">PA_GetSpriteAnimFrame</a>(<span class="keywordtype">bool</span> screen, u8 sprite)
+01355 {
+01356        <span class="keywordflow">return</span> spriteanims[screen][sprite].currentframe;
+01357 }
+01358 
+01359 
+01360 
+<a name="l01375"></a><a class="code" href="group___sprite.html#ga25">01375</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga25">PA_SetSpriteAnimSpeed</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 speed)
+01376 {
+01377        spriteanims[screen][sprite].speed = speed;
+01378 }
+01379 
+<a name="l01391"></a><a class="code" href="group___sprite.html#ga26">01391</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite.html#ga26">PA_GetSpriteAnimSpeed</a>(<span class="keywordtype">bool</span> screen, u8 sprite)
+01392 {
+01393        <span class="keywordflow">return</span> spriteanims[screen][sprite].speed;
+01394 }
+01395 
+01396 
+<a name="l01411"></a><a class="code" href="group___sprite.html#ga27">01411</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga27">PA_SetSpriteNCycles</a>(<span class="keywordtype">bool</span> screen, u8 sprite, s16 NCycles)
+01412 {
+01413        spriteanims[screen][sprite].ncycles = NCycles;
+01414 }
+01415 
+01416 
+01417 
+<a name="l01429"></a><a class="code" href="group___sprite.html#ga28">01429</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite.html#ga28">PA_GetSpriteNCycles</a>(<span class="keywordtype">bool</span> screen, u8 sprite)
+01430 {
+01431        <span class="keywordflow">return</span> spriteanims[screen][sprite].speed;
+01432 }
+01433 
+01434 
+01435 
+01436 
+01437 
+<a name="l01452"></a><a class="code" href="group___sprite.html#ga29">01452</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga29">PA_SpriteAnimPause</a>(<span class="keywordtype">bool</span> screen, u8 sprite, <span class="keywordtype">bool</span> pause)
+01453 {
+01454        <span class="keywordflow">if</span> (pause&amp;&amp;spriteanims[screen][sprite].play) nspriteanims--;
+01455        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((!pause)&amp;&amp;(!spriteanims[screen][sprite].play)) nspriteanims++;
+01456        spriteanims[screen][sprite].play = !pause;
+01457 }
 01458 
 01459 
 01460 
 01461 
 01462 
 01463 
-01464 
-01465 
-01466 
-01467  <span class="comment">// end of Sprite</span>
-01469 
-01470 
-01471 
-01472 
-01473 
-01474 <span class="keywordtype">void</span> PA_UpdateSpriteAnims(<span class="keywordtype">void</span>);
-01475 
-01476 
-01477 
-01478 
-01479 
-01480 
-01481 
-01482 
-01483 
-01484 
-01485 
-01486 <span class="preprocessor">#endif</span>
-01487 <span class="preprocessor"></span>
-01488 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Thu Feb 9 15:37:40 2006 for PAlib by&nbsp;
+<a name="l01484"></a><a class="code" href="group___sprite.html#ga30">01484</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga30">PA_SetSpritePixel</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u8 x, u8 y, u8 color){
+01485 u8 hsize = spriteanims[screen][sprite].lx&gt;&gt;3;
+01486 
+01487        s32 pos = (x &gt;&gt; 3) + ((y &gt;&gt; 3) * hsize);
+01488        x&amp;=7; y&amp;=7;
+01489        
+01490        pos = (pos &lt;&lt; 5) + (x &gt;&gt; 1) + (y &lt;&lt; 2);
+01491        
+01492        u16 pixel = spriteanims[screen][sprite].gfx[pos];
+01493        
+01494        <span class="keywordflow">if</span> (x&amp;1){
+01495               spriteanims[screen][sprite].gfx[pos] = (color &lt;&lt; 8) | (pixel&amp;0x00FF);               
+01496        }
+01497        <span class="keywordflow">else</span> {
+01498               spriteanims[screen][sprite].gfx[pos] = color | (pixel&amp;0xFF00); 
+01499        }
+01500 }
+01501 
+01502 
+<a name="l01520"></a><a class="code" href="group___sprite.html#ga31">01520</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___sprite.html#ga31">PA_GetSpritePixel</a>(<span class="keywordtype">bool</span> screen, u8 sprite, u8 x, u8 y) {
+01521 u8 hsize = spriteanims[screen][sprite].lx&gt;&gt;3;
+01522 
+01523        s32 pos = (x &gt;&gt; 3) + ((y &gt;&gt; 3) * hsize);
+01524        x&amp;=7; y&amp;=7;
+01525        
+01526        pos = (pos &lt;&lt; 5) + (x &gt;&gt; 1) + (y &lt;&lt; 2);
+01527        
+01528        u16 pixel = spriteanims[screen][sprite].gfx[pos];
+01529        
+01530        <span class="keywordflow">if</span> (x&amp;1){
+01531               <span class="keywordflow">return</span> ((pixel&gt;&gt;8)&amp;255);                  
+01532        }
+01533        <span class="keywordflow">else</span> {
+01534               <span class="keywordflow">return</span> (pixel&amp;255);
+01535        }
+01536 }
+01537 
+01538 
+01550 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga32">PA_InitSpriteDraw</a>(<span class="keywordtype">bool</span> screen, u8 sprite);
+01551 
+01552 
+01553 
+<a name="l01559"></a><a class="code" href="group___sprite.html#ga33">01559</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga33">PA_InitAllSpriteDraw</a>(<span class="keywordtype">void</span>){
+01560 u8 i, j;
+01561 <span class="keywordflow">for</span> (j = 0; j &lt; 2; j++)
+01562        <span class="keywordflow">for</span> (i = 0; i &lt; 128; i++)
+01563               <a class="code" href="group___sprite.html#ga32">PA_InitSpriteDraw</a>(j, i);
+01564 }
+01565 
+01566 
+01567 
+01568 
+01577 <span class="keywordtype">void</span> <a class="code" href="group___sprite.html#ga34">PA_InitSpriteExtPrio</a>(<span class="keywordtype">bool</span> SpritePrio);
+01578 
+01579 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_SetSPriteExtPrio(<span class="keywordtype">bool</span> screen, u8 sprite, u8 prio){
+01580        PA_SpritePrio[screen][sprite] = prio;
+01581 }
+01582 
+01583 
+01584 
+01585  <span class="comment">// end of Sprite</span>
+01587 
+01588 
+01589 
+01590 
+01591 
+01592 <span class="keywordtype">void</span> PA_UpdateSpriteAnims(<span class="keywordtype">void</span>);
+01593 
+01594 
+01595 
+01596 
+01597 
+01598 
+01599 
+01600 
+01601 
+01602 
+01603 
+01604 <span class="preprocessor">#endif</span>
+01605 <span class="preprocessor"></span>
+01606 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sun Feb 19 12:06:13 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

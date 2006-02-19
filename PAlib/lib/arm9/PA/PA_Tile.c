@@ -252,14 +252,14 @@ PA_BGScrollX(screen,bg_select,x&511);
 tempx = scrollpos[screen][bg_select].scrollx >> 3;
 tempy = scrollpos[screen][bg_select].scrolly >> 3;
 
-if (lx >= 64) { // Si moins de 64, pas besoin de faire du scrolling spécial, ca passe en hard !
+//if (lx >= 64) { // Si moins de 64, pas besoin de faire du scrolling spécial, ca passe en hard !
 // Dans un sens...
     while (x - scrollpos[screen][bg_select].scrollx >= 8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
         scrollpos[screen][bg_select].scrollx += 8; // On a décalé de la taille d'un tile...
 		tempx = scrollpos[screen][bg_select].scrollx >> 3;
 		// On fait le decallage en copiant tout comme il faut
-		i = (tempx+33)&63;
-		tilex = tempx+33;	
+		i = (tempx+34)&63;
+		tilex = tempx+34;	
 		for (j = -2; j < 27; j++) PA_SetLargeMapTile(screen, bg_select, i, (tempy+j)&31, scrollpos[screen][bg_select].bg_map[tilex + ((tempy+j) * lx)]);
 	}
 // Et dans l'autre
@@ -271,7 +271,7 @@ if (lx >= 64) { // Si moins de 64, pas besoin de faire du scrolling spécial, ca 
 		tilex = tempx-2;
 		for (j = -2; j < 27; j++) PA_SetLargeMapTile(screen, bg_select, i, (tempy+j)&31, scrollpos[screen][bg_select].bg_map[tilex + ((tempy+j) * lx)]);
 	}
-}
+//}
 }
 
 
@@ -293,16 +293,16 @@ tempx = scrollpos[screen][bg_select].scrollx >> 3;
 tempy = scrollpos[screen][bg_select].scrolly >> 3;
 
 
-if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca passe en hard !
+//if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca passe en hard !
 // Verticalement
 // Dans un sens...
     while (y - scrollpos[screen][bg_select].scrolly >= 8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
         scrollpos[screen][bg_select].scrolly += 8; // On a décalé de la taille d'un tile...
 		tempy = scrollpos[screen][bg_select].scrolly >> 3;
 		// On fait le decallage en copiant tout comme il faut
-		j = (tempy+26)&31;
-		tiley = tempy+26;
-		for (i = -2; i < scrollpos[screen][bg_select].maxx-10; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[(tempx + i) + (tiley * lx)]);
+		j = (tempy+25)&31;
+		tiley = tempy+25;
+		for (i = -2; i < 35; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[(tempx + i) + (tiley * lx)]);
 	}
 // Et dans l'autre
     while (y - scrollpos[screen][bg_select].scrolly <= -8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
@@ -311,9 +311,9 @@ if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca 
 		// On fait le decallage en copiant tout comme il faut
 		j = (tempy-2)&31;
 		tiley = tempy-2;
-		for (i = -2; i < scrollpos[screen][bg_select].maxx-10; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[(tempx + i) + (tiley * lx)]);
+		for (i = -2; i < 35; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[(tempx + i) + (tiley * lx)]);
 	}
-}	
+//}	
 
 }
 
@@ -339,15 +339,15 @@ tempy = scrollpos[screen][bg_select].scrolly >> 3;
 
 
 
-if (lx >= 64) { // Si moins de 64, pas besoin de faire du scrolling spécial, ca passe en hard !
+//if (lx >= 64) { // Si moins de 64, pas besoin de faire du scrolling spécial, ca passe en hard !
 // Dans un sens...
     while (x - scrollpos[screen][bg_select].scrollx >= 8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
         scrollpos[screen][bg_select].scrollx += 8; // On a décalé de la taille d'un tile...
 		tempx = scrollpos[screen][bg_select].scrollx >> 3;
 		// On fait le decallage en copiant tout comme il faut
-		i = (tempx+33)&63;
-		tilex = PA_Modulo((tempx+33), lx);
-		for (j = -2; j < 27; j++) PA_SetLargeMapTile(screen, bg_select, i, (tempy+j)&31, scrollpos[screen][bg_select].bg_map[tilex + (PA_Modulo((tempy+j),ly) * lx)]);
+		i = (tempx+34)&63;
+		tilex = PA_Modulo((tempx+34), lx);
+		for (j = -2; j < 26; j++) PA_SetLargeMapTile(screen, bg_select, i, (tempy+j)&31, scrollpos[screen][bg_select].bg_map[tilex + (PA_Modulo((tempy+j),ly) * lx)]);
 	}
 // Et dans l'autre
     while (x - scrollpos[screen][bg_select].scrollx <= -8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
@@ -356,9 +356,9 @@ if (lx >= 64) { // Si moins de 64, pas besoin de faire du scrolling spécial, ca 
 		// On fait le decallage en copiant tout comme il faut
 		i = (tempx-2)&63;
 		tilex = PA_Modulo((tempx-2), lx);
-		for (j = -2; j < 27; j++) PA_SetLargeMapTile(screen, bg_select, i, (tempy+j)&31, scrollpos[screen][bg_select].bg_map[tilex + (PA_Modulo((tempy+j),ly) * lx)]);
+		for (j = -2; j < 26; j++) PA_SetLargeMapTile(screen, bg_select, i, (tempy+j)&31, scrollpos[screen][bg_select].bg_map[tilex + (PA_Modulo((tempy+j),ly) * lx)]);
 	}
-}
+//}
 }
 
 
@@ -379,16 +379,16 @@ tempx = scrollpos[screen][bg_select].scrollx >> 3;
 tempy = scrollpos[screen][bg_select].scrolly >> 3;
 
 
-if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca passe en hard !
+//if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca passe en hard !
 // Verticalement
 // Dans un sens...
     while (y - scrollpos[screen][bg_select].scrolly >= 8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
         scrollpos[screen][bg_select].scrolly += 8; // On a décalé de la taille d'un tile...
 		tempy = scrollpos[screen][bg_select].scrolly >> 3;
 		// On fait le decallage en copiant tout comme il faut
-		j = (tempy+26)&31;
-		tiley = PA_Modulo((tempy+26),ly);
-		for (i = -2; i < scrollpos[screen][bg_select].maxx-10; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[PA_Modulo((tempx + i),lx) + (tiley * lx)]);
+		j = (tempy+25)&31;
+		tiley = PA_Modulo((tempy+25),ly);
+		for (i = -2; i < 35; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[PA_Modulo((tempx + i),lx) + (tiley * lx)]);
 	}
 // Et dans l'autre
     while (y - scrollpos[screen][bg_select].scrolly <= -8) {  // Tant qu'on a du retour sur l'affichage de la carte, on fait afficher la ligne suivante
@@ -397,9 +397,9 @@ if (ly >= 32) { // Si moins de 32, pas besoin de faire du scrolling spécial, ca 
 		// On fait le decallage en copiant tout comme il faut
 		j = (tempy-2)&31;
 		tiley =PA_Modulo((tempy-2),ly);
-		for (i = -2; i < scrollpos[screen][bg_select].maxx-10; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[PA_Modulo((tempx + i),lx) + (tiley * lx)]);
+		for (i = -2; i < 35; i++) PA_SetLargeMapTile(screen, bg_select, (tempx + i)&63, j, scrollpos[screen][bg_select].bg_map[PA_Modulo((tempx + i),lx) + (tiley * lx)]);
 	}
-}	
+//}	
 
 }
 
@@ -421,7 +421,7 @@ scrollpos[screen][bg_select].ly = ly << 3;
 if (lx > 62) scrollpos[screen][bg_select].maxx = 62;
 else {
 	scrollpos[screen][bg_select].maxx = lx; // pas de scrolling infini en largeur necessaire...
-	if(scrollpos[screen][bg_select].maxx<42) scrollpos[screen][bg_select].maxx = 42;
+	//if(scrollpos[screen][bg_select].maxx<42) scrollpos[screen][bg_select].maxx = 42;
 }
 
 

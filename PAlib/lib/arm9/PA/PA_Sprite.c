@@ -50,8 +50,20 @@ u16 *PA_SpriteAnimP[2][1024]; // Pointer towards the sprite's graphics, allows a
 
 
 
+bool PA_SpriteExtPrio = 0;
+u8 PA_SpritePrio[2][128]; // Set the sprite priorities...
 
 
+
+void PA_InitSpriteExtPrio(bool SpritePrio){
+	PA_SpriteExtPrio = SpritePrio;
+	u8 i, n;
+	for (i = 0; i < 2; i++) {
+		for(n = 0; n < 128; n++) {
+			PA_SpritePrio[i][n] = 0;
+		}
+	}
+}
 
 
 
@@ -75,8 +87,8 @@ for (i = 0; i < 2; i++) {
 		PA_obj[i][n].atr2 = 0;
 		PA_obj[i][n].atr3 = 0;
 	}
-	for(n = 0; n < 128; n++) {
-		PA_SetRotset(i,n,0,256,256);  // Pad de zoom ou de rotation par défaut
+	for(n = 0; n < 32; n++) {
+		PA_SetRotset(i,n,0,256,256);  // Pas de zoom ou de rotation par défaut
 	}
 }
 FirstGfx[0] = 0;
@@ -90,6 +102,8 @@ for (i = 0; i < 2; i++) {
 }
 
 PA_MoveSpriteType = 0; 
+
+PA_InitSpriteExtPrio(0);// normal priority system by default
 
 }
 
@@ -409,8 +423,9 @@ for (screen = 0; screen < 2; screen++){
 					}
 					else { // Don't loop, go back -> switch speed and first/last frames
 						spriteanims[screen][currentsprite].framechange = -spriteanims[screen][currentsprite].framechange;
-						spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange<<1;
-						
+						if (spriteanims[screen][currentsprite].ncycles == 1)// It was the last one
+							spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange; // stop on the correct animation
+						else spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange<<1; // continue going back and forth
 					}	
 
 					// In all cases :

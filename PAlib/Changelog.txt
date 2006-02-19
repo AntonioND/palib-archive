@@ -1,3 +1,30 @@
+PAlib 0.998a
+
+[PAGfx] Updated 16colors sprites not working
+
+[PAGfx] Updated broken 512x512 TiledBg, now works correctly
+
+[16bit Sprite] Added a Create16bitSpriteFromGfx function
+
+[SpriteAnims] Added PA_SetSpriteNCycles(bool screen, u8 sprite, s16 NCycles) and PA_GetSpriteNCycles(bool screen, u8 sprite)
+
+[Doc] Updated some missing function infos
+
+[Palettes] PA_CreatePalBright added, to create new palette with different brightness level. ChecK Sprite/PalBrightness to see how to use it (can be used on backgrounds too)
+
+[Sprite Priorities] Added advanced sprite priorities, with 256 possible levels ! Check the Sprite/Priorities example to see how it works (requires an init). Beware, this is much slower than the normal priority system, as it requires sorting the sprites...
+
+[LargeMaps] Fixed scrolling bug when background was larger than 256 pixels, but smaller than 512 (thanks Mtom !), and a nice speed increase (up to twice as fast) on large maps (>512)
+
+[Sprite Animations] Fixed a little bug in the frame number when using UPDOWN, thanks to Costello
+
+[FAT DRiver] Included Chishm's FAT Driver, with M3, SC, and MK2/3 support ! I take NO credit whatsoever for this. ALL the credit goes to Chishm and the people who helped him make this driver better... If you have any questions/bugs, please report them on palib.com, and do not bug Chishm... The driver takes around 25k, and can be removed by editing PA_Config.h. Please take the time to read the gba_nds_fat.txt file included with the driver...  I haven't played with it too much yet, just tested listing the files on my MK3... (FAT/FAT example). I also update the Vham Init to take into account the FAT_ functions.
+
+[DeSmuME] Updated
+
+[Makefile] Updated with jandujar's bin2o fix. Does this make the sound work better for anyone ??
+
+
 PAlib 0.997a
 
 [Doc] Updated

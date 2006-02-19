@@ -13,6 +13,7 @@ BUILD		:=	build
 SOURCES	    := data	.
 INCLUDES	:=	../../include/nds ../../include/nds/arm9 build
 
+include $(DEVKITARM)/ds_rules
 
 EXPORT_DIR := /c/ndsexamples/
 #---------------------------------------------------------------------------------
@@ -208,7 +209,7 @@ $(OUTPUT).elf	:	$(OFILES)
 	@$(CC) -MM $(CFLAGS) -o $*.d $<
 	@$(CC)  $(ASFLAGS) -c $< -o$@
  
-define bin2o
+define bin2o2
 	cp $(<) $(*).tmp
 	$(OBJCOPY) -I binary -O elf32-littlearm -B arm \
 	--rename-section .data=.rodata \

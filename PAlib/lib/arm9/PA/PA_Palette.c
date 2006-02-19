@@ -17,6 +17,32 @@ void PA_InitSpriteExtPal(void) {
 }
 
 
+void PA_CreatePalBright(u16 *pal, u16 *newpal, s8 bright){
+u16 i;
+s8 r, g, b;
+for (i = 0; i < 256; i++){
+	r = pal[i]&31; PA_AdjustCol(r, bright);
+	g = (pal[i]>>5)&31; PA_AdjustCol(g, bright);
+	b = (pal[i]>>10)&31; PA_AdjustCol(b, bright);
+	newpal[i] = PA_RGB(r, g, b);
+}
+
+}
+
+
+void PA_CreatePalTransition(u16 *pal, u16 *newpal, s8 level, u8 destr, u8 destg, u8 destb){
+u16 i;
+s16 r, g, b;
+for (i = 0; i < 256; i++){
+	r = ((pal[i]&31)*(1-level) + level*destr)>>5;
+	g = (((pal[i]>>5)&31)*(1-level) + level*destr)>>5;
+	b = (((pal[i]>>10)&31)*(1-level) + level*destr)>>5;
+	newpal[i] = PA_RGB(r, g, b);
+}
+
+}
+
+
 
 void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette){
 	if (screen == 0) {

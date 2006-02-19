@@ -9,7 +9,8 @@
     This file contains all macros, variables, and prototypes regarding the sprite system (OAM, Sprite mouvement, Gfx loading...)
 */
 
-//#include "../PA.h"
+//#include <PA9.h>
+
 
 
 #define EWRAM_DATA	__attribute__((section(".ewram")))
@@ -95,6 +96,7 @@ typedef struct {
 }obj_inf;
 extern obj_inf PA_obj[2][128];  // Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...
 
+extern u8 PA_SpritePrio[2][128]; // Set the sprite priorities...
 
 // Infos pour dessiner sur les sprites
 /*
@@ -146,7 +148,7 @@ extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
 
 
 
-
+extern bool PA_SpriteExtPrio;
 
 
 
@@ -162,19 +164,6 @@ extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
  *  @{
  */
 
-/*! \def PA_UpdateOAM()
-    \brief
-         \~english Update the sprite infos for both screens. Do this in the VBL
-         \~french Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL
-*/
-
-//#define PA_UpdateOAM() DMA_Copy((void*)PA_obj, (void*)OAM0, 512, DMA_32NOW)
-#define PA_UpdateOAM()s16 i;\
-    	for (i = 0; i < 256; i++) {\
-		OAM[(i << 2)] = PA_obj[0][i].atr0;\
-		OAM[1+(i << 2)] = PA_obj[0][i].atr1;\
-		OAM[2+(i << 2)] = PA_obj[0][i].atr2;\
-		OAM[3+(i << 2)] = PA_obj[0][i].atr3;}
 
 
 /*! \def PA_UpdateOAM0()
@@ -190,6 +179,56 @@ extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
          \~french Mettre à jour les infos des sprites pour l'écran 1 uniquement. A faire dans le VBL
 */
 #define PA_UpdateOAM1() DMA_Copy((void*)PA_obj + 256, (void*)OAM1, 256, DMA_32NOW)
+
+
+
+
+
+
+/*! \fn extern inline void PA_UpdateOAM(void)
+    \brief
+         \~english Update the sprite infos for both screens. Do this in the VBL
+         \~french Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL
+*/
+
+//#define PA_UpdateOAM() DMA_Copy((void*)PA_obj, (void*)OAM0, 512, DMA_32NOW)
+extern inline void PA_UpdateOAM(void){
+// Update OAM
+PA_UpdateOAM0();
+PA_UpdateOAM1();
+
+if (PA_SpriteExtPrio){ // Use the extended priorities
+	s8 next[2][128];
+	s8 first[2][256]; // Sprite at given priority...
+	
+	u16 i, screen;
+	u16 value = 0;
+	s8 sprite;
+
+	for (i = 0; i < 256; i++) first[0][i] = first[1][i] = -1;
+	for (i = 0; i < 128; i++){ // sort
+		next[0][i] = first[0][PA_SpritePrio[0][i]];
+		first[0][PA_SpritePrio[0][i]] = i;
+		next[1][i] = first[1][PA_SpritePrio[1][i]];
+		first[1][PA_SpritePrio[1][i]] = i;		
+	}
+	for (screen = 0; screen < 2; screen++){
+		value = screen << 9; // 512 start for the top screen
+		for (i = 0; i < 256; i++){ // copy
+			sprite = first[screen][i];
+			while(sprite != -1){
+				//PA_OutputText(1, value, 0, "%d   ", sprite);
+				OAM[value] = PA_obj[screen][sprite].atr0;
+				OAM[value + 1] = PA_obj[screen][sprite].atr1;
+				OAM[value + 2] = PA_obj[screen][sprite].atr2;
+				value += 4;
+				sprite = next[screen][sprite];
+			}
+		}
+	}
+}
+
+}
 
 
 /*! \fn u16 PA_CreateGfx(bool screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)
@@ -368,6 +407,43 @@ extern inline void PA_Create16bitSpriteEx(bool screen, u8 obj_number, void* obj_
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
 }
+
+
+
+
+/*! \fn extern inline void PA_Create16bitSpriteFromGfx(bool screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y)
+    \brief
+         \~english Create a 16 bit sprite using a given gfx.
+         \~french Creer un sprite de 16 bits à partir de gfx... 
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param obj_number
+         \~english Object number you want to use (0-127 for each screen seperately). 
+         \~french Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment).
+    \param gfx
+         \~english Gfx to use
+         \~french Gfx à utiliser
+    \param obj_shape
+         \~english Object shape, from 0 to 2. Use the OBJ_SIZE_32X32 (...) macros for object shape and obj_size...
+         \~french Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille...
+    \param obj_size
+         \~english Object size. Use the OBJ_SIZE_32X32 (...) macros for object shape and obj_size...
+         \~french Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille...
+    \param x
+         \~english X position of the sprite
+         \~french Position X du sprite
+    \param y
+         \~english Y position of the sprite
+         \~french Position Y du sprite
+*/
+extern inline void PA_Create16bitSpriteFromGfx(bool screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y){
+   PA_obj[screen][obj_number].atr2 = gfx + (15 << 12);
+   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (3 << 10) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (obj_size << 14);
+}
+
+
 
 
 
@@ -1318,9 +1394,42 @@ extern inline u16 PA_GetSpriteAnimSpeed(bool screen, u8 sprite)
 }
 
 
+/*! \fn extern inline void PA_SetSpriteNCycles(bool screen, u8 sprite, s16 NCycles)
+    \brief
+         \~english Set the current animation cycles left (-1 for inifinite loop)
+         \~french Changer le nombre de cycles d'animation restant (-1 pour inifini)
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	
+    \param NCycles
+         \~english Number of cycles
+         \~french Nombre de cycles		 
+*/
+extern inline void PA_SetSpriteNCycles(bool screen, u8 sprite, s16 NCycles)
+{
+	spriteanims[screen][sprite].ncycles = NCycles;
+}
 
 
 
+/*! \fn extern inline u16 PA_GetSpriteNCycles(bool screen, u8 sprite)
+    \brief
+         \~english Returns the current number of animation cycles left
+         \~french Renvoie le nombre de cycles d'animation restants
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite	
+*/
+extern inline u16 PA_GetSpriteNCycles(bool screen, u8 sprite)
+{
+	return spriteanims[screen][sprite].speed;
+}
 
 
 
@@ -1457,10 +1566,19 @@ for (j = 0; j < 2; j++)
 
 
 
+/*! \fn void PA_InitSpriteExtPrio(bool SpritePrio)
+    \brief
+         \~english Enable the PAlib sprite priority system. Slower than the normal priority system, but offering 256 levels of priority for the sprites (overrides the sprite number's priority)
+         \~french Activer le systeme de priorité de sprites PAlib. Plus lent que le systeme normal, il permet d'avoir 256 niveaux de priorité (supplante la priorité par numéro de sprites)
+    \param SpritePrio
+         \~english 1 for on, 0 for off...
+         \~french 1 pour on, 0 pour off...
+*/
+void PA_InitSpriteExtPrio(bool SpritePrio);
 
-
-
-
+extern inline void PA_SetSPriteExtPrio(bool screen, u8 sprite, u8 prio){
+	PA_SpritePrio[screen][sprite] = prio;
+}
 
 
 

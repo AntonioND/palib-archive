@@ -50,9 +50,12 @@ int main(void)	{
 	PA_OutputSimpleText(0, 8, 7, "OneShot");	
 	PA_OutputSimpleText(0, 16, 6, " UpDown");
 	PA_OutputSimpleText(0, 24, 7, "5 Times");			
+u8 i;
+
 
 	while(1)
 	{
+	for (i = 0; i < 4; i++) PA_OutputText(0, 2+(i<<3), 20, "%d  ",	spriteanims[0][i].currentframe);	   
 		PA_WaitForVBL();
 	}
 	

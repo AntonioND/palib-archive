@@ -106,6 +106,8 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 #include "arm9/PA_Tile.h"
 #include "arm9/PA_TileDual.h"
 
+#include "arm9/PA_FAT.h"  // fat driver by chrishm
+
 #ifdef USE_KEYBOARD
 	#include "arm9/PA_Keyboard.h"
 #endif
@@ -283,7 +285,7 @@ swiWaitForVBlank();
 
 
 
-/*! \def PA_SwitchScreens()
+/*! \fn extern inline void PA_SwitchScreens(void)
     \brief
          \~english Switch the bottom and top screens...
          \~french Echange les écrans du haut et du bas

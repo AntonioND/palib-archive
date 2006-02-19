@@ -319,6 +319,8 @@ void PA_Draw8bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color);
  */
 void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
 
+
+
 /*! \fn void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size)
     \brief
          \~english Draw a thick line in Draw mode... for 16 bit drawable background
@@ -347,6 +349,33 @@ void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
  */
 void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
 
+
+/*! \fn void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size)
+    \brief
+         \~english Draw a thick line in Draw mode... for 8 bit drawable background
+         \~french Dessiner une ligne épaisse en mode dessin... pour le mode dessin 8 bit
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1) 
+    \param basex
+         \~english X position of the first point. Be carefull, if X is not between 0 and 255, it'll give unwanted results
+         \~french Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté
+    \param basey
+         \~english Y position of the first point. Be carefull, if Y is not between 0 and 191, it'll give unwanted results
+         \~french Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté
+    \param endx
+         \~english X position of the second point. Be carefull, if X is not between 0 and 255, it'll give unwanted results
+         \~french Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté
+    \param endy
+         \~english Y position of the second point. Be carefull, if Y is not between 0 and 191, it'll give unwanted results
+         \~french Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté
+    \param color
+         \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
+         \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...
+    \param size
+         \~english Width of the line, in pixels
+         \~french Largeur du trait, en pixels		 
+ */
 void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
 
 
@@ -606,17 +635,7 @@ extern inline void PA_LoadGif(bool screen, void *gif){
 	//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...
 	else DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
 }
-/*
-extern inline void PA_LoadGif(bool screen, void *gif){
-	if (PA_nBit[screen]) {
-		DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], PA_temppal, 1, 256);
-		
-	}
-	else {
-		DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], PA_GetBgPal(screen, 3), 0, 256);
-		PA_LoadBgPal(screen, 3, (void*)PA_temppal);
-	}
-}*/
+
 
 
 /* // Les différentes fonctions images...
@@ -647,6 +666,9 @@ extern inline void PA_LoadGBFSImage(bool screen, s16 GBFSImage){
 	}		
 }
 
+
+
+
 extern inline void PA_LoadGBFSImageToBuffer(void *Buffer, s16 GBFSImage, s16 Width){
 	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
 		PA_LoadBmpToBuffer((u16*)Buffer, 0, 0, (u16*)PA_GBFSfile[GBFSImage].File, Width);
@@ -659,11 +681,32 @@ extern inline void PA_LoadGBFSImageToBuffer(void *Buffer, s16 GBFSImage, s16 Wid
 	}		
 }
 
+
+
+/*! \fn extern inline u16 PA_GetBmpWidth(void *bmp)
+    \brief
+         \~english Get a BMP's width in pixels
+         \~french Récupérer la largeur d'un BMP en pixels
+    \param bmp
+         \~english BMP image...
+         \~french image au format BMP...	 
+*/
 extern inline u16 PA_GetBmpWidth(void *bmp){
 	u8 *temp = (u8*)bmp;
 	BMP_Headers *Bmpinfo = (BMP_Headers*)(temp+14);
 	return Bmpinfo->Width;
 }
+
+
+
+/*! \fn extern inline u16 PA_GetBmpHeight(void *bmp)
+    \brief
+         \~english Get a BMP's height in pixels
+         \~french Récupérer la hauteur d'un BMP en pixels
+    \param bmp
+         \~english BMP image...
+         \~french image au format BMP...	 
+*/
 extern inline u16 PA_GetBmpHeight(void *bmp){
 	u8 *temp = (u8*)bmp;
 	BMP_Headers *Bmpinfo = (BMP_Headers*)(temp+14);

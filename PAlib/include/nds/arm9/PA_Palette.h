@@ -219,7 +219,23 @@ extern inline void PA_LoadBgPal(bool screen, u16 bg_number, void* palette){
 	PA_LoadBgExtPal(screen, bg_number, palette);
 }
 
-// Load to a given palette number
+/*! \fn void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette)
+    \brief
+         \~english Load a 256 color palette in a given Background's palette
+         \~french Charger une palette de 256 couleurs dans les palettes des fonds
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param bg_number
+         \~english Background number (0-3)
+         \~french Numéro du fond (0-3)
+    \param pal_number
+         \~english Palette number (0-15)
+         \~french Numéro de la palette (0-15)		 
+    \param palette
+         \~english Palette to load ((void*)palette_name)
+         \~french Nom de la palette à charger ((void*)nom_palette)
+*/
 void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette);
 
 
@@ -300,15 +316,34 @@ extern inline void PA_SetBgColor(bool screen, u16 color){
 } 
 
 
-extern inline void* PA_GetBgPal(bool screen, u8 bg_number){
-	if (screen == 0) return (void*)(VRAM_E + (bg_number << 12));
-	else return (void*)(VRAM_H + (bg_number << 12));
-}
+
+
+#define PA_AdjustCol(color, bright) color+= bright; if (color < 0) color = 0; if (color > 31) color = 31
+
+void PA_CreatePalBright(u16 *pal, u16 *newpal, s8 bright);
+
+void PA_CreatePalTransition(u16 *pal, u16 *newpal, s8 level, u8 destr, u8 destg, u8 destb);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 /** @} */ // end of Palette
 //////////////////////////////////////////////////////////////////////
+extern inline void* PA_GetBgPal(bool screen, u8 bg_number){
+	if (screen == 0) return (void*)(VRAM_E + (bg_number << 12));
+	else return (void*)(VRAM_H + (bg_number << 12));
+}
 
 
 #endif
