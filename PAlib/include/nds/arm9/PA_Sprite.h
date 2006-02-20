@@ -194,15 +194,23 @@ extern bool PA_SpriteExtPrio;
 //#define PA_UpdateOAM() DMA_Copy((void*)PA_obj, (void*)OAM0, 512, DMA_32NOW)
 extern inline void PA_UpdateOAM(void){
 // Update OAM
-PA_UpdateOAM0();
-PA_UpdateOAM1();
+//PA_UpdateOAM0();
+//PA_UpdateOAM1();
+u16 i, screen;
+u16 value = 0;
+	for (i = 0; i < 256; i++){ // copy
+		OAM[value] = PA_obj[0][i].atr0;
+		OAM[value + 1] = PA_obj[0][i].atr1;
+		OAM[value + 2] = PA_obj[0][i].atr2;
+		OAM[value + 3] = PA_obj[0][i].atr3;		
+		value += 4;
+	}
 
 if (PA_SpriteExtPrio){ // Use the extended priorities
 	s8 next[2][128];
 	s8 first[2][256]; // Sprite at given priority...
 	
-	u16 i, screen;
-	u16 value = 0;
+	value = 0;
 	s8 sprite;
 
 	for (i = 0; i < 256; i++) first[0][i] = first[1][i] = -1;

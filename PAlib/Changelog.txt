@@ -1,3 +1,10 @@
+PAlib 0.998b
+
+[Sprites] Fixed sprites on hardware :/
+
+[Vham IDE] Updated to remove the ofile bug when adding files :) Thanks to Kleevah !
+
+
 PAlib 0.998a
 
 [PAGfx] Updated 16colors sprites not working
