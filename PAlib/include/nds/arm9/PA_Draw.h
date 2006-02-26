@@ -112,14 +112,18 @@ void PA_Init16bitBg(bool screen, u8 bg_priority);
          \~french Couleur de la palette du fond (0-255) 
 */
 extern inline void PA_Put8bitPixel(bool screen, s16 x, s16 y, u8 color) {
-	s32 pos = (x >> 1) + (y << 7);
-	u16 pixel = PA_DrawBg[screen][pos];
-	if (x&1){
+   PA_DrawBg[screen][(y <<7) + (x>>1)] &= (0xff00>>((x&1)<<3));
+   PA_DrawBg[screen][(y <<7) + (x>>1)] |= color<<((x&1)<<3);
+
+	//s32 pos = (x >> 1) + (y << 7);
+	//u16 pixel = PA_DrawBg[screen][pos];
+	//PA_DrawBg[screen][pos] = (color << ((x&1)<<3)) | (pixel&(0xFF00>>((x&1)<<3)));
+	/*if (x&1){
 		PA_DrawBg[screen][pos] = (color << 8) | (pixel&0x00FF);			
 	}
 	else {
 		PA_DrawBg[screen][pos] = color | (pixel&0xFF00);	
-	}
+	}*/
 }
 
 

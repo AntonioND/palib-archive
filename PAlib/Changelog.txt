@@ -1,3 +1,23 @@
+PAlib 0.998c
+
+[Examples] Fixed the keyboard example, had SimpleText instead of Text function, so the line break didn't work :S
+
+[Examples] Added Sprite/Priorities2, which shows how the priority system could be used to create a card game, or an isometric 3D system...
+
+[Screen Lights] Rewrote the code, shouldn't break the sound anymore
+
+[Arm7] Switched to libnds's IRQ system, now works better on MK2/3
+
+[PA3D] Compiles again, sorry !
+
+[Backgrounds] Optimised the Background memory error messages
+
+[Palettes] Added PA_SetSpritePalCol
+
+[C++] Fixed the Pad/Stylus problem (replacing bool by u8, I don't like that...)
+
+
+
 PAlib 0.998b
 
 [Sprites] Fixed sprites on hardware :/

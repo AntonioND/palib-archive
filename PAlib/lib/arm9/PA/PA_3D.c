@@ -1,7 +1,7 @@
 #include <nds.h>
 #include <math.h>
 #include "PA9.h"
-#include "palib.h"
+#include "palib_bin.h"
 
 
 
@@ -56,7 +56,7 @@ return 1;
 void PA_LoadSplash3D(){
 float rotatex = 0.0, rotatey = 0.0, rotatez = 0.0; 
 PA_Init3D();
-PA_LoadTexture(1,(u8*)palib,texBIN); 
+PA_LoadTexture(1,(u8*)palib_bin,texBIN); 
 while(1){ 
 PA_UpdatePad();
 PA_Init3DDrawing(0.0,0.0,0.0,0.0,0.0,1.0);//initialisation de la perspective,... la camera est en position (0.0,0.0,2.0) et regarde vers (0.0,0.0,0.0) 

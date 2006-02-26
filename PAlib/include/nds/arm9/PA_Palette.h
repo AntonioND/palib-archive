@@ -282,21 +282,6 @@ void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette);
 void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color);
 
 
-/*! \def PA_SetSpritePalCol(screen, color_number, colorRGB)
-    \brief
-         \~english Change the color of one of the sprite palette colors
-         \~french Changer la couleur d'une des couleurs de la palette des sprites
-    \param screen
-         \~english Screen...
-         \~french Ecran...
-    \param color_number
-         \~english Color number in palette (0-255)
-         \~french Numéro de la couleur dans la palette (0-255)
-    \param colorRGB
-         \~english RGB value, like PA_RGB(31, 31, 31) for white
-         \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
-*/
-#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen << 9)] = colorRGB
 
 
 
@@ -314,6 +299,27 @@ void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, 
 extern inline void PA_SetBgColor(bool screen, u16 color){
 	BG_PALETTE[screen<<7] = color;
 } 
+
+
+/*! \fn void PA_SetSpritePalCol(bool screen, u8 pal_number, u8 color_number, u16 color)
+    \brief
+         \~english Change a color in a sprite palette
+         \~french Changer la couleur de fond d'un écran
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param pal_number
+         \~english Palette number
+         \~french Numéro de la palette
+    \param color_number
+         \~english Color in the palette
+         \~french Numéro de la couleur
+    \param color
+         \~english Color (given by PA_RGB...)
+         \~french Couleur (venant de PA_RGB...)	 
+*/
+void PA_SetSpritePalCol(bool screen, u8 pal_number, u8 color_number, u16 color);
+
 
 
 
@@ -344,6 +350,25 @@ extern inline void* PA_GetBgPal(bool screen, u8 bg_number){
 	if (screen == 0) return (void*)(VRAM_E + (bg_number << 12));
 	else return (void*)(VRAM_H + (bg_number << 12));
 }
+
+
+/*! \def PA_SetSpritePalCol(screen, color_number, colorRGB)
+    \brief
+         \~english Change the color of one of the sprite palette colors
+         \~french Changer la couleur d'une des couleurs de la palette des sprites
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param color_number
+         \~english Color number in palette (0-255)
+         \~french Numéro de la couleur dans la palette (0-255)
+    \param colorRGB
+         \~english RGB value, like PA_RGB(31, 31, 31) for white
+         \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
+*/
+/*#define PA_SetSpritePalCol(screen, color_number, colorRGB) BG_PALETTE[256 + color_number + (screen << 9)] = colorRGB*/
+
+
 
 
 #endif

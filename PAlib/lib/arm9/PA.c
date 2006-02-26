@@ -103,6 +103,9 @@ powerON(POWER_ALL);
   
  POWER_CR &= ~SWITCH_SCREENS; // on s'assure que l'écran est bien
 
+
+	//IPC->aux = 3; PA_SetScreenLight(0, 1); PA_SetScreenLight(1, 1);
+	
 s32 i;
 //PA_SetScreenLight(0, 1); PA_SetScreenLight(1, 1); // Les 2 écrans sont allumés
 
@@ -296,11 +299,13 @@ u16 mode = 1 << 14;
 }
 
 
-
+/*
 void PA_SetScreenLight(bool screen, bool light){
-	if (light) IPC->aux |= BACKLIGHT(screen); // Allumé
-	else IPC->aux &= ~(BACKLIGHT(screen)); // Eteint
-}
+	IPC->aux &= ~(BACKLIGHT(screen))
+	IPC->aux |= BACKLIGHT(screen)*light;
+	//if (light) IPC->aux |= BACKLIGHT(screen); // Allumé
+	//else IPC->aux &= ~(BACKLIGHT(screen)); // Eteint
+}*/
 
 
 void PA_Nothing(void){}

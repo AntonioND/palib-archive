@@ -154,21 +154,6 @@ PA_Newframe = 1; // Synch prog to screen
 
 PA_UpdateSpriteAnims(); // Update the sprite animations...
 ++PA_nVBLs;
-
-/*
-++PA_VBLCount;
-
-if (PA_nVBLs == 64) { // Arrivé à 64, on calcule une moyenne de temps CPU...
-	PA_CPU = ((100 * PA_lines) >> 6)/263;
-	if (PA_CPU > PA_MaxCPU) PA_MaxCPU = PA_CPU;
-
-	PA_nVBLs = 0;
-	PA_lines = 0;
-}*/
-//test
-//	PA_OutputText(1, 3, 3, "normal x : %d, y : %d   ", Stylus.X, Stylus.Y);
-//	PA_OutputText(1, 3, 5, "autre  x : %d, y : %d   ", ((IPC->touchX - 0x0113) / 14), ((IPC->touchY - 0x00E0) / 19));
-
 }
 
 

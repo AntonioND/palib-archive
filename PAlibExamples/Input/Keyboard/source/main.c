@@ -50,7 +50,7 @@ int main(int argc, char ** argv)
 			nletter++;
 		}
 		
-		PA_OutputSimpleText(1, 8, 11, text); // Write the text
+		PA_OutputText(1, 8, 11, text); // Write the text
 		PA_WaitForVBL();
 	}
 	

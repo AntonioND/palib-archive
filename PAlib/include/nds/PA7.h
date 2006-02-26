@@ -32,7 +32,7 @@ extern s32 TOUCH_HEIGHT;
 extern s32 TOUCH_OFFSET_X;
 extern s32 TOUCH_OFFSET_Y;
 
-extern u16 screenlights;
+extern u16 PA_NewSPI;
 
 
 /*! \file PA7.h

@@ -20,9 +20,12 @@ s32 TOUCH_HEIGHT;
 s32 TOUCH_OFFSET_Y;*/
 
 
-u16 screenlights;
+u16 PA_NewSPI;
 
 void PA_Init(void){
+
+IPC->aux = 0x0F;
+PA_NewSPI = 0x0F;
 //	PA_InitSoundSystem(); // Initialisation des docs de son
 //PA_SoundOk = 0;
 //PA_InitVBL();
@@ -78,41 +81,53 @@ void PA_UpdateStylus(void){
 }
 
 
+u16 PA_ReadSPI(u8 pmReg){
+	u8 pmData;
+ 
+	SerialWaitBusy();
+	
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz | SPI_CONTINUOUS; 
+	REG_SPIDATA = pmReg | (1 << 7); 
+ 
+	SerialWaitBusy();
+ 
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz; /* On revient en mode single byte ... */
+	REG_SPIDATA = 0; /* On indique à nouveau qu'on veut lire ... */
+	
+	SerialWaitBusy();
+	
+	pmData = REG_SPIDATA; /* Et on récupère la valeur du registre ! */
+	
+	REG_SPICNT = 0; /* Pour finit on arrête le SPI ... */
+ 
+	return pmData;
+}
+
+void PA_WriteSPI(u8 pmReg, u8 pmData)
+{
+	SerialWaitBusy();
+	
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz | SPI_CONTINUOUS;
+	REG_SPIDATA = pmReg;
+	SerialWaitBusy();
+ 
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz;
+	REG_SPIDATA = pmData; 
+	SerialWaitBusy();
+}
+
+
+
 /*
+void PA_ScreenLight(void){
 
-void PA_UpdateStylus(void){
-
-s32 x, y, xpx, ypx, z1, z2;
-
-	// New touch code...
-	touchPosition tempPos = touchReadXY();
-
-		x = tempPos.x;
-		y = tempPos.y;
-		xpx = tempPos.px;
-		ypx = tempPos.py+40;
-		
- 	  
-	  
-	  if (xpx < 0) xpx = 0;
-	  if (xpx > 255) xpx = 255;
-	  if (ypx < 0) ypx = 0;
-	  if (ypx > 191) ypx = 191;	  
-	  
-	  
-	  
-      z1 = touchRead(TSC_MEASURE_Z1);
-      z2 = touchRead(TSC_MEASURE_Z2);
-
-    IPC->touchX    = x;
-    IPC->touchY    = y;
-    IPC->touchXpx  = xpx;
-    IPC->touchYpx  = ypx;	
-
-    IPC->touchZ1   = z1;
-    IPC->touchZ2   = z2;
+	u8 pmValue;
+	pmValue = PA_ReadSPI(0);
+	pmValue &= ~(1 << 2) | ~(1 << 3);  // shut down by default
+	pmValue |= PA_NewSPI&0xC; // and the correct values...
+ 
+	PA_WriteSPI(0, pmValue);
 }*/
-
 
 void PA_ScreenLight(void){
 	SerialWaitBusy();
@@ -120,8 +135,12 @@ void PA_ScreenLight(void){
 	REG_SPIDATA = 0;
 	SerialWaitBusy();
 	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz;
-	REG_SPIDATA = screenlights; // On met en fonction de ce qu'on a dans l'IPC
+	//u8 temp = ~0x0C;
+	
+	REG_SPIDATA = PA_NewSPI; // On met en fonction de ce qu'on a dans l'IPC
 }
+	
+
 
 
 void PA_Poweroff(void)

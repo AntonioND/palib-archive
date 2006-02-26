@@ -252,18 +252,18 @@
 00313 
 00314 
 00315 
-<a name="l00321"></a><a class="code" href="group___general.html#ga12">00321</a> <span class="preprocessor">#define PA_LidClosed() (IPC-&gt;buttons&gt;&gt;7)</span>
+<a name="l00321"></a><a class="code" href="group___general.html#ga13">00321</a> <span class="preprocessor">#define PA_LidClosed() (IPC-&gt;buttons&gt;&gt;7)</span>
 00322 <span class="preprocessor"></span>
 00323 
 <a name="l00329"></a><a class="code" href="group___general.html#ga9">00329</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="group___general.html#ga9">PA_CheckLid</a>(<span class="keywordtype">void</span>) {
 00330 
-00331 <span class="keywordflow">if</span> (!<a class="code" href="group___general.html#ga12">PA_LidClosed</a>()) <span class="keywordflow">return</span> 0;
+00331 <span class="keywordflow">if</span> (!<a class="code" href="group___general.html#ga13">PA_LidClosed</a>()) <span class="keywordflow">return</span> 0;
 00332 <span class="keywordflow">else</span> {
 00333        u16 power_cr = POWER_CR; <span class="comment">// backup the power...</span>
 00334        POWER_CR = 0; <span class="comment">// Shutdown everything :p</span>
 00335        
 00336        <span class="comment">// Wait for the lid to be opened again...</span>
-00337        <span class="keywordflow">while</span>(<a class="code" href="group___general.html#ga12">PA_LidClosed</a>()) <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>();
+00337        <span class="keywordflow">while</span>(<a class="code" href="group___general.html#ga13">PA_LidClosed</a>()) <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>();
 00338        
 00339        <span class="comment">// Return the power !</span>
 00340        POWER_CR = power_cr;
@@ -279,25 +279,33 @@
 00377 <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga10">PA_Splash</a>(<span class="keywordtype">void</span>* tiles0, <span class="keywordtype">void</span>* map0, <span class="keywordtype">void</span>* tiles1, <span class="keywordtype">void</span>* map1, s16 color0, s16 color1, s16 time);
 00378 
 00379 
-00391 <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga11">PA_SetScreenLight</a>(<span class="keywordtype">bool</span> screen, <span class="keywordtype">bool</span> light);
-00392 
-00393 
-00394 
+<a name="l00391"></a><a class="code" href="group___general.html#ga11">00391</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga11">PA_SetScreenLight</a>(<span class="keywordtype">bool</span> screen, <span class="keywordtype">bool</span> light){
+00392        IPC-&gt;aux &amp;= ~(1&lt;&lt;(2+screen));
+00393        IPC-&gt;aux |= light&lt;&lt;(2+screen);
+00394 }
 00395 
-00396  <span class="comment">// end of General</span>
-00398 
-00399 
-00400 <span class="keywordtype">void</span> PA_Nothing(<span class="keywordtype">void</span>);
-00401 
-00402 
-00403 <span class="preprocessor">#ifdef __cplusplus</span>
-00404 <span class="preprocessor"></span>}
-00405 <span class="preprocessor">#endif</span>
-00406 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-00407 <span class="preprocessor"></span>
-00408 
-00409 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sun Feb 19 12:06:13 2006 for PAlib by&nbsp;
+00396 
+<a name="l00408"></a><a class="code" href="group___general.html#ga12">00408</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga12">PA_SetLedBlink</a>(<span class="keywordtype">bool</span> blink, <span class="keywordtype">bool</span> speed){
+00409        IPC-&gt;aux &amp;= ~(3&lt;&lt;4);
+00410        IPC-&gt;aux |= (blink + (speed&lt;&lt;1))&lt;&lt;4;
+00411 }
+00412 
+00413 
+00414 
+00415  <span class="comment">// end of General</span>
+00417 
+00418 
+00419 <span class="keywordtype">void</span> PA_Nothing(<span class="keywordtype">void</span>);
+00420 
+00421 
+00422 <span class="preprocessor">#ifdef __cplusplus</span>
+00423 <span class="preprocessor"></span>}
+00424 <span class="preprocessor">#endif</span>
+00425 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+00426 <span class="preprocessor"></span>
+00427 
+00428 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sun Feb 26 20:46:19 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

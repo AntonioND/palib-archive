@@ -23,7 +23,7 @@ void startSound(int sampleRate, const void* data, uint32 bytes, u8 channel, u8 v
   SCHANNEL_SOURCE(channel) = (uint32)data;
   SCHANNEL_LENGTH(channel) = bytes >> 2;
   SCHANNEL_REPEAT_POINT(channel) = 0;
-  SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(vol) | SOUND_PAN(pan) | ((format == 1) ? SOUND_8BIT : SOUND_16BIT);
+  SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(vol) | SOUND_PAN(pan) | format;
 }
 
 s8 getFreeSoundChannel() {
@@ -35,23 +35,16 @@ int i;
 }
 
 
-
-
-
-
 //////////////////////////////////////////////////////////////////////
 
 
-void InterruptHandler(void) {
+void PA_VBL(void){
   static int heartbeat = 0;
- 
-  if (REG_IF & IRQ_VBLANK) {
-    s32 but=0, batt=0;// aux=0;
+   s32 but=0, batt=0;// aux=0;
     int t1=0, t2=0;
     uint32 temp=0;
     uint8 ct[sizeof(IPC->curtime)];
 
-    
     // Update the heartbeat
     heartbeat++;
  
@@ -69,16 +62,8 @@ void InterruptHandler(void) {
  
     // Read the temperature
     temp = touchReadTemperature(&t1, &t2);
- 
-    // Update the IPC struct
     IPC->heartbeat = heartbeat;
     IPC->buttons   = but;
-//    IPC->touchX    = x;
-//   IPC->touchY    = y;
-//    IPC->touchXpx  = xpx;
-//    IPC->touchYpx  = ypx;
-//    IPC->touchZ1   = z1;
-//    IPC->touchZ2   = z2;
     IPC->battery   = batt;
     
     u32 i;
@@ -90,45 +75,22 @@ void InterruptHandler(void) {
     IPC->tdiode1 = t1;
     IPC->tdiode2 = t2;
 	
-	if (screenlights != (IPC->aux&0xC)){
-		screenlights = IPC->aux&0xC;
+	if (PA_NewSPI != (IPC->aux)){
+		PA_NewSPI = IPC->aux;
 		PA_ScreenLight(); // Update the screen lights...
+		//IPC->aux = touchRead(TSC_MEASURE_AUX); // update IPC with new values
 	}
-	//aux  = touchRead(TSC_MEASURE_AUX); // Re-read the aux mesures
-	//IPC->aux = aux;
-	
-	
-	
+
+	//SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
+
+}
 
 /*
-    //sound code   :) 
-    TransferSound *snd = IPC->soundData;
-    IPC->soundData = 0;
-    if (snd) {
-      for (int i=0; i<snd->count; i++) {
-        s8 chan = getFreeSoundChannel();
-        if (chan >= 0) {
-          startSound(snd->data[i].rate, snd->data[i].data, snd->data[i].len, chan, snd->data[i].vol, snd->data[i].pan, snd->data[i].format);
-        }
-      }
-    }*/
+void InterruptHandler(void) {
 
-	//sound code   :) 
-    //TransferSound *snd = IPC->soundData;
-    //IPC->soundData = 0;
-	//u8 currentchan = 15;
-    //if (snd) {
-    //s8 i;
-    //  for (i=0; i<8; i++) {
- //       s8 chan = getFreeSoundChannel();
-    //    if (snd->data[i].vol > 128) {  // Si volume, indique qu'il y a un son...
-			//if ( (SCHANNEL_CR(i) & SOUND_ENABLE) == 0 )
-	/*		snd->data[i].vol -= 128;
-			startSound(snd->data[i].rate, snd->data[i].data, snd->data[i].len, i+8,snd->data[i].vol, snd->data[i].pan, snd->data[i].format);
-		}
-      }
-    }*/
-	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
+ 
+  if (REG_IF & IRQ_VBLANK) {
+	PA_VBL();
   }
 
   if (REG_IF & IRQ_TIMER0) {
@@ -143,15 +105,13 @@ void InterruptHandler(void) {
 
   // Acknowledge interrupts
   REG_IF = REG_IF;
-}
+}*/
  
 
 //////////////////////////////////////////////////////////////////////
  
 
 int main(int argc, char ** argv) {
-  // Reset the clock if needed
-  rtcReset();
   
   PA_Init();
 
@@ -162,19 +122,36 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
   //enable sound
 //  SOUND_CR = SCHANNEL_ENABLE | SOUND_VOL(0x7F);
 //  IPC->soundData = 0;
- 
 
+	IPC->mailData=0;
+	IPC->mailSize=0;
 
+ 	rtcReset();
+
+	//enable sound
+	powerON(POWER_SOUND);
+	SOUND_CR = SOUND_ENABLE | SOUND_VOL(0x7F);
+	IPC->soundData = 0;
+
+	
+	irqInit();
+	irqSet(IRQ_VBLANK, PA_VBL);
+	irqEnable(IRQ_VBLANK);
+	irqSet(IRQ_TIMER0, SndTimerIrq);
+	irqEnable(IRQ_TIMER0);	
+	irqSet(IRQ_TIMER3, PA_ProcessMicrophoneTimerIRQ);
+	irqEnable(IRQ_TIMER3);		
+/*
   // Set up the interrupt handler
   REG_IME = 0;
   IRQ_HANDLER = &InterruptHandler;
-  REG_IE = IRQ_VBLANK | IRQ_TIMER3;
+  REG_IE = IRQ_VBLANK | IRQ_TIMER3|IRQ_TIMER0;
   REG_IF = ~0;
   DISP_SR = DISP_VBLANK_IRQ;
-  REG_IME = 1;
+  REG_IME = 1;*/
 
   SndInit7 ();
-  
+    
   // Keep the ARM7 out of main RAM
   while (1) swiWaitForVBlank();
   return 0;

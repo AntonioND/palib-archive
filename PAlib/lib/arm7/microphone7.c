@@ -68,4 +68,5 @@ void  PA_ProcessMicrophoneTimerIRQ()
     --PA_microphone_buffer_length;
     PA_current_length++;
   }
+  VBLANK_INTR_WAIT_FLAGS |= IRQ_TIMER3;
 }

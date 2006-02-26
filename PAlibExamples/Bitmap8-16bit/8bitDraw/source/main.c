@@ -4,7 +4,6 @@
 #include <PA9.h>       // Include for PA_Lib
 
 
-
 // Function: main()
 int main(int argc, char ** argv)
 {
@@ -28,6 +27,7 @@ int main(int argc, char ** argv)
 	PA_Init8bitBg(0, 3);
 	PA_Init8bitBg(1, 3);
 		
+		
 
 	// Infinite loop to keep the program running
 	while (1)
@@ -37,7 +37,6 @@ int main(int argc, char ** argv)
 					1);  // Palette color
 					
 		PA_Put8bitPixel(1, Stylus.X, Stylus.Y, 2); // Draws a pixel on the top screen, corresponding to the stylus's position
-
 		PA_WaitForVBL();
 	}
 	

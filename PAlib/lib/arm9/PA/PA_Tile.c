@@ -93,6 +93,9 @@ if (!charsetok) { // Si jamais on n'a pas trouvé de créneaux, on affiche un mess
 	PALETTE[512] = 0; // On met le fond du haut au noir histoire que tout se voit...
 	PA_OutputSimpleText(1, 0, 3, "Sorry, there just seems to not be enough place to put all your backgrounds... ou could try loading them in a different order, sometimes it changes a little, but I would advise trying to optimise them by reducing the number of tile...");
 	PA_OutputSimpleText(1, 0, 10, "Je suis désolé mon vieux, mais là je n'ai plus assez de place pour charger les tiles en mémoire ! Va falloir virer un fond ou alors réduire le nombre de tiles des autres fonds... Je ne peux rien faire d'autre pour toi");
+	
+	PA_WaitForVBL();
+	while(!Stylus.Newpress) PA_WaitForVBL();
 
 }
 

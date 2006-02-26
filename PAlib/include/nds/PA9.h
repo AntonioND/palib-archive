@@ -388,8 +388,27 @@ void PA_Splash(void* tiles0, void* map0, void* tiles1, void* map1, s16 color0, s
          \~english Light, 1 for on, 0 for off
          \~french Lumière, 1 pour allumé, 0 pour éteint
 */
-void PA_SetScreenLight(bool screen, bool light);
+extern inline void PA_SetScreenLight(bool screen, bool light){
+	IPC->aux &= ~(1<<(2+screen));
+	IPC->aux |= light<<(2+screen);
+}
 
+
+/*! \fn extern inline void PA_SetLedBlink(bool blink, bool speed)
+    \brief
+         \~english Set teh DS Led blinking
+         \~french Régler le clignotement de la led
+    \param blink
+         \~english 1 for blinking, 0 for always on
+         \~french 1 pour clignoter, 0 pour toujours allumé
+    \param speed
+         \~english Speed : 0 for slow, 1 for fast
+         \~french Vitesse : 0 pour lent, 1 pour rapide
+*/
+extern inline void PA_SetLedBlink(bool blink, bool speed){
+	IPC->aux &= ~(3<<4);
+	IPC->aux |= (blink + (speed<<1))<<4;
+}
 
 
 

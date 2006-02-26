@@ -25,11 +25,11 @@ extern "C" {
 
 
 typedef struct {
-   bool A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select;
+   u8 A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select;
 } PA_Pad;
 
 typedef struct {
-   bool Held, Released, Newpress, Newpress0;
+   u8 Held, Released, Newpress, Newpress0;
    s16 X, Y, altX, altY, Pressure, Vx, Vy, oldVx, oldVy;
 } PA_Stylus;
 
