@@ -1,8 +1,8 @@
 //Background converted using Mollusk's PAImageConverter
 //This Background uses zelda_Pal
 
-int zelda_Width = 2048;
-int zelda_Height = 2048;
+const int zelda_Width = 2048;
+const int zelda_Height = 2048;
 
 const unsigned short zelda_Map[65536] __attribute__ ((aligned (4))) = {
 0, 1, 2, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 4, 3, 

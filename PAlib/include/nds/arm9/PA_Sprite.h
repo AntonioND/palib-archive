@@ -9,7 +9,7 @@
     This file contains all macros, variables, and prototypes regarding the sprite system (OAM, Sprite mouvement, Gfx loading...)
 */
 
-//#include <PA9.h>
+#include "PA_Text.h"
 
 
 
@@ -101,9 +101,9 @@ extern u8 PA_SpritePrio[2][128]; // Set the sprite priorities...
 // Infos pour dessiner sur les sprites
 /*
 typedef struct {
-	bool screen; // Ecran
+	u8 screen; // Ecran
 	u8 sprite;		// Numéro du sprite
-	bool wasdrawing; // Si on dessinait dessus ou pas avant
+	u8 wasdrawing; // Si on dessinait dessus ou pas avant
 	s8 x, y;  // Position x et y d'avant
 	u8 hsize, vsize; // Tailles
 	u8 n_colors; // Nombre de couleurs
@@ -135,9 +135,9 @@ typedef struct{
 	s8 framechange; // 1 by default, -1 to go back...
 	s32 time; // Time...
 	u8 lx, ly; // Sprite sizes
-	bool colors; 
+	u8 colors; 
 	s16 speed;
-	bool play;
+	u8 play;
 	u16 *gfx; // gfx pointer
 	u8 type;
 	s32 ncycles;
@@ -148,7 +148,7 @@ extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
 
 
 
-extern bool PA_SpriteExtPrio;
+extern u8 PA_SpriteExtPrio;
 
 
 
@@ -196,8 +196,8 @@ extern inline void PA_UpdateOAM(void){
 // Update OAM
 //PA_UpdateOAM0();
 //PA_UpdateOAM1();
-u16 i, screen;
-u16 value = 0;
+s16 i, screen;
+s32 value = 0;
 	for (i = 0; i < 256; i++){ // copy
 		OAM[value] = PA_obj[0][i].atr0;
 		OAM[value + 1] = PA_obj[0][i].atr1;
@@ -205,6 +205,7 @@ u16 value = 0;
 		OAM[value + 3] = PA_obj[0][i].atr3;		
 		value += 4;
 	}
+	
 
 if (PA_SpriteExtPrio){ // Use the extended priorities
 	s8 next[2][128];
@@ -214,17 +215,23 @@ if (PA_SpriteExtPrio){ // Use the extended priorities
 	s8 sprite;
 
 	for (i = 0; i < 256; i++) first[0][i] = first[1][i] = -1;
-	for (i = 0; i < 128; i++){ // sort
+//	for (i = 0; i < 128; i++) next[0][i] = next[1][i] = -1;	
+
+	for (i = 127; i > -1; i--){ // sort
 		next[0][i] = first[0][PA_SpritePrio[0][i]];
 		first[0][PA_SpritePrio[0][i]] = i;
 		next[1][i] = first[1][PA_SpritePrio[1][i]];
 		first[1][PA_SpritePrio[1][i]] = i;		
 	}
+		
 	for (screen = 0; screen < 2; screen++){
-		value = screen << 9; // 512 start for the top screen
+		//s16 temp = 0;
+		//value = screen << 9; // 512 start for the top screen
 		for (i = 0; i < 256; i++){ // copy
 			sprite = first[screen][i];
 			while(sprite != -1){
+				//PA_OutputText(screen, temp, 0, "%04d", sprite);
+				//temp += 4;
 				//PA_OutputText(1, value, 0, "%d   ", sprite);
 				OAM[value] = PA_obj[screen][sprite].atr0;
 				OAM[value + 1] = PA_obj[screen][sprite].atr1;
@@ -239,7 +246,7 @@ if (PA_SpriteExtPrio){ // Use the extended priorities
 }
 
 
-/*! \fn u16 PA_CreateGfx(bool screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)
+/*! \fn u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)
     \brief
          \~english Load in mémory a gfx to use later on for a sprite. Returns the gfx's number in memory
          \~french Charger en mémoire un gfx à utiliser plus tard pour un sprite. Renvoie le numéro en mémoire.
@@ -260,7 +267,7 @@ if (PA_SpriteExtPrio){ // Use the extended priorities
          \~french Mode 256 ou 16 couleurs (1 ou 0), ou 2 pour 16 bits
 */
 
-u16 PA_CreateGfx(bool screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode);
+u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode);
 
 /*! \fn void PA_ResetSpriteSys(void)
     \brief
@@ -271,7 +278,7 @@ void PA_ResetSpriteSys(void);
 
 
 
-/*! \fn extern inline void PA_CreateSprite(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)
+/*! \fn extern inline void PA_CreateSprite(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)
     \brief
          \~english Create a sprite with it's gfx. This is the simple version of the function
          \~french Creer un sprite avec ses gfx... Ceci est la version simple de la fonction
@@ -303,13 +310,13 @@ void PA_ResetSpriteSys(void);
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_CreateSprite(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
+extern inline void PA_CreateSprite(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (palette << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (obj_size << 14);
 };
 
-/*! \fn extern inline void PA_CreateSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)
+/*! \fn extern inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
     \brief
          \~english Create a sprite with it's gfx. This is the complex version of the function
          \~french Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
@@ -359,7 +366,7 @@ extern inline void PA_CreateSprite(bool screen, u8 obj_number, void* obj_data, u
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_CreateSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y) {
+extern inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y) {
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (prio << 10) + (palette << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + ((color_mode) << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
@@ -369,7 +376,7 @@ extern inline void PA_CreateSpriteEx(bool screen, u8 obj_number, void* obj_data,
 
 
 
-/*! \fn extern inline void PA_Create16bitSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)
+/*! \fn extern inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
     \brief
          \~english Create a 16 bit sprite with it's gfx. This is the complex version of the function. Warning : a 16bit sprite MUST be 128 pixels large, even if you sprite only takes up a small part on the left...
          \~french Creer un sprite de 16 bits avec ses gfx... Ceci est la version complexe de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche
@@ -410,7 +417,7 @@ extern inline void PA_CreateSpriteEx(bool screen, u8 obj_number, void* obj_data,
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_Create16bitSpriteEx(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y){
+extern inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
@@ -419,7 +426,7 @@ extern inline void PA_Create16bitSpriteEx(bool screen, u8 obj_number, void* obj_
 
 
 
-/*! \fn extern inline void PA_Create16bitSpriteFromGfx(bool screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y)
+/*! \fn extern inline void PA_Create16bitSpriteFromGfx(u8 screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y)
     \brief
          \~english Create a 16 bit sprite using a given gfx.
          \~french Creer un sprite de 16 bits à partir de gfx... 
@@ -445,7 +452,7 @@ extern inline void PA_Create16bitSpriteEx(bool screen, u8 obj_number, void* obj_
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_Create16bitSpriteFromGfx(bool screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y){
+extern inline void PA_Create16bitSpriteFromGfx(u8 screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y){
    PA_obj[screen][obj_number].atr2 = gfx + (15 << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (3 << 10) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (obj_size << 14);
@@ -455,7 +462,7 @@ extern inline void PA_Create16bitSpriteFromGfx(bool screen, u8 obj_number, u16 g
 
 
 
-/*! \fn extern inline void PA_Create16bitSprite(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)
+/*! \fn extern inline void PA_Create16bitSprite(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)
     \brief
          \~english Create a 16 bit sprite with it's gfx. This is the simple version of the function. Warning : a 16bit sprite MUST be 128 pixels large, even if you sprite only takes up a small part on the left...
          \~french Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche
@@ -481,14 +488,14 @@ extern inline void PA_Create16bitSpriteFromGfx(bool screen, u8 obj_number, u16 g
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_Create16bitSprite(bool screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y){
+extern inline void PA_Create16bitSprite(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y){
 PA_Create16bitSpriteEx(screen, obj_number, obj_data, obj_shape, obj_size, 0, 0, 0, 0, 0, x, y);
 }
 
 
 
 
-/*! \fn extern inline void PA_CreateSpriteFromGfx(bool screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)
+/*! \fn extern inline void PA_CreateSpriteFromGfx(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)
     \brief
          \~english Create a sprite with it's gfx. This is the simple version of the function
          \~french Creer un sprite avec ses gfx... Ceci est la version simple de la fonction
@@ -520,14 +527,14 @@ PA_Create16bitSpriteEx(screen, obj_number, obj_data, obj_shape, obj_size, 0, 0, 
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_CreateSpriteFromGfx(bool screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
+extern inline void PA_CreateSpriteFromGfx(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
    PA_obj[screen][obj_number].atr2 = obj_gfx + (palette << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (obj_size << 14);
    ++obj_per_gfx[screen][obj_gfx];
 };
 
-/*! \fn extern inline void PA_CreateSpriteExFromGfx(bool screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)
+/*! \fn extern inline void PA_CreateSpriteExFromGfx(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
     \brief
          \~english Create a sprite with it's gfx. This is the complex version of the function
          \~french Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
@@ -577,7 +584,7 @@ extern inline void PA_CreateSpriteFromGfx(bool screen, u8 obj_number, u16 obj_gf
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_CreateSpriteExFromGfx(bool screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y) {
+extern inline void PA_CreateSpriteExFromGfx(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y) {
    PA_obj[screen][obj_number].atr2 = obj_gfx + (prio << 10) + (palette << 12);
    PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + (color_mode << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
@@ -601,7 +608,7 @@ extern inline void PA_CreateSpriteExFromGfx(bool screen, u8 obj_number, u16 obj_
 */
 #define PA_UpdateSpriteGfx(screen, obj_number, obj_data) PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)
 
-/*! \fn extern inline void PA_UpdateGfx(bool screen, u16 gfx_number, void *obj_data) 
+/*! \fn extern inline void PA_UpdateGfx(u8 screen, u16 gfx_number, void *obj_data) 
     \brief
          \~english Update a given Gfx
          \~french Mettre à jour les Gfx donnés
@@ -618,13 +625,13 @@ extern inline void PA_CreateSpriteExFromGfx(bool screen, u8 obj_number, u16 obj_
 #include "PA_Text.h"
 #include "PA_Math.h"
 
-extern inline void PA_UpdateGfx(bool screen, u16 gfx_number, void *obj_data) {
+extern inline void PA_UpdateGfx(u8 screen, u16 gfx_number, void *obj_data) {
 	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);
 //	PA_OutputText(1, 25, PA_Rand()&15, "%dgfx   ", gfx_number);
 }
 
 
-/*! \fn extern inline void PA_UpdateGfxAndMem(bool screen, u8 gfx_number, void *obj_data)
+/*! \fn extern inline void PA_UpdateGfxAndMem(u8 screen, u8 gfx_number, void *obj_data)
     \brief
          \~english Update the Gfx of a given sprite and updates the PAlib animation pointer... Only for advanced users
          \~french Mettre à jour les Gfx donnés et le pointer d'animation dans PAlib... Uniquement pour utilisateurs avertis
@@ -639,7 +646,7 @@ extern inline void PA_UpdateGfx(bool screen, u16 gfx_number, void *obj_data) {
          \~french Graphisme à charger
 */
 
-extern inline void PA_UpdateGfxAndMem(bool screen, u8 gfx_number, void *obj_data){
+extern inline void PA_UpdateGfxAndMem(u8 screen, u8 gfx_number, void *obj_data){
 	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);
 	PA_SpriteAnimP[screen][gfx_number] = (u16*)obj_data; // mémorise la source de l'image...
 }
@@ -647,7 +654,7 @@ extern inline void PA_UpdateGfxAndMem(bool screen, u8 gfx_number, void *obj_data
 
 
 
-/*! \fn void PA_DeleteGfx(bool screen, u16 obj_gfx)
+/*! \fn void PA_DeleteGfx(u8 screen, u16 obj_gfx)
     \brief
          \~english Delete a given Gfx. If a sprite uses this gfx, it'll become invisible
          \~french Effacer un Gfx. Si un sprite l'utilisait, il deviendra invisible...
@@ -658,10 +665,10 @@ extern inline void PA_UpdateGfxAndMem(bool screen, u8 gfx_number, void *obj_data
          \~english Gfx number in memory
          \~french Numéro du Gfx en mémoire
 */
-void PA_DeleteGfx(bool screen, u16 obj_gfx);
+void PA_DeleteGfx(u8 screen, u16 obj_gfx);
 
 
-/*! \fn void PA_DeleteSprite(bool screen, u8 obj_number)
+/*! \fn void PA_DeleteSprite(u8 screen, u8 obj_number)
     \brief
          \~english Delete a given sprite. If it is the only one to use it's gfx, it'll be deleted too.
          \~french Effacer un sprite. S'il était le seul à utiliser un gfx, il sera effacé lui aussi
@@ -672,7 +679,7 @@ void PA_DeleteGfx(bool screen, u16 obj_gfx);
          \~english Sprite number
          \~french Numéro du sprite
 */
-void PA_DeleteSprite(bool screen, u8 obj_number);
+void PA_DeleteSprite(u8 screen, u8 obj_number);
 
 
 /*! \def PA_SetSpriteRotEnable(screen, sprite, rotset)
@@ -706,7 +713,7 @@ void PA_DeleteSprite(bool screen, u8 obj_number);
 #define PA_SetSpriteRotDisable(screen, sprite) {PA_obj[screen][sprite].atr0 &= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &= ALL_BUT_ROTSET;}
 
 
-/*! \fn extern inline void PA_SetRotset(bool screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy)
+/*! \fn extern inline void PA_SetRotset(u8 screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy)
     \brief
          \~english Rotate and zoom a sprite
          \~french Faire tourner et zoomer un sprite
@@ -727,7 +734,7 @@ void PA_DeleteSprite(bool screen, u8 obj_number);
          \~french Zoom vertical. 256 est pas de zoom, 512 2 fois plus petit, et 128 2 fois plus grand... Ajuster au mieux ! :p
 */
 
-extern inline void PA_SetRotset(bool screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy) {
+extern inline void PA_SetRotset(u8 screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy) {
 u8 obj_num = (rotset << 2);
 	PA_obj[screen][obj_num].atr3 = (PA_Cos(angle) * zoomx) >> 8;
 	PA_obj[screen][obj_num + 1].atr3 = (-PA_Sin(angle) * zoomy) >> 8;
@@ -735,7 +742,7 @@ u8 obj_num = (rotset << 2);
 	PA_obj[screen][obj_num + 3].atr3 = (PA_Cos(angle) * zoomy) >> 8;
 }
 
-/*! \fn extern inline void PA_SetRotsetNoZoom(bool screen, u8 rotset, s16 angle)
+/*! \fn extern inline void PA_SetRotsetNoZoom(u8 screen, u8 rotset, s16 angle)
     \brief
          \~english Rotate a sprite without zooming. It's a bit faster than the normal PA_SetRotset function
          \~french Faire tourner un sprite sans zoomer. C'est un peu plus rapide que la fonction PA_SetRotset
@@ -749,7 +756,7 @@ u8 obj_num = (rotset << 2);
          \~english Angle, between 0 and 512 (not 360, be carefull)
          \~french Angle, entre 0 et 512 (et non 360, attention !)
 */
-extern inline void PA_SetRotsetNoZoom(bool screen, u8 rotset, s16 angle)   {
+extern inline void PA_SetRotsetNoZoom(u8 screen, u8 rotset, s16 angle)   {
 u8 obj_num = (rotset << 2);
 	PA_obj[screen][obj_num].atr3 = PA_Cos(angle);
 	PA_obj[screen][obj_num + 1].atr3 = -PA_Sin(angle);
@@ -757,7 +764,7 @@ u8 obj_num = (rotset << 2);
 	PA_obj[screen][obj_num + 3].atr3 = PA_Cos(angle);
 }
 
-/*! \fn extern inline void PA_SetRotsetNoAngle(bool screen, u8 rotset, u16 zoomx, u16 zoomy)
+/*! \fn extern inline void PA_SetRotsetNoAngle(u8 screen, u8 rotset, u16 zoomx, u16 zoomy)
     \brief
          \~english Zoom a sprite without rotating. It's a bit faster than the normal PA_SetRotset function
          \~french Zoomer un sprite sans le faire tourner. C'est un peu plus rapide que la fonction PA_SetRotset
@@ -774,7 +781,7 @@ u8 obj_num = (rotset << 2);
          \~english Vertical zoom. 256 is unzoomed, 512 is 2 times smaller, and 128 twice as big... So adjust at will ! :p
          \~french Zoom vertical. 256 est pas de zoom, 512 2 fois plus petit, et 128 2 fois plus grand... Ajuster au mieux ! :p
 */
-extern inline void PA_SetRotsetNoAngle(bool screen, u8 rotset, u16 zoomx, u16 zoomy) {
+extern inline void PA_SetRotsetNoAngle(u8 screen, u8 rotset, u16 zoomx, u16 zoomy) {
 u8 obj_num = (rotset << 2);
 	PA_obj[screen][obj_num].atr3 = zoomx;
 	PA_obj[screen][obj_num + 1].atr3 = 0;
@@ -853,7 +860,7 @@ u8 obj_num = (rotset << 2);
 
 
 
-/*! \fn extern inline void PA_SetSpriteXY(bool screen, u8 sprite, s16 x, s16 y)
+/*! \fn extern inline void PA_SetSpriteXY(u8 screen, u8 sprite, s16 x, s16 y)
     \brief
          \~english Set the X and Y position of a sprite on screen
          \~french Position X et Y du sprite à l'écran
@@ -870,7 +877,7 @@ u8 obj_num = (rotset << 2);
          \~english X position
          \~french Position Y
 */
-extern inline void PA_SetSpriteXY(bool screen, u8 sprite, s16 x, s16 y) {
+extern inline void PA_SetSpriteXY(u8 screen, u8 sprite, s16 x, s16 y) {
 	PA_SetSpriteX(screen, sprite, x); 
 	PA_SetSpriteY(screen, sprite, y);
 }
@@ -1201,7 +1208,7 @@ extern inline void PA_SetSpriteXY(bool screen, u8 sprite, s16 x, s16 y) {
 
 
 
-/*! \fn extern inline void PA_SetSpriteAnimEx(bool screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe)
+/*! \fn extern inline void PA_SetSpriteAnimEx(u8 screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe)
     \brief
          \~english Set the animation frame for a given sprite. This function is faster than the normal PA_SetSpriteAnim because it doesn't have to lookup the sprite dimensions...
          \~french Régler l'image du sprite dans l'animation. Cette fonction est plus rapide que PA_SetSpriteAnim parce qu'elle n'a pas à rechercher les dimensions du sprite
@@ -1224,13 +1231,13 @@ extern inline void PA_SetSpriteXY(bool screen, u8 sprite, s16 x, s16 y) {
          \~english Sprite animation frame (0, 1, 2, etc...)
          \~french Frame de l'animation du sprite (0, 1, 2, etc...)
 */
-extern inline void PA_SetSpriteAnimEx(bool screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe){
+extern inline void PA_SetSpriteAnimEx(u8 screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe){
 	u16 gfx = PA_GetSpriteGfx(screen, sprite);
 	//PA_OutputText(1, 0, PA_Rand()&15, "%03d - %03d   ", gfx, sprite);
 	PA_UpdateGfx(screen, gfx, (void*)(PA_SpriteAnimP[screen][gfx] + (animframe * (lx * ly) >> (2 - ncolors))));
 }
 
-/*! \fn extern inline void PA_SetSpriteAnim(bool screen, u8 sprite, s16 animframe)
+/*! \fn extern inline void PA_SetSpriteAnim(u8 screen, u8 sprite, s16 animframe)
     \brief
          \~english Set the animation frame for a given sprite. Same as PA_SetSpriteAnimEx, but a bit slower and easier to use...
          \~french Régler l'image du sprite dans l'animation. Identique à PA_SetSpriteAnimEx, mais plus simple à utiliser, par contre plus lent
@@ -1244,13 +1251,13 @@ extern inline void PA_SetSpriteAnimEx(bool screen, u8 sprite, u8 lx, u8 ly, u8 n
          \~english Sprite animation frame (0, 1, 2, etc...)
          \~french Frame de l'animation du sprite (0, 1, 2, etc...)
 */
-extern inline void PA_SetSpriteAnim(bool screen, u8 sprite, s16 animframe){
+extern inline void PA_SetSpriteAnim(u8 screen, u8 sprite, s16 animframe){
 	PA_SetSpriteAnimEx(screen, sprite, PA_GetSpriteLx(screen, sprite), PA_GetSpriteLy(screen, sprite), PA_GetSpriteColors(screen, sprite), animframe);
 }
 
 
 
-/*! \fn void PA_StartSpriteAnimEx(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)
+/*! \fn void PA_StartSpriteAnimEx(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)
     \brief
          \~english Start a sprite animation. Once started, it continues on and on by itself until you stop it !
          \~french Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !
@@ -1276,12 +1283,12 @@ extern inline void PA_SetSpriteAnim(bool screen, u8 sprite, s16 animframe){
          \~english Number of animation cycles before stopping. If using ANIM_UPDOWN, it takes 2 cycles to come back to the original image
          \~french Nombres de cycles d'animations avant l'arrêt. Si on utilise ANIM_UPDOWN, il faut 2 cycles pour que l'animation revienne à l'image de base
 */
-void PA_StartSpriteAnimEx(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles);
+void PA_StartSpriteAnimEx(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles);
 
 
 
 
-/*! \fn extern inline void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)
+/*! \fn extern inline void PA_StartSpriteAnim(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)
     \brief
          \~english Start a sprite animation. Once started, it continues on and on by itself until you stop it !
          \~french Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !
@@ -1301,14 +1308,14 @@ void PA_StartSpriteAnimEx(bool screen, u8 sprite, s16 firstframe, s16 lastframe,
          \~english Speed, in frames per second. So speed 1 would mean 1 image per second, so 1 image every game frame
          \~french Vitesse, en frames par seconde (fps). 1 signifie donc 1 image par seconde... 
 */
-extern inline void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed){
+extern inline void PA_StartSpriteAnim(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed){
 	PA_StartSpriteAnimEx(screen, sprite, firstframe, lastframe, speed, ANIM_INFINITE);
 }
 
 
 
 
-/*! \fn extern inline void PA_StopSpriteAnim(bool screen, u8 sprite)
+/*! \fn extern inline void PA_StopSpriteAnim(u8 screen, u8 sprite)
     \brief
          \~english Stop a sprite animation
          \~french Arrêter une animation de sprite
@@ -1319,13 +1326,13 @@ extern inline void PA_StartSpriteAnim(bool screen, u8 sprite, s16 firstframe, s1
          \~english sprite number in the sprite system
          \~french Numéro du sprite dans le systeme de sprite	
 */
-extern inline void PA_StopSpriteAnim(bool screen, u8 sprite)
+extern inline void PA_StopSpriteAnim(u8 screen, u8 sprite)
 {
 	if (spriteanims[screen][sprite].play) nspriteanims--;
 	spriteanims[screen][sprite].play = 0;
 }
 
-/*! \fn extern inline void PA_SetSpriteAnimFrame(bool screen, u8 sprite, u16 frame)
+/*! \fn extern inline void PA_SetSpriteAnimFrame(u8 screen, u8 sprite, u16 frame)
     \brief
          \~english Set the current animation frame number
          \~french Changer le numéro actuel de la frame d'animation
@@ -1339,7 +1346,7 @@ extern inline void PA_StopSpriteAnim(bool screen, u8 sprite)
          \~english Frame number to use...
          \~french Numéro de frame...	 
 */
-extern inline void PA_SetSpriteAnimFrame(bool screen, u8 sprite, u16 frame)
+extern inline void PA_SetSpriteAnimFrame(u8 screen, u8 sprite, u16 frame)
 {
 	if(spriteanims[screen][sprite].currentframe != frame){
 		PA_SetSpriteAnimEx(screen, sprite, spriteanims[screen][sprite].lx, spriteanims[screen][sprite].ly, spriteanims[screen][sprite].colors, spriteanims[screen][sprite].currentframe);
@@ -1348,7 +1355,7 @@ extern inline void PA_SetSpriteAnimFrame(bool screen, u8 sprite, u16 frame)
 }
 
 
-/*! \fn extern inline u16 PA_GetSpriteAnimFrame(bool screen, u8 sprite)
+/*! \fn extern inline u16 PA_GetSpriteAnimFrame(u8 screen, u8 sprite)
     \brief
          \~english Returns the current animation frame number
          \~french Renvoie le numéro actuel de la frame d'animation
@@ -1359,14 +1366,14 @@ extern inline void PA_SetSpriteAnimFrame(bool screen, u8 sprite, u16 frame)
          \~english sprite number in the sprite system
          \~french Numéro du sprite dans le systeme de sprite	 
 */
-extern inline u16 PA_GetSpriteAnimFrame(bool screen, u8 sprite)
+extern inline u16 PA_GetSpriteAnimFrame(u8 screen, u8 sprite)
 {
 	return spriteanims[screen][sprite].currentframe;
 }
 
 
 
-/*! \fn extern inline void PA_SetSpriteAnimSpeed(bool screen, u8 sprite, s16 speed)
+/*! \fn extern inline void PA_SetSpriteAnimSpeed(u8 screen, u8 sprite, s16 speed)
     \brief
          \~english Set the current animation speed
          \~french Changer la vitesse de l'animation
@@ -1380,12 +1387,12 @@ extern inline u16 PA_GetSpriteAnimFrame(bool screen, u8 sprite)
          \~english Speed, in fps...
          \~french Vitesse, en fps...		 
 */
-extern inline void PA_SetSpriteAnimSpeed(bool screen, u8 sprite, s16 speed)
+extern inline void PA_SetSpriteAnimSpeed(u8 screen, u8 sprite, s16 speed)
 {
 	spriteanims[screen][sprite].speed = speed;
 }
 
-/*! \fn extern inline u16 PA_GetSpriteAnimSpeed(bool screen, u8 sprite)
+/*! \fn extern inline u16 PA_GetSpriteAnimSpeed(u8 screen, u8 sprite)
     \brief
          \~english Returns the current animation speed
          \~french Renvoie la vitesse de l'animation
@@ -1396,13 +1403,13 @@ extern inline void PA_SetSpriteAnimSpeed(bool screen, u8 sprite, s16 speed)
          \~english sprite number in the sprite system
          \~french Numéro du sprite dans le systeme de sprite	
 */
-extern inline u16 PA_GetSpriteAnimSpeed(bool screen, u8 sprite)
+extern inline u16 PA_GetSpriteAnimSpeed(u8 screen, u8 sprite)
 {
 	return spriteanims[screen][sprite].speed;
 }
 
 
-/*! \fn extern inline void PA_SetSpriteNCycles(bool screen, u8 sprite, s16 NCycles)
+/*! \fn extern inline void PA_SetSpriteNCycles(u8 screen, u8 sprite, s16 NCycles)
     \brief
          \~english Set the current animation cycles left (-1 for inifinite loop)
          \~french Changer le nombre de cycles d'animation restant (-1 pour inifini)
@@ -1416,14 +1423,14 @@ extern inline u16 PA_GetSpriteAnimSpeed(bool screen, u8 sprite)
          \~english Number of cycles
          \~french Nombre de cycles		 
 */
-extern inline void PA_SetSpriteNCycles(bool screen, u8 sprite, s16 NCycles)
+extern inline void PA_SetSpriteNCycles(u8 screen, u8 sprite, s16 NCycles)
 {
 	spriteanims[screen][sprite].ncycles = NCycles;
 }
 
 
 
-/*! \fn extern inline u16 PA_GetSpriteNCycles(bool screen, u8 sprite)
+/*! \fn extern inline u16 PA_GetSpriteNCycles(u8 screen, u8 sprite)
     \brief
          \~english Returns the current number of animation cycles left
          \~french Renvoie le nombre de cycles d'animation restants
@@ -1434,7 +1441,7 @@ extern inline void PA_SetSpriteNCycles(bool screen, u8 sprite, s16 NCycles)
          \~english sprite number in the sprite system
          \~french Numéro du sprite dans le systeme de sprite	
 */
-extern inline u16 PA_GetSpriteNCycles(bool screen, u8 sprite)
+extern inline u16 PA_GetSpriteNCycles(u8 screen, u8 sprite)
 {
 	return spriteanims[screen][sprite].speed;
 }
@@ -1443,7 +1450,7 @@ extern inline u16 PA_GetSpriteNCycles(bool screen, u8 sprite)
 
 
 
-/*! \fn extern inline u16 PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)
+/*! \fn extern inline u16 PA_SpriteAnimPause(u8 screen, u8 sprite, u8 pause)
     \brief
          \~english Pause or UnPause a sprite animation
          \~french Mettre en Pause en remettre en lecture une animation de sprite
@@ -1457,7 +1464,7 @@ extern inline u16 PA_GetSpriteNCycles(bool screen, u8 sprite)
          \~english 1 for pause, 0 for unpause
          \~french 1 pour pause, 0 pour reprendre la lecture...
 */
-extern inline void PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)
+extern inline void PA_SpriteAnimPause(u8 screen, u8 sprite, u8 pause)
 {
 	if (pause&&spriteanims[screen][sprite].play) nspriteanims--;
 	else if ((!pause)&&(!spriteanims[screen][sprite].play)) nspriteanims++;
@@ -1469,7 +1476,7 @@ extern inline void PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)
 
 
 
-/*! \fn extern inline void PA_SetSpritePixel(bool screen, u8 sprite, u8 x, u8 y, u8 color)
+/*! \fn extern inline void PA_SetSpritePixel(u8 screen, u8 sprite, u8 x, u8 y, u8 color)
     \brief
          \~english Set a sprite's pixel to a given palette color. Like PA_SetSpritePixelEx, with less options, but a little slower
          \~french Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent
@@ -1489,7 +1496,7 @@ extern inline void PA_SpriteAnimPause(bool screen, u8 sprite, bool pause)
          \~english New palette color to put
          \~french Nouvelle couleur de la palette à metrre
 */
-extern inline void PA_SetSpritePixel(bool screen, u8 sprite, u8 x, u8 y, u8 color){
+extern inline void PA_SetSpritePixel(u8 screen, u8 sprite, u8 x, u8 y, u8 color){
 u8 hsize = spriteanims[screen][sprite].lx>>3;
 
 	s32 pos = (x >> 3) + ((y >> 3) * hsize);
@@ -1508,7 +1515,7 @@ u8 hsize = spriteanims[screen][sprite].lx>>3;
 }
 
 
-/*! \fn extern inline u8 PA_GetSpritePixel(bool screen, u8 sprite, u8 x, u8 y)
+/*! \fn extern inline u8 PA_GetSpritePixel(u8 screen, u8 sprite, u8 x, u8 y)
     \brief
          \~english Get a sprite's pixel color. Like PA_GetSpritePixelEx, with less options, but a little slower
          \~french Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent
@@ -1525,7 +1532,7 @@ u8 hsize = spriteanims[screen][sprite].lx>>3;
          \~english Y coordinate of the pixel
          \~french Coordonnée Y du pixel
 */
-extern inline u8 PA_GetSpritePixel(bool screen, u8 sprite, u8 x, u8 y) {
+extern inline u8 PA_GetSpritePixel(u8 screen, u8 sprite, u8 x, u8 y) {
 u8 hsize = spriteanims[screen][sprite].lx>>3;
 
 	s32 pos = (x >> 3) + ((y >> 3) * hsize);
@@ -1544,7 +1551,7 @@ u8 hsize = spriteanims[screen][sprite].lx>>3;
 }
 
 
-/*! \fn void PA_InitSpriteDraw(bool screen, u8 sprite)
+/*! \fn void PA_InitSpriteDraw(u8 screen, u8 sprite)
     \brief
          \~english Initialise a sprite to be able to draw on it !
          \~french Initialise un sprite pour pouvoir dessiner dessus ! 
@@ -1555,7 +1562,7 @@ u8 hsize = spriteanims[screen][sprite].lx>>3;
          \~english Sprite number in the sprite system
          \~french Numéro du sprite dans le systeme de sprite
 */
-void PA_InitSpriteDraw(bool screen, u8 sprite);
+void PA_InitSpriteDraw(u8 screen, u8 sprite);
 
 
 
@@ -1574,7 +1581,7 @@ for (j = 0; j < 2; j++)
 
 
 
-/*! \fn void PA_InitSpriteExtPrio(bool SpritePrio)
+/*! \fn void PA_InitSpriteExtPrio(u8 SpritePrio)
     \brief
          \~english Enable the PAlib sprite priority system. Slower than the normal priority system, but offering 256 levels of priority for the sprites (overrides the sprite number's priority)
          \~french Activer le systeme de priorité de sprites PAlib. Plus lent que le systeme normal, il permet d'avoir 256 niveaux de priorité (supplante la priorité par numéro de sprites)
@@ -1582,9 +1589,9 @@ for (j = 0; j < 2; j++)
          \~english 1 for on, 0 for off...
          \~french 1 pour on, 0 pour off...
 */
-void PA_InitSpriteExtPrio(bool SpritePrio);
+void PA_InitSpriteExtPrio(u8 SpritePrio);
 
-extern inline void PA_SetSPriteExtPrio(bool screen, u8 sprite, u8 prio){
+extern inline void PA_SetSPriteExtPrio(u8 screen, u8 sprite, u8 prio){
 	PA_SpritePrio[screen][sprite] = prio;
 }
 

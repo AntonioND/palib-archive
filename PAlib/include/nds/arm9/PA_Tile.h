@@ -2,6 +2,8 @@
 #define _PA_Tile
 
 
+#include "PA_Sprite.h"
+
 
 // Extracts the size from PAGfx convertions
 extern inline u8 PA_GetPAGfxBgSize(u16 width, u16 height)
@@ -576,7 +578,7 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
       \~french Nouveau numéro de tile que l'on veut mettre
 */
 extern inline void PA_SetMapTile(bool screen, u8 bg_select, s16 x, s16 y, s16 tile_number) {
-*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ALL_BUT(TILE_N); 
+*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ~(TILE_N); 
 *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) |= ((tile_number)&TILE_N);
 }
 

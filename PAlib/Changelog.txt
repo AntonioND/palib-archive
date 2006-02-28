@@ -1,3 +1,25 @@
+PAlib 0.998d
+
+[Sound] Fixed :S
+
+[PAGfx] Updated to add 'const' where it was missing... (thanks Jandujar !)
+
+[PAGfx] Removed the #ifndef from all_gfx.h, you can now include it correclty in multiple files
+
+[PAGfx] Shorter lines on error messages
+
+[PAGfx] 2 bug corrections preventing from working if a file wasn't found
+
+[PAGC Frontend] Corrected error when first moving from sprites to backgrounds view
+
+[Sprite Ext Prio] Fixed order when 2 sprites had the same priority level
+
+[Text] Fixed the '-' not showing for values from 0 to -1
+
+[Text] Fixed the decimal values with negative numbers (thanks to Jandujar !)
+
+
+
 PAlib 0.998c
 
 [Examples] Fixed the keyboard example, had SimpleText instead of Text function, so the line break didn't work :S

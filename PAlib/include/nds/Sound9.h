@@ -6,7 +6,7 @@
 #define SOUND9_H
 
 #include <nds.h>
-#include "../../SoundCommon.h"
+#include "SoundCommon.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,7 +32,7 @@ extern void SndChgLength(u8 PA_Channel, u32 Length);
 extern void SndChgTimer(u8 PA_Channel, int Timer);
 extern void StmPlay(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq, s16 format, BOOL repeat, int repeatPoint);
 //MIC
-extern void StartRecording(s8* buffer, int length);
+extern void StartRecording(u8* buffer, int length);
 extern void StopRecording();
 //MOD
 extern void SndSetMemPool(void *memPool, u32 memPoolSize);

@@ -145,6 +145,7 @@ REG_IME = 0x01;
 
 
 void PA_vblFunc(void){
+//PA_OutputText(0, 0, 0, "VBL Ok");
 PA_UpdateOAM(); // Updates the Object on screen
 PA_UpdatePad(); // Updates the Keypad...
 PA_UpdateStylus(); // Updates the stylus input
@@ -154,6 +155,7 @@ PA_Newframe = 1; // Synch prog to screen
 
 PA_UpdateSpriteAnims(); // Update the sprite animations...
 ++PA_nVBLs;
+//PA_OutputText(0, 0, 10, "%d", PA_nVBLs);
 }
 
 

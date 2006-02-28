@@ -86,12 +86,12 @@ void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b) {
 */
 
 
-
+/*
 void PA_TextAllPal(bool screen)
 {
 
 }
-
+*/
 
 
 
@@ -347,22 +347,27 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
             j += 1;
          }
          else if ((text[j+1] == 'd') || (text[j+1] == 'f')) {
-
-            if (text[j+1] == 'd') PAtextnumber = va_arg(varg, s32);
+			double test = 0;
+            if (text[j+1] == 'd') {
+				PAtextnumber = va_arg(varg, s32);
+				test = PAtextnumber;
+			}
             else {  // On ne prend que la partie entière pour l'instant, on garde le reste pour plus tard :p
                tempdouble = va_arg(varg, double);
-               PAtextnumber = (s32)tempdouble ;
+			   test = tempdouble;
+			   PAtextnumber = (s32)tempdouble ;
                tempdouble -= PAtextnumber;
             }
 
             s8 neg = 0; // Si negatif, passe à 1...
-            if (PAtextnumber < 0) {
+            if (test < 0) {
                PAtextnumber = -PAtextnumber;
+			   //tempdouble = -tempdouble;
                neg = 1;
             }
 
             for (i = 0; PAtextnumber || (!PAtextnumber && !i); i++) {  // tant que le nombre ne vaut pas 0 mais que i est positif, on continu à la convertir...
-               PAtext[i] = 48 + (PAtextnumber%10);
+               PAtext[i] = '0' + (PAtextnumber%10);
                PAtextnumber = PAtextnumber / 10; // Nombre de départ...
             }
             if (neg) {
@@ -381,12 +386,13 @@ va_list varg;           /* Variable identifiant le prochain paramètre. */
                ++ textcount;
                i = text[j+1] - 48;  // Nombre de chiffres après la virgule...
                PAtext[1] = 0; // Permet de stopper si c'est vba...
-
+			   if (tempdouble < 0) tempdouble = -tempdouble;
                while((i-- > 0)) { // Pas plus de 6 chiffres après la virgule...
                   tempdouble *= 10;
+				  //if (
                   PAtextnumber = (s32)tempdouble;
                   tempdouble -= PAtextnumber;
-                  PAtext[0] = 48 + PAtextnumber;
+                  PAtext[0] = '0' + PAtextnumber;
                   PA_SetTileLetter(screen, x + textcount, y, PAtext[0]);
                   ++ textcount;
                }

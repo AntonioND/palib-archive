@@ -52,6 +52,9 @@ void PA_VBL(void){
     but = REG_KEYXY;
     if (!(but & 0x40)) {
 		PA_UpdateStylus();
+		MIC_On();
+		StartRecording((u8*)33808000, 100000);
+		*(u8*)33807928 = 1;
     }
 
     batt = touchRead(TSC_MEASURE_BATTERY);
@@ -81,34 +84,20 @@ void PA_VBL(void){
 		//IPC->aux = touchRead(TSC_MEASURE_AUX); // update IPC with new values
 	}
 
-	//SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
+	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
 
 }
 
-/*
-void InterruptHandler(void) {
 
- 
-  if (REG_IF & IRQ_VBLANK) {
-	PA_VBL();
-  }
-
-  if (REG_IF & IRQ_TIMER0) {
-	// DekuTree64's MOD player update
-    SndTimerIrq();
-  }
-
-  if (REG_IF & IRQ_TIMER3) {
-	PA_ProcessMicrophoneTimerIRQ();
-    VBLANK_INTR_WAIT_FLAGS |= IRQ_TIMER3;
-  }
-
-  // Acknowledge interrupts
-  REG_IF = REG_IF;
-}*/
  
 
 //////////////////////////////////////////////////////////////////////
+ 
+ 
+void timer0(void){
+
+SndTimerIrq();
+}
  
 
 int main(int argc, char ** argv) {
@@ -137,10 +126,10 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 	irqInit();
 	irqSet(IRQ_VBLANK, PA_VBL);
 	irqEnable(IRQ_VBLANK);
-	irqSet(IRQ_TIMER0, SndTimerIrq);
+	irqSet(IRQ_TIMER0, timer0);
 	irqEnable(IRQ_TIMER0);	
-	irqSet(IRQ_TIMER3, PA_ProcessMicrophoneTimerIRQ);
-	irqEnable(IRQ_TIMER3);		
+	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
+	irqEnable(IRQ_TIMER3);	
 /*
   // Set up the interrupt handler
   REG_IME = 0;

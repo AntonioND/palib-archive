@@ -625,7 +625,7 @@ void PA_UnpauseStream(u8 PA_Channel);
          \~english Buffer length must be dividable by 1600
          \~french Longueur du buffer doit être divisible par 1600
 */
-extern inline void PA_MicStartRecording(s8* buffer, int length){StartRecording(buffer, length);}
+extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(buffer, length);}
 
 /*! \fn extern inline void PA_MicStopRecording()
     \brief

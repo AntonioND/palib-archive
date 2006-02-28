@@ -752,8 +752,6 @@ extern inline void PA_DualSetSpriteAnimEx(u8 sprite, u8 lx, u8 ly, u8 ncolors, s
 
 
 
-
-
 /*! \fn extern inline void PA_DualSetSpriteAnim(u8 sprite, s16 animframe)
     \brief
          \~english Set the animation frame for a given sprite. Same as PA_SetSpriteAnimEx, but a bit slower and easier to use...

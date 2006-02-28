@@ -11,7 +11,7 @@
 #define SOUND7_H
 
 #include <nds.h>
-#include "../../SoundCommon.h"
+#include "SoundCommon.h"
 
 #ifdef __cplusplus
 extern "C" {

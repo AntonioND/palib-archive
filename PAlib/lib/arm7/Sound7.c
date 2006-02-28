@@ -1,3 +1,5 @@
+
+// ----- Change log -----
 // ----- Change log -----
 // 10/08/04 - Modified mixer to take any number of samples to mix, 
 //            rather than strictly a full buffer, added MOD updating 
@@ -21,7 +23,7 @@
 #include "Sound7.h"
 #include "microphone7.h"
 
-#include "../../SoundCommon.h"
+#include "SoundCommon.h"
 
 // ----- Constants -----
 
@@ -110,16 +112,16 @@ typedef void (*COMMAND_FUNC_PTR)(SND_COMMAND *cmd);
 	//Non - MOD functions
 static void SndChgVolume		(SND_COMMAND *cmd);
 static void SndChgPan			(SND_COMMAND *cmd);
-static void SndChgTimer			(SND_COMMAND *cmd);
+static void SndChgTimer		(SND_COMMAND *cmd);
 static void SndChgRepeat		(SND_COMMAND *cmd);
 static void SndChgLength		(SND_COMMAND *cmd);
 static void SngCmdPlay			(SND_COMMAND *cmd);
 static void SngCmdStop			(SND_COMMAND *cmd);
-static void SngCmdPause			(SND_COMMAND *cmd);
+static void SngCmdPause		(SND_COMMAND *cmd);
 static void FlashChannel		(u8 channel);
 
 	//Mic functions
-static void MicCmdStart			(SND_COMMAND *cmd);
+static void MicCmdStart		(SND_COMMAND *cmd);
 static void MicCmdStop			(SND_COMMAND *cmd);
 
 	// Command functions (communication from ARM9)
@@ -1401,11 +1403,12 @@ static void SngCmdPause(SND_COMMAND *cmd)
 //start recording
 static void MicCmdStart(SND_COMMAND *cmd)
 {
-	PA_StartRecording((s8*)(cmd->param32) ,((int)(cmd->param[0]))*1600);
+	PM_SetAmp(PM_AMP_ON);
+	StartRecording((u8*)(cmd->param32) ,((int)(cmd->param[0]))*1600);
 }
 
 //stop recording
 static void MicCmdStop(SND_COMMAND *cmd)
 {
-	PA_StopRecording();
+	StopRecording();
 }

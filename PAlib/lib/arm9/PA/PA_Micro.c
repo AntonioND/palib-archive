@@ -6,6 +6,9 @@
 void PA_MicInit() {
   memset(commandControl, 0, sizeof(CommandControl));  
 }
+
+
+
 void PA_PlaySample(int channel, int frequency, void* data, int length, int volume)
 {
   struct Command* command = &commandControl->command[commandControl->currentCommand];
@@ -43,8 +46,8 @@ int PA_StopRecording()
   commandControl->currentCommand++;
   commandControl->currentCommand &= MAX_COMMANDS-1;
 
-  while(commandControl->return_data == -1)
-    swiDelay(1);
+  /*while(commandControl->return_data == -1)
+    swiDelay(1);*/
   return commandControl->return_data;
 }
 

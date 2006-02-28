@@ -5,7 +5,7 @@
 #include <nds.h>
 #include <string.h>
 #include "Sound9.h"
-#include "../../SoundCommon.h"
+#include "SoundCommon.h"
 
 //Channels
 SOUND_CHANNEL	SndChannel[SND_MAX_CHANNELS];
@@ -244,7 +244,7 @@ void SndChgLength(u8 PA_Channel, u32 Length)
 	sndControl->curCmd &= MAX_SND_COMMANDS-1;
 }
 
-void StartRecording(s8* buffer, int length)
+void StartRecording(u8* buffer, int length)
 {
 	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
 

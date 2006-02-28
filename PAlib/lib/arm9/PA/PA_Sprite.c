@@ -50,12 +50,12 @@ u16 *PA_SpriteAnimP[2][1024]; // Pointer towards the sprite's graphics, allows a
 
 
 
-bool PA_SpriteExtPrio = 0;
+u8 PA_SpriteExtPrio = 0;
 u8 PA_SpritePrio[2][128]; // Set the sprite priorities...
 
 
 
-void PA_InitSpriteExtPrio(bool SpritePrio){
+void PA_InitSpriteExtPrio(u8 SpritePrio){
 	PA_SpriteExtPrio = SpritePrio;
 	u8 i, n;
 	for (i = 0; i < 2; i++) {
@@ -64,6 +64,8 @@ void PA_InitSpriteExtPrio(bool SpritePrio){
 		}
 	}
 }
+
+
 
 
 
@@ -110,7 +112,7 @@ PA_InitSpriteExtPrio(0);// normal priority system by default
 
 
 
-u16 PA_CreateGfx(bool screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode) {
+u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode) {
 u16 mem_size = PA_obj_sizes[obj_size][obj_shape] >> (8 - color_mode);
 if (color_mode == 2) mem_size = PA_16bit_sizes[obj_size][obj_shape] >> 6;
 
@@ -146,7 +148,7 @@ for (i = 0; (i < n_free_mem[screen]) & !exit; i++) {
 }
 
 
-void PA_DeleteSprite(bool screen, u8 obj_number){
+void PA_DeleteSprite(u8 screen, u8 obj_number){
 u16 obj_gfx = PA_GetSpriteGfx(screen, obj_number);
 
 // Si aucun objet n'utilise cet emplacement, on libère la mémoire... Sinon on signale qu'un de moins s'en sert
@@ -162,7 +164,7 @@ u16 obj_gfx = PA_GetSpriteGfx(screen, obj_number);
 
 
 
-void PA_DeleteGfx(bool screen, u16 obj_gfx) {
+void PA_DeleteGfx(u8 screen, u16 obj_gfx) {
 u16 i;
 u16 j;
 u8 exit = 0;
@@ -236,9 +238,9 @@ u8 ncase = (x >> 3) + ((y >> 3) * hsize);
 */
 /*
 typedef struct {
-	bool screen; // Ecran
+	u8 screen; // Ecran
 	u8 sprite;		// Numéro du sprite
-	bool wasdrawing; // Si on dessinait dessus ou pas avant
+	u8 wasdrawing; // Si on dessinait dessus ou pas avant
 	u8 x, y;  // Position x et y d'avant
 	u8 hsize, vsize; // Tailles
 	u8 n_colors; // Nombre de couleurs
@@ -323,7 +325,7 @@ void PA_DrawSpriteLine(u8 draw_number, s16 x1, s16 y1, s16 x2, s16 y2, u16 color
 }
 */
 
-void PA_InitSpriteDraw(bool screen, u8 sprite) {
+void PA_InitSpriteDraw(u8 screen, u8 sprite) {
 	spriteanims[screen][sprite].lx = PA_GetSpriteLx(screen, sprite);
 	spriteanims[screen][sprite].ly = PA_GetSpriteLy(screen, sprite);
 	spriteanims[screen][sprite].colors = PA_GetSpriteColors(screen, sprite);
@@ -363,7 +365,7 @@ PA_DrawSprite[draw_number].y = y;
 
 
 
-void PA_StartSpriteAnimEx(bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)
+void PA_StartSpriteAnimEx(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)
 {
 	spriteanims[screen][sprite].lx = PA_GetSpriteLx(screen, sprite);
 	spriteanims[screen][sprite].ly = PA_GetSpriteLy(screen, sprite);
