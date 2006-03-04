@@ -10,7 +10,7 @@
    PA_textmap[screen] = (u16*)map;PA_textpal[screen] = (u16*)pal;PAtext_pal[screen]=0;\
    u32 PAtexttempvar = 0; for (PAtexttempvar = 0; PAtexttempvar < 32*24; PAtexttempvar++) PA_SetTileLetter(screen, PAtexttempvar, 0, 0);   }
 
-void PA_CreateTextPal(bool screen, u8 pal_number, u16 r, u16 g, u16 b);
+void PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b);
 
 
 /*! \file PA_Text.h
@@ -57,7 +57,7 @@ extern s8 PA_font[2];  // 0 pour normal, 1 pour dégradé, -1 pour custom
 #endif
 
 
-typedef void(*letterfp)(u8 size, bool screen, u16 x, u16 y, char lettertemp, u8 color);
+typedef void(*letterfp)(u8 size, u8 screen, u16 x, u16 y, char lettertemp, u8 color);
 
 
 
@@ -84,7 +84,7 @@ extern textborders PA_TextBox[2];
 
 
 
-/*! \fn void PA_InitText(bool screen, u8 bg_select)
+/*! \fn void PA_InitText(u8 screen, u8 bg_select)
     \brief
          \~english Output text on the gba screen. Works only in modes 0-2
          \~french Ecrire du texte à l'écran. Ne marche qu'en modes 0-2
@@ -96,10 +96,10 @@ extern textborders PA_TextBox[2];
       \~french Numéro du fond que l'on veut tourner (0-3)
 */
 
-void PA_InitText(bool screen, u8 bg_select);
+void PA_InitText(u8 screen, u8 bg_select);
 
 
-/*! \fn extern inline void PA_SetTileLetter(bool screen, u16 x, u16 y, char letter)
+/*! \fn extern inline void PA_SetTileLetter(u8 screen, u16 x, u16 y, char letter)
     \brief
          \~english Output a letter on the DS screen.
          \~french Ecrire une lettre à l'écran.
@@ -116,12 +116,12 @@ void PA_InitText(bool screen, u8 bg_select);
          \~english Letter... 'a', 'Z', etc...
          \~french Lettre... 'a', 'Z', etc...
 */
-extern inline void PA_SetTileLetter(bool screen, u16 x, u16 y, char letter) {
+extern inline void PA_SetTileLetter(u8 screen, u16 x, u16 y, char letter) {
 	PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&((1<<12)-1)) + (PAtext_pal[screen] << 12));
 }
 
 
-/*! \fn extern inline void PA_SetTextTileCol(bool screen, u8 color)
+/*! \fn extern inline void PA_SetTextTileCol(u8 screen, u8 color)
     \brief
          \~english Change the text writing color (does not change the current text's color)
          \~french Change la couleur du texte à écrire (ne change pas la couleur du texte déjà écrit)
@@ -132,7 +132,7 @@ extern inline void PA_SetTileLetter(bool screen, u16 x, u16 y, char letter) {
          \~english Color, from 0 to 6, just test to see the result...
          \~french Couleur de 0 à 6, suffit de tester pour voir le résultat :)
 */
-extern inline void PA_SetTextTileCol(bool screen, u8 color)
+extern inline void PA_SetTextTileCol(u8 screen, u8 color)
 {
 	PAtext_pal[screen] = color;
 }
@@ -140,7 +140,7 @@ extern inline void PA_SetTextTileCol(bool screen, u8 color)
 
 
 
-/*! \fn void PA_OutputText(bool screen, u16 x, u16 y, char* text, ...)
+/*! \fn void PA_OutputText(u8 screen, u16 x, u16 y, char* text, ...)
     \brief
          \~english Output text on the DS screen. Works only in modes 0-2
          \~french Ecrire du texte à l'écran. Ne marche qu'en modes 0-2
@@ -157,9 +157,9 @@ extern inline void PA_SetTextTileCol(bool screen, u8 color)
          \~english String to output. The following commands are avaiblable : \%s to output another string, \%d to output a value, \%fX to output a float with X digits, \\n to go to the line. Here's an example : PA_OutputText(0, 0, 1, "My name is %s and I have only %d teeth", "Mollusk", 20);
          \~french Chaine de caractère à écrire. On dispose des commandes suivantes : \%s pour une autre chaine de caractères, \%d pour écrire la valeur d'une variables, \%fX pour afficher un nombre avec X chiffres après la virgule, \\n pour aller à la ligne. Voici un exemple : PA_OutputText(0, 0, 1, "Mon nom est %s et je n'ai que %d dents...", "Mollusk", 20);
 */
-void PA_OutputText(bool screen, u16 x, u16 y, char* text, ...);
+void PA_OutputText(u8 screen, u16 x, u16 y, char* text, ...);
 
-/*! \fn u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text)
+/*! \fn u16 PA_OutputSimpleText(u8 screen, u16 x, u16 y, const char *text)
     \brief
          \~english Output simple text on the DS screen. Works only in modes 0-2. Much faster than PA_OutputText, but much more limited... Returns the number of letters
          \~french Ecrire du texte tout simple à l'écran. Ne marche qu'en modes 0-2. Beaucoup plus rapide que PA_OutputText, masi aussi beaucoup plus limité... Renvoie le nombre de lettres
@@ -176,9 +176,9 @@ void PA_OutputText(bool screen, u16 x, u16 y, char* text, ...);
          \~english String to output. 
          \~french Chaine de caractère à écrire.
 */
-u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text);
+u16 PA_OutputSimpleText(u8 screen, u16 x, u16 y, const char *text);
 
-/*! \fn u32 PA_BoxText(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)
+/*! \fn u32 PA_BoxText(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)
     \brief
          \~english Output text on the DS screen. This text is limited to a chosen box, and you can chose the number of letters to output (can be used to show 'typed' text, just put 10000 if you want to show all the text...). Returns the number of letters outputed
          \~french Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nmobre de lettre écrites
@@ -204,9 +204,9 @@ u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text);
          \~english Maximum number of letters to show this time
          \~french Nombre maximum de lettres à afficher pour ce coup-ci 
 */
-u32 PA_BoxText(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit);
+u32 PA_BoxText(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, s32 limit);
 
-/*! \fn u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)
+/*! \fn u32 PA_BoxTextNoWrap(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)
     \brief
          \~english Output text on the DS screen. This text is limited to a chosen box, and you can chose the number of letters to output (can be used to show 'typed' text, just put 10000 if you want to show all the text...). Returns the number of letters outputed. This function does not support word wrapping
          \~french Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nombre de lettre écrites. Cette fonction coupe les mots...
@@ -232,11 +232,11 @@ u32 PA_BoxText(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char
          \~english Maximum number of letters to show this time
          \~french Nombre maximum de lettres à afficher pour ce coup-ci 
 */
-u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit);
+u32 PA_BoxTextNoWrap(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit);
 
 
 /*!
-    \fn extern inline void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b)
+    \fn extern inline void PA_SetTextCol(u8 screen, u16 r, u16 g, u16 b)
     \brief
       \~english Change the screen text's default color
       \~french Changer la couleur de base du texte à l'écran
@@ -253,13 +253,13 @@ u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, cons
       \~english Blue amount (0-31)
       \~french Quantité de bleu (0-31)
 */
-extern inline void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b){
+extern inline void PA_SetTextCol(u8 screen, u16 r, u16 g, u16 b){
 	PA_CreateTextPal(screen, 0, r, g, b);
 }
 
 
 
-//void PA_InitCustomTextEx(bool screen, u8 bg_select, void *tiles, void *map, void *pal);
+//void PA_InitCustomTextEx(u8 screen, u8 bg_select, void *tiles, void *map, void *pal);
 
 
 /*!
@@ -295,7 +295,7 @@ extern inline void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b){
 
 
 
-/*! \fn s16 PA_SmartText(bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp,  s32 limit)
+/*! \fn s16 PA_SmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp,  s32 limit)
     \brief
          \~english This is a variable width and variable size function to draw text on the screen. It draws on an 8 bit background (see PA_Init8bitBg for more info), and has options such as size, transaprency, and box limits, as well as the color. Only problem : it does not take commands such as %d, etc... The function returns the number of characters it outputed
          \~french Cette fonction permet d'écrire du texte à chasse variable à l'écran. Elle nécessite d'avoir un fond dessinable de 8 bits (cf PA_Init8bitBg). Les options sont la taille, la transparence, et les limites, ainsi que la couleur. Seul inconvénient : il n'accepte pas les commande comme %d, etc... La fonction renvoie le nombre de charactères écrits
@@ -330,11 +330,11 @@ extern inline void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b){
          \~english You can give a maximum number of characters to output. This can be usefull to have a slowing drawing text (allow to draw 1 more character each frame...)
          \~french On peut fixer une limite au nombre de caractères. Ceci peut etre utile pour dessiner un texte progressivement, en augmentant de 1 le nombre de caractères à chaque boucle....
 */
-s16 PA_SmartText(bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp,  s32 limit);
+s16 PA_SmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp,  s32 limit);
 
 
 
-/*! \fn s16 PA_CenterSmartText(bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp)
+/*! \fn s16 PA_CenterSmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp)
     \brief
          \~english Basicaly the same as the SmartText function, but this time centered...
          \~french En gros la meme chose que SmartText, mais en centré...
@@ -366,11 +366,11 @@ s16 PA_SmartText(bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* te
          \~english Transparency. Setting this to 0 will overwrite all drawing in the text zone. 1 will write the text without erasing the drawing. 2 won't output anything (just to count the letters), 3 is rotated one way, 4 rotated the other way
          \~french Transparence. Mettre à 0 effecera tout dessin de la zone de texte. 1 écrira le texte par-dessus le dessin sans l'effacer. 2 n'écrira rien (juste pour compter les lettres). 3 fera un texte tourné à 90°. 4 est un texte tourné dans l'autre sens.	 
 */
-s16 PA_CenterSmartText(bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp);
+s16 PA_CenterSmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp);
 
 
 
-/*! \fn extern inline bool PA_CompareText(char *text1, char *text2)
+/*! \fn extern inline u8 PA_CompareText(char *text1, char *text2)
     \brief
          \~english Compare a string to a second. Example : PA_CompareText(Playname, "Mollusk");
          \~french Comparer une chaine de caractère à une autre. Exemple : PA_CompareText(Playname, "Mollusk");
@@ -381,8 +381,8 @@ s16 PA_CenterSmartText(bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, ch
          \~english Second string...
          \~french Seconde chaine...
 */
-extern inline bool PA_CompareText(char *text1, char *text2){
-	bool ok = 1; // Devrait etre bon
+extern inline u8 PA_CompareText(char *text1, char *text2){
+	u8 ok = 1; // Devrait etre bon
 	u8 i = 0; 
 	while(ok && text2[i]){
 		if (text1[i] != text2[i]) ok = 0;
@@ -416,7 +416,7 @@ text1[i] = text2[i];
 
 
 
-/*! \fn void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2)
+/*! \fn void PA_InitTextBorders(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2)
     \brief
          \~english Initialise a text box with it's borders. This makes writing in a delimited area much easier...
          \~french Initialise une boite à texte, avec la bordure. Ceci rend l'utilisation des textes délimités bien plus simple
@@ -436,10 +436,10 @@ text1[i] = text2[i];
          \~english Bottom
          \~french Bas 
 */
-void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2);
+void PA_InitTextBorders(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2);
 
 
-/*! \fn void PA_EraseTextBox(bool screen)
+/*! \fn void PA_EraseTextBox(u8 screen)
     \brief
          \~english Erases the text in a textbox. Requires that that box be initialized with PA_InitTextBorders
          \~french Efface le text d'un boite à texte... Nécessite qu'il ait été initialisé avec PA_InitTextBorders
@@ -447,11 +447,11 @@ void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2);
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
 */
-void PA_EraseTextBox(bool screen);
+void PA_EraseTextBox(u8 screen);
 
 
 
-/*! \fn extern inline u32 PA_SimpleBoxText(bool screen, const char *text, u32 limit)
+/*! \fn extern inline u32 PA_SimpleBoxText(u8 screen, const char *text, u32 limit)
     \brief
          \~english Write text in an initiliazed textbox. Similar to PA_BoxText, but without needing the text limits
          \~french Ecrit du texte dans une zone délimitée. Similaire à PA_BoxText, mais sans avoir besoin de délimiter
@@ -465,11 +465,11 @@ void PA_EraseTextBox(bool screen);
          \~english Maximum number of letters to show this time
          \~french Nombre maximum de lettres à afficher pour ce coup-ci 		 
 */
-extern inline u32 PA_SimpleBoxText(bool screen, const char *text, u32 limit){
+extern inline u32 PA_SimpleBoxText(u8 screen, const char *text, u32 limit){
 return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
 }
 
-/*! \fn extern inline void PA_ClearTextBg(bool screen)
+/*! \fn extern inline void PA_ClearTextBg(u8 screen)
     \brief
          \~english Erase all the text on a given screen
          \~french Effacer tout le texte sur un écran donné
@@ -477,19 +477,19 @@ return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_T
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
 */
-extern inline void PA_ClearTextBg(bool screen){
+extern inline void PA_ClearTextBg(u8 screen){
 u8 i, j;
 for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, PAbgtext[screen], i, j, 0);
 }
 
 
 
-void PA_OutputTextSpecial0(bool screen, int x1, int y,char *text);
-void PA_OutputTextSpecial1(bool screen, int x1, int y,char *text);
-void PA_OutputTextSpecial2(bool screen, int x1, int y,char *text);
-void PA_OutputTextSpecial3(bool screen, int x1, int y,char *text);
-void PA_OutputTextSpecial4(bool screen, int x1, int y,char *text);
-void PA_OutputTextSpecial5(bool screen, int x1, int y,char *text);
+void PA_OutputTextSpecial0(u8 screen, int x1, int y,char *text);
+void PA_OutputTextSpecial1(u8 screen, int x1, int y,char *text);
+void PA_OutputTextSpecial2(u8 screen, int x1, int y,char *text);
+void PA_OutputTextSpecial3(u8 screen, int x1, int y,char *text);
+void PA_OutputTextSpecial4(u8 screen, int x1, int y,char *text);
+void PA_OutputTextSpecial5(u8 screen, int x1, int y,char *text);
 
 /** @} */ // end of Text
 

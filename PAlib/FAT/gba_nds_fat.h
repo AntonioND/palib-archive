@@ -40,10 +40,9 @@
 // Platform specific includes
 
 // When compiling for NDS, make sure NDS is defined
-// If using this on the ARM7, you will need to explicitly define NDS
-#ifdef ARM9
- #ifndef NDS
-  #define NDS 1
+#ifndef NDS
+ #if defined ARM9 || defined ARM7
+  #define NDS
  #endif
 #endif
 
@@ -77,11 +76,21 @@ extern "C" {
 #define SEEK_END	2
 #endif
 
+// File attributes
+#define ATTRIB_ARCH	0x20			// Archive
+#define ATTRIB_DIR	0x10			// Directory
+#define ATTRIB_LFN	0x0F			// Long file name
+#define ATTRIB_VOL	0x08			// Volume
+#define ATTRIB_SYS	0x04			// System
+#define ATTRIB_HID	0x02			// Hidden
+#define ATTRIB_RO	0x01			// Read only
+
+
 // Directory Constants
-	typedef enum {FT_NONE, FT_FILE, FT_DIR} FILE_TYPE;
+typedef enum {FT_NONE, FT_FILE, FT_DIR} FILE_TYPE;
 
 // Filesystem type
-	typedef enum {FS_UNKNOWN, FS_FAT12, FS_FAT16, FS_FAT32} FS_TYPE;
+typedef enum {FS_UNKNOWN, FS_FAT12, FS_FAT16, FS_FAT32} FS_TYPE;
 
 // Open file information structure
 typedef struct
@@ -158,6 +167,25 @@ Get the first cluster of the last file found or openned.
 u32 return OUT: the file start cluster
 -----------------------------------------------------------------*/
 u32 FAT_GetFileCluster (void);
+
+/*-----------------------------------------------------------------
+FAT_GetFileAttributes
+Get the attributes of the last file found or openned.
+u8 return OUT: the file's attributes
+-----------------------------------------------------------------*/
+u8 FAT_GetFileAttributes (void);
+
+#ifdef CAN_WRITE_TO_DISC
+/*-----------------------------------------------------------------
+FAT_FAT_SetFileAttributes
+Set the attributes of a file.
+const char* filename IN: The name and path of the file to modify
+u8 attributes IN: The attribute values to assign
+u8 mask IN: Detemines which attributes are changed
+u8 return OUT: the file's new attributes
+-----------------------------------------------------------------*/
+u8 FAT_SetFileAttributes (const char* filename, u8 attributes, u8 mask);
+#endif
 
 #ifdef FILE_TIME_SUPPORT
 /*-----------------------------------------------------------------

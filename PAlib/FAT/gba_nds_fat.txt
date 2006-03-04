@@ -52,7 +52,7 @@ Make sure you call FAT_fclose when you are finished with a file, especially afte
 
 ________________________________________________________________
 Acknowledgements:
-FAT_NextCluster is based on routines in fat.c, which is part of avrlib by Pascal Stang.
+FAT_NextCluster was based on routines in fat.c, which is part of avrlib by Pascal Stang.
 Darkfader helped with low level CF reading and writing.
 MightyMax added support for the M3.
 MightyMax also gave me a new hardware interface.
@@ -67,7 +67,12 @@ Joat provided system time and date functions.
 wwcube provided example patches for unaligned buffer support.
 MightyMax wrote FAT_fgets and FAT_fputs.
 www.neoflash.com provided the routines to access the MK2 / MK3. They also added sector caching.
-0xtob fixed a bug in AddDirEntry that corrupted short filename extensions
+0xtob fixed a bug in AddDirEntry that corrupted short filename extensions.
+Dwedit rolled up the LFN loops.
+cory1492 improved the SuperCard SD driver.
+SaTa and Moonlight provided a read only M3 SD driver.
+Loopy fixed SuperCard SD reading.
+CyteX added EFA2 support.
 
 ________________________________________________________________
 History:
@@ -225,10 +230,20 @@ History:
 	* no longer puts garbage into a short file name's extension, thanks to 0xtob
 	* long file names with less than 12 characters now work, thanks to DragonMinded for pointing it out
 
+2006-03-03
+ * Improved NMMC (MK2 / MK3) driver
+ * Optimised LFNs into loops, thanks to dwedit
+ * Optimised SuperCard SD CFC7, thanks to Cory1492
+ * Added file attribute support
+ * Added read only M3 SD support, thanks to SaTa and Moonlight. Disabled by default due to incompleteness
+ * Fixed SuperCard SD reading, thanks to Loopy
+ * Added EFA2 support, thanks to CyteX
+ 
  
 TODO:
- * Fix Supercard SD support
- * Add M3 SD support
+ * Add Supercard SD write support
+ * Add M3 SD write support
+ * Add EFA2 write support
  
  
 

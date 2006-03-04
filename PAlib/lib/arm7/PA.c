@@ -60,7 +60,7 @@ s32 oldx; s32 oldy; // Stylus positions...
 
 
 
-/*static bool touchInit = false;
+/*static u8 touchInit = false;
 static s32 xscale, yscale;
 static s32 xoffset, yoffset;*/
 

@@ -1,0 +1,36 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+No palette name for file sp0.png, using sp0_Pal...
+No palette name for file sp1.png, using sp1_Pal...
+No palette name for file sp2.png, using sp2_Pal...
+No palette name for file sp3.png, using sp3_Pal...
+No palette name for file sp4.png, using sp4_Pal...
+No palette name for file sp5.png, using sp5_Pal...
+No palette name for file sp6.png, using sp6_Pal...
+No palette name for file bg0.png, using bg0_Pal...
+Transparent Color : Magenta
+
+7 sprites :
+  sp0 : 256colors, 64x64, Pal : sp0_Pal, -> sp0_Sprite
+  sp1 : 256colors, 64x64, Pal : sp1_Pal, -> sp1_Sprite
+  sp2 : 256colors, 64x64, Pal : sp2_Pal, -> sp2_Sprite
+  sp3 : 256colors, 64x64, Pal : sp3_Pal, -> sp3_Sprite
+  sp4 : 256colors, 64x64, Pal : sp4_Pal, -> sp4_Sprite
+  sp5 : 256colors, 64x64, Pal : sp5_Pal, -> sp5_Sprite
+  sp6 : 256colors, 16x16, Pal : sp6_Pal, -> sp6_Sprite
+
+1 backgrounds :
+  bg0 : TileBg, 256x192, Pal : bg0_Pal, 768 tiles -> bg0_Tiles and bg0_Map
+
+8 palettes :
+  sp0_Pal, 6 colors
+  sp1_Pal, 5 colors
+  sp2_Pal, 5 colors
+  sp3_Pal, 6 colors
+  sp4_Pal, 7 colors
+  sp5_Pal, 6 colors
+  sp6_Pal, 5 colors
+  bg0_Pal, 245 colors
+
+Finished !

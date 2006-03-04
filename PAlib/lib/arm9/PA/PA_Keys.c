@@ -17,7 +17,7 @@ u16 CompletePad, ExPad, TempPad;
 
 PA_movingsprite  PA_MovedSprite; // Pour les sprites que l'on bouge...
 
-bool PA_MoveSpriteType = 0;
+u8 PA_MoveSpriteType = 0;
 
 void PA_UpdatePad(void) {
    ExPad = CompletePad;
@@ -33,8 +33,8 @@ void PA_UpdatePad(void) {
 }
 
 void PA_UpdateStylus(void) {
-//bool temp = (((~IPC->buttons) << 6) & (1<<12));
-bool temp = ((~IPC->buttons) >> 6) & 1;
+//u8 temp = (((~IPC->buttons) << 6) & (1<<12));
+u8 temp = ((~IPC->buttons) >> 6) & 1;
 
 	Stylus.Pressure = (((IPC->touchXpx * IPC->touchZ2) >> 6) / IPC->touchZ1) - (IPC->touchXpx >> 6);
 	//if (Stylus.Pressure > 10) temp = 0; // limit to good pressures
@@ -73,7 +73,7 @@ bool temp = ((~IPC->buttons) >> 6) & 1;
 }
 
 
-bool PA_MoveSpriteEx(bool screen, u8 sprite, u8 lx, u8 ly) {
+u8 PA_MoveSpriteEx(u8 screen, u8 sprite, u8 lx, u8 ly) {
 u8 truelx = (PA_GetSpriteLx(screen, sprite) >>1);
 u8 truely = (PA_GetSpriteLy(screen, sprite) >>1);
 
@@ -122,7 +122,7 @@ if (y >= 220) y -=256; // normalize the X coordinate...
 
 
 
-bool PA_MoveSpritePix(u8 sprite){
+u8 PA_MoveSpritePix(u8 sprite){
 
 	if (Stylus.Released) {
 		PA_MovedSprite.Moving = 0;
@@ -166,7 +166,7 @@ bool PA_MoveSpritePix(u8 sprite){
 
 
 /*
-bool PA_MoveSpriteDistance(u8 sprite, u8 distance) {
+u8 PA_MoveSpriteDistance(u8 sprite, u8 distance) {
 u8 truelx = (PA_GetSpriteLx(0, sprite) >>1);
 u8 truely = (PA_GetSpriteLy(0, sprite) >>1);
 s16 x = PA_GetSpriteX(0, sprite) + truelx;

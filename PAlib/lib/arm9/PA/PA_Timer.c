@@ -3,7 +3,7 @@
 #define TICK ((TIMER1_DATA>>5) + (TIMER2_DATA<<11))
 struct tTimeMgr gTime;
 
-void StartTime(bool bNew)
+void StartTime(u8 bNew)
 {
 	struct tTimer * pTimer = &(gTime.rBank[0]);
 	ASSERT(pTimer != NULL);
@@ -36,7 +36,7 @@ void PauseTime()
 
 }
 
-u8	NewTimer(bool bStarted)
+u8	NewTimer(u8 bStarted)
 {
 	struct tTimer * pTimer = NULL;
 

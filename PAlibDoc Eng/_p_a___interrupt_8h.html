@@ -13,273 +13,64 @@
 <a href="_p_a___interrupt_8h-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_Interrupt.h::REG_IME"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_IME</b>&nbsp;&nbsp;&nbsp;*(u32*)0x04000208</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_Interrupt.h::REG_IE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_IE</b>&nbsp;&nbsp;&nbsp;*(u32*)0x04000210</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_Interrupt.h::REG_IF"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_IF</b>&nbsp;&nbsp;&nbsp;*(u32*)0x04000214</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_Interrupt.h::REG_INTERRUPT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_INTERRUPT</b>&nbsp;&nbsp;&nbsp;IRQ_HANDLER</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_Interrupt.h::REG_DISPSTAT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_DISPSTAT</b>&nbsp;&nbsp;&nbsp;DISP_SR</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_Interrupt.h::REG_VCOUNT"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_Interrupt.h::REG_VCOUNT"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_VCOUNT</b>&nbsp;&nbsp;&nbsp;_REG16(0x04000006)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_Interrupt.h::INTVBLANK"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTVBLANK</b>&nbsp;&nbsp;&nbsp;0x0001</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_Interrupt.h::INTHBLANK"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTHBLANK</b>&nbsp;&nbsp;&nbsp;0x0002</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_Interrupt.h::INTVCOUNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTVCOUNT</b>&nbsp;&nbsp;&nbsp;0x0004</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_Interrupt.h::INTTIMER0"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTTIMER0</b>&nbsp;&nbsp;&nbsp;0x0008</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Interrupt.h::INTTIMER1"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTTIMER1</b>&nbsp;&nbsp;&nbsp;0x0010</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_Interrupt.h::INTTIMER2"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTTIMER2</b>&nbsp;&nbsp;&nbsp;0x0020</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_Interrupt.h::INTTIMER3"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTTIMER3</b>&nbsp;&nbsp;&nbsp;0x0040</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a13" doxytag="PA_Interrupt.h::INTCOM"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTCOM</b>&nbsp;&nbsp;&nbsp;0x0080</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a14" doxytag="PA_Interrupt.h::INTDMA0"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTDMA0</b>&nbsp;&nbsp;&nbsp;0x0100</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_Interrupt.h::INTDMA1"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTDMA1</b>&nbsp;&nbsp;&nbsp;0x0200</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a16" doxytag="PA_Interrupt.h::INTDMA2"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTDMA2</b>&nbsp;&nbsp;&nbsp;0x0400</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a17" doxytag="PA_Interrupt.h::INTDMA3"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTDMA3</b>&nbsp;&nbsp;&nbsp;0x0800</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a18" doxytag="PA_Interrupt.h::INTBUTTON"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTBUTTON</b>&nbsp;&nbsp;&nbsp;0x1000</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a19" doxytag="PA_Interrupt.h::INTCART"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INTCART</b>&nbsp;&nbsp;&nbsp;0x2000</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a20" doxytag="PA_Interrupt.h::INT_VBLANK"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_VBLANK</b>&nbsp;&nbsp;&nbsp;0</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a21" doxytag="PA_Interrupt.h::INT_HBLANK"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_HBLANK</b>&nbsp;&nbsp;&nbsp;1</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a22" doxytag="PA_Interrupt.h::INT_VCOUNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_VCOUNT</b>&nbsp;&nbsp;&nbsp;2</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a23" doxytag="PA_Interrupt.h::INT_TIMER0"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_TIMER0</b>&nbsp;&nbsp;&nbsp;3</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a24" doxytag="PA_Interrupt.h::INT_TIMER1"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_TIMER1</b>&nbsp;&nbsp;&nbsp;4</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a25" doxytag="PA_Interrupt.h::INT_TIMER2"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_TIMER2</b>&nbsp;&nbsp;&nbsp;5</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a26" doxytag="PA_Interrupt.h::INT_TIMER3"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_TIMER3</b>&nbsp;&nbsp;&nbsp;6</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a27" doxytag="PA_Interrupt.h::INT_COM"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_COM</b>&nbsp;&nbsp;&nbsp;7</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a28" doxytag="PA_Interrupt.h::INT_DMA0"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_DMA0</b>&nbsp;&nbsp;&nbsp;8</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a29" doxytag="PA_Interrupt.h::INT_DMA1"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_DMA1</b>&nbsp;&nbsp;&nbsp;9</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a30" doxytag="PA_Interrupt.h::INT_DMA2"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_DMA2</b>&nbsp;&nbsp;&nbsp;10</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a31" doxytag="PA_Interrupt.h::INT_DMA3"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_DMA3</b>&nbsp;&nbsp;&nbsp;11</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a32" doxytag="PA_Interrupt.h::INT_KEY"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_KEY</b>&nbsp;&nbsp;&nbsp;12</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a33" doxytag="PA_Interrupt.h::INT_CART"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>INT_CART</b>&nbsp;&nbsp;&nbsp;13</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a34" doxytag="PA_Interrupt.h::ENABLE_VBLANK"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_Interrupt.h::ENABLE_VBLANK"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>ENABLE_VBLANK</b>&nbsp;&nbsp;&nbsp;8</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a35" doxytag="PA_Interrupt.h::ENABLE_HBLANK"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_Interrupt.h::ENABLE_HBLANK"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>ENABLE_HBLANK</b>&nbsp;&nbsp;&nbsp;16</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a36" doxytag="PA_Interrupt.h::ENABLE_VCOUNT"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_Interrupt.h::ENABLE_VCOUNT"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>ENABLE_VCOUNT</b>&nbsp;&nbsp;&nbsp;32</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a37" doxytag="PA_Interrupt.h::TIMER0COUNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0COUNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000100)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a38" doxytag="PA_Interrupt.h::TIMER0CNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000102)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a39" doxytag="PA_Interrupt.h::TIMER0CNT_TIMER_START"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT_TIMER_START</b>&nbsp;&nbsp;&nbsp;(TIMER0CNT |= 0x0080)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a40" doxytag="PA_Interrupt.h::TIMER0CNT_IRQ_ENABLE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT_IRQ_ENABLE</b>&nbsp;&nbsp;&nbsp;(TIMER0CNT |= 0x0040)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a41" doxytag="PA_Interrupt.h::PA_EnableTimer0"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EnableTimer0</b>()&nbsp;&nbsp;&nbsp;{TIMER0CNT_TIMER_START; TIMER0CNT_IRQ_ENABLE;}</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a42" doxytag="PA_Interrupt.h::TIMER0CNT_TIMER_STOP"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT_TIMER_STOP</b>&nbsp;&nbsp;&nbsp;(TIMER0CNT &amp;= 0xFF7F)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a43" doxytag="PA_Interrupt.h::TIMER0CNT_IRQ_DISABLE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER0CNT_IRQ_DISABLE</b>&nbsp;&nbsp;&nbsp;(TIMER0CNT &amp;= 0xFFBF)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a44" doxytag="PA_Interrupt.h::PA_DisableTimer0"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DisableTimer0</b>()&nbsp;&nbsp;&nbsp;{TIMER0CNT_TIMER_STOP; TIMER0CNT_IRQ_DISABLE;}</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a45" doxytag="PA_Interrupt.h::TIMER1COUNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1COUNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000104)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a46" doxytag="PA_Interrupt.h::TIMER1CNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000106)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a47" doxytag="PA_Interrupt.h::TIMER1CNT_TIMER_START"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT_TIMER_START</b>&nbsp;&nbsp;&nbsp;(TIMER1CNT |= 0x0080)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a48" doxytag="PA_Interrupt.h::TIMER1CNT_IRQ_ENABLE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT_IRQ_ENABLE</b>&nbsp;&nbsp;&nbsp;(TIMER1CNT |= 0x0040)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a49" doxytag="PA_Interrupt.h::PA_EnableTimer1"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EnableTimer1</b>()&nbsp;&nbsp;&nbsp;{TIMER1CNT_TIMER_START; TIMER1CNT_IRQ_ENABLE;}</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a50" doxytag="PA_Interrupt.h::TIMER1CNT_TIMER_STOP"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT_TIMER_STOP</b>&nbsp;&nbsp;&nbsp;(TIMER1CNT &amp;= 0xFF7F)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a51" doxytag="PA_Interrupt.h::TIMER1CNT_IRQ_DISABLE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER1CNT_IRQ_DISABLE</b>&nbsp;&nbsp;&nbsp;(TIMER1CNT &amp;= 0xFFBF)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a52" doxytag="PA_Interrupt.h::PA_DisableTimer1"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DisableTimer1</b>()&nbsp;&nbsp;&nbsp;{TIMER1CNT_TIMER_STOP; TIMER1CNT_IRQ_DISABLE;}</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a53" doxytag="PA_Interrupt.h::TIMER2COUNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2COUNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x04000108)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a54" doxytag="PA_Interrupt.h::TIMER2CNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x0400010A)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a55" doxytag="PA_Interrupt.h::TIMER2CNT_TIMER_START"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT_TIMER_START</b>&nbsp;&nbsp;&nbsp;(TIMER2CNT |= 0x0080)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a56" doxytag="PA_Interrupt.h::TIMER2CNT_IRQ_ENABLE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT_IRQ_ENABLE</b>&nbsp;&nbsp;&nbsp;(TIMER2CNT |= 0x0040)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a57" doxytag="PA_Interrupt.h::PA_EnableTimer2"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EnableTimer2</b>()&nbsp;&nbsp;&nbsp;{TIMER2CNT_TIMER_START; TIMER2CNT_IRQ_ENABLE;}</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a58" doxytag="PA_Interrupt.h::TIMER2CNT_TIMER_STOP"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT_TIMER_STOP</b>&nbsp;&nbsp;&nbsp;(TIMER2CNT &amp;= 0xFF7F)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a59" doxytag="PA_Interrupt.h::TIMER2CNT_IRQ_DISABLE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER2CNT_IRQ_DISABLE</b>&nbsp;&nbsp;&nbsp;(TIMER2CNT &amp;= 0xFFBF)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a60" doxytag="PA_Interrupt.h::PA_DisableTimer2"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DisableTimer2</b>()&nbsp;&nbsp;&nbsp;{TIMER2CNT_TIMER_STOP; TIMER2CNT_IRQ_DISABLE;}</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a61" doxytag="PA_Interrupt.h::TIMER3COUNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3COUNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x0400010C)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a62" doxytag="PA_Interrupt.h::TIMER3CNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT</b>&nbsp;&nbsp;&nbsp;*(volatile u16 *)(0x0400010E)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a63" doxytag="PA_Interrupt.h::TIMER3CNT_TIMER_START"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT_TIMER_START</b>&nbsp;&nbsp;&nbsp;(TIMER3CNT |= 0x0080)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a64" doxytag="PA_Interrupt.h::TIMER3CNT_IRQ_ENABLE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT_IRQ_ENABLE</b>&nbsp;&nbsp;&nbsp;(TIMER3CNT |= 0x0040)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a65" doxytag="PA_Interrupt.h::PA_EnableTimer3"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EnableTimer3</b>()&nbsp;&nbsp;&nbsp;{TIMER3CNT_TIMER_START; TIMER3CNT_IRQ_ENABLE;}</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a66" doxytag="PA_Interrupt.h::TIMER3CNT_TIMER_STOP"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT_TIMER_STOP</b>&nbsp;&nbsp;&nbsp;(TIMER3CNT &amp;= 0xFF7F)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a67" doxytag="PA_Interrupt.h::TIMER3CNT_IRQ_DISABLE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TIMER3CNT_IRQ_DISABLE</b>&nbsp;&nbsp;&nbsp;(TIMER3CNT &amp;= 0xFFBF)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a68" doxytag="PA_Interrupt.h::PA_DisableTimer3"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DisableTimer3</b>()&nbsp;&nbsp;&nbsp;{TIMER3CNT_TIMER_STOP; TIMER3CNT_IRQ_DISABLE;}</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga4" doxytag="PA_Interrupt.h::PA_InitVBL"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#ga4">PA_InitVBL</a>()&nbsp;&nbsp;&nbsp;PA_StartInt(INT_VBLANK, PA_vblFunc)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Intiate a basic VBL function. Very usefull for unexperienced users, it updates the OAM (sprites), the Keypad, and the Stylus input every frame. No need to use PA_UpdateOAM, PA_UpdatePad, PA_UpdateStylus, and PA_UpdateRTC ! <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga5" doxytag="PA_Interrupt.h::PA_GetVcount"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#ga5">PA_GetVcount</a>()&nbsp;&nbsp;&nbsp;(REG_VCOUNT&amp;511)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga2" doxytag="PA_Interrupt.h::PA_GetVcount"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#ga2">PA_GetVcount</a>()&nbsp;&nbsp;&nbsp;(REG_VCOUNT&amp;511)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the vertical line count... <br></td></tr>
 <tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a71" doxytag="PA_Interrupt.h::funcpointer"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_Interrupt.h::funcpointer"></a>
 typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><b>funcpointer</b> )(void)</td></tr>
 
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a80" doxytag="PA_Interrupt.h::interruptfunction"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a13" doxytag="PA_Interrupt.h::interruptfunction"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>interruptfunction</b> (void)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="PA_Interrupt.h::PA_ResetInterrupts"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#ga0">PA_ResetInterrupts</a> (void)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset the interrupt system. Disables all interrupts. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#ga1">PA_StartInt</a> (u8 inter, funcpointer interfunc)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initiate a given interrupt.  <a href="group___interrupts.html#ga1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#ga2">PA_StopInt</a> (u8 inter)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initiate a given interrupt.  <a href="group___interrupts.html#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga3" doxytag="PA_Interrupt.h::PA_vblFunc"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#ga3">PA_vblFunc</a> (void)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="PA_Interrupt.h::PA_vblFunc"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___interrupts.html#ga0">PA_vblFunc</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The standard PAlib VBL function... This will update the pad, the stylus, the RTC, etc... You could/should use this function if you do your own custom VBL... <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga1" doxytag="PA_Interrupt.h::PA_InitVBL"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_InitVBL</b> (void)</td></tr>
+
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a72" doxytag="PA_Interrupt.h::PA_Newframe"></a>
-volatile bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Newframe</b></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_Interrupt.h::PA_Newframe"></a>
+volatile u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Newframe</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a73" doxytag="PA_Interrupt.h::PA_vblok"></a>
-volatile bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_vblok</b></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_Interrupt.h::PA_vblok"></a>
+volatile u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_vblok</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a74" doxytag="PA_Interrupt.h::PA_CPU"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_Interrupt.h::PA_CPU"></a>
 u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_CPU</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a75" doxytag="PA_Interrupt.h::PA_MaxCPU"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_Interrupt.h::PA_MaxCPU"></a>
 u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_MaxCPU</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a76" doxytag="PA_Interrupt.h::PA_lines"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Interrupt.h::PA_lines"></a>
 u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_lines</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a77" doxytag="PA_Interrupt.h::PA_VBLCount"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_Interrupt.h::PA_VBLCount"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_VBLCount</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a78" doxytag="PA_Interrupt.h::PA_nVBLs"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_Interrupt.h::PA_nVBLs"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_nVBLs</b></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a79" doxytag="PA_Interrupt.h::interruptfunc"></a>
-funcpointer&nbsp;</td><td class="memItemRight" valign="bottom"><b>interruptfunc</b> [14]</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Interrupt system. 
 <p>
-Current working interrupts are VBlank, HBlank, VCount, and Timers<hr size="1"><address style="align: right;"><small>Generated on Sun Feb 26 20:46:20 2006 for PAlib by&nbsp;
+Current working interrupts are VBlank, HBlank, VCount, and Timers<hr size="1"><address style="align: right;"><small>Generated on Sat Mar 4 12:16:44 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

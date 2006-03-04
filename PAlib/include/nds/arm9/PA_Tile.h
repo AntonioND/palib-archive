@@ -54,7 +54,7 @@ extern u8 bg_place[4];
 extern u16 *PA_DrawBg[2]; // Fond dessinable
 
 
-extern bool charblocks[2][70];
+extern u8 charblocks[2][70];
 extern u16 tilesetsize[2][4]; // Place utilisée pour chaque tileset
 extern u16 mapsize[2][4]; // Place utilisée pour chaque map
 extern u8 tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
@@ -73,7 +73,7 @@ extern s32 PA_parallaxY[2][4];
 
 
 typedef struct {
-	bool infscroll; // Passe à 1 si scrolling infini activé...
+	u8 infscroll; // Passe à 1 si scrolling infini activé...
 	u16* bg_map; // Map
 //	s32 x, y;
 	s32 lx, ly;
@@ -128,7 +128,7 @@ extern scrollpositions scrollpos[2][4]; // Pour chaque écran et pour chaque fond
 #define BG_ROT_512X512 2
 #define BG_ROT_1024X1024 3
 
-void PA_LoadRotBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size);
+void PA_LoadRotBgMap(u8 screen, u8 bg_select, void* bg_map, u8 bg_size);
 
 
 //ALL_BUT() pour faire tout sauf...
@@ -162,7 +162,7 @@ void PA_LoadRotBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size);
 void PA_ResetBgSys(void);
 
 /*!
-    \fn void PA_InitBg(bool screen, u8 bg_select, u8 bg_size, bool wraparound, bool color_mode)
+    \fn void PA_InitBg(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode)
     \brief
       \~english Initialise a given background. Do this only after having loaded a tileset and a map.
       \~french Initialise un fond. A faire uniquement après avoir chargé un tileset et une map.
@@ -183,7 +183,7 @@ void PA_ResetBgSys(void);
       \~french Nombre de couleurs : 0 pour 16 couleurs, 1 pour 256
 
 */
-void PA_InitBg(bool screen, u8 bg_select, u8 bg_size, bool wraparound, bool color_mode);
+void PA_InitBg(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode);
 //#define PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode) {	PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, ((bg_select + 1) << 3) - bg_place[bg_size]);_REG16(REG_BGSCREEN(screen)) |= (0x100 << (bg_select)); _REG16(REG_BGCNT(screen, bg_select)) = ((bg_select) | (bg_size << 14) |((((bg_select + 1) << 3) - bg_place[bg_size]) << SCREEN_SHIFT) | (wraparound << 13) | ((bg_select) << 2)) + (color_mode << 7);}
 
 
@@ -250,7 +250,7 @@ void PA_InitBg(bool screen, u8 bg_select, u8 bg_size, bool wraparound, bool colo
 
 
 /*!
-    \fn void PA_LoadBgTilesEx(bool screen, u8 bg_select, void* bg_tiles, u16 size)
+    \fn void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u16 size)
     \brief
       \~english Load a tileset into memory with a given size
       \~french Charger un tileset en mémoire avec une taille donnée
@@ -268,11 +268,11 @@ void PA_InitBg(bool screen, u8 bg_select, u8 bg_size, bool wraparound, bool colo
       \~french Taille en 16 bits...
 
 */
-void PA_LoadBgTilesEx(bool screen, u8 bg_select, void* bg_tiles, u16 size);
+void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u16 size);
 
 
 /*!
-    \fn void PA_ReLoadBgTiles(bool screen, u8 bg_select, void* bg_tiles)
+    \fn void PA_ReLoadBgTiles(u8 screen, u8 bg_select, void* bg_tiles)
     \brief
       \~english ReLoad a tileset into memory
       \~french ReCharger un tileset en mémoire
@@ -286,11 +286,11 @@ void PA_LoadBgTilesEx(bool screen, u8 bg_select, void* bg_tiles, u16 size);
       \~english Name of the tiles' info (example: ship_Tiles)
       \~french Nom du tableau contenant les tiles (exemple: ship_Tiles)
 */
-void PA_ReLoadBgTiles(bool screen, u8 bg_select, void* bg_tiles);
+void PA_ReLoadBgTiles(u8 screen, u8 bg_select, void* bg_tiles);
 
 
 /*!
-    \fn void PA_DeleteTiles(bool screen, u8 bg_select)
+    \fn void PA_DeleteTiles(u8 screen, u8 bg_select)
     \brief
       \~english Delete a tilest in memory. Note that loading a tileset automatically deletes the preceding one, so you won't need to use this function often
       \~french Effacer un tileset en mémoire. A noter que charger un tileset efface automatiquement le tileset précédent, donc on n'aura pas souvent besoin de cette fonction...
@@ -301,11 +301,11 @@ void PA_ReLoadBgTiles(bool screen, u8 bg_select, void* bg_tiles);
       \~english Background number to load (from 0 to 3)
       \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
 */
-void PA_DeleteTiles(bool screen, u8 bg_select);
+void PA_DeleteTiles(u8 screen, u8 bg_select);
 
 
 /*!
-    \fn void PA_DeleteMap(bool screen, u8 bg_select)
+    \fn void PA_DeleteMap(u8 screen, u8 bg_select)
     \brief
       \~english Delete a map in memory. Note that loading a map automatically deletes the preceding one, so you won't need to use this function often
       \~french Effacer une map en mémoire. A noter que charger une map efface automatiquement la map précédent, donc on n'aura pas souvent besoin de cette fonction...
@@ -316,12 +316,12 @@ void PA_DeleteTiles(bool screen, u8 bg_select);
       \~english Background number to load (from 0 to 3)
       \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
 */
-void PA_DeleteMap(bool screen, u8 bg_select);
+void PA_DeleteMap(u8 screen, u8 bg_select);
 
 
 
 /*!
-    \fn extern inline void PA_DeleteBg(bool screen, u8 bg_select)
+    \fn extern inline void PA_DeleteBg(u8 screen, u8 bg_select)
     \brief
       \~english Delete a complete background (tiles + map + hide it...)
       \~french Effacer un fond complètement (tiles + map + cacher)
@@ -332,14 +332,14 @@ void PA_DeleteMap(bool screen, u8 bg_select);
       \~english Background number to load (from 0 to 3)
       \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
 */
-extern inline void PA_DeleteBg(bool screen, u8 bg_select) {
+extern inline void PA_DeleteBg(u8 screen, u8 bg_select) {
 	PA_HideBg(screen, bg_select);
 	PA_DeleteTiles(screen, bg_select);
 	PA_DeleteMap(screen, bg_select);
 }
 
 /*!
-    \fn void PA_LoadBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size)
+    \fn void PA_LoadBgMap(u8 screen, u8 bg_select, void* bg_map, u8 bg_size)
     \brief
       \~english Load a background's map info
       \~french Charge la carte d'un fond
@@ -357,7 +357,7 @@ extern inline void PA_DeleteBg(bool screen, u8 bg_select) {
       \~french Taille du fond. Ceci est très important, car ça détermine aussi si le Bg est rotatif ou non. Pour un fond normal, on utilise les macros BG_256X256, BG_256X512, etc...
 */
 
-void PA_LoadBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size);
+void PA_LoadBgMap(u8 screen, u8 bg_select, void* bg_map, u8 bg_size);
 
 
 
@@ -455,7 +455,7 @@ PA_InitBg(screen, bg_select, bg_size, wraparound, 1);\
 PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
 }
 
-void PA_SetBgRot(bool screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom);
+void PA_SetBgRot(u8 screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom);
 
 /*!
     \def PA_LoadBg(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)
@@ -557,7 +557,7 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
 
 
 /*!
-    \fn extern inline void PA_SetMapTile(bool screen, u8 bg_select, s16 x, s16 y, s16 tile_number)
+    \fn extern inline void PA_SetMapTile(u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number)
     \brief
       \~english Change the tile gfx used by a given tile in the map
       \~french Change la tile gfx utilisée pour une tile donnée dans la map
@@ -577,14 +577,14 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
       \~english New tile number to put
       \~french Nouveau numéro de tile que l'on veut mettre
 */
-extern inline void PA_SetMapTile(bool screen, u8 bg_select, s16 x, s16 y, s16 tile_number) {
+extern inline void PA_SetMapTile(u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number) {
 *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ~(TILE_N); 
 *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) |= ((tile_number)&TILE_N);
 }
 
 
 /*!
-    \fn extern inline void PA_SetMapTileAll(bool screen, u8 bg_select, s16 x, s16 y, u16 tile_info)
+    \fn extern inline void PA_SetMapTileAll(u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_info)
     \brief
       \~english Change the tile info used by a given tile in the map
       \~french Change les infos tiles utilisée pour une tile donnée dans la map
@@ -604,7 +604,7 @@ extern inline void PA_SetMapTile(bool screen, u8 bg_select, s16 x, s16 y, s16 ti
       \~english New tile to put (tile + palette + flips...)
       \~french Nouveau numéro de tile que l'on veut mettre (tile + palette + flips...)
 */
-extern inline void PA_SetMapTileAll(bool screen, u8 bg_select, s16 x, s16 y, u16 tile_info){
+extern inline void PA_SetMapTileAll(u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_info){
 	*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) = tile_info;
 }
 
@@ -612,7 +612,7 @@ extern inline void PA_SetMapTileAll(bool screen, u8 bg_select, s16 x, s16 y, u16
 
 
 /*!
-    \fn extern inline void PA_SetLargeMapTile(bool screen, u8 bg_select, s32 x, s32 y, u32 tile_info)
+    \fn extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32 tile_info)
     \brief
       \~english Change the tile info used by a given tile in the map, only for big background (512 large or wide)
       \~french Change les infos tiles utilisée pour une tile donnée dans la map, seulement pour les grands fonds (512 de large ou haut)
@@ -632,7 +632,7 @@ extern inline void PA_SetMapTileAll(bool screen, u8 bg_select, s16 x, s16 y, u16
       \~english New tile to put (tile + palette + flips...)
       \~french Nouveau numéro de tile que l'on veut mettre (tile + palette + flips...)
 */
-extern inline void PA_SetLargeMapTile(bool screen, u8 bg_select, s32 x, s32 y, u32 tile_info) {
+extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32 tile_info) {
 	u32 truex;
 	u32 mapblock = 0;
 	truex = x&31;
@@ -745,7 +745,7 @@ extern inline void PA_SetLargeMapTile(bool screen, u8 bg_select, s32 x, s32 y, u
       \~english Palette number (0-15)
       \~french Numéro de la palette (0-15)
 */
-extern inline void PA_SetMapTileEx(bool screen, u8 bg_select, s16 x, s16 y, u16 tile_number, bool hflip, bool vflip, u8 palette_number) {
+extern inline void PA_SetMapTileEx(u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_number, u8 hflip, u8 vflip, u8 palette_number) {
 	*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) = (tile_number) + ((hflip) << 10) + ((vflip) << 11) + ((palette_number) << 12);
 }
 
@@ -887,7 +887,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
 
 /*!
-    \fn void PA_InfLargeScrollX(bool screen, u8 bg_select, s32 x)
+    \fn void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x)
     \brief
       \~english Scroll a large infinite scrolling background horizontaly. It must have been initialised with PA_LoadLargeBg.
       \~french Déplacer un fond à scrolling 'infini' horizontalement. Doit etre initialisé avec PA_LoadLargeBg.
@@ -901,11 +901,11 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
       \~english X value to scroll
       \~french Valeur X à déplacer
 */
-void PA_InfLargeScrollX(bool screen, u8 bg_select, s32 x);
+void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x);
 
 
 /*!
-    \fn void PA_InfLargeScrollY(bool screen, u8 bg_select, s32 y)
+    \fn void PA_InfLargeScrollY(u8 screen, u8 bg_select, s32 y)
     \brief
       \~english Scroll a large infinite scrolling background vertically. It must have been initialised with PA_LoadLargeBg.
       \~french Déplacer un fond à scrolling 'infini' verticalement. Doit etre initialisé avec PA_LoadLargeBg.
@@ -919,12 +919,12 @@ void PA_InfLargeScrollX(bool screen, u8 bg_select, s32 x);
       \~english Y value to scroll
       \~french Valeur Y à déplacer
 */
-void PA_InfLargeScrollY(bool screen, u8 bg_select, s32 y);
+void PA_InfLargeScrollY(u8 screen, u8 bg_select, s32 y);
 
 
 
 /*!
-    \fn extern inline void PA_InfLargeScrollXY(bool screen, u8 bg_select, s32 x, s32 y)
+    \fn extern inline void PA_InfLargeScrollXY(u8 screen, u8 bg_select, s32 x, s32 y)
     \brief
       \~english Scroll a large infinite scrolling background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg.
       \~french Déplacer un fond à scrolling 'infini' horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg.
@@ -941,13 +941,13 @@ void PA_InfLargeScrollY(bool screen, u8 bg_select, s32 y);
       \~english Y value to scroll
       \~french Valeur Y à déplacer	  
 */
-extern inline void PA_InfLargeScrollXY(bool screen, u8 bg_select, s32 x, s32 y){
+extern inline void PA_InfLargeScrollXY(u8 screen, u8 bg_select, s32 x, s32 y){
 	PA_InfLargeScrollX(screen, bg_select, x);
 	PA_InfLargeScrollY(screen, bg_select, y);
 }
 
 /*!
-    \fn void PA_LargeScrollX(bool screen, u8 bg_select, s32 x)
+    \fn void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x)
     \brief
       \~english Scroll a large background horizontaly. It must have been initialised with PA_LoadLargeBg.  This function does not wrap around, but is faster than the InfLargeScroll...
       \~french Déplacer un grand fond à scrolling horizontalement.Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...
@@ -961,11 +961,11 @@ extern inline void PA_InfLargeScrollXY(bool screen, u8 bg_select, s32 x, s32 y){
       \~english X value to scroll
       \~french Valeur X à déplacer
 */
-void PA_LargeScrollX(bool screen, u8 bg_select, s32 x);
+void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x);
 
 
 /*!
-    \fn void PA_LargeScrollY(bool screen, u8 bg_select, s32 y)
+    \fn void PA_LargeScrollY(u8 screen, u8 bg_select, s32 y)
     \brief
       \~english Scroll a large background vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...
       \~french Déplacer un grand fond à scrolling verticalement. Doit etre initialisé avec PA_LoadLargeBg.  Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...
@@ -979,12 +979,12 @@ void PA_LargeScrollX(bool screen, u8 bg_select, s32 x);
       \~english Y value to scroll
       \~french Valeur Y à déplacer
 */
-void PA_LargeScrollY(bool screen, u8 bg_select, s32 y);
+void PA_LargeScrollY(u8 screen, u8 bg_select, s32 y);
 
 
 
 /*!
-    \fn extern inline void PA_LargeScrollXY(bool screen, u8 bg_select, s32 x, s32 y)
+    \fn extern inline void PA_LargeScrollXY(u8 screen, u8 bg_select, s32 x, s32 y)
     \brief
       \~english Scroll a large background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...
       \~french Déplacer un grand fond à scrolling horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...
@@ -1001,7 +1001,7 @@ void PA_LargeScrollY(bool screen, u8 bg_select, s32 y);
       \~english Y value to scroll
       \~french Valeur Y à déplacer	  
 */
-extern inline void PA_LargeScrollXY(bool screen, u8 bg_select, s32 x, s32 y){
+extern inline void PA_LargeScrollXY(u8 screen, u8 bg_select, s32 x, s32 y){
 	PA_LargeScrollX(screen, bg_select, x);
 	PA_LargeScrollY(screen, bg_select, y);
 }
@@ -1009,7 +1009,7 @@ extern inline void PA_LargeScrollXY(bool screen, u8 bg_select, s32 x, s32 y){
 
 
 /*!
-    \fn extern inline void PA_InitParallaxX(bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)
+    \fn extern inline void PA_InitParallaxX(u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)
     \brief
       \~english Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...
       \~french Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller
@@ -1029,7 +1029,7 @@ extern inline void PA_LargeScrollXY(bool screen, u8 bg_select, s32 x, s32 y){
       \~english Same thing for Background 3
       \~french Idem, pour le Fond 3
 */
-extern inline void PA_InitParallaxX(bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
+extern inline void PA_InitParallaxX(u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
 	 PA_parallaxX[screen][0] = bg0;
 	 PA_parallaxX[screen][1] = bg1;
 	 PA_parallaxX[screen][2] = bg2;
@@ -1037,7 +1037,7 @@ extern inline void PA_InitParallaxX(bool screen, s32 bg0, s32 bg1, s32 bg2, s32 
 }
 
 /*!
-    \fn extern inline void PA_InitParallaxY(bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)
+    \fn extern inline void PA_InitParallaxY(u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)
     \brief
       \~english Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...
       \~french Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller
@@ -1057,7 +1057,7 @@ extern inline void PA_InitParallaxX(bool screen, s32 bg0, s32 bg1, s32 bg2, s32 
       \~english Same thing for Background 3
       \~french Idem, pour le Fond 3
 */
-extern inline void PA_InitParallaxY(bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
+extern inline void PA_InitParallaxY(u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3) {
 	 PA_parallaxY[screen][0] = bg0;
 	 PA_parallaxY[screen][1] = bg1;
 	 PA_parallaxY[screen][2] = bg2;
@@ -1067,7 +1067,7 @@ extern inline void PA_InitParallaxY(bool screen, s32 bg0, s32 bg1, s32 bg2, s32 
 
 
 /*!
-    \fn extern inline void PA_ParallaxScrollX(bool screen, s32 x)
+    \fn extern inline void PA_ParallaxScrollX(u8 screen, s32 x)
     \brief
       \~english Scroll the backgrounds
       \~french Déplacer les fonds activés pour le parallax...
@@ -1078,7 +1078,7 @@ extern inline void PA_InitParallaxY(bool screen, s32 bg0, s32 bg1, s32 bg2, s32 
       \~english X value to scroll
       \~french Valeur X à déplacer
 */
-extern inline void PA_ParallaxScrollX(bool screen, s32 x){
+extern inline void PA_ParallaxScrollX(u8 screen, s32 x){
 u8 i;
 	for(i = 0; i < 4; i++) {
 		if (PA_parallaxX[screen][i])  {
@@ -1090,7 +1090,7 @@ u8 i;
 
 
 /*!
-    \fn extern inline void PA_ParallaxScrollY(bool screen, s32 y)
+    \fn extern inline void PA_ParallaxScrollY(u8 screen, s32 y)
     \brief
       \~english Scroll the backgrounds
       \~french Déplacer les fonds activés pour le parallax...
@@ -1101,7 +1101,7 @@ u8 i;
       \~english Y value to scroll
       \~french Valeur Y à déplacer
 */
-extern inline void PA_ParallaxScrollY(bool screen, s32 y){
+extern inline void PA_ParallaxScrollY(u8 screen, s32 y){
 u8 i;
 	for(i = 0; i < 4; i++) {
 		if (PA_parallaxY[screen][i])  {
@@ -1113,7 +1113,7 @@ u8 i;
 
 
 /*!
-    \fn extern inline void PA_ParallaxScrollXY(bool screen, s32 x, s32 y)
+    \fn extern inline void PA_ParallaxScrollXY(u8 screen, s32 x, s32 y)
     \brief
       \~english Scroll the backgrounds
       \~french Déplacer les fonds activés pour le parallax...
@@ -1127,7 +1127,7 @@ u8 i;
       \~english Y value to scroll
       \~french Valeur Y à déplacer
 */
-extern inline void PA_ParallaxScrollXY(bool screen, s32 x, s32 y){
+extern inline void PA_ParallaxScrollXY(u8 screen, s32 x, s32 y){
 	PA_ParallaxScrollX(screen, x);
 	PA_ParallaxScrollY(screen, y);
 }
@@ -1135,7 +1135,7 @@ extern inline void PA_ParallaxScrollXY(bool screen, s32 x, s32 y){
 
 
 /*!
-    \fn extern inline void PA_SetBgPrio(bool screen, u8 bg, u8 prio)
+    \fn extern inline void PA_SetBgPrio(u8 screen, u8 bg, u8 prio)
     \brief
       \~english Change a backgrounds priority
       \~french Changer la priorité d'un fond
@@ -1149,12 +1149,12 @@ extern inline void PA_ParallaxScrollXY(bool screen, s32 x, s32 y){
       \~english Priority level (0-3, 0 being the highest)
       \~french Niveau de priorité, de 0 à 3, 0 étant priorité la plus élevée
 */
-extern inline void PA_SetBgPrio(bool screen, u8 bg, u8 prio) {
+extern inline void PA_SetBgPrio(u8 screen, u8 bg, u8 prio) {
 	_REG16(REG_BGCNT(screen, bg)) &= ~3;
 	_REG16(REG_BGCNT(screen, bg)) |= prio;
 }
 
-extern inline void PA_CreateBgFromTiles(bool screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size){
+extern inline void PA_CreateBgFromTiles(u8 screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size){
 PA_LoadBgMap(screen, bg_select, bg_map, bg_size);
 scrollpos[screen][bg_select].infscroll = 0; // Par défaut pas de scrolling infini...
 PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, mapchar[screen][bg_select]);
@@ -1167,7 +1167,7 @@ PA_BGScrollXY(screen, bg_select, 0, 0);
 }
 
 
-/*! \fn extern inline void PA_ClearBg(bool screen, u8 bg_select)
+/*! \fn extern inline void PA_ClearBg(u8 screen, u8 bg_select)
     \brief
          \~english Erase a given background (just the tilemap)
          \~french Effacer un fond donné (juste la map)
@@ -1178,7 +1178,7 @@ PA_BGScrollXY(screen, bg_select, 0, 0);
          \~english Background...
          \~french Fond...	 
 */
-extern inline void PA_ClearBg(bool screen, u8 bg_select){
+extern inline void PA_ClearBg(u8 screen, u8 bg_select){
 u8 i, j;
 for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_select, i, j, 0);
 }
@@ -1189,7 +1189,7 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
 
 
 // Pas utilisé en direct par le programmaeur
-void PA_InitLargeBg(bool screen, u8 bg_select, s32 lx, s32 ly, void* bg_map);
+void PA_InitLargeBg(u8 screen, u8 bg_select, s32 lx, s32 ly, void* bg_map);
 
 
 

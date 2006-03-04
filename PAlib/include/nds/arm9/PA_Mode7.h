@@ -109,8 +109,7 @@ void PA_InitMode7(u8 bg_select);
 */
 extern inline void PA_DeInitMode7(void) {
 
-PA_StopInt(INT_HBLANK);
-
+irqDisable(IRQ_HBLANK);
 }
 
 

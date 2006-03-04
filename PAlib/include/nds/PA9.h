@@ -19,7 +19,7 @@ extern "C" {
 #include <nds/bios.h>
 #include <malloc.h>
 
-extern bool PA_Screen;
+extern u8 PA_Screen;
 
 typedef struct {
    u8 NoIdea; 
@@ -62,7 +62,7 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 // Commandes pour la lumière des écrans
 #define BACKLIGHT(screen)	BIT(2+screen)
 
-
+#define ALWAYSINLINE __attribute__((always_inline)) static inline
 
 
 
@@ -124,6 +124,10 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 
 #include "arm9/PA_IA.h"
 #include "arm9/PA_Reco.h"
+
+
+#include "arm9/PA_16c.h"
+
 
 #define SWITCH_SCREENS  (1<<15)
 
@@ -221,7 +225,7 @@ void PA_Init(void);
 
 
 
-/*! \fn extern inline void PA_SetVideoMode(bool screen, u8 mode)
+/*! \fn extern inline void PA_SetVideoMode(u8 screen, u8 mode)
     \brief
          \~english Change the video mode... Use this with caution
          \~french Changer de mode video... A utiliser avec précaution
@@ -232,7 +236,7 @@ void PA_Init(void);
          \~english Mode 0 for normal, 1 for 1 rotating backgrounds, 2 for 2
          \~french Mode 0 pour normal, 1 pour 1 fond rotatif, 2 pour 2
 */
-extern inline void PA_SetVideoMode(bool screen, u8 mode) {
+extern inline void PA_SetVideoMode(u8 screen, u8 mode) {
 	(*(vuint32*)(0x04000000 + (0x1000 * screen))) &= ~7;
 	(*(vuint32*)(0x04000000 + (0x1000 * screen))) |= mode;
 }
@@ -321,12 +325,12 @@ extern inline void PA_InitCPUMeter() {
 #define PA_LidClosed() (IPC->buttons>>7)
 
 
-/*! \fn extern inline bool PA_CheckLid(void)
+/*! \fn extern inline u8 PA_CheckLid(void)
     \brief
          \~english Check if the DS is closed. If closed, it pauses the DS, and returns 1.
          \~french Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et renvoie 1.
 */
-extern inline bool PA_CheckLid(void) {
+extern inline u8 PA_CheckLid(void) {
 
 if (!PA_LidClosed()) return 0;
 else {
@@ -377,7 +381,7 @@ else {
 void PA_Splash(void* tiles0, void* map0, void* tiles1, void* map1, s16 color0, s16 color1, s16 time);
 
 
-/*! \fn void PA_SetScreenLight(bool screen, bool light)
+/*! \fn void PA_SetScreenLight(u8 screen, u8 light)
     \brief
          \~english Set on or off the screen's light
          \~french Allumer ou eteindre la lumière d'un écran
@@ -388,13 +392,13 @@ void PA_Splash(void* tiles0, void* map0, void* tiles1, void* map1, s16 color0, s
          \~english Light, 1 for on, 0 for off
          \~french Lumière, 1 pour allumé, 0 pour éteint
 */
-extern inline void PA_SetScreenLight(bool screen, bool light){
+extern inline void PA_SetScreenLight(u8 screen, u8 light){
 	IPC->aux &= ~(1<<(2+screen));
 	IPC->aux |= light<<(2+screen);
 }
 
 
-/*! \fn extern inline void PA_SetLedBlink(bool blink, bool speed)
+/*! \fn extern inline void PA_SetLedBlink(u8 blink, u8 speed)
     \brief
          \~english Set teh DS Led blinking
          \~french Régler le clignotement de la led
@@ -405,7 +409,7 @@ extern inline void PA_SetScreenLight(bool screen, bool light){
          \~english Speed : 0 for slow, 1 for fast
          \~french Vitesse : 0 pour lent, 1 pour rapide
 */
-extern inline void PA_SetLedBlink(bool blink, bool speed){
+extern inline void PA_SetLedBlink(u8 blink, u8 speed){
 	IPC->aux &= ~(3<<4);
 	IPC->aux |= (blink + (speed<<1))<<4;
 }

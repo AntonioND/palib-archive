@@ -7,14 +7,16 @@
 
 //#define USE_8BITTEXT   // Remove to not use special 8bit text, which takes lots of space (off by default)
 
+#define USE_16cTEXT // 16 color text, which should replace 8bit text because it's smaller and faster
+
 //#define TEXT_ALLCHARACTERS    // Replaces the normal default text by a similar one which has pretty much all the special characters... thanks to Morian for that one ! But it takes twice as much memory in video ram, so you can choose which one to include... 
 
 #define USE_KEYBOARD   // Adds the PAlib keyboard...
 
-#define USE_3D   // Use the 3d functions...
+//#define USE_3D   // Use the 3d functions...
 
 
-#define FAT_DRIVER
+//#define FAT_DRIVER
 
 #endif
 

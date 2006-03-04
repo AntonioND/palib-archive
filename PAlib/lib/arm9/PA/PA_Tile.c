@@ -12,7 +12,7 @@ s32  PA_parallaxY[2][4];
 
 scrollpositions  scrollpos[2][4]; // Pour chaque écran et pour chaque fond :)
 
-bool  charblocks[2][70];  // On met à 0 les emplacements utilisés... pour chaque écran...
+u8  charblocks[2][70];  // On met à 0 les emplacements utilisés... pour chaque écran...
 u16  tilesetsize[2][4]; // Place utilisée pour chaque tileset
 u16  mapsize[2][4]; // Place utilisée pour chaque map
 u8  tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
@@ -21,6 +21,8 @@ u16 tempsize;
 
 extern u16 *PA_DrawBg[2]; // Fond dessinable
 u8 charsetstart[2] = {8, 8};
+
+
 
 
 
@@ -35,7 +37,7 @@ u8 i, j;
 	}
 	for (i = 0; i < 4; i++) {
 		for (j = 0; j < 2; j++) {
-		//	bool ;  // On met à 0 les emplacements utilisés... pour chaque écran...
+		//	u8 ;  // On met à 0 les emplacements utilisés... pour chaque écran...
 			tilesetsize[j][i] = 0; // Place utilisée pour chaque tileset
 			mapsize[j][i] = 0; // Place utilisée pour chaque map
 			tilesetchar[j][i] = 0;  // Emplacement mémoire de chaque tileset
@@ -63,10 +65,10 @@ charsetstart[1] = 8; // Par défaut à 8, pour dire de tout utiliser
 
 
 
-void PA_LoadBgTilesEx(bool screen, u8 bg_select, void* bg_tiles, u16 size) {
+void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u16 size) {
 u16 blocksize = (size + 1023) >> 10;
 s8 charset = charsetstart[screen]; // On commence par le dernier... soit le 8ème, et on ira vers le bas
-bool charsetok = 0;
+u8 charsetok = 0;
 
 u8 i;
 
@@ -108,7 +110,7 @@ if (!charsetok) { // Si jamais on n'a pas trouvé de créneaux, on affiche un mess
 }
 
 
-void PA_ReLoadBgTiles(bool screen, u8 bg_select, void* bg_tiles) {
+void PA_ReLoadBgTiles(u8 screen, u8 bg_select, void* bg_tiles) {
 	s8 charset = tilesetchar[screen][bg_select]; 
 	u32 size = tilesetsize[screen][bg_select];    
 
@@ -121,9 +123,9 @@ void PA_ReLoadBgTiles(bool screen, u8 bg_select, void* bg_tiles) {
 
 
 
-void PA_LoadBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size) {
+void PA_LoadBgMap(u8 screen, u8 bg_select, void* bg_map, u8 bg_size) {
 s16 charset = -1;
-bool charsetok = 0;
+u8 charsetok = 0;
 u8 blocksize = bg_place[bg_size];
 u8 i;
 u8 tempsize;
@@ -153,9 +155,9 @@ while ((charset < 31 ) && (!charsetok)) {
 
 
 
-void PA_LoadRotBgMap(bool screen, u8 bg_select, void* bg_map, u8 bg_size) {
+void PA_LoadRotBgMap(u8 screen, u8 bg_select, void* bg_map, u8 bg_size) {
 s16 charset = -1;
-bool charsetok = 0;
+u8 charsetok = 0;
 u8 blocksize = rotbg_place[bg_size];
 u8 i;
 u8 tempsize;
@@ -186,7 +188,7 @@ while ((charset < 31 ) && (!charsetok)) {
 
 
 
-void PA_InitBg(bool screen, u8 bg_select, u8 bg_size, bool wraparound, bool color_mode) {	
+void PA_InitBg(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode) {	
 	scrollpos[screen][bg_select].infscroll = 0; // Par défaut pas de scrolling infini...
 	PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, mapchar[screen][bg_select]);
 	_REG16(REG_BGSCREEN(screen)) |= (0x100 << (bg_select));
@@ -197,7 +199,7 @@ void PA_InitBg(bool screen, u8 bg_select, u8 bg_size, bool wraparound, bool colo
 
 
 
-void PA_DeleteTiles(bool screen, u8 bg_select) {
+void PA_DeleteTiles(u8 screen, u8 bg_select) {
 
 	if (tilesetsize[screen][bg_select]) { // Si y'a un truc, on efface
 		u8 i;
@@ -221,7 +223,7 @@ void PA_DeleteTiles(bool screen, u8 bg_select) {
 
 
 
-void PA_DeleteMap(bool screen, u8 bg_select) {
+void PA_DeleteMap(u8 screen, u8 bg_select) {
 	if (mapsize[screen][bg_select]) { // Si y'a un truc, on efface
 		u8 i;
 		u8 charset = mapchar[screen][bg_select];
@@ -241,7 +243,7 @@ void PA_DeleteMap(bool screen, u8 bg_select) {
 
 
 
-void PA_LargeScrollX(bool screen, u8 bg_select, s32 x){
+void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x){
 s32 i, j, lx, tilex, tempx, tempy;
 lx = scrollpos[screen][bg_select].lx;
 
@@ -280,7 +282,7 @@ tempy = scrollpos[screen][bg_select].scrolly >> 3;
 
 
 
-void PA_LargeScrollY(bool screen, u8 bg_select, s32 y){
+void PA_LargeScrollY(u8 screen, u8 bg_select, s32 y){
 s32 i, j, lx, ly, tiley, tempx, tempy;
 lx = scrollpos[screen][bg_select].lx;
 ly = scrollpos[screen][bg_select].ly;
@@ -324,7 +326,7 @@ tempy = scrollpos[screen][bg_select].scrolly >> 3;
 
 
 
-void PA_InfLargeScrollX(bool screen, u8 bg_select, s32 x){
+void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x){
 s32 i, j, lx, ly, tilex, tempx, tempy;
 lx = scrollpos[screen][bg_select].lx >> 3;
 ly = scrollpos[screen][bg_select].ly >> 3;
@@ -366,7 +368,7 @@ tempy = scrollpos[screen][bg_select].scrolly >> 3;
 
 
 
-void PA_InfLargeScrollY(bool screen, u8 bg_select, s32 y){
+void PA_InfLargeScrollY(u8 screen, u8 bg_select, s32 y){
 s32 i, j, lx, ly, tiley, tempx, tempy;
 lx = scrollpos[screen][bg_select].lx >> 3;
 ly = scrollpos[screen][bg_select].ly >> 3;
@@ -410,7 +412,7 @@ tempy = scrollpos[screen][bg_select].scrolly >> 3;
 
 
 
-void PA_InitLargeBg(bool screen, u8 bg_select, s32 lx, s32 ly, void* bg_map){
+void PA_InitLargeBg(u8 screen, u8 bg_select, s32 lx, s32 ly, void* bg_map){
 s32 i, j;
 
 
@@ -440,7 +442,7 @@ for (i = -2; i < scrollpos[screen][bg_select].maxx; i++)
 
 
 
-void PA_SetBgRot(bool screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom){
+void PA_SetBgRot(u8 screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom){
 
 /*
 s32 center_x = ((x_rotcentre) * (bg_zoom)) >> 8;

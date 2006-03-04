@@ -39,7 +39,7 @@
 00091        <a class="code" href="group___sprite_dual.html#ga1">PA_DualSetSpriteY</a>(obj_number, y);
 00092 };
 00093 
-<a name="l00141"></a><a class="code" href="group___sprite_dual.html#ga3">00141</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga3">PA_DualCreateSpriteEx</a>(u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y){
+<a name="l00141"></a><a class="code" href="group___sprite_dual.html#ga3">00141</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga3">PA_DualCreateSpriteEx</a>(u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
 00142        <a class="code" href="group___sprite.html#ga4">PA_CreateSpriteEx</a>(0, obj_number, obj_data, obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 00143        <a class="code" href="group___sprite.html#ga4">PA_CreateSpriteEx</a>(1, obj_number, obj_data, obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 00144        <a class="code" href="group___sprite_dual.html#ga1">PA_DualSetSpriteY</a>(obj_number, y);
@@ -49,7 +49,7 @@
 00148 
 00149 
 00150 
-<a name="l00189"></a><a class="code" href="group___sprite_dual.html#ga4">00189</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga4">PA_DualCreate16bitSpriteEx</a>(u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y){
+<a name="l00189"></a><a class="code" href="group___sprite_dual.html#ga4">00189</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga4">PA_DualCreate16bitSpriteEx</a>(u8 obj_number, <span class="keywordtype">void</span>* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
 00190 u16 mem_size = PA_obj_sizes[obj_size][obj_shape] &lt;&lt; 1;
 00191 u16 *gfx = (u16*)malloc(mem_size);
 00192 mem_size = mem_size &gt;&gt; 1;
@@ -81,7 +81,7 @@
 00270 <a class="code" href="group___sprite_dual.html#ga1">PA_DualSetSpriteY</a>(obj_number, y);
 00271 }
 00272 
-<a name="l00320"></a><a class="code" href="group___sprite_dual.html#ga7">00320</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga7">PA_DualCreateSpriteExFromGfx</a>(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, <span class="keywordtype">bool</span> mosaic, <span class="keywordtype">bool</span> hflip, <span class="keywordtype">bool</span> vflip, u8 prio, <span class="keywordtype">bool</span> dblsize, s16 x, s16 y) {
+<a name="l00320"></a><a class="code" href="group___sprite_dual.html#ga7">00320</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga7">PA_DualCreateSpriteExFromGfx</a>(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y) {
 00321 <a class="code" href="group___sprite.html#ga9">PA_CreateSpriteExFromGfx</a>(0, obj_number, obj_gfx[0], obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 00322 <a class="code" href="group___sprite.html#ga9">PA_CreateSpriteExFromGfx</a>(1, obj_number, obj_gfx[1], obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 00323 <a class="code" href="group___sprite_dual.html#ga1">PA_DualSetSpriteY</a>(obj_number, y);
@@ -178,7 +178,7 @@
 00542 
 00543 
 00544 
-<a name="l00556"></a><a class="code" href="group___sprite_dual.html#ga19">00556</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga19">PA_DualSetSpriteDblsize</a>(u8 obj, <span class="keywordtype">bool</span> dblsize){
+<a name="l00556"></a><a class="code" href="group___sprite_dual.html#ga19">00556</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga19">PA_DualSetSpriteDblsize</a>(u8 obj, u8 dblsize){
 00557        <a class="code" href="group___sprite.html#ga47">PA_SetSpriteDblsize</a>(0, obj, dblsize);
 00558        <a class="code" href="group___sprite.html#ga47">PA_SetSpriteDblsize</a>(1, obj, dblsize);
 00559 }
@@ -186,7 +186,7 @@
 00561 
 00562 
 00563 
-<a name="l00575"></a><a class="code" href="group___sprite_dual.html#ga20">00575</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga20">PA_DualSetSpriteColors</a>(u8 sprite, <span class="keywordtype">bool</span> n_colors){
+<a name="l00575"></a><a class="code" href="group___sprite_dual.html#ga20">00575</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga20">PA_DualSetSpriteColors</a>(u8 sprite, u8 n_colors){
 00576        <a class="code" href="group___sprite.html#ga49">PA_SetSpriteColors</a>(0, sprite, n_colors);
 00577        <a class="code" href="group___sprite.html#ga49">PA_SetSpriteColors</a>(1, sprite, n_colors);
 00578 
@@ -205,7 +205,7 @@
 00602 
 00603 
 00604 
-<a name="l00616"></a><a class="code" href="group___sprite_dual.html#ga22">00616</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga22">PA_DualSetSpriteMosaic</a>(u8 obj, <span class="keywordtype">bool</span> mosaic){
+<a name="l00616"></a><a class="code" href="group___sprite_dual.html#ga22">00616</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga22">PA_DualSetSpriteMosaic</a>(u8 obj, u8 mosaic){
 00617        <a class="code" href="group___sprite.html#ga53">PA_SetSpriteMosaic</a>(0, obj, mosaic);
 00618        <a class="code" href="group___sprite.html#ga53">PA_SetSpriteMosaic</a>(1, obj, mosaic);
 00619 }
@@ -215,7 +215,7 @@
 00623 
 00624 
 00625 
-<a name="l00637"></a><a class="code" href="group___sprite_dual.html#ga23">00637</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga23">PA_DualSetSpriteHflip</a>(u8 obj, <span class="keywordtype">bool</span> hflip){
+<a name="l00637"></a><a class="code" href="group___sprite_dual.html#ga23">00637</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga23">PA_DualSetSpriteHflip</a>(u8 obj, u8 hflip){
 00638        <a class="code" href="group___sprite.html#ga55">PA_SetSpriteHflip</a>(0, obj, hflip);
 00639        <a class="code" href="group___sprite.html#ga55">PA_SetSpriteHflip</a>(1, obj, hflip);
 00640 }      
@@ -223,7 +223,7 @@
 00642 
 00643 
 00644 
-<a name="l00656"></a><a class="code" href="group___sprite_dual.html#ga24">00656</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga24">PA_DualSetSpriteVflip</a>(u8 obj, <span class="keywordtype">bool</span> vflip){
+<a name="l00656"></a><a class="code" href="group___sprite_dual.html#ga24">00656</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga24">PA_DualSetSpriteVflip</a>(u8 obj, u8 vflip){
 00657        <a class="code" href="group___sprite.html#ga57">PA_SetSpriteVflip</a>(0, obj, vflip);
 00658        <a class="code" href="group___sprite.html#ga57">PA_SetSpriteVflip</a>(1, obj, vflip);
 00659 }      
@@ -269,99 +269,99 @@
 00752 
 00753 
 00754 
-00755 
-00756 
-<a name="l00768"></a><a class="code" href="group___sprite_dual.html#ga29">00768</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga29">PA_DualSetSpriteAnim</a>(u8 sprite, s16 animframe){
-00769 u8 lx = <a class="code" href="group___sprite.html#ga63">PA_GetSpriteLx</a>(0, sprite); u8 ly = <a class="code" href="group___sprite.html#ga64">PA_GetSpriteLy</a>(0, sprite);
-00770 <span class="keywordtype">bool</span> ncolors = <a class="code" href="group___sprite.html#ga50">PA_GetSpriteColors</a>(0, sprite);
-00771        <a class="code" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a>(0, sprite, lx, ly, ncolors, animframe);
-00772        <a class="code" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a>(1, sprite, lx, ly, ncolors, animframe);     
-00773 }
+<a name="l00766"></a><a class="code" href="group___sprite_dual.html#ga29">00766</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga29">PA_DualSetSpriteAnim</a>(u8 sprite, s16 animframe){
+00767 u8 lx = <a class="code" href="group___sprite.html#ga63">PA_GetSpriteLx</a>(0, sprite); u8 ly = <a class="code" href="group___sprite.html#ga64">PA_GetSpriteLy</a>(0, sprite);
+00768 u8 ncolors = <a class="code" href="group___sprite.html#ga50">PA_GetSpriteColors</a>(0, sprite);
+00769        <a class="code" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a>(0, sprite, lx, ly, ncolors, animframe);
+00770        <a class="code" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a>(1, sprite, lx, ly, ncolors, animframe);     
+00771 }
+00772 
+00773 
 00774 
 00775 
-00776 
-00777 
-<a name="l00801"></a><a class="code" href="group___sprite_dual.html#ga30">00801</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga30">PA_DualStartSpriteAnimEx</a>(u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles){
-00802        <a class="code" href="group___sprite.html#ga20">PA_StartSpriteAnimEx</a>(0, sprite, firstframe, lastframe, speed, type, ncycles);
-00803        <a class="code" href="group___sprite.html#ga20">PA_StartSpriteAnimEx</a>(1, sprite, firstframe, lastframe, speed, type, ncycles);
-00804 }
+<a name="l00799"></a><a class="code" href="group___sprite_dual.html#ga30">00799</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga30">PA_DualStartSpriteAnimEx</a>(u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles){
+00800        <a class="code" href="group___sprite.html#ga20">PA_StartSpriteAnimEx</a>(0, sprite, firstframe, lastframe, speed, type, ncycles);
+00801        <a class="code" href="group___sprite.html#ga20">PA_StartSpriteAnimEx</a>(1, sprite, firstframe, lastframe, speed, type, ncycles);
+00802 }
+00803 
+00804 
 00805 
-00806 
-00807 
-<a name="l00825"></a><a class="code" href="group___sprite_dual.html#ga31">00825</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga31">PA_DualStartSpriteAnim</a>(u8 sprite, s16 firstframe, s16 lastframe, s16 speed){
-00826        <a class="code" href="group___sprite.html#ga21">PA_StartSpriteAnim</a>(0, sprite, firstframe, lastframe, speed);
-00827        <a class="code" href="group___sprite.html#ga21">PA_StartSpriteAnim</a>(1, sprite, firstframe, lastframe, speed);   
-00828 }
+<a name="l00823"></a><a class="code" href="group___sprite_dual.html#ga31">00823</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga31">PA_DualStartSpriteAnim</a>(u8 sprite, s16 firstframe, s16 lastframe, s16 speed){
+00824        <a class="code" href="group___sprite.html#ga21">PA_StartSpriteAnim</a>(0, sprite, firstframe, lastframe, speed);
+00825        <a class="code" href="group___sprite.html#ga21">PA_StartSpriteAnim</a>(1, sprite, firstframe, lastframe, speed);   
+00826 }
+00827 
+00828 
 00829 
-00830 
-00831 
-<a name="l00840"></a><a class="code" href="group___sprite_dual.html#ga32">00840</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga32">PA_DualStopSpriteAnim</a>(u8 sprite)
-00841 {
-00842        <a class="code" href="group___sprite.html#ga22">PA_StopSpriteAnim</a>(0, sprite);
-00843        <a class="code" href="group___sprite.html#ga22">PA_StopSpriteAnim</a>(1, sprite);
-00844 }
-00845 
-00846 
-<a name="l00858"></a><a class="code" href="group___sprite_dual.html#ga33">00858</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga33">PA_DualSetSpriteAnimFrame</a>(u8 sprite, u16 frame)
-00859 {
-00860        <a class="code" href="group___sprite.html#ga23">PA_SetSpriteAnimFrame</a>(0, sprite, frame);
-00861        <a class="code" href="group___sprite.html#ga23">PA_SetSpriteAnimFrame</a>(1, sprite, frame);
-00862 }
-00863 
-00864 
-<a name="l00873"></a><a class="code" href="group___sprite_dual.html#ga34">00873</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite_dual.html#ga34">PA_DualGetSpriteAnimFrame</a>(u8 sprite)
-00874 {
-00875        <span class="keywordflow">return</span> spriteanims[0][sprite].currentframe;
-00876 }
+<a name="l00838"></a><a class="code" href="group___sprite_dual.html#ga32">00838</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga32">PA_DualStopSpriteAnim</a>(u8 sprite)
+00839 {
+00840        <a class="code" href="group___sprite.html#ga22">PA_StopSpriteAnim</a>(0, sprite);
+00841        <a class="code" href="group___sprite.html#ga22">PA_StopSpriteAnim</a>(1, sprite);
+00842 }
+00843 
+00844 
+<a name="l00856"></a><a class="code" href="group___sprite_dual.html#ga33">00856</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga33">PA_DualSetSpriteAnimFrame</a>(u8 sprite, u16 frame)
+00857 {
+00858        <a class="code" href="group___sprite.html#ga23">PA_SetSpriteAnimFrame</a>(0, sprite, frame);
+00859        <a class="code" href="group___sprite.html#ga23">PA_SetSpriteAnimFrame</a>(1, sprite, frame);
+00860 }
+00861 
+00862 
+<a name="l00871"></a><a class="code" href="group___sprite_dual.html#ga34">00871</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite_dual.html#ga34">PA_DualGetSpriteAnimFrame</a>(u8 sprite)
+00872 {
+00873        <span class="keywordflow">return</span> spriteanims[0][sprite].currentframe;
+00874 }
+00875 
+00876 
 00877 
-00878 
-00879 
-<a name="l00891"></a><a class="code" href="group___sprite_dual.html#ga35">00891</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga35">PA_DualSetSpriteAnimSpeed</a>(u8 sprite, s16 speed)
-00892 {
-00893        <a class="code" href="group___sprite.html#ga25">PA_SetSpriteAnimSpeed</a>(0, sprite, speed);
-00894        <a class="code" href="group___sprite.html#ga25">PA_SetSpriteAnimSpeed</a>(1, sprite, speed);  
-00895 }
+<a name="l00889"></a><a class="code" href="group___sprite_dual.html#ga35">00889</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga35">PA_DualSetSpriteAnimSpeed</a>(u8 sprite, s16 speed)
+00890 {
+00891        <a class="code" href="group___sprite.html#ga25">PA_SetSpriteAnimSpeed</a>(0, sprite, speed);
+00892        <a class="code" href="group___sprite.html#ga25">PA_SetSpriteAnimSpeed</a>(1, sprite, speed);  
+00893 }
+00894 
+00895 
 00896 
 00897 
-00898 
-00899 
-<a name="l00908"></a><a class="code" href="group___sprite_dual.html#ga36">00908</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite_dual.html#ga36">PA_DualGetSpriteAnimSpeed</a>(u8 sprite)
-00909 {
-00910        <span class="keywordflow">return</span> spriteanims[0][sprite].speed;
-00911 }
+<a name="l00906"></a><a class="code" href="group___sprite_dual.html#ga36">00906</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___sprite_dual.html#ga36">PA_DualGetSpriteAnimSpeed</a>(u8 sprite)
+00907 {
+00908        <span class="keywordflow">return</span> spriteanims[0][sprite].speed;
+00909 }
+00910 
+00911 
 00912 
-00913 
-00914 
-<a name="l00926"></a><a class="code" href="group___sprite_dual.html#ga37">00926</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga37">PA_DualSpriteAnimPause</a>(u8 sprite, <span class="keywordtype">bool</span> pause)
-00927 {
-00928        <a class="code" href="group___sprite.html#ga29">PA_SpriteAnimPause</a>(0, sprite, pause);
-00929        <a class="code" href="group___sprite.html#ga29">PA_SpriteAnimPause</a>(1, sprite, pause);     
-00930 }
+<a name="l00924"></a><a class="code" href="group___sprite_dual.html#ga37">00924</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sprite_dual.html#ga37">PA_DualSpriteAnimPause</a>(u8 sprite, u8 pause)
+00925 {
+00926        <a class="code" href="group___sprite.html#ga29">PA_SpriteAnimPause</a>(0, sprite, pause);
+00927        <a class="code" href="group___sprite.html#ga29">PA_SpriteAnimPause</a>(1, sprite, pause);     
+00928 }
+00929 
+00930 
 00931 
 00932 
 00933 
-00934 
-00935 
-00936 <span class="comment">/*</span>
-00960 <span class="comment">extern inline void PA_DualSetSpritePixelEx(u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color){</span>
-00961 <span class="comment">       PA_SetSpritePixelEx(0, sprite, hsize, n_colors, x, y, color);</span>
-00962 <span class="comment">       PA_SetSpritePixelEx(1, sprite, hsize, n_colors, x, y, color);  </span>
-00963 <span class="comment">}*/</span>
+00934 <span class="comment">/*</span>
+00958 <span class="comment">extern inline void PA_DualSetSpritePixelEx(u8 sprite, u8 hsize, u8 n_colors, u8 x, u8 y, u8 color){</span>
+00959 <span class="comment">       PA_SetSpritePixelEx(0, sprite, hsize, n_colors, x, y, color);</span>
+00960 <span class="comment">       PA_SetSpritePixelEx(1, sprite, hsize, n_colors, x, y, color);  </span>
+00961 <span class="comment">}*/</span>
+00962 
+00963 
 00964 
 00965 
 00966 
-00967 
-00968 
-00969 <span class="comment">/*</span>
-00987 <span class="comment">extern inline void PA_DualSetSpritePixel(u8 sprite, s16 x, s16 y, bool color){</span>
-00988 <span class="comment">PA_DualSetSpritePixelEx(sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteColors(0, sprite), x, y, color);</span>
-00989 <span class="comment">}*/</span>
+00967 <span class="comment">/*</span>
+00985 <span class="comment">extern inline void PA_DualSetSpritePixel(u8 sprite, s16 x, s16 y, u8 color){</span>
+00986 <span class="comment">PA_DualSetSpritePixelEx(sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteColors(0, sprite), x, y, color);</span>
+00987 <span class="comment">}*/</span>
+00988 
+00989 
 00990 
 00991 
 00992 
-00993 
-00994 
-00995  <span class="comment">// end of Sprite</span>
+00993  <span class="comment">// end of Sprite</span>
+00995 
+00996 
 00997 
 00998 
 00999 
@@ -373,12 +373,10 @@
 01005 
 01006 
 01007 
-01008 
-01009 
-01010 <span class="preprocessor">#endif</span>
-01011 <span class="preprocessor"></span>
-01012 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Feb 26 20:46:39 2006 pour PAlib par&nbsp;
+01008 <span class="preprocessor">#endif</span>
+01009 <span class="preprocessor"></span>
+01010 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sat Mar 4 12:17:11 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

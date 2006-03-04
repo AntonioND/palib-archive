@@ -32,45 +32,37 @@
 #define SD_STS_BUSY			0x100
 #define SD_STS_INSERTED		0x300
 
-u8 SCSD_CRC7 (u8* data, int length)
+// Improved CRC7 function provided by cory1492
+u8 SCSD_CRC7(u8* data, int cnt)
 {
-	u8 crc7 = 0;	// r3
-	u32 bitPattern = 0x80808080;	// r4
-	length = length * 8;	// r1
-	u8 curByte = 0;		// r2
-	
-	do {
-		if (bitPattern & 0x80) {
-			curByte = *data++;
-		}
-		
-		crc7 = crc7 << 1;
-		
-		if (crc7 & 0x80) {
-			crc7 = crc7 ^ 9;
-		}
-		
-		if (curByte & (bitPattern >> 24)) {
-			crc7 = crc7 ^ 9;
-		}
-		
-		bitPattern = (bitPattern >> 1) | (bitPattern << 31);
-	} while (length--);
-	
-	return (crc7 << 1) + 1;
-}
+    int i, a;
+    u8 crc, temp;
+
+    crc = 0;
+    for (a = 0; a < cnt; a++)
+    {
+        temp = data[a];
+        for (i = 0; i < 8; i++)
+        {
+            crc <<= 1;
+            if ((temp & 0x80) ^ (crc & 0x80)) crc ^= 0x09;
+            temp <<= 1;
+        }
+    }
+    crc = (crc << 1) | 1;
+    return(crc);
+} 
 
 void SCSD_WriteCommand (u8* src, int length)
 {
-	while ((SD_COMADD & 0x01) == 0);
-	
+	u16 dataByte;
 	int curBit;
-	
-	u16 dataByte = SD_COMADD;
-	
-	dataByte = *src++;
-	
+	while ((SD_COMADD & 0x01) == 0);
+		
+	dataByte = SD_COMADD;
+
 	do {
+		dataByte = *src++;
 		for (curBit = 7; curBit >=0; curBit--){
 			SD_COMADD = dataByte;
 			dataByte = dataByte << 1;
@@ -79,19 +71,17 @@ void SCSD_WriteCommand (u8* src, int length)
 	
 	return;
 }
-		
 
 void SCSD_Command (u8 command, u8 num, u32 sector )
 {
 	u8 databuff[6];
-	u8 *tempSectorPtr = ((u8*)&sector) + 3;		//(u8*)(((u32)&sector)+3);
 	u8 *tempDataPtr = databuff;
 
 	*tempDataPtr++ = command | 0x40;
-	*tempDataPtr++ = *tempSectorPtr;
-	*tempDataPtr++ = *tempSectorPtr;
-	*tempDataPtr++ = *tempSectorPtr;
-	*tempDataPtr++ = *tempSectorPtr;
+	*tempDataPtr++ = sector>>24;
+	*tempDataPtr++ = sector>>16;
+	*tempDataPtr++ = sector>>8;
+	*tempDataPtr++ = sector;
 	*tempDataPtr = SCSD_CRC7 (databuff, 5);
 
 	SCSD_WriteCommand (databuff, 6);
@@ -100,11 +90,11 @@ void SCSD_Command (u8 command, u8 num, u32 sector )
 
 void SCSD_ReadCommand(u16* buff, int length)
 {
+	u16 temp;
+
 	while (SD_COMADD & 0x01);
 	
 	length = length * 8;
-	
-	u16 temp;
 	
 	do {
 		temp = SD_COMADD;
@@ -129,18 +119,16 @@ void SCSD_SendClock(int numClocks)
 
 void SCSD_ReadData(u16 *buff)
 {
-	while (SD_DATARADD_16 & SD_STS_BUSY);
-	
+	u16 temp;
+	u32 data_1, data_2;
 	int i;
 	
-	u16 temp;
-	
-	u32 data_1, data_2;
-	
-	for (i = 0; i < 512; i++) {
+	while (SD_DATARADD_16 & SD_STS_BUSY);
+			
+	for (i = 0; i < 512; i+=2) {
 		data_1 = SD_DATARADD_32;
 		data_2 = SD_DATARADD_32;
-		*buff++ = data_1 >> 16;
+		*buff++ = data_2 >> 16;
 	}
 	
 	for (i = 0; i < 8; i++) {
@@ -151,7 +139,7 @@ void SCSD_ReadData(u16 *buff)
 	
 	return;
 }
-		
+
 void SCSD_CRC16 (u8* buff, int buffLength, u8* crc16buff)
 {
 	u32 a, b, c, d;
@@ -216,17 +204,15 @@ void SCSD_CRC16 (u8* buff, int buffLength, u8* crc16buff)
 
 void SCSD_WriteData (u16 *buff, u16* crc16buff)
 {
-	while (SD_DATAADD & SD_STS_BUSY);
-	
+	int pos;
+	u16 dataHWord;
 	u16 temp;
-	
+	while (SD_DATAADD & SD_STS_BUSY);
+		
 	temp = SD_DATAADD;
 	
 	SD_DATAADD = 0;		// start bit;
-	
-	int pos;
-	u16 dataHWord;
-	
+		
 	for ( pos = BYTE_PER_READ; pos != 0; pos -=2) {
 		dataHWord = *buff++;
 		
@@ -266,7 +252,7 @@ bool return OUT:  true if a CF card is inserted
 -----------------------------------------------------------------*/
 bool SCSD_IsInserted (void) 
 {
-	return (SD_COMADD == SD_STS_INSERTED);
+	return ((SD_COMADD & SD_STS_INSERTED) == 0);
 }
 
 
@@ -353,21 +339,20 @@ bool SCSD_Shutdown(void)
 	return SCSD_ClearStatus() ;
 }
 
-
 /*-----------------------------------------------------------------
-SC_Unlock
-Returns true if SuperCard was unlocked, false if failed
+SCSD_Mode (was SC_Unlock)
 Added by MightyMax
 Modified by Chishm
+Modified again by loopy
+1=ram(readonly), 5=ram, 3=SD interface?
 -----------------------------------------------------------------*/
-bool SCSD_Unlock(void)
+void SCSD_Mode(u8 mode)
 {
-	volatile short *unlockAddress = (volatile short *)0x09FFFFFE;
+	vu16 *unlockAddress = (vu16*)0x09FFFFFE;
 	*unlockAddress = 0xA55A ;
 	*unlockAddress = 0xA55A ;
-	*unlockAddress = 0x3 ;
-	*unlockAddress = 0x3 ;
-	return (SD_COMADD == SD_STS_INSERTED);
+	*unlockAddress = mode ;
+	*unlockAddress = mode ;
 } 
 
 /*-----------------------------------------------------------------
@@ -377,7 +362,15 @@ otherwise returns false
 -----------------------------------------------------------------*/
 bool SCSD_StartUp(void)
 {
-	return SCSD_Unlock();
+	vu32 *p=(u32*)0x8000000;	//see if we can write to SCSD ram
+	SCSD_Mode(5);
+	*p=0x5555aaaa;
+	*p=~*p;
+	if(*p!=0xaaaa5555)
+		return false;
+		
+	SCSD_Mode(3);
+	return SCSD_IsInserted();
 }
 
 /*-----------------------------------------------------------------

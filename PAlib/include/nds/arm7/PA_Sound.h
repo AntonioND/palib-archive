@@ -27,7 +27,7 @@ typedef struct {
 
 extern PA_SoundInfo PA_Sound[MAX_SOUNDS];  
 
-extern bool PA_SoundOk;
+extern u8 PA_SoundOk;
 
 typedef struct{
 	s32 Sound;

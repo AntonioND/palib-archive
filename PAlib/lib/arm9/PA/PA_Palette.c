@@ -1,6 +1,6 @@
 #include "PA9.h"
 
-bool PA_ExtPal[2][2]; // 0 si pas étendu, 1 sinon
+u8 PA_ExtPal[2][2]; // 0 si pas étendu, 1 sinon
 
 
 void PA_InitSpriteExtPal(void) {
@@ -44,7 +44,7 @@ for (i = 0; i < 256; i++){
 
 
 
-void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette){
+void PA_LoadSpriteExtPal(u8 screen, u16 palette_number, void* palette){
 	if (screen == 0) {
 		vramSetBankG(VRAM_G_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
 		DMA_Copy(palette, VRAM_G + (palette_number << 9), 256, DMA_16NOW);
@@ -80,7 +80,7 @@ void PA_InitBgExtPal(void) {
 
 
 
-void PA_LoadBgExtPal(bool screen, u16 bg_number, void* palette){
+void PA_LoadBgExtPal(u8 screen, u16 bg_number, void* palette){
 	if (screen == 0) {
 		vramSetBankE(VRAM_E_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
 		DMA_Copy(palette, VRAM_E + (bg_number << 13), 256, DMA_16NOW);
@@ -95,7 +95,7 @@ void PA_LoadBgExtPal(bool screen, u16 bg_number, void* palette){
 }
 
 
-void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette)
+void PA_LoadBgPalN(u8 screen, u8 bg_number, u8 pal_number, void* palette)
 {
 	if (screen == 0) {
 		vramSetBankE(VRAM_E_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
@@ -110,7 +110,7 @@ void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette)
 	}
 }
 
-void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color)
+void PA_SetBgPalNCol(u8 screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color)
 {
 	u16 *palcolor;
 	if (screen == 0) {
@@ -128,7 +128,7 @@ void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, 
 }
 
 
-void PA_SetSpritePalCol(bool screen, u8 pal_number, u8 color_number, u16 color)
+void PA_SetSpritePalCol(u8 screen, u8 pal_number, u8 color_number, u16 color)
 {
 	u16 *palcolor;
 	if (screen == 0) {

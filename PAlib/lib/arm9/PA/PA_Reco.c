@@ -8,7 +8,7 @@ PA_RecoValues PA_Reco;
 
 char PA_RecoShape[16];
 
-bool PA_UseGraffiti = true;
+u8 PA_UseGraffiti = true;
 
 u8 PA_CustomReco = 0; // number of custom shapes
 PA_FormType PA_CustomShape[200];

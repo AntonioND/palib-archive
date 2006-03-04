@@ -57,14 +57,6 @@
 #define FILE_LAST 0x00
 #define FILE_FREE 0xE5
 
-#define ATTRIB_ARCH	0x20
-#define ATTRIB_DIR	0x10
-#define ATTRIB_LFN	0x0F
-#define ATTRIB_VOL	0x08
-#define ATTRIB_HID	0x02
-#define ATTRIB_SYS	0x04
-#define ATTRIB_RO	0x01
-
 #define FAT16_ROOT_DIR_CLUSTER 0x00
 
 
@@ -183,6 +175,8 @@ typedef struct
 	__PACKED	u16 char11;
 	__PACKED	u16 char12;
 }	DIR_ENT_LFN;
+
+const char lfn_offset_table[13]={0x01,0x03,0x05,0x07,0x09,0x0E,0x10,0x12,0x14,0x16,0x18,0x1C,0x1E}; 
 
 // End of packed structs
 #ifdef __PACKED
@@ -826,7 +820,15 @@ bool FAT_InitFiles (void)
 	}
 	
 	// Read first sector of CF card
-	disc_ReadSector (0, globalBuffer);
+	if ( !disc_ReadSector(0, globalBuffer)) {
+		return false;
+	}
+
+	// Make sure it is a valid MBR or boot sector
+	if ( (globalBuffer[0x1FE] != 0x55) || (globalBuffer[0x1FF] != 0xAA)) {
+		return false;
+	}
+
 	// Check if there is a FAT string, which indicates this is a boot sector
 	if ((globalBuffer[0x36] == 'F') && (globalBuffer[0x37] == 'A') && (globalBuffer[0x38] == 'T'))
 	{
@@ -857,7 +859,9 @@ bool FAT_InitFiles (void)
 
 	// Read in boot sector
 	bootSec = (BOOT_SEC*) globalBuffer;
-	disc_ReadSector (bootSector,  bootSec);
+	if (!disc_ReadSector (bootSector,  bootSec)) {
+		return false;
+	}
 	
 	// Store required information about the file system
 	if (bootSec->sectorsPerFAT != 0)
@@ -994,6 +998,8 @@ DIR_ENT FAT_GetDirEntry ( u32 dirCluster, int entry, int origin)
 	int lfnPos, aliasPos;
 	u8 lfnChkSum, chkSum;
 
+	int i;
+
 	dir.name[0] = FILE_FREE; // default to no file found
 	dir.attrib = 0x00;
 
@@ -1113,19 +1119,9 @@ DIR_ENT FAT_GetDirEntry ( u32 dirCluster, int entry, int origin)
 			if (lfnExists)
 			{
 				lfnPos = ((lfn.ordinal & ~LFN_END) - 1) * 13;
-				lfnName[lfnPos + 0] = lfn.char0 & 0xFF;
-				lfnName[lfnPos + 1] = lfn.char1 & 0xFF;
-				lfnName[lfnPos + 2] = lfn.char2 & 0xFF;
-				lfnName[lfnPos + 3] = lfn.char3 & 0xFF;
-				lfnName[lfnPos + 4] = lfn.char4 & 0xFF;
-				lfnName[lfnPos + 5] = lfn.char5 & 0xFF;
-				lfnName[lfnPos + 6] = lfn.char6 & 0xFF;
-				lfnName[lfnPos + 7] = lfn.char7 & 0xFF;
-				lfnName[lfnPos + 8] = lfn.char8 & 0xFF;
-				lfnName[lfnPos + 9] = lfn.char9 & 0xFF;
-				lfnName[lfnPos + 10] = lfn.char10 & 0xFF;
-				lfnName[lfnPos + 11] = lfn.char11 & 0xFF;
-				lfnName[lfnPos + 12] = lfn.char12 & 0xFF;
+				for (i = 0; i < 13; i++) {
+					lfnName[lfnPos + i] = ((u8*)&lfn)[(int)(lfn_offset_table[i])] /* | ((u8*)&lfn)[(int)(lfn_offset_table[i]) + 1]  include this for unicode support*/;
+				}
 			}
 		}
 	} while (!found && !notFound);
@@ -1261,6 +1257,46 @@ u32 FAT_GetFileCluster (void)
 	
 	return 	(((DIR_ENT*)globalBuffer)[wrkDirOffset].startCluster) | (((DIR_ENT*)globalBuffer)[wrkDirOffset].startClusterHigh << 16);
 }
+
+/*-----------------------------------------------------------------
+FAT_GetFileAttributes
+Get the attributes of the last file found or openned.
+u8 return OUT: the file's attributes
+-----------------------------------------------------------------*/
+u8 FAT_GetFileAttributes (void)
+{
+	// Read in the last accessed directory entry
+	disc_ReadSector ((wrkDirCluster == FAT16_ROOT_DIR_CLUSTER ? filesysRootDir : FAT_ClustToSect(wrkDirCluster)) + wrkDirSector, globalBuffer);
+	
+	return 	((DIR_ENT*)globalBuffer)[wrkDirOffset].attrib;
+}
+
+#ifdef CAN_WRITE_TO_DISC
+/*-----------------------------------------------------------------
+FAT_SetFileAttributes
+Set the attributes of a file.
+const char* filename IN: The name and path of the file to modify
+u8 attributes IN: The attribute values to assign
+u8 mask IN: Detemines which attributes are changed
+u8 return OUT: the file's new attributes
+-----------------------------------------------------------------*/
+u8 FAT_SetFileAttributes (const char* filename, u8 attributes, u8 mask)
+{
+	// Get the file
+	if (!FAT_FileExists(filename)) {
+		return 0xff;
+	}
+
+	// Read in the last accessed directory entry
+	disc_ReadSector ((wrkDirCluster == FAT16_ROOT_DIR_CLUSTER ? filesysRootDir : FAT_ClustToSect(wrkDirCluster)) + wrkDirSector, globalBuffer);
+
+	((DIR_ENT*)globalBuffer)[wrkDirOffset].attrib = (((DIR_ENT*)globalBuffer)[wrkDirOffset].attrib & ~(mask & 0x27)) | (attributes & 0x27);	// 0x27 is he settable attributes
+	
+	disc_WriteSector ((wrkDirCluster == FAT16_ROOT_DIR_CLUSTER ? filesysRootDir : FAT_ClustToSect(wrkDirCluster)) + wrkDirSector, globalBuffer);
+
+	return 	((DIR_ENT*)globalBuffer)[wrkDirOffset].attrib;
+}
+#endif
 
 #ifdef FILE_TIME_SUPPORT
 time_t FAT_FileTimeToCTime (u16 fileTime, u16 fileDate)
@@ -1507,6 +1543,8 @@ bool FAT_AddDirEntry (const char* path, DIR_ENT newDirEntry)
 	int tempSecOffset;
 	int tempEntryOffset;
 	bool dirEndFlag = false;
+
+	int i;
 
 	// Store current working directory
 	oldWorkDirCluster = curWorkDirCluster;
@@ -1836,19 +1874,16 @@ bool FAT_AddDirEntry (const char* path, DIR_ENT newDirEntry)
 		if (lfnPos >= 0)
 		{
 			lfnEntry.ordinal = (lfnPos + 1) | (dirEntryRemain == dirEntryLength ? LFN_END : 0);
-			lfnEntry.char0 = filename [lfnPos * 13 + 0];
-			lfnEntry.char1 = (filename [lfnPos * 13 + 1] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 1]);
-			lfnEntry.char2 = (filename [lfnPos * 13 + 2] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 2]);
-			lfnEntry.char3 = (filename [lfnPos * 13 + 3] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 3]);
-			lfnEntry.char4 = (filename [lfnPos * 13 + 4] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 4]);
-			lfnEntry.char5 = (filename [lfnPos * 13 + 5] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 5]);
-			lfnEntry.char6 = (filename [lfnPos * 13 + 6] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 6]);
-			lfnEntry.char7 = (filename [lfnPos * 13 + 7] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 7]);
-			lfnEntry.char8 = (filename [lfnPos * 13 + 8] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 8]);
-			lfnEntry.char9 = (filename [lfnPos * 13 + 9] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 9]);
-			lfnEntry.char10 = (filename [lfnPos * 13 + 10] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 10]);
-			lfnEntry.char11 = (filename [lfnPos * 13 + 11] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 11]);
-			lfnEntry.char12 = (filename [lfnPos * 13 + 12] == 0x01 ? 0xFFFF : filename [lfnPos * 13 + 12]);
+			for (i = 0; i < 13; i++) {
+				if (filename [lfnPos * 13 + i] == 0x01) {
+					((u8*)&lfnEntry)[(int)lfn_offset_table[i]] = 0xff;
+					((u8*)&lfnEntry)[(int)(lfn_offset_table[i]) + 1] = 0xff;
+				} else {
+					((u8*)&lfnEntry)[(int)lfn_offset_table[i]] = filename [lfnPos * 13 + i];
+					((u8*)&lfnEntry)[(int)(lfn_offset_table[i]) + 1] = 0x00;
+				}
+			}
+
 			lfnEntry.checkSum = chkSum;
 			lfnEntry.flag = ATTRIB_LFN;
 			lfnEntry.reserved1 = 0;

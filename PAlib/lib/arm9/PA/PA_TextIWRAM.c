@@ -1,15 +1,15 @@
 #include "PA9.h"
 
-void Letter(u8 size, bool screen, u16 x, u16 y, char letter, u8 color);
-void TranspLetter(u8 size, bool screen, u16 x, u16 y, char letter, u8 color);
-void NoLetter(u8 size, bool screen, u16 x, u16 y, char letter, u8 color);
-void RotLetter(u8 size, bool screen, u16 x, u16 y, char letter, u8 color);
-void RotLetter2(u8 size, bool screen, u16 x, u16 y, char letter, u8 color);
+void Letter(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color);
+void TranspLetter(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color);
+void NoLetter(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color);
+void RotLetter(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color);
+void RotLetter2(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color);
 
 letterfp letters[5] = {(letterfp)&Letter, (letterfp)&TranspLetter, (letterfp)&NoLetter, (letterfp)&RotLetter, (letterfp)&RotLetter2};
 	
 
-extern inline void normala(bool screen, u16 i, s8 ly, s16 pos, u8 *data, u8 color){
+extern inline void normala(u8 screen, u16 i, s8 ly, s16 pos, u8 *data, u8 color){
 u8 j;
 s16 temp;
 
@@ -29,7 +29,7 @@ s16 temp;
 }
 
 
-extern inline void normalb(bool screen, u16 i, s8 ly, s16 pos, u8 *data, u8 color){
+extern inline void normalb(u8 screen, u16 i, s8 ly, s16 pos, u8 *data, u8 color){
 u8 j;
 s16 temp;
 
@@ -53,14 +53,14 @@ s16 temp;
 
 
 
-void NoLetter(u8 size, bool screen, u16 x, u16 y, char letter, u8 color) {
+void NoLetter(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color) {
 
 }
 
 
 
 
-void RotLetter(u8 size, bool screen, u16 x, u16 y, char letter, u8 color) {
+void RotLetter(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color) {
 u8 lx = policesize[size][(u8)letter];
 u8 ly = policeheight[size];
 u8 *data;
@@ -99,7 +99,7 @@ if (lx > 8){
 }
 
 
-void RotLetter2(u8 size, bool screen, u16 x, u16 y, char letter, u8 color) {
+void RotLetter2(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color) {
 u8 lx = policesize[size][(u8)letter];
 u8 ly = policeheight[size];
 u8 *data;
@@ -141,7 +141,7 @@ if (lx > 8){
 
 
 
-void Letter(u8 size, bool screen, u16 x, u16 y, char letter, u8 color) {
+void Letter(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color) {
 u8 lx = policesize[size][(u8)letter];
 u8 ly = policeheight[size];
 u8 *data;
@@ -187,7 +187,7 @@ if (lx > 8) {
 
 
 
-extern inline void transpa(bool screen, u16 i, s8 ly, s16 pos, u8 *data, u8 color){
+extern inline void transpa(u8 screen, u16 i, s8 ly, s16 pos, u8 *data, u8 color){
 u8 j;
 s16 temp;
 
@@ -207,7 +207,7 @@ s16 temp;
 }
 
 
-extern inline void transpb(bool screen, u16 i, s8 ly, s16 pos, u8 *data, u8 color){
+extern inline void transpb(u8 screen, u16 i, s8 ly, s16 pos, u8 *data, u8 color){
 u8 j;
 s16 temp;
 
@@ -230,7 +230,7 @@ s16 temp;
 
 
 
-void TranspLetter(u8 size, bool screen, u16 x, u16 y, char letter, u8 color) {
+void TranspLetter(u8 size, u8 screen, u16 x, u16 y, char letter, u8 color) {
 u8 lx = policesize[size][(u8)letter];
 u8 ly = policeheight[size];
 u8 *data;
@@ -272,7 +272,7 @@ if (lx > 8) {
 
 
 
-s16 PA_SmartText(bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp, s32 limit){
+s16 PA_SmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp, s32 limit){
 s16 i, j;
 s16 x, y;
 s16 lx, ly;

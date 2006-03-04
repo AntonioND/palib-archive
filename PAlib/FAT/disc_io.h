@@ -17,8 +17,10 @@
 #define SUPPORT_NMMC		// comment out this line to remove Neoflash MK2 MMC Card support
 #define SUPPORT_MPCF		// comment out this line to remove GBA Movie Player support
 #define SUPPORT_M3CF		// comment out this line to remove M3 Perfect CF support
+#define SUPPORT_M3SD		// comment out this line to remove M3 Perfect SD support
 #define SUPPORT_SCCF		// comment out this line to remove Supercard CF support
-//#define SUPPORT_SCSD		// comment out this line to remove Supercard SD support
+#define SUPPORT_SCSD		// comment out this line to remove Supercard SD support
+#define SUPPORT_EFA2		// comment out this line to remove EFA2 linker support
 #define SUPPORT_FCSR		// comment out this line to remove GBA Flash Cart support
 
 // Disk caching options, added by www.neoflash.com
@@ -27,6 +29,7 @@
 
 //#define DISC_CACHE				// uncomment this line to enable disc caching
 #define DISC_CACHE_COUNT	256	// maximum number of sectors to cache (512 bytes per sector)
+//#define DISK_CACHE_DMA		// use DMA for cache copies. If this is enabled, the data buffers must be word aligned
 
 
 //----------------------------------------------------------------------

@@ -32,8 +32,8 @@ typedef struct{
 } PAPI_all;
 
 typedef struct{
-	bool *var; // Variable à changer, stocke l'état...
-	bool value; // valeur, pour voir si l'utilisateur a changé la valeur ou pas...
+	u8 *var; // Variable à changer, stocke l'état...
+	u8 value; // valeur, pour voir si l'utilisateur a changé la valeur ou pas...
 	s16 x, y; // Poour la position...
 	s8 previous, next; // Pour savoir qui tester avant/apres
 } PAPI_checks;
@@ -53,7 +53,7 @@ typedef struct{
 typedef struct{
 	s32* var; // Variable à changer, stocke l'état...
 	s32 value; // valeur, pour voir si l'utilisateur a changé la valeur ou pas...
-	bool sens; // 0 pour hori, 1 pour verti
+	u8 sens; // 0 pour hori, 1 pour verti
 	s32 min, max; // Valeurs min et max à prendre
 	s16 x, y, lx; // Pour la position... et la taille
 	s8 previous, next; // Pour savoir qui tester avant/apres
@@ -66,7 +66,7 @@ extern PAPI_all PAPI_buttoninfo[2];
 // Init functions
 
 
-/*! \fn void PAPI_Init(bool screen)
+/*! \fn void PAPI_Init(u8 screen)
     \brief
          \~english Initialise the PA API system. MUST be used prior to any API usage. MUST be set on a 8bit background, don't forget to intialise it too !
          \~french Initialise le systeme d'API PA... DOIT être utilisé avant tout utilisation de l'API. Ne peut être utilisé QUE sur un fond de 8 bit, ne pas oublier de le charger...
@@ -74,10 +74,10 @@ extern PAPI_all PAPI_buttoninfo[2];
          \~english Screen on which to initialise it
          \~french Ecran sur lequel l'initialiser
 */
-void PAPI_Init(bool screen);
+void PAPI_Init(u8 screen);
 
 
-/*! \fn void PAPI_SetImages(bool screen, void *images, void *palette)
+/*! \fn void PAPI_SetImages(u8 screen, void *images, void *palette)
     \brief
          \~english Change the image set used by the API system. This allows you to have your own buttons and everything... I'll explain later on how to correctly use this
          \~french Changer le set d'images utilisé par l'API... Ceci permet d'utiliser ses propres boutons, etc... J'expliquerai un peu plus tard comment utiliser tout ca correctement
@@ -91,9 +91,9 @@ void PAPI_Init(bool screen);
          \~english Palette used by the image set, 16 colors...
          \~french Palette utilisée par le set d'images, 16 couleurs... 
 */
-void PAPI_SetImages(bool screen, void *images, void *palette);
+void PAPI_SetImages(u8 screen, void *images, void *palette);
 
-/*! \fn void PAPI_ReInit(bool screen)
+/*! \fn void PAPI_ReInit(u8 screen)
     \brief
          \~english ReInitialise the PA API system. This resets all the buttons, checkboxess, and all, you'll just have to clean the screen
          \~french ReInitialise le systeme d'API PA... Ceci remet à 0 les boutons, les checkbox, etc... Tout ce qu'il reste à faire c'est d'effacer l'écran
@@ -101,9 +101,9 @@ void PAPI_SetImages(bool screen, void *images, void *palette);
          \~english Screen on which to initialise it
          \~french Ecran sur lequel l'initialiser
 */
-void PAPI_ReInit(bool screen);
+void PAPI_ReInit(u8 screen);
 
-/*! \fn void PAPI_LoadPal(bool screen)
+/*! \fn void PAPI_LoadPal(u8 screen)
     \brief
          \~english Loads the API palette in background colors 208. Use this each time you change the background palette
          \~french Charge la palette de l'API, dans les couleurs des fonds, position 208. A utiliser à chaque fois que l'on change la palette des fonds
@@ -111,10 +111,10 @@ void PAPI_ReInit(bool screen);
          \~english Screen on which to initialise it
          \~french Ecran sur lequel l'initialiser
 */
-void PAPI_LoadPal(bool screen);
+void PAPI_LoadPal(u8 screen);
 
 
-/*! \fn u8 PAPI_CreateCheck(bool screen, s16 x, s16 y, bool *var)
+/*! \fn u8 PAPI_CreateCheck(u8 screen, s16 x, s16 y, u8 *var)
     \brief
          \~english Creates a new Checkbox. Returns the number of the checkbox in the API system
          \~french Créé une nouvelle boite à cocher. Renvoie le numéro de la boite dans l'API
@@ -129,9 +129,9 @@ void PAPI_LoadPal(bool screen);
          \~french Position Y du coin supérieur gauche
     \param var
          \~english Bool variable to change when the checkbox is touched. Usage : &variablename
-         \~french Variable de type bool à changer quand on touche la boite. Utilisation : &nomdelavariable		 
+         \~french Variable de type u8 à changer quand on touche la boite. Utilisation : &nomdelavariable		 
 */
-u8 PAPI_CreateCheck(bool screen, s16 x, s16 y, bool *var);
+u8 PAPI_CreateCheck(u8 screen, s16 x, s16 y, u8 *var);
 
 
 
@@ -145,7 +145,7 @@ void PAPI_CheckCheck(void);
 
 
 
-/*! \fn u8 PAPI_CreateButton(bool screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char* text, u8 color, s8 textsize)
+/*! \fn u8 PAPI_CreateButton(u8 screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char* text, u8 color, s8 textsize)
     \brief
          \~english Creates a new Button. Returns the number of the button in the API system
          \~french Créé nouveau bouton. Renvoie le numéro du bouton dans l'API
@@ -177,7 +177,7 @@ void PAPI_CheckCheck(void);
          \~english Text size, typically 1, but can be bigger for big buttons. !!!! the define TEXT_ALLSIZES must be set in PA9.h (and install.bat used again) to enable other sizes than 1 !!!!
          \~french Taille du texte, en général 1, mais peut être plus pour des gros boutons !!! la macro define TEXT_ALLSIZES doit être mise dans PA9.h (et install.bat réutilisé) pour activer les autres taille que 1
 */
-u8 PAPI_CreateButton(bool screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char* text, u8 color, s8 textsize);
+u8 PAPI_CreateButton(u8 screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char* text, u8 color, s8 textsize);
 
 /*! \fn void PAPI_CheckButton(void)
     \brief

@@ -106,112 +106,112 @@
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga0">PA_UpdateOAM</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga1">PA_CreateGfx</a> (bool screen, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga1">PA_CreateGfx</a> (u8 screen, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger en mémoire un gfx à utiliser plus tard pour un sprite. Renvoie le numéro en mémoire.  <a href="#ga1"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga2" doxytag="Sprite::PA_ResetSpriteSys"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga2">PA_ResetSpriteSys</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Remise à 0 du système de sprite, de la mémoire... <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga3">PA_CreateSprite</a> (bool screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga3">PA_CreateSprite</a> (u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version simple de la fonction  <a href="#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga4">PA_CreateSpriteEx</a> (bool screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga4">PA_CreateSpriteEx</a> (u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction  <a href="#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga5">PA_Create16bitSpriteEx</a> (bool screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga5">PA_Create16bitSpriteEx</a> (u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite de 16 bits avec ses gfx... Ceci est la version complexe de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche  <a href="#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga6">PA_Create16bitSpriteFromGfx</a> (bool screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga6">PA_Create16bitSpriteFromGfx</a> (u8 screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite de 16 bits à partir de gfx...  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga7">PA_Create16bitSprite</a> (bool screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga7">PA_Create16bitSprite</a> (u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche  <a href="#ga7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga8">PA_CreateSpriteFromGfx</a> (bool screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga8">PA_CreateSpriteFromGfx</a> (u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version simple de la fonction  <a href="#ga8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga9">PA_CreateSpriteExFromGfx</a> (bool screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga9">PA_CreateSpriteExFromGfx</a> (u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction  <a href="#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga10">PA_UpdateGfx</a> (bool screen, u16 gfx_number, void *obj_data)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga10">PA_UpdateGfx</a> (u8 screen, u16 gfx_number, void *obj_data)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx donnés  <a href="#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga11">PA_UpdateGfxAndMem</a> (bool screen, u8 gfx_number, void *obj_data)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga11">PA_UpdateGfxAndMem</a> (u8 screen, u8 gfx_number, void *obj_data)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx donnés et le pointer d'animation dans PAlib... Uniquement pour utilisateurs avertis  <a href="#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga12">PA_DeleteGfx</a> (bool screen, u16 obj_gfx)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga12">PA_DeleteGfx</a> (u8 screen, u16 obj_gfx)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un Gfx. Si un sprite l'utilisait, il deviendra invisible...  <a href="#ga12"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga13">PA_DeleteSprite</a> (bool screen, u8 obj_number)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga13">PA_DeleteSprite</a> (u8 screen, u8 obj_number)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un sprite. S'il était le seul à utiliser un gfx, il sera effacé lui aussi  <a href="#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga14">PA_SetRotset</a> (bool screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga14">PA_SetRotset</a> (u8 screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner et zoomer un sprite  <a href="#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga15">PA_SetRotsetNoZoom</a> (bool screen, u8 rotset, s16 angle)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga15">PA_SetRotsetNoZoom</a> (u8 screen, u8 rotset, s16 angle)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner un sprite sans zoomer. C'est un peu plus rapide que la fonction PA_SetRotset  <a href="#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga16">PA_SetRotsetNoAngle</a> (bool screen, u8 rotset, u16 zoomx, u16 zoomy)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga16">PA_SetRotsetNoAngle</a> (u8 screen, u8 rotset, u16 zoomx, u16 zoomy)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Zoomer un sprite sans le faire tourner. C'est un peu plus rapide que la fonction PA_SetRotset  <a href="#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga17">PA_SetSpriteXY</a> (bool screen, u8 sprite, s16 x, s16 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga17">PA_SetSpriteXY</a> (u8 screen, u8 sprite, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X et Y du sprite à l'écran  <a href="#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a> (bool screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga18">PA_SetSpriteAnimEx</a> (u8 screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler l'image du sprite dans l'animation. Cette fonction est plus rapide que PA_SetSpriteAnim parce qu'elle n'a pas à rechercher les dimensions du sprite  <a href="#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga19">PA_SetSpriteAnim</a> (bool screen, u8 sprite, s16 animframe)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga19">PA_SetSpriteAnim</a> (u8 screen, u8 sprite, s16 animframe)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler l'image du sprite dans l'animation. Identique à PA_SetSpriteAnimEx, mais plus simple à utiliser, par contre plus lent  <a href="#ga19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga20">PA_StartSpriteAnimEx</a> (bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga20">PA_StartSpriteAnimEx</a> (u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !  <a href="#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga21">PA_StartSpriteAnim</a> (bool screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga21">PA_StartSpriteAnim</a> (u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !  <a href="#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga22">PA_StopSpriteAnim</a> (bool screen, u8 sprite)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga22">PA_StopSpriteAnim</a> (u8 screen, u8 sprite)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter une animation de sprite  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga23">PA_SetSpriteAnimFrame</a> (bool screen, u8 sprite, u16 frame)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga23">PA_SetSpriteAnimFrame</a> (u8 screen, u8 sprite, u16 frame)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le numéro actuel de la frame d'animation  <a href="#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga24">PA_GetSpriteAnimFrame</a> (bool screen, u8 sprite)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga24">PA_GetSpriteAnimFrame</a> (u8 screen, u8 sprite)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le numéro actuel de la frame d'animation  <a href="#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga25">PA_SetSpriteAnimSpeed</a> (bool screen, u8 sprite, s16 speed)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga25">PA_SetSpriteAnimSpeed</a> (u8 screen, u8 sprite, s16 speed)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la vitesse de l'animation  <a href="#ga25"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga26">PA_GetSpriteAnimSpeed</a> (bool screen, u8 sprite)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga26">PA_GetSpriteAnimSpeed</a> (u8 screen, u8 sprite)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la vitesse de l'animation  <a href="#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga27">PA_SetSpriteNCycles</a> (bool screen, u8 sprite, s16 NCycles)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga27">PA_SetSpriteNCycles</a> (u8 screen, u8 sprite, s16 NCycles)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le nombre de cycles d'animation restant (-1 pour inifini)  <a href="#ga27"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga28">PA_GetSpriteNCycles</a> (bool screen, u8 sprite)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga28">PA_GetSpriteNCycles</a> (u8 screen, u8 sprite)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le nombre de cycles d'animation restants  <a href="#ga28"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga29">PA_SpriteAnimPause</a> (bool screen, u8 sprite, bool pause)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga29">PA_SpriteAnimPause</a> (u8 screen, u8 sprite, u8 pause)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre en Pause en remettre en lecture une animation de sprite  <a href="#ga29"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga30">PA_SetSpritePixel</a> (bool screen, u8 sprite, u8 x, u8 y, u8 color)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga30">PA_SetSpritePixel</a> (u8 screen, u8 sprite, u8 x, u8 y, u8 color)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga30"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga31">PA_GetSpritePixel</a> (bool screen, u8 sprite, u8 x, u8 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga31">PA_GetSpritePixel</a> (u8 screen, u8 sprite, u8 x, u8 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent  <a href="#ga31"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga32">PA_InitSpriteDraw</a> (bool screen, u8 sprite)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga32">PA_InitSpriteDraw</a> (u8 screen, u8 sprite)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise un sprite pour pouvoir dessiner dessus !  <a href="#ga32"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga33" doxytag="Sprite::PA_InitAllSpriteDraw"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga33">PA_InitAllSpriteDraw</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise tous les sprites à l'écran pour dessiner dessus <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga34">PA_InitSpriteExtPrio</a> (bool SpritePrio)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ga34">PA_InitSpriteExtPrio</a> (u8 SpritePrio)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer le systeme de priorité de sprites PAlib. Plus lent que le systeme normal, il permet d'avoir 256 niveaux de priorité (supplante la priorité par numéro de sprites)  <a href="#ga34"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga35" doxytag="Sprite::PA_SetSPriteExtPrio"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetSPriteExtPrio</b> (bool screen, u8 sprite, u8 prio)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetSPriteExtPrio</b> (u8 screen, u8 sprite, u8 prio)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
@@ -1373,7 +1373,7 @@ Mettre à jour les Gfx d'un sprite donné
         <tr>
           <td class="md" nowrap valign="top">inline void PA_Create16bitSprite           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1453,7 +1453,7 @@ Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonc
         <tr>
           <td class="md" nowrap valign="top">inline void PA_Create16bitSpriteEx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1483,19 +1483,19 @@ Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonc
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>mosaic</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>hflip</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>vflip</em>, </td>
         </tr>
         <tr>
@@ -1507,7 +1507,7 @@ Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonc
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>dblsize</em>, </td>
         </tr>
         <tr>
@@ -1568,7 +1568,7 @@ Creer un sprite de 16 bits avec ses gfx... Ceci est la version complexe de la fo
         <tr>
           <td class="md" nowrap valign="top">inline void PA_Create16bitSpriteFromGfx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1648,7 +1648,7 @@ Creer un sprite de 16 bits à partir de gfx...
         <tr>
           <td class="md" nowrap valign="top">u16 PA_CreateGfx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1714,7 +1714,7 @@ Charger en mémoire un gfx à utiliser plus tard pour un sprite. Renvoie le numéro
         <tr>
           <td class="md" nowrap valign="top">inline void PA_CreateSprite           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1808,7 +1808,7 @@ Creer un sprite avec ses gfx... Ceci est la version simple de la fonction
         <tr>
           <td class="md" nowrap valign="top">inline void PA_CreateSpriteEx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1856,19 +1856,19 @@ Creer un sprite avec ses gfx... Ceci est la version simple de la fonction
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>mosaic</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>hflip</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>vflip</em>, </td>
         </tr>
         <tr>
@@ -1880,7 +1880,7 @@ Creer un sprite avec ses gfx... Ceci est la version simple de la fonction
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>dblsize</em>, </td>
         </tr>
         <tr>
@@ -1944,7 +1944,7 @@ Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
         <tr>
           <td class="md" nowrap valign="top">inline void PA_CreateSpriteExFromGfx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1992,19 +1992,19 @@ Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>mosaic</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>hflip</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>vflip</em>, </td>
         </tr>
         <tr>
@@ -2016,7 +2016,7 @@ Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>dblsize</em>, </td>
         </tr>
         <tr>
@@ -2080,7 +2080,7 @@ Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
         <tr>
           <td class="md" nowrap valign="top">inline void PA_CreateSpriteFromGfx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2174,7 +2174,7 @@ Creer un sprite avec ses gfx... Ceci est la version simple de la fonction
         <tr>
           <td class="md" nowrap valign="top">void PA_DeleteGfx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2219,7 +2219,7 @@ Effacer un Gfx. Si un sprite l'utilisait, il deviendra invisible...
         <tr>
           <td class="md" nowrap valign="top">void PA_DeleteSprite           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2264,7 +2264,7 @@ Effacer un sprite. S'il était le seul à utiliser un gfx, il sera effacé lui auss
         <tr>
           <td class="md" nowrap valign="top">inline u16 PA_GetSpriteAnimFrame           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2309,7 +2309,7 @@ Renvoie le numéro actuel de la frame d'animation
         <tr>
           <td class="md" nowrap valign="top">inline u16 PA_GetSpriteAnimSpeed           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2354,7 +2354,7 @@ Renvoie la vitesse de l'animation
         <tr>
           <td class="md" nowrap valign="top">inline u16 PA_GetSpriteNCycles           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2399,7 +2399,7 @@ Renvoie le nombre de cycles d'animation restants
         <tr>
           <td class="md" nowrap valign="top">inline u8 PA_GetSpritePixel           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2458,7 +2458,7 @@ Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moi
         <tr>
           <td class="md" nowrap valign="top">void PA_InitSpriteDraw           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2503,7 +2503,7 @@ Initialise un sprite pour pouvoir dessiner dessus !
         <tr>
           <td class="md" nowrap valign="top">void PA_InitSpriteExtPrio           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname1" valign="top" nowrap> <em>SpritePrio</em>          </td>
           <td class="md" valign="top">&nbsp;)&nbsp;</td>
           <td class="md" nowrap></td>
@@ -2538,7 +2538,7 @@ Activer le systeme de priorité de sprites PAlib. Plus lent que le systeme normal
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetRotset           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2604,7 +2604,7 @@ Faire tourner et zoomer un sprite
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetRotsetNoAngle           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2663,7 +2663,7 @@ Zoomer un sprite sans le faire tourner. C'est un peu plus rapide que la fonction
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetRotsetNoZoom           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2715,7 +2715,7 @@ Faire tourner un sprite sans zoomer. C'est un peu plus rapide que la fonction PA
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetSpriteAnim           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2767,7 +2767,7 @@ Régler l'image du sprite dans l'animation. Identique à PA_SetSpriteAnimEx, mais 
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetSpriteAnimEx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2840,7 +2840,7 @@ Régler l'image du sprite dans l'animation. Cette fonction est plus rapide que PA
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetSpriteAnimFrame           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2892,7 +2892,7 @@ Changer le numéro actuel de la frame d'animation
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetSpriteAnimSpeed           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2944,7 +2944,7 @@ Changer la vitesse de l'animation
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetSpriteNCycles           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2996,7 +2996,7 @@ Changer le nombre de cycles d'animation restant (-1 pour inifini)
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetSpritePixel           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -3062,7 +3062,7 @@ Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, ave
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetSpriteXY           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -3121,7 +3121,7 @@ Position X et Y du sprite à l'écran
         <tr>
           <td class="md" nowrap valign="top">inline u16 PA_SpriteAnimPause           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -3133,7 +3133,7 @@ Position X et Y du sprite à l'écran
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>pause</em></td>
         </tr>
         <tr>
@@ -3173,7 +3173,7 @@ Mettre en Pause en remettre en lecture une animation de sprite
         <tr>
           <td class="md" nowrap valign="top">inline void PA_StartSpriteAnim           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -3239,7 +3239,7 @@ Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne 
         <tr>
           <td class="md" nowrap valign="top">void PA_StartSpriteAnimEx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -3319,7 +3319,7 @@ Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne 
         <tr>
           <td class="md" nowrap valign="top">inline void PA_StopSpriteAnim           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -3364,7 +3364,7 @@ Arrêter une animation de sprite
         <tr>
           <td class="md" nowrap valign="top">inline void PA_UpdateGfx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -3416,7 +3416,7 @@ Mettre à jour les Gfx donnés
         <tr>
           <td class="md" nowrap valign="top">inline void PA_UpdateGfxAndMem           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -3460,7 +3460,7 @@ Mettre à jour les Gfx donnés et le pointer d'animation dans PAlib... Uniquement 
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Sun Feb 26 20:46:41 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Sat Mar 4 12:17:16 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

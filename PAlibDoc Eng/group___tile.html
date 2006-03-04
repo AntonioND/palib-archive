@@ -71,82 +71,82 @@
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga0">PA_ResetBgSys</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reset the background system <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga1">PA_InitBg</a> (bool screen, u8 bg_select, u8 bg_size, bool wraparound, bool color_mode)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga1">PA_InitBg</a> (u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise a given background. Do this only after having loaded a tileset and a map.  <a href="#ga1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga2">PA_LoadBgTilesEx</a> (bool screen, u8 bg_select, void *bg_tiles, u16 size)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga2">PA_LoadBgTilesEx</a> (u8 screen, u8 bg_select, void *bg_tiles, u16 size)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a tileset into memory with a given size  <a href="#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga3">PA_ReLoadBgTiles</a> (bool screen, u8 bg_select, void *bg_tiles)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga3">PA_ReLoadBgTiles</a> (u8 screen, u8 bg_select, void *bg_tiles)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ReLoad a tileset into memory  <a href="#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga4">PA_DeleteTiles</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga4">PA_DeleteTiles</a> (u8 screen, u8 bg_select)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a tilest in memory. Note that loading a tileset automatically deletes the preceding one, so you won't need to use this function often  <a href="#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga5">PA_DeleteMap</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga5">PA_DeleteMap</a> (u8 screen, u8 bg_select)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a map in memory. Note that loading a map automatically deletes the preceding one, so you won't need to use this function often  <a href="#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga6">PA_DeleteBg</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga6">PA_DeleteBg</a> (u8 screen, u8 bg_select)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Delete a complete background (tiles + map + hide it...)  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga7">PA_LoadBgMap</a> (bool screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga7">PA_LoadBgMap</a> (u8 screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background's map info  <a href="#ga7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga8" doxytag="Tile::PA_SetBgRot"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetBgRot</b> (bool screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetBgRot</b> (u8 screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga9">PA_SetMapTile</a> (bool screen, u8 bg_select, s16 x, s16 y, s16 tile_number)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga9">PA_SetMapTile</a> (u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile gfx used by a given tile in the map  <a href="#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga10">PA_SetMapTileAll</a> (bool screen, u8 bg_select, s16 x, s16 y, u16 tile_info)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga10">PA_SetMapTileAll</a> (u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_info)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile info used by a given tile in the map  <a href="#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga11">PA_SetLargeMapTile</a> (bool screen, u8 bg_select, s32 x, s32 y, u32 tile_info)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga11">PA_SetLargeMapTile</a> (u8 screen, u8 bg_select, s32 x, s32 y, u32 tile_info)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile info used by a given tile in the map, only for big background (512 large or wide)  <a href="#ga11"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga12" doxytag="Tile::PA_SetMapTileEx"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetMapTileEx</b> (bool screen, u8 bg_select, s16 x, s16 y, u16 tile_number, bool hflip, bool vflip, u8 palette_number)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetMapTileEx</b> (u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_number, u8 hflip, u8 vflip, u8 palette_number)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga13">PA_InfLargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga13">PA_InfLargeScrollX</a> (u8 screen, u8 bg_select, s32 x)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly. It must have been initialised with PA_LoadLargeBg.  <a href="#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga14">PA_InfLargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga14">PA_InfLargeScrollY</a> (u8 screen, u8 bg_select, s32 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga15">PA_InfLargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga15">PA_InfLargeScrollXY</a> (u8 screen, u8 bg_select, s32 x, s32 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga16">PA_LargeScrollX</a> (bool screen, u8 bg_select, s32 x)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga16">PA_LargeScrollX</a> (u8 screen, u8 bg_select, s32 x)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga17">PA_LargeScrollY</a> (bool screen, u8 bg_select, s32 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga17">PA_LargeScrollY</a> (u8 screen, u8 bg_select, s32 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga18">PA_LargeScrollXY</a> (bool screen, u8 bg_select, s32 x, s32 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga18">PA_LargeScrollXY</a> (u8 screen, u8 bg_select, s32 x, s32 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga19">PA_InitParallaxX</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga19">PA_InitParallaxX</a> (u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga20">PA_InitParallaxY</a> (bool screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga20">PA_InitParallaxY</a> (u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga21">PA_ParallaxScrollX</a> (bool screen, s32 x)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga21">PA_ParallaxScrollX</a> (u8 screen, s32 x)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga22">PA_ParallaxScrollY</a> (bool screen, s32 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga22">PA_ParallaxScrollY</a> (u8 screen, s32 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga23">PA_ParallaxScrollXY</a> (bool screen, s32 x, s32 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga23">PA_ParallaxScrollXY</a> (u8 screen, s32 x, s32 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga24">PA_SetBgPrio</a> (bool screen, u8 bg, u8 prio)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga24">PA_SetBgPrio</a> (u8 screen, u8 bg, u8 prio)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change a backgrounds priority  <a href="#ga24"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga25" doxytag="Tile::PA_CreateBgFromTiles"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_CreateBgFromTiles</b> (bool screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_CreateBgFromTiles</b> (u8 screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga26">PA_ClearBg</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile.html#ga26">PA_ClearBg</a> (u8 screen, u8 bg_select)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Erase a given background (just the tilemap)  <a href="#ga26"></a><br></td></tr>
 </table>
@@ -1108,7 +1108,7 @@ Show a hidden background.
         <tr>
           <td class="md" nowrap valign="top">inline void PA_ClearBg           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1153,7 +1153,7 @@ Erase a given background (just the tilemap)
         <tr>
           <td class="md" nowrap valign="top">inline void PA_DeleteBg           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1198,7 +1198,7 @@ Delete a complete background (tiles + map + hide it...)
         <tr>
           <td class="md" nowrap valign="top">void PA_DeleteMap           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1243,7 +1243,7 @@ Delete a map in memory. Note that loading a map automatically deletes the preced
         <tr>
           <td class="md" nowrap valign="top">void PA_DeleteTiles           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1288,7 +1288,7 @@ Delete a tilest in memory. Note that loading a tileset automatically deletes the
         <tr>
           <td class="md" nowrap valign="top">void PA_InfLargeScrollX           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1340,7 +1340,7 @@ Scroll a large infinite scrolling background horizontaly. It must have been init
         <tr>
           <td class="md" nowrap valign="top">inline void PA_InfLargeScrollXY           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1399,7 +1399,7 @@ Scroll a large infinite scrolling background horizontaly and vertically. It must
         <tr>
           <td class="md" nowrap valign="top">void PA_InfLargeScrollY           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1451,7 +1451,7 @@ Scroll a large infinite scrolling background vertically. It must have been initi
         <tr>
           <td class="md" nowrap valign="top">void PA_InitBg           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1469,13 +1469,13 @@ Scroll a large infinite scrolling background vertically. It must have been initi
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>wraparound</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>color_mode</em></td>
         </tr>
         <tr>
@@ -1517,7 +1517,7 @@ Initialise a given background. Do this only after having loaded a tileset and a 
         <tr>
           <td class="md" nowrap valign="top">inline void PA_InitParallaxX           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1583,7 +1583,7 @@ Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the s
         <tr>
           <td class="md" nowrap valign="top">inline void PA_InitParallaxY           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1649,7 +1649,7 @@ Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the s
         <tr>
           <td class="md" nowrap valign="top">void PA_LargeScrollX           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1701,7 +1701,7 @@ Scroll a large background horizontaly. It must have been initialised with PA_Loa
         <tr>
           <td class="md" nowrap valign="top">inline void PA_LargeScrollXY           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1760,7 +1760,7 @@ Scroll a large background horizontaly and vertically. It must have been initiali
         <tr>
           <td class="md" nowrap valign="top">void PA_LargeScrollY           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1812,7 +1812,7 @@ Scroll a large background vertically. It must have been initialised with PA_Load
         <tr>
           <td class="md" nowrap valign="top">void PA_LoadBgMap           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1871,7 +1871,7 @@ Load a background's map info
         <tr>
           <td class="md" nowrap valign="top">void PA_LoadBgTilesEx           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1930,7 +1930,7 @@ Load a tileset into memory with a given size
         <tr>
           <td class="md" nowrap valign="top">inline void PA_ParallaxScrollX           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1975,7 +1975,7 @@ Scroll the backgrounds
         <tr>
           <td class="md" nowrap valign="top">inline void PA_ParallaxScrollXY           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2027,7 +2027,7 @@ Scroll the backgrounds
         <tr>
           <td class="md" nowrap valign="top">inline void PA_ParallaxScrollY           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2072,7 +2072,7 @@ Scroll the backgrounds
         <tr>
           <td class="md" nowrap valign="top">void PA_ReLoadBgTiles           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2124,7 +2124,7 @@ ReLoad a tileset into memory
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetBgPrio           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2176,7 +2176,7 @@ Change a backgrounds priority
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetLargeMapTile           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2242,7 +2242,7 @@ Change the tile info used by a given tile in the map, only for big background (5
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetMapTile           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2308,7 +2308,7 @@ Change the tile gfx used by a given tile in the map
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetMapTileAll           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -2366,7 +2366,7 @@ Change the tile info used by a given tile in the map
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Sun Feb 26 20:46:22 2006 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Sat Mar 4 12:16:47 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -11,7 +11,7 @@ GBFS_FILE const* PA_GBFS_FILE;
 s16 PA_GBFSSearchExt(s16 *array, char *extension){
 	s16 temp = 0;
 	s16 tempvalue = 0;
-	bool loop = 1;
+	u8 loop = 1;
 	while(loop){
 		tempvalue = PA_GetGBFSFile(tempvalue, "", extension);
 		array[temp] = tempvalue;

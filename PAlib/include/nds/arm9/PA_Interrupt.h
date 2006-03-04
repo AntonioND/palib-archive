@@ -13,9 +13,9 @@ extern "C" {
 
 typedef void(*funcpointer)(void);
 
-extern volatile bool PA_Newframe;
+extern volatile u8 PA_Newframe;
 
-extern volatile bool PA_vblok; // Passe à 1 quand VBL activé...
+extern volatile u8 PA_vblok; // Passe à 1 quand VBL activé...
 
 
 extern u32 PA_CPU; // Pourcentage CPU...
@@ -25,7 +25,7 @@ extern u8 PA_VBLCount; // Compte le nombre de VBL avant qu'on en arrive à un tou
 extern u8 PA_nVBLs;
 
 
-
+/*
 //Interrupt Registers
 #ifndef REG_IME
 	#define REG_IME *(u32*)0x04000208
@@ -35,15 +35,15 @@ extern u8 PA_nVBLs;
 #endif
 #ifndef REG_IF
 #define REG_IF *(u32*)0x04000214
-#endif
+#endif*/
 
-
-#define REG_INTERRUPT IRQ_HANDLER //*(u32*)0x3007FFC
-#define REG_DISPSTAT DISP_SR //*(u16*)0x4000004
-
+/*
+#define REG_INTERRUPT IRQ_HANDLE
+#define REG_DISPSTAT DISP_SR
+*/
 
 #define REG_VCOUNT _REG16(0x04000006)
-
+/*
 // Interrupts
 #define INTVBLANK 0x0001
 #define INTHBLANK 0x0002
@@ -73,13 +73,13 @@ extern u8 PA_nVBLs;
 #define INT_DMA2 10
 #define INT_DMA3 11
 #define INT_KEY 12
-#define INT_CART 13
+#define INT_CART 13*/
 
 #define ENABLE_VBLANK 8
 #define ENABLE_HBLANK 16
 #define ENABLE_VCOUNT 32
 
-
+/*
 // Pour activer les timers, que pour moi...
 // TIMER O
 #define TIMER0COUNT		*(volatile u16 *)(0x04000100)
@@ -125,10 +125,10 @@ extern u8 PA_nVBLs;
 #define TIMER3CNT_IRQ_DISABLE               (TIMER3CNT &= 0xFFBF)
 #define PA_DisableTimer3() {TIMER3CNT_TIMER_STOP; TIMER3CNT_IRQ_DISABLE;}
 
+*/
 
 
-
-extern funcpointer interruptfunc[14];
+//extern funcpointer interruptfunc[14];
 
 
 void interruptfunction(void);
@@ -138,6 +138,15 @@ void interruptfunction(void);
  *  @{
  */
 
+
+/*! \fn void PA_vblFunc(void)
+    \brief
+         \~english The standard PAlib VBL function... This will update the pad, the stylus, the RTC, etc... You could/should use this function if you do your own custom VBL...
+         \~french Fonction standard du VBL PAlib... Ceci met à jour le pad, le stylet, le RTC... Utilisez cette fonction si vous faites votre propre VBL...
+*/
+void PA_vblFunc(void);
+
+
 /*! \def PA_InitVBL()
     \brief
          \~english Intiate a basic VBL function. Very usefull for unexperienced users, it updates the OAM (sprites), the Keypad, and the Stylus input every frame. No need to use PA_UpdateOAM, PA_UpdatePad, PA_UpdateStylus, and PA_UpdateRTC !
@@ -146,7 +155,14 @@ void interruptfunction(void);
 */
 
 
-#define PA_InitVBL() PA_StartInt(INT_VBLANK, PA_vblFunc)
+extern inline void PA_InitVBL(void) {
+	//irqInit();
+	irqSet(IRQ_VBLANK, PA_vblFunc);
+	irqEnable(IRQ_VBLANK);
+}
+
+//PA_StartInt(INT_VBLANK, PA_vblFunc)
+
 
 /*! \fn void PA_ResetInterrupts(void)
     \brief
@@ -154,7 +170,7 @@ void interruptfunction(void);
          \~french Remise à 0 du système d'interruption. Désactive toutes les interruptions
 
 */
-void PA_ResetInterrupts(void);
+//void PA_ResetInterrupts(void);
 
 /*! \fn void PA_StartInt(u8 inter, funcpointer interfunc)
     \brief
@@ -169,8 +185,11 @@ void PA_ResetInterrupts(void);
 
 
 */
-void PA_StartInt(u8 inter, funcpointer interfunc);
-
+//void PA_StartInt(u8 inter, funcpointer interfunc);
+/*extern inline void PA_StartInt(u8 inter, funcpointer interfunc){
+	irqSet(inter, interfunc);
+	irqEnable(inter);
+}*/
 
 /*! \fn void PA_StopInt(u8 inter)
     \brief
@@ -180,7 +199,9 @@ void PA_StartInt(u8 inter, funcpointer interfunc);
          \~english Interrupt to STOP. Use the following macros to chose : INT_VBLANK, INT_HBLANK, INT_VCOUNT,  INT_TIMER0, INT_TIMER1, INT_TIMER2, INT_TIMER3, INT_COM, INT_DMA0, INT_DMA1, INT_DMA2, INT_DMA3, INT_KEY, INT_CART...
          \~french ARRETER une interruption donnée. Utiliser les macros suivantes : INT_VBLANK, INT_HBLANK, INT_VCOUNT,  INT_TIMER0, INT_TIMER1, INT_TIMER2, INT_TIMER3, INT_COM, INT_DMA0, INT_DMA1, INT_DMA2, INT_DMA3, INT_KEY, INT_CART...
 */
-void PA_StopInt(u8 inter);
+/*extern inline void PA_StopInt(u8 inter){
+	irqDisable(inter);
+}*/
 
 
 /*! \def PA_GetVcount()
@@ -190,12 +211,7 @@ void PA_StopInt(u8 inter);
 */
 #define PA_GetVcount() (REG_VCOUNT&511)
 
-/*! \fn void PA_vblFunc(void)
-    \brief
-         \~english The standard PAlib VBL function... This will update the pad, the stylus, the RTC, etc... You could/should use this function if you do your own custom VBL...
-         \~french Fonction standard du VBL PAlib... Ceci met à jour le pad, le stylet, le RTC... Utilisez cette fonction si vous faites votre propre VBL...
-*/
-void PA_vblFunc(void);
+
 
 /** @} */ // end of Interrupts
 

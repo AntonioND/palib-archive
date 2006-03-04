@@ -22,6 +22,10 @@
 	Modified by Chishm:
 	2006-02-05
 		* Added Supercard SD support
+
+	Modified by CyteX:
+	2006-02-26
+		* Added EFA2 support
 */
 
 #include "disc_io.h"
@@ -40,6 +44,10 @@
  #include "io_m3cf.h"
 #endif
 
+#ifdef SUPPORT_M3SD
+ #include "io_m3sd.h"
+#endif
+
 #ifdef SUPPORT_SCCF
  #include "io_sccf.h"
 #endif
@@ -54,6 +62,10 @@
 
 #ifdef SUPPORT_NMMC
  #include "io_nmmc.h"
+#endif
+
+#ifdef SUPPORT_EFA2
+ #include "io_efa2.h"
 #endif
 
 // Keep a pointer to the active interface
@@ -161,7 +173,13 @@ bool disc_CacheReadSector( void *buffer, u32 sector) {
 		if( active_interface->fn_ReadSectors( sector, 1, &cacheBuffer[ i * 512 ] ) == false )
 			return false;
 	}
+#ifdef DISK_CACHE_DMA
+		DMA3_SRC = (u32)&cacheBuffer[ i * 512 ]
+		DMA3_DEST = (u32)buffer;
+		DMA3_CR = 128 | DMA_COPY_WORDS;
+#else
 	memcpy( buffer, &cacheBuffer[ i * 512 ], 512 );
+#endif
 	cache[ i ].count++;
 	return true;
 }
@@ -172,7 +190,13 @@ bool disc_CacheWriteSector( void *buffer, u32 sector ) {
 		i = disc_CacheFindFree();
 		cache [ i ].sector = sector;
 	}
+#ifdef DISK_CACHE_DMA
+		DMA3_SRC = (u32)buffer;
+		DMA3_DEST = (u32)&cacheBuffer[ i * 512 ];
+		DMA3_CR = 128 | DMA_COPY_WORDS;
+#else
 	memcpy( &cacheBuffer[ i * 512 ], buffer, 512 );
+#endif
 	cache[ i ].dirty=1;
 	cache[ i ].count++;
 	return true;
@@ -209,6 +233,16 @@ bool disc_setGbaSlotInterface (void)
 	} ;
 #endif
 
+#ifdef SUPPORT_M3SD
+	// check if we have a M3 perfect SD plugged in
+	active_interface = M3SD_GetInterface() ;
+	if (active_interface->fn_StartUp())
+	{
+		// set M3 SD as default IO
+		return true ;
+	} ;
+#endif
+
 #ifdef SUPPORT_MPCF
 	// check if we have a GBA Movie Player plugged in
 	active_interface = MPCF_GetInterface() ;
@@ -235,6 +269,15 @@ bool disc_setGbaSlotInterface (void)
 	if (active_interface->fn_StartUp())
 	{
 		// set SC CF as default IO
+		return true ;
+	} ;
+#endif
+
+#ifdef SUPPORT_EFA2
+	// check if we have a EFA2 plugged in
+	active_interface = EFA2_GetInterface() ;
+	if (active_interface->fn_StartUp())
+	{
 		return true ;
 	} ;
 #endif

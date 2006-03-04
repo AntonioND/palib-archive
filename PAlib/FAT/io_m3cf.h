@@ -2,7 +2,7 @@
 	io_m3cf.h 
 
 	Hardware Routines for reading a compact flash card
-	using the GBA Movie Player
+	using the M3 CF
 
 	This software is completely free. No warranty is provided.
 	If you use it, please give me credit and email me about your

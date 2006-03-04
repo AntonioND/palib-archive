@@ -185,65 +185,13 @@ extern u8 PA_SpriteExtPrio;
 
 
 
-/*! \fn extern inline void PA_UpdateOAM(void)
+/*! \fn void PA_UpdateOAM(void)
     \brief
          \~english Update the sprite infos for both screens. Do this in the VBL
          \~french Mettre à jour les infos des sprites pour les 2 écrans. A faire dans le VBL
 */
 
-//#define PA_UpdateOAM() DMA_Copy((void*)PA_obj, (void*)OAM0, 512, DMA_32NOW)
-extern inline void PA_UpdateOAM(void){
-// Update OAM
-//PA_UpdateOAM0();
-//PA_UpdateOAM1();
-s16 i, screen;
-s32 value = 0;
-	for (i = 0; i < 256; i++){ // copy
-		OAM[value] = PA_obj[0][i].atr0;
-		OAM[value + 1] = PA_obj[0][i].atr1;
-		OAM[value + 2] = PA_obj[0][i].atr2;
-		OAM[value + 3] = PA_obj[0][i].atr3;		
-		value += 4;
-	}
-	
-
-if (PA_SpriteExtPrio){ // Use the extended priorities
-	s8 next[2][128];
-	s8 first[2][256]; // Sprite at given priority...
-	
-	value = 0;
-	s8 sprite;
-
-	for (i = 0; i < 256; i++) first[0][i] = first[1][i] = -1;
-//	for (i = 0; i < 128; i++) next[0][i] = next[1][i] = -1;	
-
-	for (i = 127; i > -1; i--){ // sort
-		next[0][i] = first[0][PA_SpritePrio[0][i]];
-		first[0][PA_SpritePrio[0][i]] = i;
-		next[1][i] = first[1][PA_SpritePrio[1][i]];
-		first[1][PA_SpritePrio[1][i]] = i;		
-	}
-		
-	for (screen = 0; screen < 2; screen++){
-		//s16 temp = 0;
-		//value = screen << 9; // 512 start for the top screen
-		for (i = 0; i < 256; i++){ // copy
-			sprite = first[screen][i];
-			while(sprite != -1){
-				//PA_OutputText(screen, temp, 0, "%04d", sprite);
-				//temp += 4;
-				//PA_OutputText(1, value, 0, "%d   ", sprite);
-				OAM[value] = PA_obj[screen][sprite].atr0;
-				OAM[value + 1] = PA_obj[screen][sprite].atr1;
-				OAM[value + 2] = PA_obj[screen][sprite].atr2;
-				value += 4;
-				sprite = next[screen][sprite];
-			}
-		}
-	}
-}
-
-}
+void PA_UpdateOAM(void);
 
 
 /*! \fn u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)

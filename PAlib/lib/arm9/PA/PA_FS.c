@@ -38,7 +38,7 @@ void PA_FSAllInit(void){
 s16 PA_FSSearchExt(s16 *array, char *extension){
 	s16 temp = 0;
 	s16 tempvalue = 0;
-	bool loop = 1;
+	u8 loop = 1;
 	while(loop){
 		tempvalue = PA_FSGetFile(tempvalue, "", extension);
 		array[temp] = tempvalue;

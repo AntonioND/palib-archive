@@ -3,8 +3,8 @@
 
 
 
-void PA_LoadSpriteExtPal(bool screen, u16 palette_number, void* palette);
-void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
+void PA_LoadSpriteExtPal(u8 screen, u16 palette_number, void* palette);
+void PA_LoadBgExtPal(u8 screen, u16 palette_number, void* palette);
 
 
 /*! \file PA_Palette.h
@@ -64,7 +64,7 @@ void PA_LoadBgExtPal(bool screen, u16 palette_number, void* palette);
          \~english Palette name (ex : master_Palette)
          \~french Nom de la palette (ex : master_Palette)
 */
-extern inline void PA_LoadNormalBgPal(bool screen, void *Pal){
+extern inline void PA_LoadNormalBgPal(u8 screen, void *Pal){
 u32 dest = PAL_BG0 + (screen<<10);
 	DMA_Copy((void*)Pal, (void*)dest, 256, DMA_16NOW);\
 
@@ -107,7 +107,7 @@ u32 dest = PAL_BG0 + (screen<<10);
 */
 #define PA_RGB(r,g,b) ((1 << 15) + (r) + ((g)<<5) + ((b)<<10))
 
-/*! \fn void PA_SetBrightness(bool screen, s8 bright)
+/*! \fn void PA_SetBrightness(u8 screen, s8 bright)
     \brief
          \~english Set the screen's brightness
          \~french Régler la luminosité de l'écran
@@ -120,7 +120,7 @@ u32 dest = PAL_BG0 + (screen<<10);
 
 
 */
-void PA_SetBrightness(bool screen, s8 bright);
+void PA_SetBrightness(u8 screen, s8 bright);
 
 
 
@@ -179,7 +179,7 @@ void PA_InitBgExtPal(void);
 
 
 
-/*! \fn void PA_LoadSpritePal(bool screen, u8 palette_number, void* palette)
+/*! \fn void PA_LoadSpritePal(u8 screen, u8 palette_number, void* palette)
     \brief
          \~english Load a 256 color palette for Sprites
          \~french Charger une palette de 256 couleurs pour les sprites
@@ -193,7 +193,7 @@ void PA_InitBgExtPal(void);
          \~english Palette to load ((void*)palette_name)
          \~french Nom de la palette à charger ((void*)nom_palette)
 */
-extern inline void PA_LoadSpritePal(bool screen, u8 palette_number, void* palette)
+extern inline void PA_LoadSpritePal(u8 screen, u8 palette_number, void* palette)
 {
 	PA_LoadSpriteExtPal(screen, palette_number, palette);
 }
@@ -201,7 +201,7 @@ extern inline void PA_LoadSpritePal(bool screen, u8 palette_number, void* palett
 
 
 
-/*! \fn void PA_LoadBgPal(bool screen, u16 bg_number, void* palette)
+/*! \fn void PA_LoadBgPal(u8 screen, u16 bg_number, void* palette)
     \brief
          \~english Load a 256 color palette in the Background palettes
          \~french Charger une palette de 256 couleurs dans les palettes des fonds
@@ -215,11 +215,11 @@ extern inline void PA_LoadSpritePal(bool screen, u8 palette_number, void* palett
          \~english Palette to load ((void*)palette_name)
          \~french Nom de la palette à charger ((void*)nom_palette)
 */
-extern inline void PA_LoadBgPal(bool screen, u16 bg_number, void* palette){
+extern inline void PA_LoadBgPal(u8 screen, u16 bg_number, void* palette){
 	PA_LoadBgExtPal(screen, bg_number, palette);
 }
 
-/*! \fn void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette)
+/*! \fn void PA_LoadBgPalN(u8 screen, u8 bg_number, u8 pal_number, void* palette)
     \brief
          \~english Load a 256 color palette in a given Background's palette
          \~french Charger une palette de 256 couleurs dans les palettes des fonds
@@ -236,7 +236,7 @@ extern inline void PA_LoadBgPal(bool screen, u16 bg_number, void* palette){
          \~english Palette to load ((void*)palette_name)
          \~french Nom de la palette à charger ((void*)nom_palette)
 */
-void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette);
+void PA_LoadBgPalN(u8 screen, u8 bg_number, u8 pal_number, void* palette);
 
 
 
@@ -259,7 +259,7 @@ void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette);
 
 
 
-/*! \fn void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color)
+/*! \fn void PA_SetBgPalNCol(u8 screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color)
     \brief
          \~english Change the color of one of the backgrounds' palettes' colors
          \~french Changer la couleur d'une des couleurs d'une palette d'un fonds
@@ -279,13 +279,13 @@ void PA_LoadBgPalN(bool screen, u8 bg_number, u8 pal_number, void* palette);
          \~english RGB value, like PA_RGB(31, 31, 31) for white
          \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
 */
-void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color);
+void PA_SetBgPalNCol(u8 screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color);
 
 
 
 
 
-/*! \fn extern inline void PA_SetBgColor(bool screen, u16 color)
+/*! \fn extern inline void PA_SetBgColor(u8 screen, u16 color)
     \brief
          \~english Change the background color of a given screen
          \~french Changer la couleur de fond d'un écran
@@ -296,12 +296,12 @@ void PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, 
          \~english RGB value, like PA_RGB(31, 31, 31) for white
          \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
 */
-extern inline void PA_SetBgColor(bool screen, u16 color){
+extern inline void PA_SetBgColor(u8 screen, u16 color){
 	BG_PALETTE[screen<<7] = color;
 } 
 
 
-/*! \fn void PA_SetSpritePalCol(bool screen, u8 pal_number, u8 color_number, u16 color)
+/*! \fn void PA_SetSpritePalCol(u8 screen, u8 pal_number, u8 color_number, u16 color)
     \brief
          \~english Change a color in a sprite palette
          \~french Changer la couleur de fond d'un écran
@@ -318,7 +318,7 @@ extern inline void PA_SetBgColor(bool screen, u16 color){
          \~english Color (given by PA_RGB...)
          \~french Couleur (venant de PA_RGB...)	 
 */
-void PA_SetSpritePalCol(bool screen, u8 pal_number, u8 color_number, u16 color);
+void PA_SetSpritePalCol(u8 screen, u8 pal_number, u8 color_number, u16 color);
 
 
 
@@ -346,7 +346,7 @@ void PA_CreatePalTransition(u16 *pal, u16 *newpal, s8 level, u8 destr, u8 destg,
 
 /** @} */ // end of Palette
 //////////////////////////////////////////////////////////////////////
-extern inline void* PA_GetBgPal(bool screen, u8 bg_number){
+extern inline void* PA_GetBgPal(u8 screen, u8 bg_number){
 	if (screen == 0) return (void*)(VRAM_E + (bg_number << 12));
 	else return (void*)(VRAM_H + (bg_number << 12));
 }

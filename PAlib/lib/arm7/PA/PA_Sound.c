@@ -6,7 +6,7 @@ PA_SoundInfo PA_Sound[MAX_SOUNDS];  // Nombre maximum de sons à 32...
 
 StartSoundInfo* PA_StartSoundInfo; // Permet de démarrer ou arreter le son
 
-bool PA_SoundOk = 0;
+u8 PA_SoundOk = 0;
 
 void PA_InitSound(s32 Sound_Num, s32 Rate, u8* Data, u32 Length){
 	PA_Sound[Sound_Num].Rate = Rate;

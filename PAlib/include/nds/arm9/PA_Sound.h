@@ -571,15 +571,15 @@ extern inline void PA_PlayFSMod(u16 PAFS_mod_number){
 #define PA_StopMod() SndStopMOD()
 
 
-/*! \def PA_PauseMod(bool)
+/*! \def PA_PauseMod(u8)
     \brief
          \~english Pause the mod ! Thanks to Deku for that :p
          \~french Mettre le mod en pause ! Merci à Deku pour le mod player !
-    \param bool
+    \param u8
          \~english 0 or 1...
          \~french 0 ou 1...
 */
-#define PA_PauseMod(bool) SndPauseMOD(bool)
+#define PA_PauseMod(u8) SndPauseMOD(u8)
 
 
 

@@ -51,7 +51,7 @@ extern PA_RecoInfos PA_RecoInfo;
 
 extern char PA_RecoShape[16]; // Stores the recognized pattern
 
-extern bool PA_UseGraffiti;
+extern u8 PA_UseGraffiti;
 
 extern u8 PA_CustomReco; // number of custom shapes
 extern PA_FormType PA_CustomShape[200];
@@ -108,7 +108,7 @@ PA_UseGraffiti = 1;
 
 
 /*!
-    \fn extern inline void PA_UsePAGraffiti(bool use)
+    \fn extern inline void PA_UsePAGraffiti(u8 use)
     \brief
 		\~english Set on or off the PA Graffiti letters. You'll want to turn them off if you plan on using your own shapes....
 		\~french Activer ou désactiver les lettres PA Graffiti. On voudra le désactiver quand on veut utiliser uniquement ses propres formes
@@ -116,7 +116,7 @@ PA_UseGraffiti = 1;
       \~english 1/0, on/off...
       \~french 1/0, on/off...
 */
-extern inline void PA_UsePAGraffiti(bool use){
+extern inline void PA_UsePAGraffiti(u8 use){
 PA_UseGraffiti = use;
 }
 

@@ -44,7 +44,7 @@ extern PA_Pad* PadPointer;
 
 // Structure pour les sprites que l'on déplace...
 typedef struct {
-	bool Moving;
+	u8 Moving;
 	u8 Sprite;
 	s16 X, Y, Vx, Vy, NextVx, NextVy;
 	u8 Time; // Si trop longtemps sans bouger le sprite, il décroche...
@@ -52,7 +52,7 @@ typedef struct {
 
 extern PA_movingsprite PA_MovedSprite;
 
-extern bool PA_MoveSpriteType; 
+extern u8 PA_MoveSpriteType; 
 
 
 // Button info
@@ -110,7 +110,7 @@ extern u16 CompletePad, ExPad, TempPad;
    UPDATEPAD(Pad.Released, (ExPad & (~CompletePad)));\
    UPDATEPAD(Pad.Newpress, (CompletePad & (~ExPad)));
 
-#define PA_UpdateStylus() bool temp = ((~IPC->buttons) >> 6) & 1;\
+#define PA_UpdateStylus() u8 temp = ((~IPC->buttons) >> 6) & 1;\
 	Stylus.Newpress = temp & (!Stylus.Held);\
 	Stylus.Released = (!temp) & Stylus.Held;\
 	Stylus.Held = temp;\
@@ -147,7 +147,7 @@ void PA_UpdatePad(void);
 void PA_UpdateStylus(void);
 
 
-/*! \fn bool PA_MoveSpritePix(u8 sprite)
+/*! \fn u8 PA_MoveSpritePix(u8 sprite)
     \brief
          \~english Move a sprite according to the stylus's position, only if you touch a sprite's pixel. This is similar to PA_MoveSprite, but slightly slower and requires PA_InitSpriteDraw(screen, sprite) before. The sprite will be 'hooked' if the stylus passes over it, and then they'll be linked together. Returns 1 if the sprite is moved. You can also get information from PA_MovedSprite.Moving (1 if you are moving a sprite), .Sprite (sprite moved), .X (X position of the top left corner of the sprite), .Y (Y position of the top left corner of the sprite), .Vx (horizontal speed ! useful if you want to make the sprite continue to move when you release the stylus...), and .Vy
          \~french Déplacer un sprite en fonction du stylet, avec détection au pixel pret. Ceci est comme PA_MoveSprite, mais un peu plus lent, et nécessite PA_InitSpriteDraw(screen, sprite). Le sprite sera accroché si le stylet passe aud-dessus, puis il sera déplacé en fonction... Donne 1 si on a déplacé ce sprite, sinon 0. On peut ensuite récupérer des infos avec PA_MovedSprite.Moving (1 si on déplace un sprite), .Sprite (numéro du sprite déplacé), .X (position X du coin sup gauche du sprite), .Y (position Y du point sup gauche du sprite déplacé), .Vx (vitesse horizontale du sprite déplacé !! Utile si l'on veut que le sprite continue à se déplacer par la suite...), et .Vy
@@ -155,7 +155,7 @@ void PA_UpdateStylus(void);
          \~english Object number in the sprite system
          \~french Numéro de l'objet dans le systeme de sprite
 */
-bool PA_MoveSpritePix(u8 sprite);
+u8 PA_MoveSpritePix(u8 sprite);
 
 
 
@@ -175,7 +175,7 @@ bool PA_MoveSpritePix(u8 sprite);
 
 
 
-/*! \fn bool PA_MoveSpriteEx(bool screen, u8 sprite, u8 lx, u8 ly)
+/*! \fn u8 PA_MoveSpriteEx(u8 screen, u8 sprite, u8 lx, u8 ly)
     \brief
          \~english Move a sprite according to the stylus's position. See PA_MoveSprite for more details... The difference is that here you chose the sprite dimension (lx and ly), which is useful if the sprite is smaller than the DS standard sizes... (for example 20x20...). This will also limit the 'hooking' distance
          \~french Déplacer un sprite en fonction du stylet. Voir PA_MoveSprite pour plus de détails. La différence est qu'ici on précise la largeur et la hauteur du sprite, utile si le sprite ne fait pas vraiment la meme taille que la taille standard DS (genre si c'est un sprite de 20x20). Ceci limitera donc aussi la distance d'accrochage
@@ -192,10 +192,10 @@ bool PA_MoveSpritePix(u8 sprite);
          \~english Sprite height
          \~french Hauteur du sprite
 */
-bool PA_MoveSpriteEx(bool screen, u8 sprite, u8 lx, u8 ly);
+u8 PA_MoveSpriteEx(u8 screen, u8 sprite, u8 lx, u8 ly);
 
 
-/*! \fn bool PA_MoveSpriteDistance(u8 sprite, u8 distance)
+/*! \fn u8 PA_MoveSpriteDistance(u8 sprite, u8 distance)
     \brief
          \~english Move a sprite according to the stylus's position. See PA_MoveSprite for more details... The difference is that here you chose the hooking distance in pixels
          \~french Déplacer un sprite en fonction du stylet. Voir PA_MoveSprite pour plus de détails. La différence est qu'ici on précise la distance d'accrochage, en pixels
@@ -206,9 +206,9 @@ bool PA_MoveSpriteEx(bool screen, u8 sprite, u8 lx, u8 ly);
          \~english Hooking distance
          \~french Distance d'accrochage
 */
-extern inline bool PA_MoveSpriteDistance(u8 sprite, u8 distance){
+extern inline u8 PA_MoveSpriteDistance(u8 sprite, u8 distance){
 	PA_MoveSpriteType = 1; // mode distance
-	bool touched = PA_MoveSpriteEx(PA_Screen, sprite, distance, distance);
+	u8 touched = PA_MoveSpriteEx(PA_Screen, sprite, distance, distance);
 	PA_MoveSpriteType = 0; // normal mode
 	return touched;
 }
@@ -229,7 +229,7 @@ extern inline void PA_UpdateMoveSprite(void) {
 
 
 
-/*! \fn extern inline bool PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly)
+/*! \fn extern inline u8 PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly)
     \brief
          \~english Check if a given sprite is touched. Returns 1 if touched... You can chose the width and height around the sprite
          \~french Vérifie si l'on touche un sprite donné. Renvoie 1 si touché... On peut choisir la hauteur et la largeur autour du sprite
@@ -244,13 +244,13 @@ extern inline void PA_UpdateMoveSprite(void) {
          \~french Hauter		 
 		 
 */
-extern inline bool PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly){
+extern inline u8 PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly){
 	return (Stylus.Held && (Stylus.X > PA_GetSpriteX(PA_Screen, sprite)) && (Stylus.X < PA_GetSpriteX(PA_Screen, sprite) + lx)&& (Stylus.Y > PA_GetSpriteY(PA_Screen, sprite)) && (Stylus.Y < PA_GetSpriteY(PA_Screen, sprite) + ly));
 }
 
 
 
-/*! \fn extern inline bool PA_SpriteTouched(u8 sprite)
+/*! \fn extern inline u8 PA_SpriteTouched(u8 sprite)
     \brief
          \~english Check if a given sprite is touched. Returns 1 if touched...
          \~french Vérifie si l'on touche un sprite donné. Renvoie 1 si touché...
@@ -258,7 +258,7 @@ extern inline bool PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly){
          \~english Sprite number in the sprite system
          \~french Numéro du sprite dans le systeme de sprite
 */
-extern inline bool PA_SpriteTouched(u8 sprite) {
+extern inline u8 PA_SpriteTouched(u8 sprite) {
 	return PA_SpriteTouchedEx(sprite, PA_GetSpriteLx(PA_Screen, sprite), PA_GetSpriteLy(PA_Screen, sprite));
 }
 
@@ -266,7 +266,7 @@ extern inline bool PA_SpriteTouched(u8 sprite) {
 
 
 
-extern inline bool PA_SpriteTouchedPix(u8 sprite){
+extern inline u8 PA_SpriteTouchedPix(u8 sprite){
 u16 x = Stylus.X - PA_GetSpriteX(PA_Screen, sprite);
 u16 y = Stylus.Y - PA_GetSpriteY(PA_Screen, sprite);
 

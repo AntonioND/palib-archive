@@ -68,7 +68,7 @@ extern const s16 winfades[][4];
          \~english Y coordinate of the bottom right point
          \~french Coordonnée Y du coin inférieur droit
 */
-extern inline void PA_SetWin0XY(bool screen, u8 x1, u8 y1, u8 x2, u8 y2) {
+extern inline void PA_SetWin0XY(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2) {
 	WIN0X(screen) = x2 + ((x1) << 8); 
 	WIN0Y(screen) = y2 + ((y1) << 8);
 }
@@ -190,7 +190,7 @@ extern inline void PA_SetWin0XY(bool screen, u8 x1, u8 y1, u8 x2, u8 y2) {
 
 
 
-/*! \fn extern inline void PA_WindowFade(bool screen, u8 type, u8 time)
+/*! \fn extern inline void PA_WindowFade(u8 screen, u8 type, u8 time)
     \brief
          \~english This allows you to do fade in and out, using the window system
          \~french Permet de faire des entrées/sorties en utilisant le systeme de fenetre
@@ -204,7 +204,7 @@ extern inline void PA_SetWin0XY(bool screen, u8 x1, u8 y1, u8 x2, u8 y2) {
          \~english Time, from 0 to 32 (included). 0 is a completely vuable screen, 32 is completely out
          \~french Temps, de 0 à 32 (inclus). 0 est écran visisble, 32 invisible	 
 */
-extern inline void PA_WindowFade(bool screen, u8 type, u8 time){
+extern inline void PA_WindowFade(u8 screen, u8 type, u8 time){
 	PA_EnableWin0(screen, WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ);
 	PA_SetWin0XY(screen, (time*winfades[type][0]), 
 						(time*winfades[type][1]), 

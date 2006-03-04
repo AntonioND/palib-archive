@@ -19,10 +19,10 @@ u16 tempvar;
 
 
 
-void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
+void PA_Draw8bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
 
 
-void PA_Init8bitBg(bool screen, u8 bg_priority){
+void PA_Init8bitBg(u8 screen, u8 bg_priority){
 
 PA_DeleteBg(screen, 3);
 PA_nBit[screen] = 0; // 8 bit
@@ -113,7 +113,7 @@ void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth){
 
 
 
-void PA_Draw8bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color){
+void PA_Draw8bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color){
   int i,dx,dy,sdx,sdy,dxabs,dyabs,x,y,px,py;
 
   dx=x2-x1;      /* the horizontal distance of the line */
@@ -167,7 +167,7 @@ PA_Put8bitPixel(screen, px, py, color);
 
 
 
-void PA_Init16bitBg(bool screen, u8 bg_priority){
+void PA_Init16bitBg(u8 screen, u8 bg_priority){
 
 PA_DeleteBg(screen, 3);
 PA_nBit[screen] = 1; // 16 bit
@@ -197,7 +197,7 @@ PA_SetDrawSize(screen, 1);
 
 
 
-void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color){
+void PA_Draw16bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color){
   int i,dx,dy,sdx,sdy,dxabs,dyabs,x,y,px,py;
 
   dx=x2-x1;      /* the horizontal distance of the line */
@@ -263,7 +263,7 @@ PA_Put16bitPixel(screen, px, py, color);
 
 
 
-void PA_8bitDraw(bool screen, u8 color){
+void PA_8bitDraw(u8 screen, u8 color){
 s16 i, j, low, high;
 u16 x, y;
 
@@ -298,7 +298,7 @@ if (Stylus.Held){
 
 
 
-void PA_16bitDraw(bool screen, u16 color){
+void PA_16bitDraw(u8 screen, u16 color){
 s16 i, j, low, high;
 u16 x, y;
 
@@ -330,7 +330,7 @@ if (Stylus.Held){
 
 
 
-void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size){
+void PA_Draw16bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size){
 s8 low = (size >> 1) - size;
 s8 high = (size >> 1);
 s16 i, j;
@@ -385,7 +385,7 @@ for (j = low; j < high; j++){
 
 
 
-void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size){
+void PA_Draw8bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size){
 s8 low = (size >> 1) - size;
 s8 high = (size >> 1);
 s16 i, j;
@@ -441,7 +441,7 @@ for (j = low; j < high; j++){
 
 
 
-void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color){
+void PA_Draw16bitRect(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color){
 s16 i, j;
 
 // On met dans le bon ordre...

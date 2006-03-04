@@ -1,3 +1,31 @@
+PAlib 040306 MAJOR BUGFIX
+
+[Interrupts] Switched to libnds's interrupt handler. Seems to correct some bugs. Superstar's demo seems to work fine with the new system, so I hope this solves lots of C++ problems :S. Corrected 2 other big projects, so it seems like this could be the most stable release up to now ! It probably broke (very temporarily jialing' streaming system (uses TIMERS), we'll just have to switch the code to libnds's timer system, which shouldn't be long, but I ran out of time today :/
+
+[Arm7] Some unwanted test code slipped in the previous version, could cause some major bugs
+
+[16 color Bg] Added a fake 'bitmap' 16 color background system. It's very usefull to draw SHMUP bullets on it (>600 8x8 bullets from what I tested)
+
+[Text Sizes] Added a new text system for 16color backgrounds. Works like the 8bit text (5 different sizes) but is much much faster, and takes much less memory (both in VRAM and in ROM) -> 45k in rom, and around 30k in VRAM (compared to <200k in rom and 49 in vram for 8bit text). Added an example to go with it
+
+[BoxText] Fixed an evil bug that prevented the boxtext from stopping, thanks too Scognito !
+
+[Sprite Priorities] Fixed
+
+[FAT Driver] Chishm updated his FAT driver :
+2006-03-03
+ * Improved NMMC (MK2 / MK3) driver
+ * Optimised LFNs into loops, thanks to dwedit
+ * Optimised SuperCard SD CFC7, thanks to Cory1492
+ * Added file attribute support
+ * Added read only M3 SD support, thanks to SaTa and Moonlight. Disabled by default due to incompleteness
+ * Fixed SuperCard SD reading, thanks to Loopy
+ * Added EFA2 support, thanks to CyteX
+
+[Version number] Changed the version numbers, I didn't feel like getting to a 1.0 milestone ^^
+
+
+
 PAlib 0.998d
 
 [Sound] Fixed :S
@@ -67,7 +95,7 @@ PAlib 0.998a
 
 [Sprite Animations] Fixed a little bug in the frame number when using UPDOWN, thanks to Costello
 
-[FAT DRiver] Included Chishm's FAT Driver, with M3, SC, and MK2/3 support ! I take NO credit whatsoever for this. ALL the credit goes to Chishm and the people who helped him make this driver better... If you have any questions/bugs, please report them on palib.com, and do not bug Chishm... The driver takes around 25k, and can be removed by editing PA_Config.h. Please take the time to read the gba_nds_fat.txt file included with the driver...  I haven't played with it too much yet, just tested listing the files on my MK3... (FAT/FAT example). I also update the Vham Init to take into account the FAT_ functions.
+[FAT Driver] Included Chishm's FAT Driver, with M3, SC, and MK2/3 support ! I take NO credit whatsoever for this. ALL the credit goes to Chishm and the people who helped him make this driver better... If you have any questions/bugs, please report them on palib.com, and do not bug Chishm... The driver takes around 25k, and can be removed by editing PA_Config.h. Please take the time to read the gba_nds_fat.txt file included with the driver...  I haven't played with it too much yet, just tested listing the files on my MK3... (FAT/FAT example). I also update the Vham Init to take into account the FAT_ functions.
 
 [DeSmuME] Updated
 

@@ -16,71 +16,71 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret autrement  <a href="#ga23"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga0">PA_InitText</a> (bool screen, u8 bg_select)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga0">PA_InitText</a> (u8 screen, u8 bg_select)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte à l'écran. Ne marche qu'en modes 0-2  <a href="#ga0"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga1">PA_SetTileLetter</a> (bool screen, u16 x, u16 y, char letter)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga1">PA_SetTileLetter</a> (u8 screen, u16 x, u16 y, char letter)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire une lettre à l'écran.  <a href="#ga1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga2">PA_SetTextTileCol</a> (bool screen, u8 color)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga2">PA_SetTextTileCol</a> (u8 screen, u8 color)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change la couleur du texte à écrire (ne change pas la couleur du texte déjà écrit)  <a href="#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga3">PA_OutputText</a> (bool screen, u16 x, u16 y, char *text,...)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga3">PA_OutputText</a> (u8 screen, u16 x, u16 y, char *text,...)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte à l'écran. Ne marche qu'en modes 0-2  <a href="#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga4">PA_OutputSimpleText</a> (bool screen, u16 x, u16 y, const char *text)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga4">PA_OutputSimpleText</a> (u8 screen, u16 x, u16 y, const char *text)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte tout simple à l'écran. Ne marche qu'en modes 0-2. Beaucoup plus rapide que PA_OutputText, masi aussi beaucoup plus limité... Renvoie le nombre de lettres  <a href="#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga5">PA_BoxText</a> (bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga5" doxytag="Text::PA_BoxText"></a>
+u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BoxText</b> (u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, s32 limit)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nmobre de lettre écrites  <a href="#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga6">PA_BoxTextNoWrap</a> (bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga6">PA_BoxTextNoWrap</a> (u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nombre de lettre écrites. Cette fonction coupe les mots...  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga7">PA_SetTextCol</a> (bool screen, u16 r, u16 g, u16 b)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga7">PA_SetTextCol</a> (u8 screen, u16 r, u16 g, u16 b)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la couleur de base du texte à l'écran  <a href="#ga7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga8">PA_SmartText</a> (bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char *text, u8 color, u8 size, u8 transp, s32 limit)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga8">PA_SmartText</a> (u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char *text, u8 color, u8 size, u8 transp, s32 limit)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cette fonction permet d'écrire du texte à chasse variable à l'écran. Elle nécessite d'avoir un fond dessinable de 8 bits (cf PA_Init8bitBg). Les options sont la taille, la transparence, et les limites, ainsi que la couleur. Seul inconvénient : il n'accepte pas les commande comme d, etc... La fonction renvoie le nombre de charactères écrits  <a href="#ga8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga9">PA_CenterSmartText</a> (bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char *text, u8 color, u8 size, u8 transp)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga9">PA_CenterSmartText</a> (u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char *text, u8 color, u8 size, u8 transp)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">En gros la meme chose que SmartText, mais en centré...  <a href="#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga10">PA_CompareText</a> (char *text1, char *text2)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga10">PA_CompareText</a> (char *text1, char *text2)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comparer une chaine de caractère à une autre. Exemple : PA_CompareText(Playname, "Mollusk");  <a href="#ga10"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga11">PA_CopyText</a> (char *text1, char *text2)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comparer une chaine de caractère à une autre. Exemple : PA_CompareText(Playname, "Mollusk");  <a href="#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga12">PA_InitTextBorders</a> (bool screen, u8 x1, u8 y1, u8 x2, u8 y2)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga12">PA_InitTextBorders</a> (u8 screen, u8 x1, u8 y1, u8 x2, u8 y2)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise une boite à texte, avec la bordure. Ceci rend l'utilisation des textes délimités bien plus simple  <a href="#ga12"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga13">PA_EraseTextBox</a> (bool screen)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga13">PA_EraseTextBox</a> (u8 screen)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Efface le text d'un boite à texte... Nécessite qu'il ait été initialisé avec PA_InitTextBorders  <a href="#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga14">PA_SimpleBoxText</a> (bool screen, const char *text, u32 limit)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga14">PA_SimpleBoxText</a> (u8 screen, const char *text, u32 limit)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrit du texte dans une zone délimitée. Similaire à PA_BoxText, mais sans avoir besoin de délimiter  <a href="#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga15">PA_ClearTextBg</a> (bool screen)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga15">PA_ClearTextBg</a> (u8 screen)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer tout le texte sur un écran donné  <a href="#ga15"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga16" doxytag="Text::PA_OutputTextSpecial0"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial0</b> (bool screen, int x1, int y, char *text)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial0</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="Text::PA_OutputTextSpecial1"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial1</b> (bool screen, int x1, int y, char *text)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial1</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="Text::PA_OutputTextSpecial2"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial2</b> (bool screen, int x1, int y, char *text)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial2</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="Text::PA_OutputTextSpecial3"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial3</b> (bool screen, int x1, int y, char *text)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial3</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="Text::PA_OutputTextSpecial4"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial4</b> (bool screen, int x1, int y, char *text)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial4</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="Text::PA_OutputTextSpecial5"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial5</b> (bool screen, int x1, int y, char *text)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial5</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
@@ -164,86 +164,6 @@ Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret a
   </tr>
 </table>
 <hr><h2>Documentation des fonctions</h2>
-<a class="anchor" name="ga5" doxytag="PA_Text.h::PA_BoxText"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">u32 PA_BoxText           </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
-          <td class="mdname" nowrap> <em>screen</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>basex</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>basey</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>maxx</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u16&nbsp;</td>
-          <td class="mdname" nowrap> <em>maxy</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>const char *&nbsp;</td>
-          <td class="mdname" nowrap> <em>text</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>u32&nbsp;</td>
-          <td class="mdname" nowrap> <em>limit</em></td>
-        </tr>
-        <tr>
-          <td class="md"></td>
-          <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nmobre de lettre écrites 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où commencer à afficher le text </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où commencer à afficher le text </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>maxx</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où finir d'afficher le text </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>maxy</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où finir d'afficher le text </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Chaine de caractère à écrire. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>limit</em>&nbsp;</td><td>Nombre maximum de lettres à afficher pour ce coup-ci </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga6" doxytag="PA_Text.h::PA_BoxTextNoWrap"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -252,7 +172,7 @@ Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en cho
         <tr>
           <td class="md" nowrap valign="top">u32 PA_BoxTextNoWrap           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -332,7 +252,7 @@ Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en cho
         <tr>
           <td class="md" nowrap valign="top">s16 PA_CenterSmartText           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -426,7 +346,7 @@ En gros la meme chose que SmartText, mais en centré...
         <tr>
           <td class="md" nowrap valign="top">inline void PA_ClearTextBg           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname1" valign="top" nowrap> <em>screen</em>          </td>
           <td class="md" valign="top">&nbsp;)&nbsp;</td>
           <td class="md" nowrap><code> [inline]</code></td>
@@ -459,7 +379,7 @@ Effacer tout le texte sur un écran donné
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">inline bool PA_CompareText           </td>
+          <td class="md" nowrap valign="top">inline u8 PA_CompareText           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">char *&nbsp;</td>
           <td class="mdname" nowrap> <em>text1</em>, </td>
@@ -551,7 +471,7 @@ Comparer une chaine de caractère à une autre. Exemple : PA_CompareText(Playname,
         <tr>
           <td class="md" nowrap valign="top">void PA_EraseTextBox           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname1" valign="top" nowrap> <em>screen</em>          </td>
           <td class="md" valign="top">&nbsp;)&nbsp;</td>
           <td class="md" nowrap></td>
@@ -586,7 +506,7 @@ Efface le text d'un boite à texte... Nécessite qu'il ait été initialisé avec PA_
         <tr>
           <td class="md" nowrap valign="top">void PA_InitText           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -631,7 +551,7 @@ Ecrire du texte à l'écran. Ne marche qu'en modes 0-2
         <tr>
           <td class="md" nowrap valign="top">void PA_InitTextBorders           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -697,7 +617,7 @@ Initialise une boite à texte, avec la bordure. Ceci rend l'utilisation des texte
         <tr>
           <td class="md" nowrap valign="top">u16 PA_OutputSimpleText           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -756,7 +676,7 @@ Ecrire du texte tout simple à l'écran. Ne marche qu'en modes 0-2. Beaucoup plus 
         <tr>
           <td class="md" nowrap valign="top">void PA_OutputText           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -821,7 +741,7 @@ Ecrire du texte à l'écran. Ne marche qu'en modes 0-2
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetTextCol           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -880,7 +800,7 @@ Changer la couleur de base du texte à l'écran
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetTextTileCol           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -925,7 +845,7 @@ Change la couleur du texte à écrire (ne change pas la couleur du texte déjà écri
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetTileLetter           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -984,7 +904,7 @@ Ecrire une lettre à l'écran.
         <tr>
           <td class="md" nowrap valign="top">inline u32 PA_SimpleBoxText           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1036,7 +956,7 @@ Ecrit du texte dans une zone délimitée. Similaire à PA_BoxText, mais sans avoir 
         <tr>
           <td class="md" nowrap valign="top">s16 PA_SmartText           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -1129,7 +1049,7 @@ Cette fonction permet d'écrire du texte à chasse variable à l'écran. Elle nécess
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Sun Feb 26 20:46:41 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Sat Mar 4 12:17:17 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

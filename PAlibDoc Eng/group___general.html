@@ -18,7 +18,7 @@
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga0">PA_Init</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise the library. Must be used at the beginning or main() <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga1">PA_SetVideoMode</a> (bool screen, u8 mode)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga1">PA_SetVideoMode</a> (u8 screen, u8 mode)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the video mode... Use this with caution  <a href="#ga1"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga2" doxytag="General::PA_UpdateUserInfo"></a>
@@ -49,16 +49,16 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">BROKEN ----- Initialises the CPU Meter. The CPU value is saved in PA_CPU (and PA_MaxCPU for max usage) <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga9" doxytag="General::PA_CheckLid"></a>
-bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga9">PA_CheckLid</a> (void)</td></tr>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga9">PA_CheckLid</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the DS is closed. If closed, it pauses the DS, and returns 1. <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga10">PA_Splash</a> (void *tiles0, void *map0, void *tiles1, void *map1, s16 color0, s16 color1, s16 time)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Splash screen function ! Load your own splash screen...  <a href="#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga11">PA_SetScreenLight</a> (bool screen, bool light)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga11">PA_SetScreenLight</a> (u8 screen, u8 light)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set on or off the screen's light  <a href="#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga12">PA_SetLedBlink</a> (bool blink, bool speed)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga12">PA_SetLedBlink</a> (u8 blink, u8 speed)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set teh DS Led blinking  <a href="#ga12"></a><br></td></tr>
 </table>
@@ -72,13 +72,13 @@ Initialise the lib, and other general functions... <hr><h2>Function Documentatio
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetLedBlink           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>blink</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>speed</em></td>
         </tr>
         <tr>
@@ -117,13 +117,13 @@ Set teh DS Led blinking
         <tr>
           <td class="md" nowrap valign="top">void PA_SetScreenLight           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>light</em></td>
         </tr>
         <tr>
@@ -162,7 +162,7 @@ Set on or off the screen's light
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetVideoMode           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -279,7 +279,7 @@ Splash screen function ! Load your own splash screen...
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Sun Feb 26 20:46:23 2006 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Sat Mar 4 12:16:47 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

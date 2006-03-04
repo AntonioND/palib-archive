@@ -5,14 +5,14 @@
 // Interrupts
 //////////////////////////////////////////////////////////////////////
 
-u16 Int_Flag;
+//u16 Int_Flag;
 
-funcpointer interruptfunc[14];
+//funcpointer interruptfunc[14];
 
 
-volatile bool PA_vblok; // Passe à 1 quand VBL activé...
+volatile u8 PA_vblok; // Passe à 1 quand VBL activé...
 
-volatile bool PA_Newframe;
+volatile u8 PA_Newframe;
 
 void PA_UpdateSpriteAnims(void);
 
@@ -27,23 +27,19 @@ u8 PA_VBLCount = 0; // Compteur de vbl
 
 
 
-
+/*
 void PA_ResetInterrupts(void) {
 u8 i;
-REG_IME = 0x00;
-REG_IE = 0;
-REG_DISPSTAT = ENABLE_VBLANK; // Only interrupt to set by default...
-REG_INTERRUPT = &interruptfunction;
-
 
    for (i = 0; i < 14; i++) {
-      interruptfunc[i] = &PA_Nothing;
+      //interruptfunc[i] = &PA_Nothing;
+	  irqDisable(BIT(i));
    }
-}
+}*/
 
 
 
-
+/*
 void PA_StartInt(u8 inter, funcpointer interfunc) {
 //disable interrupts
 REG_IME = 0x00;
@@ -66,11 +62,11 @@ if (inter == INT_KEY)    REG_KEYCNT = 49151; // Par défaut, il faut appuyer sur 
 
 //enable interrupts
 REG_IME = 0x01;
-}
+}*/
 
 
 
-
+/*
 void PA_StopInt(u8 inter) {
 //disable interrupts
 REG_IME = 0x00;
@@ -91,12 +87,12 @@ if (inter == INT_TIMER3) PA_DisableTimer3();
 if (inter == INT_KEY)    REG_KEYCNT = 0; // Par défaut, il faut appuyer sur n'importe quelle touche
 //enable interrupts
 REG_IME = 0x01;
-}
+}*/
 
 
 
 
-
+/*
 void interruptfunction(void) {
 
 //disable interrupts
@@ -106,11 +102,6 @@ REG_IME = 0x00;
 
 Int_Flag = REG_IF;
 
-// Check for all possible interrupts...
-/*PA_OutputText(PA2 * 3, PAtest, "%d", Int_Flag);
-++PAtest;
-if (PAtest > 19) {PAtest = 0; ++PA2;}
-*/
 
 if(Int_Flag & INTVBLANK)  {
 	PA_vblok = 1; 
@@ -139,7 +130,7 @@ REG_IME = 0x01;
 
 }
 
-
+*/
 
 
 

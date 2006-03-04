@@ -54,13 +54,18 @@ u8 PA_SpriteExtPrio = 0;
 u8 PA_SpritePrio[2][128]; // Set the sprite priorities...
 
 
+	s8 PA_next[2][128];
+	s8 PA_first[2][256]; // Sprite at given priority...
+
 
 void PA_InitSpriteExtPrio(u8 SpritePrio){
 	PA_SpriteExtPrio = SpritePrio;
 	u8 i, n;
-	for (i = 0; i < 2; i++) {
-		for(n = 0; n < 128; n++) {
-			PA_SpritePrio[i][n] = 0;
+	if (SpritePrio == 1){
+		for (i = 0; i < 2; i++) {
+			for(n = 0; n < 128; n++) {
+				PA_SpritePrio[i][n] = 0;
+			}
 		}
 	}
 }
@@ -452,9 +457,67 @@ currentsprite++; // next sprite...
 
 
 
+void PA_UpdateOAM(void){
+// Update OAM
+//PA_UpdateOAM0();
+//PA_UpdateOAM1();
+s16 i;
+s32 value = 0;
+s32 value2 = 512;
+	for (i = 0; i < 128; i++){ // copy
+		OAM[value] = PA_obj[0][i].atr0;
+		OAM[value + 1] = PA_obj[0][i].atr1;
+		OAM[value + 2] = PA_obj[0][i].atr2;
+		OAM[value + 3] = PA_obj[0][i].atr3;	
+		OAM[value2] = PA_obj[1][i].atr0;
+		OAM[value2 + 1] = PA_obj[1][i].atr1;
+		OAM[value2 + 2] = PA_obj[1][i].atr2;
+		OAM[value2 + 3] = PA_obj[1][i].atr3;		
+		value += 4;
+		value2 += 4;		
+	}
+	
 
+if (PA_SpriteExtPrio){ // Use the extended priorities
 
+	
+	value = 0;
+	s8 sprite;
 
+	for (i = 0; i < 256; i+=2) {
+		PA_first[0][i] = PA_first[1][i] = -1;
+		PA_first[0][i+1] = PA_first[1][i+1] = -1;
+	}
+//	for (i = 0; i < 128; i++) next[0][i] = next[1][i] = -1;	
+
+	for (i = 127; i > -1; i--){ // sort
+		PA_next[0][i] = PA_first[0][PA_SpritePrio[0][i]];
+		PA_first[0][PA_SpritePrio[0][i]] = i;
+		PA_next[1][i] = PA_first[1][PA_SpritePrio[1][i]];
+		PA_first[1][PA_SpritePrio[1][i]] = i;		
+	}
+	
+	u8 screen;
+	for (screen = 0; screen < 2; screen++){
+		//s16 temp = 0;
+		//value = screen << 9; // 512 start for the top screen
+		for (i = 0; i < 256; i++){ // copy
+			sprite = PA_first[screen][i];
+			while(sprite != -1){
+				//PA_OutputText(screen, temp, 0, "%04d", sprite);
+				//temp += 4;
+				//PA_OutputText(1, value, 0, "%d   ", sprite);
+				OAM[value] = PA_obj[screen][sprite].atr0;
+				OAM[value + 1] = PA_obj[screen][sprite].atr1;
+				OAM[value + 2] = PA_obj[screen][sprite].atr2;
+				value += 4;
+				sprite = PA_next[screen][sprite];
+			}
+		}
+	}
+}
+
+}
 
 
 

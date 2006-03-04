@@ -13,7 +13,7 @@ struct tTimer
 {
 	u32     nPauseTick;
 	u32		nRefTick;
-	bool	bRunning;
+	u8	bRunning;
 };
 
 struct tTimeMgr
@@ -23,10 +23,10 @@ struct tTimeMgr
 	u8				nCount;
 };
 
-extern void StartTime(bool bNew);
+extern void StartTime(u8 bNew);
 extern void PauseTime();
 
-extern u8	NewTimer(bool bStarted);
+extern u8	NewTimer(u8 bStarted);
 extern void	StartTimer(u8 nTimerId);
 extern u32	Tick(u8	nTimerId);
 extern void	PauseTimer(u8 nTimerId);

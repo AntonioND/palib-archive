@@ -54,7 +54,7 @@ extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 extern u16 PA_temppal[256];
 
 
-void PA_Load16bitGif(bool screen, s16 x, s16 y, void *gif);
+void PA_Load16bitGif(u8 screen, s16 x, s16 y, void *gif);
 int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
 
 
@@ -65,7 +65,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
  */
 
 
-/*! \fn void PA_Init8bitBg(bool screen, u8 bg_priority)
+/*! \fn void PA_Init8bitBg(u8 screen, u8 bg_priority)
     \brief
          \~english Initialise 8 bit draw mode (palette mode)... Chose the screen and the background priority (0-3). This drawable background will replace Background 3, and must be loaded before all other backgrounds. Takes about 3/8 of the VRAM.
          \~french Initialise le mode de dessin 8 bit (avec palette). Il suffit de choisir l'écran et la priorité de ce font (de 0 à 3). Ce fond sera placé sur le fond 3 (le remplacant), et doit etre chargé avant tout autre fond ! Prend environ 3/8 de la VRAM
@@ -76,10 +76,10 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
          \~english Background priority (0-3)
          \~english Background priority (0-3) 
 */
-void PA_Init8bitBg(bool screen, u8 bg_priority);
+void PA_Init8bitBg(u8 screen, u8 bg_priority);
 
 
-/*! \fn void PA_Init16bitBg(bool screen, u8 bg_priority)
+/*! \fn void PA_Init16bitBg(u8 screen, u8 bg_priority)
     \brief
          \~english Initialise 16 bit draw mode (no palette mode, true colors)... Chose the screen and the background priority (0-3). This drawable background will replace Background 3, and must be loaded before all other backgrounds. Takes about 6/8 of the VRAM, so almost all the space !
          \~french Initialise le mode de dessin 16 bit (sans palettes, couleurs RGB). Il suffit de choisir l'écran et la priorité de ce font (de 0 à 3). Ce fond sera placé sur le fond 3 (le remplacant), et doit etre chargé avant tout autre fond ! Prend environ 3/8 de la VRAM
@@ -90,11 +90,11 @@ void PA_Init8bitBg(bool screen, u8 bg_priority);
          \~english Background priority (0-3)
          \~english Background priority (0-3) 
 */
-void PA_Init16bitBg(bool screen, u8 bg_priority);
+void PA_Init16bitBg(u8 screen, u8 bg_priority);
 
 
 
-/*! \fn extern inline void PA_Put8bitPixel(bool screen, s16 x, s16 y, u8 color) 
+/*! \fn extern inline void PA_Put8bitPixel(u8 screen, s16 x, s16 y, u8 color) 
     \brief
          \~english Draw a pixel on screen, on an 8 bit background
          \~french Dessine un pixel à l'écran, sur un fond de 8 bits
@@ -111,7 +111,7 @@ void PA_Init16bitBg(bool screen, u8 bg_priority);
          \~english Color in the background palette (0-255)
          \~french Couleur de la palette du fond (0-255) 
 */
-extern inline void PA_Put8bitPixel(bool screen, s16 x, s16 y, u8 color) {
+extern inline void PA_Put8bitPixel(u8 screen, s16 x, s16 y, u8 color) {
    PA_DrawBg[screen][(y <<7) + (x>>1)] &= (0xff00>>((x&1)<<3));
    PA_DrawBg[screen][(y <<7) + (x>>1)] |= color<<((x&1)<<3);
 
@@ -128,7 +128,7 @@ extern inline void PA_Put8bitPixel(bool screen, s16 x, s16 y, u8 color) {
 
 
 
-/*! \fn extern inline void PA_Put2_8bitPixels(bool screen, s16 x, s16 y, u16 colors)
+/*! \fn extern inline void PA_Put2_8bitPixels(u8 screen, s16 x, s16 y, u16 colors)
     \brief
          \~english Draw 2 pixels on screen, on an 8 bit background. These pixels are next to another, and the first pixel must be with a pair X. WAY faster than drawing both pixels separately
          \~french Dessine deux pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Beaucoup plus rapide que de dessiner les 2 pixels séparemment
@@ -146,10 +146,10 @@ extern inline void PA_Put8bitPixel(bool screen, s16 x, s16 y, u8 color) {
          \~french Couleurs des premier et deuxième pixels (*256 pour le deuxième)
 	 
 */
-extern inline void PA_Put2_8bitPixels(bool screen, s16 x, s16 y, u16 colors) {		PA_DrawBg[screen][(x >> 1) + (y << 7)] = colors;
+extern inline void PA_Put2_8bitPixels(u8 screen, s16 x, s16 y, u16 colors) {		PA_DrawBg[screen][(x >> 1) + (y << 7)] = colors;
 }
 
-/*! \fn extern inline void PA_PutDouble8bitPixels(bool screen, s16 x, s16 y, u8 color1, u8 color2)
+/*! \fn extern inline void PA_PutDouble8bitPixels(u8 screen, s16 x, s16 y, u8 color1, u8 color2)
     \brief
          \~english Draw 2 pixels on screen, on an 8 bit background. These pixels are next to another, and the first pixel must be with a pair X. WAY faster than drawing both pixels separately
          \~french Dessine deux pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Beaucoup plus rapide que de dessiner les 2 pixels séparemment
@@ -169,13 +169,13 @@ extern inline void PA_Put2_8bitPixels(bool screen, s16 x, s16 y, u16 colors) {		
          \~english Color of the second pixel, in the background palette (0-255)
          \~french Couleur de la palette du fond (0-255) pour le deuxième pixel		 
 */
-extern inline void PA_PutDouble8bitPixels(bool screen, s16 x, s16 y, u8 color1, u8 color2) {
+extern inline void PA_PutDouble8bitPixels(u8 screen, s16 x, s16 y, u8 color1, u8 color2) {
 	PA_Put2_8bitPixels(screen, x, y, color1 + (color2 << 8));		
 }
 
 
 
-/*! \fn extern inline void PA_Put4_8bitPixels(bool screen, s16 x, s16 y, u32 colors)
+/*! \fn extern inline void PA_Put4_8bitPixels(u8 screen, s16 x, s16 y, u32 colors)
     \brief
          \~english Draw 4 pixels on screen, on an 8 bit background. These pixels are next to another, and the first pixel must be with a pair X. Fastest way to draw on the screen...
          \~french Dessine 4 pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Façon la plus rapide de dessiner à l'écran
@@ -193,13 +193,13 @@ extern inline void PA_PutDouble8bitPixels(bool screen, s16 x, s16 y, u8 color1, 
          \~french Couleurs des 4 pixels
 	 
 */
-extern inline void PA_Put4_8bitPixels(bool screen, s16 x, s16 y, u32 colors) {
+extern inline void PA_Put4_8bitPixels(u8 screen, s16 x, s16 y, u32 colors) {
 /*
 	(*u32*)(PA_DrawBg[screen] + (x >> 1) + (y << 7)) = colors;*/
 }
 
 
-/*! \fn extern inline u8 PA_Get8bitPixel(bool screen, u8 x, u8 y)
+/*! \fn extern inline u8 PA_Get8bitPixel(u8 screen, u8 x, u8 y)
     \brief
          \~english Get the pixel's color in 8 bit Draw mode... 
          \~french Récupérer la couleur d'un pixel, en mode dessin 8 bit
@@ -213,7 +213,7 @@ extern inline void PA_Put4_8bitPixels(bool screen, s16 x, s16 y, u32 colors) {
          \~english Y position. Be carefull, if Y is not between 0 and 191, it'll give unwanted results
          \~french Position Y. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté
  */
-extern inline u8 PA_Get8bitPixel(bool screen, u8 x, u8 y) {
+extern inline u8 PA_Get8bitPixel(u8 screen, u8 x, u8 y) {
 	u16 pos = 	(x >> 1) + (y << 7);
 	if (x&1){
 		return (PA_DrawBg[screen][pos] >> 8);
@@ -226,7 +226,7 @@ extern inline u8 PA_Get8bitPixel(bool screen, u8 x, u8 y) {
 
 
 
-/*! \fn extern inline void PA_Put16bitPixel(bool screen, s16 x, s16 y, u16 color)
+/*! \fn extern inline void PA_Put16bitPixel(u8 screen, s16 x, s16 y, u16 color)
     \brief
          \~english Draw a pixel on screen, on an 16 bit background
          \~french Dessine un pixel à l'écran, sur un fond de 16 bits
@@ -243,7 +243,7 @@ extern inline u8 PA_Get8bitPixel(bool screen, u8 x, u8 y) {
          \~english 16 bit color, obtained using PA_RGB(red, green, blue)
          \~french Couleur de 16 bits, obtenue avec PA_RGB(rouge, vert, bleu)
 */
-extern inline void PA_Put16bitPixel(bool screen, s16 x, s16 y, u16 color) {
+extern inline void PA_Put16bitPixel(u8 screen, s16 x, s16 y, u16 color) {
 	PA_DrawBg[screen][x + (y << 8)] = color;
 }
 
@@ -269,7 +269,7 @@ extern inline void PA_Put16bitPixel(bool screen, s16 x, s16 y, u16 color) {
 
 
 
-/*! \fn void PA_Draw8bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color)
+/*! \fn void PA_Draw8bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color)
     \brief
          \~english Draw a line in Draw mode... for 8 bit drawable background
          \~french Dessiner une ligne en mode dessin... pour le mode dessin 8 bit
@@ -292,13 +292,13 @@ extern inline void PA_Put16bitPixel(bool screen, s16 x, s16 y, u16 color) {
          \~english Color in the background palette (0-255)
          \~french Couleur de la palette du fond (0-255) 
  */
-void PA_Draw8bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color);
+void PA_Draw8bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color);
 
 
 
 
 
-/*! \fn void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color)
+/*! \fn void PA_Draw16bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color)
     \brief
          \~english Draw a line in Draw mode... for 16 bit drawable background
          \~french Dessiner une ligne en mode dessin... pour le mode dessin 16 bit
@@ -321,11 +321,11 @@ void PA_Draw8bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color);
          \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
          \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...
  */
-void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
+void PA_Draw16bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
 
 
 
-/*! \fn void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size)
+/*! \fn void PA_Draw16bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size)
     \brief
          \~english Draw a thick line in Draw mode... for 16 bit drawable background
          \~french Dessiner une ligne épaisse en mode dessin... pour le mode dessin 16 bit
@@ -351,10 +351,10 @@ void PA_Draw16bitLine(bool screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
          \~english Width of the line, in pixels
          \~french Largeur du trait, en pixels		 
  */
-void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
+void PA_Draw16bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
 
 
-/*! \fn void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size)
+/*! \fn void PA_Draw8bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size)
     \brief
          \~english Draw a thick line in Draw mode... for 8 bit drawable background
          \~french Dessiner une ligne épaisse en mode dessin... pour le mode dessin 8 bit
@@ -380,11 +380,11 @@ void PA_Draw16bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u
          \~english Width of the line, in pixels
          \~french Largeur du trait, en pixels		 
  */
-void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
+void PA_Draw8bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
 
 
 
-/*! \fn void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color)
+/*! \fn void PA_Draw16bitRect(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color)
     \brief
          \~english Draw a rectangle in Draw mode... for 16 bit drawable background
          \~french Dessiner rectangle en mode dessin... pour le mode dessin 16 bit
@@ -407,10 +407,10 @@ void PA_Draw8bitLineEx(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u8
          \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
          \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...		 
  */
-void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color);
+void PA_Draw16bitRect(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color);
 
 
-/*! \fn PA_8bitDraw(bool screen, u8 color)
+/*! \fn PA_8bitDraw(u8 screen, u8 color)
     \brief
          \~english For 8 bit background : Nice little function that draws on screen ! All you need to do is chose the color, it'll do the rest. If the PA VBL isn't initialised, don't forget to update the stylus position every frame... Juste execute PA_Draw every cycle...
          \~french Pour 8 bit : Jolie petite fonction qui dessine à l'écran ! Tout ce qu'il reste à faire, c'est de choisir la couleur. Si le VBL PA n'est pas initialiser, ne pas oublier de rafraichir le Stylet à chaque cycle (et non, pas avec des glacons !). Il suffit d'executer PA_Draw à chaque cycle pour dessiner...
@@ -421,10 +421,10 @@ void PA_Draw16bitRect(bool screen, s16 basex, s16 basey, s16 endx, s16 endy, u16
          \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
          \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...
  */
-void PA_8bitDraw(bool screen, u8 color);
+void PA_8bitDraw(u8 screen, u8 color);
 
 
-/*! \fn PA_16bitDraw(bool screen, u16 color)
+/*! \fn PA_16bitDraw(u8 screen, u16 color)
     \brief
          \~english For 16 bit : Nice little function that draws on screen ! All you need to do is chose the color, it'll do the rest. If the PA VBL isn't initialised, don't forget to update the stylus position every frame... Juste execute PA_Draw every cycle...
          \~french Pour 16 bit : Jolie petite fonction qui dessine à l'écran ! Tout ce qu'il reste à faire, c'est de choisir la couleur. Si le VBL PA n'est pas initialiser, ne pas oublier de rafraichir le Stylet à chaque cycle (et non, pas avec des glacons !). Il suffit d'executer PA_Draw à chaque cycle pour dessiner...
@@ -435,7 +435,7 @@ void PA_8bitDraw(bool screen, u8 color);
          \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
          \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...
  */
-void PA_16bitDraw(bool screen, u16 color);
+void PA_16bitDraw(u8 screen, u16 color);
 
 
 /*! \def PA_SetDrawSize(screen, draw_size)
@@ -505,7 +505,7 @@ PA_DrawBg[screen][PA_temp] = bitmap[PA_temp] | (1 << 15);}
 #define PA_Clear16bitBg(screen) DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW)
 
 
-/*! \fn extern inline void PA_LoadJpeg(bool screen, void *jpeg)
+/*! \fn extern inline void PA_LoadJpeg(u8 screen, void *jpeg)
     \brief
          \~english Load a jpeg on a 16 bit background... Don't forget to Init the background !
          \~french Charger un jpeg sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
@@ -516,7 +516,7 @@ PA_DrawBg[screen][PA_temp] = bitmap[PA_temp] | (1 << 15);}
          \~english jpeg image...
          \~french image au format jpeg...	 
 */
-extern inline void PA_LoadJpeg(bool screen, void *jpeg) {
+extern inline void PA_LoadJpeg(u8 screen, void *jpeg) {
 	REG_IME = 0x00;
 	JPEG_DecompressImage((u8*)jpeg, PA_DrawBg[screen], 256, 192);
 	REG_IME = 0x01;	
@@ -547,7 +547,7 @@ extern inline void PA_LoadJpeg(bool screen, void *jpeg) {
 void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth);
 
 
-/*! \fn extern inline void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp)
+/*! \fn extern inline void PA_LoadBmpEx(u8 screen, s16 x, s16 y, void *bmp)
     \brief
          \~english Load a BMP on a 16 bit background... Don't forget to Init the background !
          \~french Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
@@ -564,13 +564,13 @@ void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth);
          \~english BMP image...
          \~french image au format BMP...	 
 */
-extern inline void PA_LoadBmpEx(bool screen, s16 x, s16 y, void *bmp){
+extern inline void PA_LoadBmpEx(u8 screen, s16 x, s16 y, void *bmp){
 PA_LoadBmpToBuffer(PA_DrawBg[screen], x, y, bmp, 256);
 }
 
 
 
-/*! \fn extern inline void PA_LoadBmp(bool screen, void *bmp)
+/*! \fn extern inline void PA_LoadBmp(u8 screen, void *bmp)
     \brief
          \~english Load a BMP on a 16 bit background... Don't forget to Init the background !
          \~french Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
@@ -581,7 +581,7 @@ PA_LoadBmpToBuffer(PA_DrawBg[screen], x, y, bmp, 256);
          \~english BMP image...
          \~french image au format BMP...	 
 */
-extern inline void PA_LoadBmp(bool screen, void *bmp){
+extern inline void PA_LoadBmp(u8 screen, void *bmp){
 	PA_LoadBmpEx(screen, 0, 0, bmp);
 }
 
@@ -623,7 +623,7 @@ extern inline u16 PA_GetGifHeight(void* gif){
 
 
 
-/*! \fn extern inline void PA_LoadGif(bool screen, void *gif)
+/*! \fn extern inline void PA_LoadGif(u8 screen, void *gif)
     \brief
          \~english Load a Gif on a 16 bit background... Don't forget to Init the background !
          \~french Charger un Gif sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
@@ -634,7 +634,7 @@ extern inline u16 PA_GetGifHeight(void* gif){
          \~english Gif image...
          \~french image au format Gif...	 
 */
-extern inline void PA_LoadGif(bool screen, void *gif){
+extern inline void PA_LoadGif(u8 screen, void *gif){
 	if (PA_nBit[screen]) DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
 	//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...
 	else DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
@@ -643,11 +643,11 @@ extern inline void PA_LoadGif(bool screen, void *gif){
 
 
 /* // Les différentes fonctions images...
-extern inline void PA_LoadJpeg(bool screen, void *jpeg)
-void PA_LoadBmp(bool screen, s16 x, s16 y, void *bmp);*/
+extern inline void PA_LoadJpeg(u8 screen, void *jpeg)
+void PA_LoadBmp(u8 screen, s16 x, s16 y, void *bmp);*/
 
 
-/*! \fn extern inline void PA_LoadGBFSImage(bool screen, s16 GBFSImage)
+/*! \fn extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage)
     \brief
          \~english Load any image from GBFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP
          \~french Charger une image depuis GBFS sur l'écran (16 bit). Support le Gif, Jpeg, et BMP
@@ -658,7 +658,7 @@ void PA_LoadBmp(bool screen, s16 x, s16 y, void *bmp);*/
          \~english GBFS Image number
          \~french Numéro de l'image dans GBFS	 
 */
-extern inline void PA_LoadGBFSImage(bool screen, s16 GBFSImage){
+extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage){
 	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
 		PA_LoadBmp(screen, PA_GBFSfile[GBFSImage].File);
 	}
@@ -719,7 +719,7 @@ extern inline u16 PA_GetBmpHeight(void *bmp){
 /** @} */ // end of Draw
 
 
-extern inline void PA_8bit8x8Image(bool screen, u16 basex, u16 basey, u8* data){
+extern inline void PA_8bit8x8Image(u8 screen, u16 basex, u16 basey, u8* data){
 s16 x, y;
 
 for (x = 0; x < 8; x++)
@@ -728,7 +728,7 @@ for (x = 0; x < 8; x++)
 }
 
 /*
-extern inline void PA_DrawImage(bool screen, s16 x, s16 y, s16 lx, s16 ly, u8* data){
+extern inline void PA_DrawImage(u8 screen, s16 x, s16 y, s16 lx, s16 ly, u8* data){
 s16 i, j;
 u16* data2 = (u16*)data;
 

@@ -17,8 +17,8 @@ PAPI_all PAPI_checkinfo[2]; // Nombre de Checks, premier, et dernier
 PAPI_buttons PAPI_button[2][64]; //64 possibles par écran
 PAPI_all PAPI_buttoninfo[2]; // Nombre de boutons, premier, et dernier
 
-void PAPI_DrawButton(bool screen, s16 n, bool value);
-bool PAPI_buttonpressed[2] = {0, 0}; // Pas de bouton pressé par défaut
+void PAPI_DrawButton(u8 screen, s16 n, u8 value);
+u8 PAPI_buttonpressed[2] = {0, 0}; // Pas de bouton pressé par défaut
 
 
 PAPI_sliders PAPI_slider[2][32];
@@ -29,13 +29,13 @@ PAPI_all PAPI_sliderinfo[2]; // Nombre de boutons, premier, et dernier
 
 
 
-void PAPI_Init(bool screen){
+void PAPI_Init(u8 screen){
 PAPI_SetImages(screen, (void*)PAPIData, (void*)PAPIPal);
 PAPI_ReInit(screen);
 }
 
 
-void PAPI_SetImages(bool screen, void *images, void *palette){
+void PAPI_SetImages(u8 screen, void *images, void *palette){
 // Images générales
 PAPI_Graphics[screen] = (u8*)images;
 
@@ -51,7 +51,7 @@ PAPI_Pal[screen] = palette;
 }
 
 
-void PAPI_ReInit(bool screen){
+void PAPI_ReInit(u8 screen){
 u16 j;
 
 PAPI_LoadPal(screen);
@@ -78,14 +78,14 @@ for (j = 0; j < 32; j++) PAPI_sliderinfo[screen].free[j] = j; // On place les li
 }
 
 
-void PAPI_LoadPal(bool screen){
+void PAPI_LoadPal(u8 screen){
 	PA_LoadPal16((PAL_BG0 + (512*screen)), 13, PAPI_Pal[screen]);
 }
 
 
 
 
-u8 PAPI_CreateButton(bool screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char* text, u8 color, s8 textsize){
+u8 PAPI_CreateButton(u8 screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char* text, u8 color, s8 textsize){
 u8 nbutton; // Numéro que l'on va avoir pour ce bouton...
 s16 i;
 
@@ -128,7 +128,7 @@ return nbutton;
 void PAPI_CheckButton(void){
 u8 i;
 s16 x, y, lx, ly;
-bool screen = PA_Screen;
+u8 screen = PA_Screen;
 u8 n; // N en cours
 
 if (PAPI_buttoninfo[screen].n) { // Uniquement si on a des boutons affichés
@@ -172,7 +172,7 @@ if (PAPI_buttoninfo[screen].n) { // Uniquement si on a des boutons affichés
 
 
 
-void PAPI_DrawButton(bool screen, s16 n, bool value){
+void PAPI_DrawButton(u8 screen, s16 n, u8 value){
 s16 i, j;
 u8* data = (u8*)(PAPI_buttoninfo[screen].image[value]);
 s16 tempx, tempy;
@@ -246,7 +246,7 @@ PA_CenterSmartText(screen, x, y, x+lx, y+ly, PAPI_button[screen][n].text, color,
 /*
 
 
-u8 PAPI_CreateSlider(bool screen, s16 x, s16 y, s16 lx, s32* var, s32 min, s32 max, bool sens){
+u8 PAPI_CreateSlider(u8 screen, s16 x, s16 y, s16 lx, s32* var, s32 min, s32 max, u8 sens){
 u8 nslider; // Numéro que l'on va avoir pour ce slider...
 
 
@@ -334,7 +334,7 @@ return nslider;
 }
 
 
-void ChangeSlider(bool screen, s8 nslider, s32 min, s32 max){
+void ChangeSlider(u8 screen, s8 nslider, s32 min, s32 max){
 
 PAPI_slider[screen][nslider].min = min;  PAPI_slider[screen][nslider].max = max;
 
@@ -345,11 +345,11 @@ PAPI_slider[screen][nslider].min = min;  PAPI_slider[screen][nslider].max = max;
 
 void PAPI_CheckSlider(void){
 u8 i;
-bool screen = PA_Screen;
+u8 screen = PA_Screen;
 u8 n; // N en cours
 //s16 x, y;
 
-bool sens;
+u8 sens;
 
 	n = PAPI_sliderinfo[screen].first;
 	for (i = 0; i < PAPI_sliderinfo[screen].n; i++){
@@ -453,7 +453,7 @@ bool sens;
 
 
 
-u8 PAPI_CreateCheck(bool screen, s16 x, s16 y, bool *var){
+u8 PAPI_CreateCheck(u8 screen, s16 x, s16 y, u8 *var){
 u8 ncheck; // Numéro que l'on va avoir pour ce Check...
 
 
@@ -488,7 +488,7 @@ return ncheck;
 
 void PAPI_CheckCheck(void){
 u8 i;
-bool screen = PA_Screen;
+u8 screen = PA_Screen;
 u8 n; // N en cours
 s16 x, y;
 
@@ -502,7 +502,7 @@ if(Stylus.Newpress){ // Que si nouvelle pression
 		y = PAPI_check[screen][n].y;
 			
 		if (PA_StylusInZone(x, y, x + 8, y + 8)){
-			bool temp = *PAPI_check[screen][n].var = !(*PAPI_check[screen][n].var);
+			u8 temp = *PAPI_check[screen][n].var = !(*PAPI_check[screen][n].var);
 			PA_8bit8x8Image(screen, x, y, (u8*)PAPI_checkinfo[screen].image[temp]);
 		}
 		

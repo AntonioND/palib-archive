@@ -52,9 +52,9 @@ void PA_VBL(void){
     but = REG_KEYXY;
     if (!(but & 0x40)) {
 		PA_UpdateStylus();
-		MIC_On();
+		/*MIC_On();
 		StartRecording((u8*)33808000, 100000);
-		*(u8*)33807928 = 1;
+		*(u8*)33807928 = 1;*/
     }
 
     batt = touchRead(TSC_MEASURE_BATTERY);

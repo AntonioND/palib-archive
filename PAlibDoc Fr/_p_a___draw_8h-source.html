@@ -56,19 +56,19 @@
 00054 <span class="keyword">extern</span> u16 PA_temppal[256];
 00055 
 00056 
-00057 <span class="keywordtype">void</span> PA_Load16bitGif(<span class="keywordtype">bool</span> screen, s16 x, s16 y, <span class="keywordtype">void</span> *gif);
+00057 <span class="keywordtype">void</span> PA_Load16bitGif(u8 screen, s16 x, s16 y, <span class="keywordtype">void</span> *gif);
 00058 <span class="keywordtype">int</span> DecodeGif(<span class="keyword">const</span> u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
 00059 
 00060 
 00061 
-00079 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga0">PA_Init8bitBg</a>(<span class="keywordtype">bool</span> screen, u8 bg_priority);
+00079 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga0">PA_Init8bitBg</a>(u8 screen, u8 bg_priority);
 00080 
 00081 
-00093 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga1">PA_Init16bitBg</a>(<span class="keywordtype">bool</span> screen, u8 bg_priority);
+00093 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga1">PA_Init16bitBg</a>(u8 screen, u8 bg_priority);
 00094 
 00095 
 00096 
-<a name="l00114"></a><a class="code" href="group___bitmap.html#ga2">00114</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga2">PA_Put8bitPixel</a>(<span class="keywordtype">bool</span> screen, s16 x, s16 y, u8 color) {
+<a name="l00114"></a><a class="code" href="group___bitmap.html#ga2">00114</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga2">PA_Put8bitPixel</a>(u8 screen, s16 x, s16 y, u8 color) {
 00115    PA_DrawBg[screen][(y &lt;&lt;7) + (x&gt;&gt;1)] &amp;= (0xff00&gt;&gt;((x&amp;1)&lt;&lt;3));
 00116    PA_DrawBg[screen][(y &lt;&lt;7) + (x&gt;&gt;1)] |= color&lt;&lt;((x&amp;1)&lt;&lt;3);
 00117 
@@ -85,22 +85,22 @@
 00128 
 00129 
 00130 
-<a name="l00149"></a><a class="code" href="group___bitmap.html#ga3">00149</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga3">PA_Put2_8bitPixels</a>(<span class="keywordtype">bool</span> screen, s16 x, s16 y, u16 colors) {             PA_DrawBg[screen][(x &gt;&gt; 1) + (y &lt;&lt; 7)] = colors;
+<a name="l00149"></a><a class="code" href="group___bitmap.html#ga3">00149</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga3">PA_Put2_8bitPixels</a>(u8 screen, s16 x, s16 y, u16 colors) {        PA_DrawBg[screen][(x &gt;&gt; 1) + (y &lt;&lt; 7)] = colors;
 00150 }
 00151 
-<a name="l00172"></a><a class="code" href="group___bitmap.html#ga4">00172</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga4">PA_PutDouble8bitPixels</a>(<span class="keywordtype">bool</span> screen, s16 x, s16 y, u8 color1, u8 color2) {
+<a name="l00172"></a><a class="code" href="group___bitmap.html#ga4">00172</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga4">PA_PutDouble8bitPixels</a>(u8 screen, s16 x, s16 y, u8 color1, u8 color2) {
 00173        <a class="code" href="group___bitmap.html#ga3">PA_Put2_8bitPixels</a>(screen, x, y, color1 + (color2 &lt;&lt; 8));             
 00174 }
 00175 
 00176 
 00177 
-<a name="l00196"></a><a class="code" href="group___bitmap.html#ga5">00196</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga5">PA_Put4_8bitPixels</a>(<span class="keywordtype">bool</span> screen, s16 x, s16 y, u32 colors) {
+<a name="l00196"></a><a class="code" href="group___bitmap.html#ga5">00196</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga5">PA_Put4_8bitPixels</a>(u8 screen, s16 x, s16 y, u32 colors) {
 00197 <span class="comment">/*</span>
 00198 <span class="comment">       (*u32*)(PA_DrawBg[screen] + (x &gt;&gt; 1) + (y &lt;&lt; 7)) = colors;*/</span>
 00199 }
 00200 
 00201 
-<a name="l00216"></a><a class="code" href="group___bitmap.html#ga6">00216</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___bitmap.html#ga6">PA_Get8bitPixel</a>(<span class="keywordtype">bool</span> screen, u8 x, u8 y) {
+<a name="l00216"></a><a class="code" href="group___bitmap.html#ga6">00216</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___bitmap.html#ga6">PA_Get8bitPixel</a>(u8 screen, u8 x, u8 y) {
 00217        u16 pos =     (x &gt;&gt; 1) + (y &lt;&lt; 7);
 00218        <span class="keywordflow">if</span> (x&amp;1){
 00219               <span class="keywordflow">return</span> (PA_DrawBg[screen][pos] &gt;&gt; 8);
@@ -113,7 +113,7 @@
 00226 
 00227 
 00228 
-<a name="l00246"></a><a class="code" href="group___bitmap.html#ga7">00246</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga7">PA_Put16bitPixel</a>(<span class="keywordtype">bool</span> screen, s16 x, s16 y, u16 color) {
+<a name="l00246"></a><a class="code" href="group___bitmap.html#ga7">00246</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga7">PA_Put16bitPixel</a>(u8 screen, s16 x, s16 y, u16 color) {
 00247        PA_DrawBg[screen][x + (y &lt;&lt; 8)] = color;
 00248 }
 00249 
@@ -125,30 +125,30 @@
 00269 
 00270 
 00271 
-00295 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga8">PA_Draw8bitLine</a>(<span class="keywordtype">bool</span> screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color);
+00295 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga8">PA_Draw8bitLine</a>(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color);
 00296 
 00297 
 00298 
 00299 
 00300 
-00324 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga9">PA_Draw16bitLine</a>(<span class="keywordtype">bool</span> screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
+00324 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga9">PA_Draw16bitLine</a>(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color);
 00325 
 00326 
 00327 
-00354 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga10">PA_Draw16bitLineEx</a>(<span class="keywordtype">bool</span> screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
+00354 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga10">PA_Draw16bitLineEx</a>(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size);
 00355 
 00356 
-00383 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga11">PA_Draw8bitLineEx</a>(<span class="keywordtype">bool</span> screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
+00383 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga11">PA_Draw8bitLineEx</a>(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
 00384 
 00385 
 00386 
-00410 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga12">PA_Draw16bitRect</a>(<span class="keywordtype">bool</span> screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color);
+00410 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga12">PA_Draw16bitRect</a>(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color);
 00411 
 00412 
-00424 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga13">PA_8bitDraw</a>(<span class="keywordtype">bool</span> screen, u8 color);
+00424 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga13">PA_8bitDraw</a>(u8 screen, u8 color);
 00425 
 00426 
-00438 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga14">PA_16bitDraw</a>(<span class="keywordtype">bool</span> screen, u16 color);
+00438 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga14">PA_16bitDraw</a>(u8 screen, u16 color);
 00439 
 00440 
 <a name="l00452"></a><a class="code" href="group___bitmap.html#ga27">00452</a> <span class="preprocessor">#define PA_SetDrawSize(screen, draw_size) PA_drawsize[screen] = draw_size;</span>
@@ -169,7 +169,7 @@
 <a name="l00505"></a><a class="code" href="group___bitmap.html#ga31">00505</a> <span class="preprocessor">#define PA_Clear16bitBg(screen) DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW)</span>
 00506 <span class="preprocessor"></span>
 00507 
-<a name="l00519"></a><a class="code" href="group___bitmap.html#ga15">00519</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga15">PA_LoadJpeg</a>(<span class="keywordtype">bool</span> screen, <span class="keywordtype">void</span> *jpeg) {
+<a name="l00519"></a><a class="code" href="group___bitmap.html#ga15">00519</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga15">PA_LoadJpeg</a>(u8 screen, <span class="keywordtype">void</span> *jpeg) {
 00520        REG_IME = 0x00;
 00521        JPEG_DecompressImage((u8*)jpeg, PA_DrawBg[screen], 256, 192);
 00522        REG_IME = 0x01;      
@@ -180,13 +180,13 @@
 00547 <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga16">PA_LoadBmpToBuffer</a>(u16 *Buffer, s16 x, s16 y, <span class="keywordtype">void</span> *bmp, s16 SWidth);
 00548 
 00549 
-<a name="l00567"></a><a class="code" href="group___bitmap.html#ga17">00567</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga17">PA_LoadBmpEx</a>(<span class="keywordtype">bool</span> screen, s16 x, s16 y, <span class="keywordtype">void</span> *bmp){
+<a name="l00567"></a><a class="code" href="group___bitmap.html#ga17">00567</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga17">PA_LoadBmpEx</a>(u8 screen, s16 x, s16 y, <span class="keywordtype">void</span> *bmp){
 00568 <a class="code" href="group___bitmap.html#ga16">PA_LoadBmpToBuffer</a>(PA_DrawBg[screen], x, y, bmp, 256);
 00569 }
 00570 
 00571 
 00572 
-<a name="l00584"></a><a class="code" href="group___bitmap.html#ga18">00584</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga18">PA_LoadBmp</a>(<span class="keywordtype">bool</span> screen, <span class="keywordtype">void</span> *bmp){
+<a name="l00584"></a><a class="code" href="group___bitmap.html#ga18">00584</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga18">PA_LoadBmp</a>(u8 screen, <span class="keywordtype">void</span> *bmp){
 00585        <a class="code" href="group___bitmap.html#ga17">PA_LoadBmpEx</a>(screen, 0, 0, bmp);
 00586 }
 00587 
@@ -212,7 +212,7 @@
 00623 
 00624 
 00625 
-<a name="l00637"></a><a class="code" href="group___bitmap.html#ga21">00637</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga21">PA_LoadGif</a>(<span class="keywordtype">bool</span> screen, <span class="keywordtype">void</span> *gif){
+<a name="l00637"></a><a class="code" href="group___bitmap.html#ga21">00637</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga21">PA_LoadGif</a>(u8 screen, <span class="keywordtype">void</span> *gif){
 00638        <span class="keywordflow">if</span> (PA_nBit[screen]) DecodeGif((<span class="keyword">const</span> u8*)gif, (u8*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
 00639        <span class="comment">//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...</span>
 00640        <span class="keywordflow">else</span> DecodeGif((<span class="keyword">const</span> u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
@@ -221,11 +221,11 @@
 00643 
 00644 
 00645 <span class="comment">/* // Les différentes fonctions images...</span>
-00646 <span class="comment">extern inline void PA_LoadJpeg(bool screen, void *jpeg)</span>
-00647 <span class="comment">void PA_LoadBmp(bool screen, s16 x, s16 y, void *bmp);*/</span>
+00646 <span class="comment">extern inline void PA_LoadJpeg(u8 screen, void *jpeg)</span>
+00647 <span class="comment">void PA_LoadBmp(u8 screen, s16 x, s16 y, void *bmp);*/</span>
 00648 
 00649 
-<a name="l00661"></a><a class="code" href="group___bitmap.html#ga22">00661</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga22">PA_LoadGBFSImage</a>(<span class="keywordtype">bool</span> screen, s16 GBFSImage){
+<a name="l00661"></a><a class="code" href="group___bitmap.html#ga22">00661</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bitmap.html#ga22">PA_LoadGBFSImage</a>(u8 screen, s16 GBFSImage){
 00662        <span class="keywordflow">if</span> (<a class="code" href="group___text.html#ga10">PA_CompareText</a>(PA_GBFSfile[GBFSImage].Ext, <span class="stringliteral">"bmp"</span>)){
 00663               <a class="code" href="group___bitmap.html#ga18">PA_LoadBmp</a>(screen, PA_GBFSfile[GBFSImage].File);
 00664        }
@@ -269,7 +269,7 @@
 00718 } <span class="comment">// end of Draw</span>
 00720 
 00721 
-00722 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_8bit8x8Image(<span class="keywordtype">bool</span> screen, u16 basex, u16 basey, u8* data){
+00722 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_8bit8x8Image(u8 screen, u16 basex, u16 basey, u8* data){
 00723 s16 x, y;
 00724 
 00725 <span class="keywordflow">for</span> (x = 0; x &lt; 8; x++)
@@ -278,7 +278,7 @@
 00728 }
 00729 
 00730 <span class="comment">/*</span>
-00731 <span class="comment">extern inline void PA_DrawImage(bool screen, s16 x, s16 y, s16 lx, s16 ly, u8* data){</span>
+00731 <span class="comment">extern inline void PA_DrawImage(u8 screen, s16 x, s16 y, s16 lx, s16 ly, u8* data){</span>
 00732 <span class="comment">s16 i, j;</span>
 00733 <span class="comment">u16* data2 = (u16*)data;</span>
 00734 <span class="comment"></span>
@@ -326,7 +326,7 @@
 00776 <span class="preprocessor">#endif</span>
 00777 <span class="preprocessor"></span>
 00778 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Feb 26 20:46:38 2006 pour PAlib par&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sat Mar 4 12:17:10 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

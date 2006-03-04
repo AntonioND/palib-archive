@@ -18,7 +18,7 @@
 00010 <span class="preprocessor">   PA_textmap[screen] = (u16*)map;PA_textpal[screen] = (u16*)pal;PAtext_pal[screen]=0;\</span>
 00011 <span class="preprocessor">   u32 PAtexttempvar = 0; for (PAtexttempvar = 0; PAtexttempvar &lt; 32*24; PAtexttempvar++) PA_SetTileLetter(screen, PAtexttempvar, 0, 0);   }</span>
 00012 <span class="preprocessor"></span>
-00013 <span class="keywordtype">void</span> PA_CreateTextPal(<span class="keywordtype">bool</span> screen, u8 pal_number, u16 r, u16 g, u16 b);
+00013 <span class="keywordtype">void</span> PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b);
 00014 
 00015 
 00022 <span class="comment">//#include "../PA.h"</span>
@@ -57,7 +57,7 @@
 00057 <span class="preprocessor">#endif</span>
 00058 <span class="preprocessor"></span>
 00059 
-00060 <span class="keyword">typedef</span> void(*letterfp)(u8 size, <span class="keywordtype">bool</span> screen, u16 x, u16 y, <span class="keywordtype">char</span> lettertemp, u8 color);
+00060 <span class="keyword">typedef</span> void(*letterfp)(u8 size, u8 screen, u16 x, u16 y, <span class="keywordtype">char</span> lettertemp, u8 color);
 00061 
 00062 
 00063 
@@ -77,15 +77,15 @@
 00077 
 00078 
 00079 
-00099 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga0">PA_InitText</a>(<span class="keywordtype">bool</span> screen, u8 bg_select);
+00099 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga0">PA_InitText</a>(u8 screen, u8 bg_select);
 00100 
 00101 
-<a name="l00119"></a><a class="code" href="group___text.html#ga1">00119</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga1">PA_SetTileLetter</a>(<span class="keywordtype">bool</span> screen, u16 x, u16 y, <span class="keywordtype">char</span> letter) {
+<a name="l00119"></a><a class="code" href="group___text.html#ga1">00119</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga1">PA_SetTileLetter</a>(u8 screen, u16 x, u16 y, <span class="keywordtype">char</span> letter) {
 00120        <a class="code" href="group___tile.html#ga10">PA_SetMapTileAll</a>(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12));
 00121 }
 00122 
 00123 
-<a name="l00135"></a><a class="code" href="group___text.html#ga2">00135</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga2">PA_SetTextTileCol</a>(<span class="keywordtype">bool</span> screen, u8 color)
+<a name="l00135"></a><a class="code" href="group___text.html#ga2">00135</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga2">PA_SetTextTileCol</a>(u8 screen, u8 color)
 00136 {
 00137        PAtext_pal[screen] = color;
 00138 }
@@ -93,22 +93,22 @@
 00140 
 00141 
 00142 
-00160 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga3">PA_OutputText</a>(<span class="keywordtype">bool</span> screen, u16 x, u16 y, <span class="keywordtype">char</span>* text, ...);
+00160 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga3">PA_OutputText</a>(u8 screen, u16 x, u16 y, <span class="keywordtype">char</span>* text, ...);
 00161 
-00179 u16 <a class="code" href="group___text.html#ga4">PA_OutputSimpleText</a>(<span class="keywordtype">bool</span> screen, u16 x, u16 y, <span class="keyword">const</span> <span class="keywordtype">char</span> *text);
+00179 u16 <a class="code" href="group___text.html#ga4">PA_OutputSimpleText</a>(u8 screen, u16 x, u16 y, <span class="keyword">const</span> <span class="keywordtype">char</span> *text);
 00180 
-00207 u32 <a class="code" href="group___text.html#ga5">PA_BoxText</a>(<span class="keywordtype">bool</span> screen, u16 basex, u16 basey, u16 maxx, u16 maxy, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit);
+00207 u32 PA_BoxText(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, s32 limit);
 00208 
-00235 u32 <a class="code" href="group___text.html#ga6">PA_BoxTextNoWrap</a>(<span class="keywordtype">bool</span> screen, u16 basex, u16 basey, u16 maxx, u16 maxy, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit);
+00235 u32 <a class="code" href="group___text.html#ga6">PA_BoxTextNoWrap</a>(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit);
 00236 
 00237 
-<a name="l00256"></a><a class="code" href="group___text.html#ga7">00256</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga7">PA_SetTextCol</a>(<span class="keywordtype">bool</span> screen, u16 r, u16 g, u16 b){
+<a name="l00256"></a><a class="code" href="group___text.html#ga7">00256</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga7">PA_SetTextCol</a>(u8 screen, u16 r, u16 g, u16 b){
 00257        PA_CreateTextPal(screen, 0, r, g, b);
 00258 }
 00259 
 00260 
 00261 
-00262 <span class="comment">//void PA_InitCustomTextEx(bool screen, u8 bg_select, void *tiles, void *map, void *pal);</span>
+00262 <span class="comment">//void PA_InitCustomTextEx(u8 screen, u8 bg_select, void *tiles, void *map, void *pal);</span>
 00263 
 00264 
 <a name="l00281"></a><a class="code" href="group___text.html#ga22">00281</a> <span class="preprocessor">#define PA_InitCustomText(screen, bg_select, text) PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</span>
@@ -119,16 +119,16 @@
 00295 
 00296 
 00297 
-00333 s16 <a class="code" href="group___text.html#ga8">PA_SmartText</a>(<span class="keywordtype">bool</span> screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, u8 transp,  s32 limit);
+00333 s16 <a class="code" href="group___text.html#ga8">PA_SmartText</a>(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, u8 transp,  s32 limit);
 00334 
 00335 
 00336 
-00369 s16 <a class="code" href="group___text.html#ga9">PA_CenterSmartText</a>(<span class="keywordtype">bool</span> screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, u8 transp);
+00369 s16 <a class="code" href="group___text.html#ga9">PA_CenterSmartText</a>(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, u8 transp);
 00370 
 00371 
 00372 
-<a name="l00384"></a><a class="code" href="group___text.html#ga10">00384</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="group___text.html#ga10">PA_CompareText</a>(<span class="keywordtype">char</span> *text1, <span class="keywordtype">char</span> *text2){
-00385        <span class="keywordtype">bool</span> ok = 1; <span class="comment">// Devrait etre bon</span>
+<a name="l00384"></a><a class="code" href="group___text.html#ga10">00384</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___text.html#ga10">PA_CompareText</a>(<span class="keywordtype">char</span> *text1, <span class="keywordtype">char</span> *text2){
+00385        u8 ok = 1; <span class="comment">// Devrait etre bon</span>
 00386        u8 i = 0; 
 00387        <span class="keywordflow">while</span>(ok &amp;&amp; text2[i]){
 00388               <span class="keywordflow">if</span> (text1[i] != text2[i]) ok = 0;
@@ -151,30 +151,30 @@
 00416 
 00417 
 00418 
-00439 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga12">PA_InitTextBorders</a>(<span class="keywordtype">bool</span> screen, u8 x1, u8 y1, u8 x2, u8 y2);
+00439 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga12">PA_InitTextBorders</a>(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2);
 00440 
 00441 
-00450 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga13">PA_EraseTextBox</a>(<span class="keywordtype">bool</span> screen);
+00450 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga13">PA_EraseTextBox</a>(u8 screen);
 00451 
 00452 
 00453 
-<a name="l00468"></a><a class="code" href="group___text.html#ga14">00468</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___text.html#ga14">PA_SimpleBoxText</a>(<span class="keywordtype">bool</span> screen, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit){
-00469 <span class="keywordflow">return</span> <a class="code" href="group___text.html#ga5">PA_BoxText</a>(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
+<a name="l00468"></a><a class="code" href="group___text.html#ga14">00468</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___text.html#ga14">PA_SimpleBoxText</a>(u8 screen, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit){
+00469 <span class="keywordflow">return</span> PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
 00470 }
 00471 
-<a name="l00480"></a><a class="code" href="group___text.html#ga15">00480</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga15">PA_ClearTextBg</a>(<span class="keywordtype">bool</span> screen){
+<a name="l00480"></a><a class="code" href="group___text.html#ga15">00480</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga15">PA_ClearTextBg</a>(u8 screen){
 00481 u8 i, j;
 00482 <span class="keywordflow">for</span> (i = 0; i &lt; 32; i++) <span class="keywordflow">for</span> (j = 0; j &lt; 32; j++) <a class="code" href="group___tile.html#ga10">PA_SetMapTileAll</a>(screen, PAbgtext[screen], i, j, 0);
 00483 }
 00484 
 00485 
 00486 
-00487 <span class="keywordtype">void</span> PA_OutputTextSpecial0(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00488 <span class="keywordtype">void</span> PA_OutputTextSpecial1(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00489 <span class="keywordtype">void</span> PA_OutputTextSpecial2(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00490 <span class="keywordtype">void</span> PA_OutputTextSpecial3(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00491 <span class="keywordtype">void</span> PA_OutputTextSpecial4(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00492 <span class="keywordtype">void</span> PA_OutputTextSpecial5(<span class="keywordtype">bool</span> screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00487 <span class="keywordtype">void</span> PA_OutputTextSpecial0(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00488 <span class="keywordtype">void</span> PA_OutputTextSpecial1(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00489 <span class="keywordtype">void</span> PA_OutputTextSpecial2(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00490 <span class="keywordtype">void</span> PA_OutputTextSpecial3(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00491 <span class="keywordtype">void</span> PA_OutputTextSpecial4(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00492 <span class="keywordtype">void</span> PA_OutputTextSpecial5(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
 00493  <span class="comment">// end of Text</span>
 00495 
 00496 
@@ -182,7 +182,7 @@
 00498 <span class="preprocessor"></span>
 00499 
 00500 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sun Feb 26 20:46:20 2006 for PAlib by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sat Mar 4 12:16:44 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

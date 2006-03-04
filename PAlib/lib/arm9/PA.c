@@ -19,6 +19,8 @@ extern "C" {
 #include "PA/PA_Timer.c"
 #include "PA/PA_Text.c"
 
+#include "PA/PA_16c.c"
+
 #ifdef TEXT_ALLSIZES
 	#include "PA/PA_API.c"
 	#include "PA/PA_TextIWRAM.c"
@@ -54,15 +56,15 @@ u32 Blank[130000>>2];
 
 typedef struct {
    s16 x, y, oldx, oldy, vx, vy;  // Coordonnées
-   bool stylus; // Si on déplace ou non
-   bool moving; // Si la boule est en mouvement ou non
+   u8 stylus; // Si on déplace ou non
+   u8 moving; // Si la boule est en mouvement ou non
 } positions;
 
 #define LETTRES 6
 
 
 u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
-bool PA_Screen = 0;
+u8 PA_Screen = 0;
 
 s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 
@@ -146,7 +148,8 @@ PA_SRand(35329 + PA_RTC.Minutes + PA_RTC.Seconds + PA_RTC.Hour + PA_RTC.Day);
 Stylus.X = 128;
 Stylus.Y = 96;
 
-PA_ResetInterrupts();
+irqInit();
+//PA_ResetInterrupts();
 
 for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans
@@ -287,7 +290,7 @@ temp = (u8*)&PA_RTC;
 
 
 
-void PA_SetBrightness(bool screen, s8 bright) {
+void PA_SetBrightness(u8 screen, s8 bright) {
 u16 mode = 1 << 14;
 
 	if (bright < 0) {
@@ -300,7 +303,7 @@ u16 mode = 1 << 14;
 
 
 /*
-void PA_SetScreenLight(bool screen, bool light){
+void PA_SetScreenLight(u8 screen, u8 light){
 	IPC->aux &= ~(BACKLIGHT(screen))
 	IPC->aux |= BACKLIGHT(screen)*light;
 	//if (light) IPC->aux |= BACKLIGHT(screen); // Allumé

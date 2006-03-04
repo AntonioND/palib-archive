@@ -39,8 +39,9 @@ mode7alpha = 0;
 mode7cos = 256; mode7sin = 0;	// temporaries for cos and sin alpha
 mode7_distance = 160;
 
-PA_StartInt(INT_HBLANK, hbl_mode7);
-
+//PA_StartInt(INT_HBLANK, hbl_mode7);
+	irqSet(IRQ_HBLANK, hbl_mode7);
+	irqEnable(IRQ_HBLANK);
 }
 
 
@@ -60,7 +61,7 @@ u8 m7_distance = 160;
 u8 PAcount;
 
 void hbl_mode7(void){
-bool screen = 0;
+u8 screen = 0;
 u8 bg = 3;
 
 	s32 ww, wcc, wss, wxr, wyr;
@@ -121,7 +122,7 @@ typedef struct {
 #define PA_BGXPD(screen, bg) _REG16(0x4000006 + (0x1000 * screen) + (bg << 4))
 */
 void m7_hbl_flr(void){
-bool screen = 0;
+u8 screen = 0;
 u8 bg = 3;
 
     u32 vc = REG_VCOUNT;

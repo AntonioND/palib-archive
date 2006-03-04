@@ -29,7 +29,7 @@ textborders PA_TextBox[2];
 
 
 
-void PA_CreateTextPal(bool screen, u8 pal_number, u16 r, u16 g, u16 b) {
+void PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b) {
 	u16 baser, baseg, baseb;
 	u16 i;
 	
@@ -44,7 +44,7 @@ void PA_CreateTextPal(bool screen, u8 pal_number, u16 r, u16 g, u16 b) {
 }
 
 
-void PA_InitText(bool screen, u8 bg_select) {
+void PA_InitText(u8 screen, u8 bg_select) {
 #ifndef TEXT_ALLCHARACTERS
 	PA_InitCustomText(screen, bg_select, PA_text);
 	PA_SetTextTileCol(screen, 0);
@@ -68,7 +68,7 @@ void PA_InitText(bool screen, u8 bg_select) {
 
 
 /*
-void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b) {
+void PA_SetTextCol(u8 screen, u16 r, u16 g, u16 b) {
 	u16 baser, baseg, baseb;
 	u16 i;
 	
@@ -87,7 +87,7 @@ void PA_SetTextCol(bool screen, u16 r, u16 g, u16 b) {
 
 
 /*
-void PA_TextAllPal(bool screen)
+void PA_TextAllPal(u8 screen)
 {
 
 }
@@ -96,14 +96,14 @@ void PA_TextAllPal(bool screen)
 
 
 
-void PA_EraseTextBox(bool screen){
+void PA_EraseTextBox(u8 screen){
 s16 i, j;
 	for (j = PA_TextBox[screen].y1+1; j < PA_TextBox[screen].y2; j++)
 		for (i = PA_TextBox[screen].x1+1; i < PA_TextBox[screen].x2; i++)
 			PA_SetTileLetter(screen, i, j, ' ');
 }
 
-void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2){
+void PA_InitTextBorders(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2){
 
 	// Fill the text border info
 	PA_TextBox[screen].x1 = x1;
@@ -143,7 +143,7 @@ void PA_InitTextBorders(bool screen, u8 x1, u8 y1, u8 x2, u8 y2){
 
 
 
-u16 PA_OutputSimpleText(bool screen, u16 x, u16 y, const char *text) {
+u16 PA_OutputSimpleText(u8 screen, u16 x, u16 y, const char *text) {
 s16 j;
 u16 textcount = 0; // compte le nombre de lettres...
    
@@ -160,12 +160,12 @@ return textcount;
 
 
 
-u32 PA_BoxTextNoWrap(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit) {
+u32 PA_BoxTextNoWrap(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit) {
 u16 x = basex;
 u16 y = basey;
 u16 j;
 u16 textcount = 0; // compte le nombre de lettres...
-bool loop = 1; // On continue...
+u8 loop = 1; // On continue...
    
 BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au cas où on ait chargé du texte par-dessus...
 
@@ -192,7 +192,7 @@ return textcount;
 
 
 /*
-void PA_OutputNLetters(bool screen, u16 x, u16 y, const char *text, u32 n){
+void PA_OutputNLetters(u8 screen, u16 x, u16 y, const char *text, u32 n){
 s16 j;
 u16 textcount = 0; // compte le nombre de lettres...
    
@@ -209,8 +209,8 @@ BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au ca
 
 
 
-u32 PA_BoxText(bool screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit){
-u16 i, j;
+u32 PA_BoxText(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, s32 limit){
+s16 i, j;
 s16 x, y;
 
 s16 letter; 
@@ -227,17 +227,21 @@ s16 wordletter = 0;
 
 //BG_PALETTE[255 + (screen * 512)] = textcol[screen]; // On remet la couleur au cas où on ait chargé du texte par-dessus...
 
-//bool loop = 1; // On continue...
+//u8 loop = 1; // On continue...
    u8 textcolor = PAtext_pal[screen]; // save the screen color
    
+  // u8 goon = 1;
+   u8 temp = 1;
    
-for (i = 0; (text[i] && (y <= maxy) && (i < limit)); i++) {
+for (i = 0; (text[i] && (y <= maxy) && (i < limit)&&temp); i++) {
+//PA_OutputText(0, x*4, y*4, "%d ", text[i]);
     if (text[i] == '%') {
 		if (text[i+1] == 'c'){ // change color !
 			PA_SetTextTileCol(screen, text[i+2]-'0');
 			i+=2;
 			limit+=3; // Don't count it in the limit
 			length-=3; // Don't count them in the length
+			//PA_OutputText(0, 0, 0, "%d  ", length);
 		}
 	}
 	else if (text[i] == '\n'){
@@ -256,12 +260,13 @@ for (i = 0; (text[i] && (y <= maxy) && (i < limit)); i++) {
 	else{
 		wordletter = 1;
 		wordx = 0;
-		
+		PA_OutputText(0, 0, 0, "%d ", temp);
 		while(!((text[i+wordletter] <= 32) || ((text[i+wordletter] == '%') && (text[i+wordletter+1] == 'c')))) { // >= 32, donc si 0, '\n', on ' ' :)
 			letter = text[i+wordletter] - 32;
 			wordx++;
 			wordletter++;
 		}
+		
 		
 		//if (text[i+wordletter] == 0) loop = 0;
 
@@ -275,8 +280,12 @@ for (i = 0; (text[i] && (y <= maxy) && (i < limit)); i++) {
 		
 			if(text[i] != ' ') { // On vire s'il y a un espace	
 				if(y <= ylimit) { // Si on n'a pas dépassé...
-					for (j = i; (j < (i + wordletter))&&(j < limit); j++) {
+					for (j = i; (j < (i + wordletter))&&(j < limit)&&(text[j]!=0); j++) {
 						PA_SetTileLetter(screen, x, y, text[j]);
+						/*goon = goon && text[j];
+						if (goon == 0) temp = 0;
+						PA_OutputText(0, x*4, y*4, "%d ", goon);*/
+						
 						x++;
 						i++;
 					}
@@ -290,8 +299,11 @@ for (i = 0; (text[i] && (y <= maxy) && (i < limit)); i++) {
 			s32 jmax = (i + wordletter);
 			if (text[(i + wordletter-1)] < 32) jmax--; // On ne dessinera pas ce caractère
 			
-			for (j = i; (j < jmax)&&(j < limit); j++) {
-				PA_SetTileLetter(screen, x, y, text[j]);		
+			for (j = i; (j < jmax)&&(j < limit)&&(text[j]!=0); j++) {
+				PA_SetTileLetter(screen, x, y, text[j]);
+						/*goon = goon && text[j];
+						if (goon == 0) temp = 0;
+						PA_OutputText(0, x*4, y*4, "%d ", goon);	*/
 				x++;
 				i++;
 			}
@@ -310,7 +322,7 @@ return length;
 
 
 
-void PA_OutputText(bool screen, u16 x, u16 y, char* text, ...) {
+void PA_OutputText(u8 screen, u16 x, u16 y, char* text, ...) {
 s16 j, i;
 u16 textcount = 0; // compte le nombre de lettres...
 u8 PAtext[32]; // tableau où l'on copie les nombres et tout...
@@ -469,7 +481,7 @@ text2[i-begin+1]='\0';
 return text2;
 }
 //defilement
-void PA_OutputTextSpecial0(bool screen, int x1, int y,char *text){
+void PA_OutputTextSpecial0(u8 screen, int x1, int y,char *text){
 int i,k,x2=strlen(text)+x1+1;
 for(i=x2;i>x1;i--){
 PA_OutputSimpleText(screen, i, y, selectchar(text,0,x2-x1-1));
@@ -478,7 +490,7 @@ PA_OutputSimpleText(screen, i+strlen(selectchar(text,0,x2-x1-1))-1, y, " ");
 }
 }
 //separation
-void PA_OutputTextSpecial1(bool screen, int x1, int y,char *text){
+void PA_OutputTextSpecial1(u8 screen, int x1, int y,char *text){
 int i,k,x2=strlen(text)+x1+1;
 for(i=x2;i>x1;i--){
 PA_OutputSimpleText(screen, i+strlen(selectchar(text,0,i-x1-1)), y, " ");
@@ -487,7 +499,7 @@ for(k=0;k<30;k++)PA_WaitForVBL();
 }
 }
 //etirement
-void PA_OutputTextSpecial2(bool screen, int x1, int y,char *text){
+void PA_OutputTextSpecial2(u8 screen, int x1, int y,char *text){
 int i,k,x2=strlen(text)+x1;
 for(i=x2;i>x1;i--){
 PA_OutputSimpleText(screen, i, y, selectchar(text,0,i-x1));
@@ -495,7 +507,7 @@ for(k=0;k<30;k++)PA_WaitForVBL();
 }
 }
 //etirement + suppression de la fin
-void PA_OutputTextSpecial3(bool screen, int x1, int y,char *text){
+void PA_OutputTextSpecial3(u8 screen, int x1, int y,char *text){
 int i,k,x2=strlen(text)+x1+1;
 for(i=x2;i>x1;i--){
 PA_OutputSimpleText(screen, x2+strlen(selectchar(text,0,i-x1-1))+1, y, " ");
@@ -504,7 +516,7 @@ for(k=0;k<30;k++)PA_WaitForVBL();
 }
 }
 //etirement + separation
-void PA_OutputTextSpecial4(bool screen, int x1, int y,char *text){
+void PA_OutputTextSpecial4(u8 screen, int x1, int y,char *text){
 int i,k,x2=strlen(text)+x1+1;
 for(i=x2;i>x1;i--){
 PA_OutputSimpleText(screen, i+strlen(selectchar(text,0,i-x1)), y, " ");
@@ -513,7 +525,7 @@ for(k=0;k<30;k++)PA_WaitForVBL();
 }
 }
 //defilement + suppression
-void PA_OutputTextSpecial5(bool screen, int x1, int y,char *text){
+void PA_OutputTextSpecial5(u8 screen, int x1, int y,char *text){
 int i,k,x2=strlen(text)+x1+1;
 for(i=x2;i>x1;i--){
 PA_OutputSimpleText(screen, i, y, selectchar(text,0,i-x1-1));
@@ -591,7 +603,7 @@ PA_OutputSimpleText(screen, i+strlen(selectchar(text,0,i-x1-1))-2, y, "   ");
 
 
 
-s16 PA_CenterSmartText(bool screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp){
+s16 PA_CenterSmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp){
 s16 i;
 s16 x, y;
 s16 lx, ly;

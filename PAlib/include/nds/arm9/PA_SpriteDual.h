@@ -91,7 +91,7 @@ extern inline void PA_DualCreateSprite(u8 obj_number, void* obj_data, u8 obj_sha
 	PA_DualSetSpriteY(obj_number, y);
 };
 
-/*! \fn extern inline void PA_DualCreateSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)
+/*! \fn extern inline void PA_DualCreateSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
     \brief
          \~english Create a sprite with it's gfx. This is the complex version of the function
          \~french Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
@@ -138,7 +138,7 @@ extern inline void PA_DualCreateSprite(u8 obj_number, void* obj_data, u8 obj_sha
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_DualCreateSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y){
+extern inline void PA_DualCreateSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
 	PA_CreateSpriteEx(0, obj_number, obj_data, obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 	PA_CreateSpriteEx(1, obj_number, obj_data, obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 	PA_DualSetSpriteY(obj_number, y);
@@ -148,7 +148,7 @@ extern inline void PA_DualCreateSpriteEx(u8 obj_number, void* obj_data, u8 obj_s
 
 
 
-/*! \fn extern inline void PA_DualCreate16bitSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)
+/*! \fn extern inline void PA_DualCreate16bitSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
     \brief
          \~english Create a 16 bit sprite with it's gfx. This is the complex version of the function. Warning : a 16bit sprite MUST be 128 pixels large, even if you sprite only takes up a small part on the left...
          \~french Creer un sprite de 16 bits avec ses gfx... Ceci est la version complexe de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche
@@ -186,7 +186,7 @@ extern inline void PA_DualCreateSpriteEx(u8 obj_number, void* obj_data, u8 obj_s
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_DualCreate16bitSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y){
+extern inline void PA_DualCreate16bitSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
 u16 mem_size = PA_obj_sizes[obj_size][obj_shape] << 1;
 u16 *gfx = (u16*)malloc(mem_size);
 mem_size = mem_size >> 1;
@@ -270,7 +270,7 @@ extern inline void PA_DualCreateSpriteFromGfx(u8 obj_number, u16 *obj_gfx, u8 ob
 PA_DualSetSpriteY(obj_number, y);
 }
 
-/*! \fn extern inline void PA_DualCreateSpriteExFromGfx(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y)
+/*! \fn extern inline void PA_DualCreateSpriteExFromGfx(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
     \brief
          \~english Create a sprite with it's gfx. This is the complex version of the function
          \~french Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction
@@ -317,7 +317,7 @@ PA_DualSetSpriteY(obj_number, y);
          \~english Y position of the sprite
          \~french Position Y du sprite
 */
-extern inline void PA_DualCreateSpriteExFromGfx(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, bool mosaic, bool hflip, bool vflip, u8 prio, bool dblsize, s16 x, s16 y) {
+extern inline void PA_DualCreateSpriteExFromGfx(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y) {
 PA_CreateSpriteExFromGfx(0, obj_number, obj_gfx[0], obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 PA_CreateSpriteExFromGfx(1, obj_number, obj_gfx[1], obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 PA_DualSetSpriteY(obj_number, y);
@@ -542,7 +542,7 @@ extern inline void PA_DualSetSpritePal(u8 obj, u8 pal){
 
 
 
-/*! \fn extern inline void PA_DualSetSpriteDblsize(u8 obj, bool dblsize)
+/*! \fn extern inline void PA_DualSetSpriteDblsize(u8 obj, u8 dblsize)
     \brief
          \~english Enable or disable double size for a given sprite
          \~french Activer ou désactiver le mode Doublesize pour un sprite
@@ -553,7 +553,7 @@ extern inline void PA_DualSetSpritePal(u8 obj, u8 pal){
          \~english 1 to enable doublesize, 0 to disable it...
          \~french 1 pour l'activer, 0 pour l'inactiver
 */
-extern inline void PA_DualSetSpriteDblsize(u8 obj, bool dblsize){
+extern inline void PA_DualSetSpriteDblsize(u8 obj, u8 dblsize){
 	PA_SetSpriteDblsize(0, obj, dblsize);
 	PA_SetSpriteDblsize(1, obj, dblsize);
 }
@@ -561,7 +561,7 @@ extern inline void PA_DualSetSpriteDblsize(u8 obj, bool dblsize){
 
 
 
-/*! \fn extern inline void PA_DualSetSpriteColors(u8 sprite, bool n_colors)
+/*! \fn extern inline void PA_DualSetSpriteColors(u8 sprite, u8 n_colors)
     \brief
          \~english Change the sprite's color mode
          \~french Changer le mode de couleur du sprite
@@ -572,7 +572,7 @@ extern inline void PA_DualSetSpriteDblsize(u8 obj, bool dblsize){
          \~english 0 for 16 colors, 1 for 256
          \~french 0 pour 16 couleurs, 1 pour 256
 */
-extern inline void PA_DualSetSpriteColors(u8 sprite, bool n_colors){
+extern inline void PA_DualSetSpriteColors(u8 sprite, u8 n_colors){
 	PA_SetSpriteColors(0, sprite, n_colors);
 	PA_SetSpriteColors(1, sprite, n_colors);
 
@@ -602,7 +602,7 @@ extern inline void PA_DualSetSpriteMode(u8 sprite, u8 obj_mode){
 
 
 
-/*! \fn extern inline void PA_DualSetSpriteMosaic(u8 obj, bool mosaic)
+/*! \fn extern inline void PA_DualSetSpriteMosaic(u8 obj, u8 mosaic)
     \brief
          \~english Enable or disable mosaic mode for a given sprite
          \~french Mettre ou non un sprite en mode mosaic
@@ -613,7 +613,7 @@ extern inline void PA_DualSetSpriteMode(u8 sprite, u8 obj_mode){
          \~english Set mosaic on (1) or off (0)
          \~french Mode mosaic activé (1) ou désactivé (0)
 */
-extern inline void PA_DualSetSpriteMosaic(u8 obj, bool mosaic){
+extern inline void PA_DualSetSpriteMosaic(u8 obj, u8 mosaic){
 	PA_SetSpriteMosaic(0, obj, mosaic);
 	PA_SetSpriteMosaic(1, obj, mosaic);
 }
@@ -623,7 +623,7 @@ extern inline void PA_DualSetSpriteMosaic(u8 obj, bool mosaic){
 
 
 
-/*! \fn extern inline void PA_DualSetSpriteHflip(u8 obj, bool hflip)
+/*! \fn extern inline void PA_DualSetSpriteHflip(u8 obj, u8 hflip)
     \brief
          \~english Enable or disable horizontal flip for a given sprite
          \~french Utiliser ou non le flip horizontal pour un sprite
@@ -634,7 +634,7 @@ extern inline void PA_DualSetSpriteMosaic(u8 obj, bool mosaic){
          \~english Horizontal flip, 1 to enable, 0 to disable...
          \~french Flip horizontal, 1 pour oui, 0 pour non...
 */
-extern inline void PA_DualSetSpriteHflip(u8 obj, bool hflip){
+extern inline void PA_DualSetSpriteHflip(u8 obj, u8 hflip){
 	PA_SetSpriteHflip(0, obj, hflip);
 	PA_SetSpriteHflip(1, obj, hflip);
 }	
@@ -642,7 +642,7 @@ extern inline void PA_DualSetSpriteHflip(u8 obj, bool hflip){
 
 
 
-/*! \fn extern inline void PA_DualSetSpriteVflip(u8 obj, bool vflip)
+/*! \fn extern inline void PA_DualSetSpriteVflip(u8 obj, u8 vflip)
     \brief
          \~english Enable or disable vertical flip for a given sprite
          \~french Utiliser ou non le flip vertical pour un sprite
@@ -653,7 +653,7 @@ extern inline void PA_DualSetSpriteHflip(u8 obj, bool hflip){
          \~english Vertical flip, 1 to enable, 0 to disable...
          \~french Flip vertical, 1 pour oui, 0 pour non...
 */
-extern inline void PA_DualSetSpriteVflip(u8 obj, bool vflip){
+extern inline void PA_DualSetSpriteVflip(u8 obj, u8 vflip){
 	PA_SetSpriteVflip(0, obj, vflip);
 	PA_SetSpriteVflip(1, obj, vflip);
 }	
@@ -765,7 +765,7 @@ extern inline void PA_DualSetSpriteAnimEx(u8 sprite, u8 lx, u8 ly, u8 ncolors, s
 */
 extern inline void PA_DualSetSpriteAnim(u8 sprite, s16 animframe){
 u8 lx = PA_GetSpriteLx(0, sprite); u8 ly = PA_GetSpriteLy(0, sprite);
-bool ncolors = PA_GetSpriteColors(0, sprite);
+u8 ncolors = PA_GetSpriteColors(0, sprite);
 	PA_SetSpriteAnimEx(0, sprite, lx, ly, ncolors, animframe);
 	PA_SetSpriteAnimEx(1, sprite, lx, ly, ncolors, animframe);	
 }
@@ -910,7 +910,7 @@ extern inline u16 PA_DualGetSpriteAnimSpeed(u8 sprite)
 
 
 
-/*! \fn extern inline void PA_DualSpriteAnimPause(u8 sprite, bool pause)
+/*! \fn extern inline void PA_DualSpriteAnimPause(u8 sprite, u8 pause)
     \brief
          \~english Pause or UnPause a sprite animation for DualSprites
          \~french Mettre en Pause en remettre en lecture une animation de sprite pour les DualSprites
@@ -921,7 +921,7 @@ extern inline u16 PA_DualGetSpriteAnimSpeed(u8 sprite)
          \~english 1 for pause, 0 for unpause
          \~french 1 pour pause, 0 pour reprendre la lecture...
 */
-extern inline void PA_DualSpriteAnimPause(u8 sprite, bool pause)
+extern inline void PA_DualSpriteAnimPause(u8 sprite, u8 pause)
 {
 	PA_SpriteAnimPause(0, sprite, pause);
 	PA_SpriteAnimPause(1, sprite, pause);	
@@ -965,7 +965,7 @@ extern inline void PA_DualSetSpritePixelEx(u8 sprite, u8 hsize, u8 n_colors, u8 
 
 
 
-/*! \fn extern inline void PA_DualSetSpritePixel(u8 sprite, s16 x, s16 y, bool color)
+/*! \fn extern inline void PA_DualSetSpritePixel(u8 sprite, s16 x, s16 y, u8 color)
     \brief
          \~english Set a sprite's pixel to a given palette color. Like PA_SetSpritePixelEx, with less options, but a little slower
          \~french Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent
@@ -982,7 +982,7 @@ extern inline void PA_DualSetSpritePixelEx(u8 sprite, u8 hsize, u8 n_colors, u8 
          \~english New palette color to put
          \~french Nouvelle couleur de la palette à metrre
 *//*
-extern inline void PA_DualSetSpritePixel(u8 sprite, s16 x, s16 y, bool color){
+extern inline void PA_DualSetSpritePixel(u8 sprite, s16 x, s16 y, u8 color){
 PA_DualSetSpritePixelEx(sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteColors(0, sprite), x, y, color);
 }*/
 
