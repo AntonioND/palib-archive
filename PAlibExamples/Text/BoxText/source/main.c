@@ -29,9 +29,8 @@ int main(int argc, char ** argv)
 	while (letter == nletters){ // Do this until the function outputs all the text
 		++nletters; // Next frame, one more letter...	
 		// This text function outputs a given number of letters... This way, it can do as if you were typing !
-		letter = PA_BoxText(1, 2, 2, 29, 15, "Hi there :p  Cool, the function works perfectly ! So you see the %c1text%c0 being typed...\n Line break works...", nletters); 
-		//%cX changes to color number X
-		PA_WaitForVBL();
+		letter = PA_BoxText(1, 2, 2, 29, 15, "Hi there :p  Cool, the function works perfectly ! So you see the %c1text%c0 being typed...\n Line break works...", nletters); //%cX changes to color number X
+		PA_WaitForVBL(); // You can set more WaitForVBL if you want to slow down the text output...
 	}
 
 	PA_OutputSimpleText(0, 10, 10, "Finished !"); // Finished...

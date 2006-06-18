@@ -1,4 +1,4 @@
-#ifndef _PA_PAPI
+#ifndef _PA_API
 #define _PA_API
 
 #ifdef __cplusplus

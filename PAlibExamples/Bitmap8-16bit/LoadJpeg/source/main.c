@@ -6,7 +6,7 @@
 // Includes
 #include <PA9.h>       // Include for PA_Lib
 
-#include "Photo_jpg.h" // Include the jpeg...
+#include "Photo.h" // Include the jpeg...
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -21,8 +21,8 @@ int main(int argc, char ** argv)
 	PA_Init16bitBg(1, 3);
 
 	// Load the jpeg on the given screen... pretty simple !
-	PA_LoadJpeg(0, (void*)Photo_jpg);
-	PA_LoadJpeg(1, (void*)Photo_jpg);		
+	PA_LoadJpeg(0, (void*)Photo);
+	PA_LoadJpeg(1, (void*)Photo);		
 	
 	// Infinite loop to keep the program running
 	while (1)

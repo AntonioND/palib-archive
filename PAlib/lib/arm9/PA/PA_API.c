@@ -1,5 +1,12 @@
-#include "PA9.h"
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "arm9/PA_API.h"
+#include "arm9/PA_Keys.h"
+#include "arm9/PA_Text.h"
 
 #include "API/PAPI.c" // Toutes les images de l'PAPI...
 #include "API/PAPI.h"
@@ -146,7 +153,7 @@ if (PAPI_buttoninfo[screen].n) { // Uniquement si on a des boutons affichés
 				PAPI_buttonpressed[screen] = 1;
 			}
 			
-			PA_OutputText(1, 25, i, "%d  ", n);
+			//PA_OutputText(1, 25, i, "%d  ", n);
 			n = PAPI_button[screen][n].next;
 		}
 	}
@@ -516,5 +523,7 @@ if(Stylus.Newpress){ // Que si nouvelle pression
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 

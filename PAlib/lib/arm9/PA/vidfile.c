@@ -1,110 +1,125 @@
 #include <PA9.h>
 
+#include <stdlib.h>
+#include <stdio.h>
+
+
 int *vidsizes, vidpos=0, *tab;
 s8 hvidfile=0;
 u8 bufferjpg[256*192*3];
 int deja0;
 char *buffer2;
+
+
+
 char *ligne(char *buffer, int start, int *end){
-int i;
-free(buffer2);
-buffer2 = (char*)malloc(sizeof(char)*10);
-memset(buffer2,0,sizeof(buffer2));
-for(i=start;buffer[i]!='\n';i++){
-int sup=0;
-if(buffer[i]>='0'&&buffer[i]<='9')buffer2[i-start-sup]=buffer[i];
-else sup++;
+	int i;
+	free(buffer2);
+	buffer2 = (char*)malloc(sizeof(char)*10);
+	memset(buffer2,0,sizeof(buffer2));
+	for(i=start;buffer[i]!='\n';i++){
+	int sup=0;
+	if(buffer[i]>='0'&&buffer[i]<='9')buffer2[i-start-sup]=buffer[i];
+	else sup++;
+	}
+	buffer2[i-2]='\0';
+	if(buffer2[0]=='0'){
+	*end=i+1;
+	return "0";
+	}
+	//PA_OutputText(0, 0, 10, "%s            ",buffer2);
+	//return buffer2;
+	*end=i+1;
+	return buffer2;
 }
-buffer2[i-2]='\0';
-if(buffer2[0]=='0'){
-*end=i+1;
-return "0";
-}
-//PA_OutputText(0, 0, 10, "%s            ",buffer2);
-//return buffer2;
-*end=i+1;
-return buffer2;
-}
+
+
 
 int remplacesize(int num){
-if(deja0==0&&vidpos<(int)strlen((char*)PA_GBFSfile[hvidfile].File)){
-int end;
-vidsizes[num]=atoi(ligne((char*)PA_GBFSfile[hvidfile].File,vidpos,&end));
-if(vidsizes[num]==0)deja0=1;
-vidpos=end;
-//PA_OutputText(0, 0, 23, "%d",vidsizes[num]);
-return 1;
-}
-return 0; 
+	if(deja0==0&&vidpos<(int)strlen((char*)PA_GBFSfile[hvidfile].File)){
+	int end;
+	vidsizes[num]=atoi(ligne((char*)PA_GBFSfile[hvidfile].File,vidpos,&end));
+	if(vidsizes[num]==0)deja0=1;
+	vidpos=end;
+	//PA_OutputText(0, 0, 23, "%d",vidsizes[num]);
+	return 1;
+	}
+	return 0; 
 }
 
+
+
 int jpgcorrect(u8* video,int num, int *size){
-int i;
-int final=size[num+1],depart=size[num];
-i=1;
-while(depart==1){
-depart = size[num+i];
-i++;
+	int i;
+	int final=size[num+1],depart=size[num];
+	i=1;
+	while(depart==1){
+	depart = size[num+i];
+	i++;
+	}
+	while(final==1){
+	final = size[num+1+i];
+	i++;
+	}
+	for(i=depart;i<final;i++){
+	bufferjpg[i-depart]=video[i];
+	}
+	//PA_OutputText(0, 0, 0, "%d :\n%d -> %d       \n",num,depart,final);
+	if(final==0)return 0;
+	return 1;
+	}
+	int PA_LoadVid(u8* video,int *taille, int fps,int depart){
+	int i=depart;
+	while(taille[i]>0){
+	if(taille[i]==1)PA_WaitForVBL();
+	else PA_LoadJpeg(1, (void*)jpgcorrect(video,i,taille));	
+	i++;
+	//PA_OutputText(0, 0, 0, "num :  %d",i);
+	int j;
+	for(j=0;(float)j<(float)10*(16/fps);j++)PA_WaitForVBL();
+	}
+	return i;
 }
-while(final==1){
-final = size[num+1+i];
-i++;
-}
-for(i=depart;i<final;i++){
-bufferjpg[i-depart]=video[i];
-}
-//PA_OutputText(0, 0, 0, "%d :\n%d -> %d       \n",num,depart,final);
-if(final==0)return 0;
-return 1;
-}
-int PA_LoadVid(u8* video,int *taille, int fps,int depart){
-int i=depart;
-while(taille[i]>0){
-if(taille[i]==1)PA_WaitForVBL();
-else PA_LoadJpeg(1, (void*)jpgcorrect(video,i,taille));	
-i++;
-//PA_OutputText(0, 0, 0, "num :  %d",i);
-int j;
-for(j=0;(float)j<(float)10*(16/fps);j++)PA_WaitForVBL();
-}
-return i;
-}
+
+
 int PA_LoadVidGBFS(s8 file,int *taille, int fps,int depart){
-tab = (int*)malloc(sizeof(int)*500);
-int a,j;
-for(a=0;a<500;a++)tab[a]=taille[a+depart];
-int i=0;
-//remplacesize(0);
-while(tab[i]>0){
-if(tab[i]==1)PA_WaitForVBL();
-else if(jpgcorrect((u8*)PA_GBFSfile[file].File,i,tab))PA_LoadJpeg(1, (void*)bufferjpg);	
-remplacesize(i);
-i++;
-//PA_OutputText(0, 0, 17, "num : %d :\n %d  \n %d   \n %d   %d ",i, tab[i],tab[i+1],tab[i+2]);
-for(j=0;(float)j<(float)7*(16/fps);j++)PA_WaitForVBL();
+	tab = (int*)malloc(sizeof(int)*500);
+	int a,j;
+	for(a=0;a<500;a++)tab[a]=taille[a+depart];
+	int i=0;
+	//remplacesize(0);
+	while(tab[i]>0){
+	if(tab[i]==1)PA_WaitForVBL();
+	else if(jpgcorrect((u8*)PA_GBFSfile[file].File,i,tab))PA_LoadJpeg(1, (void*)bufferjpg);	
+	remplacesize(i);
+	i++;
+	//PA_OutputText(0, 0, 17, "num : %d :\n %d  \n %d   \n %d   %d ",i, tab[i],tab[i+1],tab[i+2]);
+	for(j=0;(float)j<(float)7*(16/fps);j++)PA_WaitForVBL();
+	}
+	for(j=i;deja0==0;j++){
+	remplacesize(j);
+	}
+	free(tab);
+	return i;
 }
-for(j=i;deja0==0;j++){
-remplacesize(j);
-}
-free(tab);
-return i;
-}
+
+
 void PA_LoadMultiVid(int *taille, int fps,int numvid, ...){
-int soustrait=0;
- va_list varg; // Variable stockant la somme
- va_start(varg, numvid); // On initialise la variable
- do {
- u8* video = va_arg(varg, u8*); // On fais la somme	
- soustrait=PA_LoadVid(video,taille,fps,soustrait+2);
- numvid--;
- }while(numvid!=0);
- va_end(varg); // On détruit la variable
-}
-int PA_GBFSVidfps(s8 file){
-int fps;
-char rien[255];
-sscanf((char*)PA_GBFSfile[file].File,"int %s = %d;",rien,&fps);
-return fps;
+	int soustrait=0;
+	 va_list varg; // Variable stockant la somme
+	 va_start(varg, numvid); // On initialise la variable
+	 do {
+	 u8* video = va_arg(varg, u8*); // On fais la somme	
+	 soustrait=PA_LoadVid(video,taille,fps,soustrait+2);
+	 numvid--;
+	 }while(numvid!=0);
+	 va_end(varg); // On détruit la variable
+	}
+	int PA_GBFSVidfps(s8 file){
+	int fps;
+	char rien[255];
+	sscanf((char*)PA_GBFSfile[file].File,"int %s = %d;",rien,&fps);
+	return fps;
 }
 
 int numligne(char *buffer){

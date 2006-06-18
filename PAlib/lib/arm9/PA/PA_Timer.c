@@ -1,3 +1,8 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "PA_Timer.h"
 
 #define TICK ((TIMER1_DATA>>5) + (TIMER2_DATA<<11))
@@ -102,3 +107,7 @@ void ResetTimer(u8 nTimerId)
 
 	pTimer->nRefTick = TICK;
 }
+
+#ifdef __cplusplus
+}
+#endif

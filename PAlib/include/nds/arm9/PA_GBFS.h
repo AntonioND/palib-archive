@@ -10,10 +10,20 @@ extern "C" {
 
     GBFS wrapper
 */
+
+
 #include "PA_Text.h"
 #include "gbfs.h"
 
-
+extern inline u8 PA_CompareText(char *text1, char *text2){
+	u8 ok = 1; // Devrait etre bon
+	u8 i = 0; 
+	while(ok && text2[i]){
+		if (text1[i] != text2[i]) ok = 0;
+		i++;
+	}
+	return ok;
+}
 
 
 typedef struct{

@@ -1,4 +1,10 @@
-#include "PA9.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "PA_Timer.h"
+#include "PA_Sound.h"
 
 #define REGENTIME 1100
 
@@ -271,3 +277,9 @@ void PA_UnpauseStream(u8 PA_Channel)
 	UnpauseTimer(Stream_Timer[PA_Channel]);
 	SndUnpause(PA_Channel);
 }
+
+
+#ifdef __cplusplus
+}
+#endif
+

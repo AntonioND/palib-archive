@@ -2,7 +2,7 @@
 
 // Includes
 #include <PA9.h>       // Include for PA_Lib
-#include "modfile_mod.h"  // Include the mod file (the .mod file is in the data directory)
+#include "modfile.h"  // Include the mod file (the .mod file is in the data directory)
 
 
 // Function: main()
@@ -14,7 +14,7 @@ int main(int argc, char ** argv){
 	PA_InitSound(); 	// Sound Init, for the mod player...
 	PA_InitText(1, 0);
 
-	PA_PlayMod(modfile_mod);  		// Play a given mod
+	PA_PlayMod(modfile);  		// Play a given mod
 
 	while(1){	// Infinite loop
 		PA_WaitForVBL();

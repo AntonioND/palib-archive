@@ -1,7 +1,9 @@
 #ifndef _PA_Sprite
 #define _PA_Sprite
 
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /*! \file PA_Sprite.h
     \brief Everything concerning the sprite system
@@ -9,8 +11,7 @@
     This file contains all macros, variables, and prototypes regarding the sprite system (OAM, Sprite mouvement, Gfx loading...)
 */
 
-#include "PA_Text.h"
-
+#include "PA_Math.h"
 
 
 #define EWRAM_DATA	__attribute__((section(".ewram")))
@@ -570,8 +571,8 @@ extern inline void PA_CreateSpriteExFromGfx(u8 screen, u8 obj_number, u16 obj_gf
          \~english Gfx to load
          \~french Graphisme à charger
 */
-#include "PA_Text.h"
-#include "PA_Math.h"
+
+
 
 extern inline void PA_UpdateGfx(u8 screen, u16 gfx_number, void *obj_data) {
 	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);
@@ -1559,7 +1560,9 @@ void PA_UpdateSpriteAnims(void);
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 
 

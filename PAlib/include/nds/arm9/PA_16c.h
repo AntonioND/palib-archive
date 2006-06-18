@@ -26,11 +26,9 @@ extern u32 Blank[130000>>2];
 #define PA_LoadPal16c(palette, source)   DMA_Copy(source, (void*)palette, 16, DMA_16NOW);
 #define PA_16cPos(x, y) (((x>>3)*26*8) + y + 8)
 
-#ifdef USE_16cTEXT
 	extern const u8 c16_policeheight[5];
 	extern const u8 c16_policesize[5][96];
 	extern u32 *c16_font[5];
-#endif
 
 ALWAYSINLINE void PA_Plot8Pixels(u8 screen, u16 pos, u16 temp, u32 color){
    PA_Draw1632[screen][pos] |= (color<<temp);
@@ -368,13 +366,11 @@ ALWAYSINLINE void PA_16c16X16(u8 screen, s16 x, s16 y, u32 *image){
 }  
 
 
-#ifdef USE_16cTEXT
 
 extern inline void PA_16cLetter(u8 screen, s16 x, s16 y, char letter, u8 size, u8 color){
 	if (c16_policeheight[size]<=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<3)), color);
 	else PA_16c16X16Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<5)), color);
 }
-#endif
 
 
 

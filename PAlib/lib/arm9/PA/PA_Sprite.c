@@ -1,4 +1,9 @@
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "PA9.h"
 
 
@@ -520,7 +525,9 @@ if (PA_SpriteExtPrio){ // Use the extended priorities
 }
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 
 

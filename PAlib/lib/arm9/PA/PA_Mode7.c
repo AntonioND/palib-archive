@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include <PA9.h>
 
 
@@ -176,7 +181,9 @@ void m7_aff_calc(void){
 }
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 
 

@@ -1,3 +1,8 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <PA9.h>
 
 //#include "gif/dev2gif.c"
@@ -193,4 +198,9 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	
     return 0;
 }
+
+#ifdef __cplusplus
+}
+#endif
+
 

@@ -1,8 +1,18 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "PA9.h"
 
+/*
 #include "keyboard.raw.c"
 #include "keyboard.map.c"
-#include "keyboard.pal.c"
+#include "keyboard.pal.c"*/
+extern const unsigned char keyboard_Tiles[10240];
+extern const unsigned short keyboard_Map[4096];
+extern const unsigned short keyboard_Palette[16];
+
 /*
 const unsigned short keyboardPal1[16] = {
 0x7c1f, 0x6f7b, 0x6318, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
@@ -179,6 +189,8 @@ u8 value = PA_Keyboard[0][y][x];
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 

@@ -21,8 +21,8 @@ int main(int argc, char ** argv)
 	PA_Init8bitBg(0, 3);
 	PA_Init8bitBg(1, 3);
 	
-	PA_LoadNormalBgPal(0, (void*)bitmap_Pal);
-	PA_LoadNormalBgPal(1, (void*)bitmap_Pal);
+	PA_LoadPal(PAL_BG0, bitmap_Pal);
+	PA_LoadPal(PAL_BG1, bitmap_Pal);
 	
 	PA_Load8bitBitmap(0, // screen
 					Photo8bit_Bitmap); // image

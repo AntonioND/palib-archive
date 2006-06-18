@@ -25,6 +25,11 @@ extern int textureID;
 extern float angle3dX, angle3dY;
 extern float viseeX, viseeY, viseeZ;
 
+typedef struct{
+	u32 *callList;
+	float maxx, maxy, maxz, minx, miny, minz;
+	float scalex,scaley,scalez;
+}PA_3DObject;
 
 
 /** @defgroup 3D 3D functions
@@ -311,12 +316,12 @@ glTranslate3f32(floattof32(x),floattof32(y),floattof32(z));
          \~french redimentionnement sur l'axe z
 */
 extern inline void PA_Scale3D(float x, float y, float z){
-if(x==0.0)x=1.0;
-if(y==0.0)y=1.0;
-if(z==0.0)z=1.0;
-MATRIX_SCALE = floattof32(x);
-MATRIX_SCALE = floattof32(y);
-MATRIX_SCALE = floattof32(z);
+	if(x==0.0)x=1.0;
+	if(y==0.0)y=1.0;
+	if(z==0.0)z=1.0;
+	MATRIX_SCALE = floattof32(x);
+	MATRIX_SCALE = floattof32(y);
+	MATRIX_SCALE = floattof32(z);
 }
 /*! \fn extern inline void PA_Vertex3D(float x,float y,float z)
     \brief
@@ -375,17 +380,19 @@ extern inline void PA_Vertex2D(int x, int y){
 extern inline void PA_TexCoord(float x, float y){
 glTexCoord1i(TEXTURE_PACK(inttot16((int)x),inttot16((int)y)));
 }
-struct PA_3DObject{
-u32 *callList;
-float maxx, maxy, maxz, minx, miny, minz;
-float scalex,scaley,scalez;
-};
-int PA_InitCallList(struct PA_3DObject obj);
-int PA_VertexCallList(struct PA_3DObject obj, float x, float y, float z);
-int PA_TexCoordCallList(struct PA_3DObject obj, int x, int y);
-int PA_EndCallList(struct PA_3DObject obj);
-int PA_Draw3Dobject(struct PA_3DObject obj);
-int PA_ScaleCallList(struct PA_3DObject obj, float x, float y, float z);
+
+
+
+
+
+
+
+int PA_InitCallList(PA_3DObject obj);
+int PA_VertexCallList(PA_3DObject obj, float x, float y, float z);
+int PA_TexCoordCallList(PA_3DObject obj, int x, int y);
+int PA_EndCallList(PA_3DObject obj);
+int PA_Draw3Dobject(PA_3DObject obj);
+int PA_ScaleCallList(PA_3DObject obj, float x, float y, float z);
 /** @} */ // end of 3D
 
 #ifdef __cplusplus

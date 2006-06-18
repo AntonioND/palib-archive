@@ -1,3 +1,7 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "PA9.h"
 
 
@@ -22,3 +26,9 @@ s16 PA_GBFSSearchExt(s16 *array, char *extension){
 temp -= 1;
 return temp;
 }
+
+
+#ifdef __cplusplus
+}
+#endif
+

@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "PA9.h"
 /* 
    Thanks to Chris Double and Neimod
@@ -55,4 +60,10 @@ int PA_GetMicVol()
 {
 	return IPC->mailRead;
 }
+
+#ifdef __cplusplus
+}
+#endif
+
+
 

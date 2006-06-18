@@ -1,6 +1,13 @@
-#ifndef _PA_Text
-#define _PA_Text
+#ifndef _PA_TEXT
+#define _PA_TEXT
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "PA_BgTiles.h"
+#include "../../../lib/arm9/PA/Text/all_gfx.h" // Include the text !
 
 
 #define PA_InitCustomTextEx(screen, bg_select, tiles, map, pal) {\
@@ -20,9 +27,8 @@ void PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b);
 */
 
 //#include "../PA.h"
-#include "PA_Tile.h"
 
-#include "../../../lib/arm9/PA/Text/all_gfx.h" // Include the text !
+
 
 
 //////////////////////////////////////////////////////////////////////
@@ -44,7 +50,7 @@ extern s8 PA_font[2];  // 0 pour normal, 1 pour dégradé, -1 pour custom
 
 
 // Texte à taille variable
-#ifdef TEXT_ALLSIZES
+//#ifdef TEXT_ALLSIZES
 	#include "text0.h" // La police à taille variable...
 	#include "text1.h" // La police à taille variable...
 	#include "text2.h" // La police à taille variable...
@@ -54,7 +60,7 @@ extern s8 PA_font[2];  // 0 pour normal, 1 pour dégradé, -1 pour custom
 	extern const u8 policeheight[5];
 	extern const u16 policewidth[5];
 	extern const u8 policesize[5][256];	
-#endif
+//#endif
 
 
 typedef void(*letterfp)(u8 size, u8 screen, u16 x, u16 y, char lettertemp, u8 color);
@@ -99,7 +105,7 @@ extern textborders PA_TextBox[2];
 void PA_InitText(u8 screen, u8 bg_select);
 
 
-/*! \fn extern inline void PA_SetTileLetter(u8 screen, u16 x, u16 y, char letter)
+/*! \def PA_SetTileLetter(screen, x, y, letter)
     \brief
          \~english Output a letter on the DS screen.
          \~french Ecrire une lettre à l'écran.
@@ -116,9 +122,8 @@ void PA_InitText(u8 screen, u8 bg_select);
          \~english Letter... 'a', 'Z', etc...
          \~french Lettre... 'a', 'Z', etc...
 */
-extern inline void PA_SetTileLetter(u8 screen, u16 x, u16 y, char letter) {
-	PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&((1<<12)-1)) + (PAtext_pal[screen] << 12));
-}
+#define PA_SetTileLetter(screen, x, y, letter) PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&((1<<12)-1)) + (PAtext_pal[screen] << 12))
+
 
 
 /*! \fn extern inline void PA_SetTextTileCol(u8 screen, u8 color)
@@ -380,7 +385,7 @@ s16 PA_CenterSmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char
     \param text2
          \~english Second string...
          \~french Seconde chaine...
-*/
+*//*
 extern inline u8 PA_CompareText(char *text1, char *text2){
 	u8 ok = 1; // Devrait etre bon
 	u8 i = 0; 
@@ -389,7 +394,7 @@ extern inline u8 PA_CompareText(char *text1, char *text2){
 		i++;
 	}
 	return ok;
-}
+}*/
 
 
 /*! \fn extern inline void PA_CopyText(char *text1, char *text2)
@@ -492,6 +497,12 @@ void PA_OutputTextSpecial4(u8 screen, int x1, int y,char *text);
 void PA_OutputTextSpecial5(u8 screen, int x1, int y,char *text);
 
 /** @} */ // end of Text
+
+
+#ifdef __cplusplus
+}
+#endif
+
 
 
 #endif

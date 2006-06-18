@@ -10,7 +10,7 @@
 #---------------------------------------------------------------------------------
 TARGET	    :=	PA_Game
 BUILD		:=	build
-SOURCES	    := data	.
+SOURCES	    := data	. PA ../../FAT
 INCLUDES	:=	../../include/nds ../../include/nds/arm9 build
 
 include $(DEVKITARM)/ds_rules
@@ -60,11 +60,11 @@ LDFLAGS	:=	-g $(ARCH) -mno-fpu
 #---------------------------------------------------------------------------------
 # the prefix on the compiler executables
 #---------------------------------------------------------------------------------
-PREFIX			:=	arm-elf-
+PREFIX			:=	arm-eabi-
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lnds9
+LIBS	:= -lnds9 -L$(PAPATH)/lib -ldswifi9
  
  
 #---------------------------------------------------------------------------------

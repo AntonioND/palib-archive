@@ -8,17 +8,14 @@ extern "C" {
 #include "PA9.h"
 
 
-#ifdef FAT_DRIVER
-	#include "../../../FAT/disc_io.h"
-	#include "../../../FAT/gba_nds_fat.h"
-	#include "../../../FAT/io_fcsr.h"
-	#include "../../../FAT/io_m3cf.h"
-	#include "../../../FAT/io_mpcf.h"
-	#include "../../../FAT/io_nmmc.h"
-	#include "../../../FAT/io_sccf.h"
-	#include "../../../FAT/io_scsd.h"
-#endif
-
+#include "../../../FAT/disc_io.h"
+#include "../../../FAT/gba_nds_fat.h"
+#include "../../../FAT/io_fcsr.h"
+#include "../../../FAT/io_m3cf.h"
+#include "../../../FAT/io_mpcf.h"
+#include "../../../FAT/io_nmmc.h"
+#include "../../../FAT/io_sccf.h"
+#include "../../../FAT/io_scsd.h"
 
 
 

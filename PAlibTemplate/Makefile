@@ -17,8 +17,6 @@ LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
 ifeq ($(strip $(DEVKITARM)),)
 $(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM)
 endif
-
-include $(DEVKITARM)/ds_rules
 #---------------------------------------------------------------------------------
 # TARGET is the name of the output, if this ends with _mb generates a multiboot image
 # BUILD is the directory where object files & intermediate files will be placed
@@ -213,7 +211,7 @@ $(OUTPUT).elf	:	$(OFILES)
 	@$(CC) -MM $(CFLAGS) -o $*.d $<
 	@$(CC)  $(ASFLAGS) -c $< -o$@
  
-define bin2o2
+define bin2o
 	cp $(<) $(*).tmp
 	$(OBJCOPY) -I binary -O elf32-littlearm -B arm \
 	--rename-section .data=.rodata \

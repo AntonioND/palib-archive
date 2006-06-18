@@ -2,7 +2,7 @@
 
 // Includes
 #include <PA9.h>       // Include for PA_Lib
-#include "saberoff_raw.h"  // Include the sound (found in the data folder in .raw format)
+#include "saberoff.h"  // Include the sound (found in the data folder in .raw format)
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -19,7 +19,7 @@ int main(int argc, char ** argv)
 	// Infinite loop to keep the program running
 	while (1)
 	{		// Play the sound if A is pressed...
-		if (Pad.Newpress.A) PA_PlaySimpleSound(0, saberoff_raw);
+		if (Pad.Newpress.A) PA_PlaySimpleSound(0, saberoff);
 
 		PA_WaitForVBL();
 	}

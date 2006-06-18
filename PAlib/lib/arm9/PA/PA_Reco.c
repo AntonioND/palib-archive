@@ -1,4 +1,8 @@
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "PA9.h"
 
 
@@ -224,7 +228,9 @@ char PA_CheckLetter(void){
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 
 

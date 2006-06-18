@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "PA9.h"
 
 
@@ -493,4 +498,6 @@ int p = 3 - 2 * radius;
 */
 
 
-
+#ifdef __cplusplus
+}
+#endif

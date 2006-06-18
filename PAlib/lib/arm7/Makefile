@@ -43,7 +43,7 @@ LDFLAGS	:=	-g $(ARCH) -mno-fpu
 #---------------------------------------------------------------------------------
 # the prefix on the compiler executables
 #---------------------------------------------------------------------------------
-PREFIX			:=	arm-elf-
+PREFIX			:=	arm-eabi-
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ $(OUTPUT).elf	:	$(OFILES)
  
 #---------------------------------------------------------------------------------
 %.elf:
-	@$(LD)  $(LDFLAGS) -specs=ds_arm7.specs $(OFILES) $(LIBPATHS) $(LIBS) -o $(TARGET).elf
+	@$(LD)  $(LDFLAGS) -specs=ds_arm7.specs $(OFILES) $(LIBPATHS) $(LIBS) -L$(PAPATH)/lib -ldswifi7 -o $(TARGET).elf
  
  
  

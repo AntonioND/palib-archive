@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "PA9.h"
 
 
@@ -150,4 +155,6 @@ PA_UpdateSpriteAnims(); // Update the sprite animations...
 }
 
 
-
+#ifdef __cplusplus
+}
+#endif

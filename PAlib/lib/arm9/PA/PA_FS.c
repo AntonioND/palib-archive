@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include "PA9.h"
 
 
@@ -53,7 +58,9 @@ return temp;
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 
 

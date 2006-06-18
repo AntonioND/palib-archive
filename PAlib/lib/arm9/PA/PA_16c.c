@@ -1,6 +1,12 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+
 #include <PA9.h>
 
-#ifdef USE_16cTEXT
 	#include "16c/c16_text0.c"
 	#include "16c/c16_text1.c"
 	#include "16c/c16_text2.c"
@@ -10,7 +16,7 @@
 	const u8 c16_policeheight[5] = {6, 8, 9, 11, 14};
 	extern const u8 c16_policesize[5][96];
 	u32 *c16_font[5] = {(u32*)c16_text0Tiles, (u32*)c16_text1Tiles, (u32*)c16_text2Tiles, (u32*)c16_text3Tiles, (u32*)c16_text4Tiles};	
-#endif
+
 
 // Pointers...
 u16 *PA_Draw16[2];
@@ -53,7 +59,6 @@ void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette){
 
 
 
-#ifdef USE_16cTEXT
 
 s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, s32 limit){
 s16 i, j;
@@ -171,10 +176,11 @@ return length;
 				       4, 10, 11, 10, 11, 9, 8, 10, 12, 6, 7, 11, 6, 16, 12, 10, 11, 11, 9, 8, 8, 12, 11, 16, 12, 11, 10, 0, 0, 0, 0, 0},		
 					   };
 
+
+
+#ifdef __cplusplus
+}
 #endif
-
-
-
 
 
 

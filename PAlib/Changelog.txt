@@ -1,4 +1,23 @@
-PAlib 040306 MAJOR BUGFIX
+BROKEN : 16c Text
+
+UNKNOWN : 3D
+
+
+
+
+
+PAlib 060304 MAJOR UPDATE
+
+[PAlib] Changed the compilation to do some real stuff... Now only includes what you use ! A simple demo can be as small as 60kB !
+
+[TextBox] Removed the "1" that was drawn on the bottom screen
+
+[Examples] Tested all of them to check that they compiled and worked with the latest version. Made a general cleanup, so please delete PAlibExamples directory before reinstalling...
+	Broken : 16cText, 3D examples using PAlogo (??), Video
+
+
+
+PAlib 060304 MAJOR BUGFIX
 
 [Interrupts] Switched to libnds's interrupt handler. Seems to correct some bugs. Superstar's demo seems to work fine with the new system, so I hope this solves lots of C++ problems :S. Corrected 2 other big projects, so it seems like this could be the most stable release up to now ! It probably broke (very temporarily jialing' streaming system (uses TIMERS), we'll just have to switch the code to libnds's timer system, which shouldn't be long, but I ran out of time today :/
 

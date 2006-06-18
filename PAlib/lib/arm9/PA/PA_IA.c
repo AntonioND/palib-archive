@@ -1,3 +1,8 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <PA9.h>
 u16 *maze[255];
 //u16 mazex, mazey;
@@ -57,4 +62,10 @@ u16 maze2[width][height];
   else if(chemin[debutx][debuty+1]==1)return 4;
   return 0;
 }
+
+
+#ifdef __cplusplus
+}
+#endif
+
 

@@ -1,3 +1,8 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "PA9.h"
 #include <arm9/PA_Keys.h>
 
@@ -198,4 +203,7 @@ s16 y = PA_GetSpriteY(0, sprite) + truely;
 }
 */
 
+#ifdef __cplusplus
+}
+#endif
 

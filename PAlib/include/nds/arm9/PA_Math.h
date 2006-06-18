@@ -36,12 +36,24 @@ extern "C" {
 
 extern u16 RandomValue;  // Seed pour la fonction random
 
-/*! \fn u32 PA_Rand(void)
+/*! \fn extern inline u32 PA_Rand(void)
     \brief
          \~english Gives a random number, taken from Ham... This is taken from Ham, I have no credit. 
          \~french Donne un numéro aléatoire... Ceci est pris de Ham, je n'ai aucun mérite. 
 */
-u32 PA_Rand(void);
+extern inline u32 PA_Rand(void) {
+int i;
+   RandomValue+=0x9248;
+
+   for(i=0;i<3;i++)   {
+       if(RandomValue&0x1) {
+           RandomValue>>=1;
+           RandomValue|=0x8000;
+       }
+       else  RandomValue>>=1;
+   }
+   return(RandomValue);
+}
 
 
 /*! \fn extern inline void PA_InitRand(void)

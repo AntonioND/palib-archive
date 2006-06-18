@@ -7,6 +7,7 @@
 #include <PA7.h>
 #include <command.h>
 #include "microphone7.h"
+#include <dswifi7.h>
 /*
 #include <NDS/NDS.h>
  
@@ -85,7 +86,7 @@ void PA_VBL(void){
 	}
 
 	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
-
+Wifi_Update();
 }
 
 
@@ -99,9 +100,17 @@ void timer0(void){
 SndTimerIrq();
 }
  
+void arm7_synctoarm9() { // send fifo message
+   REG_IPC_FIFO_TX = 0x87654321;
+}
+// interrupt handler to allow incoming notifications from arm9
+void arm7_fifo() { // check incoming fifo messages
+   u32 msg = REG_IPC_FIFO_RX;
+   if(msg==0x87654321) Wifi_Sync();
+}
 
 int main(int argc, char ** argv) {
-  
+  REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_SEND_CLEAR;
   PA_Init();
 
  /*
@@ -130,6 +139,8 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 	irqEnable(IRQ_TIMER0);	
 	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
 	irqEnable(IRQ_TIMER3);	
+	irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
+	irqEnable(IRQ_WIFI);
 /*
   // Set up the interrupt handler
   REG_IME = 0;
@@ -141,6 +152,23 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 
   SndInit7 ();
     
+  u32 fifo_temp;   
+
+	  while(1) { // wait for magic number
+    	while(REG_IPC_FIFO_CR&IPC_FIFO_RECV_EMPTY) swiWaitForVBlank();
+      fifo_temp=REG_IPC_FIFO_RX;
+      if(fifo_temp==0x12345678) break;
+   	}
+   	while(REG_IPC_FIFO_CR&IPC_FIFO_RECV_EMPTY) swiWaitForVBlank();
+   	fifo_temp=REG_IPC_FIFO_RX; // give next value to wifi_init
+   	Wifi_Init(fifo_temp);
+   	
+   	irqSet(IRQ_FIFO_NOT_EMPTY,arm7_fifo); // set up fifo irq
+   	irqEnable(IRQ_FIFO_NOT_EMPTY);
+   	REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_RECV_IRQ;
+
+   	Wifi_SetSyncHandler(arm7_synctoarm9); // allow wifi lib to notify arm9
+  
   // Keep the ARM7 out of main RAM
   while (1) swiWaitForVBlank();
   return 0;

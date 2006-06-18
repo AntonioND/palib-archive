@@ -55,6 +55,7 @@ extern u16 PA_temppal[256];
 
 
 void PA_Load16bitGif(u8 screen, s16 x, s16 y, void *gif);
+
 int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
 
 

@@ -1,3 +1,8 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "PA9.h"
 
 
@@ -5,24 +10,6 @@
 u16 RandomValue = 35329;
 
 
-
-u32 PA_Rand(void) {
-
-int i;
-
-
-   RandomValue+=0x9248;
-
-   for(i=0;i<3;i++)   {
-       if(RandomValue&0x1) {
-           RandomValue>>=1;
-           RandomValue|=0x8000;
-       }
-       else  RandomValue>>=1;
-   }
-
-   return(RandomValue);
-}
 
 
 
@@ -99,6 +86,8 @@ const s16 PA_SIN[512] = {
 	0xFF9E,0xFFA1,0xFFA4,0xFFA7,0xFFAA,0xFFAD,0xFFB0,0xFFB3,	0xFFB6,0xFFB9,0xFFBC,0xFFBF,0xFFC2,0xFFC5,0xFFC8,0xFFCB,
 	0xFFCE,0xFFD1,0xFFD4,0xFFD7,0xFFDA,0xFFDE,0xFFE1,0xFFE4,	0xFFE7,0xFFEA,0xFFED,0xFFF0,0xFFF3,0xFFF7,0xFFFA,0xFFFD};
 
-
+#ifdef __cplusplus
+}
+#endif
 
 

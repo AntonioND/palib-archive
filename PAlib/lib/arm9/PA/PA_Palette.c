@@ -1,3 +1,8 @@
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "PA9.h"
 
 u8 PA_ExtPal[2][2]; // 0 si pas étendu, 1 sinon
@@ -144,3 +149,9 @@ void PA_SetSpritePalCol(u8 screen, u8 pal_number, u8 color_number, u16 color)
 		vramSetBankH(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 	}
 }
+
+
+
+#ifdef __cplusplus
+}
+#endif

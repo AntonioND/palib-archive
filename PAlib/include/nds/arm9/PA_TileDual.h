@@ -9,7 +9,7 @@
     This file contains all the macros and variables regarding Tile modes (0-2), loading tiles and Bg, etc... on 2 screens !
 */
 
-#include "PA_Tile.h"
+#include "PA_BgTiles.h"
 
 
 

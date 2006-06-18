@@ -219,7 +219,7 @@
 <a name="l00571"></a><a class="code" href="group___sound_a_r_m9.html#ga26">00571</a> <span class="preprocessor">#define PA_StopMod() SndStopMOD()</span>
 00572 <span class="preprocessor"></span>
 00573 
-<a name="l00582"></a><a class="code" href="group___sound_a_r_m9.html#ga27">00582</a> <span class="preprocessor">#define PA_PauseMod(u8) SndPauseMOD(u8)</span>
+<a name="l00582"></a><a class="code" href="group___sound_a_r_m9.html#ga27">00582</a> <span class="preprocessor">#define PA_PauseMod(bool) SndPauseMOD(bool)</span>
 00583 <span class="preprocessor"></span>
 00584 
 00585 
@@ -230,7 +230,7 @@
 00614 <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga22">PA_UnpauseStream</a>(u8 PA_Channel);
 00615 
 00616 
-<a name="l00628"></a><a class="code" href="group___sound_a_r_m9.html#ga23">00628</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga23">PA_MicStartRecording</a>(u8* buffer, <span class="keywordtype">int</span> length){StartRecording(buffer, length);}
+00628 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_MicStartRecording(s8* buffer, <span class="keywordtype">int</span> length){StartRecording(buffer, length);}
 00629 
 <a name="l00635"></a><a class="code" href="group___sound_a_r_m9.html#ga28">00635</a> <span class="preprocessor">#define PA_MicStopRecording() StopRecording()</span>
 00636 <span class="preprocessor"></span> <span class="comment">// end of SoundARM9</span>
@@ -238,7 +238,7 @@
 00639 
 00640 
 00641 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sat Mar 4 12:16:44 2006 for PAlib by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Thu Feb 9 15:37:40 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

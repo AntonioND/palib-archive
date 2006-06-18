@@ -21,7 +21,7 @@
 00013 {
 00014        u32     nPauseTick;
 00015        u32           nRefTick;
-00016        u8     bRunning;
+00016        <span class="keywordtype">bool</span>   bRunning;
 00017 };
 00018 
 00019 <span class="keyword">struct </span>tTimeMgr
@@ -31,10 +31,10 @@
 00023        u8                          nCount;
 00024 };
 00025 
-00026 <span class="keyword">extern</span> <span class="keywordtype">void</span> StartTime(u8 bNew);
+00026 <span class="keyword">extern</span> <span class="keywordtype">void</span> StartTime(<span class="keywordtype">bool</span> bNew);
 00027 <span class="keyword">extern</span> <span class="keywordtype">void</span> PauseTime();
 00028 
-00029 <span class="keyword">extern</span> u8     NewTimer(u8 bStarted);
+00029 <span class="keyword">extern</span> u8     NewTimer(<span class="keywordtype">bool</span> bStarted);
 00030 <span class="keyword">extern</span> <span class="keywordtype">void</span>   StartTimer(u8 nTimerId);
 00031 <span class="keyword">extern</span> u32    Tick(u8       nTimerId);
 00032 <span class="keyword">extern</span> <span class="keywordtype">void</span>   PauseTimer(u8 nTimerId);
@@ -42,7 +42,7 @@
 00034 <span class="keyword">extern</span> <span class="keywordtype">void</span>   ResetTimer(u8);
 00035 
 00036 <span class="preprocessor">#endif // TIMER_H</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sat Mar 4 12:16:44 2006 for PAlib by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Thu Feb 9 15:37:40 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
