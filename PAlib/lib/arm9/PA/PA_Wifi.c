@@ -127,12 +127,12 @@ int PA_InitSocket(int *sock,char *host,int port,int mode)
      
      if(mode == PA_NORMAL_TCP)
      {
-     if(connect(*sock, (struct sockaddr *) &servaddr, sizeof(servaddr))>0)
+     if(connect(*sock, (struct sockaddr *) &servaddr, sizeof(servaddr))==0)
         return 1;
      }
      else if(mode == PA_NONBLOCKING_TCP)
      {
-     if(connect(*sock, (struct sockaddr *) &servaddr, sizeof(servaddr))>0)
+     if(connect(*sock, (struct sockaddr *) &servaddr, sizeof(servaddr))==0)
         {
         int i = 1;
         ioctl(*sock, FIONBIO, &i);

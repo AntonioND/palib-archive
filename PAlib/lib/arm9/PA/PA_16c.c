@@ -42,7 +42,7 @@ void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette){
 	PA_Draw16[screen] = (u16*)CharBaseBlock(screen, tilesetchar[screen][bg]);   
 	PA_Draw1632[screen] = (u32*)CharBaseBlock(screen, tilesetchar[screen][bg]); 
 
-#ifdef USE_16cTEXT 
+//#ifdef USE_16cTEXT 
 	PA_SetBgPalCol(screen, (npalette<<4)+1, PA_RGB(31, 31, 31));
 	PA_SetBgPalCol(screen, (npalette<<4)+2, PA_RGB(31, 0, 0));
 	PA_SetBgPalCol(screen, (npalette<<4)+3, PA_RGB(0, 31, 0));
@@ -53,7 +53,7 @@ void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette){
 	PA_SetBgPalCol(screen, (npalette<<4)+8, PA_RGB(25, 25, 25));
 	PA_SetBgPalCol(screen, (npalette<<4)+9, PA_RGB(20, 20, 20));
 	PA_SetBgPalCol(screen, (npalette<<4)+10, PA_RGB(0, 0, 0));
-#endif
+//#endif
 }   
 
 
