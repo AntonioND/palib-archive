@@ -42,7 +42,7 @@ extern u8 PA_nVBLs;
 #define REG_DISPSTAT DISP_SR
 */
 
-#define REG_VCOUNT _REG16(0x04000006)
+//#define REG_VCOUNT _REG16(0x04000006)
 /*
 // Interrupts
 #define INTVBLANK 0x0001

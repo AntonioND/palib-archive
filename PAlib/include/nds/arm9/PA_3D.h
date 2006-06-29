@@ -387,12 +387,12 @@ glTexCoord1i(TEXTURE_PACK(inttot16((int)x),inttot16((int)y)));
 
 
 
-int PA_InitCallList(PA_3DObject obj);
-int PA_VertexCallList(PA_3DObject obj, float x, float y, float z);
-int PA_TexCoordCallList(PA_3DObject obj, int x, int y);
-int PA_EndCallList(PA_3DObject obj);
+int PA_InitCallList(PA_3DObject *obj);
+int PA_VertexCallList(PA_3DObject *obj, float x, float y, float z);
+int PA_TexCoordCallList(PA_3DObject *obj, int x, int y);
+int PA_EndCallList(PA_3DObject *obj);
 int PA_Draw3Dobject(PA_3DObject obj);
-int PA_ScaleCallList(PA_3DObject obj, float x, float y, float z);
+int PA_ScaleCallList(PA_3DObject *obj, float x, float y, float z);
 /** @} */ // end of 3D
 
 #ifdef __cplusplus

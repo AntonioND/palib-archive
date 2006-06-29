@@ -2,6 +2,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#include <nds.h>
 #include "PA/PA_Sound.c"
 #include "command.h"
 #include "microphone7.h"
@@ -11,6 +12,8 @@ extern "C" {
 #define TOUCH_CNTRL_Y1   (*(vu8*)0x027FFCDD)
 #define TOUCH_CNTRL_X2   (*(vu8*)0x027FFCE2)
 #define TOUCH_CNTRL_Y2   (*(vu8*)0x027FFCE3)
+
+#define DISP_SR			(*(vuint16*)0x04000004)
 int16 CNTRL_WIDTH;
 int16 CNTRL_HEIGHT;
 
@@ -76,7 +79,7 @@ void PA_UpdateStylus(void){
     IPC->touchXpx  = tempPos.px;
     IPC->touchYpx  = tempPos.py;	
 	
-	IPC->touchZ1 = touchRead(TSC_MEASURE_Z1);
+	IPC->touchZ1 = touchRead(TSC_MEASURE_Z2);
 	IPC->touchZ2 = touchRead(TSC_MEASURE_Z2);
 }
 

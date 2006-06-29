@@ -139,8 +139,10 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 	irqEnable(IRQ_TIMER0);	
 	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
 	irqEnable(IRQ_TIMER3);	
-	irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
+	//supprime pour test
+    irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
 	irqEnable(IRQ_WIFI);
+
 /*
   // Set up the interrupt handler
   REG_IME = 0;
@@ -149,8 +151,9 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
   REG_IF = ~0;
   DISP_SR = DISP_VBLANK_IRQ;
   REG_IME = 1;*/
-
-  SndInit7 ();
+  
+ //supprime pour test
+//  SndInit7 ();
     
   u32 fifo_temp;   
 
@@ -170,6 +173,7 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
    	Wifi_SetSyncHandler(arm7_synctoarm9); // allow wifi lib to notify arm9
   
   // Keep the ARM7 out of main RAM
+
   while (1) swiWaitForVBlank();
   return 0;
 }

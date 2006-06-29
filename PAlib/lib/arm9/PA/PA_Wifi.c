@@ -200,7 +200,6 @@ int get_HTTP_serveur(char *buffer, char *buffer2)
           buffer[i-depart]=buffer2[i];
     }
     buffer[i-depart]='\0';
-    PA_OutputText(0,0,0,"serveur : %s",buffer);
 return i;
 }
 int PA_GetHTTP(char *buffer, char *adress)
@@ -213,7 +212,6 @@ int PA_GetHTTP(char *buffer, char *adress)
     char buffer2[256];
     sprintf(buffer2, "GET %s HTTP/1.1\r\nhost: %s\r\nAccept: */*\r\n\r\n",adress+pos,serveur);
     send(sock,buffer2,256,0);
-    PA_OutputText(0,0,3,"r: %s",buffer2);
     strcpy(buffer,"");
     while(search_word(buffer3,"\r\n\r\n",0) == -1)
     {

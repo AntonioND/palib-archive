@@ -18,12 +18,12 @@ float angle3dX = 0.5,angle3dY = 0.0, viseeX = 0.0, viseeY = 0.0, viseeZ = 1.0;
 
 
 
-int PA_InitCallList(PA_3DObject obj);
-int PA_VertexCallList(PA_3DObject obj, float x, float y, float z);
-int PA_TexCoordCallList(PA_3DObject obj, int x, int y);
-int PA_EndCallList(PA_3DObject obj);
+int PA_InitCallList(PA_3DObject *obj);
+int PA_VertexCallList(PA_3DObject *obj, float x, float y, float z);
+int PA_TexCoordCallList(PA_3DObject *obj, int x, int y);
+int PA_EndCallList(PA_3DObject *obj);
 int PA_Draw3Dobject(PA_3DObject obj);
-int PA_ScaleCallList(PA_3DObject obj, float x, float y, float z);
+int PA_ScaleCallList(PA_3DObject *obj, float x, float y, float z);
 
 
 
@@ -32,52 +32,52 @@ int PA_ScaleCallList(PA_3DObject obj, float x, float y, float z);
 
 
 
-int PA_InitCallList(PA_3DObject obj){
-	obj.callList[0]=2;
-	obj.callList[1]=FIFO_COMMAND_PACK(FIFO_BEGIN, FIFO_NOP, FIFO_NOP, FIFO_NOP);
-	obj.callList[2]=GL_TRIANGLE;
-	obj.scalex=1.0;
-	obj.scaley=1.0;
-	obj.scalez=1.0;
+int PA_InitCallList(PA_3DObject *obj){
+	obj->callList[0]=2;
+	obj->callList[1]=FIFO_COMMAND_PACK(FIFO_BEGIN, FIFO_NOP, FIFO_NOP, FIFO_NOP);
+	obj->callList[2]=GL_TRIANGLE;
+	obj->scalex=1.0;
+	obj->scaley=1.0;
+	obj->scalez=1.0;
 	return 1;
 }
 
 
-int PA_VertexCallList(PA_3DObject obj, float x, float y, float z){
-	obj.callList[obj.callList[0]+1]=FIFO_COMMAND_PACK(FIFO_VERTEX16, FIFO_NOP, FIFO_NOP, FIFO_NOP);
-	obj.callList[obj.callList[0]+2]=VERTEX_PACK(floattov16(x),floattov16(y));
-	obj.callList[obj.callList[0]+3]=VERTEX_PACK(floattov16(z),0);
-	obj.callList[0]+=3;
-	if(x>obj.maxx)obj.maxx=x;
-	else if(x<obj.minx)obj.minx=x;
-	if(y>obj.maxy)obj.maxy=y;
-	else if(y<obj.miny)obj.miny=y;
-	if(z>obj.maxz)obj.maxz=z;
-	else if(z<obj.minz)obj.minz=z;
+int PA_VertexCallList(PA_3DObject *obj, float x, float y, float z){
+	obj->callList[obj->callList[0]+1]=FIFO_COMMAND_PACK(FIFO_VERTEX16, FIFO_NOP, FIFO_NOP, FIFO_NOP);
+	obj->callList[obj->callList[0]+2]=VERTEX_PACK(floattov16(x),floattov16(y));
+	obj->callList[obj->callList[0]+3]=VERTEX_PACK(floattov16(z),0);
+	obj->callList[0]+=3;
+	if(x>obj->maxx)obj->maxx=x;
+	else if(x<obj->minx)obj->minx=x;
+	if(y>obj->maxy)obj->maxy=y;
+	else if(y<obj->miny)obj->miny=y;
+	if(z>obj->maxz)obj->maxz=z;
+	else if(z<obj->minz)obj->minz=z;
 	return 1;
 }
 
 
-int PA_TexCoordCallList(PA_3DObject obj, int x, int y){
-	obj.callList[obj.callList[0]+1]=FIFO_COMMAND_PACK(FIFO_TEX_COORD, FIFO_NOP, FIFO_NOP, FIFO_NOP);
-	obj.callList[obj.callList[0]+2]=TEXTURE_PACK(floattot16(x),floattot16(y)); 
-	obj.callList[0]+=2;
+int PA_TexCoordCallList(PA_3DObject *obj, int x, int y){
+	obj->callList[obj->callList[0]+1]=FIFO_COMMAND_PACK(FIFO_TEX_COORD, FIFO_NOP, FIFO_NOP, FIFO_NOP);
+	obj->callList[obj->callList[0]+2]=TEXTURE_PACK(floattot16(x),floattot16(y)); 
+	obj->callList[0]+=2;
 	return 1;
 }
 
 
-int PA_EndCallList(PA_3DObject obj){
-	obj.callList[obj.callList[0]+1]=FIFO_COMMAND_PACK(FIFO_END, FIFO_NOP, FIFO_NOP, FIFO_NOP);
-	obj.callList[0]++;
+int PA_EndCallList(PA_3DObject *obj){
+	obj->callList[obj->callList[0]+1]=FIFO_COMMAND_PACK(FIFO_END, FIFO_NOP, FIFO_NOP, FIFO_NOP);
+	obj->callList[0]++;
 	return 1;
 }
 
 
 
-int PA_ScaleCallList(PA_3DObject obj, float x, float y, float z){
-	obj.scalex = x;
-	obj.scaley = y;
-	obj.scalez = z;
+int PA_ScaleCallList(PA_3DObject *obj, float x, float y, float z){
+	obj->scalex = x;
+	obj->scaley = y;
+	obj->scalez = z;
 	return 1;
 }
 
