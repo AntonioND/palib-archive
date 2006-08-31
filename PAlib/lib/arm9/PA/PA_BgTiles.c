@@ -34,6 +34,7 @@ u8 charsetstart[2] = {8, 8};
 void PA_ResetBgSys(void) {
 u8 i, j;
 
+	PA_SetBgColor(0, 0); PA_SetBgColor(1, 0);  // Black color by default
 	PA_SetVideoMode(0, 0);	PA_SetVideoMode(1, 0);
 
 	for (i = 0; i < 4; i++){

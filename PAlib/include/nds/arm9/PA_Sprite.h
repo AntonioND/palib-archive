@@ -51,8 +51,8 @@ extern const PA_sizes PA_size[3][4];
 #define BITS_16 65535
 #define ALL_BUT(ATR) (BITS_16 - ATR)
 
-#define OBJ_X 511 //511, debugging...
-#define OBJ_Y 255
+#define PA_OBJ_X 511 //511, debugging...
+#define PA_OBJ_Y 255
 #define OBJ_ROT 256
 #define ALL_BUT_ROTSET 49663  // Numéro du rotset
 #define ALL_BUT_PAL 4095
@@ -261,8 +261,8 @@ void PA_ResetSpriteSys(void);
 */
 extern inline void PA_CreateSprite(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (palette << 12);
-   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
-   PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (obj_size << 14);
+   PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (obj_size << 14);
 };
 
 /*! \fn extern inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
@@ -317,8 +317,8 @@ extern inline void PA_CreateSprite(u8 screen, u8 obj_number, void* obj_data, u8 
 */
 extern inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y) {
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (prio << 10) + (palette << 12);
-   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + ((color_mode) << 13) + (obj_shape << 14);
-   PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
+   PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + ((color_mode) << 13) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
 };
 
 
@@ -368,8 +368,8 @@ extern inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u
 */
 extern inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
    PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);
-   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
-   PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
+   PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
 }
 
 
@@ -403,8 +403,8 @@ extern inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_da
 */
 extern inline void PA_Create16bitSpriteFromGfx(u8 screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y){
    PA_obj[screen][obj_number].atr2 = gfx + (15 << 12);
-   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (3 << 10) + (obj_shape << 14);
-   PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (obj_size << 14);
+   PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (3 << 10) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (obj_size << 14);
 }
 
 
@@ -478,8 +478,8 @@ PA_Create16bitSpriteEx(screen, obj_number, obj_data, obj_shape, obj_size, 0, 0, 
 */
 extern inline void PA_CreateSpriteFromGfx(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
    PA_obj[screen][obj_number].atr2 = obj_gfx + (palette << 12);
-   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
-   PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (obj_size << 14);
+   PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (obj_size << 14);
    ++obj_per_gfx[screen][obj_gfx];
 };
 
@@ -535,8 +535,8 @@ extern inline void PA_CreateSpriteFromGfx(u8 screen, u8 obj_number, u16 obj_gfx,
 */
 extern inline void PA_CreateSpriteExFromGfx(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y) {
    PA_obj[screen][obj_number].atr2 = obj_gfx + (prio << 10) + (palette << 12);
-   PA_obj[screen][obj_number].atr0 = (y&OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + (color_mode << 13) + (obj_shape << 14);
-   PA_obj[screen][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
+   PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + (color_mode << 13) + (obj_shape << 14);
+   PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
    ++obj_per_gfx[screen][obj_gfx];
 };
 
@@ -760,7 +760,7 @@ u8 obj_num = (rotset << 2);
 */
 
 
-#define PA_SetSpriteX(screen, obj, x) PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 & ALL_BUT(OBJ_X)) + ((x) & OBJ_X)
+#define PA_SetSpriteX(screen, obj, x) PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 & ALL_BUT(PA_OBJ_X)) + ((x) & PA_OBJ_X)
 
 /*! \def PA_GetSpriteX(screen, obj)
     \brief
@@ -774,7 +774,7 @@ u8 obj_num = (rotset << 2);
          \~french Numéro de l'objet dans le systeme de sprite
 */
 
-#define PA_GetSpriteX(screen, obj) (PA_obj[screen][obj].atr1 & (OBJ_X))
+#define PA_GetSpriteX(screen, obj) (PA_obj[screen][obj].atr1 & (PA_OBJ_X))
 
 
 /*! \def PA_SetSpriteY(screen, obj, y)
@@ -791,7 +791,7 @@ u8 obj_num = (rotset << 2);
          \~english Y position
          \~french Position Y
 */
-#define PA_SetSpriteY(screen, obj, y) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 & ALL_BUT(OBJ_Y)) + ((y) & OBJ_Y)
+#define PA_SetSpriteY(screen, obj, y) PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 & ALL_BUT(PA_OBJ_Y)) + ((y) & PA_OBJ_Y)
 
 /*! \def PA_GetSpriteY(screen, obj)
     \brief
@@ -805,7 +805,7 @@ u8 obj_num = (rotset << 2);
          \~french Numéro de l'objet dans le systeme de sprite
 
 */
-#define PA_GetSpriteY(screen, obj) (PA_obj[screen][obj].atr0 & OBJ_Y)
+#define PA_GetSpriteY(screen, obj) (PA_obj[screen][obj].atr0 & PA_OBJ_Y)
 
 
 

@@ -1,6 +1,9 @@
 //Background converted using Mollusk's PAImageConverter
 //This Background uses bg3_Pal
 
+const int bg3_Width = 256;
+const int bg3_Height = 192;
+
 const unsigned short bg3_Map[768] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 

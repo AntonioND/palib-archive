@@ -328,6 +328,21 @@ extern inline void PA_SetLedBlink(u8 blink, u8 speed){
 }
 
 
+/*! \def PA_WaitFor(something)
+    \brief
+         \~english Wait for a specific thing to happen...
+         \~french Attendre un événement précis...
+    \param something
+         \~english Thing to wait for, like Pad.Newpress.A, or Stylus.Newpress, etc...
+         \~french Evénement à attendre, comme Pad.Newpress.A, ou Stylus.Newpress, etc...
+*/
+
+#define PA_WaitFor(something) {PA_WaitForVBL(); while(!(something)){PA_WaitForVBL(); }}
+
+
+
+
+
 
 
 /** @} */ // end of General

@@ -292,7 +292,7 @@ void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int 
          \~french Format du son.
 */
 extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format){
-	PA_Malloc((void**)&FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
+	PA_Malloc((void**)FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
 
 	s32 i;
 	s32 length = (PA_FSFile[PAFS_wav_number].Length>>2) + 1; // Pour etre sur...
@@ -328,7 +328,7 @@ extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volum
          \~french  Point de répétition
 */
 extern inline void PA_PlayFSSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint){
-	PA_Malloc((void**)&FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
+	PA_Malloc((void**)FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
 
 	s32 i;
 	s32 length = (PA_FSFile[PAFS_wav_number].Length>>2) + 1; // Pour etre sur...
@@ -437,7 +437,7 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~french Fréquence du son...11025 par défaut
 */
 extern inline void PA_PlayFSSound(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, u32 freq){
-	PA_Malloc((void**)(&FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
+	PA_Malloc((void**)(FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
 
 	s32 i;
 	s32 length = (PA_FSFile[PAFS_wav_number].Length>>2) + 1; // Pour etre sur...
@@ -499,7 +499,7 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~french Numéro du son RAW dans PA GBFS
 */
 extern inline void PA_PlayFSSimpleSound(u8 PA_Channel, u16 PAFS_wav_number){
-	PA_Malloc((void**)(&FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
+	PA_Malloc((void**)(FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
 
 	s32 i;
 	s32 length = (PA_FSFile[PAFS_wav_number].Length>>2) + 1; // Pour etre sur...

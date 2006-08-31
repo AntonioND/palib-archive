@@ -1,8 +1,36 @@
-BROKEN : 16c Text
+PAlib 060831 Official Revival Update
 
-UNKNOWN : 3D
+[Text] Added TEXT_WHITE, TEXT_RED, etc... macros, thanks to Penjuin. Also updated the TextColors example to show that (using yellow)
+
+[Bugfix] Fixed PA_SetBgColor, thanks to franck569 :)
+
+[Bugfix] PA_ResetBgSys should now leave all screens black, untested though :)
+
+[Bugfix] You can now get the user's name even if he hasn't entered a message ^^ Thanks to PadrinatoR for that one !
+
+[Bugfix ?] A typo, seen by PadrinatoR (again !) was found in the stylus arm7 code. I corrected it, and have no idea what it will change ! If you have any problem with the stylus on this version, please report so that we can revert back to a functionnal stylus code.
+
+[Bugfix] Corrected GBFSInit and migrated to solid function instead of extern inline. Untested, report if problem found... (should we just remove GBFS support and turn towards PAFS, or is everyone still using GBFS or neither one of them ?)
+
+[Bugfix] Corrected a bug in PA_WaitFor ^^
 
 
+
+PAlib 060830 Revival Update
+
+[General] Updated my computer to latest devkitPro :)
+
+[Warnings] Fixed most warnings, 5 more left
+
+[C++] Warnings fixed
+
+[Vham] Updated to 2.6, "New Project" now works correctly, thanks for the help ;)
+
+[16c] Put the 16colors text example back in
+
+[Feature] Added PA_WaitFor(something), check the example (Examples/Other) to see how it work : PA_WaitFor(Pad.Newpress.A), etc...
+
+[PAGfx] Updated to version 0.8, which was on my hard drive since... March ! I have no idea how good/bad it works actually, can't remember if it was fully functionnal or not :/
 
 
 

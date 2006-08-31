@@ -297,7 +297,7 @@ void PA_SetBgPalNCol(u8 screen, u8 bg_number, u8 pal_number, u8 color_number, u1
          \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
 */
 extern inline void PA_SetBgColor(u8 screen, u16 color){
-	BG_PALETTE[screen<<7] = color;
+	BG_PALETTE[screen<<9] = color;
 } 
 
 

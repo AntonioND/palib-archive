@@ -9,16 +9,19 @@
 <h1>General Functions</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga12" doxytag="General::PA_LidClosed"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga12">PA_LidClosed</a>()&nbsp;&nbsp;&nbsp;(IPC-&gt;buttons&gt;&gt;7)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga11" doxytag="General::PA_LidClosed"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga11">PA_LidClosed</a>()&nbsp;&nbsp;&nbsp;(IPC-&gt;buttons&gt;&gt;7)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the DS is closed. Returns 0 if open, 1 if closed <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga12">PA_WaitFor</a>(something)&nbsp;&nbsp;&nbsp;{while(!(something)){PA_WaitForVBL(); }}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Wait for a specific thing to happen...  <a href="#ga12"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="General::PA_Init"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga0">PA_Init</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise the library. Must be used at the beginning or main() <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga1">PA_SetVideoMode</a> (bool screen, u8 mode)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga1">PA_SetVideoMode</a> (u8 screen, u8 mode)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the video mode... Use this with caution  <a href="#ga1"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga2" doxytag="General::PA_UpdateUserInfo"></a>
@@ -41,26 +44,104 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Wait for the VBlank to occur <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga7" doxytag="General::PA_SwitchScreens"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SwitchScreens</b> (void)</td></tr>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga7">PA_SwitchScreens</a> (void)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga8" doxytag="General::PA_InitCPUMeter"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga8">PA_InitCPUMeter</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">BROKEN ----- Initialises the CPU Meter. The CPU value is saved in PA_CPU (and PA_MaxCPU for max usage) <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga9" doxytag="General::PA_CheckLid"></a>
-bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga9">PA_CheckLid</a> (void)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Switch the bottom and top screens... <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga8" doxytag="General::PA_CheckLid"></a>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga8">PA_CheckLid</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the DS is closed. If closed, it pauses the DS, and returns 1. <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga10">PA_Splash</a> (void *tiles0, void *map0, void *tiles1, void *map1, s16 color0, s16 color1, s16 time)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga9">PA_SetScreenLight</a> (u8 screen, u8 light)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Splash screen function ! Load your own splash screen...  <a href="#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga11">PA_SetScreenLight</a> (bool screen, bool light)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set on or off the screen's light  <a href="#ga9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga10">PA_SetLedBlink</a> (u8 blink, u8 speed)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set on or off the screen's light  <a href="#ga11"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set teh DS Led blinking  <a href="#ga10"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-Initialise the lib, and other general functions... <hr><h2>Function Documentation</h2>
-<a class="anchor" name="ga11" doxytag="PA9.h::PA_SetScreenLight"></a><p>
+Initialise the lib, and other general functions... <hr><h2>Define Documentation</h2>
+<a class="anchor" name="ga12" doxytag="PA_General.h::PA_WaitFor"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_WaitFor          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">something&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;{while(!(something)){PA_WaitForVBL(); }}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Wait for a specific thing to happen... 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>something</em>&nbsp;</td><td>Thing to wait for, like Pad.Newpress.A, or Stylus.Newpress, etc... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<hr><h2>Function Documentation</h2>
+<a class="anchor" name="ga10" doxytag="PA_General.h::PA_SetLedBlink"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetLedBlink           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>blink</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>speed</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Set teh DS Led blinking 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>blink</em>&nbsp;</td><td>1 for blinking, 0 for always on </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>speed</em>&nbsp;</td><td>Speed : 0 for slow, 1 for fast </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga9" doxytag="PA_General.h::PA_SetScreenLight"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -68,19 +149,19 @@ Initialise the lib, and other general functions... <hr><h2>Function Documentatio
         <tr>
           <td class="md" nowrap valign="top">void PA_SetScreenLight           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
-          <td class="md" nowrap>bool&nbsp;</td>
+          <td class="md" nowrap>u8&nbsp;</td>
           <td class="mdname" nowrap> <em>light</em></td>
         </tr>
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -105,7 +186,7 @@ Set on or off the screen's light
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga1" doxytag="PA9.h::PA_SetVideoMode"></a><p>
+<a class="anchor" name="ga1" doxytag="PA_General.h::PA_SetVideoMode"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -113,7 +194,7 @@ Set on or off the screen's light
         <tr>
           <td class="md" nowrap valign="top">inline void PA_SetVideoMode           </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
         </tr>
         <tr>
@@ -150,87 +231,7 @@ Change the video mode... Use this with caution
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga10" doxytag="PA9.h::PA_Splash"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">void PA_Splash           </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">void *&nbsp;</td>
-          <td class="mdname" nowrap> <em>tiles0</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>void *&nbsp;</td>
-          <td class="mdname" nowrap> <em>map0</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>void *&nbsp;</td>
-          <td class="mdname" nowrap> <em>tiles1</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>void *&nbsp;</td>
-          <td class="mdname" nowrap> <em>map1</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
-          <td class="mdname" nowrap> <em>color0</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
-          <td class="mdname" nowrap> <em>color1</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>s16&nbsp;</td>
-          <td class="mdname" nowrap> <em>time</em></td>
-        </tr>
-        <tr>
-          <td class="md"></td>
-          <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Splash screen function ! Load your own splash screen... 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>tiles0</em>&nbsp;</td><td>Tiles of the splash to put on the bottom screen </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>map0</em>&nbsp;</td><td>Map of the splash to put on the bottom screen </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>tiles1</em>&nbsp;</td><td>Tiles of the splash to put on the top screen </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>map1</em>&nbsp;</td><td>Map of the splash to put on the top screen </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>color0</em>&nbsp;</td><td>Fade in color, 0 for balck, 1 for white. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>color1</em>&nbsp;</td><td>Fade out color, 0 for balck, 1 for white. </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>time</em>&nbsp;</td><td>Time to stay on the splash if you do net press Start or use the Stylus, in VBLs -&gt; 60 for 1 second, 300 for 5 seconds... </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<hr size="1"><address style="align: right;"><small>Generated on Thu Feb 9 15:37:43 2006 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Wed Aug 30 21:02:14 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

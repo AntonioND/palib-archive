@@ -28,7 +28,16 @@ void PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b);
 
 //#include "../PA.h"
 
-
+#define TEXT_WHITE 0
+#define TEXT_RED 1
+#define TEXT_BLUE 2
+#define TEXT_GREEN 3
+#define TEXT_MAGENTA 4
+#define TEXT_CYAN 5
+#define TEXT_YELLOW 6
+#define TEXT_LGRAY 7
+#define TEXT_DGRAY 8
+#define TEXT_BLACK 9
 
 
 //////////////////////////////////////////////////////////////////////

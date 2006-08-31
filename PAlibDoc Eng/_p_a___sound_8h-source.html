@@ -14,7 +14,7 @@
 00013 <span class="preprocessor">#include "../Sound9.h"</span>
 00014 <span class="preprocessor">#include "<a class="code" href="_p_a___g_b_f_s_8h.html">PA_GBFS.h</a>"</span>
 00015 <span class="preprocessor">#include "<a class="code" href="_p_a___f_s_8h.html">PA_FS.h</a>"</span>
-00016 <span class="preprocessor">#include &lt;<a class="code" href="_p_a9_8h.html">PA9.h</a>&gt;</span>
+00016 <span class="preprocessor">#include &lt;PA9.h&gt;</span>
 00017 
 00018        <span class="comment">// 256KB to load MOD files into. Actual size necessary is the size </span>
 00019        <span class="comment">// of your largest MOD file (probably less than 256KB).</span>
@@ -109,7 +109,7 @@
 00272 
 00273 
 <a name="l00294"></a><a class="code" href="group___sound_a_r_m9.html#ga10">00294</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga10">PA_PlayFSSoundEx</a>(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, <span class="keywordtype">int</span> freq, s16 format){
-00295        <a class="code" href="group___p_a_f_s.html#ga4">PA_Malloc</a>((<span class="keywordtype">void</span>**)&amp;FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
+00295        <a class="code" href="group___p_a_f_s.html#ga4">PA_Malloc</a>((<span class="keywordtype">void</span>**)FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
 00296 
 00297        s32 i;
 00298        s32 length = (PA_FSFile[PAFS_wav_number].Length&gt;&gt;2) + 1; <span class="comment">// Pour etre sur...</span>
@@ -119,7 +119,7 @@
 00302 }
 00303 
 <a name="l00330"></a><a class="code" href="group___sound_a_r_m9.html#ga11">00330</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga11">PA_PlayFSSoundEx2</a>(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, <span class="keywordtype">int</span> freq, s16 format, BOOL repeat, <span class="keywordtype">int</span> repeatPoint){
-00331        <a class="code" href="group___p_a_f_s.html#ga4">PA_Malloc</a>((<span class="keywordtype">void</span>**)&amp;FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
+00331        <a class="code" href="group___p_a_f_s.html#ga4">PA_Malloc</a>((<span class="keywordtype">void</span>**)FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
 00332 
 00333        s32 i;
 00334        s32 length = (PA_FSFile[PAFS_wav_number].Length&gt;&gt;2) + 1; <span class="comment">// Pour etre sur...</span>
@@ -148,7 +148,7 @@
 00420 
 00421 
 <a name="l00439"></a><a class="code" href="group___sound_a_r_m9.html#ga15">00439</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga15">PA_PlayFSSound</a>(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, u32 freq){
-00440        <a class="code" href="group___p_a_f_s.html#ga4">PA_Malloc</a>((<span class="keywordtype">void</span>**)(&amp;FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
+00440        <a class="code" href="group___p_a_f_s.html#ga4">PA_Malloc</a>((<span class="keywordtype">void</span>**)(FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
 00441 
 00442        s32 i;
 00443        s32 length = (PA_FSFile[PAFS_wav_number].Length&gt;&gt;2) + 1; <span class="comment">// Pour etre sur...</span>
@@ -176,7 +176,7 @@
 00488 
 00489 
 <a name="l00501"></a><a class="code" href="group___sound_a_r_m9.html#ga17">00501</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga17">PA_PlayFSSimpleSound</a>(u8 PA_Channel, u16 PAFS_wav_number){
-00502        <a class="code" href="group___p_a_f_s.html#ga4">PA_Malloc</a>((<span class="keywordtype">void</span>**)(&amp;FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
+00502        <a class="code" href="group___p_a_f_s.html#ga4">PA_Malloc</a>((<span class="keywordtype">void</span>**)(FS_wav[PA_Channel]), PA_FSFile[PAFS_wav_number].Length+4);
 00503 
 00504        s32 i;
 00505        s32 length = (PA_FSFile[PAFS_wav_number].Length&gt;&gt;2) + 1; <span class="comment">// Pour etre sur...</span>
@@ -219,7 +219,7 @@
 <a name="l00571"></a><a class="code" href="group___sound_a_r_m9.html#ga26">00571</a> <span class="preprocessor">#define PA_StopMod() SndStopMOD()</span>
 00572 <span class="preprocessor"></span>
 00573 
-<a name="l00582"></a><a class="code" href="group___sound_a_r_m9.html#ga27">00582</a> <span class="preprocessor">#define PA_PauseMod(bool) SndPauseMOD(bool)</span>
+<a name="l00582"></a><a class="code" href="group___sound_a_r_m9.html#ga27">00582</a> <span class="preprocessor">#define PA_PauseMod(u8) SndPauseMOD(u8)</span>
 00583 <span class="preprocessor"></span>
 00584 
 00585 
@@ -230,7 +230,7 @@
 00614 <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga22">PA_UnpauseStream</a>(u8 PA_Channel);
 00615 
 00616 
-00628 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_MicStartRecording(s8* buffer, <span class="keywordtype">int</span> length){StartRecording(buffer, length);}
+<a name="l00628"></a><a class="code" href="group___sound_a_r_m9.html#ga23">00628</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___sound_a_r_m9.html#ga23">PA_MicStartRecording</a>(u8* buffer, <span class="keywordtype">int</span> length){StartRecording(buffer, length);}
 00629 
 <a name="l00635"></a><a class="code" href="group___sound_a_r_m9.html#ga28">00635</a> <span class="preprocessor">#define PA_MicStopRecording() StopRecording()</span>
 00636 <span class="preprocessor"></span> <span class="comment">// end of SoundARM9</span>
@@ -238,7 +238,7 @@
 00639 
 00640 
 00641 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Thu Feb 9 15:37:40 2006 for PAlib by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Aug 30 21:02:12 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -35,6 +35,28 @@ Formats 8bit or 16bit
 
 Changelog
 
+
+v0.8 (100% by Mario, thanks !)
+
+PAGfx Frontend
+-----------------
+[NEW] Warning if incompatible color depth
+[FIX] Exception if saved without palette name
+[NEW] Message after loaded
+[FIX] Preview updated after load
+[FIX] Preview updated after tab change
+[NEW] New button 'Update Row'
+[FIX] No more minitemp.png
+[FIX] Correct aspect ratio in preview
+[NEW] Error handling in file access 
+
+PAGfx
+-------
+[NEW] Accepts a filename parameter
+[FIX] Speed up color conversion
+[FIX] Exception if can't open background file 
+
+
 v0.7.5
 - Small Bugfixes, shouldn't give errors anymore
 - Frontend updated with the correct Parsing code

@@ -196,8 +196,8 @@ for (i = 0; i < mem_size; i++) gfx[i] = data[i] + (1 << 15);
 
    PA_obj[0][obj_number].atr2 = PA_CreateGfx(0, gfx, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);
    PA_obj[1][obj_number].atr2 = PA_CreateGfx(1, gfx, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);   
-   PA_obj[1][obj_number].atr0 = PA_obj[0][obj_number].atr0 = (192 & OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
-   PA_obj[1][obj_number].atr1 = PA_obj[0][obj_number].atr1 = (x & OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
+   PA_obj[1][obj_number].atr0 = PA_obj[0][obj_number].atr0 = (192 & PA_OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
+   PA_obj[1][obj_number].atr1 = PA_obj[0][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
    PA_DualSetSpriteY(obj_number, y);
 
 free(gfx);
@@ -493,7 +493,7 @@ u8 obj_num = (rotset << 2);
          \~french Position X
 */
 extern inline void PA_DualSetSpriteX(u8 obj, s16 x){
-	PA_obj[0][obj].atr1 = PA_obj[1][obj].atr1 = (PA_obj[0][obj].atr1 & ALL_BUT(OBJ_X)) + ((x) & OBJ_X);
+	PA_obj[0][obj].atr1 = PA_obj[1][obj].atr1 = (PA_obj[0][obj].atr1 & ALL_BUT(PA_OBJ_X)) + ((x) & PA_OBJ_X);
 }
 
 

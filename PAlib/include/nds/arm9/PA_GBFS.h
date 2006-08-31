@@ -41,45 +41,12 @@ extern GBFS_FILE const* PA_GBFS_FILE;
  *  @{
  */
 
-/*! \fn extern inline void PA_InitGBFS(void)
+/*! \fn u32 PA_InitGBFS(void)
     \brief
          \~english Initialises GBFS and collects info on the files. Returns the number of files found... Stores the file infos in the following form : PA_GBFSfile[file number].File is a pointer towards the file, .Name is the file name without the extension, .Ext si the file extension (txt, html, etc...), and .Length is the file length.
          \~french Initialise GBFS et récupère des infos sur les fichiers. Renvoie le nombre de fichiers trouvés... Stock e les infos sous la forme suivante : PA_GBFSfile[numéro du fichier].File est un pointeur sur le fichier en question, .Name est son nom sans extension, .Ext est l'extension (txt, html, etc...), et .Length la taille du fichier
 */
-extern inline u32 PA_InitGBFS(void){
-s16 dot = 0;
-s16 i = 0;
-
-	WAIT_CR &= ~0x80;
- 
-	PA_GBFS_FILE = find_first_gbfs_file((void*)0x08000000);
-	PA_GBFS_nfiles = 0;
-	PA_GBFSfile[PA_GBFS_nfiles].File = (void*)gbfs_get_nth_obj(PA_GBFS_FILE, PA_GBFS_nfiles, (char*)PA_GBFSfile[PA_GBFS_nfiles].Name, &PA_GBFSfile[PA_GBFS_nfiles].Length);
-
-while(PA_GBFSfile[PA_GBFS_nfiles].File != NULL){
-
-	// On cherche la fin du nom
-	while(PA_GBFSfile[PA_GBFS_nfiles].Name[i]) i++;
-	// On en déduit le dernier point, pour avoir l'extension
-	while(PA_GBFSfile[PA_GBFS_nfiles].Name[i] != '.') i--; // On cherche l'extension
-	dot = i+1;
-	
-	for (i = 0; PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot] ; i++){
-		PA_GBFSfile[PA_GBFS_nfiles].Ext[i] = PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot];
-		if (('A' <= PA_GBFSfile[PA_GBFS_nfiles].Ext[i])&&(PA_GBFSfile[PA_GBFS_nfiles].Ext[i] <= 'Z')) PA_GBFSfile[PA_GBFS_nfiles].Ext[i] += 'a' - 'A'; // On passe en minuscule
-		PA_GBFSfile[PA_GBFS_nfiles].Ext[i+1] = 0;
-		PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot-1] = 0;
-		if (PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot-2] == '.') PA_GBFSfile[PA_GBFS_nfiles].Name[i+dot-2] = 0;
-	}
-	PA_GBFSfile[PA_GBFS_nfiles].Name[dot] = 0;
-	PA_GBFSfile[PA_GBFS_nfiles].Ext[dot] = 0;
-	
-	++PA_GBFS_nfiles; // On ajoute un objet...
-	PA_GBFSfile[PA_GBFS_nfiles].File = (void*)gbfs_get_nth_obj(PA_GBFS_FILE, PA_GBFS_nfiles, (char*)PA_GBFSfile[PA_GBFS_nfiles].Name, &PA_GBFSfile[PA_GBFS_nfiles].Length);
-}
-
-return PA_GBFS_nfiles;
-}
+u32 PA_InitGBFS(void);
 
 
 

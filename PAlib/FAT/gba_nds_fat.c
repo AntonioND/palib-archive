@@ -71,7 +71,7 @@
 // Take care of packing for GCC - it doesn't obey pragma pack()
 // properly for ARM targets.
 #ifdef __GNUC__
- #define __PACKED __attribute__ ((__packed__))
+ #define __PACKED //__attribute__ ((__packed__))
 #else
  #define __PACKED 
  #pragma pack(1)

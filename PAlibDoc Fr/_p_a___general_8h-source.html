@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PAlib:  Fichier source de PA_General.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.3.9.1 -->
+<div class="qindex">  <form class="search" action="search.php" method="get">
+<a class="qindex" href="index.html">Page&nbsp;principale</a> | <a class="qindex" href="modules.html">Modules</a> | <a class="qindex" href="files.html">Liste&nbsp;des&nbsp;fichiers</a> | <a class="qindex" href="globals.html">Portée&nbsp;globale</a>  | <span class="search">Rechercher&nbsp;<input class="search" type="text" name="query" value="" size="20" accesskey="s"/></span></form></div>
+<h1>PA_General.h</h1><a href="_p_a___general_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment">00001 <span class="preprocessor">#ifndef _PA_GENERAL</span>
+00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_GENERAL</span>
+00003 <span class="preprocessor"></span>
+00004 <span class="preprocessor">#ifdef __cplusplus</span>
+00005 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+00006 <span class="preprocessor">#endif</span>
+00007 <span class="preprocessor"></span>
+00008 <span class="comment">//#include &lt;PA9.h&gt;</span>
+00009 
+00010 
+00011 <span class="preprocessor">#include &lt;nds.h&gt;</span>
+00012 <span class="preprocessor">#include &lt;nds/memory.h&gt;</span>
+00013 <span class="preprocessor">#include &lt;nds/bios.h&gt;</span>
+00014 <span class="preprocessor">#include &lt;malloc.h&gt;</span>
+00015 
+00016 <span class="preprocessor">#include &lt;stdarg.h&gt;</span> <span class="comment">// Pour le système de text</span>
+00017 <span class="preprocessor">#include &lt;string.h&gt;</span>
+00018 
+00019 
+00020 <span class="keyword">extern</span> u8 PA_Screen;
+00021 
+00022 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00023    u8 NoIdea; 
+00024    u8 Year;
+00025    u8 Month;
+00026    u8 Day;
+00027    u8 NoIdea2;
+00028    u8 Hour;
+00029    u8 Minutes;
+00030    u8 Seconds;
+00031 } RTC;
+00032 <span class="keyword">extern</span> RTC PA_RTC;
+00033 
+00034 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>(<span class="keywordtype">void</span>);
+00035 
+00036 <span class="keyword">extern</span> s16 PA_ScreenSpace; <span class="comment">// Espace entre les 2 écrans...+192</span>
+00037 
+00038 <span class="preprocessor">#define BG_GFX1                    0x6000000</span>
+00039 <span class="preprocessor"></span><span class="preprocessor">#define BG_GFX2                    0x6200000</span>
+00040 <span class="preprocessor"></span><span class="preprocessor">#define SPRITE_GFX1         0x6400000</span>
+00041 <span class="preprocessor"></span><span class="preprocessor">#define SPRITE_GFX2         0x6600000</span>
+00042 <span class="preprocessor"></span>
+00043 
+00044 <span class="comment">//Pour le DMA Copy...</span>
+00045 <span class="preprocessor">#define REG_DMA3SRC *(volatile u32*)0x040000D4</span>
+00046 <span class="preprocessor"></span><span class="preprocessor">#define REG_DMA3DST *(volatile u32*)0x040000D8</span>
+00047 <span class="preprocessor"></span><span class="preprocessor">#define REG_DMA3CNT *(volatile u32*)0x040000DC</span>
+00048 <span class="preprocessor"></span><span class="preprocessor">#define DMA_ON 0x80000000</span>
+00049 <span class="preprocessor"></span><span class="preprocessor">#define DMA_NOW 0x00000000</span>
+00050 <span class="preprocessor"></span><span class="preprocessor">#define DMA_16 0x00000000</span>
+00051 <span class="preprocessor"></span><span class="preprocessor">#define DMA_32 0x04000000</span>
+00052 <span class="preprocessor"></span><span class="preprocessor">#define DMA_16NOW (DMA_ON | DMA_NOW | DMA_16)</span>
+00053 <span class="preprocessor"></span><span class="preprocessor">#define DMA_32NOW (DMA_ON | DMA_NOW | DMA_32)</span>
+00054 <span class="preprocessor"></span><span class="preprocessor">#define DMA_Copy(source, dest, count, mode) {REG_DMA3SRC = (u32)source; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) | (mode);}</span>
+00055 <span class="preprocessor"></span>
+00056 <span class="preprocessor">#define DMA_Clear(dest, count, mode) {REG_DMA3SRC = (u32)Blank; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) | (mode);}</span>
+00057 <span class="preprocessor"></span>
+00058 <span class="preprocessor">#define DMA_Force(ulVal,dest, count, mode) {REG_DMA3SRC=(u32)&amp;ulVal; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) |(mode) | DMA_SRC_FIX;}</span>
+00059 <span class="preprocessor"></span>
+00060 <span class="comment">// Commandes pour la lumière des écrans</span>
+00061 <span class="preprocessor">#define BACKLIGHT(screen)   BIT(2+screen)</span>
+00062 <span class="preprocessor"></span>
+00063 <span class="preprocessor">#define ALWAYSINLINE __attribute__((always_inline)) static inline</span>
+00064 <span class="preprocessor"></span>
+00065 
+00066 
+00067 
+00068 
+00069 
+00070 
+00071 
+00072 <span class="preprocessor">#define _REG8 *(volatile u16 *)</span>
+00073 <span class="preprocessor"></span><span class="preprocessor">#define _REG16 *(volatile u16 *)</span>
+00074 <span class="preprocessor"></span><span class="preprocessor">#define _REG32 *(volatile u32 *)</span>
+00075 <span class="preprocessor"></span>
+00076 
+00077 <span class="preprocessor">#define SWITCH_SCREENS  (1&lt;&lt;15)</span>
+00078 <span class="preprocessor"></span>
+00079 
+00080 
+00081 <span class="preprocessor">#define N_HBLS 263</span>
+00082 <span class="preprocessor"></span>
+00083 
+00084 
+00093 <span class="comment">//extern u32 *Blank;</span>
+00094 <span class="keyword">extern</span> u32 Blank[130000&gt;&gt;2];
+00095 
+00096 
+00097 
+00098 
+00099 
+00100 
+00102 <span class="comment">// Général</span>
+00104 <span class="comment"></span>
+00105 <span class="preprocessor">#define SIZEOF_8BIT(x)          (sizeof(x))</span>
+00106 <span class="preprocessor"></span><span class="preprocessor">#define SIZEOF_16BIT(x)         (sizeof(x)&gt;&gt;1)</span>
+00107 <span class="preprocessor"></span><span class="preprocessor">#define SIZEOF_32BIT(x)         (sizeof(x)&gt;&gt;2)</span>
+00108 <span class="preprocessor"></span>
+00109 
+00110 
+00111 
+00112 <span class="preprocessor">#define CODE_IN_IWRAM __attribute__ ((section (".iwram"), long_call))</span>
+00113 <span class="preprocessor"></span><span class="preprocessor">#define IN_IWRAM __attribute__ ((section (".iwram")))</span>
+00114 <span class="preprocessor"></span><span class="preprocessor">#define CODE_IN_EWRAM __attribute__ ((section (".ewram"), long_call))</span>
+00115 <span class="preprocessor"></span><span class="preprocessor">#define IN_EWRAM __attribute__ ((section (".ewram")))</span>
+00116 <span class="preprocessor"></span><span class="preprocessor">#define PACKED __attribute__ ((packed))</span>
+00117 <span class="preprocessor"></span>
+00118 
+00119 
+00120 
+00121 
+00122 
+00123 
+00124 <span class="comment">// Jpeg functions :</span>
+00125 <span class="keywordtype">void</span> PA_jpeg_GetImageSize(<span class="keywordtype">char</span>* name, <span class="keywordtype">int</span>* width, <span class="keywordtype">int</span>* height);
+00126 <span class="keywordtype">void</span> PA_jpeg_BltImage(<span class="keywordtype">char</span>* name, u16* vram, <span class="keywordtype">int</span> output_width, <span class="keywordtype">int</span> output_height);
+00127 
+00128 <span class="keyword">extern</span> <span class="keyword">const</span> s16 PA_SIN[512];
+00129 
+00130 
+00131 
+00132 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00133    u8 Color;  <span class="comment">// Favorite Color</span>
+00134    u8 BdayMonth; <span class="comment">// Mois d'anniversaire</span>
+00135    u8 BdayDay;  <span class="comment">// Jour de naissance</span>
+00136    u8 AlarmHour;
+00137    u8 AlarmMinute;
+00138    u8 Name[21];
+00139    u8 NameLength;
+00140    u8 Message[53];
+00141    u8 MessageLength;
+00142    u8 Language; <span class="comment">// Langue... 0 pour Jap, 1 pour anglais, 2 pour francais...</span>
+00143 } infos;
+00144 <span class="keyword">extern</span> infos PA_UserInfo;
+00145 
+00146 <span class="preprocessor">#define INFO_COLOR *(u8*)0x027FFC82</span>
+00147 <span class="preprocessor"></span><span class="preprocessor">#define INFO_BDAY_MONTH *(u8*)0x027FFC83</span>
+00148 <span class="preprocessor"></span><span class="preprocessor">#define INFO_BDAY_DAY *(u8*)0x027FFC84</span>
+00149 <span class="preprocessor"></span><span class="preprocessor">#define INFO_ALARM_HOUR *(u8*)0x027FFCD2</span>
+00150 <span class="preprocessor"></span><span class="preprocessor">#define INFO_ALARM_MINUTE *(u8*)0x027FFCD3</span>
+00151 <span class="preprocessor"></span><span class="preprocessor">#define INFO_NAME *(u8*)0x027FFC86</span>
+00152 <span class="preprocessor"></span><span class="preprocessor">#define INFO_NAME_LENGTH *(u8*)0x027FFC9A</span>
+00153 <span class="preprocessor"></span><span class="preprocessor">#define INFO_MESSAGE *(u8*)0x027FFC9C</span>
+00154 <span class="preprocessor"></span><span class="preprocessor">#define INFO_MESSAGE_LENGTH *(u8*)0x027FFCD0</span>
+00155 <span class="preprocessor"></span><span class="preprocessor">#define INFO_LANGUAGE  *(u8*)(0x027FFCE4)</span>
+00156 <span class="preprocessor"></span>
+00157 
+00169 <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga0">PA_Init</a>(<span class="keywordtype">void</span>);
+00170 
+00171 
+00172 
+<a name="l00184"></a><a class="code" href="group___general.html#ga1">00184</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga1">PA_SetVideoMode</a>(u8 screen, u8 mode) {
+00185        (*(vuint32*)(0x04000000 + (0x1000 * screen))) &amp;= ~7;
+00186        (*(vuint32*)(0x04000000 + (0x1000 * screen))) |= mode;
+00187 }
+00188 
+00189 
+00190 
+00196 <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga2">PA_UpdateUserInfo</a>(<span class="keywordtype">void</span>);
+00197 
+00198 
+00204 <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga3">PA_UpdateRTC</a>(<span class="keywordtype">void</span>);
+00205 
+00206 
+00214 <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga4">PA_LoadSplash</a>(<span class="keywordtype">void</span>);
+00215 
+00216 
+00222 <span class="keywordtype">void</span> PA_NeoSplash(<span class="keywordtype">void</span>);
+00223 
+00224 
+00225 
+<a name="l00231"></a><a class="code" href="group___general.html#ga6">00231</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>(<span class="keywordtype">void</span>){
+00232 swiWaitForVBlank();
+00233 }
+00234 
+00235 
+00236 
+<a name="l00242"></a><a class="code" href="group___general.html#ga7">00242</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga7">PA_SwitchScreens</a>(<span class="keywordtype">void</span>) {
+00243 POWER_CR ^= SWITCH_SCREENS; 
+00244 PA_Screen = !PA_Screen;
+00245 }
+00246 
+00247 <span class="comment">/*</span>
+00253 <span class="comment">extern inline void PA_InitCPUMeter() {</span>
+00254 <span class="comment">       PA_CPU = 0; </span>
+00255 <span class="comment">       PA_MaxCPU = 0; </span>
+00256 <span class="comment">       PA_lines = 0; </span>
+00257 <span class="comment">       PA_VBLCount = 0;</span>
+00258 <span class="comment">       PA_nVBLs = 0;</span>
+00259 <span class="comment">}*/</span>
+00260 
+00261 
+00262 
+00263 
+00264 
+<a name="l00270"></a><a class="code" href="group___general.html#ga11">00270</a> <span class="preprocessor">#define PA_LidClosed() (IPC-&gt;buttons&gt;&gt;7)</span>
+00271 <span class="preprocessor"></span>
+00272 
+<a name="l00278"></a><a class="code" href="group___general.html#ga8">00278</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___general.html#ga8">PA_CheckLid</a>(<span class="keywordtype">void</span>) {
+00279 
+00280 <span class="keywordflow">if</span> (!<a class="code" href="group___general.html#ga11">PA_LidClosed</a>()) <span class="keywordflow">return</span> 0;
+00281 <span class="keywordflow">else</span> {
+00282        u16 power_cr = POWER_CR; <span class="comment">// backup the power...</span>
+00283        POWER_CR = 0; <span class="comment">// Shutdown everything :p</span>
+00284        
+00285        <span class="comment">// Wait for the lid to be opened again...</span>
+00286        <span class="keywordflow">while</span>(<a class="code" href="group___general.html#ga11">PA_LidClosed</a>()) <a class="code" href="group___general.html#ga6">PA_WaitForVBL</a>();
+00287        
+00288        <span class="comment">// Return the power !</span>
+00289        POWER_CR = power_cr;
+00290        <span class="keywordflow">return</span> 1;
+00291 }
+00292 
+00293 }
+00294 
+00295 
+00296 
+<a name="l00308"></a><a class="code" href="group___general.html#ga9">00308</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga9">PA_SetScreenLight</a>(u8 screen, u8 light){
+00309        IPC-&gt;aux &amp;= ~(1&lt;&lt;(2+screen));
+00310        IPC-&gt;aux |= light&lt;&lt;(2+screen);
+00311 }
+00312 
+00313 
+<a name="l00325"></a><a class="code" href="group___general.html#ga10">00325</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___general.html#ga10">PA_SetLedBlink</a>(u8 blink, u8 speed){
+00326        IPC-&gt;aux &amp;= ~(3&lt;&lt;4);
+00327        IPC-&gt;aux |= (blink + (speed&lt;&lt;1))&lt;&lt;4;
+00328 }
+00329 
+00330 
+<a name="l00340"></a><a class="code" href="group___general.html#ga12">00340</a> <span class="preprocessor">#define PA_WaitFor(something) {while(!(something)){PA_WaitForVBL(); }}</span>
+00341 <span class="preprocessor"></span>
+00342 
+00343 
+00344 
+00345 
+00346 
+00347  <span class="comment">// end of General</span>
+00349 
+00350 
+00351 <span class="keywordtype">void</span> PA_Nothing(<span class="keywordtype">void</span>);
+00352 
+00353 
+00354 <span class="preprocessor">#ifdef __cplusplus</span>
+00355 <span class="preprocessor"></span>}
+00356 <span class="preprocessor">#endif</span>
+00357 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+00358 <span class="preprocessor"></span>
+00359 
+00360 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Wed Aug 30 21:07:40 2006 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
+</body>
+</html>

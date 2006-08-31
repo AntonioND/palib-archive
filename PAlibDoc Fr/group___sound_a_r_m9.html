@@ -19,7 +19,7 @@
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga26">PA_StopMod</a>()&nbsp;&nbsp;&nbsp;SndStopMOD()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter de jouer le mod ! Merci à Deku pour le mod player ! <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga27">PA_PauseMod</a>(bool)&nbsp;&nbsp;&nbsp;SndPauseMOD(bool)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga27">PA_PauseMod</a>(u8)&nbsp;&nbsp;&nbsp;SndPauseMOD(u8)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre le mod en pause ! Merci à Deku pour le mod player !  <a href="#ga27"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga28" doxytag="SoundARM9::PA_MicStopRecording"></a>
@@ -99,9 +99,9 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_PauseStream</b> (u
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga22">PA_UnpauseStream</a> (u8 PA_Channel)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stoppe un stream  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga23" doxytag="SoundARM9::PA_MicStartRecording"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_MicStartRecording</b> (s8 *buffer, int length)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga23">PA_MicStartRecording</a> (u8 *buffer, int length)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre l'enregistrement  <a href="#ga23"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Play sounds, etc... <hr><h2>Documentation des macro</h2>
@@ -113,10 +113,10 @@ Play sounds, etc... <hr><h2>Documentation des macro</h2>
         <tr>
           <td class="md" nowrap valign="top">#define PA_PauseMod          </td>
           <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">bool&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname1" valign="top" nowrap>          </td>
           <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;SndPauseMOD(bool)</td>
+          <td class="md" nowrap>&nbsp;&nbsp;&nbsp;SndPauseMOD(u8)</td>
         </tr>
       </table>
     </td>
@@ -134,7 +134,7 @@ Mettre le mod en pause ! Merci à Deku pour le mod player !
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>bool</em>&nbsp;</td><td>0 ou 1... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>u8</em>&nbsp;</td><td>0 ou 1... </td></tr>
   </table>
 </dl>
     </td>
@@ -215,6 +215,51 @@ Fonction la plus simple pour jouer un son... Utiliser les options par défaut pou
   </tr>
 </table>
 <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="ga23" doxytag="PA_Sound.h::PA_MicStartRecording"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_MicStartRecording           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8 *&nbsp;</td>
+          <td class="mdname" nowrap> <em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>int&nbsp;</td>
+          <td class="mdname" nowrap> <em>length</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Démarre l'enregistrement 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>buffer</em>&nbsp;</td><td>buffer d'enregistrement </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>length</em>&nbsp;</td><td>Longueur du buffer doit être divisible par 1600 </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
 <a class="anchor" name="ga19" doxytag="PA_Sound.h::PA_PlayFSMod"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1178,7 +1223,7 @@ Stoppe un stream
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Thu Feb 9 15:38:27 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Wed Aug 30 21:07:42 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
