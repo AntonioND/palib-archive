@@ -23,7 +23,7 @@ typedef struct {
    u8 moving; // Si la boule est en mouvement ou non
 } positions;
 
-#define LETTRES 6
+//#define LETTRES 6
 
 
 u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
@@ -107,6 +107,8 @@ WAIT_CR &= ~(1 << 7);
 
 PA_UpdateRTC();
 PA_SRand(35329 + PA_RTC.Minutes + PA_RTC.Seconds + PA_RTC.Hour + PA_RTC.Day);
+
+PA_VBLCountersReset();
 
 Stylus.X = 128;
 Stylus.Y = 96;

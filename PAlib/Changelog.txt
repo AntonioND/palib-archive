@@ -1,3 +1,36 @@
+PAlib 060902 Small features update
+
+New stuff
+---------
+
+[Gif] Just couldn't seem to find the option that determines the gif's speed in giflib :/ I added a counter for animation speed, you can set it manually : PA_SetGifSpeed(number of VBLs to wait). 60 VBLs = 1 second between 2 frames. Example available in Bitmap/GifSpeed
+
+[Counters] Added 16 possible VBL Counters : PA_VBLCounterStart(ncounter) to reset and start one, PA_VBLCounter[ncounter] to get its current value. Added an example (Other/Counters) to show it works and to extract seconds from that. Also available : Pause and Unpause :)
+
+[RotBg] Added PA_SetRotMapTile(u8 screen, u8 bg_select, s16 x, s16 y, u8 tile_number), thanks to spinal and gmiller ! Modified the code to work with all background sizes, and added an example (Backgrounds/RotBgTile). Only tested on emulator, will need more tests :)
+
+[Splash] Added PA_SplashEyes() to load the PAlib splash screen with eyes following you ! More splash screens to come when available. Example found in Splash/SplashEyes
+
+[Splash] Added PA_SplashBlue() to load up a Splash Screen based on the forum's logo ! More splash screens to come when available. Example found in Splash/SplashBlue
+
+[PAFS] Added PA_LoadFSImage(u8 screen, s16 FSImage) to load Images (jpeg, gif, or bmp format) from PAFS just by giving the file's PAFS number (no need to know which image format it is !). Added PAFS/PAFS_Image as example to go with it :)
+
+[Pad] Added Pad.Newpress.Anykey, (Held and Released too). Modified the basic Pad example to include that in. Seems to work, please confirm if you have any bug/error (should report any key, but not the stylus)
+
+
+Things Fixed
+------------
+
+[PAGfx] Benualdo correct a bug when exporting 8bit backgrounds, thanks :)
+
+[Examples] Removed some examples that were there twice :s
+
+[Example Fix] Fixed the 3d texture compilation error, not sure if it works though, couldn't test
+
+[Examples] Removed GBFS Gif and Bmp examples (GBFS will be depricated soon), added PAFS examples instead
+
+
+
 PAlib 060831 Official Revival Update
 
 [Text] Added TEXT_WHITE, TEXT_RED, etc... macros, thanks to Penjuin. Also updated the TextColors example to show that (using yellow)

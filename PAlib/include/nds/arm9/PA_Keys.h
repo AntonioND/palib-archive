@@ -25,7 +25,7 @@ extern "C" {
 
 
 typedef struct {
-   u8 A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select;
+   u8 A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select, Anykey;
 } PA_Pad;
 
 typedef struct {
@@ -89,7 +89,8 @@ extern u16 CompletePad, ExPad, TempPad;
    type.R = (pad & BUTTON_R) >> 8;\
    type.L = (pad & BUTTON_L) >> 9;\
    type.X = (pad & BUTTON_X) >> 10;\
-   type.Y = (pad & BUTTON_Y) >> 11;
+   type.Y = (pad & BUTTON_Y) >> 11;\
+   type.Anykey = (!(!((pad&2047))));
   
 #define COPYPAD(new, old)  new.A = old.A;\
    new.B = old.B;\

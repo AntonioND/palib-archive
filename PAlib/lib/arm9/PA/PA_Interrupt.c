@@ -24,13 +24,21 @@ void PA_UpdateSpriteAnims(void);
 
 // infos pour le tst CPU
 u8 PA_nVBLs = 0;
+s32 PA_VBLCounter[16];  // VBL counters available
+bool PA_VBLCounterOn[16];  // On or off
 u32 PA_CPU = 0; // Pourcentage CPU...
 u32 PA_MaxCPU = 0; // Max CPU...
 u32 PA_lines = 0; // Nombre de lignes, pour faire le calcul...
 u8 PA_VBLCount = 0; // Compteur de vbl
 
 
-
+void PA_VBLCountersReset(void){
+	u8 i;
+	for (i = 0; i < 16; i++){
+		PA_VBLCounter[i] = 0; // Ready to start
+		PA_VBLCounterOn[i] = 0;  // Not counting yet
+	}
+}
 
 /*
 void PA_ResetInterrupts(void) {
@@ -137,6 +145,10 @@ REG_IME = 0x01;
 
 */
 
+extern inline void PA_RunCounters(void){
+u8 i;
+	for (i = 0; i < 16; i++)	PA_VBLCounter[i] += PA_VBLCounterOn[i]; // Counter
+}
 
 
 
@@ -151,6 +163,9 @@ PA_Newframe = 1; // Synch prog to screen
 
 PA_UpdateSpriteAnims(); // Update the sprite animations...
 ++PA_nVBLs;
+// Counters
+PA_RunCounters();
+
 //PA_OutputText(0, 0, 10, "%d", PA_nVBLs);
 }
 

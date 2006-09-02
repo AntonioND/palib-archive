@@ -41,6 +41,9 @@ int main(int argc, char ** argv)
 		PA_OutputText(1, 3, 16, "R      : %d-%d-%d", Pad.Newpress.R, Pad.Held.R, Pad.Released.R);
 		PA_OutputText(1, 3, 17, "Start  : %d-%d-%d", Pad.Newpress.Start, Pad.Held.Start, Pad.Released.Start);
 		PA_OutputText(1, 3, 18, "Select : %d-%d-%d", Pad.Newpress.Select, Pad.Held.Select, Pad.Released.Select);
+		
+		PA_OutputText(1, 3, 20, "Anykey : %d-%d-%d", Pad.Newpress.Anykey, Pad.Held.Anykey, Pad.Released.Anykey); // Any key !
+		
 	
 		PA_WaitForVBL();
 	}

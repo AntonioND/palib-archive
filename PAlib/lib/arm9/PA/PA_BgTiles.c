@@ -27,7 +27,7 @@ u16 tempsize;
 extern u16 *PA_DrawBg[2]; // Fond dessinable
 u8 charsetstart[2] = {8, 8};
 
-
+u8 rotbg_size[2][4]; // Background size of each possible rotbg
 
 
 
@@ -221,7 +221,7 @@ u8 charsetok = 0;
 u8 blocksize = rotbg_place[bg_size];
 u8 i;
 u8 tempsize;
-
+rotbg_size[screen][bg_select] = bg_size;  // Save rot bg size (values 0-3 for 128, 256, 512 and 1024)
 
 PA_DeleteMap(screen, bg_select);
 

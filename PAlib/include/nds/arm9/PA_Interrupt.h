@@ -23,6 +23,8 @@ extern u32 PA_MaxCPU; // Max CPU...
 extern u32 PA_lines; // Nombre de lignes, pour faire le calcul...
 extern u8 PA_VBLCount; // Compte le nombre de VBL avant qu'on en arrive à un tour
 extern u8 PA_nVBLs;
+extern s32 PA_VBLCounter[16];  // VBL counters available
+extern bool PA_VBLCounterOn[16];  // On or off
 
 
 /*
@@ -211,6 +213,50 @@ extern inline void PA_InitVBL(void) {
 */
 #define PA_GetVcount() (REG_VCOUNT&511)
 
+/*! \fn void PA_ResetVBLCounters(void)
+    \brief
+         \~english Resets the VBL counters
+         \~french Remet à 0 les compteurs VBL
+*/
+void PA_VBLCountersReset(void);
+
+/*! \fn extern inline void PA_VBLCounterStart(u8 nCounter)
+    \brief
+         \~english Resets a given counter and starts running
+         \~french Remet à 0 un compteur donné et le démarre
+    \param nCounter
+         \~english Counter number (0-15)
+         \~french Numéro du compteur (0-15)
+*/
+extern inline void PA_VBLCounterStart(u8 nCounter){
+	PA_VBLCounter[nCounter] = 0;
+	PA_VBLCounterOn[nCounter] = 1;
+}
+
+/*! \fn extern inline void PA_VBLCounterPause(u8 nCounter)
+    \brief
+         \~english Pauses a given VBL counter
+         \~french Met en pause un compteur VBL donné
+    \param nCounter
+         \~english Counter number (0-15)
+         \~french Numéro du compteur (0-15)
+*/
+extern inline void PA_VBLCounterPause(u8 nCounter){
+	PA_VBLCounterOn[nCounter] = 0;
+}
+
+
+/*! \fn extern inline void PA_VBLCounterUnpause(u8 nCounter)
+    \brief
+         \~english Unpauses a given VBL counter
+         \~french Refait tourner un compteur VBL donné
+    \param nCounter
+         \~english Counter number (0-15)
+         \~french Numéro du compteur (0-15)
+*/
+extern inline void PA_VBLCounterUnpause(u8 nCounter){
+	PA_VBLCounterOn[nCounter] = 1;
+}
 
 
 /** @} */ // end of Interrupts

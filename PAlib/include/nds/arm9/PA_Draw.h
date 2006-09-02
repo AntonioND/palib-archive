@@ -15,6 +15,7 @@ extern "C" {
 
 #include "PA_Interrupt.h"
 #include "PA_Palette.h"
+#include "PA_Splash.h"
 #include "gif/gif_lib.h"
 
 extern GifFileType* gifinfo;
@@ -52,6 +53,7 @@ extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 //extern PA_SCreen
 
 extern u16 PA_temppal[256];
+extern s32 PA_GifSpeed;
 
 
 void PA_Load16bitGif(u8 screen, s16 x, s16 y, void *gif);
@@ -643,22 +645,41 @@ extern inline void PA_LoadGif(u8 screen, void *gif){
 
 
 
+
+/*! \fn extern inline void PA_SetGifSpeed(s32 NVBLs)
+    \brief
+         \~english Allows the suer to define the speed at which animated gifs should be played
+         \~french Permet de choisir la vitesse à laquelle l'animation d'un gif sera jouée.
+    \param NVBLs
+         \~english VBLs to wait between 2 images. 60 means 1 second, 30 for half a second, etc...
+         \~french Nombre de VBLs à attendre entre 2 images. 60 pour 1 seconde, 30 pour la moitié, etc... 	 
+*/
+extern inline void PA_SetGifSpeed(s32 NVBLs){
+	PA_GifSpeed = NVBLs;
+}
+
+
+
 /* // Les différentes fonctions images...
 extern inline void PA_LoadJpeg(u8 screen, void *jpeg)
 void PA_LoadBmp(u8 screen, s16 x, s16 y, void *bmp);*/
 
 
-/*! \fn extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage)
+/*! \fn void PA_LoadFSImage(u8 screen, s16 FSImage)
     \brief
-         \~english Load any image from GBFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP
-         \~french Charger une image depuis GBFS sur l'écran (16 bit). Support le Gif, Jpeg, et BMP
+         \~english Load any image from PAFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP
+         \~french Charger une image depuis PAFS sur l'écran (16 bit). Supporte le Gif, Jpeg, et BMP
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)		 
-    \param GBFSImage
-         \~english GBFS Image number
-         \~french Numéro de l'image dans GBFS	 
+    \param FSImage
+         \~english PAFS Image number
+         \~french Numéro de l'image dans PAFS	 
 */
+
+void PA_LoadFSImage(u8 screen, s16 FSImage);
+
+/*
 extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage){
 	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
 		PA_LoadBmp(screen, PA_GBFSfile[GBFSImage].File);
@@ -670,7 +691,7 @@ extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage){
 		PA_LoadGif(screen, PA_GBFSfile[GBFSImage].File);
 	}		
 }
-
+*/
 
 
 

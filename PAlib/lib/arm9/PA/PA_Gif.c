@@ -31,6 +31,9 @@ int m;
    GifPixelType LineBuf[1025]; // Buffer temporaire
 
 
+s32 PA_GifSpeed = 6;
+
+
 int readFunc(GifFileType* GifFile, GifByteType* buf, int count)
 {
     char* ptr = (char*)GifFile->UserData;
@@ -123,7 +126,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	    Width = GifFile->Image.Width;
 	    Height = GifFile->Image.Height;
 		
-	    for(m=0;m<6;m++) PA_WaitForVBL(); /* WaitForVblank pour que les gifs animés marchent, encore à finioler ^^ */
+	    for(m=0;m<PA_GifSpeed;m++) PA_WaitForVBL(); /* WaitForVblank pour que les gifs animés marchent, encore à finioler ^^ */
 	    
 	    // Update Color map
 	    ColorMap = (GifFile->Image.ColorMap	? GifFile->Image.ColorMap: GifFile->SColorMap);
@@ -133,6 +136,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 			GifColorType* pColor = &ColorMap->Colors[i];
 			Palette[i] = PA_RGB8(GAMMA(pColor->Red), GAMMA(pColor->Green), GAMMA(pColor->Blue));
 	    }
+		//GifFile->Image.Delay;
 		/*
 	    if (GifFile->Image.Left + GifFile->Image.Width > GifFile->SWidth ||
 		GifFile->Image.Top + GifFile->Image.Height > GifFile->SHeight) {

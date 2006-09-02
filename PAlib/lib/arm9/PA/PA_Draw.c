@@ -476,6 +476,27 @@ if (lx){ // Si y'a une surface à faire
 }
 
 
+
+
+void PA_LoadFSImage(u8 screen, s16 FSImage){
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "bmp")){
+		PA_LoadBmp(screen, PA_PAFSFile(FSImage));
+	}
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "jpg")){ 
+		PA_LoadJpeg(screen, PA_PAFSFile(FSImage));
+	}	
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "gif")){ 
+		PA_LoadGif(screen, PA_PAFSFile(FSImage));
+	}		
+}
+
+
+
+
+
+
+
+
 /*
 void PA_DrawCircle(int xCenter, int yCenter, int radius, int color){
 int x = 0;

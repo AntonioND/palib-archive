@@ -35,6 +35,13 @@ Formats 8bit or 16bit
 
 Changelog
 
+v0.81 (thanks benualdo)
+
+PAGfx Frontend
+-----------------
+[FIX] Exporting 8bit backgrounds should now work
+
+
 
 v0.8 (100% by Mario, thanks !)
 

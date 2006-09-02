@@ -73,6 +73,7 @@ extern "C" {
 
 #include "arm9/PA_Wifi.h"
 
+#include "arm9/PA_Splash.h"
 
 #ifdef __cplusplus
 }
