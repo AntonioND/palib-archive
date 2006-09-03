@@ -1,0 +1,131 @@
+K 25
+svn:wc:ra_dav:version-url
+V 25
+/svn/!svn/ver/4/trunk/FAT
+END
+io_m3sd.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_m3sd.h
+END
+io_efa2.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_efa2.c
+END
+io_sccf.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_sccf.c
+END
+io_efa2.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_efa2.h
+END
+disc_io.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/disc_io.c
+END
+io_sccf.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_sccf.h
+END
+io_mpcf.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_mpcf.c
+END
+disc_io.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/disc_io.h
+END
+io_m3cf.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_m3cf.c
+END
+io_mpcf.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_mpcf.h
+END
+io_nmmc.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_nmmc.c
+END
+io_scsd.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_scsd.c
+END
+io_m3cf.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_m3cf.h
+END
+io_fcsr.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_fcsr.c
+END
+gba_nds_fat.txt
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/4/trunk/FAT/gba_nds_fat.txt
+END
+io_nmmc.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_nmmc.h
+END
+gba_nds_fat.c
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/4/trunk/FAT/gba_nds_fat.c
+END
+io_scsd.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_scsd.h
+END
+io_fcsr.h
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_fcsr.h
+END
+gba_nds_fat.h
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/4/trunk/FAT/gba_nds_fat.h
+END
+io_m3sd.c
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/svn/!svn/ver/4/trunk/FAT/io_m3sd.c
+END

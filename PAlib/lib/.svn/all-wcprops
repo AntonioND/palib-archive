@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 25
+/svn/!svn/ver/7/trunk/lib
+END
+libpa9.a
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/8/trunk/lib/libpa9.a
+END
+libdswifi7.a
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/4/trunk/lib/libdswifi7.a
+END
+libdswifi9.a
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/4/trunk/lib/libdswifi9.a
+END
+libdswifi7d.a
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/4/trunk/lib/libdswifi7d.a
+END
+libdswifi9d.a
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/4/trunk/lib/libdswifi9d.a
+END
+libpa7.a
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/8/trunk/lib/libpa7.a
+END

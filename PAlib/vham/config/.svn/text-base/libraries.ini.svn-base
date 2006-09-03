@@ -1,0 +1,36 @@
+; 5th June 2003 - Peter Schraut
+; www.console-dev.de
+;
+; Ini-File to handle library copy actions!
+;
+;
+; If the source does NOT exist, it will NOT
+; appear in the library combobox !!!!
+;
+; Both, source and target are able to expand
+; enviroment varibles!
+;
+; The "Caption" must be the same as the section name! ([Section Name])
+;
+; The section "Last" is to store the last used/copied
+; library!
+;
+;
+
+[Libraries]
+
+
+;
+; Which lib was selected last time
+;
+[Last]
+Used=0
+
+;
+; Detailed custom sections start here
+;
+
+
+
+
+; END OF FILE
