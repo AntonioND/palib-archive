@@ -13,8 +13,6 @@ New Stuff
 Updated Stuff
 -------------
 
-[DeSmuME] Updated to latest known version
-
 [Stylus] Now includes Stylus.Downtime and Uptime, to know how long the stylus was held on the screen or off of it (check Input/Stylus2 example to see that in action)
 
 [Stylus] Added Stylus.DblClick, may need more testing though, also in Stylus2 example
