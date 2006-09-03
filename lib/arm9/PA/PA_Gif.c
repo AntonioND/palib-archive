@@ -144,17 +144,18 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	    }*/
 	    if (GifFile->Image.Interlace) {
 		/* Need to perform 4 passes on the images: */
-		for (Count = i = 0; i < 4; i++)
-		    for (j = Row + InterlacedOffset[i]; j < Row + Height;
-		    j += InterlacedJumps[i]) {
-				DGifGetLineByte(GifFile, (ScreenBuff + (((SWidth*j) + Col) << GifBits)),Width);
+			for (Count = i = 0; i < 4; i++) {
+				for (j = Row + InterlacedOffset[i]; j < Row + Height;
+					j += InterlacedJumps[i]) {
+					DGifGetLineByte(GifFile, (ScreenBuff + (((SWidth*j) + Col) << GifBits)),Width);
 				/*if (DGifGetLineByte(GifFile, &ScreenBuff[j][Col],
 					Width) == GIF_ERROR) {
 					PrintGifError();
 					return EXIT_FAILURE;
 				}*/
-		    }
-	    }
+				}
+			}
+		}
 	    else {
 			for (i = 0; i < Height; i++) {
 				DGifGetLineByte(GifFile, (ScreenBuff + (((SWidth*Row) + Col) << GifBits)),Width);
@@ -168,9 +169,12 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 			}
 	    }
 	    break;
+		
 	case EXTENSION_RECORD_TYPE:
 	    /* Skip any extension blocks in file: */
-		s32 test = DGifGetExtension(GifFile, &ExtCode, &Extension);
+	//	s16 test;
+		
+//	s32	test = DGifGetExtension(GifFile, &ExtCode, &Extension);
 		
 		// CHECK HERE FOR GIF TIMING !!
 		
