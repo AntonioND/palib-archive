@@ -172,7 +172,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 		
 	case EXTENSION_RECORD_TYPE:
 	    /* Skip any extension blocks in file: */
-	//	s16 test;
+	
 		
 //	s32	test = DGifGetExtension(GifFile, &ExtCode, &Extension);
 		
