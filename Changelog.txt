@@ -7,6 +7,8 @@ New Stuff
 
 [2D/3D] Seperated the 2D init (still done by default in PA_Init). You can now use PA_Init2D to return to 2D mode after using 3D functions :)
 
+[Gif] Gif speed now works, only tested on emu for now. Thanks to Shaun for the solution :D Removed PA_SetGifSpeed :p
+
 
 Updated Stuff
 -------------
@@ -16,6 +18,8 @@ Updated Stuff
 [Stylus] Now includes Stylus.Downtime and Uptime, to know how long the stylus was held on the screen or off of it (check Input/Stylus2 example to see that in action)
 
 [Stylus] Added Stylus.DblClick, may need more testing though, also in Stylus2 example
+
+[DeSmuME] Reverted back to the old version, this one had 'Hickups' :s
 
 
 Things Fixed

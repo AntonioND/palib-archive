@@ -31,7 +31,7 @@ int m;
    GifPixelType LineBuf[1025]; // Buffer temporaire
 
 
-s32 PA_GifSpeed = 6;
+//s32 PA_GifSpeed = 6;
 
 
 int readFunc(GifFileType* GifFile, GifByteType* buf, int count)
@@ -126,7 +126,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	    Width = GifFile->Image.Width;
 	    Height = GifFile->Image.Height;
 		
-	    for(m=0;m<PA_GifSpeed;m++) PA_WaitForVBL(); /* WaitForVblank pour que les gifs animés marchent, encore à finioler ^^ */
+//	    for(m=0;m<PA_GifSpeed;m++) PA_WaitForVBL(); /* WaitForVblank pour que les gifs animés marchent, encore à finioler ^^ */
 	    
 	    // Update Color map
 	    ColorMap = (GifFile->Image.ColorMap	? GifFile->Image.ColorMap: GifFile->SColorMap);
@@ -172,7 +172,8 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 		
 	case EXTENSION_RECORD_TYPE:
 	    /* Skip any extension blocks in file: */
-	
+		DGifGetExtension(GifFile, &ExtCode, &Extension);
+
 		
 //	s32	test = DGifGetExtension(GifFile, &ExtCode, &Extension);
 		
@@ -183,11 +184,37 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 		return EXIT_FAILURE;
 	    }*/
 	    while (Extension != NULL) {
-			DGifGetExtensionNext(GifFile, &Extension);
-		/*if (DGifGetExtensionNext(GifFile, &Extension) == GIF_ERROR) {
-		    PrintGifError();
-		    return EXIT_FAILURE;
-		}*/
+			if(ExtCode == GRAPHICS_EXT_FUNC_CODE)
+					{
+						s32 disposalMethod = (Extension[1] >> 2) & 7;
+						disposalMethod = 0;
+//						if((Extension[1] & 1) == 1) // transparency color exists
+//							pd->transColor = Extension[4];		
+ 
+						int tmpDelay = 0;
+						double tmpNumber = 0;
+ 
+						tmpDelay = Extension[2];
+						tmpDelay += Extension[3] << 8;
+ 
+						tmpNumber = (double)(tmpDelay) * (double)60;
+						tmpNumber = tmpNumber / (double)100;
+ 
+						tmpDelay = (int)tmpNumber;
+						s32 time;
+						for(time=0;time<tmpNumber;time++) PA_WaitForVBL(); /* WaitForVblank pour que les gifs animés marchent, encore à finioler ^^ */
+//						pd->aniDelay = tmpDelay;
+						
+						
+					}
+					DGifGetExtensionNext(GifFile, &Extension);
+					/*if(DGifGetExtensionNext(pd->streamFile, &Extension) == GIF_ERROR) 
+					{
+						closeGifStreaming(pd);
+						pd->error = true;
+						sendCallBack(pd, FINISH_PROGRESS, 0);
+						return;
+					}*/
 	    }
 	    break;
 	case TERMINATE_RECORD_TYPE:

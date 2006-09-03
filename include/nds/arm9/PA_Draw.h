@@ -53,7 +53,7 @@ extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 //extern PA_SCreen
 
 extern u16 PA_temppal[256];
-extern s32 PA_GifSpeed;
+//extern s32 PA_GifSpeed;
 
 
 void PA_Load16bitGif(u8 screen, s16 x, s16 y, void *gif);
@@ -646,17 +646,6 @@ extern inline void PA_LoadGif(u8 screen, void *gif){
 
 
 
-/*! \fn extern inline void PA_SetGifSpeed(s32 NVBLs)
-    \brief
-         \~english Allows the suer to define the speed at which animated gifs should be played
-         \~french Permet de choisir la vitesse à laquelle l'animation d'un gif sera jouée.
-    \param NVBLs
-         \~english VBLs to wait between 2 images. 60 means 1 second, 30 for half a second, etc...
-         \~french Nombre de VBLs à attendre entre 2 images. 60 pour 1 seconde, 30 pour la moitié, etc... 	 
-*/
-extern inline void PA_SetGifSpeed(s32 NVBLs){
-	PA_GifSpeed = NVBLs;
-}
 
 
 
@@ -780,6 +769,17 @@ if (!((i + x)&1)){ // Dernier pixel à mettre tout seul peut-etre
 
 
 
+/*! \fn extern inline void PA_SetGifSpeed(s32 NVBLs)
+    \brief
+         \~english Allows the suer to define the speed at which animated gifs should be played
+         \~french Permet de choisir la vitesse à laquelle l'animation d'un gif sera jouée.
+    \param NVBLs
+         \~english VBLs to wait between 2 images. 60 means 1 second, 30 for half a second, etc...
+         \~french Nombre de VBLs à attendre entre 2 images. 60 pour 1 seconde, 30 pour la moitié, etc... 	 
+*//*
+extern inline void PA_SetGifSpeed(s32 NVBLs){
+	PA_GifSpeed = NVBLs;
+}*/
 
 
 
