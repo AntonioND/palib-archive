@@ -45,16 +45,17 @@ typedef struct{
          \~english Initialise the 3d !!! Big thanks to Delfare for all the 3d functions !
          \~french Initialise la 3d !! Un grand merci à Delfare pour toutes les fonctions 3d ! 
 */
-
-
-
 void PA_Init3D(void);
+
 /*! \fn void PA_LoadSplash3D(void);
     \brief
         \~english Load a PlayerAdvance splash screen... It's always nice to give some credit ;)
         \~french Affiche un splash screen PlayerAdvance... C'est toujours sympa de remercier ;)
 */
 void PA_LoadSplash3D(void);
+
+
+
 /*! \fn void PA_Init3DDrawing(float x1, float y1, float z1, float x2, float y2, float z2)
     \brief
          \~english takes care of the perspective,  (x1,y1,z1) is the position of the camera, (x2,y2,z2) is where the camera looks at

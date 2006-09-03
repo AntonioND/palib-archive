@@ -60,40 +60,23 @@ PA_IPCinfo PA_IPC;*/
 // Général
 //////////////////////////////////////////////////////////////////////
 
-
-void PA_Init(void) {
+void PA_Init2D(void){
 // Turn on the screens and 2D cores and switch to mode 0
 powerON(POWER_ALL);
   POWER_CR = POWER_ALL_2D;
   
  POWER_CR &= ~SWITCH_SCREENS; // on s'assure que l'écran est bien
 
-
-	//IPC->aux = 3; PA_SetScreenLight(0, 1); PA_SetScreenLight(1, 1);
-	
-s32 i;
-//PA_SetScreenLight(0, 1); PA_SetScreenLight(1, 1); // Les 2 écrans sont allumés
-
-//IPC->mailData
-
-//sndMemPool = new u32[SND_MEM_POOL_SIZE/4]; 
-
   	VRAM_A_CR=VRAM_ENABLE|VRAM_A_MAIN_BG; 
 	VRAM_B_CR=VRAM_ENABLE|VRAM_B_MAIN_SPRITE; 
 	VRAM_C_CR=VRAM_ENABLE|VRAM_C_SUB_BG;
 	VRAM_D_CR=VRAM_ENABLE|VRAM_D_SUB_SPRITE; 
-
 
   DISPLAY_CR = MODE_0_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE|2<<20;  // 1 << 31 pour 256 couleurs avec palettes
   SUB_DISPLAY_CR = MODE_0_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE|2<<20;
 
 vramSetMainBanks(VRAM_A_MAIN_BG,VRAM_B_MAIN_SPRITE,VRAM_C_SUB_BG,VRAM_D_SUB_SPRITE);
 
-//u32 temp = 0;
-//if (Blank) free(Blank); // Free, just in case it's a ReInit...
-//Blank = (u32*)malloc(130000); // Malloc a big blank chunk
-for (i = 0; i < 130000>>2; i++) Blank[i] = 0;
- 
 // Sprite inits...
 PA_ResetSpriteSys(); // Init's the sprite system
 PA_InitSpriteExtPal(); // Init's sprite extended palettes
@@ -101,7 +84,18 @@ PA_InitSpriteExtPal(); // Init's sprite extended palettes
 
 PA_ResetBgSys();
 PA_InitBgExtPal(); // Init's bg extended palettes
+}
 
+
+
+
+
+
+void PA_Init(void) {
+s32 i;
+for (i = 0; i < 130000>>2; i++) Blank[i] = 0;
+
+PA_Init2D();
 
 WAIT_CR &= ~(1 << 7);
 
@@ -116,7 +110,6 @@ Stylus.Y = 96;
 
 PA_VBLFunctionReset();
 irqInit();
-
 //PA_ResetInterrupts();
 
 for (i = 0; i < 2; i++){

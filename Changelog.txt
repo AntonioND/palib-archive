@@ -1,11 +1,11 @@
-
-
 New Stuff
 ---------
 
 [Compilation] No longer requires install.bat :)
 
 [VBL] Added a custom function code in the VBL : PA_VBLFunctionInit(your function) will execute, each and every frame, a given function... This can be used to make counters or have critical codes run at full speed when you're low on CPU time. Be aware that too CPU-expensive functions might slow down your program or hang the DS if run from the VBL !!!    PA_VBLFunctionReset() can be used to stop the custom function. An example was added (Other/VBLFunction)
+
+[2D/3D] Seperated the 2D init (still done by default in PA_Init). You can now use PA_Init2D to return to 2D mode after using 3D functions :)
 
 
 Updated Stuff

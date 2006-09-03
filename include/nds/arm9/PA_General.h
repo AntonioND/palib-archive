@@ -169,6 +169,14 @@ extern infos PA_UserInfo;
 void PA_Init(void);
 
 
+/*! \fn void PA_Init2D(void)
+    \brief
+         \~english Resets to 2D state after using 3D functions
+         \~french Remet en mode 2D après avoir utilisé la 3D
+*/
+void PA_Init2D(void);
+
+
 
 /*! \fn extern inline void PA_SetVideoMode(u8 screen, u8 mode)
     \brief
