@@ -9,6 +9,8 @@ New Stuff
 
 [Gif] Gif speed now works, only tested on emu for now. Thanks to Shaun for the solution :D Removed PA_SetGifSpeed :p
 
+[Gif] New commands available to change the gif speed while playing and pause it ! PA_GifAnimSpeed(float speed), PA_GifAnimStop, PA_GifAnimPause, and PA_GifAnimPlay. Check out the GifAnim example :)
+
 
 Updated Stuff
 -------------

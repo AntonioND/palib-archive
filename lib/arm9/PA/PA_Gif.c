@@ -22,6 +22,7 @@ extern u8 PA_nBit[2];
 
 u8 GifBits; // Mode 8 ou 16 bits
 
+PA_GifInfos PA_GifInfo;
 
 const short InterlacedOffset[] = { 0, 4, 2, 1 }; /* The way Interlaced image should. */
 const short InterlacedJumps[] = { 8, 8, 4, 2 };    /* be read - offsets and jumps... */
@@ -100,6 +101,9 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
     GifByteType *Extension;
     GifFileType *GifFile;
     ColorMapObject *ColorMap;
+	
+	PA_GifAnimSpeed(1); // normal speed when starting out...
+	PA_GifAnimPlay();
 	
 	GifBits = nBits;
 	if (GifBits == 1) { // On utilise une palette temporaire...
@@ -202,7 +206,12 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
  
 						tmpDelay = (int)tmpNumber;
 						s32 time;
-						for(time=0;time<tmpNumber;time++) PA_WaitForVBL(); /* WaitForVblank pour que les gifs animés marchent, encore à finioler ^^ */
+						for(time=0;time*PA_GifInfo.Speed<tmpNumber;time++) {
+							PA_WaitForVBL(); 
+							while(PA_GifInfo.Play == 2) PA_WaitForVBL(); // Pause animation !
+							if (PA_GifInfo.Play == 0) goto GifStop;
+						}
+						
 //						pd->aniDelay = tmpDelay;
 						
 						
@@ -226,6 +235,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
     while (RecordType != TERMINATE_RECORD_TYPE);
     
     /* Close file when done */
+	GifStop:
 	DGifCloseFile(GifFile);
     /*if (DGifCloseFile(GifFile) == GIF_ERROR) {
 	PrintGifError();
