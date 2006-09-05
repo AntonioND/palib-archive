@@ -75,6 +75,8 @@ extern "C" {
 
 #include "arm9/PA_Splash.h"
 
+#include "arm9/PA_Gif.h"
+
 #ifdef __cplusplus
 }
 #endif

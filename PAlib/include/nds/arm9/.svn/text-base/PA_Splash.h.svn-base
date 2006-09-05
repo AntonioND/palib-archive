@@ -1,5 +1,5 @@
-#ifndef _PA_Window
-#define _PA_Window
+#ifndef _PA_Splash
+#define _PA_Splash
 
 
 /*! \file PA_Splash.h

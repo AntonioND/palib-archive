@@ -10,8 +10,8 @@
 #---------------------------------------------------------------------------------
 TARGET	    :=	PA_Game
 BUILD		:=	build
-SOURCES	    := data	. PA ../../FAT
-INCLUDES	:=	../../include/nds ../../include/nds/arm9 build
+SOURCES	    := data	. PA ../../FAT PA/gif
+INCLUDES	:=	../../include/nds ../../include/nds/arm9 ../../include/nds/arm9/gif build
 
 include $(DEVKITARM)/ds_rules
 

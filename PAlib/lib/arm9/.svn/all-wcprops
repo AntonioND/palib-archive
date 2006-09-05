@@ -30,8 +30,8 @@ END
 Makefile
 K 25
 svn:wc:ra_dav:version-url
-V 39
-/svn/!svn/ver/4/trunk/lib/arm9/Makefile
+V 40
+/svn/!svn/ver/11/trunk/lib/arm9/Makefile
 END
 gba-jpeg-decode.c
 K 25

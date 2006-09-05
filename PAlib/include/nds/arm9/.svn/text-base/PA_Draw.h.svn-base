@@ -16,10 +16,8 @@ extern "C" {
 #include "PA_Interrupt.h"
 #include "PA_Palette.h"
 #include "PA_Splash.h"
-#include "gif/gif_lib.h"
+#include "PA_Gif.h"
 
-extern GifFileType* gifinfo;
-extern s16 gifwidth, gifheight; 
 extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 
 
@@ -54,11 +52,6 @@ extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 
 extern u16 PA_temppal[256];
 //extern s32 PA_GifSpeed;
-
-
-void PA_Load16bitGif(u8 screen, s16 x, s16 y, void *gif);
-
-int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
 
 
 
@@ -587,62 +580,6 @@ PA_LoadBmpToBuffer(PA_DrawBg[screen], x, y, bmp, 256);
 extern inline void PA_LoadBmp(u8 screen, void *bmp){
 	PA_LoadBmpEx(screen, 0, 0, bmp);
 }
-
-
-
-
-
-
-
-/*! \fn extern inline u16 PA_GetGifWidth(void* gif)
-    \brief
-         \~english Get a Gif's width in pixels
-         \~french Récupérer la largeur d'un Gif en pixels
-    \param gif
-         \~english Gif image...
-         \~french image au format Gif...	 
-*/
-extern inline u16 PA_GetGifWidth(void* gif){
-	u16 *temp = (u16*)gif;
-	temp += 3;
-	return *temp;
-}
-
-
-
-/*! \fn extern inline u16 PA_GetGifHeight(void* gif)
-    \brief
-         \~english Get a Gif's height in pixels
-         \~french Récupérer la hauteur d'un Gif en pixels
-    \param gif
-         \~english Gif image...
-         \~french image au format Gif...	 
-*/
-extern inline u16 PA_GetGifHeight(void* gif){
-	u16 *temp = (u16*)gif;
-	temp += 4;
-	return *temp;
-}
-
-
-
-/*! \fn extern inline void PA_LoadGif(u8 screen, void *gif)
-    \brief
-         \~english Load a Gif on a 16 bit background... Don't forget to Init the background !
-         \~french Charger un Gif sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
-    \param screen
-         \~english Chose de screen (0 or 1)
-         \~french Choix de l'écran (0 ou 1)		 
-    \param gif
-         \~english Gif image...
-         \~french image au format Gif...	 
-*/
-extern inline void PA_LoadGif(u8 screen, void *gif){
-	if (PA_nBit[screen]) DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
-	//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...
-	else DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
-}
-
 
 
 

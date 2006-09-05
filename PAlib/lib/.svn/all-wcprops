@@ -6,8 +6,8 @@ END
 libpa9.a
 K 25
 svn:wc:ra_dav:version-url
-V 34
-/svn/!svn/ver/8/trunk/lib/libpa9.a
+V 35
+/svn/!svn/ver/13/trunk/lib/libpa9.a
 END
 libdswifi7.a
 K 25
@@ -36,6 +36,6 @@ END
 libpa7.a
 K 25
 svn:wc:ra_dav:version-url
-V 34
-/svn/!svn/ver/8/trunk/lib/libpa7.a
+V 35
+/svn/!svn/ver/13/trunk/lib/libpa7.a
 END

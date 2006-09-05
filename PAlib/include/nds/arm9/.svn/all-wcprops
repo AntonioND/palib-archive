@@ -66,8 +66,8 @@ END
 PA_Splash.h
 K 25
 svn:wc:ra_dav:version-url
-V 50
-/svn/!svn/ver/4/trunk/include/nds/arm9/PA_Splash.h
+V 51
+/svn/!svn/ver/10/trunk/include/nds/arm9/PA_Splash.h
 END
 PA_Interrupt.h
 K 25
@@ -78,8 +78,8 @@ END
 PA_Draw.h
 K 25
 svn:wc:ra_dav:version-url
-V 48
-/svn/!svn/ver/8/trunk/include/nds/arm9/PA_Draw.h
+V 49
+/svn/!svn/ver/10/trunk/include/nds/arm9/PA_Draw.h
 END
 PA_Wifi.h
 K 25
@@ -116,6 +116,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 55
 /svn/!svn/ver/4/trunk/include/nds/arm9/PA_PaletteDual.h
+END
+PA_Gif.h
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/10/trunk/include/nds/arm9/PA_Gif.h
 END
 jpeg.h
 K 25
@@ -228,8 +234,8 @@ END
 PA_Sprite.h
 K 25
 svn:wc:ra_dav:version-url
-V 50
-/svn/!svn/ver/4/trunk/include/nds/arm9/PA_Sprite.h
+V 51
+/svn/!svn/ver/11/trunk/include/nds/arm9/PA_Sprite.h
 END
 PA_3D.h
 K 25

@@ -9,17 +9,23 @@ New Stuff
 
 [Gif] Gif speed now works, only tested on emu for now. Thanks to Shaun for the solution :D Removed PA_SetGifSpeed :p
 
+[Gif] New commands available to change the gif speed while playing and pause it ! PA_GifAnimSpeed(float speed), PA_GifAnimStop, PA_GifAnimPause, and PA_GifAnimPlay. Check out the GifAnim example :)
+
+[Demos] Added the Bunny demo to the demo folder. It shows how to use sprite frames and pixel-perfect stylus collision to create stupid minigames ^^
+
 
 Updated Stuff
 -------------
-
-[DeSmuME] Updated to latest known version
 
 [Stylus] Now includes Stylus.Downtime and Uptime, to know how long the stylus was held on the screen or off of it (check Input/Stylus2 example to see that in action)
 
 [Stylus] Added Stylus.DblClick, may need more testing though, also in Stylus2 example
 
 [DeSmuME] Reverted back to the old version, this one had 'Hickups' :s
+
+[Giflib] Changed its compilation, saves 4kb ^^
+
+[Doc] Updated the doc
 
 
 Things Fixed
@@ -28,6 +34,14 @@ Things Fixed
 [Compilation] Fixed the 5 last warnings :)
 
 [Examples] FAT example back, thanks Creebo ^^
+
+[PAGfx] Better declarations in all_gfx.h and .c, with #ifndef and CPP compatible stuff :)
+
+[PAGfx] Now works correctly when you don't precise the Sprite/Bg mode (256colors, etc...) Will take the most common mode by default :) (fixes PAGfx.exe errors and PAGfx Frontend import function
+
+[Draw] Draw functions fixed, thanks to PadrinatoR :)
+
+
 
 
 

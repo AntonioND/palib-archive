@@ -9,24 +9,24 @@
 <h1>Bitmap mode, for any screen...</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga26">PA_Get16bitPixel</a>(screen, x, y)&nbsp;&nbsp;&nbsp;PA_DrawBg[screen][x + (y &lt;&lt; 8)]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga23">PA_Get16bitPixel</a>(screen, x, y)&nbsp;&nbsp;&nbsp;PA_DrawBg[screen][x + (y &lt;&lt; 8)]</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel, en mode dessin 16 bit  <a href="#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga27">PA_SetDrawSize</a>(screen, draw_size)&nbsp;&nbsp;&nbsp;PA_drawsize[screen] = draw_size;</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel, en mode dessin 16 bit  <a href="#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga24">PA_SetDrawSize</a>(screen, draw_size)&nbsp;&nbsp;&nbsp;PA_drawsize[screen] = draw_size;</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Regler la taille du stylo quand on dessine.  <a href="#ga27"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga28">PA_Load8bitBitmap</a>(screen, bitmap)&nbsp;&nbsp;&nbsp;DMA_Copy(bitmap, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Regler la taille du stylo quand on dessine.  <a href="#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga25">PA_Load8bitBitmap</a>(screen, bitmap)&nbsp;&nbsp;&nbsp;DMA_Copy(bitmap, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une image à l'écran... pour une fond dessinable de 8 bits  <a href="#ga28"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga29">PA_Load16bitBitmap</a>(screen, bitmap)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une image à l'écran... pour une fond dessinable de 8 bits  <a href="#ga25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga26">PA_Load16bitBitmap</a>(screen, bitmap)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une image à l'écran... pour une fond dessinable de 16 bits  <a href="#ga29"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga30">PA_Clear8bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une image à l'écran... pour une fond dessinable de 16 bits  <a href="#ga26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga27">PA_Clear8bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Efface l'écran... pour une fond dessinable de 8 bits  <a href="#ga30"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga31">PA_Clear16bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Efface l'écran... pour une fond dessinable de 8 bits  <a href="#ga27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga28">PA_Clear16bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Efface l'écran... pour une fond dessinable de 16 bits  <a href="#ga31"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Efface l'écran... pour une fond dessinable de 16 bits  <a href="#ga28"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga0">PA_Init8bitBg</a> (u8 screen, u8 bg_priority)</td></tr>
 
@@ -85,31 +85,22 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga18">PA_LoadBmp</a> (u8 screen, void *bmp)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !  <a href="#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga19">PA_GetGifWidth</a> (void *gif)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga19">PA_LoadFSImage</a> (u8 screen, s16 FSImage)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un Gif en pixels  <a href="#ga19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga20">PA_GetGifHeight</a> (void *gif)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un Gif en pixels  <a href="#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga21">PA_LoadGif</a> (u8 screen, void *gif)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un Gif sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !  <a href="#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga22">PA_LoadGBFSImage</a> (u8 screen, s16 GBFSImage)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une image depuis GBFS sur l'écran (16 bit). Support le Gif, Jpeg, et BMP  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga23" doxytag="Bitmap::PA_LoadGBFSImageToBuffer"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une image depuis PAFS sur l'écran (16 bit). Supporte le Gif, Jpeg, et BMP  <a href="#ga19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="Bitmap::PA_LoadGBFSImageToBuffer"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_LoadGBFSImageToBuffer</b> (void *Buffer, s16 GBFSImage, s16 Width)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga24">PA_GetBmpWidth</a> (void *bmp)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga21">PA_GetBmpWidth</a> (void *bmp)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un BMP en pixels  <a href="#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga25">PA_GetBmpHeight</a> (void *bmp)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un BMP en pixels  <a href="#ga21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga22">PA_GetBmpHeight</a> (void *bmp)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un BMP en pixels  <a href="#ga25"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un BMP en pixels  <a href="#ga22"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Draw on screen, either a pixel or a line, or anything ! Load a Bitmap, a Jpeg... <hr><h2>Documentation des macro</h2>
-<a class="anchor" name="ga31" doxytag="PA_Draw.h::PA_Clear16bitBg"></a><p>
+<a class="anchor" name="ga28" doxytag="PA_Draw.h::PA_Clear16bitBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -144,7 +135,7 @@ Efface l'écran... pour une fond dessinable de 16 bits
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga30" doxytag="PA_Draw.h::PA_Clear8bitBg"></a><p>
+<a class="anchor" name="ga27" doxytag="PA_Draw.h::PA_Clear8bitBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -179,7 +170,7 @@ Efface l'écran... pour une fond dessinable de 8 bits
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga26" doxytag="PA_Draw.h::PA_Get16bitPixel"></a><p>
+<a class="anchor" name="ga23" doxytag="PA_Draw.h::PA_Get16bitPixel"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -222,7 +213,7 @@ Récupérer la couleur d'un pixel, en mode dessin 16 bit
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga29" doxytag="PA_Draw.h::PA_Load16bitBitmap"></a><p>
+<a class="anchor" name="ga26" doxytag="PA_Draw.h::PA_Load16bitBitmap"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -264,7 +255,7 @@ PA_DrawBg[screen][PA_temp] = bitmap[PA_temp] | (1 &lt;&lt; 15);}
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga28" doxytag="PA_Draw.h::PA_Load8bitBitmap"></a><p>
+<a class="anchor" name="ga25" doxytag="PA_Draw.h::PA_Load8bitBitmap"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -303,7 +294,7 @@ Charger une image à l'écran... pour une fond dessinable de 8 bits
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga27" doxytag="PA_Draw.h::PA_SetDrawSize"></a><p>
+<a class="anchor" name="ga24" doxytag="PA_Draw.h::PA_SetDrawSize"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -864,7 +855,7 @@ Récupérer la couleur d'un pixel, en mode dessin 8 bit
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga25" doxytag="PA_Draw.h::PA_GetBmpHeight"></a><p>
+<a class="anchor" name="ga22" doxytag="PA_Draw.h::PA_GetBmpHeight"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -899,7 +890,7 @@ Récupérer la hauteur d'un BMP en pixels
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga24" doxytag="PA_Draw.h::PA_GetBmpWidth"></a><p>
+<a class="anchor" name="ga21" doxytag="PA_Draw.h::PA_GetBmpWidth"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -929,76 +920,6 @@ Récupérer la largeur d'un BMP en pixels
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>bmp</em>&nbsp;</td><td>image au format BMP... </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga20" doxytag="PA_Draw.h::PA_GetGifHeight"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">inline u16 PA_GetGifHeight           </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">void *&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap> <em>gif</em>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap><code> [inline]</code></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Récupérer la hauteur d'un Gif en pixels 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>gif</em>&nbsp;</td><td>image au format Gif... </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga19" doxytag="PA_Draw.h::PA_GetGifWidth"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">inline u16 PA_GetGifWidth           </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">void *&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap> <em>gif</em>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap><code> [inline]</code></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Récupérer la largeur d'un Gif en pixels 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>gif</em>&nbsp;</td><td>image au format Gif... </td></tr>
   </table>
 </dl>
     </td>
@@ -1264,13 +1185,13 @@ Charger un BMP dans un buffer de 16 bit
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga22" doxytag="PA_Draw.h::PA_LoadGBFSImage"></a><p>
+<a class="anchor" name="ga19" doxytag="PA_Draw.h::PA_LoadFSImage"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">inline void PA_LoadGBFSImage           </td>
+          <td class="md" nowrap valign="top">void PA_LoadFSImage           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -1279,12 +1200,12 @@ Charger un BMP dans un buffer de 16 bit
           <td class="md" nowrap align="right"></td>
           <td class="md"></td>
           <td class="md" nowrap>s16&nbsp;</td>
-          <td class="mdname" nowrap> <em>GBFSImage</em></td>
+          <td class="mdname" nowrap> <em>FSImage</em></td>
         </tr>
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"><code> [inline]</code></td>
+          <td class="md" colspan="2"></td>
         </tr>
       </table>
     </td>
@@ -1298,57 +1219,12 @@ Charger un BMP dans un buffer de 16 bit
     <td>
 
 <p>
-Charger une image depuis GBFS sur l'écran (16 bit). Support le Gif, Jpeg, et BMP 
+Charger une image depuis PAFS sur l'écran (16 bit). Supporte le Gif, Jpeg, et BMP 
 <p>
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>GBFSImage</em>&nbsp;</td><td>Numéro de l'image dans GBFS </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga21" doxytag="PA_Draw.h::PA_LoadGif"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">inline void PA_LoadGif           </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">u8&nbsp;</td>
-          <td class="mdname" nowrap> <em>screen</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>void *&nbsp;</td>
-          <td class="mdname" nowrap> <em>gif</em></td>
-        </tr>
-        <tr>
-          <td class="md"></td>
-          <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"><code> [inline]</code></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Charger un Gif sur un fond de 16 bits... Faut pas oublier de charger ce fond avant ! 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>gif</em>&nbsp;</td><td>image au format Gif... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>FSImage</em>&nbsp;</td><td>Numéro de l'image dans PAFS </td></tr>
   </table>
 </dl>
     </td>
@@ -1703,7 +1579,7 @@ Dessine deux pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, 
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Wed Aug 30 21:07:42 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Tue Sep 5 20:35:57 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

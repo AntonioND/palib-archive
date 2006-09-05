@@ -54,8 +54,8 @@ END
 PA_Draw.c
 K 25
 svn:wc:ra_dav:version-url
-V 43
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_Draw.c
+V 44
+/svn/!svn/ver/11/trunk/lib/arm9/PA/PA_Draw.c
 END
 PA_Wifi.c
 K 25
@@ -84,8 +84,8 @@ END
 PA_Gif.c
 K 25
 svn:wc:ra_dav:version-url
-V 42
-/svn/!svn/ver/8/trunk/lib/arm9/PA/PA_Gif.c
+V 43
+/svn/!svn/ver/11/trunk/lib/arm9/PA/PA_Gif.c
 END
 jpeg.c
 K 25

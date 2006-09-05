@@ -278,8 +278,8 @@ if (Stylus.Held){
 	i = 0;
 	j = 0;
 	
-	low = (PA_drawsize[screen] >> 1) - PA_drawsize[screen];
-	high = (PA_drawsize[screen] >> 1);
+	low = (PA_drawsize[screen] >> 1) - PA_drawsize[screen]+1;
+	high = (PA_drawsize[screen] >> 1)+1;
 
 	// Si nouvelle pression, on fait juste un point. Sinon, on trace un trait entre les 2 points...
 		if (Stylus.Newpress) {
@@ -313,8 +313,8 @@ if (Stylus.Held){
 	i = 0;
 	j = 0;
 	
-	low = (PA_drawsize[screen] >> 1) - PA_drawsize[screen];
-	high = (PA_drawsize[screen] >> 1);
+	low = (PA_drawsize[screen] >> 1) - PA_drawsize[screen]+1;
+	high = (PA_drawsize[screen] >> 1)+1;
 
 	// Si nouvelle pression, on fait juste un point. Sinon, on trace un trait entre les 2 points...
 		if (Stylus.Newpress) {
@@ -336,8 +336,8 @@ if (Stylus.Held){
 
 
 void PA_Draw16bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size){
-s8 low = (size >> 1) - size;
-s8 high = (size >> 1);
+s8 low = (size >> 1) - size +1;
+s8 high = (size >> 1)+1;
 s16 i, j;
 s16 x1, x2, y1, y2;
 
@@ -391,8 +391,8 @@ for (j = low; j < high; j++){
 
 
 void PA_Draw8bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size){
-s8 low = (size >> 1) - size;
-s8 high = (size >> 1);
+s8 low = (size >> 1) - size+1;
+s8 high = (size >> 1)+1;
 s16 i, j;
 s16 x1, x2, y1, y2;
 

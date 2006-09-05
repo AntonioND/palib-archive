@@ -6,8 +6,8 @@ END
 PA9.h
 K 25
 svn:wc:ra_dav:version-url
-V 39
-/svn/!svn/ver/4/trunk/include/nds/PA9.h
+V 40
+/svn/!svn/ver/10/trunk/include/nds/PA9.h
 END
 microphone7.h
 K 25
@@ -51,23 +51,17 @@ svn:wc:ra_dav:version-url
 V 45
 /svn/!svn/ver/4/trunk/include/nds/PAlib.h.lnk
 END
-dswifi7.h
-K 25
-svn:wc:ra_dav:version-url
-V 43
-/svn/!svn/ver/4/trunk/include/nds/dswifi7.h
-END
 gba-jpeg.h
 K 25
 svn:wc:ra_dav:version-url
 V 44
 /svn/!svn/ver/4/trunk/include/nds/gba-jpeg.h
 END
-command.h
+dswifi7.h
 K 25
 svn:wc:ra_dav:version-url
 V 43
-/svn/!svn/ver/4/trunk/include/nds/command.h
+/svn/!svn/ver/4/trunk/include/nds/dswifi7.h
 END
 dswifi9.h
 K 25
@@ -75,17 +69,23 @@ svn:wc:ra_dav:version-url
 V 43
 /svn/!svn/ver/4/trunk/include/nds/dswifi9.h
 END
-ModFile.h
+command.h
 K 25
 svn:wc:ra_dav:version-url
 V 43
-/svn/!svn/ver/4/trunk/include/nds/ModFile.h
+/svn/!svn/ver/4/trunk/include/nds/command.h
 END
 Sound7.h
 K 25
 svn:wc:ra_dav:version-url
 V 42
 /svn/!svn/ver/4/trunk/include/nds/Sound7.h
+END
+ModFile.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/4/trunk/include/nds/ModFile.h
 END
 gbfs.h
 K 25

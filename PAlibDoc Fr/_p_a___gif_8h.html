@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PAlib: Référence du fichier PA_Gif.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.3.9.1 -->
+<div class="qindex">  <form class="search" action="search.php" method="get">
+<a class="qindex" href="index.html">Page&nbsp;principale</a> | <a class="qindex" href="modules.html">Modules</a> | <a class="qindex" href="files.html">Liste&nbsp;des&nbsp;fichiers</a> | <a class="qindex" href="globals.html">Portée&nbsp;globale</a>  | <span class="search">Rechercher&nbsp;<input class="search" type="text" name="query" value="" size="20" accesskey="s"/></span></form></div>
+<h1>Référence du fichier PA_Gif.h</h1>Gif, animations... <a href="#_details">Plus de détails...</a>
+<p>
+
+<p>
+<a href="_p_a___gif_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GifInfos</b></td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_Gif.h::PA_Load16bitGif"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Load16bitGif</b> (u8 screen, s16 x, s16 y, void *gif)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_Gif.h::DecodeGif"></a>
+int&nbsp;</td><td class="memItemRight" valign="bottom"><b>DecodeGif</b> (const u8 *userData, u8 *ScreenBuff, u16 *Palette, u8 nBits, s16 SWidth)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___gif.html#ga0">PA_GetGifWidth</a> (void *gif)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un Gif en pixels  <a href="group___gif.html#ga0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___gif.html#ga1">PA_GetGifHeight</a> (void *gif)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un Gif en pixels  <a href="group___gif.html#ga1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___gif.html#ga2">PA_LoadGif</a> (u8 screen, void *gif)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un Gif sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !  <a href="group___gif.html#ga2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___gif.html#ga3">PA_GifAnimSpeed</a> (float speed)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la vitesse d'un gif  <a href="group___gif.html#ga3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga4" doxytag="PA_Gif.h::PA_GifAnimStop"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___gif.html#ga4">PA_GifAnimStop</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter l'animation d'un gif <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga5" doxytag="PA_Gif.h::PA_GifAnimPause"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___gif.html#ga5">PA_GifAnimPause</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre en pause l'animation d'un gif <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga6" doxytag="PA_Gif.h::PA_GifAnimPlay"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GifAnimPlay</b> (void)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_Gif.h::gifinfo"></a>
+GifFileType *&nbsp;</td><td class="memItemRight" valign="bottom"><b>gifinfo</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_Gif.h::gifwidth"></a>
+s16&nbsp;</td><td class="memItemRight" valign="bottom"><b>gifwidth</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_Gif.h::gifheight"></a>
+s16&nbsp;</td><td class="memItemRight" valign="bottom"><b>gifheight</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_Gif.h::PA_nBit"></a>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_nBit</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_Gif.h::PA_GifInfo"></a>
+PA_GifInfos&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GifInfo</b></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+Gif, animations... 
+<p>
+Manages everything about gif files.<hr size="1"><address style="align: right;"><small>Généré le Tue Sep 5 20:35:55 2006 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
+</body>
+</html>

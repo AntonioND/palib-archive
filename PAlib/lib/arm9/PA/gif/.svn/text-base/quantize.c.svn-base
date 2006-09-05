@@ -24,6 +24,9 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+
+#include <PA9.h>
+
 #include "gif_lib.h"
 #include "gif_lib_private.h"
 

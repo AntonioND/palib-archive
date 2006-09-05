@@ -30,170 +30,179 @@
 00022 
 00029 <span class="comment">//#include "../PA.h"</span>
 00030 
-00031 
-00032 
-00033 
-00035 <span class="comment">// Système pour le texte</span>
-00037 <span class="comment"></span>
-00038 
-00039 <span class="keyword">extern</span> u16 textcol[2]; <span class="comment">// Garde en mémoire la couleur du texte</span>
-00040 <span class="keyword">extern</span> u8 PAbgtext[2];
-00041 
+00031 <span class="preprocessor">#define TEXT_WHITE 0</span>
+00032 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_RED 1</span>
+00033 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_BLUE 2</span>
+00034 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_GREEN 3</span>
+00035 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_MAGENTA 4</span>
+00036 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_CYAN 5</span>
+00037 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_YELLOW 6</span>
+00038 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_LGRAY 7</span>
+00039 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_DGRAY 8</span>
+00040 <span class="preprocessor"></span><span class="preprocessor">#define TEXT_BLACK 9</span>
+00041 <span class="preprocessor"></span>
 00042 
-00043 <span class="keyword">extern</span> u16 *PA_textmap[2]; <span class="comment">//Pointeur vers la map et les tiles...</span>
-00044 <span class="keyword">extern</span> u8 *PA_texttiles[2];
-00045 <span class="keyword">extern</span> u16 *PA_textpal[2];
-00046 
-00047 <span class="keyword">extern</span> s8 PA_font[2];  <span class="comment">// 0 pour normal, 1 pour dégradé, -1 pour custom</span>
-00048 
-00049 
+00044 <span class="comment">// Système pour le texte</span>
+00046 <span class="comment"></span>
+00047 
+00048 <span class="keyword">extern</span> u16 textcol[2]; <span class="comment">// Garde en mémoire la couleur du texte</span>
+00049 <span class="keyword">extern</span> u8 PAbgtext[2];
 00050 
 00051 
-00052 <span class="comment">// Texte à taille variable</span>
-00053 <span class="comment">//#ifdef TEXT_ALLSIZES</span>
-00054 <span class="preprocessor">       #include "text0.h"</span> <span class="comment">// La police à taille variable...</span>
-00055 <span class="preprocessor">       #include "text1.h"</span> <span class="comment">// La police à taille variable...</span>
-00056 <span class="preprocessor">       #include "text2.h"</span> <span class="comment">// La police à taille variable...</span>
-00057 <span class="preprocessor">       #include "text3.h"</span> <span class="comment">// La police à taille variable...</span>
-00058 <span class="preprocessor">       #include "text4.h"</span> <span class="comment">// La police à taille variable...</span>
-00059        <span class="keyword">extern</span> <span class="keyword">const</span> u8 *textData[5];
-00060        <span class="keyword">extern</span> <span class="keyword">const</span> u8 policeheight[5];
-00061        <span class="keyword">extern</span> <span class="keyword">const</span> u16 policewidth[5];
-00062        <span class="keyword">extern</span> <span class="keyword">const</span> u8 policesize[5][256];       
-00063 <span class="comment">//#endif</span>
-00064 
-00065 
-00066 <span class="keyword">typedef</span> void(*letterfp)(u8 size, u8 screen, u16 x, u16 y, <span class="keywordtype">char</span> lettertemp, u8 color);
-00067 
-00068 
-00069 
-00070 
-00071 <span class="keyword">extern</span> letterfp letters[5];
-00072 
+00052 <span class="keyword">extern</span> u16 *PA_textmap[2]; <span class="comment">//Pointeur vers la map et les tiles...</span>
+00053 <span class="keyword">extern</span> u8 *PA_texttiles[2];
+00054 <span class="keyword">extern</span> u16 *PA_textpal[2];
+00055 
+00056 <span class="keyword">extern</span> s8 PA_font[2];  <span class="comment">// 0 pour normal, 1 pour dégradé, -1 pour custom</span>
+00057 
+00058 
+00059 
+00060 
+00061 <span class="comment">// Texte à taille variable</span>
+00062 <span class="comment">//#ifdef TEXT_ALLSIZES</span>
+00063 <span class="preprocessor">       #include "text0.h"</span> <span class="comment">// La police à taille variable...</span>
+00064 <span class="preprocessor">       #include "text1.h"</span> <span class="comment">// La police à taille variable...</span>
+00065 <span class="preprocessor">       #include "text2.h"</span> <span class="comment">// La police à taille variable...</span>
+00066 <span class="preprocessor">       #include "text3.h"</span> <span class="comment">// La police à taille variable...</span>
+00067 <span class="preprocessor">       #include "text4.h"</span> <span class="comment">// La police à taille variable...</span>
+00068        <span class="keyword">extern</span> <span class="keyword">const</span> u8 *textData[5];
+00069        <span class="keyword">extern</span> <span class="keyword">const</span> u8 policeheight[5];
+00070        <span class="keyword">extern</span> <span class="keyword">const</span> u16 policewidth[5];
+00071        <span class="keyword">extern</span> <span class="keyword">const</span> u8 policesize[5][256];       
+00072 <span class="comment">//#endif</span>
 00073 
-00074 <span class="keyword">extern</span> u16 PAtext_pal[2];
-00075 
+00074 
+00075 <span class="keyword">typedef</span> void(*letterfp)(u8 size, u8 screen, u16 x, u16 y, <span class="keywordtype">char</span> lettertemp, u8 color);
 00076 
-00077 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00078        u8 x1, x2, y1, y2;
-00079 } textborders;
-00080 <span class="keyword">extern</span> textborders PA_TextBox[2];
+00077 
+00078 
+00079 
+00080 <span class="keyword">extern</span> letterfp letters[5];
 00081 
 00082 
-00083 
+00083 <span class="keyword">extern</span> u16 PAtext_pal[2];
 00084 
 00085 
-00105 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga0">PA_InitText</a>(u8 screen, u8 bg_select);
-00106 
-00107 
-<a name="l00125"></a><a class="code" href="group___text.html#ga20">00125</a> <span class="preprocessor">#define PA_SetTileLetter(screen, x, y, letter) PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12))</span>
-00126 <span class="preprocessor"></span>
-00127 
-00128 
-<a name="l00140"></a><a class="code" href="group___text.html#ga1">00140</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga1">PA_SetTextTileCol</a>(u8 screen, u8 color)
-00141 {
-00142        PAtext_pal[screen] = color;
-00143 }
-00144 
-00145 
-00146 
-00147 
-00165 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga2">PA_OutputText</a>(u8 screen, u16 x, u16 y, <span class="keywordtype">char</span>* text, ...);
-00166 
-00184 u16 <a class="code" href="group___text.html#ga3">PA_OutputSimpleText</a>(u8 screen, u16 x, u16 y, <span class="keyword">const</span> <span class="keywordtype">char</span> *text);
-00185 
-00212 u32 PA_BoxText(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, s32 limit);
-00213 
-00240 u32 <a class="code" href="group___text.html#ga5">PA_BoxTextNoWrap</a>(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit);
-00241 
-00242 
-<a name="l00261"></a><a class="code" href="group___text.html#ga6">00261</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga6">PA_SetTextCol</a>(u8 screen, u16 r, u16 g, u16 b){
-00262        PA_CreateTextPal(screen, 0, r, g, b);
-00263 }
-00264 
-00265 
-00266 
-00267 <span class="comment">//void PA_InitCustomTextEx(u8 screen, u8 bg_select, void *tiles, void *map, void *pal);</span>
-00268 
-00269 
-<a name="l00286"></a><a class="code" href="group___text.html#ga21">00286</a> <span class="preprocessor">#define PA_InitCustomText(screen, bg_select, text) PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</span>
-00287 <span class="preprocessor"></span>
-<a name="l00297"></a><a class="code" href="group___text.html#ga22">00297</a> <span class="preprocessor">#define PA_ShowFont(screen) PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</span>
-00298 <span class="preprocessor"></span>
-00299 
-00300 
-00301 
-00302 
-00338 s16 <a class="code" href="group___text.html#ga7">PA_SmartText</a>(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, u8 transp,  s32 limit);
-00339 
-00340 
-00341 
-00374 s16 <a class="code" href="group___text.html#ga8">PA_CenterSmartText</a>(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, u8 transp);
-00375 
-00376 
-00377 <span class="comment">/*</span>
-00389 <span class="comment">extern inline u8 PA_CompareText(char *text1, char *text2){</span>
-00390 <span class="comment">       u8 ok = 1; // Devrait etre bon</span>
-00391 <span class="comment">       u8 i = 0; </span>
-00392 <span class="comment">       while(ok &amp;&amp; text2[i]){</span>
-00393 <span class="comment">              if (text1[i] != text2[i]) ok = 0;</span>
-00394 <span class="comment">              i++;</span>
-00395 <span class="comment">       }</span>
-00396 <span class="comment">       return ok;</span>
-00397 <span class="comment">}*/</span>
-00398 
-00399 
-<a name="l00411"></a><a class="code" href="group___text.html#ga9">00411</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga9">PA_CopyText</a>(<span class="keywordtype">char</span> *text1, <span class="keywordtype">char</span> *text2){
-00412 u8 i = 0;
-00413 text1[i] = text2[i];
-00414        <span class="keywordflow">do</span>{
-00415               i++;
-00416               text1[i] = text2[i];
-00417        }
-00418        <span class="keywordflow">while</span> (text2[i]);
-00419 }
-00420 
-00421 
-00422 
-00423 
-00444 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga10">PA_InitTextBorders</a>(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2);
-00445 
-00446 
-00455 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga11">PA_EraseTextBox</a>(u8 screen);
-00456 
-00457 
-00458 
-<a name="l00473"></a><a class="code" href="group___text.html#ga12">00473</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___text.html#ga12">PA_SimpleBoxText</a>(u8 screen, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit){
-00474 <span class="keywordflow">return</span> PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
-00475 }
-00476 
-<a name="l00485"></a><a class="code" href="group___text.html#ga13">00485</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga13">PA_ClearTextBg</a>(u8 screen){
-00486 u8 i, j;
-00487 <span class="keywordflow">for</span> (i = 0; i &lt; 32; i++) <span class="keywordflow">for</span> (j = 0; j &lt; 32; j++) <a class="code" href="group___bg_tiles.html#ga24">PA_SetMapTileAll</a>(screen, PAbgtext[screen], i, j, 0);
-00488 }
-00489 
-00490 
-00491 
-00492 <span class="keywordtype">void</span> PA_OutputTextSpecial0(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00493 <span class="keywordtype">void</span> PA_OutputTextSpecial1(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00494 <span class="keywordtype">void</span> PA_OutputTextSpecial2(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00495 <span class="keywordtype">void</span> PA_OutputTextSpecial3(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00496 <span class="keywordtype">void</span> PA_OutputTextSpecial4(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00497 <span class="keywordtype">void</span> PA_OutputTextSpecial5(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
-00498  <span class="comment">// end of Text</span>
+00086 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00087        u8 x1, x2, y1, y2;
+00088 } textborders;
+00089 <span class="keyword">extern</span> textborders PA_TextBox[2];
+00090 
+00091 
+00092 
+00093 
+00094 
+00114 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga0">PA_InitText</a>(u8 screen, u8 bg_select);
+00115 
+00116 
+<a name="l00134"></a><a class="code" href="group___text.html#ga20">00134</a> <span class="preprocessor">#define PA_SetTileLetter(screen, x, y, letter) PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12))</span>
+00135 <span class="preprocessor"></span>
+00136 
+00137 
+<a name="l00149"></a><a class="code" href="group___text.html#ga1">00149</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga1">PA_SetTextTileCol</a>(u8 screen, u8 color)
+00150 {
+00151        PAtext_pal[screen] = color;
+00152 }
+00153 
+00154 
+00155 
+00156 
+00174 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga2">PA_OutputText</a>(u8 screen, u16 x, u16 y, <span class="keywordtype">char</span>* text, ...);
+00175 
+00193 u16 <a class="code" href="group___text.html#ga3">PA_OutputSimpleText</a>(u8 screen, u16 x, u16 y, <span class="keyword">const</span> <span class="keywordtype">char</span> *text);
+00194 
+00221 u32 PA_BoxText(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, s32 limit);
+00222 
+00249 u32 <a class="code" href="group___text.html#ga5">PA_BoxTextNoWrap</a>(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit);
+00250 
+00251 
+<a name="l00270"></a><a class="code" href="group___text.html#ga6">00270</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga6">PA_SetTextCol</a>(u8 screen, u16 r, u16 g, u16 b){
+00271        PA_CreateTextPal(screen, 0, r, g, b);
+00272 }
+00273 
+00274 
+00275 
+00276 <span class="comment">//void PA_InitCustomTextEx(u8 screen, u8 bg_select, void *tiles, void *map, void *pal);</span>
+00277 
+00278 
+<a name="l00295"></a><a class="code" href="group___text.html#ga21">00295</a> <span class="preprocessor">#define PA_InitCustomText(screen, bg_select, text) PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</span>
+00296 <span class="preprocessor"></span>
+<a name="l00306"></a><a class="code" href="group___text.html#ga22">00306</a> <span class="preprocessor">#define PA_ShowFont(screen) PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</span>
+00307 <span class="preprocessor"></span>
+00308 
+00309 
+00310 
+00311 
+00347 s16 <a class="code" href="group___text.html#ga7">PA_SmartText</a>(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, u8 transp,  s32 limit);
+00348 
+00349 
+00350 
+00383 s16 <a class="code" href="group___text.html#ga8">PA_CenterSmartText</a>(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, u8 transp);
+00384 
+00385 
+00386 <span class="comment">/*</span>
+00398 <span class="comment">extern inline u8 PA_CompareText(char *text1, char *text2){</span>
+00399 <span class="comment">       u8 ok = 1; // Devrait etre bon</span>
+00400 <span class="comment">       u8 i = 0; </span>
+00401 <span class="comment">       while(ok &amp;&amp; text2[i]){</span>
+00402 <span class="comment">              if (text1[i] != text2[i]) ok = 0;</span>
+00403 <span class="comment">              i++;</span>
+00404 <span class="comment">       }</span>
+00405 <span class="comment">       return ok;</span>
+00406 <span class="comment">}*/</span>
+00407 
+00408 
+<a name="l00420"></a><a class="code" href="group___text.html#ga9">00420</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga9">PA_CopyText</a>(<span class="keywordtype">char</span> *text1, <span class="keywordtype">char</span> *text2){
+00421 u8 i = 0;
+00422 text1[i] = text2[i];
+00423        <span class="keywordflow">do</span>{
+00424               i++;
+00425               text1[i] = text2[i];
+00426        }
+00427        <span class="keywordflow">while</span> (text2[i]);
+00428 }
+00429 
+00430 
+00431 
+00432 
+00453 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga10">PA_InitTextBorders</a>(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2);
+00454 
+00455 
+00464 <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga11">PA_EraseTextBox</a>(u8 screen);
+00465 
+00466 
+00467 
+<a name="l00482"></a><a class="code" href="group___text.html#ga12">00482</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___text.html#ga12">PA_SimpleBoxText</a>(u8 screen, <span class="keyword">const</span> <span class="keywordtype">char</span> *text, u32 limit){
+00483 <span class="keywordflow">return</span> PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
+00484 }
+00485 
+<a name="l00494"></a><a class="code" href="group___text.html#ga13">00494</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___text.html#ga13">PA_ClearTextBg</a>(u8 screen){
+00495 u8 i, j;
+00496 <span class="keywordflow">for</span> (i = 0; i &lt; 32; i++) <span class="keywordflow">for</span> (j = 0; j &lt; 32; j++) <a class="code" href="group___bg_tiles.html#ga24">PA_SetMapTileAll</a>(screen, PAbgtext[screen], i, j, 0);
+00497 }
+00498 
+00499 
 00500 
-00501 
-00502 <span class="preprocessor">#ifdef __cplusplus</span>
-00503 <span class="preprocessor"></span>}
-00504 <span class="preprocessor">#endif</span>
-00505 <span class="preprocessor"></span>
-00506 
-00507 
-00508 <span class="preprocessor">#endif</span>
-00509 <span class="preprocessor"></span>
+00501 <span class="keywordtype">void</span> PA_OutputTextSpecial0(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00502 <span class="keywordtype">void</span> PA_OutputTextSpecial1(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00503 <span class="keywordtype">void</span> PA_OutputTextSpecial2(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00504 <span class="keywordtype">void</span> PA_OutputTextSpecial3(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00505 <span class="keywordtype">void</span> PA_OutputTextSpecial4(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00506 <span class="keywordtype">void</span> PA_OutputTextSpecial5(u8 screen, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y,<span class="keywordtype">char</span> *text);
+00507  <span class="comment">// end of Text</span>
+00509 
 00510 
-00511 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed Aug 30 21:02:12 2006 for PAlib by&nbsp;
+00511 <span class="preprocessor">#ifdef __cplusplus</span>
+00512 <span class="preprocessor"></span>}
+00513 <span class="preprocessor">#endif</span>
+00514 <span class="preprocessor"></span>
+00515 
+00516 
+00517 <span class="preprocessor">#endif</span>
+00518 <span class="preprocessor"></span>
+00519 
+00520 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Tue Sep 5 20:35:49 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

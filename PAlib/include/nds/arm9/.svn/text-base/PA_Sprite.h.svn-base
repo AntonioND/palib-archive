@@ -142,6 +142,7 @@ typedef struct{
 	u16 *gfx; // gfx pointer
 	u8 type;
 	s32 ncycles;
+//	bool exists; //
 } spriteanim;
 extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
 

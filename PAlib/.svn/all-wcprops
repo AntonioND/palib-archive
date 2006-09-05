@@ -24,14 +24,14 @@ END
 Changelog.txt
 K 25
 svn:wc:ra_dav:version-url
-V 35
-/svn/!svn/ver/8/trunk/Changelog.txt
+V 36
+/svn/!svn/ver/12/trunk/Changelog.txt
 END
 PAlib.pnps
 K 25
 svn:wc:ra_dav:version-url
-V 32
-/svn/!svn/ver/8/trunk/PAlib.pnps
+V 33
+/svn/!svn/ver/11/trunk/PAlib.pnps
 END
 Thumbs.db
 K 25
@@ -54,12 +54,12 @@ END
 makefile
 K 25
 svn:wc:ra_dav:version-url
-V 30
-/svn/!svn/ver/4/trunk/makefile
+V 31
+/svn/!svn/ver/11/trunk/makefile
 END
 PAlib.pnproj
 K 25
 svn:wc:ra_dav:version-url
-V 34
-/svn/!svn/ver/8/trunk/PAlib.pnproj
+V 35
+/svn/!svn/ver/11/trunk/PAlib.pnproj
 END
