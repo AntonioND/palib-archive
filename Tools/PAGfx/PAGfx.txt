@@ -35,10 +35,26 @@ Formats 8bit or 16bit
 
 Changelog
 
+v0.82
+
+PAGfx
+-----
+
+[FIX] Better declarations in all_gfx.h and .c, with #ifndef and CPP compatible stuff :)
+
+[FIX] Now works correctly when you don't precise the Sprite/Bg mode (256colors, etc...) Will take the most common mode by default :)
+
+
+PAGfx Frontend
+--------------
+
+[FIX] Now works correctly when you don't precise the Sprite/Bg mode (256colors, etc...) Will take the most common mode by default :) (when importing PAGfx.ini files)
+
+
 v0.81 (thanks benualdo)
 
 PAGfx Frontend
------------------
+--------------
 [FIX] Exporting 8bit backgrounds should now work
 
 
@@ -46,7 +62,7 @@ PAGfx Frontend
 v0.8 (100% by Mario, thanks !)
 
 PAGfx Frontend
------------------
+--------------
 [NEW] Warning if incompatible color depth
 [FIX] Exception if saved without palette name
 [NEW] Message after loaded
@@ -58,7 +74,7 @@ PAGfx Frontend
 [NEW] Error handling in file access 
 
 PAGfx
--------
+-----
 [NEW] Accepts a filename parameter
 [FIX] Speed up color conversion
 [FIX] Exception if can't open background file 

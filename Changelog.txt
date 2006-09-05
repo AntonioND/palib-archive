@@ -21,6 +21,8 @@ Updated Stuff
 
 [DeSmuME] Reverted back to the old version, this one had 'Hickups' :s
 
+[Giflib] Changed it's compilation, saves 4kb ^^
+
 
 Things Fixed
 ------------
@@ -28,6 +30,14 @@ Things Fixed
 [Compilation] Fixed the 5 last warnings :)
 
 [Examples] FAT example back, thanks Creebo ^^
+
+[PAGfx] Better declarations in all_gfx.h and .c, with #ifndef and CPP compatible stuff :)
+
+[PAGfx] Now works correctly when you don't precise the Sprite/Bg mode (256colors, etc...) Will take the most common mode by default :) (fixes PAGfx.exe errors and PAGfx Frontend import function
+
+[Draw] Draw functions fixed, thanks to PadrinatoR :)
+
+
 
 
 
