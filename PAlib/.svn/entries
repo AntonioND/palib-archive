@@ -1,0 +1,168 @@
+8
+
+dir
+7
+https://palibds.googlecode.com/svn/trunk
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-03T18:01:45.381779Z
+7
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+70d487c4-6a1c-0410-9ca0-4d1b8e83941e
+
+install.sh
+file
+
+
+
+
+2005-11-28T10:14:50.000000Z
+8407f543bd49827380ec11082a8e5c72
+2006-09-03T16:21:26.676623Z
+4
+molousk
+
+CPPinstall.sh
+file
+
+
+
+
+2006-01-09T14:39:20.000000Z
+f6be4f9e597531d3e937cfd6bf49eb62
+2006-09-03T16:21:26.676623Z
+4
+molousk
+
+include
+dir
+
+Thumbs.db
+file
+
+
+
+
+2005-09-08T13:33:00.000000Z
+9d470ac39aea201bf065918324024ef5
+2006-09-03T16:21:26.676623Z
+4
+molousk
+has-props
+
+clean.bat
+file
+
+
+
+
+2006-09-03T11:56:06.906250Z
+0b49ca85cb0e39a64dde335e1a32dc24
+2006-09-03T16:21:26.676623Z
+4
+molousk
+
+vham
+dir
+
+PAlib.pnproj
+file
+11
+
+
+
+2006-09-05T18:10:20.015625Z
+d50c3e55ecb0dda2da4571f996265887
+2006-09-05T18:14:42.615634Z
+11
+molousk
+
+Tools
+dir
+
+build.bat
+file
+
+
+
+
+2006-04-27T20:05:57.156250Z
+8a2d7066c21457a8d4f0400358021e6b
+2006-09-03T16:21:26.676623Z
+4
+molousk
+
+Changelog.txt
+file
+12
+
+
+
+2006-09-05T18:32:35.718750Z
+d5d2ebc85a5bc6e671f2050745dc3ce3
+2006-09-05T18:25:24.528785Z
+12
+molousk
+
+lib
+dir
+
+PAlib.pnps
+file
+11
+
+
+
+2006-09-05T18:10:20.015625Z
+dc7f98902404bef417497f3a978a291d
+2006-09-05T18:14:42.615634Z
+11
+molousk
+
+FAT
+dir
+
+Emulators
+dir
+
+logo.bmp
+file
+
+
+
+
+2005-10-18T09:39:22.000000Z
+94768f0e78d21ecfc7ad4ddcf44596b0
+2006-09-03T16:21:26.676623Z
+4
+molousk
+has-props
+
+makefile
+file
+11
+
+
+
+2006-09-05T18:15:52.421875Z
+f50ca440cbc627e2ea0249ca6f3fdb5f
+2006-09-05T18:14:42.615634Z
+11
+molousk
+

@@ -1,0 +1,13 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Transparent Color : Magenta
+
+2 sprites :
+  bunny : 256colors, 64x384, Pal : bunny_Pal, -> bunny_Sprite
+  bunnyrip : 256colors, 64x384, Pal : bunny_Pal, -> bunnyrip_Sprite
+
+1 palettes :
+  bunny_Pal, 33 colors
+
+Finished !

@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PAlib:  Fichier source de PA_Gif.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.3.9.1 -->
+<div class="qindex">  <form class="search" action="search.php" method="get">
+<a class="qindex" href="index.html">Page&nbsp;principale</a> | <a class="qindex" href="modules.html">Modules</a> | <a class="qindex" href="files.html">Liste&nbsp;des&nbsp;fichiers</a> | <a class="qindex" href="globals.html">Portée&nbsp;globale</a>  | <span class="search">Rechercher&nbsp;<input class="search" type="text" name="query" value="" size="20" accesskey="s"/></span></form></div>
+<h1>PA_Gif.h</h1><a href="_p_a___gif_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><pre class="fragment">00001 <span class="preprocessor">#ifndef _PA_Gif</span>
+00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_Gif</span>
+00003 <span class="preprocessor"></span>
+00004 <span class="preprocessor">#ifdef __cplusplus</span>
+00005 <span class="preprocessor"></span><span class="keyword">extern</span> <span class="stringliteral">"C"</span> {
+00006 <span class="preprocessor">#endif</span>
+00007 <span class="preprocessor"></span>
+00015 <span class="preprocessor">#include &lt;PA9.h&gt;</span>
+00016 
+00017 <span class="preprocessor">#include "<a class="code" href="_p_a___interrupt_8h.html">PA_Interrupt.h</a>"</span>
+00018 <span class="preprocessor">#include "<a class="code" href="_p_a___palette_8h.html">PA_Palette.h</a>"</span>
+00019 <span class="preprocessor">#include "<a class="code" href="_p_a___draw_8h.html">PA_Draw.h</a>"</span>
+00020 <span class="preprocessor">#include "gif/gif_lib.h"</span>
+00021 
+00022 <span class="keyword">extern</span> GifFileType* gifinfo;
+00023 <span class="keyword">extern</span> s16 gifwidth, gifheight; 
+00024 <span class="keyword">extern</span> u8 PA_nBit[2]; <span class="comment">// 8 or 16 bit Bg</span>
+00025 
+00026 
+00027 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00028        <span class="keywordtype">float</span> Speed;
+00029        u8 Play; <span class="comment">// 0 stop; 1 play; 2 pause;</span>
+00030 } PA_GifInfos;
+00031 <span class="keyword">extern</span> PA_GifInfos PA_GifInfo;
+00032 
+00033 
+00034 
+00035 
+00036 
+00037 
+00038 
+00039 <span class="keywordtype">void</span> PA_Load16bitGif(u8 screen, s16 x, s16 y, <span class="keywordtype">void</span> *gif);
+00040 
+00041 <span class="keywordtype">int</span> DecodeGif(<span class="keyword">const</span> u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
+00042 
+00043 
+00044 
+<a name="l00063"></a><a class="code" href="group___gif.html#ga0">00063</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___gif.html#ga0">PA_GetGifWidth</a>(<span class="keywordtype">void</span>* gif){
+00064        u16 *temp = (u16*)gif;
+00065        temp += 3;
+00066        <span class="keywordflow">return</span> *temp;
+00067 }
+00068 
+00069 
+00070 
+<a name="l00079"></a><a class="code" href="group___gif.html#ga1">00079</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___gif.html#ga1">PA_GetGifHeight</a>(<span class="keywordtype">void</span>* gif){
+00080        u16 *temp = (u16*)gif;
+00081        temp += 4;
+00082        <span class="keywordflow">return</span> *temp;
+00083 }
+00084 
+00085 
+00086 
+<a name="l00098"></a><a class="code" href="group___gif.html#ga2">00098</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga2">PA_LoadGif</a>(u8 screen, <span class="keywordtype">void</span> *gif){
+00099        <span class="keywordflow">if</span> (PA_nBit[screen]) DecodeGif((<span class="keyword">const</span> u8*)gif, (u8*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
+00100        <span class="comment">//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...</span>
+00101        <span class="keywordflow">else</span> DecodeGif((<span class="keyword">const</span> u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
+00102 }
+00103 
+00104 
+00105 
+00106 
+<a name="l00115"></a><a class="code" href="group___gif.html#ga3">00115</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga3">PA_GifAnimSpeed</a>(<span class="keywordtype">float</span> speed){
+00116        PA_GifInfo.Speed = speed;
+00117 }
+00118 
+00119 
+<a name="l00125"></a><a class="code" href="group___gif.html#ga4">00125</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga4">PA_GifAnimStop</a>(<span class="keywordtype">void</span>){
+00126        PA_GifInfo.Play = 0;
+00127 }
+00128 
+00129 
+00130 
+00131 
+<a name="l00137"></a><a class="code" href="group___gif.html#ga5">00137</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga5">PA_GifAnimPause</a>(<span class="keywordtype">void</span>){
+00138        PA_GifInfo.Play = 2;
+00139 }
+00140 
+00141 
+00147 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_GifAnimPlay(<span class="keywordtype">void</span>){
+00148        PA_GifInfo.Play = 1;
+00149 }
+00150 
+00151 
+00152 
+00153 <span class="preprocessor">#ifdef __cplusplus</span>
+00154 <span class="preprocessor"></span>}
+00155 <span class="preprocessor">#endif</span>
+00156 <span class="preprocessor"></span>
+00157 
+00158 
+00159 
+00160 
+00161 
+00162 
+00163 
+00164 <span class="preprocessor">#endif</span>
+00165 <span class="preprocessor"></span>
+00166 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Sep 5 20:35:54 2006 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,202 @@
+[class | Standard C/C++\Class Skeleton]
+/*!
+   Class
+*/
+class C|
+{
+   private:
+   
+   protected:
+   
+   public:
+   
+};
+
+
+[cfile | Standard C/C++\Source File]
+#include "|.h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* END OF FILE */
+
+
+[CommentBlock | Standard C/C++\Comments\Empty]
+/*****************************************************************************************
+ *
+ *
+ *
+ ****************************************************************************************/
+|
+
+[CommentCopyr | Standard C/C++\Comments\Copyright]
+/*****************************************************************************************
+ *
+ *
+ *  Copyright 2004+ by XXXXX
+ *  All Rights Reserved.
+ *
+ *
+ *  Version    Date          Author             Log
+ *  --------------------------------------------------------------------------------------
+ *  0.0        XXXXX         XXXXX              Inital Release
+ *
+ ****************************************************************************************/
+|
+
+[CommentDoxyGen | Standard C/C++\Comments\DoxyGen]
+/*!
+\brief |Brief description
+
+\param
+\param
+\param
+
+\return
+
+More detailed description here ....
+
+\sa prototypename()
+*/
+
+
+[CommentVHAM | Standard C/C++\Comments\Created using VisualHAM]
+/*
+ * This document has been created using VisualHAM
+ * http://www.console-dev.de
+ *
+ *
+*/
+
+[ham_StartIntHandlerINT_TYPE_VBL | HAM Specific\Interrupt Functions\Start VBL]
+// Will, once activated, trigger the specified interrupt
+// and then call the function specified
+ham_StartIntHandler(INT_TYPE_VBL,         // The Interrupts ID you want to start.
+                    (void*)&|vblFunc);    // The adress of a function that should be called when the interrupt is fired
+
+[ham_StartIntHandlerINT_TYPE_HBL | HAM Specific\Interrupt Functions\Start HBL]
+// Will, once activated, trigger the specified interrupt
+// and then call the function specified
+ham_StartIntHandler(INT_TYPE_HBL,         // The Interrupts ID you want to start.
+                    (void*)&|hblFunc);    // The adress of a function that should be called when the interrupt is fired
+
+
+
+
+
+[ham_LoadObjPal | HAM Specific\Palette Functions\Load Object Palette]
+// Load color palette into OBJ (Sprite) palette
+ham_LoadObjPal((void*)&|_Palette,           // Pointer to the palette color data
+               SIZEOF_16BIT(???_Palette));   // Number of colors to load from color 0 on
+
+[ham_LoadObjPal16 | HAM Specific\Palette Functions\Load Object Palette (16 Colors)]
+// Load full 16 color palette into OBJ (Sprite) palette
+ham_LoadObjPal16((void*)&|_Palette,   // Pointer to the palette color data
+                 ???);              // The 16 color palette number you want to modify (0..15)
+
+[ham_LoadObjPal256 | HAM Specific\Palette Functions\Load Object Palette (256 Colors)]
+// Load full 256 color palette into OBJ (Sprite) palette
+ham_LoadObjPal256((void*)&|_Palette);
+
+
+[ham_LoadBgPal | HAM Specific\Palette Functions\Load Background Palette]
+// Load new colors into the 256 color BG palette
+ham_LoadBgPal((void*)&|_Palette, SIZEOF_16BIT(???_Palette));
+
+[ham_LoadBgPal16 | HAM Specific\Palette Functions\Load Background Palette (16 Colors)]
+// Load new colors into one 16 color BG palette
+ham_LoadObjPal16((void*)&|_Palette,   // Pointer to the palette color data
+                 pal_no);              // The 16 color palette number you want to modify (0..15)
+
+[ham_LoadBgPal256 | HAM Specific\Palette Functions\Load Background Palette (256 Colors)]
+// Load full 256 color palette into BG palette
+ham_LoadObjPal256((void*)&|_Palette);
+
+
+[ham_CreateObj | HAM Specific\Object Functions\Create Object]
+ham_CreateObj((void*)&|_Bitmap,  // A pointer to the tile data for this object
+              OBJ_SIZE_?????,      // obj_shape & obj_size
+              OBJ_MODE_NORMAL,     // obj_mode
+              1,                   // col_mode (1=256 colors)
+              0,                   // pal_no
+              0,                   // mosaic
+              FALSE,               // hflip
+              FALSE,               // vflip
+              FALSE,               // dbl_size
+              0,                   // prio
+              240,                 // x position of sprite on screen
+              0);                  // y position of sprite on screen
+
+
+
+
+
+
+
+
+
+
+
+
+[ham_SetFxMode | HAM Specific\Special Effect Functions\Alpha Blending]
+// Set the affected layers for alpha blending and tranparency.
+ham_SetFxMode(FX_LAYER_SELECT(|0,0,0,0,0,0),     // Source layer (BG0, BG1, BG2, BG3, OBJ, Backdrop)
+              FX_LAYER_SELECT(0,0,0,0,0,0),     // Target layer (BG0, BG1, BG2, BG3, OBJ, Backdrop)
+              FX_MODE_ALPHABLEND);              // Effect mode
+
+// Set the intensity of the source and target layer
+ham_SetFxAlphaLevel(16,                         // Source intensity
+                    16);                        // Target intensity
+
+
+
+
+[Header | HAM Specific\Header]
+/*****************************************************************************************
+ *
+ *
+ *  Copyright 2004+ by XXXXX
+ *  All Rights Reserved.
+ *
+ *
+ *  Version    Date          Author             Log
+ *  --------------------------------------------------------------------------------------
+ *  0.0        XXXXX         XXXXX              Inital Release
+ *
+ ****************************************************************************************/
+#ifndef |_H
+#define _H
+
+#include <mygba.h>
+
+
+
+
+
+
+#endif /* _H */
+
+
+/* END OF FILE */
+
+
