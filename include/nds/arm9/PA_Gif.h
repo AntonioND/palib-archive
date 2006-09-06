@@ -189,6 +189,23 @@ extern inline s32 PA_GifGetFrame(void){
 
 
 
+/*! \fn void PA_GifToTiles(void *gif, u8 *newtiles, u16 *temppal)
+    \brief
+         \~english Export Gif to a friendly 8x8 tile format, allowing it to be used to create sprites and backgrounds ! Returns a pointer towards your sprite gfx
+         \~french Exporter un Gif au format de tiles de 8x8 pixels, ce qui permet de l'utiliser pour créer des sprites ou des fonds ! Renvoie un pointeur vers le gfx du sprite
+    \param gif
+         \~english Your gif file...
+         \~french Fichier gif...
+    \param temppal
+         \~english A 256 u16 array that will receive the palette info to load
+         \~french Un tableau de 256 entrée en u16, qui recevra les infos de la palette à charger	 
+		 
+		 
+*/
+u8* PA_GifToTiles(void *gif, u16 *temppal);
+
+
+
 #ifdef __cplusplus
 }
 #endif

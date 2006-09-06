@@ -5,6 +5,8 @@ New Stuff
 
 [Gif] Added new gif animation commands : PA_GifSetStartFrame(StartFrame), PA_GifSetEndFrame(EndFrame) and PA_GifGetFrame(). Also moved the examples to a separate Gif example folder. GifAnim2 uses these new commands :)
 
+[Gif Sprite] Added a function to convert gif files into tiles... This can be used to create sprites from a gif file ! PA_GifToTiles(gif, palette). Check the Gif/GifSprite example to see how to correctly use it... Good points : takes much less memory, no need for conversions ! Bad points : takes more RAM if you do not free your pointer after use... And is way much slower...
+
 
 
 
