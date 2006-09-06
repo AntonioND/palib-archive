@@ -31,7 +31,7 @@ u8 PA_Screen = 0;
 
 s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 
-
+PA_GifInfos PA_GifInfo;
 
 // Pour les fenetres
 const s16 winfades[][4] = {
@@ -130,6 +130,9 @@ for (i = 0; i < 2; i++){
 	PA_UpdateUserInfo();
 	PA_ResetRecoSys(); // Reco system init
 	PA_SetScreenSpace(48); // Default spacing
+	
+	PA_GifInfo.StartFrame = 0; // start from the beginning
+	PA_GifInfo.EndFrame = 10000; // random high number
 }
 
 

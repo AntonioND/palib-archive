@@ -19,7 +19,6 @@ u8 PA_nBit[2]; // 8 or 16 on each screen...
 u16 PA_temppal[256];
 
 
-
 u16 tempvar;
 
 

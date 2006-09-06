@@ -25,6 +25,9 @@ extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 
 
 typedef struct{
+	s32 StartFrame;
+	s32 EndFrame;
+	s32 CurrentFrame;
 	float Speed;
 	u8 Play; // 0 stop; 1 play; 2 pause;
 } PA_GifInfos;
@@ -146,6 +149,42 @@ extern inline void PA_GifAnimPause(void){
 */
 extern inline void PA_GifAnimPlay(void){
 	PA_GifInfo.Play = 1;
+}
+
+/*! \fn extern inline void PA_GifSetStartFrame(s16 StartFrame)
+    \brief
+         \~english Set the Gif's starting frame number 
+         \~french Régler à partir de quelle image commencer le gif
+    \param StartFrame
+         \~english Starting frame... (0 to start from beginning)
+         \~french Image où démarrer... (0 pour le début)
+*/
+extern inline void PA_GifSetStartFrame(s32 StartFrame){
+	PA_GifInfo.StartFrame = StartFrame;
+}
+
+
+
+/*! \fn extern inline void PA_GifSetEndFrame(s16 EndFrame)
+    \brief
+         \~english Set the Gif's ending frame number 
+         \~french Régler à partir de quelle image arrêter le gif
+    \param EndFrame
+         \~english Ending frame... (100000 if you want to be sure ^^)
+         \~french Image où démarrer... (100000 si vous voulez être sure de finir ^^)
+*/
+extern inline void PA_GifSetEndFrame(s32 EndFrame){
+	PA_GifInfo.EndFrame = EndFrame;
+}
+
+
+/*! \fn extern inline s16 PA_GifGetFrame(void)
+    \brief
+         \~english Return's the gif's current frame
+         \~french Renvoie le numéro d'image du gif en cours
+*/
+extern inline s32 PA_GifGetFrame(void){
+	return PA_GifInfo.CurrentFrame;
 }
 
 

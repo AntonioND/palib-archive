@@ -1,3 +1,15 @@
+
+
+New Stuff
+---------
+
+[Gif] Added new gif animation commands : PA_GifSetStartFrame(StartFrame), PA_GifSetEndFrame(EndFrame) and PA_GifGetFrame(). Also moved the examples to a separate Gif example folder. GifAnim2 uses these new commands :)
+
+
+
+
+PAlib 060905 Fixes :)
+
 New Stuff
 ---------
 
@@ -23,7 +35,9 @@ Updated Stuff
 
 [DeSmuME] Reverted back to the old version, this one had 'Hickups' :s
 
-[Giflib] Changed it's compilation, saves 4kb ^^
+[Giflib] Changed its compilation, saves 4kb ^^
+
+[Doc] Updated the doc
 
 
 Things Fixed

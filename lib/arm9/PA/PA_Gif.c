@@ -22,8 +22,6 @@ extern u8 PA_nBit[2];
 
 u8 GifBits; // Mode 8 ou 16 bits
 
-PA_GifInfos PA_GifInfo;
-
 const short InterlacedOffset[] = { 0, 4, 2, 1 }; /* The way Interlaced image should. */
 const short InterlacedJumps[] = { 8, 8, 4, 2 };    /* be read - offsets and jumps... */
 
@@ -73,8 +71,10 @@ u8 *temp = (u8*)src;
 int DGifGetLineByte(GifFileType *GifFile, GifPixelType *Line, int LineLen){
     if (GifBits == 0) CopyLine(LineBuf, Line, LineLen); // On fait un backup 
     int result = DGifGetLine(GifFile, LineBuf, LineLen); // Nouvelle ligne
-	if (GifBits == 0) CopyLine(Line, LineBuf, LineLen); // Copie 8 bit
-	if (GifBits == 1) CopyLine2(Line, LineBuf, LineLen); // Copie 8 bit	
+	if (PA_GifInfo.CurrentFrame >=  PA_GifInfo.StartFrame) {
+		if (GifBits == 0) CopyLine(Line, LineBuf, LineLen); // Copie 8 bit
+		if (GifBits == 1) CopyLine2(Line, LineBuf, LineLen); // Copie 8 bit	
+	}
     return result;
 }
 
@@ -104,6 +104,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	
 	PA_GifAnimSpeed(1); // normal speed when starting out...
 	PA_GifAnimPlay();
+	PA_GifInfo.CurrentFrame = 0;
 	
 	GifBits = nBits;
 	if (GifBits == 1) { // On utilise une palette temporaire...
@@ -134,19 +135,21 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	    
 	    // Update Color map
 	    ColorMap = (GifFile->Image.ColorMap	? GifFile->Image.ColorMap: GifFile->SColorMap);
-
-	    i = ColorMap->ColorCount;
-	    while (--i >= 0)  {
-			GifColorType* pColor = &ColorMap->Colors[i];
-			Palette[i] = PA_RGB8(GAMMA(pColor->Red), GAMMA(pColor->Green), GAMMA(pColor->Blue));
-	    }
+		if (PA_GifInfo.CurrentFrame >=  PA_GifInfo.StartFrame) {// Load Palette only if correct frame
+			i = ColorMap->ColorCount;
+			while (--i >= 0)  {
+				GifColorType* pColor = &ColorMap->Colors[i];
+				Palette[i] = PA_RGB8(GAMMA(pColor->Red), GAMMA(pColor->Green), GAMMA(pColor->Blue));
+			}
+		}
 		//GifFile->Image.Delay;
 		/*
 	    if (GifFile->Image.Left + GifFile->Image.Width > GifFile->SWidth ||
 		GifFile->Image.Top + GifFile->Image.Height > GifFile->SHeight) {
 		return EXIT_FAILURE;
 	    }*/
-	    if (GifFile->Image.Interlace) {
+		
+		if (GifFile->Image.Interlace) {
 		/* Need to perform 4 passes on the images: */
 			for (Count = i = 0; i < 4; i++) {
 				for (j = Row + InterlacedOffset[i]; j < Row + Height;
@@ -160,7 +163,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 				}
 			}
 		}
-	    else {
+		else {
 			for (i = 0; i < Height; i++) {
 				DGifGetLineByte(GifFile, (ScreenBuff + (((SWidth*Row) + Col) << GifBits)),Width);
 				Row++;
@@ -171,7 +174,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 					return EXIT_FAILURE;
 				}*/
 			}
-	    }
+		}
 	    break;
 		
 	case EXTENSION_RECORD_TYPE:
@@ -206,11 +209,18 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
  
 						tmpDelay = (int)tmpNumber;
 						s32 time;
-						for(time=0;time*PA_GifInfo.Speed<tmpNumber;time++) {
-							PA_WaitForVBL(); 
-							while(PA_GifInfo.Play == 2) PA_WaitForVBL(); // Pause animation !
-							if (PA_GifInfo.Play == 0) goto GifStop;
+						
+						PA_GifInfo.CurrentFrame++;
+						if (PA_GifInfo.CurrentFrame > PA_GifInfo.EndFrame) PA_GifInfo.Play = 0; // Last frame...
+						
+						if (PA_GifInfo.CurrentFrame-1 >=  PA_GifInfo.StartFrame){	// Don't wait if not at the right frame yet				
+							for(time=0;time*PA_GifInfo.Speed<tmpNumber;time++) {
+								PA_WaitForVBL(); 
+								while(PA_GifInfo.Play == 2) PA_WaitForVBL(); // Pause animation !
+								if (PA_GifInfo.Play == 0) goto GifStop;
+							}
 						}
+						
 						
 //						pd->aniDelay = tmpDelay;
 						
