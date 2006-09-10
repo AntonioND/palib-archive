@@ -11,6 +11,11 @@ New Stuff
 
 [SpeedTest] Added a series of macros to test the speed of several functions and see which one is the best speed-wise... Check Math/SpeedTest example to see how it works, it's not very intuitive :/
 
+Updated Stuff
+-------------
+
+[Examples] Started cleaning up the examples, especially the images, should save a few Mb...
+
 
 Things Fixed
 ------------
