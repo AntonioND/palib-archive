@@ -744,6 +744,40 @@ PA_BGScrollXY(screen, bg_select, 0, 0);
 }
 
 
+
+/*!
+    \fn extern inline void PA_SetBgPrioSeq(int screen, int priority0, int priority1, int priority2, int priority3)
+    \brief
+      \~english Change all the background priorities to a given background order
+      \~french Changer la priorité des fonds pour qu'ils soient dans un ordre donné
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param priority0      
+	  \~english Background to show on top
+      \~french Fond à mettre en premier
+    \param priority1
+      \~english Next one...
+      \~french Suivant...
+    \param priority2
+      \~english Next one...
+      \~french Suivant...	  
+    \param priority2
+      \~english Last one...
+      \~french Dernier...	  
+	  
+*/
+extern inline void PA_SetBgPrioSeq(u8 screen, u8  priority0, u8  priority1, u8  priority2, u8  priority3)
+{
+   PA_SetBgPrio(screen, priority0, 0);
+   PA_SetBgPrio(screen, priority1, 1);
+   PA_SetBgPrio(screen, priority2, 2);
+   PA_SetBgPrio(screen, priority3, 3);
+} 
+
+
+
+
 /*! \fn extern inline void PA_ClearBg(u8 screen, u8 bg_select)
     \brief
          \~english Erase a given background (just the tilemap)

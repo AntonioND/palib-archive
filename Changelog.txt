@@ -7,6 +7,16 @@ New Stuff
 
 [Gif Sprite] Added a function to convert gif files into tiles... This can be used to create sprites from a gif file ! PA_GifToTiles(gif, palette). Check the Gif/GifSprite example to see how to correctly use it... Good points : takes much less memory, no need for conversions ! Bad points : takes more RAM if you do not free your pointer after use... And is way much slower...
 
+[BG Prio] Added PA_SetBgPrioSeq(u8 screen, u8  priority0, u8  priority1, u8  priority2, u8  priority3), to set the backgrounds in a certain order. 100% not my code, not my idea, I just copy/pasted it ^^ Thanks to sumiguchi for that one
+
+[SpeedTest] Added a series of macros to test the speed of several functions and see which one is the best speed-wise... Check Math/SpeedTest example to see how it works, it's not very intuitive :/
+
+
+Things Fixed
+------------
+
+[Linux] Corrected a typo in the makefile which prevented it from working on Linux
+
 
 
 
