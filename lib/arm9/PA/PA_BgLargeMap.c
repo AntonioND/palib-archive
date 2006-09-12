@@ -187,7 +187,7 @@ s32 j;
 //		PA_SetLargeMapTile(screen, bg_select, i&63, j&31, TEST_NUMBER(i, j)); // Tile numbers...
 		PA_SetLargeMapTile(screen, bg_select, x&63, j&31, 
 							(tilenumber
-							|((TILE_HFLIP|TILE_VFLIP)&(map[modulx+(modulj*lx)]>>20))
+							|((TILE_HFLIP|TILE_VFLIP)&(map[modulx+(modulj*lx)]>>19))
 							)						
 							); // Tile numbers...		
 		PA_UpdateBgTile(screen, bg_select, tilenumber, 
@@ -214,7 +214,7 @@ s32 i;
 //		PA_SetLargeMapTile(screen, bg_select, i&63, j&31, TEST_NUMBER(i, j)); // Tile numbers...
 		PA_SetLargeMapTile(screen, bg_select, i&63, y&31, 
 							(tilenumber
-							|((TILE_HFLIP|TILE_VFLIP)&(map[moduli+(moduly*lx)]>>20))
+							|((TILE_HFLIP|TILE_VFLIP)&(map[moduli+(moduly*lx)]>>19))
 							)						
 							); // Tile numbers...		
 		PA_UpdateBgTile(screen, bg_select, tilenumber, 

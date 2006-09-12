@@ -18,7 +18,7 @@ s32  PA_parallaxY[2][4];
 scrollpositions  scrollpos[2][4]; // Pour chaque écran et pour chaque fond :)
 
 u8  charblocks[2][70];  // On met à 0 les emplacements utilisés... pour chaque écran...
-u16  tilesetsize[2][4]; // Place utilisée pour chaque tileset
+u32  tilesetsize[2][4]; // Place utilisée pour chaque tileset
 u16  mapsize[2][4]; // Place utilisée pour chaque map
 u8  tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
 u8  mapchar[2][4];  // Emplacement mémoire de chaque map

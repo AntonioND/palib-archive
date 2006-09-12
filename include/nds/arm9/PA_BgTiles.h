@@ -6,7 +6,7 @@
 #include "PA_General.h"
 
 typedef struct{
-	s32 NTiles;
+	u32 NTiles;
 	u32 *TilePos;
 	void *Tiles;
 } PA_LoargeMaps;
@@ -62,7 +62,7 @@ extern u16 *PA_DrawBg[2]; // Fond dessinable
 
 
 extern u8 charblocks[2][70];
-extern u16 tilesetsize[2][4]; // Place utilisée pour chaque tileset
+extern u32 tilesetsize[2][4]; // Place utilisée pour chaque tileset
 extern u16 mapsize[2][4]; // Place utilisée pour chaque map
 extern u8 tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
 extern u8 mapchar[2][4];  // Emplacement mémoire de chaque map
