@@ -139,6 +139,7 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 	irqEnable(IRQ_TIMER0);	
 	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
 	irqEnable(IRQ_TIMER3);	
+	
 	//supprime pour test
     irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
 	irqEnable(IRQ_WIFI);
@@ -153,7 +154,7 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
   REG_IME = 1;*/
   
  //supprime pour test
-//  SndInit7 ();
+  SndInit7 ();
     
   u32 fifo_temp;   
 

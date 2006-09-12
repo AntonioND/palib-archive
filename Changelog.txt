@@ -3,6 +3,8 @@
 New Stuff
 ---------
 
+[Tiles] New infinite tile system. Both PAlib and PAGfx have been updated to achieve this. PAGfx now has an InfiniteMap command to convert backgrounds with more than 1008 tiles... Check out the Backgrounds/InfiniteTiles example to see how it works. Example used has 1790 tiles...
+
 [Gif] Added new gif animation commands : PA_GifSetStartFrame(StartFrame), PA_GifSetEndFrame(EndFrame) and PA_GifGetFrame(). Also moved the examples to a separate Gif example folder. GifAnim2 uses these new commands :)
 
 [Gif Sprite] Added a function to convert gif files into tiles... This can be used to create sprites from a gif file ! PA_GifToTiles(gif, palette). Check the Gif/GifSprite example to see how to correctly use it... Good points : takes much less memory, no need for conversions ! Bad points : takes more RAM if you do not free your pointer after use... And is way much slower...
@@ -19,6 +21,8 @@ Updated Stuff
 [Examples] Added 16cText2 and 8bitText2, using stdio to output the date and time :)
 
 [Examples] Cleaned the examples... Please delete your PAlib and PAlibExamples folder before updating... Should save some size in the zip and installer, (500-1000kB)
+
+[Sound] On by default
 
 
 Things Fixed
