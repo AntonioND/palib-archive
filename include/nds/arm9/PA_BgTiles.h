@@ -262,7 +262,7 @@ void PA_InitBg(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode
       \~french Taille en 16 bits...
 
 */
-void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u16 size);
+void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u32 size);
 
 
 /*!

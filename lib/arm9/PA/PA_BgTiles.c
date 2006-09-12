@@ -72,7 +72,7 @@ charsetstart[1] = 8; // Par défaut à 8, pour dire de tout utiliser
 
 
 
-void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u16 size) {
+void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u32 size) {
 u16 blocksize = (size + 1023) >> 10;
 s8 charset = charsetstart[screen]; // On commence par le dernier... soit le 8ème, et on ira vers le bas
 u8 charsetok = 0;
