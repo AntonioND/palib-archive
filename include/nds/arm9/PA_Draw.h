@@ -414,8 +414,8 @@ void PA_Draw16bitRect(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 c
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1) 
     \param color
-         \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
-         \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...
+         \~english Color number in the palette (0-255)
+         \~french Numéro de la couleur dans la palette (0-255)
  */
 void PA_8bitDraw(u8 screen, u8 color);
 

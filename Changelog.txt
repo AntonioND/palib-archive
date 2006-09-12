@@ -34,6 +34,8 @@ Things Fixed
 
 [InfiniteTiles] Fixed all the errors you could have on compiling
 
+[Doc] Fixed a few minor errors, thanks for reporting them :)
+
 
 
 
