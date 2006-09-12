@@ -29,6 +29,7 @@ u8 charsetstart[2] = {8, 8};
 
 u8 rotbg_size[2][4]; // Background size of each possible rotbg
 
+PA_LoargeMaps PA_LargeMap[2][4];
 
 
 void PA_ResetBgSys(void) {
@@ -111,6 +112,10 @@ if (!charsetok) { // Si jamais on n'a pas trouvé de créneaux, on affiche un mess
 	tilesetsize[screen][bg_select] = size;    // On mémorise aussi la taille que ca fait pour pouvoir effacer plus tard...
 
 	DMA_Copy(bg_tiles, (void*)CharBaseBlock(screen, charset), size, DMA_16NOW);
+	
+	// Save tiles pointer and position in VRAM
+	PA_LargeMap[screen][bg_select].Tiles = bg_tiles;
+	PA_LargeMap[screen][bg_select].TilePos = (u32*)CharBaseBlock(screen, tilesetchar[screen][bg_select]); // used for tile swapping
 
 	for (i = 0; i < blocksize; i++) charblocks[screen][(charset << 3) + i] = 1;  // Les blocs sont occupés
 }

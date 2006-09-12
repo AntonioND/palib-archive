@@ -26,6 +26,8 @@ Things Fixed
 
 [Linux] Corrected a typo in the makefile which prevented it from working on Linux
 
+[PAFS] Found and fixed a major bug in PAFS. Now should work correctly (it screwed up the file positions when a file was had a size of 4*n - 1 ^^
+
 
 
 

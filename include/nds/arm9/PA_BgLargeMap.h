@@ -4,6 +4,17 @@
 
 #include "PA_BgTiles.h"
 
+// Tile engine functions, do not use !
+#define PA_TileNumber(x, y)	(PA_Modulo((x)+1, 34)+(PA_Modulo((y)+1, 26)*34)) // Used by the tile engine
+
+
+#define PA_LoadTileEngine(screen, bg_select, bg_tiles) {\
+PA_DeleteBg(screen, bg_select);\
+PA_LoadBgTilesEx(screen, bg_select, (void*)Blank, (884<<5));\
+PA_LargeMap[screen][bg_select].Tiles = bg_tiles;\
+PA_LoadBgMap(screen, bg_select, Blank, BG_512X256); \
+PA_InitBg(screen, bg_select, BG_512X256, 0, 1);\
+PA_BGScrollXY(screen, bg_select, 0, 0);}
 
 
 /*! \file PA_BgLargeMap.h
@@ -56,8 +67,12 @@
       \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
 */
 #define PA_LoadLargeBg(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly) {\
-PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);\
+PA_LargeMap[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)>>5;\
+if (PA_LargeMap[screen][bg_select].NTiles < 884) {PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);}\
+else{PA_LoadTileEngine(screen, bg_select, bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
+
+
 
 
 
@@ -114,7 +129,9 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
       \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
 */
 #define PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\
-PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);\
+PA_LargeMap[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)>>5;\
+if (PA_LargeMap[screen][bg_select].NTiles < 884) {PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);}\
+else{PA_LoadTileEngine(screen, bg_select, bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
 

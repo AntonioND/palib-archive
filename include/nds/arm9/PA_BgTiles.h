@@ -5,6 +5,13 @@
 #include <nds.h>
 #include "PA_General.h"
 
+typedef struct{
+	s32 NTiles;
+	u32 *TilePos;
+	void *Tiles;
+} PA_LoargeMaps;
+extern PA_LoargeMaps PA_LargeMap[2][4];
+
 
 // Extracts the size from PAGfx convertions
 extern inline u8 PA_GetPAGfxBgSize(u16 width, u16 height)
@@ -792,6 +799,19 @@ extern inline void PA_SetBgPrioSeq(u8 screen, u8  priority0, u8  priority1, u8  
 extern inline void PA_ClearBg(u8 screen, u8 bg_select){
 u8 i, j;
 for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_select, i, j, 0);
+}
+
+
+
+extern inline void PA_UpdateBgTile(u8 screen, u8 bg_select, u16 tilepos, void *tile){
+tilepos = tilepos << 4;
+u32 *tilecopy = (u32*)tile;
+u8 i;
+	for (i = 0; i < 16; i++)
+		PA_LargeMap[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
+//	PA_LargeMap[screen][bg_select].TilePos[tilepos+1] = tilecopy[1];	
+//	PA_LargeMap[screen][bg_select].TilePos[tilepos+2] = tilecopy[2];
+//	PA_LargeMap[screen][bg_select].TilePos[tilepos+3] = tilecopy[3];	
 }
 
 
