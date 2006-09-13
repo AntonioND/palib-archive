@@ -13,14 +13,6 @@
 
 
 
-typedef struct{
-	u32 NTiles;
-	u32 *TilePos;
-	void *Tiles;
-} PA_LoargeMaps;
-extern PA_LoargeMaps PA_LargeMap[2][4];
-
-
 // Extracts the size from PAGfx convertions
 extern inline u8 PA_GetPAGfxBgSize(u16 width, u16 height)
 {
@@ -59,8 +51,18 @@ extern inline u8 PA_GetPAGfxRotBgSize(u16 width)
 //background memory offset macros
 #define CharBaseBlock(screen, n) (((n)*0x4000) + 0x6000000 + (0x200000 *  screen))
 #define ScreenBaseBlock(screen, n) (((n)*0x800) + 0x6000000 + (0x200000 *  screen))
-extern u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
-extern u8 tilesetchar[2][4];
+
+typedef struct{
+	u32 Map; // Map pointer
+	u8 TileSetChar;
+	
+
+} PA_BgInfos;
+PA_BgInfos PA_BgInfo[2][4];
+
+
+//extern u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
+//extern u8 tilesetchar[2][4];
 
 // Quantité de données à charger en fonction de la taille de la map...
 extern u16 bg_sizes[4];
@@ -72,17 +74,21 @@ extern u16 *PA_DrawBg[2]; // Fond dessinable
 extern u8 charblocks[2][70];
 extern u32 tilesetsize[2][4]; // Place utilisée pour chaque tileset
 extern u16 mapsize[2][4]; // Place utilisée pour chaque map
-extern u8 tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
+//extern u8 tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
 extern u8 mapchar[2][4];  // Emplacement mémoire de chaque map
 
 extern u8 charsetstart[2];
-
-
-
-
-
 extern s32 PA_parallaxX[2][4];
 extern s32 PA_parallaxY[2][4];
+
+
+typedef struct{
+	u32 NTiles;
+	u32 *TilePos;
+	void *Tiles;
+} PA_LargeMaps;
+extern PA_LargeMaps PA_LargeMap[2][4];
+
 
 
 
@@ -547,8 +553,8 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
       \~french Nouveau numéro de tile que l'on veut mettre
 */
 extern inline void PA_SetMapTile(u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number) {
-*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ~(TILE_N); 
-*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) |= ((tile_number)&TILE_N);
+*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6)) &= ~(TILE_N); 
+*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6)) |= ((tile_number)&TILE_N);
 }
 
 
@@ -573,7 +579,7 @@ extern inline void PA_SetMapTile(u8 screen, u8 bg_select, s16 x, s16 y, s16 tile
       \~english New tile to put (tile + palette + flips...)
       \~french Nouveau numéro de tile que l'on veut mettre (tile + palette + flips...)
 */
-#define PA_SetMapTileAll(screen, bg_select, x, y, tile_info) *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) = (tile_info)
+#define PA_SetMapTileAll(screen, bg_select, x, y, tile_info) *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6)) = (tile_info)
 
 
 
@@ -606,7 +612,7 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
 	truex = x&31;
 	mapblock = (x >> 5) << 11; // Permet d'avoir le bon block...
 	
-	*(u16*)(PA_bgmap[screen][bg_select] + ((truex) << 1) + ((y) << 6) + mapblock) = tile_info;
+	*(u16*)(PA_BgInfo[screen][bg_select].Map + ((truex) << 1) + ((y) << 6) + mapblock) = tile_info;
 }
 
 
@@ -680,7 +686,7 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
       \~english Palette number (0-15)
       \~french Numéro de la palette (0-15)
 */
-#define PA_SetMapTilePal(screen, bg_select, x, y, palette_number) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ALL_BUT(TILE_PAL); *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) |= ((palette_number) << 12);}
+#define PA_SetMapTilePal(screen, bg_select, x, y, palette_number) {*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6)) &= ALL_BUT(TILE_PAL); *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6)) |= ((palette_number) << 12);}
 
 
 /*!
@@ -714,7 +720,7 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
       \~french Numéro de la palette (0-15)
 */
 extern inline void PA_SetMapTileEx(u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_number, u8 hflip, u8 vflip, u8 palette_number) {
-	*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) = (tile_number) + ((hflip) << 10) + ((vflip) << 11) + ((palette_number) << 12);
+	*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6)) = (tile_number) + ((hflip) << 10) + ((vflip) << 11) + ((palette_number) << 12);
 }
 
 
@@ -749,12 +755,12 @@ extern inline void PA_SetBgPrio(u8 screen, u8 bg, u8 prio) {
 extern inline void PA_CreateBgFromTiles(u8 screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size){
 PA_LoadBgMap(screen, bg_select, bg_map, bg_size);
 scrollpos[screen][bg_select].infscroll = 0; // Par défaut pas de scrolling infini...
-PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, mapchar[screen][bg_select]);
-tilesetchar[screen][bg_select] = tilesetchar[screen][bg_tiles];
+PA_BgInfo[screen][bg_select].Map = ScreenBaseBlock(screen, mapchar[screen][bg_select]);
+PA_BgInfo[screen][bg_select].TileSetChar = PA_BgInfo[screen][bg_tiles].TileSetChar;
 tilesetsize[screen][bg_select] = tilesetsize[screen][bg_tiles];
 
 _REG16(REG_BGSCREEN(screen)) |= (0x100 << (bg_select));
-_REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(mapchar[screen][bg_select] << SCREEN_SHIFT) | (1 << 13) | (tilesetchar[screen][bg_select] << 2) | (1 << 7);
+_REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(mapchar[screen][bg_select] << SCREEN_SHIFT) | (1 << 13) | (PA_BgInfo[screen][bg_select].TileSetChar << 2) | (1 << 7);
 PA_BGScrollXY(screen, bg_select, 0, 0);	
 }
 
@@ -821,6 +827,7 @@ u8 i;
 //	PA_LargeMap[screen][bg_select].TilePos[tilepos+2] = tilecopy[2];
 //	PA_LargeMap[screen][bg_select].TilePos[tilepos+3] = tilecopy[3];	
 }
+
 
 
 /** @} */ // end of BgTiles
