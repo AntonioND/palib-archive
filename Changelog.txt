@@ -13,6 +13,9 @@ New Stuff
 
 [SpeedTest] Added a series of macros to test the speed of several functions and see which one is the best speed-wise... Check Math/SpeedTest example to see how it works, it's not very intuitive :/
 
+[PAGfx] New exports .bin files in the /bin folder ! To use .bin files instead of .c, simply copy the .bin files into the 'data' directory (create it in the main folder if not there), and include all_gfx.h, but NOT all_gfx.c... This will include the .bin instead of the .c files... Changes have been made both in PAGfx and PAlib to allow further evolution... Because of this, backgrounds converted with this version of PAGfx CANNOT work with older PAlib versions, and files converted with older PAGfx version CANNOT work with this version of PAlib... Sorry :/
+
+
 Updated Stuff
 -------------
 

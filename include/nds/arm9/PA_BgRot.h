@@ -90,7 +90,7 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
 */
 #define PA_LoadPAGfxRotBg(screen, bg_select, bg_name, wraparound) {\
 PA_LoadNormalBgPal(screen, (void*)bg_name##_Pal);\
-PA_LoadRotBg(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\
+PA_LoadRotBg(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Info[1]), wraparound);\
 }
 
 
