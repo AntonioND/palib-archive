@@ -107,7 +107,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 */
 #define PA_LoadPAGfxLargeBg(screen, bg_number, bg_name){\
 	PA_LoadBgPal(screen, bg_number, (void*)bg_name##_Pal); \
-	PA_LoadLargeBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Width) >> 3, (bg_name##_Height) >> 3);}
+	PA_LoadLargeBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Info[1]) >> 3, (bg_name##_Info[2]) >> 3);}
 
 
 

@@ -5,6 +5,14 @@
 #include <nds.h>
 #include "PA_General.h"
 
+
+#define BG_TILEDBG 2
+#define BG_LARGEMAP 4
+#define BG_INFINITEMAP 5
+
+
+
+
 typedef struct{
 	u32 NTiles;
 	u32 *TilePos;
@@ -375,7 +383,7 @@ void PA_LoadBgMap(u8 screen, u8 bg_select, void* bg_map, u8 bg_size);
 
 #define PA_LoadTiledBg(screen, bg_number, bg_name){\
 	PA_LoadBgPal(screen, bg_number, (void*)bg_name##_Pal); \
-	PA_LoadSimpleBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Width, bg_name##_Height), 0, 1);}
+	PA_LoadSimpleBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Info[1], bg_name##_Info[2]), 0, 1);}
 
 
 

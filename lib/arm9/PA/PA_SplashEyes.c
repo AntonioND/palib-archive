@@ -23,8 +23,7 @@ extern const u8 pa_splasheyes[];
 extern const u32 pa_splasheyes_size[];
 
 // Background
-const int pa_splasheyes_Width;
-const int pa_splasheyes_Height;
+const int pa_splasheyes_Info[3] = {2, 256, 192};;
 const unsigned short pa_splasheyes_Map[768];
 const unsigned char pa_splasheyes_Tiles[8704];
 const unsigned short pa_splasheyes_Pal[17] __attribute__ ((aligned (4))) = {
@@ -248,9 +247,6 @@ const unsigned short pa_splspr_Pal[88] __attribute__ ((aligned (4))) = {
 64543, 58137, 53909, 51795, 50738, 49714, 49681, 60250, 48624, 43372, 41292, 42316, 42317, 42349, 44430, 57080, 42283, 41259, 40202, 39145, 41258, 43373, 47600, 56023, 42315, 44429, 47567, 46510, 43340, 42348, 52884, 57112, 62364, 65535, 64478, 54966, 45486, 50739, 46511, 65534, 63421, 45454, 60283, 61308, 61307, 59194, 61340, 54998, 51796, 48657, 59193, 50771, 46543, 53942, 52852, 43339, 44397, 49682, 45487, 59226, 56055, 60251, 62397, 43405, 47601, 41291, 51828, 46544, 43406, 39177, 57079, 32768, 45452, 56022, 41224, 45453, 58136, 48623, 35939, 54965, 33825, 34882, 36996, 32769, 47566, 43338, 39111, 46509};
 	   
 	   
-	   
-const int pa_splasheyes_Width = 256;
-const int pa_splasheyes_Height = 192;
 
 const unsigned short pa_splasheyes_Map[768] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
