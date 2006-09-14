@@ -27,6 +27,8 @@ Updated Stuff
 
 [Sound] On by default
 
+[8/16bit Modes] Saved up to 50ko/file when using these modes (Giflib was included by default :s), saved 3ko/file for other .nds files
+
 
 Things Fixed
 ------------

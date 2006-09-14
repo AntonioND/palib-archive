@@ -20,6 +20,8 @@ extern "C" {
 
 extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 
+extern u16 tempvar;
+
 
 #define PA_RGB8(r,g,b)	((((b)>>3)<<10)|(((g)>>3)<<5)|((r)>>3)|(1 << 15))
 
@@ -591,7 +593,7 @@ extern inline void PA_LoadJpeg(u8 screen, void *jpeg)
 void PA_LoadBmp(u8 screen, s16 x, s16 y, void *bmp);*/
 
 
-/*! \fn void PA_LoadFSImage(u8 screen, s16 FSImage)
+/*! \fn extern inline void PA_LoadFSImage(u8 screen, s16 FSImage)
     \brief
          \~english Load any image from PAFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP
          \~french Charger une image depuis PAFS sur l'écran (16 bit). Supporte le Gif, Jpeg, et BMP
@@ -602,8 +604,20 @@ void PA_LoadBmp(u8 screen, s16 x, s16 y, void *bmp);*/
          \~english PAFS Image number
          \~french Numéro de l'image dans PAFS	 
 */
+extern inline void PA_LoadFSImage(u8 screen, s16 FSImage){
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "bmp")){
+		PA_LoadBmp(screen, PA_PAFSFile(FSImage));
+	}
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "jpg")){ 
+		PA_LoadJpeg(screen, PA_PAFSFile(FSImage));
+	}	
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "gif")){ 
+		PA_LoadGif(screen, PA_PAFSFile(FSImage));
+	}		
+}
 
-void PA_LoadFSImage(u8 screen, s16 FSImage);
+
+
 
 /*
 extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage){
@@ -618,9 +632,6 @@ extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage){
 	}		
 }
 */
-
-
-
 extern inline void PA_LoadGBFSImageToBuffer(void *Buffer, s16 GBFSImage, s16 Width){
 	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
 		PA_LoadBmpToBuffer((u16*)Buffer, 0, 0, (u16*)PA_GBFSfile[GBFSImage].File, Width);
