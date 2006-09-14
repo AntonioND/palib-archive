@@ -256,7 +256,7 @@ s32 tempy = scrollpos[screen][bg_select].scrolly >> 3;
 scrollpos[screen][bg_select].scrolly = y; // updated
 y = y>>3;
 
-PA_OutputText(1, 0, 11, "%d     - %d      ", y, tempy);
+//PA_OutputText(1, 0, 11, "%d     - %d      ", y, tempy);
 	while(y < tempy) {
 		tempy--;
 		PA_UpdateTileEngineY(screen, bg_select, tempx, tempy-2);

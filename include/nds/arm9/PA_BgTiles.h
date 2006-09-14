@@ -6,7 +6,8 @@
 #include "PA_General.h"
 
 
-#define BG_TILEDBG 2
+#define BG_TILEDBG 	2
+#define BG_ROTBG 	3
 #define BG_LARGEMAP 4
 #define BG_INFINITEMAP 5
 
@@ -56,6 +57,8 @@ typedef struct{
 	u32 Map; // Map pointer
 	u8 TileSetChar;
 	
+	
+	u8 BgMode; // Background mode
 
 } PA_BgInfos;
 PA_BgInfos PA_BgInfo[2][4];
@@ -823,11 +826,24 @@ u32 *tilecopy = (u32*)tile;
 u8 i;
 	for (i = 0; i < 16; i++)
 		PA_LargeMap[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
-//	PA_LargeMap[screen][bg_select].TilePos[tilepos+1] = tilecopy[1];	
-//	PA_LargeMap[screen][bg_select].TilePos[tilepos+2] = tilecopy[2];
-//	PA_LargeMap[screen][bg_select].TilePos[tilepos+3] = tilecopy[3];	
 }
 
+//	else if(PA_BgInfo[screen][bg_number].BgMode == BG_ROTBG){	
+#define PA_EasyBgLoad(screen, bg_number, bg_name){\
+	PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
+	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){	PA_LoadTiledBg(screen, bg_number, bg_name);}\
+	else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}\
+}
+
+
+
+void PA_EasyBgScrollX(u8 screen, u8 bg_number, s32 x);
+void PA_EasyBgScrollY(u8 screen, u8 bg_number, s32 y);
+
+extern inline void PA_EasyBgScrollXY(u8 screen, u8 bg_number, s32 x, s32 y){
+	PA_EasyBgScrollX(screen, bg_number, x);
+	PA_EasyBgScrollY(screen, bg_number, y);
+}
 
 
 /** @} */ // end of BgTiles
