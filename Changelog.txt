@@ -15,6 +15,8 @@ New Stuff
 
 [PAGfx] New exports .bin files in the /bin folder ! To use .bin files instead of .c, simply copy the .bin files into the 'data' directory (create it in the main folder if not there), and include all_gfx.h, but NOT all_gfx.c... This will include the .bin instead of the .c files... Changes have been made both in PAGfx and PAlib to allow further evolution... Because of this, backgrounds converted with this version of PAGfx CANNOT work with older PAlib versions, and files converted with older PAGfx version CANNOT work with this version of PAlib... Sorry :/
 
+[PAGfx/PAlib] Added a new mode in PAGfx : EasyBg... This will automatically select the best mode for the background (between TiledBg, LargeMap, and InifiniteMap). A new set of commands has been created in PAlib to avoid thinking about it : PA_EasyBgLoad(screen, bg_number, bg_name), PA_EasyBgScrollXY(screen, bg_number, xscroll, yscroll)... (ScrollX and ScrollY also available). Editted the examples (not all) to reflect this new stuff. The wiki will be simplified soon as you don't have to think about what type of background you want now (the seperate explanations will be left in an 'advanced tutorial').
+
 
 Updated Stuff
 -------------
