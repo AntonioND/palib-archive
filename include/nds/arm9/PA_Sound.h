@@ -96,6 +96,8 @@ extern inline void PA_InitSound(void) {
 
 }
 
+
+
 /*! \fn extern void PA_InitSound(void)
     \brief
          \~english Initialise the Stream system
@@ -363,6 +365,8 @@ extern inline void PA_PlayFSSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volu
          \~english Repeat point
          \~french  Point de répétition
 */
+
+extern void PA_StopSound(u8 PA_Channel);
 extern inline void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
 
 /*! \fn extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, u32 freq)
