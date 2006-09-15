@@ -65,6 +65,8 @@ Things Fixed
 
 [Doc] Fixed a few minor errors, thanks for reporting them :)
 
+[RotBg] Mastertop found a compilation error, thanks :)
+
 
 
 
