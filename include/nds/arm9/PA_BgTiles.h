@@ -860,16 +860,26 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
 u32 *PA_BGinfo = (u32*)PA_PAFSFile(filenumber);\
 PA_BgInfo[screen][bg_number].BgMode = PA_BGinfo[0];   \
 PA_LoadBgPal(screen, bg_number, (void*)(PA_PAFSFile(filenumber+2))); \
+PA_DeleteBg(screen, bg_number);\
 if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {	\
-	PA_DeleteBg(screen, bg_number);\
 	PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);\
 	PA_LoadBgMap(screen, bg_number, PA_PAFSFile(filenumber+1), PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2])); \
 	PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2]), 0, 1);\
-	PA_BGScrollXY(screen, bg_number, 0, 0);\
 }\
 else{\
-	PA_LoadLargeBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Info[1]) >> 3, (bg_name##_Info[2]) >> 3);\
+	PA_LargeMap[screen][bg_number].NTiles = PA_FSFile[filenumber+3].Length>>5;\
+	if (PA_LargeMap[screen][bg_number].NTiles < MAX_TILES) { \
+		PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);\
+	}\
+	else{\
+		PA_LoadBgTilesEx(screen, bg_number, (void*)Blank, (1008<<5));\
+	}\
+	PA_LargeMap[screen][bg_number].Tiles = PA_PAFSFile(filenumber+3);\
+	PA_LoadBgMap(screen, bg_number, Blank, BG_512X256); \
+	PA_InitBg(screen, bg_number, BG_512X256, 0, 1);\
+	PA_InitLargeBg(screen, bg_number, PA_BGinfo[1]>> 3, PA_BGinfo[2]>> 3, PA_PAFSFile(filenumber+1));\
 }\
+PA_BGScrollXY(screen, bg_number, 0, 0);\
 }
 
 

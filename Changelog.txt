@@ -39,6 +39,8 @@ Updated Stuff
 
 [8/16bit Modes] Saved up to 50ko/file when using these modes (Giflib was included by default :s), saved 3ko/file for other .nds files
 
+[PAGfx] Now displays % progression when converting big backgrounds
+
 
 Things Fixed
 ------------
@@ -47,11 +49,11 @@ Things Fixed
 
 [PAFS] Found and fixed a major bug in PAFS. Now should work correctly (it screwed up the file positions when a file was had a size of 4*n - 1 ^^
 
-[InfiniteTiles] Fixed all the errors you could have on compiling
+[PAFS] No longuer includes the files from the hidden .svn directory, sorry for that one ^^
+
+[InfiniteTiles] Fixed all the errors you could have when compiling
 
 [Doc] Fixed a few minor errors, thanks for reporting them :)
-
-[PAFS] No longuer includes the files from the hidden .svn directory, sorry for that one ^^
 
 
 
