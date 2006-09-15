@@ -49,8 +49,8 @@ void PA_LoadBgExtPal(u8 screen, u16 palette_number, void* palette);
 	DMA_Copy((void*)source, (void*)palette, 256, DMA_16NOW);\
 	if (palette == PAL_SPRITE0) PA_LoadSpritePal(0, 0, (void*)source);\
 	if (palette == PAL_SPRITE1) PA_LoadSpritePal(1, 0, (void*)source);\
-	if (palette == PAL_BG0) {u8 itemp; for (itemp = 0; itemp < 4; itemp++) PA_LoadBgPal(0, itemp, (void*)source);}\
-	if (palette == PAL_BG1) {u8 itemp; for (itemp = 0; itemp < 4; itemp++) PA_LoadBgPal(1, itemp, (void*)source);}}
+	if (palette == PAL_BG0) {u8 itemp; for (itemp = 0; itemp < 4; itemp++) PA_LoadBgPal(0, itemp, (void*)(source));}\
+	if (palette == PAL_BG1) {u8 itemp; for (itemp = 0; itemp < 4; itemp++) PA_LoadBgPal(1, itemp, (void*)(source));}}
 
 
 /*! \def PA_LoadNormalBgPal(palette, source)

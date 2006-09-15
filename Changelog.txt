@@ -17,6 +17,10 @@ New Stuff
 
 [PAGfx/PAlib] Added a new mode in PAGfx : EasyBg... This will automatically select the best mode for the background (between TiledBg, LargeMap, and InifiniteMap). A new set of commands has been created in PAlib to avoid thinking about it : PA_EasyBgLoad(screen, bg_number, bg_name), PA_EasyBgScrollXY(screen, bg_number, xscroll, yscroll)... (ScrollX and ScrollY also available). Editted the examples (not all) to reflect this new stuff. The wiki will be simplified soon as you don't have to think about what type of background you want now (the seperate explanations will be left in an 'advanced tutorial').
 
+[PAFS Backgrounds] Added PAFS/PAFS_Bg to see how to load backgrounds from PAFS ! You have to give it the number of the first background file (name_Info), and put all the .bin files in PAFS...  => PA_FSBgLoad(screen, bg_number, filenumber)
+
+[PAFS Sprites] Added PAFS/PAFS_Sprite to see how to load sprites from PAFS...
+
 
 Updated Stuff
 -------------
@@ -46,6 +50,8 @@ Things Fixed
 [InfiniteTiles] Fixed all the errors you could have on compiling
 
 [Doc] Fixed a few minor errors, thanks for reporting them :)
+
+[PAFS] No longuer includes the files from the hidden .svn directory, sorry for that one ^^
 
 
 

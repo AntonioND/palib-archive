@@ -59,7 +59,6 @@ typedef struct{
 	
 	
 	u8 BgMode; // Background mode
-
 } PA_BgInfos;
 PA_BgInfos PA_BgInfo[2][4];
 
@@ -820,15 +819,22 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
 
 
 
-extern inline void PA_UpdateBgTile(u8 screen, u8 bg_select, u16 tilepos, void *tile){
-tilepos = tilepos << 4;
-u32 *tilecopy = (u32*)tile;
-u8 i;
-	for (i = 0; i < 16; i++)
-		PA_LargeMap[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
-}
 
-//	else if(PA_BgInfo[screen][bg_number].BgMode == BG_ROTBG){	
+
+/*! \def PA_EasyBgLoad(screen, bg_number, bg_name)
+    \brief
+         \~english Easiest way to load a background converted with PAGfx...
+         \~french Moyen le plus simple de charger un fond créé avec PAGfx
+    \param screen
+         \~english Choose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+         \~english Background number... (0-3)
+         \~french Numéro du fond...	 (0-3)
+    \param bg_name
+         \~english Background name
+         \~french Nom du fond	 
+*/
 #define PA_EasyBgLoad(screen, bg_number, bg_name){\
 	PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
 	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){	PA_LoadTiledBg(screen, bg_number, bg_name);}\
@@ -836,10 +842,93 @@ u8 i;
 }
 
 
+/*! \def PA_FSBgLoad(screen, bg_number, filenumber)
+    \brief
+         \~english Easiest way to load a background converted with PAGfx... from PAFS !
+         \~french Moyen le plus simple de charger un fond créé avec PAGfx... depuis PAFS !
+    \param screen
+         \~english Choose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+         \~english Background number... (0-3)
+         \~french Numéro du fond...	 (0-3)
+    \param filenumber
+         \~english backgroundname_Info's file number in PAFS
+         \~french Numéro du fichier nomdufond_Info dans PAFS
+*/
+#define PA_FSBgLoad(screen, bg_number, filenumber)  {  \
+u32 *PA_BGinfo = (u32*)PA_PAFSFile(filenumber);\
+PA_BgInfo[screen][bg_number].BgMode = PA_BGinfo[0];   \
+PA_LoadBgPal(screen, bg_number, (void*)(PA_PAFSFile(filenumber+2))); \
+if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {	\
+	PA_DeleteBg(screen, bg_number);\
+	PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);\
+	PA_LoadBgMap(screen, bg_number, PA_PAFSFile(filenumber+1), PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2])); \
+	PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2]), 0, 1);\
+	PA_BGScrollXY(screen, bg_number, 0, 0);\
+}\
+else{\
+	PA_LoadLargeBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Info[1]) >> 3, (bg_name##_Info[2]) >> 3);\
+}\
+}
 
+
+
+/*!
+    \fn void PA_EasyBgScrollX(u8 screen, u8 bg_number, s32 x)
+    \brief
+      \~english Scroll horizontaly any background
+      \~french Scroll horizontal de n'importe quel fond
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+      \~english Background number (0-3)
+      \~french Numéro du fond que l'on veut tourner (0-3)
+    \param x
+      \~english X value to scroll
+      \~french Valeur X à déplacer, horizontalement...
+*/
 void PA_EasyBgScrollX(u8 screen, u8 bg_number, s32 x);
+
+
+
+/*!
+    \fn void PA_EasyBgScrollY(u8 screen, u8 bg_number, s32 y)
+    \brief
+      \~english Scroll vertically any background
+      \~french Scroll vertical de n'importe quel fond
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+      \~english Background number (0-3)
+      \~french Numéro du fond que l'on veut tourner (0-3)
+    \param y
+      \~english Y value to scroll
+      \~french Valeur Y à déplacer, verticalement...
+*/
 void PA_EasyBgScrollY(u8 screen, u8 bg_number, s32 y);
 
+
+/*!
+    \fn extern inline void PA_EasyBgScrollXY(u8 screen, u8 bg_number, s32 x, s32 y)
+    \brief
+      \~english Scroll horizontaly and vertically any background
+      \~french Scroll horizontal et vertical de n'importe quel fond
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+      \~english Background number (0-3)
+      \~french Numéro du fond que l'on veut tourner (0-3)
+    \param x
+      \~english X value to scroll
+      \~french Valeur X à déplacer, horizontalement...
+    \param y
+      \~english Y value to scroll
+      \~french Valeur Y à déplacer, verticalement...
+*/
 extern inline void PA_EasyBgScrollXY(u8 screen, u8 bg_number, s32 x, s32 y){
 	PA_EasyBgScrollX(screen, bg_number, x);
 	PA_EasyBgScrollY(screen, bg_number, y);
@@ -850,7 +939,13 @@ extern inline void PA_EasyBgScrollXY(u8 screen, u8 bg_number, s32 x, s32 y){
 
 
 
-
+extern inline void PA_UpdateBgTile(u8 screen, u8 bg_select, u16 tilepos, void *tile){
+tilepos = tilepos << 4;
+u32 *tilecopy = (u32*)tile;
+u8 i;
+	for (i = 0; i < 16; i++)
+		PA_LargeMap[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
+}
 
 #endif
 
