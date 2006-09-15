@@ -41,6 +41,8 @@ Updated Stuff
 
 [PAGfx] Now displays % progression when converting big backgrounds
 
+[Palettes] Added PA_Load8bitBgPal(u8 screen, void *Pal) to load palettes for the 8bit backgrounds :)
+
 
 Things Fixed
 ------------

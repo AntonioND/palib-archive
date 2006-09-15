@@ -53,23 +53,21 @@ void PA_LoadBgExtPal(u8 screen, u16 palette_number, void* palette);
 	if (palette == PAL_BG1) {u8 itemp; for (itemp = 0; itemp < 4; itemp++) PA_LoadBgPal(1, itemp, (void*)(source));}}
 
 
-/*! \def PA_LoadNormalBgPal(palette, source)
+/*! \fn extern inline void PA_Load8bitBgPal(u8 screen, void *Pal)
     \brief
-         \~english Load a 256 color palette in the Bg or Sprite palette of screen 0 or 1. Ex : PA_LoadPal(PALETTE_BG1, bg_pal);
-         \~french Charger une palette de 256 couleurs pour les fonds ou les sprites pour l'écran 0 ou 1. Ex : PA_LoadPal(PALETTE_BG1, bg_pal);
-    \param palette
-         \~english Set the Bg palette or Obj palette, screen 0 or 1 : PAL_BG0, PAL_SPRITE0, PAL_BG1, or PAL_SPRITE1
-         \~french Charger pour les Bg ou les Sprites, sur l'écran 0 ou 1 : PAL_BG0, PAL_SPRITE0, PAL_BG1, ou PAL_SPRITE1
-    \param source
+         \~english Load a palette to be used by the 8bit background
+         \~french Charger une palette pour le fond 8bit
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param Pal
          \~english Palette name (ex : master_Palette)
          \~french Nom de la palette (ex : master_Palette)
 */
-extern inline void PA_LoadNormalBgPal(u8 screen, void *Pal){
+extern inline void PA_Load8bitBgPal(u8 screen, void *Pal){
 u32 dest = PAL_BG0 + (screen<<10);
 	DMA_Copy((void*)Pal, (void*)dest, 256, DMA_16NOW);\
-
 } 
-
 
 
 /*! \def PA_LoadPal16(palette, n_palette, source)
@@ -319,7 +317,6 @@ extern inline void PA_SetBgColor(u8 screen, u16 color){
          \~french Couleur (venant de PA_RGB...)	 
 */
 void PA_SetSpritePalCol(u8 screen, u8 pal_number, u8 color_number, u16 color);
-
 
 
 
