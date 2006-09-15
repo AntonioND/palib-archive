@@ -15,11 +15,11 @@ void PA_TestResults(void){
 	PA_OutputText(PA_TestInfo.Screen, 2, 2, "Tested on %f2 seconds", (PA_TestInfo.Time/60));
 	
 	u8 i;
-	s32 mini = 127<<24;
+	s32 mini = 0;
 	s32 best = -1;
 	for(i=0; i < PA_TestInfo.Functions; i++) {
 		PA_OutputText(PA_TestInfo.Screen, 0, 4+i, "%02d : %08d times", i+1,PA_TestInfo.Runs[i]);
-		if (PA_TestInfo.Runs[i]<mini){
+		if (PA_TestInfo.Runs[i]>mini){
 		mini = PA_TestInfo.Runs[i];
 		best = i;
 		}

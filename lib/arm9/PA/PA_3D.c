@@ -172,13 +172,26 @@ void PA_glulookat(float x1, float y1, float z1, float x2, float y2, float z2, fl
 
 
 void PA_Init3D(void){
-//	powerON(POWER_ALL);
 	videoSetMode(MODE_0_3D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE|2<<20);//le mode 3d  PAS TESTE
-	//PA_InitVBL();
+
 	glViewPort(0,0,255,191);
 	glClearColor(0,0,0);
 	glClearDepth(0x7FFF);
 	vramSetBankA(VRAM_A_TEXTURE);
+	
+	PA_InitSpriteExtPal(); // Init's sprite extended palettes
+}
+
+
+void PA_Init3DAndBg(void){
+	videoSetMode(MODE_0_3D | 2<<20);//le mode 3d  PAS TESTE
+
+	glViewPort(0,0,255,191);
+	glClearColor(0,0,0);
+	glClearDepth(0x7FFF);
+	vramSetBankA(VRAM_A_TEXTURE);
+	VRAM_B_CR=VRAM_ENABLE|VRAM_B_MAIN_BG_0x6000000;
+	PA_InitBgExtPal();
 }
 
 

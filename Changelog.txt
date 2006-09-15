@@ -21,6 +21,10 @@ New Stuff
 
 [PAFS Sprites] Added PAFS/PAFS_Sprite to see how to load sprites from PAFS...
 
+[3d+Sprites] Sprites will now work on the 3d screen :D. Just run PA_Init(), and then PA_Init3D(); Added 3d+Sprites example to go with this... Untested on real DS :/
+
+[3d+Backgrounds] Backgrounds can now be used instead of sprites on the same screen as the 3d ! Just run PA_Init, and then PA_Init3DAndBg()... You cannot have both Backgrounds and Sprites when using 3d, sorry ! Important note : Background 0 is NOT AVAILABLE when using 3d, trying to use it will result in wrong display... Added 3d+Bg example to go with this...  Untested on real DS :/
+
 
 Updated Stuff
 -------------

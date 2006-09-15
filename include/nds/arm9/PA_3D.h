@@ -42,10 +42,12 @@ typedef struct{
 
 /*! \fn void PA_Init3D(void)
     \brief
-         \~english Initialise the 3d !!! Big thanks to Delfare for all the 3d functions !
-         \~french Initialise la 3d !! Un grand merci à Delfare pour toutes les fonctions 3d ! 
+         \~english Initialise the 3d on the bottom screen. Sprites can be used, but not backgrounds... Big thanks to Delfare for all the 3d functions !
+         \~french Initialise la 3d sur l'écran du bas. Les sprites peuvent aussi être utilisés, mais pas les fonds... Un grand merci à Delfare pour toutes les fonctions 3d ! 
 */
 void PA_Init3D(void);
+
+void PA_Init3DAndBg(void);
 
 /*! \fn void PA_LoadSplash3D(void);
     \brief

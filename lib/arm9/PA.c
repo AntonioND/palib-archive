@@ -167,9 +167,16 @@ void PA_UpdateRTC(void) {
 u8 i;
 u8 *temp;
 temp = (u8*)&PA_RTC;
- for (i = 0; i < 8; i++) temp[i] = IPC->curtime[i];
+	for (i = 0; i < 8; i++) temp[i] = IPC->curtime[i];
 
- if (PA_RTC.Hour > 12) PA_RTC.Hour -= 40;
+	if (PA_RTC.Hour > 12) PA_RTC.Hour -= 40;
+ 
+	if (PA_RTC.OldSeconds != PA_RTC.Seconds){
+		PA_RTC.FPS = PA_RTC.Frames;
+		PA_RTC.Frames = 0;
+		PA_RTC.OldSeconds = PA_RTC.Seconds;
+	}
+
 }
 
 

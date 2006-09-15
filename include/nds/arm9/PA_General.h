@@ -28,6 +28,7 @@ typedef struct {
    u8 Hour;
    u8 Minutes;
    u8 Seconds;
+   u8 FPS, Frames, OldSeconds; // To test the FPS...
 } RTC;
 extern RTC PA_RTC;
 
@@ -237,6 +238,7 @@ void PA_NeoSplash(void);
          \~french Attendre le vbl...
 */
 extern inline void PA_WaitForVBL(void){
+PA_RTC.Frames++; // For the FPS counter
 swiWaitForVBlank();
 }
 
