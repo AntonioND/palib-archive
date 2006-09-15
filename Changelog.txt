@@ -25,6 +25,8 @@ New Stuff
 
 [3d+Backgrounds] Backgrounds can now be used instead of sprites on the same screen as the 3d ! Just run PA_Init, and then PA_Init3DAndBg()... You cannot have both Backgrounds and Sprites when using 3d, sorry ! Important note : Background 0 is NOT AVAILABLE when using 3d, trying to use it will result in wrong display... Added 3d+Bg example to go with this...  Untested on real DS :/
 
+[FPS Counter] Added an FPS counter : PA_RTC.FPS... Yup, that simple, nothing more to do ^^ Check out the Other/FPSCounter example to see it running. It has a simple stress code to be sure the DS won't work at 60FPS, and you can actually change the amount of stress to see the FPS change...
+
 
 Updated Stuff
 -------------
