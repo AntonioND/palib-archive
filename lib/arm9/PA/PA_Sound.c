@@ -66,7 +66,7 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 void PA_StopSound(u8 PA_Channel){
 	SndStop(PA_Channel);
 }
-
+/*
 void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)
 {
 	u32 Alloc;
@@ -109,7 +109,7 @@ void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int 
 	//launch timer
 	Stream_Timer[PA_Channel] = NewTimer(true);
 }
-
+*/
 void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)
 {
 	u32 Alloc;

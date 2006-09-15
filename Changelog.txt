@@ -43,6 +43,8 @@ Updated Stuff
 
 [Palettes] Added PA_Load8bitBgPal(u8 screen, void *Pal) to load palettes for the 8bit backgrounds :)
 
+[GBFS Sound] Removed the main GBFS sound function, should win a few kB in the rom
+
 
 Things Fixed
 ------------

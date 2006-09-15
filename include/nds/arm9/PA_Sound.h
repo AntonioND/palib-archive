@@ -244,34 +244,6 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 
 }
 
-/*! \fn extern inline void PA_PlayGBFSSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format)
-    \brief
-         \~english Play a given sound effect, but chose your format and how to loop it, from GBFS with a stream effect
-         \~french Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis GBFS avec un effet de streaming
-    \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
-    \param FS_wav_number
-         \~english Number of your sound RAW file in the PA GBFS system
-         \~french Numéro du son RAW dans PA GBFS
-    \param volume
-         \~english Volume, from 0 to 127. 64 if not used
-         \~french Volume, de 0 à 127. 64 si rien n'est mis
-    \param freq
-         \~english Sound frequence, depends on the sound... 11025 by default
-         \~french Fréquence du son...11025 par défaut
-    \param format
-         \~english Sound format.
-         \~french Format du son.
-    \param format
-         \~english Loop true/false
-         \~french  Boucle true/false
-    \param format
-         \~english Repeat point
-         \~french  Point de répétition
-*/
-void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
-
 
 /*! \fn extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format)
     \brief
@@ -639,6 +611,36 @@ extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(b
 #define PA_MicStopRecording() StopRecording()
 
 /** @} */ // end of SoundARM9
+
+/*! \fn extern inline void PA_PlayGBFSSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format)
+    \brief
+         \~english Play a given sound effect, but chose your format and how to loop it, from GBFS with a stream effect
+         \~french Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis GBFS avec un effet de streaming
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param FS_wav_number
+         \~english Number of your sound RAW file in the PA GBFS system
+         \~french Numéro du son RAW dans PA GBFS
+    \param volume
+         \~english Volume, from 0 to 127. 64 if not used
+         \~french Volume, de 0 à 127. 64 si rien n'est mis
+    \param freq
+         \~english Sound frequence, depends on the sound... 11025 by default
+         \~french Fréquence du son...11025 par défaut
+    \param format
+         \~english Sound format.
+         \~french Format du son.
+    \param format
+         \~english Loop true/false
+         \~french  Boucle true/false
+    \param format
+         \~english Repeat point
+         \~french  Point de répétition
+*/
+//void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
+
+
 
 
 
