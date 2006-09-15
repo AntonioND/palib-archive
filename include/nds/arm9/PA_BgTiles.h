@@ -60,7 +60,7 @@ typedef struct{
 	
 	u8 BgMode; // Background mode
 } PA_BgInfos;
-PA_BgInfos PA_BgInfo[2][4];
+extern PA_BgInfos PA_BgInfo[2][4];
 
 
 //extern u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
