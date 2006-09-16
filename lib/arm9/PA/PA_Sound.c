@@ -60,6 +60,7 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 
     DC_FlushAll();
     IPC->soundData = &snd;
+	PA_SoundsBusy[PA_Channel] = 1; // now busy
 	SndPlay(PA_Channel, (void*)FS_wav[PA_Channel], length, volume, freq, format, repeat, repeatPoint);
 }
 

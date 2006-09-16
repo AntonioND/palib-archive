@@ -27,6 +27,8 @@ New Stuff
 
 [FPS Counter] Added an FPS counter : PA_RTC.FPS... Yup, that simple, nothing more to do ^^ Check out the Other/FPSCounter example to see it running. It has a simple stress code to be sure the DS won't work at 60FPS, and you can actually change the amount of stress to see the FPS change...
 
+[SoundBusy] Added 2 functions : PA_SoundChannelIsBusy(channel) returns 1 if busy, 0 if free. PA_GetFreeSoundChannel() returns the first available sound channel, -1 if none free
+
 
 Updated Stuff
 -------------
