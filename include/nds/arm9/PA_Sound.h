@@ -618,7 +618,8 @@ extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)	{
 extern inline s8 PA_GetFreeSoundChannel(void){
 	u8 i;
 	for (i = 0; i < 16; i++) if (!PA_SoundChannelIsBusy(i)) return i;
-	else return -1;
+	
+	return -1;
 }
 
 
