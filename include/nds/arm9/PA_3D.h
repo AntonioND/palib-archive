@@ -47,6 +47,11 @@ typedef struct{
 */
 void PA_Init3D(void);
 
+/*! \fn void PA_Init3D(void)
+    \brief
+         \~english Initialise the 3d on the bottom screen. Backgrounds can be used, but not sprites... Only Bg1-3 are available... Big thanks to Delfare for all the 3d functions !
+         \~french Initialise la 3d sur l'écran du bas. Les fonds peuvent aussi être utilisés, mais pas les sprites... Seuls les fonds 1-3 sont dispos Un grand merci à Delfare pour toutes les fonctions 3d ! 
+*/
 void PA_Init3DAndBg(void);
 
 /*! \fn void PA_LoadSplash3D(void);
@@ -158,17 +163,17 @@ void PA_VueKeys(void);
 */
 
 extern inline void PA_LoadTexture(int numtexture, u8* nomtexture, int mode){
-if(mode == texBIN){
-glBindTexture(0, numtexture);
-glTexImage2D(0, 0, GL_RGB, TEXTURE_SIZE_128 , TEXTURE_SIZE_128, 0,TEXGEN_TEXCOORD, (u8*)nomtexture);
-}
-else if(mode == texPCX){
-sImage pcx;
-loadPCX((u8*)nomtexture, &pcx);
-PA_image8to16(&pcx);
-glBindTexture(0, numtexture);
-glTexImage2D(0, 0, GL_RGB, TEXTURE_SIZE_128 , TEXTURE_SIZE_128, 0, TEXGEN_TEXCOORD, pcx.data8);
-}
+	if(mode == texBIN){
+	glBindTexture(0, numtexture);
+	glTexImage2D(0, 0, GL_RGB, TEXTURE_SIZE_128 , TEXTURE_SIZE_128, 0,TEXGEN_TEXCOORD, (u8*)nomtexture);
+	}
+	else if(mode == texPCX){
+	sImage pcx;
+	loadPCX((u8*)nomtexture, &pcx);
+	PA_image8to16(&pcx);
+	glBindTexture(0, numtexture);
+	glTexImage2D(0, 0, GL_RGB, TEXTURE_SIZE_128 , TEXTURE_SIZE_128, 0, TEXGEN_TEXCOORD, pcx.data8);
+	}
 }
 /*! \fn extern inline void PA_Texture(int numtexture)
     \brief

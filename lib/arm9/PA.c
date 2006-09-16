@@ -63,7 +63,7 @@ PA_IPCinfo PA_IPC;*/
 void PA_Init2D(void){
 // Turn on the screens and 2D cores and switch to mode 0
 powerON(POWER_ALL);
-  POWER_CR = POWER_ALL_2D;
+//  POWER_CR = POWER_ALL_2D;
   
  POWER_CR &= ~SWITCH_SCREENS; // on s'assure que l'écran est bien
 
@@ -81,9 +81,9 @@ vramSetMainBanks(VRAM_A_MAIN_BG,VRAM_B_MAIN_SPRITE,VRAM_C_SUB_BG,VRAM_D_SUB_SPRI
 PA_ResetSpriteSys(); // Init's the sprite system
 PA_InitSpriteExtPal(); // Init's sprite extended palettes
 
-
 PA_ResetBgSys();
 PA_InitBgExtPal(); // Init's bg extended palettes
+
 }
 
 
