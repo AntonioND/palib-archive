@@ -105,9 +105,6 @@ ALWAYSINLINE void PA_16c8X8Letter(u8 screen, s16 x, s16 y, u32 *image, u8 color)
     \param bg
          \~english Background number (0-3)
          \~english Background number (0-3) 
-    \param bg
-         \~english Palette number (0-15)
-         \~english Numéro de palette (0-15) 
 */
 void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette);
 

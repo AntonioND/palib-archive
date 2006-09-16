@@ -29,6 +29,8 @@ New Stuff
 
 [SoundBusy] Added 2 functions : PA_SoundChannelIsBusy(channel) returns 1 if busy, 0 if free. PA_GetFreeSoundChannel() returns the first available sound channel, -1 if none free
 
+[LidSounds] Added PA_CloseLidSound(channel, close_sound) and PA_CloseLidSound2(channel, close_sound, open_sound), allowing you to play goodbye and welcome sounds when the lid is closed/opened ! Go see the Other/CloseLidSound example, sounds great :p  Big thanks to Timonator for the idea...
+
 
 Updated Stuff
 -------------
