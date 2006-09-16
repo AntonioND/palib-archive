@@ -610,6 +610,18 @@ extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(b
 */
 #define PA_MicStopRecording() StopRecording()
 
+extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)	{
+	DC_FlushRange((void*)PA_SoundsBusy, 16);
+	return ((volatile u8)PA_SoundsBusy[PA_Channel]);
+}
+
+extern inline s8 PA_GetFreeSoundChannel(void){
+	u8 i;
+	for (i = 0; i < 16; i++) if (!PA_SoundChannelIsBusy(i)) return i;
+	else return -1;
+}
+
+
 /** @} */ // end of SoundARM9
 
 /*! \fn extern inline void PA_PlayGBFSSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format)

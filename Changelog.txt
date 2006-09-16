@@ -51,6 +51,10 @@ Updated Stuff
 
 [GBFS Sound] Removed the main GBFS sound function, should win a few kB in the rom
 
+[GBFS] Removed the GBFS examples
+
+[Installer] Added German language
+
 
 Things Fixed
 ------------

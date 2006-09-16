@@ -16,6 +16,8 @@ u32 Blank[130000>>2];
 infos PA_UserInfo;
 RTC PA_RTC;  // Infos RTC...
 
+volatile u8 PA_SoundsBusy[16];
+
 
 typedef struct {
    s16 x, y, oldx, oldy, vx, vy;  // Coordonnées
@@ -111,6 +113,8 @@ Stylus.Y = 96;
 PA_VBLFunctionReset();
 irqInit();
 //PA_ResetInterrupts();
+
+IPC->mailData = (u32)(&PA_SoundsBusy);
 
 for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans

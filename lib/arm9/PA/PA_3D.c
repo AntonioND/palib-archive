@@ -249,7 +249,7 @@ void PA_3DBox(float x, float y, float z, float longueur, float largeur, float ha
 	glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(1.0));
 	glVertex3v16(floattov16(1.0),floattov16(1.0),floattov16(-1.0));
 	glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(-1.0));
-	lVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(1.0));
+	glVertex3v16(floattov16(-1.0),floattov16(1.0),floattov16(1.0));
 //6
 	glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(1.0));
 	glVertex3v16(floattov16(1.0),floattov16(-1.0),floattov16(-1.0));

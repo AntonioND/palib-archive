@@ -16,6 +16,9 @@
 #include <NDS/ARM7/clock.h>
 */
 
+u8 *PA_SoundsBusy;
+u8 PA_SoundBusyInit;
+
 
 //////////////////////////////////////////////////////////////////////
 
@@ -37,7 +40,7 @@ int i;
 
 
 //////////////////////////////////////////////////////////////////////
-
+u8 testvar = 0;
 
 void PA_VBL(void){
   static int heartbeat = 0;
@@ -86,6 +89,26 @@ void PA_VBL(void){
 	}
 
 	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
+	
+	testvar++; testvar&=127;
+	
+	s32 testsound[16];
+	u8 itest;
+	for (itest = 0; itest < 16; itest++) testsound[itest] = (SCHANNEL_CR(itest)&SOUND_ENABLE);
+	
+	if(PA_SoundBusyInit){
+		 
+		for (itest = 0; itest < 16; itest++) {
+			PA_SoundsBusy[itest] = SCHANNEL_CR(itest)>>31;
+		}
+	//	PA_SoundsBusy[15] = testvar;
+	}
+	else if(IPC->mailData != 0) {
+		PA_SoundsBusy = (u8*)(IPC->mailData); // Inits PA Sound busy commands
+		IPC->mailData = 0;
+		PA_SoundBusyInit = 1;
+	}
+	
 Wifi_Update();
 }
 
@@ -111,7 +134,12 @@ void arm7_fifo() { // check incoming fifo messages
 
 int main(int argc, char ** argv) {
   REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_SEND_CLEAR;
+IPC->mailData=0;
+IPC->mailSize=0; 
+  PA_SoundBusyInit = 0;
   PA_Init();
+  
+
 
  /*
      TransferSound *snd = IPC->soundData;
@@ -121,8 +149,7 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 //  SOUND_CR = SCHANNEL_ENABLE | SOUND_VOL(0x7F);
 //  IPC->soundData = 0;
 
-	IPC->mailData=0;
-	IPC->mailSize=0;
+
 
  	rtcReset();
 
@@ -175,7 +202,9 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
   
   // Keep the ARM7 out of main RAM
 
-  while (1) swiWaitForVBlank();
+  while (1) {
+	swiWaitForVBlank();
+	}
   return 0;
 }
 

@@ -94,7 +94,7 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 //extern u32 *Blank;
 extern u32 Blank[130000>>2];
 
-
+extern volatile u8 PA_SoundsBusy[16];
 
 
 
