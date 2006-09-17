@@ -23,6 +23,8 @@ u16 *PA_Draw16[2];
 u32 *PA_Draw1632[2];
 
 
+LetterPos16c PA_16cLetterPos; // Letter positions
+
 
 
 
@@ -142,7 +144,8 @@ for (i = 0; (text[i] && y <= ylimiy && i < limit); i++) {
 
 	}
 }
-
+PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].X = x;
+PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].Y = y;
 length = i;
 
 

@@ -31,6 +31,8 @@ New Stuff
 
 [LidSounds] Added PA_CloseLidSound(channel, close_sound) and PA_CloseLidSound2(channel, close_sound, open_sound), allowing you to play goodbye and welcome sounds when the lid is closed/opened ! Go see the Other/CloseLidSound example, sounds great :p  Big thanks to Timonator for the idea...
 
+[PAGfx] Added JustPal command for sprites, to extract the palette
+
 
 Updated Stuff
 -------------
