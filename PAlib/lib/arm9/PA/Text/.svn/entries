@@ -1,18 +1,30 @@
 8
 
 dir
-7
+55
 https://palibds.googlecode.com/svn/trunk/lib/arm9/PA/Text
 https://palibds.googlecode.com/svn
 
 
 
-2006-09-03T16:21:26.676623Z
-4
+2006-09-15T23:36:50.860256Z
+53
 molousk
 
 
 svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+70d487c4-6a1c-0410-9ca0-4d1b8e83941e
 
 PA_text.pal.c
 file
@@ -76,14 +88,14 @@ molousk
 
 PAGfx.exe
 file
-11
+78
 
 
 
-2006-09-05T18:04:29.812500Z
-bf2becccc0a30e38f2762575cbb44a65
-2006-09-05T18:14:42.615634Z
-11
+2006-09-17T11:33:33.828125Z
+04924c242b7df5dbede601881c0d7fb6
+2006-09-17T16:52:46.927895Z
+78
 molousk
 has-props
 
@@ -98,6 +110,19 @@ e58d22f3dca9864769afc4fb9bb80a9e
 2006-09-03T16:21:26.676623Z
 4
 molousk
+
+Thumbs.db
+file
+
+
+
+
+2006-09-11T22:15:47.093000Z
+83d597500f8c14c4fe559ebc87e0d480
+2006-09-11T22:11:06.161650Z
+18
+molousk
+has-props
 
 PA_text.png
 file

@@ -12,6 +12,9 @@
 <p>
 <a href="_p_a__16c_8h-source.html">Aller au code source de ce fichier.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>LetterPos16c</b></td></tr>
+
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_16c.h::PA_LoadPal16c"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_LoadPal16c</b>(palette, source)&nbsp;&nbsp;&nbsp;DMA_Copy(source, (void*)palette, 16, DMA_16NOW);</td></tr>
@@ -20,13 +23,13 @@
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_16cPos</b>(x, y)&nbsp;&nbsp;&nbsp;(((x&gt;&gt;3)*26*8) + y + 8)</td></tr>
 
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_16c.h::PA_Plot8Pixels"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_16c.h::PA_Plot8Pixels"></a>
 ALWAYSINLINE void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Plot8Pixels</b> (u8 screen, u16 pos, u16 temp, u32 color)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_16c.h::PA_16c16X16Letter"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_16c.h::PA_16c16X16Letter"></a>
 ALWAYSINLINE void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_16c16X16Letter</b> (u8 screen, s16 x, s16 y, u32 *image, u8 color)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_16c.h::PA_16c8X8Letter"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_16c.h::PA_16c8X8Letter"></a>
 ALWAYSINLINE void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_16c8X8Letter</b> (u8 screen, s16 x, s16 y, u32 *image, u8 color)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="PA_16c.h::PA_Init16cBgEx"></a>
@@ -79,20 +82,23 @@ u32 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Draw1632</b> [2]<
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_16c.h::Blank"></a>
 u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>Blank</b> [130000 &gt;&gt;2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_16c.h::c16_policeheight"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_16c.h::PA_16cLetterPos"></a>
+LetterPos16c&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_16cLetterPos</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_16c.h::c16_policeheight"></a>
 const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>c16_policeheight</b> [5]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_16c.h::c16_policesize"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_16c.h::c16_policesize"></a>
 const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>c16_policesize</b> [5][96]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_16c.h::c16_font"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_16c.h::c16_font"></a>
 u32 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>c16_font</b> [5]</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 16color pseudo-bitmap mode. 
 <p>
-Special 16color background on which you can paste images. Usefull to show shots in SHMUP !<hr size="1"><address style="align: right;"><small>Généré le Tue Sep 5 20:35:55 2006 pour PAlib par&nbsp;
+Special 16color background on which you can paste images. Usefull to show shots in SHMUP !<hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:41 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

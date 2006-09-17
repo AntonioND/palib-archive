@@ -1,4 +1,4 @@
-//Sprite created using Mollusk's PASpriteConverter
+//Sprite created using PAGfx
 //This sprite uses explosion_Pal
 
 const unsigned char explosion_Sprite[28672] __attribute__ ((aligned (4))) = {

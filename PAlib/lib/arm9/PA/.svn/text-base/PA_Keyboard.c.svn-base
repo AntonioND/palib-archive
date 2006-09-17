@@ -102,7 +102,7 @@ const u8 PA_Keyboard[2][5][24] = {
 
 void PA_ChangeKeyboardType(void){
 	Keyboard.Type = !Keyboard.Type;
-	DMA_Copy((void*)(keyboard_Map + (Keyboard.Type << 11)), (void*)ScreenBaseBlock(0, mapchar[0][Keyboard.Bg]), 32*12 , DMA_16NOW);
+	DMA_Copy((void*)(keyboard_Map + (Keyboard.Type << 11)), (void*)ScreenBaseBlock(0, PA_BgInfo[0][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);
 	s16 i, j; 
 	for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne palette...
 		for (i = 0; i < 32; i++) 

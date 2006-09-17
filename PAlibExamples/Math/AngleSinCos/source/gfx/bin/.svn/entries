@@ -1,0 +1,42 @@
+8
+
+dir
+70
+https://palibds.googlecode.com/svn/Examples/Math/AngleSinCos/source/gfx/bin
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-17T02:39:11.677667Z
+70
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+sprite0_Pal.bin
+file
+
+
+
+
+2006-09-13T23:09:57.359375Z
+15c35e5269083a7f52e6c7a516f1bfd6
+2006-09-17T02:39:11.677667Z
+70
+molousk
+has-props
+
+vaisseau_Sprite.bin
+file
+
+
+
+
+2006-09-13T23:09:57.265625Z
+5c782b2566de3715b48648e14a90d2d5
+2006-09-17T02:39:11.677667Z
+70
+molousk
+has-props
+

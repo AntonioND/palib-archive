@@ -1,0 +1,37 @@
+8
+
+dir
+27
+https://palibds.googlecode.com/svn/Examples/PAFS
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T11:42:07.780050Z
+27
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+PAFS_Sound
+dir
+
+PAFS_Bmp
+dir
+
+PAFS_Mod
+dir
+
+PAFS_Ram
+dir
+
+PAFSFolders
+dir
+
+PAFS
+dir
+
+PAFS_Images
+dir
+

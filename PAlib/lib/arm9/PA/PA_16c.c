@@ -23,6 +23,8 @@ u16 *PA_Draw16[2];
 u32 *PA_Draw1632[2];
 
 
+LetterPos16c PA_16cLetterPos; // Letter positions
+
 
 
 
@@ -39,8 +41,8 @@ void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette){
 	   k++;
 	}
 	
-	PA_Draw16[screen] = (u16*)CharBaseBlock(screen, tilesetchar[screen][bg]);   
-	PA_Draw1632[screen] = (u32*)CharBaseBlock(screen, tilesetchar[screen][bg]); 
+	PA_Draw16[screen] = (u16*)CharBaseBlock(screen, PA_BgInfo[screen][bg].TileSetChar);   
+	PA_Draw1632[screen] = (u32*)CharBaseBlock(screen, PA_BgInfo[screen][bg].TileSetChar); 
 
 //#ifdef USE_16cTEXT 
 	PA_SetBgPalCol(screen, (npalette<<4)+1, PA_RGB(31, 31, 31));
@@ -142,7 +144,8 @@ for (i = 0; (text[i] && y <= ylimiy && i < limit); i++) {
 
 	}
 }
-
+PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].X = x;
+PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].Y = y;
 length = i;
 
 

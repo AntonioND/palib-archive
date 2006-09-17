@@ -1,0 +1,31 @@
+8
+
+dir
+24
+https://palibds.googlecode.com/svn/Examples/DualBackgrounds/Parallax/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T08:54:33.783119Z
+24
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+gfx
+dir
+
+main.c
+file
+
+
+
+
+2005-12-02T11:57:32.687500Z
+de82b865398b179596e46cd2bd6f1d7c
+2006-09-12T08:54:33.783119Z
+24
+molousk
+

@@ -89,8 +89,8 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
       \~french Si le fond boucle ou non. 
 */
 #define PA_LoadPAGfxRotBg(screen, bg_select, bg_name, wraparound) {\
-PA_LoadNormalBgPal(screen, (void*)bg_name##_Pal);\
-PA_LoadRotBg(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\
+PA_Load8bitBgPal(screen, (void*)bg_name##_Pal);\
+PA_LoadRotBg(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Info[1]), wraparound);\
 }
 
 
@@ -151,7 +151,7 @@ extern inline void PA_SetRotMapTile(u8 screen, u8 bg_select, s16 x, s16 y, u8 ti
    u16 hold, *where;
 
    // Calculate offset into rotational background map x + (y*32) ... tile is 8x8 and each pixel is 8 bits to 32  bytes wide
-   where = (u16*)(PA_bgmap[screen][bg_select] + (x + (y << (4+rotbg_size[screen][bg_select]))));
+   where = (u16*)(PA_BgInfo[screen][bg_select].Map + (x + (y << (4+rotbg_size[screen][bg_select]))));
 
    // Get current value as 16 bit but we only have 8 bits per pixes (must be written as 16 bit)
    hold = *where;

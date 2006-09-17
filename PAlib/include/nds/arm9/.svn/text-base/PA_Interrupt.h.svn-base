@@ -28,6 +28,8 @@ extern bool PA_VBLCounterOn[16];  // On or off
 
 extern funcpointer CustomVBL;
 
+extern volatile s32 PA_TestVBLs;
+
 /*
 //Interrupt Registers
 #ifndef REG_IME

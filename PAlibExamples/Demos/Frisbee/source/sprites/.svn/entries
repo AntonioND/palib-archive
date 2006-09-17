@@ -1,0 +1,65 @@
+8
+
+dir
+24
+https://palibds.googlecode.com/svn/Examples/Demos/Frisbee/source/sprites
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T08:54:33.783119Z
+24
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+sprite.pal.c
+file
+
+
+
+
+2005-09-12T14:31:00.000000Z
+01a1cd6e1f14a4bfc3510a543fd6aa6f
+2006-09-12T08:54:33.783119Z
+24
+molousk
+
+frisbee.raw.c
+file
+
+
+
+
+2005-09-12T14:31:00.000000Z
+3a560f4d04260c26e0e134e221e6d9f5
+2006-09-12T08:54:33.783119Z
+24
+molousk
+
+sprite.bat
+file
+
+
+
+
+2005-10-16T21:46:34.000000Z
+d7ec6af6b5acfc49230fdc5daa9ee537
+2006-09-12T08:54:33.783119Z
+24
+molousk
+
+frisbee.bmp
+file
+
+
+
+
+2005-09-12T14:30:54.000000Z
+548869394f24b0040499128d9b33e186
+2006-09-12T08:54:33.783119Z
+24
+molousk
+has-props
+

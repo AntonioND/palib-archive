@@ -1,0 +1,31 @@
+8
+
+dir
+28
+https://palibds.googlecode.com/svn/Examples/Sprites/SpriteAnim2/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T12:16:56.359737Z
+28
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+gfx
+dir
+
+main.c
+file
+
+
+
+
+2005-12-13T10:09:26.781250Z
+6f5c90569ca9d5cfd47b4df2b99e3ed4
+2006-09-12T12:16:56.359737Z
+28
+molousk
+

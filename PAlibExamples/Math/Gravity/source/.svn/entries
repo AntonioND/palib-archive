@@ -1,0 +1,31 @@
+8
+
+dir
+27
+https://palibds.googlecode.com/svn/Examples/Math/Gravity/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T11:42:07.780050Z
+27
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+gfx
+dir
+
+main.c
+file
+
+
+
+
+2005-12-17T21:37:34.109375Z
+d1fb545f4e1ff939e6a3fdc8168f451d
+2006-09-12T11:42:07.780050Z
+27
+molousk
+

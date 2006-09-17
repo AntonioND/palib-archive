@@ -20,6 +20,8 @@ extern "C" {
 
 extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 
+extern u16 tempvar;
+
 
 #define PA_RGB8(r,g,b)	((((b)>>3)<<10)|(((g)>>3)<<5)|((r)>>3)|(1 << 15))
 
@@ -414,8 +416,8 @@ void PA_Draw16bitRect(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 c
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1) 
     \param color
-         \~english 15 bits color. You can use the PA_RGB macro to set the RGB values...
-         \~french Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB...
+         \~english Color number in the palette (0-255)
+         \~french Numéro de la couleur dans la palette (0-255)
  */
 void PA_8bitDraw(u8 screen, u8 color);
 
@@ -591,7 +593,7 @@ extern inline void PA_LoadJpeg(u8 screen, void *jpeg)
 void PA_LoadBmp(u8 screen, s16 x, s16 y, void *bmp);*/
 
 
-/*! \fn void PA_LoadFSImage(u8 screen, s16 FSImage)
+/*! \fn extern inline void PA_LoadFSImage(u8 screen, s16 FSImage)
     \brief
          \~english Load any image from PAFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP
          \~french Charger une image depuis PAFS sur l'écran (16 bit). Supporte le Gif, Jpeg, et BMP
@@ -602,8 +604,20 @@ void PA_LoadBmp(u8 screen, s16 x, s16 y, void *bmp);*/
          \~english PAFS Image number
          \~french Numéro de l'image dans PAFS	 
 */
+extern inline void PA_LoadFSImage(u8 screen, s16 FSImage){
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "bmp")){
+		PA_LoadBmp(screen, PA_PAFSFile(FSImage));
+	}
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "jpg")){ 
+		PA_LoadJpeg(screen, PA_PAFSFile(FSImage));
+	}	
+	if (PA_CompareText(PA_FSFile[FSImage].Ext, "gif")){ 
+		PA_LoadGif(screen, PA_PAFSFile(FSImage));
+	}		
+}
 
-void PA_LoadFSImage(u8 screen, s16 FSImage);
+
+
 
 /*
 extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage){
@@ -618,9 +632,6 @@ extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage){
 	}		
 }
 */
-
-
-
 extern inline void PA_LoadGBFSImageToBuffer(void *Buffer, s16 GBFSImage, s16 Width){
 	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
 		PA_LoadBmpToBuffer((u16*)Buffer, 0, 0, (u16*)PA_GBFSfile[GBFSImage].File, Width);

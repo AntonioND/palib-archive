@@ -28,6 +28,7 @@ typedef struct {
    u8 Hour;
    u8 Minutes;
    u8 Seconds;
+   u8 FPS, Frames, OldSeconds; // To test the FPS...
 } RTC;
 extern RTC PA_RTC;
 
@@ -93,7 +94,7 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 //extern u32 *Blank;
 extern u32 Blank[130000>>2];
 
-
+extern volatile u8 PA_SoundsBusy[16];
 
 
 
@@ -237,6 +238,7 @@ void PA_NeoSplash(void);
          \~french Attendre le vbl...
 */
 extern inline void PA_WaitForVBL(void){
+PA_RTC.Frames++; // For the FPS counter
 swiWaitForVBlank();
 }
 
@@ -299,6 +301,51 @@ else {
 }
 
 }
+
+
+/*! \def PA_CloseLidSound(channel, close_sound)
+    \brief
+         \~english Check if the DS is closed. If closed, it pauses the DS, and plays a sound
+         \~french Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et joue un son
+    \param channel
+         \~english Sound channel, 0-15
+         \~french Canal audio, 0-15
+    \param close_sound
+         \~english Sound to play, check the sounds doc if you're not sure what to do here
+         \~french Son à jouer, regarder la doc son si pas certain de quoi mettre... 
+*/
+#define PA_CloseLidSound(channel, close_sound){\
+			if(PA_LidClosed()){\
+				PA_PlaySimpleSound(channel, close_sound);\
+				PA_WaitFor(!PA_SoundChannelIsBusy(channel));  \
+				PA_CheckLid(); \
+			}}
+
+
+/*! \def PA_CloseLidSound2(channel, close_sound, open_sound)
+    \brief
+         \~english Check if the DS is closed. If closed, it pauses the DS, and plays a sound
+         \~french Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et joue un son
+    \param channel
+         \~english Sound channel, 0-15
+         \~french Canal audio, 0-15
+    \param close_sound
+         \~english Sound to play when closes, check the sounds doc if you're not sure what to do here
+         \~french Son à jouer quand se ferme, regarder la doc son si pas certain de quoi mettre...
+    \param open_sound
+         \~english Sound to play when opens, check the sounds doc if you're not sure what to do here
+         \~french Son à jouer quand s'ouvre, regarder la doc son si pas certain de quoi mettre... 
+*/
+#define PA_CloseLidSound2(channel, close_sound, open_sound){\
+			if(PA_LidClosed()){\
+				PA_PlaySimpleSound(channel, close_sound);\
+				PA_WaitFor(!PA_SoundChannelIsBusy(channel));  \
+				PA_CheckLid(); \
+				PA_PlaySimpleSound(channel, open_sound); \
+				PA_WaitFor(!PA_SoundChannelIsBusy(channel));  \
+			}}
+
+
 
 
 

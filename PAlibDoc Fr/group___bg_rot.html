@@ -60,8 +60,8 @@ Load rotating backgrounds, move, rotate, scale them <hr><h2>Documentation des ma
 
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
-PA_LoadNormalBgPal(screen, (<span class="keywordtype">void</span>*)bg_name##_Pal);\
-<a class="code" href="group___bg_rot.html#ga2">PA_LoadRotBg</a>(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Width), wraparound);\
+<a class="code" href="group___palette.html#ga0">PA_Load8bitBgPal</a>(screen, (<span class="keywordtype">void</span>*)bg_name##_Pal);\
+<a class="code" href="group___bg_rot.html#ga2">PA_LoadRotBg</a>(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Info[1]), wraparound);\
 }
 </pre></div>Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs 
 <p>
@@ -118,7 +118,7 @@ PA_LoadNormalBgPal(screen, (<span class="keywordtype">void</span>*)bg_name##_Pal
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
 <a class="code" href="group___bg_tiles.html#ga6">PA_DeleteBg</a>(screen, bg_select);\
-<a class="code" href="group___bg_tiles.html#ga17">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles); \
+<a class="code" href="group___bg_tiles.html#ga21">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles); \
 PA_LoadRotBgMap(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
 <a class="code" href="group___bg_tiles.html#ga1">PA_InitBg</a>(screen, bg_select, bg_size, wraparound, 1);\
 PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
@@ -138,7 +138,7 @@ PA_SetBgRot(screen, bg_select, 0, 0, 0, 0, 0, 256);\
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Tue Sep 5 20:35:56 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:42 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

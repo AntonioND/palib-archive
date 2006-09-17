@@ -1,0 +1,31 @@
+8
+
+dir
+24
+https://palibds.googlecode.com/svn/Examples/DualBackgrounds/ScrollBg/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T08:54:33.783119Z
+24
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+gfx
+dir
+
+main.c
+file
+
+
+
+
+2005-12-02T12:01:25.187500Z
+01ae45e8f929f3115c386555df107d71
+2006-09-12T08:54:33.783119Z
+24
+molousk
+

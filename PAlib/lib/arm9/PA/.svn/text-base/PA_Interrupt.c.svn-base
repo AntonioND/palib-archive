@@ -21,6 +21,8 @@ volatile u8 PA_Newframe;
 
 void PA_UpdateSpriteAnims(void);
 
+volatile s32 PA_TestVBLs;
+
 
 // infos pour le tst CPU
 u8 PA_nVBLs = 0;
@@ -164,6 +166,7 @@ PA_UpdateRTC(); // Mise à jour de l'horloge...
 PA_Newframe = 1; // Synch prog to screen
 
 ++PA_nVBLs;
+++PA_TestVBLs;
 // Counters
 PA_RunCounters();
 CustomVBL(); // runs the user's custom VBL function

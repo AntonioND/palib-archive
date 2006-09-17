@@ -4,6 +4,30 @@
 
 #include "PA_BgTiles.h"
 
+// Tile engine functions, do not use !
+#define PA_TileNumber(x, y)	(PA_Modulo((x)+1, 36)+(PA_Modulo((y)+1, 28)*36)) // Used by the tile engine
+
+
+#define PA_LoadTileEngine(screen, bg_select, bg_tiles) {\
+PA_DeleteBg(screen, bg_select);\
+PA_LoadBgTilesEx(screen, bg_select, (void*)Blank, (1008<<5));\
+PA_BgInfo[screen][bg_select].Tiles = (void*)bg_tiles;\
+PA_LoadBgMap(screen, bg_select, Blank, BG_512X256); \
+PA_InitBg(screen, bg_select, BG_512X256, 0, 1);\
+PA_BGScrollXY(screen, bg_select, 0, 0);}
+
+
+#define INF_JUSTTILE 268435455
+#define MAX_TILES 1008
+
+void PA_InfTilesScrollX(u8 screen, u8 bg_select, s32 x);
+void PA_InfTilesScrollY(u8 screen, u8 bg_select, s32 y);
+void PA_InfLargeScrollXN(u8 screen, u8 bg_select, s32 x);
+void PA_InfLargeScrollYN(u8 screen, u8 bg_select, s32 y);
+void PA_LargeScrollXN(u8 screen, u8 bg_select, s32 x);
+void PA_LargeScrollYN(u8 screen, u8 bg_select, s32 y);
+
+
 
 
 /*! \file PA_BgLargeMap.h
@@ -56,8 +80,12 @@
       \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
 */
 #define PA_LoadLargeBg(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly) {\
-PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);\
+PA_BgInfo[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)>>5;\
+if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) {PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);}\
+else{PA_LoadTileEngine(screen, bg_select, (void*)bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
+
+
 
 
 
@@ -79,7 +107,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 */
 #define PA_LoadPAGfxLargeBg(screen, bg_number, bg_name){\
 	PA_LoadBgPal(screen, bg_number, (void*)bg_name##_Pal); \
-	PA_LoadLargeBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Width) >> 3, (bg_name##_Height) >> 3);}
+	PA_LoadLargeBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Info[1]) >> 3, (bg_name##_Info[2]) >> 3);}
 
 
 
@@ -114,7 +142,9 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
       \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
 */
 #define PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\
-PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);\
+PA_BgInfo[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)>>5;\
+if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) {PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);}\
+else{PA_LoadTileEngine(screen, bg_select, bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
 
@@ -135,8 +165,11 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
       \~english X value to scroll
       \~french Valeur X à déplacer
 */
-void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x);
 
+extern inline void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autoselect
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_InfLargeScrollXN(screen, bg_select, x);
+	else PA_InfTilesScrollX(screen, bg_select, x);
+}
 
 /*!
     \fn void PA_InfLargeScrollY(u8 screen, u8 bg_select, s32 y)
@@ -153,8 +186,10 @@ void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x);
       \~english Y value to scroll
       \~french Valeur Y à déplacer
 */
-void PA_InfLargeScrollY(u8 screen, u8 bg_select, s32 y);
-
+extern inline void PA_InfLargeScrollY(u8 screen, u8 bg_select, s32 y){ // Autoselect
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_InfLargeScrollYN(screen, bg_select, y);
+	else PA_InfTilesScrollY(screen, bg_select, y);
+}
 
 
 /*!
@@ -195,8 +230,10 @@ extern inline void PA_InfLargeScrollXY(u8 screen, u8 bg_select, s32 x, s32 y){
       \~english X value to scroll
       \~french Valeur X à déplacer
 */
-void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x);
-
+extern inline void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autoselect
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_LargeScrollXN(screen, bg_select, x);
+	else PA_InfTilesScrollX(screen, bg_select, x);
+}
 
 /*!
     \fn void PA_LargeScrollY(u8 screen, u8 bg_select, s32 y)
@@ -213,8 +250,10 @@ void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x);
       \~english Y value to scroll
       \~french Valeur Y à déplacer
 */
-void PA_LargeScrollY(u8 screen, u8 bg_select, s32 y);
-
+extern inline void PA_LargeScrollY(u8 screen, u8 bg_select, s32 y){ // Autoselect
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_LargeScrollYN(screen, bg_select, y);
+	else PA_InfTilesScrollY(screen, bg_select, y);
+}
 
 
 /*!

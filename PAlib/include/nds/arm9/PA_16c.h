@@ -22,6 +22,15 @@ extern u32 *PA_Draw1632[2];
 
 extern u32 Blank[130000>>2];
 
+typedef struct{
+	s32 NLetters;
+	struct{
+		u8 X, Y;
+	}Letter[2048];
+} LetterPos16c;
+extern LetterPos16c PA_16cLetterPos;
+
+
 
 #define PA_LoadPal16c(palette, source)   DMA_Copy(source, (void*)palette, 16, DMA_16NOW);
 #define PA_16cPos(x, y) (((x>>3)*26*8) + y + 8)
@@ -105,9 +114,6 @@ ALWAYSINLINE void PA_16c8X8Letter(u8 screen, s16 x, s16 y, u32 *image, u8 color)
     \param bg
          \~english Background number (0-3)
          \~english Background number (0-3) 
-    \param bg
-         \~english Palette number (0-15)
-         \~english Numéro de palette (0-15) 
 */
 void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette);
 
@@ -368,6 +374,9 @@ ALWAYSINLINE void PA_16c16X16(u8 screen, s16 x, s16 y, u32 *image){
 
 
 extern inline void PA_16cLetter(u8 screen, s16 x, s16 y, char letter, u8 size, u8 color){
+PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].X = x;
+PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].Y = y;
+PA_16cLetterPos.NLetters++;
 	if (c16_policeheight[size]<=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<3)), color);
 	else PA_16c16X16Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<5)), color);
 }

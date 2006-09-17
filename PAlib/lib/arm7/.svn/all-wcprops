@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 30
-/svn/!svn/ver/4/trunk/lib/arm7
+V 31
+/svn/!svn/ver/37/trunk/lib/arm7
 END
 ModFile.c
 K 25
@@ -30,8 +30,8 @@ END
 main.c
 K 25
 svn:wc:ra_dav:version-url
-V 37
-/svn/!svn/ver/4/trunk/lib/arm7/main.c
+V 38
+/svn/!svn/ver/78/trunk/lib/arm7/main.c
 END
 command7.c
 K 25
@@ -54,6 +54,6 @@ END
 arm7.bin
 K 25
 svn:wc:ra_dav:version-url
-V 39
-/svn/!svn/ver/4/trunk/lib/arm7/arm7.bin
+V 40
+/svn/!svn/ver/78/trunk/lib/arm7/arm7.bin
 END

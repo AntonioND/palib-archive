@@ -1,0 +1,31 @@
+8
+
+dir
+24
+https://palibds.googlecode.com/svn/Examples/Demos/FollowStylus/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T08:54:33.783119Z
+24
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+gfx
+dir
+
+main.c
+file
+
+
+
+
+2006-01-20T12:55:37.250000Z
+50afb5a573e3e698c96900e5e5c265e4
+2006-09-12T08:54:33.783119Z
+24
+molousk
+

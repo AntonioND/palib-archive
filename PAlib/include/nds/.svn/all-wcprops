@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 33
-/svn/!svn/ver/7/trunk/include/nds
+V 34
+/svn/!svn/ver/54/trunk/include/nds
 END
 PA9.h
 K 25
@@ -15,18 +15,6 @@ svn:wc:ra_dav:version-url
 V 47
 /svn/!svn/ver/4/trunk/include/nds/microphone7.h
 END
-PA_IPC.h
-K 25
-svn:wc:ra_dav:version-url
-V 42
-/svn/!svn/ver/4/trunk/include/nds/PA_IPC.h
-END
-netdb.h
-K 25
-svn:wc:ra_dav:version-url
-V 41
-/svn/!svn/ver/4/trunk/include/nds/netdb.h
-END
 gba-jpeg-decode.h
 K 25
 svn:wc:ra_dav:version-url
@@ -39,12 +27,6 @@ svn:wc:ra_dav:version-url
 V 47
 /svn/!svn/ver/4/trunk/include/nds/SoundCommon.h
 END
-sgIP_errno.h
-K 25
-svn:wc:ra_dav:version-url
-V 46
-/svn/!svn/ver/4/trunk/include/nds/sgIP_errno.h
-END
 PAlib.h.lnk
 K 25
 svn:wc:ra_dav:version-url
@@ -56,18 +38,6 @@ K 25
 svn:wc:ra_dav:version-url
 V 44
 /svn/!svn/ver/4/trunk/include/nds/gba-jpeg.h
-END
-dswifi7.h
-K 25
-svn:wc:ra_dav:version-url
-V 43
-/svn/!svn/ver/4/trunk/include/nds/dswifi7.h
-END
-dswifi9.h
-K 25
-svn:wc:ra_dav:version-url
-V 43
-/svn/!svn/ver/4/trunk/include/nds/dswifi9.h
 END
 command.h
 K 25

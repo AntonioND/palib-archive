@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/27/Examples/PAFS/PAFSFolders/Files
+END
+aa.txt
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/27/Examples/PAFS/PAFSFolders/Files/aa.txt
+END
+test2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/27/Examples/PAFS/PAFSFolders/Files/test2.txt
+END
+ok.txt
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/27/Examples/PAFS/PAFSFolders/Files/ok.txt
+END
+test.txt
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/27/Examples/PAFS/PAFSFolders/Files/test.txt
+END

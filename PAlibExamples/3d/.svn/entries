@@ -1,0 +1,79 @@
+8
+
+dir
+0
+https://palibds.googlecode.com/svn/Examples/3d
+https://palibds.googlecode.com/svn
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+colors
+dir
+
+
+
+add
+
+splash3D
+dir
+
+
+
+add
+
+PA_Vertex3D
+dir
+
+
+
+add
+
+3d+text
+dir
+
+
+
+add
+
+PA_CallList
+dir
+
+
+
+add
+
+3d+Bg
+dir
+
+
+
+add
+
+transform
+dir
+
+
+
+add
+
+3d+Sprites
+dir
+
+
+
+add
+
+Cube_Texture
+dir
+
+
+
+add
+

@@ -1,0 +1,13 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+1 backgrounds :
+  zelda : LargeMap, 2048x2048, Pal : zelda_Pal, 243 tiles -> zelda_Tiles and zelda_Map
+
+1 palettes :
+  zelda_Pal, 28 colors
+
+Finished !

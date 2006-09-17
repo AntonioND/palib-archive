@@ -99,7 +99,9 @@ Load Large Maps, scroll them... <hr><h2>Define Documentation</h2>
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___bg_tiles.html#ga19">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);\
+PA_BgInfo[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)&gt;&gt;5;\
+<span class="keywordflow">if</span> (PA_BgInfo[screen][bg_select].NTiles &lt; MAX_TILES) {<a class="code" href="group___bg_tiles.html#ga23">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);}\
+<span class="keywordflow">else</span>{PA_LoadTileEngine(screen, bg_select, (<span class="keywordtype">void</span>*)bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>*)bg_map);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels) 
 <p>
@@ -164,7 +166,9 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___bg_tiles.html#ga20">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);\
+PA_BgInfo[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)&gt;&gt;5;\
+<span class="keywordflow">if</span> (PA_BgInfo[screen][bg_select].NTiles &lt; MAX_TILES) {<a class="code" href="group___bg_tiles.html#ga24">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);}\
+<span class="keywordflow">else</span>{PA_LoadTileEngine(screen, bg_select, bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>*)bg_map);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), but here you can put yourself the tile size... 
 <p>
@@ -216,7 +220,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
        <a class="code" href="group___palette.html#ga7">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
-       <a class="code" href="group___bg_large_map.html#ga11">PA_LoadLargeBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Width) &gt;&gt; 3, (bg_name##_Height) &gt;&gt; 3);}
+       <a class="code" href="group___bg_large_map.html#ga11">PA_LoadLargeBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Info[1]) &gt;&gt; 3, (bg_name##_Info[2]) &gt;&gt; 3);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
@@ -256,7 +260,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -367,7 +371,7 @@ Scroll a large infinite scrolling background horizontaly and vertically. It must
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -551,7 +555,7 @@ Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the s
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -662,7 +666,7 @@ Scroll a large background horizontaly and vertically. It must have been initiali
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -830,7 +834,7 @@ Scroll the backgrounds
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Tue Sep 5 20:35:50 2006 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:28 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

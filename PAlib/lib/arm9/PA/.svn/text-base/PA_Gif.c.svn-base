@@ -22,8 +22,6 @@ extern u8 PA_nBit[2];
 
 u8 GifBits; // Mode 8 ou 16 bits
 
-PA_GifInfos PA_GifInfo;
-
 const short InterlacedOffset[] = { 0, 4, 2, 1 }; /* The way Interlaced image should. */
 const short InterlacedJumps[] = { 8, 8, 4, 2 };    /* be read - offsets and jumps... */
 
@@ -73,8 +71,10 @@ u8 *temp = (u8*)src;
 int DGifGetLineByte(GifFileType *GifFile, GifPixelType *Line, int LineLen){
     if (GifBits == 0) CopyLine(LineBuf, Line, LineLen); // On fait un backup 
     int result = DGifGetLine(GifFile, LineBuf, LineLen); // Nouvelle ligne
-	if (GifBits == 0) CopyLine(Line, LineBuf, LineLen); // Copie 8 bit
-	if (GifBits == 1) CopyLine2(Line, LineBuf, LineLen); // Copie 8 bit	
+	if (PA_GifInfo.CurrentFrame >=  PA_GifInfo.StartFrame) {
+		if (GifBits == 0) CopyLine(Line, LineBuf, LineLen); // Copie 8 bit
+		if (GifBits == 1) CopyLine2(Line, LineBuf, LineLen); // Copie 8 bit	
+	}
     return result;
 }
 
@@ -104,6 +104,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	
 	PA_GifAnimSpeed(1); // normal speed when starting out...
 	PA_GifAnimPlay();
+	PA_GifInfo.CurrentFrame = 0;
 	
 	GifBits = nBits;
 	if (GifBits == 1) { // On utilise une palette temporaire...
@@ -134,19 +135,21 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	    
 	    // Update Color map
 	    ColorMap = (GifFile->Image.ColorMap	? GifFile->Image.ColorMap: GifFile->SColorMap);
-
-	    i = ColorMap->ColorCount;
-	    while (--i >= 0)  {
-			GifColorType* pColor = &ColorMap->Colors[i];
-			Palette[i] = PA_RGB8(GAMMA(pColor->Red), GAMMA(pColor->Green), GAMMA(pColor->Blue));
-	    }
+		if (PA_GifInfo.CurrentFrame >=  PA_GifInfo.StartFrame) {// Load Palette only if correct frame
+			i = ColorMap->ColorCount;
+			while (--i >= 0)  {
+				GifColorType* pColor = &ColorMap->Colors[i];
+				Palette[i] = PA_RGB8(GAMMA(pColor->Red), GAMMA(pColor->Green), GAMMA(pColor->Blue));
+			}
+		}
 		//GifFile->Image.Delay;
 		/*
 	    if (GifFile->Image.Left + GifFile->Image.Width > GifFile->SWidth ||
 		GifFile->Image.Top + GifFile->Image.Height > GifFile->SHeight) {
 		return EXIT_FAILURE;
 	    }*/
-	    if (GifFile->Image.Interlace) {
+		
+		if (GifFile->Image.Interlace) {
 		/* Need to perform 4 passes on the images: */
 			for (Count = i = 0; i < 4; i++) {
 				for (j = Row + InterlacedOffset[i]; j < Row + Height;
@@ -160,7 +163,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 				}
 			}
 		}
-	    else {
+		else {
 			for (i = 0; i < Height; i++) {
 				DGifGetLineByte(GifFile, (ScreenBuff + (((SWidth*Row) + Col) << GifBits)),Width);
 				Row++;
@@ -171,7 +174,7 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 					return EXIT_FAILURE;
 				}*/
 			}
-	    }
+		}
 	    break;
 		
 	case EXTENSION_RECORD_TYPE:
@@ -206,11 +209,18 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
  
 						tmpDelay = (int)tmpNumber;
 						s32 time;
-						for(time=0;time*PA_GifInfo.Speed<tmpNumber;time++) {
-							PA_WaitForVBL(); 
-							while(PA_GifInfo.Play == 2) PA_WaitForVBL(); // Pause animation !
-							if (PA_GifInfo.Play == 0) goto GifStop;
+						
+						PA_GifInfo.CurrentFrame++;
+						if (PA_GifInfo.CurrentFrame > PA_GifInfo.EndFrame) PA_GifInfo.Play = 0; // Last frame...
+						
+						if (PA_GifInfo.CurrentFrame-1 >=  PA_GifInfo.StartFrame){	// Don't wait if not at the right frame yet				
+							for(time=0;time*PA_GifInfo.Speed<tmpNumber;time++) {
+								PA_WaitForVBL(); 
+								while(PA_GifInfo.Play == 2) PA_WaitForVBL(); // Pause animation !
+								if (PA_GifInfo.Play == 0) goto GifStop;
+							}
 						}
+						
 						
 //						pd->aniDelay = tmpDelay;
 						
@@ -246,6 +256,118 @@ int DecodeGif(const u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SW
 	
     return 0;
 }
+
+
+/*
+u16 palette[256];
+u8 tiles[2][256*8*8];
+u8 tempgif[128*128];
+u8 tileexists[2][128*128];
+
+
+u16 spritegfx[8*8*32]; // temp sprite gfx table
+u16 spritegif[32*64]; // gif decoding part...
+
+u16 spritepal[256]; // sprite decoding palette
+
+*/
+
+
+
+
+u8* PA_GifToTiles(void *gif, u16 *temppal){
+
+u8 zero = 0;
+u16 width = PA_GetGifWidth(gif);
+u16 height = PA_GetGifWidth(gif);
+
+u8 *decodgif = (u8*)malloc(width*height);
+u8 *newtiles = (u8*)malloc(width*height);
+
+DMA_Force(zero, decodgif, (width*height)>>1, DMA_16NOW); // Blank out the gif
+DecodeGif((const u8*)gif, decodgif, temppal, 0, width);
+
+s32 i, j, tile;
+tile = 0; 
+s32 tempx, tempy;
+tempx = 0; tempy = 0;
+u16 temp;
+u8 pal0 = decodgif[2];
+
+// Invert pal0 color...
+temp = temppal[pal0];
+temppal[pal0] = temppal[0];
+temppal[0] = temp;
+
+u16 tilemax = (width*height)>>6;
+/*for (j = 0; j < height; j++){
+	if (decodgif[(j*width)] == 0) decodgif[(j*width)] = pal0;
+}*/
+
+for (tile = 0; tile < tilemax; tile++){
+	//tileexists[0][tile] = 0;
+	for (i = 0; i < 8; i++){ // put the right transp color	
+		for (j = 0; j < 8; j++) {
+			temp = decodgif[tempx + i + ((tempy+j)*width)];
+			if (temp == 0) temp = pal0;
+			else if (temp == pal0) temp = 0;
+			//if (temp == pal0) temp = 0;
+			newtiles[(tile<<6) + i + (j<<3)] = temp;
+			//tileexists[0][tile] |= temp;
+		}
+	}
+	tempx += 8; 
+	if (tempx >= width) {
+		tempy += 8;
+		tempx = 0;
+	}
+}
+
+free(decodgif); // free the malloc
+
+
+return (newtiles);
+
+}
+
+
+
+
+
+
+
+
+/*
+PA_GifToTiles((void*)mario_old, (u8*)spritegfx, spritepal, 64, 64);
+PA_LoadSpritePal(0, 0, (void*)spritepal);
+
+PA_CreateSprite(0, 0, (void*)spritegfx, OBJ_SIZE_64X64, 1, 0, 128, 64);
+PA_SetSpritePrio(0, 0, 3);
+PA_SetSpriteDblsize(0, 0, 1);
+PA_SetSpriteRotEnable(0,0,0);
+PA_SetRotset(0, 0, 0, 128, 128);
+
+//Background
+PA_LoadGif(0, skinALL[skinnumber].back);
+
+//Tiles
+PA_GifToTiles(skinALL[skinnumber].gif, (u8*)tiles[0], palette, 128, 128);
+PA_LoadBg(0, 2, tiles[0], 256*8*8, Blank, BG_256X256, 0, 1);
+PA_LoadBgPal(0, 2, (void*)palette);
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #ifdef __cplusplus
 }

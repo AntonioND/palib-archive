@@ -1,0 +1,9 @@
+#TranspColor Black
+
+#Sprites : 
+ds.png 256colors ds
+gp.png 256colors gp
+psp.png 256colors psp
+giz.png 256colors giz
+
+#Backgrounds : 

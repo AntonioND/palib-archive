@@ -12,80 +12,83 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="D::PA_Init3D"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga0">PA_Init3D</a> (void)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise the 3d !!! Big thanks to Delfare for all the 3d functions ! <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga1" doxytag="D::PA_LoadSplash3D"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga1">PA_LoadSplash3D</a> (void)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise the 3d on the bottom screen. Sprites can be used, but not backgrounds... Big thanks to Delfare for all the 3d functions ! <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga1" doxytag="D::PA_Init3DAndBg"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Init3DAndBg</b> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga2" doxytag="D::PA_LoadSplash3D"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga2">PA_LoadSplash3D</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a PlayerAdvance splash screen... It's always nice to give some credit ;) <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga2">PA_Init3DDrawing</a> (float x1, float y1, float z1, float x2, float y2, float z2)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga3">PA_Init3DDrawing</a> (float x1, float y1, float z1, float x2, float y2, float z2)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">takes care of the perspective, (x1,y1,z1) is the position of the camera, (x2,y2,z2) is where the camera looks at  <a href="#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga3">PA_glulookat</a> (float eyex, float eyey, float eyez, float lookAtx, float lookAty, float lookAtz, float upx, float upy, float upz)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">takes care of the perspective, (x1,y1,z1) is the position of the camera, (x2,y2,z2) is where the camera looks at  <a href="#ga3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga4">PA_glulookat</a> (float eyex, float eyey, float eyez, float lookAtx, float lookAty, float lookAtz, float upx, float upy, float upz)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">takes care of the camera, (eyex,eyey,eyez) is the position of the camera, (lookAtx,lookAty,lookAtz) is where the camera looks at, (upx,upy,upz) is the coord of the up  <a href="#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga4" doxytag="D::PA_image8to16"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">takes care of the camera, (eyex,eyey,eyez) is the position of the camera, (lookAtx,lookAty,lookAtz) is where the camera looks at, (upx,upy,upz) is the coord of the up  <a href="#ga4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga5" doxytag="D::PA_image8to16"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_image8to16</b> (sImage *img)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga5" doxytag="D::PA_VueKeys"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga5">PA_VueKeys</a> (void)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga6" doxytag="D::PA_VueKeys"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga6">PA_VueKeys</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">takes care of the sight with the keys, (viseeX,viseeY,viseeZ) is where the camera looks at, you must use PA_glulookat with viseeX,viseeY and viseeZ <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga6">PA_LoadTexture</a> (int numtexture, u8 *nomtexture, int mode)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga7">PA_LoadTexture</a> (int numtexture, u8 *nomtexture, int mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">load a texture  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga7">PA_Texture</a> (int numtexture)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">load a texture  <a href="#ga7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga8">PA_Texture</a> (int numtexture)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">use a texture  <a href="#ga7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga8">PA_3DBox</a> (float x, float y, float z, float longueur, float largeur, float hauteur, float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">use a texture  <a href="#ga8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga9">PA_3DBox</a> (float x, float y, float z, float longueur, float largeur, float hauteur, float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">create a 3D box  <a href="#ga8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga9">PA_3DBoxTexture</a> (float x, float y, float z, float longueur, float largeur, float hauteur, float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">create a 3D box  <a href="#ga9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga10">PA_3DBoxTexture</a> (float x, float y, float z, float longueur, float largeur, float hauteur, float rotatex, float rotatey, float rotatez, uint8 red, uint8 green, uint8 blue)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a 3D Box, but with a nice texture...  <a href="#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga10">PA_Rotate3D</a> (float x, float y, float z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Create a 3D Box, but with a nice texture...  <a href="#ga10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga11">PA_Rotate3D</a> (float x, float y, float z)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">rotate  <a href="#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga11">PA_Translate3D</a> (float x, float y, float z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">rotate  <a href="#ga11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga12">PA_Translate3D</a> (float x, float y, float z)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">translate  <a href="#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga12">PA_Scale3D</a> (float x, float y, float z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">translate  <a href="#ga12"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga13">PA_Scale3D</a> (float x, float y, float z)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">scale  <a href="#ga12"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga13">PA_Vertex3D</a> (float x, float y, float z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">scale  <a href="#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga14">PA_Vertex3D</a> (float x, float y, float z)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">create a vertex without floattov16  <a href="#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga14" doxytag="D::PA_3Dto2D"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga14">PA_3Dto2D</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">create a vertex without floattov16  <a href="#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga15" doxytag="D::PA_3Dto2D"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga15">PA_3Dto2D</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">you must use it for use PA_Vertex2D <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga15">PA_Vertex2D</a> (int x, int y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga16">PA_Vertex2D</a> (int x, int y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">create a vertex in 2D  <a href="#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga16">PA_TexCoord</a> (float x, float y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">create a vertex in 2D  <a href="#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___d.html#ga17">PA_TexCoord</a> (float x, float y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">use the tex coord  <a href="#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="D::PA_InitCallList"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">use the tex coord  <a href="#ga17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="D::PA_InitCallList"></a>
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_InitCallList</b> (PA_3DObject *obj)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="D::PA_VertexCallList"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="D::PA_VertexCallList"></a>
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_VertexCallList</b> (PA_3DObject *obj, float x, float y, float z)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="D::PA_TexCoordCallList"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="D::PA_TexCoordCallList"></a>
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_TexCoordCallList</b> (PA_3DObject *obj, int x, int y)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="D::PA_EndCallList"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="D::PA_EndCallList"></a>
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_EndCallList</b> (PA_3DObject *obj)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="D::PA_Draw3Dobject"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga22" doxytag="D::PA_Draw3Dobject"></a>
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Draw3Dobject</b> (PA_3DObject obj)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga22" doxytag="D::PA_ScaleCallList"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga23" doxytag="D::PA_ScaleCallList"></a>
 int&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_ScaleCallList</b> (PA_3DObject *obj, float x, float y, float z)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Say thanks to Delfare for all these ! And check out <a href="http://delfare.pizz.biz">http://delfare.pizz.biz</a> for how to use them... <hr><h2>Function Documentation</h2>
-<a class="anchor" name="ga8" doxytag="PA_3D.h::PA_3DBox"></a><p>
+<a class="anchor" name="ga9" doxytag="PA_3D.h::PA_3DBox"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -200,7 +203,7 @@ create a 3D box
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga9" doxytag="PA_3D.h::PA_3DBoxTexture"></a><p>
+<a class="anchor" name="ga10" doxytag="PA_3D.h::PA_3DBoxTexture"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -315,7 +318,7 @@ Create a 3D Box, but with a nice texture...
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga3" doxytag="PA_3D.h::PA_glulookat"></a><p>
+<a class="anchor" name="ga4" doxytag="PA_3D.h::PA_glulookat"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -409,7 +412,7 @@ takes care of the camera, (eyex,eyey,eyez) is the position of the camera, (lookA
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga2" doxytag="PA_3D.h::PA_Init3DDrawing"></a><p>
+<a class="anchor" name="ga3" doxytag="PA_3D.h::PA_Init3DDrawing"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -482,7 +485,7 @@ takes care of the perspective, (x1,y1,z1) is the position of the camera, (x2,y2,
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga6" doxytag="PA_3D.h::PA_LoadTexture"></a><p>
+<a class="anchor" name="ga7" doxytag="PA_3D.h::PA_LoadTexture"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -534,7 +537,7 @@ load a texture
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga10" doxytag="PA_3D.h::PA_Rotate3D"></a><p>
+<a class="anchor" name="ga11" doxytag="PA_3D.h::PA_Rotate3D"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -586,7 +589,7 @@ rotate
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga12" doxytag="PA_3D.h::PA_Scale3D"></a><p>
+<a class="anchor" name="ga13" doxytag="PA_3D.h::PA_Scale3D"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -638,7 +641,7 @@ scale
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga16" doxytag="PA_3D.h::PA_TexCoord"></a><p>
+<a class="anchor" name="ga17" doxytag="PA_3D.h::PA_TexCoord"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -683,7 +686,7 @@ use the tex coord
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga7" doxytag="PA_3D.h::PA_Texture"></a><p>
+<a class="anchor" name="ga8" doxytag="PA_3D.h::PA_Texture"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -718,7 +721,7 @@ use a texture
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga11" doxytag="PA_3D.h::PA_Translate3D"></a><p>
+<a class="anchor" name="ga12" doxytag="PA_3D.h::PA_Translate3D"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -770,7 +773,7 @@ translate
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga15" doxytag="PA_3D.h::PA_Vertex2D"></a><p>
+<a class="anchor" name="ga16" doxytag="PA_3D.h::PA_Vertex2D"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -815,7 +818,7 @@ create a vertex in 2D
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga13" doxytag="PA_3D.h::PA_Vertex3D"></a><p>
+<a class="anchor" name="ga14" doxytag="PA_3D.h::PA_Vertex3D"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -867,7 +870,7 @@ create a vertex without floattov16
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Tue Sep 5 20:35:50 2006 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:28 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
