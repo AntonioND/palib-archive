@@ -1,0 +1,22 @@
+PA File System, by Mollusk
+ 
+
+Copying files to Rom
+
+8 files in 1 folders
+ 
+.                     : 8 files
+ 
+1
+Including 8 files :
+ 
+Large_Info.bin        : 12 bytes
+Large_Map.bin         : 32768 bytes
+Large_Pal.bin         : 56 bytes
+Large_Tiles.bin       : 15552 bytes
+Town_Info.bin         : 12 bytes
+Town_Map.bin          : 65536 bytes
+Town_Pal.bin          : 136 bytes
+Town_Tiles.bin        : 114560 bytes
+ 
+Files included ! NewPAFS_Bg.nds created. Press any key to exit...

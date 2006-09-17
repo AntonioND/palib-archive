@@ -13,9 +13,15 @@
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga12">PA_LidClosed</a>()&nbsp;&nbsp;&nbsp;(IPC-&gt;buttons&gt;&gt;7)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the DS is closed. Returns 0 if open, 1 if closed <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga13">PA_WaitFor</a>(something)&nbsp;&nbsp;&nbsp;{PA_WaitForVBL(); while(!(something)){PA_WaitForVBL(); }}</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga13">PA_CloseLidSound</a>(channel, close_sound)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Wait for a specific thing to happen...  <a href="#ga13"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the DS is closed. If closed, it pauses the DS, and plays a sound  <a href="#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga14">PA_CloseLidSound2</a>(channel, close_sound, open_sound)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the DS is closed. If closed, it pauses the DS, and plays a sound  <a href="#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga15">PA_WaitFor</a>(something)&nbsp;&nbsp;&nbsp;{PA_WaitForVBL(); while(!(something)){PA_WaitForVBL(); }}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Wait for a specific thing to happen...  <a href="#ga15"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="General::PA_Init"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga0">PA_Init</a> (void)</td></tr>
@@ -64,7 +70,103 @@ u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group_
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Initialise the lib, and other general functions... <hr><h2>Define Documentation</h2>
-<a class="anchor" name="ga13" doxytag="PA_General.h::PA_WaitFor"></a><p>
+<a class="anchor" name="ga13" doxytag="PA_General.h::PA_CloseLidSound"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_CloseLidSound          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">channel,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>close_sound&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<b>Value:</b><div class="fragment"><pre class="fragment">{\
+                     <span class="keywordflow">if</span>(<a class="code" href="group___general.html#ga12">PA_LidClosed</a>()){\
+                            <a class="code" href="group___sound_a_r_m9.html#ga26">PA_PlaySimpleSound</a>(channel, close_sound);\
+                            <a class="code" href="group___general.html#ga15">PA_WaitFor</a>(!<a class="code" href="group___sound_a_r_m9.html#ga24">PA_SoundChannelIsBusy</a>(channel));  \
+                            <a class="code" href="group___general.html#ga9">PA_CheckLid</a>(); \
+                     }}
+</pre></div>Check if the DS is closed. If closed, it pauses the DS, and plays a sound 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>channel</em>&nbsp;</td><td>Sound channel, 0-15 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>close_sound</em>&nbsp;</td><td>Sound to play, check the sounds doc if you're not sure what to do here </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga14" doxytag="PA_General.h::PA_CloseLidSound2"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_CloseLidSound2          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">channel,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>close_sound,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>open_sound&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<b>Value:</b><div class="fragment"><pre class="fragment">{\
+                     <span class="keywordflow">if</span>(<a class="code" href="group___general.html#ga12">PA_LidClosed</a>()){\
+                            <a class="code" href="group___sound_a_r_m9.html#ga26">PA_PlaySimpleSound</a>(channel, close_sound);\
+                            <a class="code" href="group___general.html#ga15">PA_WaitFor</a>(!<a class="code" href="group___sound_a_r_m9.html#ga24">PA_SoundChannelIsBusy</a>(channel));  \
+                            <a class="code" href="group___general.html#ga9">PA_CheckLid</a>(); \
+                            <a class="code" href="group___sound_a_r_m9.html#ga26">PA_PlaySimpleSound</a>(channel, open_sound); \
+                            <a class="code" href="group___general.html#ga15">PA_WaitFor</a>(!<a class="code" href="group___sound_a_r_m9.html#ga24">PA_SoundChannelIsBusy</a>(channel));  \
+                     }}
+</pre></div>Check if the DS is closed. If closed, it pauses the DS, and plays a sound 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>channel</em>&nbsp;</td><td>Sound channel, 0-15 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>close_sound</em>&nbsp;</td><td>Sound to play when closes, check the sounds doc if you're not sure what to do here </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>open_sound</em>&nbsp;</td><td>Sound to play when opens, check the sounds doc if you're not sure what to do here </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga15" doxytag="PA_General.h::PA_WaitFor"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -235,7 +337,7 @@ Change the video mode... Use this with caution
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Tue Sep 5 20:35:50 2006 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:29 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

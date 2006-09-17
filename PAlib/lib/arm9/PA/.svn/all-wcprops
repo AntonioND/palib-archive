@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 33
-/svn/!svn/ver/6/trunk/lib/arm9/PA
+V 34
+/svn/!svn/ver/55/trunk/lib/arm9/PA
 END
 PA_Text.c
 K 25
@@ -12,8 +12,8 @@ END
 PA_Sound.c
 K 25
 svn:wc:ra_dav:version-url
-V 44
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_Sound.c
+V 45
+/svn/!svn/ver/78/trunk/lib/arm9/PA/PA_Sound.c
 END
 PA_Reco.c
 K 25
@@ -24,8 +24,8 @@ END
 PA_Math.c
 K 25
 svn:wc:ra_dav:version-url
-V 43
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_Math.c
+V 44
+/svn/!svn/ver/50/trunk/lib/arm9/PA/PA_Math.c
 END
 PA_IA.c
 K 25
@@ -42,8 +42,8 @@ END
 PA_Interrupt.c
 K 25
 svn:wc:ra_dav:version-url
-V 48
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_Interrupt.c
+V 49
+/svn/!svn/ver/16/trunk/lib/arm9/PA/PA_Interrupt.c
 END
 keyboard.map.c
 K 25
@@ -55,7 +55,7 @@ PA_Draw.c
 K 25
 svn:wc:ra_dav:version-url
 V 44
-/svn/!svn/ver/11/trunk/lib/arm9/PA/PA_Draw.c
+/svn/!svn/ver/41/trunk/lib/arm9/PA/PA_Draw.c
 END
 PA_Wifi.c
 K 25
@@ -72,8 +72,8 @@ END
 PA_BgLargeMap.c
 K 25
 svn:wc:ra_dav:version-url
-V 49
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_BgLargeMap.c
+V 50
+/svn/!svn/ver/78/trunk/lib/arm9/PA/PA_BgLargeMap.c
 END
 vidfile.c
 K 25
@@ -81,11 +81,17 @@ svn:wc:ra_dav:version-url
 V 43
 /svn/!svn/ver/4/trunk/lib/arm9/PA/vidfile.c
 END
+PA_Draw16bit.c
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/41/trunk/lib/arm9/PA/PA_Draw16bit.c
+END
 PA_Gif.c
 K 25
 svn:wc:ra_dav:version-url
 V 43
-/svn/!svn/ver/11/trunk/lib/arm9/PA/PA_Gif.c
+/svn/!svn/ver/15/trunk/lib/arm9/PA/PA_Gif.c
 END
 jpeg.c
 K 25
@@ -126,8 +132,8 @@ END
 PA_SplashEyes.c
 K 25
 svn:wc:ra_dav:version-url
-V 49
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_SplashEyes.c
+V 50
+/svn/!svn/ver/35/trunk/lib/arm9/PA/PA_SplashEyes.c
 END
 PA_GBFS.c
 K 25
@@ -141,6 +147,12 @@ svn:wc:ra_dav:version-url
 V 45
 /svn/!svn/ver/4/trunk/lib/arm9/PA/convert.bat
 END
+PA_Draw8bit.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/41/trunk/lib/arm9/PA/PA_Draw8bit.c
+END
 Thumbs.db
 K 25
 svn:wc:ra_dav:version-url
@@ -150,14 +162,14 @@ END
 PA_16c.c
 K 25
 svn:wc:ra_dav:version-url
-V 42
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_16c.c
+V 43
+/svn/!svn/ver/66/trunk/lib/arm9/PA/PA_16c.c
 END
 PA_BgTiles.c
 K 25
 svn:wc:ra_dav:version-url
-V 46
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_BgTiles.c
+V 47
+/svn/!svn/ver/78/trunk/lib/arm9/PA/PA_BgTiles.c
 END
 PA.pal.c
 K 25
@@ -180,14 +192,14 @@ END
 PA_Keyboard.c
 K 25
 svn:wc:ra_dav:version-url
-V 47
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_Keyboard.c
+V 48
+/svn/!svn/ver/78/trunk/lib/arm9/PA/PA_Keyboard.c
 END
 PA_SplashBlue.c
 K 25
 svn:wc:ra_dav:version-url
-V 49
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_SplashBlue.c
+V 50
+/svn/!svn/ver/35/trunk/lib/arm9/PA/PA_SplashBlue.c
 END
 PA_Sprite.c
 K 25
@@ -198,8 +210,8 @@ END
 PA_3D.c
 K 25
 svn:wc:ra_dav:version-url
-V 41
-/svn/!svn/ver/4/trunk/lib/arm9/PA/PA_3D.c
+V 42
+/svn/!svn/ver/56/trunk/lib/arm9/PA/PA_3D.c
 END
 PA.raw.c
 K 25

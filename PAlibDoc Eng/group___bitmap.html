@@ -418,7 +418,7 @@ For 8 bit background : Nice little function that draws on screen ! All you need 
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Chose de screen (0 or 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>15 bits color. You can use the PA_RGB macro to set the RGB values... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Color number in the palette (0-255) </td></tr>
   </table>
 </dl>
     </td>
@@ -1191,7 +1191,7 @@ Load a BMP in a 16 bit Buffer
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_LoadFSImage           </td>
+          <td class="md" nowrap valign="top">inline void PA_LoadFSImage           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -1205,7 +1205,7 @@ Load a BMP in a 16 bit Buffer
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -1577,7 +1577,7 @@ Draw 2 pixels on screen, on an 8 bit background. These pixels are next to anothe
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Tue Sep 5 20:35:50 2006 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:29 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

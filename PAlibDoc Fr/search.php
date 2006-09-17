@@ -350,7 +350,7 @@ main();
 
 
 ?>
-<hr size="1"><address style="align: right;"><small>Généré le Tue Sep 5 20:35:58 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:44 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

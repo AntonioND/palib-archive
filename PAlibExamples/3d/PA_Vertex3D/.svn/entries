@@ -1,0 +1,79 @@
+8
+
+dir
+0
+https://palibds.googlecode.com/svn/Examples/3d/PA_Vertex3D
+https://palibds.googlecode.com/svn
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+source
+dir
+
+
+
+add
+
+Template.pnproj
+file
+
+
+
+add
+
+build.bat
+file
+
+
+
+add
+
+clean.bat
+file
+
+
+
+add
+
+logo_wifi.bmp
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+logo.bmp
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+Makefile
+file
+
+
+
+add
+

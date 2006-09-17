@@ -1,19 +1,13 @@
 K 25
 svn:wc:ra_dav:version-url
-V 21
-/svn/!svn/ver/7/trunk
+V 22
+/svn/!svn/ver/55/trunk
 END
 install.sh
 K 25
 svn:wc:ra_dav:version-url
 V 32
 /svn/!svn/ver/4/trunk/install.sh
-END
-CPPinstall.sh
-K 25
-svn:wc:ra_dav:version-url
-V 35
-/svn/!svn/ver/4/trunk/CPPinstall.sh
 END
 build.bat
 K 25
@@ -25,19 +19,25 @@ Changelog.txt
 K 25
 svn:wc:ra_dav:version-url
 V 36
-/svn/!svn/ver/12/trunk/Changelog.txt
+/svn/!svn/ver/78/trunk/Changelog.txt
 END
 PAlib.pnps
 K 25
 svn:wc:ra_dav:version-url
 V 33
-/svn/!svn/ver/11/trunk/PAlib.pnps
+/svn/!svn/ver/66/trunk/PAlib.pnps
 END
 Thumbs.db
 K 25
 svn:wc:ra_dav:version-url
 V 31
 /svn/!svn/ver/4/trunk/Thumbs.db
+END
+archive.bat
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/35/trunk/archive.bat
 END
 clean.bat
 K 25
@@ -55,11 +55,11 @@ makefile
 K 25
 svn:wc:ra_dav:version-url
 V 31
-/svn/!svn/ver/11/trunk/makefile
+/svn/!svn/ver/41/trunk/makefile
 END
 PAlib.pnproj
 K 25
 svn:wc:ra_dav:version-url
 V 35
-/svn/!svn/ver/11/trunk/PAlib.pnproj
+/svn/!svn/ver/78/trunk/PAlib.pnproj
 END

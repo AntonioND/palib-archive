@@ -16,6 +16,9 @@
 #include <NDS/ARM7/clock.h>
 */
 
+u8 *PA_SoundsBusy;
+u8 PA_SoundBusyInit;
+
 
 //////////////////////////////////////////////////////////////////////
 
@@ -37,7 +40,7 @@ int i;
 
 
 //////////////////////////////////////////////////////////////////////
-
+//u8 testvar = 0;
 
 void PA_VBL(void){
   static int heartbeat = 0;
@@ -84,8 +87,33 @@ void PA_VBL(void){
 		PA_ScreenLight(); // Update the screen lights...
 		//IPC->aux = touchRead(TSC_MEASURE_AUX); // update IPC with new values
 	}
-
+	
+	u8 itest;
+	/*if(PA_SoundBusyInit){  // Check for sound stopping
+		for (itest = 0; itest < 16; itest++){
+			if(PA_SoundsBusy[itest+16] == 1){
+				SCHANNEL_CR(itest)=0;  // Stop sound...
+				PA_SoundsBusy[itest+16] = 0; // Reset
+			}
+		}
+	}*/
+			
+			
 	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
+	
+//	testvar++; testvar&=127;
+
+	if(PA_SoundBusyInit){
+		for (itest = 0; itest < 16; itest++) {
+			PA_SoundsBusy[itest] = SCHANNEL_CR(itest)>>31;
+		}	
+	}
+	else if(IPC->mailData != 0) {
+		PA_SoundsBusy = (u8*)(IPC->mailData); // Inits PA Sound busy commands
+		IPC->mailData = 0;
+		PA_SoundBusyInit = 1;
+	}
+	
 Wifi_Update();
 }
 
@@ -111,7 +139,12 @@ void arm7_fifo() { // check incoming fifo messages
 
 int main(int argc, char ** argv) {
   REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_SEND_CLEAR;
+IPC->mailData=0;
+IPC->mailSize=0; 
+  PA_SoundBusyInit = 0;
   PA_Init();
+  
+
 
  /*
      TransferSound *snd = IPC->soundData;
@@ -121,8 +154,7 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 //  SOUND_CR = SCHANNEL_ENABLE | SOUND_VOL(0x7F);
 //  IPC->soundData = 0;
 
-	IPC->mailData=0;
-	IPC->mailSize=0;
+
 
  	rtcReset();
 
@@ -139,6 +171,7 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 	irqEnable(IRQ_TIMER0);	
 	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
 	irqEnable(IRQ_TIMER3);	
+	
 	//supprime pour test
     irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
 	irqEnable(IRQ_WIFI);
@@ -153,7 +186,7 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
   REG_IME = 1;*/
   
  //supprime pour test
-//  SndInit7 ();
+  SndInit7 ();
     
   u32 fifo_temp;   
 
@@ -174,7 +207,9 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
   
   // Keep the ARM7 out of main RAM
 
-  while (1) swiWaitForVBlank();
+  while (1) {
+	swiWaitForVBlank();
+	}
   return 0;
 }
 

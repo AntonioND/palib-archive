@@ -12,6 +12,8 @@ PA_SoundOptions PA_SoundOption; // Default sound formats...
 u32 *FS_mod;
 u32 *FS_wav[16];
 
+
+
 //stream vars
 u32 *Stream_Gap[16];
 u32 *Stream_End[16];
@@ -58,9 +60,15 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 
     DC_FlushAll();
     IPC->soundData = &snd;
+	PA_SoundsBusy[PA_Channel] = 1; // now busy
 	SndPlay(PA_Channel, (void*)FS_wav[PA_Channel], length, volume, freq, format, repeat, repeatPoint);
 }
 
+void PA_StopSound(u8 PA_Channel){
+//	PA_SoundsBusy[16+PA_Channel] = 1; // Stop the sound...
+	SndStop(PA_Channel);
+}
+/*
 void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)
 {
 	u32 Alloc;
@@ -103,7 +111,7 @@ void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int 
 	//launch timer
 	Stream_Timer[PA_Channel] = NewTimer(true);
 }
-
+*/
 void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)
 {
 	u32 Alloc;

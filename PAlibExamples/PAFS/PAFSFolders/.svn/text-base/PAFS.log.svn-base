@@ -1,0 +1,34 @@
+PA File System, by Mollusk
+ 
+
+Copying files to Rom
+
+12 files in 9 folders
+ 
+.                     : 4 files
+  dir1                : 1 files
+    dir1.1            : 1 files
+    dir1.2            : 1 files
+  dir2                : 1 files
+  dir3                : 1 files
+    dir3.1            : 1 files
+    dir3.2            : 1 files
+  dir4                : 1 files
+ 
+1
+Including 12 files :
+ 
+aa.txt                : 50 bytes
+ok.txt                : 37 bytes
+test.txt              : 22 bytes
+test2.txt             : 11 bytes
+ok.txt                : 37 bytes
+other file.txt        : 4 bytes
+afile.txt             : 8 bytes
+ok.txt                : 37 bytes
+ok.txt                : 37 bytes
+et un autre.txt       : 37 bytes
+et encore un !.txt    : 37 bytes
+ok.txt                : 37 bytes
+ 
+Files included ! NewPAFSFolders.ds.gba created. Press any key to exit...

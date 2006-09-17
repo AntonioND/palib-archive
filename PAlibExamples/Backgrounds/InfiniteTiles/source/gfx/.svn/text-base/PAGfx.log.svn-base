@@ -1,0 +1,13 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+1 backgrounds :
+  Large : LargeMap, 1024x1024, Pal : Large_Pal, 243 tiles -> Large_Tiles and Large_Map
+
+1 palettes :
+  Large_Pal, 28 colors
+
+Finished !

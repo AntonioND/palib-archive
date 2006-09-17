@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 40
-/svn/!svn/ver/4/trunk/lib/arm9/PA/broken
+V 41
+/svn/!svn/ver/18/trunk/lib/arm9/PA/broken
 END
 PA_TextIWRAM.c
 K 25
@@ -12,8 +12,8 @@ END
 Thumbs.db
 K 25
 svn:wc:ra_dav:version-url
-V 50
-/svn/!svn/ver/4/trunk/lib/arm9/PA/broken/Thumbs.db
+V 51
+/svn/!svn/ver/18/trunk/lib/arm9/PA/broken/Thumbs.db
 END
 text1.c
 K 25

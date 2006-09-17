@@ -35,103 +35,105 @@
 00034 
 00048 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga0">PA_Init3D</a>(<span class="keywordtype">void</span>);
 00049 
-00055 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga1">PA_LoadSplash3D</a>(<span class="keywordtype">void</span>);
+00055 <span class="keywordtype">void</span> PA_Init3DAndBg(<span class="keywordtype">void</span>);
 00056 
-00057 
-00058 
-00083 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga2">PA_Init3DDrawing</a>(<span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1, <span class="keywordtype">float</span> z1, <span class="keywordtype">float</span> x2, <span class="keywordtype">float</span> y2, <span class="keywordtype">float</span> z2);
-00084 
-00085 
-00086 
-00087 
-00122 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga3">PA_glulookat</a>(<span class="keywordtype">float</span> eyex, <span class="keywordtype">float</span> eyey, <span class="keywordtype">float</span> eyez, <span class="keywordtype">float</span> lookAtx, <span class="keywordtype">float</span> lookAty, <span class="keywordtype">float</span> lookAtz, <span class="keywordtype">float</span> upx, <span class="keywordtype">float</span> upy, <span class="keywordtype">float</span> upz);
-00129 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_image8to16(sImage* img)
-00130  {
-00131         <span class="keywordtype">int</span> i;
-00132 
-00133         u16* temp = (u16*)malloc(img-&gt;height*img-&gt;width*2);
-00134         
-00135         <span class="keywordflow">for</span>(i = 0; i &lt; img-&gt;height * img-&gt;width; i++)
-00136                temp[i] = img-&gt;palette[img-&gt;data8[i]] | (1&lt;&lt;15);
-00137 
-00138         img-&gt;data16 = temp;
-00139  }
-00140 
-00141 
-00142 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga5">PA_VueKeys</a>(<span class="keywordtype">void</span>);
-<a name="l00158"></a><a class="code" href="group___d.html#ga6">00158</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga6">PA_LoadTexture</a>(<span class="keywordtype">int</span> numtexture, u8* nomtexture, <span class="keywordtype">int</span> mode){
-00159 <span class="keywordflow">if</span>(mode == texBIN){
-00160 glBindTexture(0, numtexture);
-00161 glTexImage2D(0, 0, GL_RGB, TEXTURE_SIZE_128 , TEXTURE_SIZE_128, 0,TEXGEN_TEXCOORD, (u8*)nomtexture);
-00162 }
-00163 <span class="keywordflow">else</span> <span class="keywordflow">if</span>(mode == texPCX){
-00164 sImage pcx;
-00165 loadPCX((u8*)nomtexture, &amp;pcx);
-00166 PA_image8to16(&amp;pcx);
-00167 glBindTexture(0, numtexture);
-00168 glTexImage2D(0, 0, GL_RGB, TEXTURE_SIZE_128 , TEXTURE_SIZE_128, 0, TEXGEN_TEXCOORD, pcx.data8);
-00169 }
-00170 }
-<a name="l00179"></a><a class="code" href="group___d.html#ga7">00179</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga7">PA_Texture</a>(<span class="keywordtype">int</span> numtexture){
-00180 glBindTexture(0, numtexture);
-00181 }
-00223 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga8">PA_3DBox</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z, <span class="keywordtype">float</span> longueur, <span class="keywordtype">float</span> largeur, <span class="keywordtype">float</span> hauteur,<span class="keywordtype">float</span> rotatex, <span class="keywordtype">float</span> rotatey, <span class="keywordtype">float</span> rotatez, uint8 red, uint8 green, uint8 blue);
-00265 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga9">PA_3DBoxTexture</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z, <span class="keywordtype">float</span> longueur, <span class="keywordtype">float</span> largeur, <span class="keywordtype">float</span> hauteur,<span class="keywordtype">float</span> rotatex, <span class="keywordtype">float</span> rotatey, <span class="keywordtype">float</span> rotatez,uint8 red, uint8 green, uint8 blue);
-00266 
-00267 
-00268 
-<a name="l00283"></a><a class="code" href="group___d.html#ga10">00283</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga10">PA_Rotate3D</a>(<span class="keywordtype">float</span> x,<span class="keywordtype">float</span> y,<span class="keywordtype">float</span> z){
-00284        glRotateX(x);
-00285     glRotateY(y);
-00286        glRotateZ(z);
-00287 }
-<a name="l00302"></a><a class="code" href="group___d.html#ga11">00302</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga11">PA_Translate3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
-00303 glTranslate3f32(floattof32(x),floattof32(y),floattof32(z));
-00304 }
-<a name="l00319"></a><a class="code" href="group___d.html#ga12">00319</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga12">PA_Scale3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
-00320        <span class="keywordflow">if</span>(x==0.0)x=1.0;
-00321        <span class="keywordflow">if</span>(y==0.0)y=1.0;
-00322        <span class="keywordflow">if</span>(z==0.0)z=1.0;
-00323        MATRIX_SCALE = floattof32(x);
-00324        MATRIX_SCALE = floattof32(y);
-00325        MATRIX_SCALE = floattof32(z);
-00326 }
-<a name="l00341"></a><a class="code" href="group___d.html#ga13">00341</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga13">PA_Vertex3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
-00342 glVertex3v16(floattov16(x),floattov16(y),floattov16(z));
-00343 }
-<a name="l00349"></a><a class="code" href="group___d.html#ga14">00349</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga14">PA_3Dto2D</a>(){
-00350 MATRIX_IDENTITY = 0;
-00351 }
-00352 
-00353 
-<a name="l00365"></a><a class="code" href="group___d.html#ga15">00365</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga15">PA_Vertex2D</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y){
-00366        <span class="keywordtype">float</span> x1 = (float)((x*0.36)/256)-0.18;
-00367        <span class="keywordtype">float</span> y1 = (float)((y*0.28)/192)-0.14;
-00368        glVertex3v16(floattov16(x1),floattov16(y1),floattov16(-0.2));
-00369 }
-<a name="l00381"></a><a class="code" href="group___d.html#ga16">00381</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga16">PA_TexCoord</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y){
-00382 glTexCoord1i(TEXTURE_PACK(inttot16((<span class="keywordtype">int</span>)x),inttot16((<span class="keywordtype">int</span>)y)));
-00383 }
-00384 
-00385 
-00386 
-00387 
-00388 
-00389 
-00390 
-00391 <span class="keywordtype">int</span> PA_InitCallList(PA_3DObject *obj);
-00392 <span class="keywordtype">int</span> PA_VertexCallList(PA_3DObject *obj, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z);
-00393 <span class="keywordtype">int</span> PA_TexCoordCallList(PA_3DObject *obj, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
-00394 <span class="keywordtype">int</span> PA_EndCallList(PA_3DObject *obj);
-00395 <span class="keywordtype">int</span> PA_Draw3Dobject(PA_3DObject obj);
-00396 <span class="keywordtype">int</span> PA_ScaleCallList(PA_3DObject *obj, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z); <span class="comment">// end of 3D</span>
-00398 
-00399 <span class="preprocessor">#ifdef __cplusplus</span>
-00400 <span class="preprocessor"></span>}
-00401 <span class="preprocessor">#endif</span>
-00402 <span class="preprocessor"></span>
-00403 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Sep 5 20:35:53 2006 pour PAlib par&nbsp;
+00062 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga2">PA_LoadSplash3D</a>(<span class="keywordtype">void</span>);
+00063 
+00064 
+00065 
+00090 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga3">PA_Init3DDrawing</a>(<span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1, <span class="keywordtype">float</span> z1, <span class="keywordtype">float</span> x2, <span class="keywordtype">float</span> y2, <span class="keywordtype">float</span> z2);
+00091 
+00092 
+00093 
+00094 
+00129 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga4">PA_glulookat</a>(<span class="keywordtype">float</span> eyex, <span class="keywordtype">float</span> eyey, <span class="keywordtype">float</span> eyez, <span class="keywordtype">float</span> lookAtx, <span class="keywordtype">float</span> lookAty, <span class="keywordtype">float</span> lookAtz, <span class="keywordtype">float</span> upx, <span class="keywordtype">float</span> upy, <span class="keywordtype">float</span> upz);
+00136 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_image8to16(sImage* img)
+00137  {
+00138         <span class="keywordtype">int</span> i;
+00139 
+00140         u16* temp = (u16*)malloc(img-&gt;height*img-&gt;width*2);
+00141         
+00142         <span class="keywordflow">for</span>(i = 0; i &lt; img-&gt;height * img-&gt;width; i++)
+00143                temp[i] = img-&gt;palette[img-&gt;data8[i]] | (1&lt;&lt;15);
+00144 
+00145         img-&gt;data16 = temp;
+00146  }
+00147 
+00148 
+00149 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga6">PA_VueKeys</a>(<span class="keywordtype">void</span>);
+<a name="l00165"></a><a class="code" href="group___d.html#ga7">00165</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga7">PA_LoadTexture</a>(<span class="keywordtype">int</span> numtexture, u8* nomtexture, <span class="keywordtype">int</span> mode){
+00166        <span class="keywordflow">if</span>(mode == texBIN){
+00167        glBindTexture(0, numtexture);
+00168        glTexImage2D(0, 0, GL_RGB, TEXTURE_SIZE_128 , TEXTURE_SIZE_128, 0,TEXGEN_TEXCOORD, (u8*)nomtexture);
+00169        }
+00170        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(mode == texPCX){
+00171        sImage pcx;
+00172        loadPCX((u8*)nomtexture, &amp;pcx);
+00173        PA_image8to16(&amp;pcx);
+00174        glBindTexture(0, numtexture);
+00175        glTexImage2D(0, 0, GL_RGB, TEXTURE_SIZE_128 , TEXTURE_SIZE_128, 0, TEXGEN_TEXCOORD, pcx.data8);
+00176        }
+00177 }
+<a name="l00186"></a><a class="code" href="group___d.html#ga8">00186</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga8">PA_Texture</a>(<span class="keywordtype">int</span> numtexture){
+00187 glBindTexture(0, numtexture);
+00188 }
+00230 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga9">PA_3DBox</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z, <span class="keywordtype">float</span> longueur, <span class="keywordtype">float</span> largeur, <span class="keywordtype">float</span> hauteur,<span class="keywordtype">float</span> rotatex, <span class="keywordtype">float</span> rotatey, <span class="keywordtype">float</span> rotatez, uint8 red, uint8 green, uint8 blue);
+00272 <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga10">PA_3DBoxTexture</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z, <span class="keywordtype">float</span> longueur, <span class="keywordtype">float</span> largeur, <span class="keywordtype">float</span> hauteur,<span class="keywordtype">float</span> rotatex, <span class="keywordtype">float</span> rotatey, <span class="keywordtype">float</span> rotatez,uint8 red, uint8 green, uint8 blue);
+00273 
+00274 
+00275 
+<a name="l00290"></a><a class="code" href="group___d.html#ga11">00290</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga11">PA_Rotate3D</a>(<span class="keywordtype">float</span> x,<span class="keywordtype">float</span> y,<span class="keywordtype">float</span> z){
+00291        glRotateX(x);
+00292     glRotateY(y);
+00293        glRotateZ(z);
+00294 }
+<a name="l00309"></a><a class="code" href="group___d.html#ga12">00309</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga12">PA_Translate3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
+00310 glTranslate3f32(floattof32(x),floattof32(y),floattof32(z));
+00311 }
+<a name="l00326"></a><a class="code" href="group___d.html#ga13">00326</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga13">PA_Scale3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
+00327        <span class="keywordflow">if</span>(x==0.0)x=1.0;
+00328        <span class="keywordflow">if</span>(y==0.0)y=1.0;
+00329        <span class="keywordflow">if</span>(z==0.0)z=1.0;
+00330        MATRIX_SCALE = floattof32(x);
+00331        MATRIX_SCALE = floattof32(y);
+00332        MATRIX_SCALE = floattof32(z);
+00333 }
+<a name="l00348"></a><a class="code" href="group___d.html#ga14">00348</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga14">PA_Vertex3D</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z){
+00349 glVertex3v16(floattov16(x),floattov16(y),floattov16(z));
+00350 }
+<a name="l00356"></a><a class="code" href="group___d.html#ga15">00356</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga15">PA_3Dto2D</a>(){
+00357 MATRIX_IDENTITY = 0;
+00358 }
+00359 
+00360 
+<a name="l00372"></a><a class="code" href="group___d.html#ga16">00372</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga16">PA_Vertex2D</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y){
+00373        <span class="keywordtype">float</span> x1 = (float)((x*0.36)/256)-0.18;
+00374        <span class="keywordtype">float</span> y1 = (float)((y*0.28)/192)-0.14;
+00375        glVertex3v16(floattov16(x1),floattov16(y1),floattov16(-0.2));
+00376 }
+<a name="l00388"></a><a class="code" href="group___d.html#ga17">00388</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___d.html#ga17">PA_TexCoord</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y){
+00389 glTexCoord1i(TEXTURE_PACK(inttot16((<span class="keywordtype">int</span>)x),inttot16((<span class="keywordtype">int</span>)y)));
+00390 }
+00391 
+00392 
+00393 
+00394 
+00395 
+00396 
+00397 
+00398 <span class="keywordtype">int</span> PA_InitCallList(PA_3DObject *obj);
+00399 <span class="keywordtype">int</span> PA_VertexCallList(PA_3DObject *obj, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z);
+00400 <span class="keywordtype">int</span> PA_TexCoordCallList(PA_3DObject *obj, <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y);
+00401 <span class="keywordtype">int</span> PA_EndCallList(PA_3DObject *obj);
+00402 <span class="keywordtype">int</span> PA_Draw3Dobject(PA_3DObject obj);
+00403 <span class="keywordtype">int</span> PA_ScaleCallList(PA_3DObject *obj, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> z); <span class="comment">// end of 3D</span>
+00405 
+00406 <span class="preprocessor">#ifdef __cplusplus</span>
+00407 <span class="preprocessor"></span>}
+00408 <span class="preprocessor">#endif</span>
+00409 <span class="preprocessor"></span>
+00410 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:40 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

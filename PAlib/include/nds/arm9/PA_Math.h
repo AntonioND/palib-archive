@@ -11,6 +11,44 @@ extern "C" {
 
 
 
+typedef struct{
+	u8 Screen;
+	float Time;
+	s8 Functions;
+	s32 Runs[16];
+}PA_TestInfos;
+extern PA_TestInfos PA_TestInfo;
+
+extern inline void PA_TestInit(u8 screen, float time){
+	PA_TestInfo.Screen = screen;
+	PA_TestInfo.Time = time*60; // Convert seconds to VBLs
+	PA_TestInfo.Functions = 0; // Functions tested
+}
+
+#define PA_TESTSTART  { PA_OutputText(PA_TestInfo.Screen, 0, 4+PA_TestInfo.Functions, "Testing function %02d", PA_TestInfo.Functions+1);\
+				PA_WaitForVBL();\
+				PA_TestVBLs = 0;\
+				while( PA_TestVBLs < PA_TestInfo.Time){
+
+
+#define PA_TESTEND  PA_TestInfo.Runs[PA_TestInfo.Functions] ++; }\
+					PA_TestInfo.Functions++;} // 1 more function tested
+								
+
+void PA_TestResults(void);
+
+
+
+
+
+
+
+
+
+
+
+
+
 /** @defgroup Math Some math functions...
  *  Adjust angles, get random values...
  *  @{

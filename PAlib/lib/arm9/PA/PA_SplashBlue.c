@@ -7,8 +7,7 @@ extern "C" {
 #include "arm9/PA_Splash.h"
 
 // Background
-const int Splash2_Width;
-const int Splash2_Height;
+const int Splash2_Info[3] = {2, 512, 256};
 
 const unsigned short Splash2_Map[2048];
 const unsigned char Splash2_Tiles[19456];
@@ -66,9 +65,6 @@ void PA_SplashBlue(void){
 	   
 }
 
-
-const int Splash2_Width = 512;
-const int Splash2_Height = 256;
 
 const unsigned short Splash2_Map[2048] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 

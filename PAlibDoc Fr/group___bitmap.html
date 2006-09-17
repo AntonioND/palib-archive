@@ -418,7 +418,7 @@ Pour 8 bit : Jolie petite fonction qui dessine à l'écran ! Tout ce qu'il reste à
 <dl compact><dt><b>Paramètres:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Numéro de la couleur dans la palette (0-255) </td></tr>
   </table>
 </dl>
     </td>
@@ -1191,7 +1191,7 @@ Charger un BMP dans un buffer de 16 bit
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">void PA_LoadFSImage           </td>
+          <td class="md" nowrap valign="top">inline void PA_LoadFSImage           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname" nowrap> <em>screen</em>, </td>
@@ -1205,7 +1205,7 @@ Charger un BMP dans un buffer de 16 bit
         <tr>
           <td class="md"></td>
           <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"></td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
         </tr>
       </table>
     </td>
@@ -1579,7 +1579,7 @@ Dessine deux pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, 
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Tue Sep 5 20:35:57 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:42 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

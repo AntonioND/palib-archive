@@ -26,86 +26,108 @@
 00025 
 00026 
 00027 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00028        <span class="keywordtype">float</span> Speed;
-00029        u8 Play; <span class="comment">// 0 stop; 1 play; 2 pause;</span>
-00030 } PA_GifInfos;
-00031 <span class="keyword">extern</span> PA_GifInfos PA_GifInfo;
-00032 
-00033 
-00034 
+00028        s32 StartFrame;
+00029        s32 EndFrame;
+00030        s32 CurrentFrame;
+00031        <span class="keywordtype">float</span> Speed;
+00032        u8 Play; <span class="comment">// 0 stop; 1 play; 2 pause;</span>
+00033 } PA_GifInfos;
+00034 <span class="keyword">extern</span> PA_GifInfos PA_GifInfo;
 00035 
 00036 
 00037 
 00038 
-00039 <span class="keywordtype">void</span> PA_Load16bitGif(u8 screen, s16 x, s16 y, <span class="keywordtype">void</span> *gif);
+00039 
 00040 
-00041 <span class="keywordtype">int</span> DecodeGif(<span class="keyword">const</span> u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
-00042 
+00041 
+00042 <span class="keywordtype">void</span> PA_Load16bitGif(u8 screen, s16 x, s16 y, <span class="keywordtype">void</span> *gif);
 00043 
-00044 
-<a name="l00063"></a><a class="code" href="group___gif.html#ga0">00063</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___gif.html#ga0">PA_GetGifWidth</a>(<span class="keywordtype">void</span>* gif){
-00064        u16 *temp = (u16*)gif;
-00065        temp += 3;
-00066        <span class="keywordflow">return</span> *temp;
-00067 }
-00068 
-00069 
-00070 
-<a name="l00079"></a><a class="code" href="group___gif.html#ga1">00079</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___gif.html#ga1">PA_GetGifHeight</a>(<span class="keywordtype">void</span>* gif){
-00080        u16 *temp = (u16*)gif;
-00081        temp += 4;
-00082        <span class="keywordflow">return</span> *temp;
-00083 }
-00084 
-00085 
-00086 
-<a name="l00098"></a><a class="code" href="group___gif.html#ga2">00098</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga2">PA_LoadGif</a>(u8 screen, <span class="keywordtype">void</span> *gif){
-00099        <span class="keywordflow">if</span> (PA_nBit[screen]) DecodeGif((<span class="keyword">const</span> u8*)gif, (u8*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
-00100        <span class="comment">//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...</span>
-00101        <span class="keywordflow">else</span> DecodeGif((<span class="keyword">const</span> u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
-00102 }
-00103 
-00104 
-00105 
+00044 <span class="keywordtype">int</span> DecodeGif(<span class="keyword">const</span> u8 *userData, u8 *ScreenBuff, u16* Palette, u8 nBits, s16 SWidth);
+00045 
+00046 
+00047 
+<a name="l00066"></a><a class="code" href="group___gif.html#ga0">00066</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___gif.html#ga0">PA_GetGifWidth</a>(<span class="keywordtype">void</span>* gif){
+00067        u16 *temp = (u16*)gif;
+00068        temp += 3;
+00069        <span class="keywordflow">return</span> *temp;
+00070 }
+00071 
+00072 
+00073 
+<a name="l00082"></a><a class="code" href="group___gif.html#ga1">00082</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___gif.html#ga1">PA_GetGifHeight</a>(<span class="keywordtype">void</span>* gif){
+00083        u16 *temp = (u16*)gif;
+00084        temp += 4;
+00085        <span class="keywordflow">return</span> *temp;
+00086 }
+00087 
+00088 
+00089 
+<a name="l00101"></a><a class="code" href="group___gif.html#ga2">00101</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga2">PA_LoadGif</a>(u8 screen, <span class="keywordtype">void</span> *gif){
+00102        <span class="keywordflow">if</span> (PA_nBit[screen]) DecodeGif((<span class="keyword">const</span> u8*)gif, (u8*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
+00103        <span class="comment">//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...</span>
+00104        <span class="keywordflow">else</span> DecodeGif((<span class="keyword">const</span> u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
+00105 }
 00106 
-<a name="l00115"></a><a class="code" href="group___gif.html#ga3">00115</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga3">PA_GifAnimSpeed</a>(<span class="keywordtype">float</span> speed){
-00116        PA_GifInfo.Speed = speed;
-00117 }
-00118 
-00119 
-<a name="l00125"></a><a class="code" href="group___gif.html#ga4">00125</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga4">PA_GifAnimStop</a>(<span class="keywordtype">void</span>){
-00126        PA_GifInfo.Play = 0;
-00127 }
-00128 
-00129 
-00130 
+00107 
+00108 
+00109 
+<a name="l00118"></a><a class="code" href="group___gif.html#ga3">00118</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga3">PA_GifAnimSpeed</a>(<span class="keywordtype">float</span> speed){
+00119        PA_GifInfo.Speed = speed;
+00120 }
+00121 
+00122 
+<a name="l00128"></a><a class="code" href="group___gif.html#ga4">00128</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga4">PA_GifAnimStop</a>(<span class="keywordtype">void</span>){
+00129        PA_GifInfo.Play = 0;
+00130 }
 00131 
-<a name="l00137"></a><a class="code" href="group___gif.html#ga5">00137</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga5">PA_GifAnimPause</a>(<span class="keywordtype">void</span>){
-00138        PA_GifInfo.Play = 2;
-00139 }
-00140 
-00141 
-00147 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_GifAnimPlay(<span class="keywordtype">void</span>){
-00148        PA_GifInfo.Play = 1;
-00149 }
-00150 
-00151 
-00152 
-00153 <span class="preprocessor">#ifdef __cplusplus</span>
-00154 <span class="preprocessor"></span>}
-00155 <span class="preprocessor">#endif</span>
-00156 <span class="preprocessor"></span>
-00157 
-00158 
-00159 
-00160 
-00161 
-00162 
-00163 
-00164 <span class="preprocessor">#endif</span>
-00165 <span class="preprocessor"></span>
+00132 
+00133 
+00134 
+<a name="l00140"></a><a class="code" href="group___gif.html#ga5">00140</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___gif.html#ga5">PA_GifAnimPause</a>(<span class="keywordtype">void</span>){
+00141        PA_GifInfo.Play = 2;
+00142 }
+00143 
+00144 
+00150 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_GifAnimPlay(<span class="keywordtype">void</span>){
+00151        PA_GifInfo.Play = 1;
+00152 }
+00153 
+00162 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_GifSetStartFrame(s32 StartFrame){
+00163        PA_GifInfo.StartFrame = StartFrame;
+00164 }
+00165 
 00166 
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Tue Sep 5 20:35:48 2006 for PAlib by&nbsp;
+00167 
+00176 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_GifSetEndFrame(s32 EndFrame){
+00177        PA_GifInfo.EndFrame = EndFrame;
+00178 }
+00179 
+00180 
+<a name="l00186"></a><a class="code" href="group___gif.html#ga9">00186</a> <span class="keyword">extern</span> <span class="keyword">inline</span> s32 <a class="code" href="group___gif.html#ga9">PA_GifGetFrame</a>(<span class="keywordtype">void</span>){
+00187        <span class="keywordflow">return</span> PA_GifInfo.CurrentFrame;
+00188 }
+00189 
+00190 
+00191 
+00205 u8* PA_GifToTiles(<span class="keywordtype">void</span> *gif, u16 *temppal);
+00206 
+00207 
+00208 
+00209 <span class="preprocessor">#ifdef __cplusplus</span>
+00210 <span class="preprocessor"></span>}
+00211 <span class="preprocessor">#endif</span>
+00212 <span class="preprocessor"></span>
+00213 
+00214 
+00215 
+00216 
+00217 
+00218 
+00219 
+00220 <span class="preprocessor">#endif</span>
+00221 <span class="preprocessor"></span>
+00222 
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:26 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

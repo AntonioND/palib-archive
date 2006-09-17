@@ -1,0 +1,52 @@
+8
+
+dir
+28
+https://palibds.googlecode.com/svn/Examples/Text
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T12:16:56.359737Z
+28
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+CustomFontBorder
+dir
+
+16cText2
+dir
+
+CustomFont
+dir
+
+Text
+dir
+
+SpecialText
+dir
+
+TextColors
+dir
+
+8bitText
+dir
+
+HelloWorld
+dir
+
+8bitText2
+dir
+
+BoxText
+dir
+
+16cText
+dir
+
+Text_BoxType
+dir
+

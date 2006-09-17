@@ -13,122 +13,142 @@
 <a href="_p_a___bg_tiles_8h-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Data Structures</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BgInfos</b></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>scrollpositions</b></td></tr>
 
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_BgTiles.h::CharBaseBlock"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_BgTiles.h::BG_TILEDBG"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_TILEDBG</b>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_BgTiles.h::BG_ROTBG"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_ROTBG</b>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_BgTiles.h::BG_LARGEMAP"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_LARGEMAP</b>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_BgTiles.h::BG_INFINITEMAP"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_INFINITEMAP</b>&nbsp;&nbsp;&nbsp;5</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_BgTiles.h::CharBaseBlock"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>CharBaseBlock</b>(screen, n)&nbsp;&nbsp;&nbsp;(((n)*0x4000) + 0x6000000 + (0x200000 *  screen))</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_BgTiles.h::ScreenBaseBlock"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_BgTiles.h::ScreenBaseBlock"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>ScreenBaseBlock</b>(screen, n)&nbsp;&nbsp;&nbsp;(((n)*0x800) + 0x6000000 + (0x200000 *  screen))</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_BgTiles.h::BG_COLOR16"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_BgTiles.h::BG_COLOR16"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_COLOR16</b>&nbsp;&nbsp;&nbsp;0x00</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_BgTiles.h::BG_COLOR256"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_BgTiles.h::BG_COLOR256"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_COLOR256</b>&nbsp;&nbsp;&nbsp;0x80</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_BgTiles.h::CHAR_SHIFT"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_BgTiles.h::CHAR_SHIFT"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>CHAR_SHIFT</b>&nbsp;&nbsp;&nbsp;2</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_BgTiles.h::SCREEN_SHIFT"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_BgTiles.h::SCREEN_SHIFT"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>SCREEN_SHIFT</b>&nbsp;&nbsp;&nbsp;8</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_BgTiles.h::WRAPAROUND"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_BgTiles.h::WRAPAROUND"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>WRAPAROUND</b>&nbsp;&nbsp;&nbsp;0x1</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_BgTiles.h::SCREEN_TILES"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_BgTiles.h::SCREEN_TILES"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>SCREEN_TILES</b>&nbsp;&nbsp;&nbsp;24576</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_BgTiles.h::REG_BGSCREEN0"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_BgTiles.h::REG_BGSCREEN0"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_BGSCREEN0</b>&nbsp;&nbsp;&nbsp;0x04000000</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_BgTiles.h::REG_BGSCREEN1"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a13" doxytag="PA_BgTiles.h::REG_BGSCREEN1"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_BGSCREEN1</b>&nbsp;&nbsp;&nbsp;0x04001000</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_BgTiles.h::REG_BGSCREEN"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a14" doxytag="PA_BgTiles.h::REG_BGSCREEN"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_BGSCREEN</b>(screen)&nbsp;&nbsp;&nbsp;(0x04000000 + (screen * 0x1000))</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_BgTiles.h::REG_BGCNT"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_BgTiles.h::REG_BGCNT"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_BGCNT</b>(screen, bg_number)&nbsp;&nbsp;&nbsp;(0x4000008 + (screen * 0x1000) + (bg_number &lt;&lt; 1))</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_BgTiles.h::REG_BGSCROLLX"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a16" doxytag="PA_BgTiles.h::REG_BGSCROLLX"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_BGSCROLLX</b>&nbsp;&nbsp;&nbsp;0x4000010</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a13" doxytag="PA_BgTiles.h::REG_BGSCROLLY"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a17" doxytag="PA_BgTiles.h::REG_BGSCROLLY"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_BGSCROLLY</b>&nbsp;&nbsp;&nbsp;0x4000012</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a14" doxytag="PA_BgTiles.h::BG_256X256"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a18" doxytag="PA_BgTiles.h::BG_256X256"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_256X256</b>&nbsp;&nbsp;&nbsp;0</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_BgTiles.h::BG_512X256"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a19" doxytag="PA_BgTiles.h::BG_512X256"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_512X256</b>&nbsp;&nbsp;&nbsp;1</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a16" doxytag="PA_BgTiles.h::BG_256X512"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a20" doxytag="PA_BgTiles.h::BG_256X512"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_256X512</b>&nbsp;&nbsp;&nbsp;2</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a17" doxytag="PA_BgTiles.h::BG_512X512"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a21" doxytag="PA_BgTiles.h::BG_512X512"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BG_512X512</b>&nbsp;&nbsp;&nbsp;3</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a18" doxytag="PA_BgTiles.h::TILE_N"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a22" doxytag="PA_BgTiles.h::TILE_N"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TILE_N</b>&nbsp;&nbsp;&nbsp;1023</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a19" doxytag="PA_BgTiles.h::TILE_PAL"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a23" doxytag="PA_BgTiles.h::TILE_PAL"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TILE_PAL</b>&nbsp;&nbsp;&nbsp;61440</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a20" doxytag="PA_BgTiles.h::TILE_HFLIP"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a24" doxytag="PA_BgTiles.h::TILE_HFLIP"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TILE_HFLIP</b>&nbsp;&nbsp;&nbsp;1024</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a21" doxytag="PA_BgTiles.h::TILE_VFLIP"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a25" doxytag="PA_BgTiles.h::TILE_VFLIP"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TILE_VFLIP</b>&nbsp;&nbsp;&nbsp;2048</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga14">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga18">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Hide a screen's background.  <a href="group___bg_tiles.html#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga15">PA_ShowBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Hide a screen's background.  <a href="group___bg_tiles.html#ga18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga19">PA_ShowBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Show a hidden background.  <a href="group___bg_tiles.html#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga16">PA_ResetBg</a>(screen)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Show a hidden background.  <a href="group___bg_tiles.html#ga19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga20">PA_ResetBg</a>(screen)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialize de Bg system of a screen. It only hides all the backgrounds in reality...  <a href="group___bg_tiles.html#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga17">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles)&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialize de Bg system of a screen. It only hides all the backgrounds in reality...  <a href="group___bg_tiles.html#ga20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga21">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles)&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a tileset into memory  <a href="group___bg_tiles.html#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga18">PA_LoadTiledBg</a>(screen, bg_number, bg_name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a tileset into memory  <a href="group___bg_tiles.html#ga21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga22">PA_LoadTiledBg</a>(screen, bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available.  <a href="group___bg_tiles.html#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga19">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available.  <a href="group___bg_tiles.html#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga23">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simple way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="group___bg_tiles.html#ga19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga20">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simple way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="group___bg_tiles.html#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga24">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="group___bg_tiles.html#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga21">PA_BGScrollX</a>(screen, bg_number, x)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="group___bg_tiles.html#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga25">PA_BGScrollX</a>(screen, bg_number, x)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly any background  <a href="group___bg_tiles.html#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga22">PA_BGScrollY</a>(screen, bg_number, y)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly any background  <a href="group___bg_tiles.html#ga25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga26">PA_BGScrollY</a>(screen, bg_number, y)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertically any background  <a href="group___bg_tiles.html#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga23">PA_BGScrollXY</a>(screen, bg_number, x, y)&nbsp;&nbsp;&nbsp;{PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertically any background  <a href="group___bg_tiles.html#ga26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga27">PA_BGScrollXY</a>(screen, bg_number, x, y)&nbsp;&nbsp;&nbsp;{PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly and vertically any background  <a href="group___bg_tiles.html#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga24">PA_SetMapTileAll</a>(screen, bg_select, x, y, tile_info)&nbsp;&nbsp;&nbsp;*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_info)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly and vertically any background  <a href="group___bg_tiles.html#ga27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga28">PA_SetMapTileAll</a>(screen, bg_select, x, y, tile_info)&nbsp;&nbsp;&nbsp;*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_info)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile info used by a given tile in the map  <a href="group___bg_tiles.html#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga25">PA_SetMapTileHflip</a>(screen, bg_select, x, y, hflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the tile info used by a given tile in the map  <a href="group___bg_tiles.html#ga28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga29">PA_SetMapTileHflip</a>(screen, bg_select, x, y, hflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flip a given tile horizontaly  <a href="group___bg_tiles.html#ga25"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga26">PA_SetMapTileVflip</a>(screen, bg_select, x, y, vflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flip a given tile horizontaly  <a href="group___bg_tiles.html#ga29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga30">PA_SetMapTileVflip</a>(screen, bg_select, x, y, vflip)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flip a given tile verticaly  <a href="group___bg_tiles.html#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga27">PA_SetMapTilePal</a>(screen, bg_select, x, y, palette_number)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flip a given tile verticaly  <a href="group___bg_tiles.html#ga30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga31">PA_SetMapTilePal</a>(screen, bg_select, x, y, palette_number)&nbsp;&nbsp;&nbsp;{*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the 16 color palette used by a tile. Works only if the Bg is in 16 colors...  <a href="group___bg_tiles.html#ga27"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the 16 color palette used by a tile. Works only if the Bg is in 16 colors...  <a href="group___bg_tiles.html#ga31"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga32">PA_EasyBgLoad</a>(screen, bg_number, bg_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Easiest way to load a background converted with PAGfx...  <a href="group___bg_tiles.html#ga32"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga33">PA_FSBgLoad</a>(screen, bg_number, filenumber)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Easiest way to load a background converted with PAGfx... from PAFS !  <a href="group___bg_tiles.html#ga33"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a49" doxytag="PA_BgTiles.h::PA_GetPAGfxBgSize"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a51" doxytag="PA_BgTiles.h::PA_GetPAGfxBgSize"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GetPAGfxBgSize</b> (u16 width, u16 height)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a50" doxytag="PA_BgTiles.h::PA_GetPAGfxRotBgSize"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a52" doxytag="PA_BgTiles.h::PA_GetPAGfxRotBgSize"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GetPAGfxRotBgSize</b> (u16 width)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="PA_BgTiles.h::PA_ResetBgSys"></a>
@@ -138,9 +158,9 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga1">PA_InitBg</a> (u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise a given background. Do this only after having loaded a tileset and a map.  <a href="group___bg_tiles.html#ga1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga2">PA_LoadBgTilesEx</a> (u8 screen, u8 bg_select, void *bg_tiles, u16 size)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga2" doxytag="PA_BgTiles.h::PA_LoadBgTilesEx"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_LoadBgTilesEx</b> (u8 screen, u8 bg_select, void *bg_tiles, u32 size)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a tileset into memory with a given size  <a href="group___bg_tiles.html#ga2"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga3">PA_ReLoadBgTiles</a> (u8 screen, u8 bg_select, void *bg_tiles)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ReLoad a tileset into memory  <a href="group___bg_tiles.html#ga3"></a><br></td></tr>
@@ -171,54 +191,57 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetMapTileEx</b> (
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga12" doxytag="PA_BgTiles.h::PA_CreateBgFromTiles"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_CreateBgFromTiles</b> (u8 screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga13">PA_ClearBg</a> (u8 screen, u8 bg_select)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga13" doxytag="PA_BgTiles.h::PA_SetBgPrioSeq"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SetBgPrioSeq</b> (u8 screen, u8 priority0, u8 priority1, u8 priority2, u8 priority3)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Erase a given background (just the tilemap)  <a href="group___bg_tiles.html#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga14">PA_ClearBg</a> (u8 screen, u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Erase a given background (just the tilemap)  <a href="group___bg_tiles.html#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga15">PA_EasyBgScrollX</a> (u8 screen, u8 bg_number, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly any background  <a href="group___bg_tiles.html#ga15"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga16">PA_EasyBgScrollY</a> (u8 screen, u8 bg_number, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertically any background  <a href="group___bg_tiles.html#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ga17">PA_EasyBgScrollXY</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly and vertically any background  <a href="group___bg_tiles.html#ga17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a71" doxytag="PA_BgTiles.h::PA_UpdateBgTile"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_UpdateBgTile</b> (u8 screen, u8 bg_select, u16 tilepos, void *tile)</td></tr>
+
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a36" doxytag="PA_BgTiles.h::PA_bgmap"></a>
-u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_bgmap</b> [2][4]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a42" doxytag="PA_BgTiles.h::PA_BgInfo"></a>
+PA_BgInfos&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BgInfo</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a37" doxytag="PA_BgTiles.h::tilesetchar"></a>
-u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>tilesetchar</b> [2][4]</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a38" doxytag="PA_BgTiles.h::bg_sizes"></a>
-u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>bg_sizes</b> [4]</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a39" doxytag="PA_BgTiles.h::bg_place"></a>
-u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>bg_place</b> [4]</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a40" doxytag="PA_BgTiles.h::PA_DrawBg"></a>
-u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DrawBg</b> [2]</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a41" doxytag="PA_BgTiles.h::charblocks"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a43" doxytag="PA_BgTiles.h::charblocks"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>charblocks</b> [2][70]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a42" doxytag="PA_BgTiles.h::tilesetsize"></a>
-u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>tilesetsize</b> [2][4]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a44" doxytag="PA_BgTiles.h::PA_DrawBg"></a>
+u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DrawBg</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a43" doxytag="PA_BgTiles.h::mapsize"></a>
-u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>mapsize</b> [2][4]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a45" doxytag="PA_BgTiles.h::bg_sizes"></a>
+u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>bg_sizes</b> [4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a44" doxytag="PA_BgTiles.h::mapchar"></a>
-u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>mapchar</b> [2][4]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a46" doxytag="PA_BgTiles.h::bg_place"></a>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>bg_place</b> [4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a45" doxytag="PA_BgTiles.h::charsetstart"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a47" doxytag="PA_BgTiles.h::charsetstart"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>charsetstart</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a46" doxytag="PA_BgTiles.h::PA_parallaxX"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a48" doxytag="PA_BgTiles.h::PA_parallaxX"></a>
 s32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_parallaxX</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a47" doxytag="PA_BgTiles.h::PA_parallaxY"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a49" doxytag="PA_BgTiles.h::PA_parallaxY"></a>
 s32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_parallaxY</b> [2][4]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a48" doxytag="PA_BgTiles.h::scrollpos"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a50" doxytag="PA_BgTiles.h::scrollpos"></a>
 scrollpositions&nbsp;</td><td class="memItemRight" valign="bottom"><b>scrollpos</b> [2][4]</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Everything concerning the Bg Tile modes. 
 <p>
-This file contains all the macros and variables regarding Tile modes, loading tiles and Bg, etc...<hr size="1"><address style="align: right;"><small>Generated on Tue Sep 5 20:35:49 2006 for PAlib by&nbsp;
+This file contains all the macros and variables regarding Tile modes, loading tiles and Bg, etc...<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:27 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

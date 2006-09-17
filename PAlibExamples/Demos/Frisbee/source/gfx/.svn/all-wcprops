@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/24/Examples/Demos/Frisbee/source/gfx
+END
+frisbee.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68/Examples/Demos/Frisbee/source/gfx/frisbee.c
+END
+all_gfx.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68/Examples/Demos/Frisbee/source/gfx/all_gfx.h
+END
+frisbee.PNG
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/24/Examples/Demos/Frisbee/source/gfx/frisbee.PNG
+END
+sprite0.pal.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/68/Examples/Demos/Frisbee/source/gfx/sprite0.pal.c
+END
+PAGfx.ini
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/24/Examples/Demos/Frisbee/source/gfx/PAGfx.ini
+END
+PAGfx.exe
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68/Examples/Demos/Frisbee/source/gfx/PAGfx.exe
+END
+PAGfx.log
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68/Examples/Demos/Frisbee/source/gfx/PAGfx.log
+END
+all_gfx.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/68/Examples/Demos/Frisbee/source/gfx/all_gfx.c
+END

@@ -1,0 +1,41 @@
+8
+
+dir
+23
+https://palibds.googlecode.com/svn/Examples/Demos/Bunny/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T08:41:53.289339Z
+23
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+main.c
+file
+24
+
+
+
+2006-09-05T18:31:17.750000Z
+f903e5665c0e037fb9f7d4b4d85f616b
+2006-09-12T08:54:33.783119Z
+24
+molousk
+
+main.c.sbm
+file
+24
+
+
+
+2005-11-23T22:39:37.609375Z
+d5bbc1f16c42283b1c35bf18f51f82a9
+2006-09-12T08:54:33.783119Z
+24
+molousk
+has-props
+

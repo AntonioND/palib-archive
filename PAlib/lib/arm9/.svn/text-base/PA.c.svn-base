@@ -16,6 +16,8 @@ u32 Blank[130000>>2];
 infos PA_UserInfo;
 RTC PA_RTC;  // Infos RTC...
 
+volatile u8 PA_SoundsBusy[16];
+
 
 typedef struct {
    s16 x, y, oldx, oldy, vx, vy;  // Coordonnées
@@ -31,7 +33,7 @@ u8 PA_Screen = 0;
 
 s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 
-
+PA_GifInfos PA_GifInfo;
 
 // Pour les fenetres
 const s16 winfades[][4] = {
@@ -63,7 +65,7 @@ PA_IPCinfo PA_IPC;*/
 void PA_Init2D(void){
 // Turn on the screens and 2D cores and switch to mode 0
 powerON(POWER_ALL);
-  POWER_CR = POWER_ALL_2D;
+//  POWER_CR = POWER_ALL_2D;
   
  POWER_CR &= ~SWITCH_SCREENS; // on s'assure que l'écran est bien
 
@@ -81,9 +83,9 @@ vramSetMainBanks(VRAM_A_MAIN_BG,VRAM_B_MAIN_SPRITE,VRAM_C_SUB_BG,VRAM_D_SUB_SPRI
 PA_ResetSpriteSys(); // Init's the sprite system
 PA_InitSpriteExtPal(); // Init's sprite extended palettes
 
-
 PA_ResetBgSys();
 PA_InitBgExtPal(); // Init's bg extended palettes
+
 }
 
 
@@ -112,6 +114,8 @@ PA_VBLFunctionReset();
 irqInit();
 //PA_ResetInterrupts();
 
+IPC->mailData = (u32)(&PA_SoundsBusy);
+
 for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans
 
@@ -130,6 +134,9 @@ for (i = 0; i < 2; i++){
 	PA_UpdateUserInfo();
 	PA_ResetRecoSys(); // Reco system init
 	PA_SetScreenSpace(48); // Default spacing
+	
+	PA_GifInfo.StartFrame = 0; // start from the beginning
+	PA_GifInfo.EndFrame = 10000; // random high number
 }
 
 
@@ -164,9 +171,16 @@ void PA_UpdateRTC(void) {
 u8 i;
 u8 *temp;
 temp = (u8*)&PA_RTC;
- for (i = 0; i < 8; i++) temp[i] = IPC->curtime[i];
+	for (i = 0; i < 8; i++) temp[i] = IPC->curtime[i];
 
- if (PA_RTC.Hour > 12) PA_RTC.Hour -= 40;
+	if (PA_RTC.Hour > 12) PA_RTC.Hour -= 40;
+ 
+	if (PA_RTC.OldSeconds != PA_RTC.Seconds){
+		PA_RTC.FPS = PA_RTC.Frames;
+		PA_RTC.Frames = 0;
+		PA_RTC.OldSeconds = PA_RTC.Seconds;
+	}
+
 }
 
 

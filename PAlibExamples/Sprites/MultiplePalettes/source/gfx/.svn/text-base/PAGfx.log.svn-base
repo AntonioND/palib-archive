@@ -1,0 +1,19 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Black
+
+4 sprites :
+  ds : 256colors, 64x64, Pal : ds_Pal, -> ds_Sprite
+  gp : 256colors, 64x64, Pal : gp_Pal, -> gp_Sprite
+  psp : 256colors, 64x64, Pal : psp_Pal, -> psp_Sprite
+  giz : 256colors, 64x64, Pal : giz_Pal, -> giz_Sprite
+
+4 palettes :
+  ds_Pal, 70 colors
+  gp_Pal, 138 colors
+  psp_Pal, 152 colors
+  giz_Pal, 106 colors
+
+Finished !

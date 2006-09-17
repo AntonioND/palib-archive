@@ -1,3 +1,95 @@
+PAlib 060917 : Biggest update ever ^^
+
+New Stuff
+---------
+
+[Tiles] New infinite tile system. Both PAlib and PAGfx have been updated to achieve this. PAGfx now has an InfiniteMap command to convert backgrounds with more than 1008 tiles... Check out the Backgrounds/InfiniteTiles example to see how it works. Example used has 1790 tiles...
+
+[Gif] Added new gif animation commands : PA_GifSetStartFrame(StartFrame), PA_GifSetEndFrame(EndFrame) and PA_GifGetFrame(). Also moved the examples to a separate Gif example folder. GifAnim2 uses these new commands :)
+
+[Gif Sprite] Added a function to convert gif files into tiles... This can be used to create sprites from a gif file ! PA_GifToTiles(gif, palette). Check the Gif/GifSprite example to see how to correctly use it... Good points : takes much less memory, no need for conversions ! Bad points : takes more RAM if you do not free your pointer after use... And is way much slower...
+
+[BG Prio] Added PA_SetBgPrioSeq(u8 screen, u8  priority0, u8  priority1, u8  priority2, u8  priority3), to set the backgrounds in a certain order. 100% not my code, not my idea, I just copy/pasted it ^^ Thanks to sumiguchi for that one
+
+[SpeedTest] Added a series of macros to test the speed of several functions and see which one is the best speed-wise... Check Math/SpeedTest example to see how it works, it's not very intuitive :/
+
+[PAGfx] New exports .bin files in the /bin folder ! To use .bin files instead of .c, simply copy the .bin files into the 'data' directory (create it in the main folder if not there), and include all_gfx.h, but NOT all_gfx.c... This will include the .bin instead of the .c files... Changes have been made both in PAGfx and PAlib to allow further evolution... Because of this, backgrounds converted with this version of PAGfx CANNOT work with older PAlib versions, and files converted with older PAGfx version CANNOT work with this version of PAlib... Sorry :/
+
+[PAGfx/PAlib] Added a new mode in PAGfx : EasyBg... This will automatically select the best mode for the background (between TiledBg, LargeMap, and InifiniteMap). A new set of commands has been created in PAlib to avoid thinking about it : PA_EasyBgLoad(screen, bg_number, bg_name), PA_EasyBgScrollXY(screen, bg_number, xscroll, yscroll)... (ScrollX and ScrollY also available). Editted the examples (not all) to reflect this new stuff. The wiki will be simplified soon as you don't have to think about what type of background you want now (the seperate explanations will be left in an 'advanced tutorial').
+
+[PAFS Backgrounds] Added PAFS/PAFS_Bg to see how to load backgrounds from PAFS ! You have to give it the number of the first background file (name_Info), and put all the .bin files in PAFS...  => PA_FSBgLoad(screen, bg_number, filenumber)
+
+[PAFS Sprites] Added PAFS/PAFS_Sprite to see how to load sprites from PAFS...
+
+[3d+Sprites] Sprites will now work on the 3d screen :D. Just run PA_Init(), and then PA_Init3D(); Added 3d+Sprites example to go with this... Untested on real DS :/
+
+[3d+Backgrounds] Backgrounds can now be used instead of sprites on the same screen as the 3d ! Just run PA_Init, and then PA_Init3DAndBg()... You cannot have both Backgrounds and Sprites when using 3d, sorry ! Important note : Background 0 is NOT AVAILABLE when using 3d, trying to use it will result in wrong display... Added 3d+Bg example to go with this...  Untested on real DS :/
+
+[FPS Counter] Added an FPS counter : PA_RTC.FPS... Yup, that simple, nothing more to do ^^ Check out the Other/FPSCounter example to see it running. It has a simple stress code to be sure the DS won't work at 60FPS, and you can actually change the amount of stress to see the FPS change...
+
+[SoundBusy] Added 2 functions : PA_SoundChannelIsBusy(channel) returns 1 if busy, 0 if free. PA_GetFreeSoundChannel() returns the first available sound channel, -1 if none free. 
+
+[StopSound] Checked, it worked... Added an example using it :)
+
+[LidSounds] Added PA_CloseLidSound(channel, close_sound) and PA_CloseLidSound2(channel, close_sound, open_sound), allowing you to play goodbye and welcome sounds when the lid is closed/opened ! Go see the Other/CloseLidSound example, sounds great :p  Big thanks to Timonator for the idea...
+
+[PAGfx] Added JustPal command for sprites, to extract the palette
+
+
+Updated Stuff
+-------------
+
+[Examples] Started cleaning up the examples, especially the images, should save a few Mb...
+
+[Examples] Added 16cText2 and 8bitText2, using stdio to output the date and time :)
+
+[Examples] Cleaned the examples... Please delete your PAlib and PAlibExamples folder before updating... Should save some size in the zip and installer, (500-1000kB)
+
+[Examples] Added BinFiles in Background and Sprites to see how it works
+
+[Sound] On by default
+
+[Sound] El Hobito added PA_StopSound(u8 PA_Channel);
+
+[8/16bit Modes] Saved up to 50ko/file when using these modes (Giflib was included by default :s), saved 3ko/file for other .nds files
+
+[PAGfx] Now displays % progression when converting big backgrounds, and total conversion time at the end
+
+[PAGfx] Quick fix, background could be corrupted on some small background sizes
+
+[Palettes] Added PA_Load8bitBgPal(u8 screen, void *Pal) to load palettes for the 8bit backgrounds :)
+
+[GBFS Sound] Removed the main GBFS sound function, should win a few kB in the rom
+
+[GBFS] Removed the GBFS examples
+
+[Installer] Added German language
+
+[Wifilib] Now uses libnds's wifilib
+
+
+Things Fixed
+------------
+
+[Linux] Corrected a typo in the makefile which prevented it from working on Linux
+
+[PAFS] Found and fixed a major bug in PAFS. Now should work correctly (it screwed up the file positions when a file was had a size of 4*n - 1 ^^
+
+[PAFS] No longuer includes the files from the hidden .svn directory, sorry for that one ^^
+
+[InfiniteTiles] Fixed all the errors you could have when compiling
+
+[Doc] Fixed a few minor errors, thanks for reporting them :)
+
+[RotBg] Mastertop found a compilation error, thanks :)
+
+[Compilation] Rockard found yet another bug, thanks ^^
+
+
+
+
+PAlib 060905 Fixes :)
+
 New Stuff
 ---------
 

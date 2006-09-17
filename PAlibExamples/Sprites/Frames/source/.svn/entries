@@ -1,0 +1,31 @@
+8
+
+dir
+28
+https://palibds.googlecode.com/svn/Examples/Sprites/Frames/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T12:16:56.359737Z
+28
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+gfx
+dir
+
+main.c
+file
+
+
+
+
+2005-12-10T22:42:33.656250Z
+3f76140ddd7d30b996b6227d3ef2f11a
+2006-09-12T12:16:56.359737Z
+28
+molousk
+

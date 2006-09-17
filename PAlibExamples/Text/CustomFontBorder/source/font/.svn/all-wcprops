@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/28/Examples/Text/CustomFontBorder/source/font
+END
+newfont.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/67/Examples/Text/CustomFontBorder/source/font/newfont.c
+END
+all_gfx.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/67/Examples/Text/CustomFontBorder/source/font/all_gfx.h
+END
+PAGfx.ini
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/28/Examples/Text/CustomFontBorder/source/font/PAGfx.ini
+END
+newfont.gif
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/28/Examples/Text/CustomFontBorder/source/font/newfont.gif
+END
+PAGfx.exe
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/74/Examples/Text/CustomFontBorder/source/font/PAGfx.exe
+END
+PAGfx.log
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/67/Examples/Text/CustomFontBorder/source/font/PAGfx.log
+END
+newfont.pal.c
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/28/Examples/Text/CustomFontBorder/source/font/newfont.pal.c
+END
+all_gfx.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/67/Examples/Text/CustomFontBorder/source/font/all_gfx.c
+END

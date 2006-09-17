@@ -1,0 +1,125 @@
+8
+
+dir
+28
+https://palibds.googlecode.com/svn/Examples/Sprites
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T12:16:56.359737Z
+28
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+test
+dir
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
+
+MoveSprites
+dir
+
+DrawOnSprite
+dir
+
+SpriteFrame
+dir
+
+SpriteTouched
+dir
+
+MoveSpritewithKeys
+dir
+
+Sprite_Rotation
+dir
+
+AlphaBlending
+dir
+
+MultiplePalettes
+dir
+
+SpriteAnim2
+dir
+
+SpriteAnim3
+dir
+
+Sprite_RotZoom
+dir
+
+PAFS_Sprite.lnk
+file
+65
+
+
+
+2006-09-15T18:17:24.125000Z
+016bc2f3e0ae7e5c4ac0ce466df27bff
+2006-09-16T19:13:27.688814Z
+65
+molousk
+has-props
+
+ExtendedPalettes
+dir
+
+SpriteTouchedPix
+dir
+
+Sprite
+dir
+
+DrawOnDblsize
+dir
+
+CreateGfx
+dir
+
+Sprite_Zoom
+dir
+
+Mosaic
+dir
+
+SpriteAnim
+dir
+
+16bitSprite
+dir
+
+Frames
+dir
+
+movespritewithstylus
+dir
+
+Flips
+dir
+
+MoveSpritePix
+dir
+

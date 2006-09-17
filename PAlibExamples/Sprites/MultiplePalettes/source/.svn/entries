@@ -1,0 +1,31 @@
+8
+
+dir
+28
+https://palibds.googlecode.com/svn/Examples/Sprites/MultiplePalettes/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-12T12:16:56.359737Z
+28
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+gfx
+dir
+
+main.c
+file
+
+
+
+
+2005-11-29T15:18:05.968750Z
+d532ac66e2cf0ed6dee8fc902e75c410
+2006-09-12T12:16:56.359737Z
+28
+molousk
+

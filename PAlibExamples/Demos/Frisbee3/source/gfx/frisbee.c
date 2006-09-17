@@ -1,4 +1,4 @@
-//Sprite created using Mollusk's PASpriteConverter
+//Sprite created using PAGfx
 //This sprite uses sprite0_Pal
 
 const unsigned char frisbee_Sprite[1024] __attribute__ ((aligned (4))) = {

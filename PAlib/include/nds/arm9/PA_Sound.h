@@ -96,6 +96,8 @@ extern inline void PA_InitSound(void) {
 
 }
 
+
+
 /*! \fn extern void PA_InitSound(void)
     \brief
          \~english Initialise the Stream system
@@ -242,34 +244,6 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 
 }
 
-/*! \fn extern inline void PA_PlayGBFSSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format)
-    \brief
-         \~english Play a given sound effect, but chose your format and how to loop it, from GBFS with a stream effect
-         \~french Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis GBFS avec un effet de streaming
-    \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
-    \param FS_wav_number
-         \~english Number of your sound RAW file in the PA GBFS system
-         \~french Numéro du son RAW dans PA GBFS
-    \param volume
-         \~english Volume, from 0 to 127. 64 if not used
-         \~french Volume, de 0 à 127. 64 si rien n'est mis
-    \param freq
-         \~english Sound frequence, depends on the sound... 11025 by default
-         \~french Fréquence du son...11025 par défaut
-    \param format
-         \~english Sound format.
-         \~french Format du son.
-    \param format
-         \~english Loop true/false
-         \~french  Boucle true/false
-    \param format
-         \~english Repeat point
-         \~french  Point de répétition
-*/
-void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
-
 
 /*! \fn extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format)
     \brief
@@ -363,6 +337,8 @@ extern inline void PA_PlayFSSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volu
          \~english Repeat point
          \~french  Point de répétition
 */
+
+extern void PA_StopSound(u8 PA_Channel);
 extern inline void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
 
 /*! \fn extern inline void PA_PlaySound(u8 PA_Channel, const void* data, s32 length, u8 volume, u32 freq)
@@ -588,8 +564,8 @@ extern inline void PA_PlayFSMod(u16 PAFS_mod_number){
          \~english Stop a Stream
          \~french Stoppe un stream
     \param PA_Channel
-         \~english Audio channel, from 0 to 16
-         \~french Canal audio, de 0 à 16
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
 */
 void PA_StopStream(u8 PA_Channel);
 
@@ -598,8 +574,8 @@ void PA_StopStream(u8 PA_Channel);
          \~english Pause a Stream
          \~french Met en pause un stream
     \param PA_Channel
-         \~english Audio channel, from 0 to 16
-         \~french Canal audio, de 0 à 16
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
 */
 void PA_PauseStream(u8 PA_Channel);
 
@@ -608,8 +584,8 @@ void PA_PauseStream(u8 PA_Channel);
          \~english Unpause a Stream
          \~french Redémarre un stream
     \param PA_Channel
-         \~english Audio channel, from 0 to 16
-         \~french Canal audio, de 0 à 16
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
 */
 void PA_UnpauseStream(u8 PA_Channel);
 
@@ -634,7 +610,66 @@ extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(b
 */
 #define PA_MicStopRecording() StopRecording()
 
+
+
+
+/*! \fn extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)
+    \brief
+         \~english Check if a channel is busy...
+         \~french Vérifie si un canal est occupé...
+    \param PA_Channel
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
+*/
+extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)	{
+	DC_FlushRange((void*)PA_SoundsBusy, 16);
+	return ((volatile u8)PA_SoundsBusy[PA_Channel]);
+}
+
+/*! \fn extern inline s8 PA_GetFreeSoundChannel(void)
+    \brief
+         \~english Get the first available channel
+         \~french Récupérer le premier canal disponible
+*/
+extern inline s8 PA_GetFreeSoundChannel(void){
+	u8 i;
+	for (i = 0; i < 16; i++) if (!PA_SoundChannelIsBusy(i)) return i;
+	
+	return -1;
+}
+
+
 /** @} */ // end of SoundARM9
+
+/*! \fn extern inline void PA_PlayGBFSSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format)
+    \brief
+         \~english Play a given sound effect, but chose your format and how to loop it, from GBFS with a stream effect
+         \~french Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis GBFS avec un effet de streaming
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param FS_wav_number
+         \~english Number of your sound RAW file in the PA GBFS system
+         \~french Numéro du son RAW dans PA GBFS
+    \param volume
+         \~english Volume, from 0 to 127. 64 if not used
+         \~french Volume, de 0 à 127. 64 si rien n'est mis
+    \param freq
+         \~english Sound frequence, depends on the sound... 11025 by default
+         \~french Fréquence du son...11025 par défaut
+    \param format
+         \~english Sound format.
+         \~french Format du son.
+    \param format
+         \~english Loop true/false
+         \~french  Boucle true/false
+    \param format
+         \~english Repeat point
+         \~french  Point de répétition
+*/
+//void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
+
+
 
 
 

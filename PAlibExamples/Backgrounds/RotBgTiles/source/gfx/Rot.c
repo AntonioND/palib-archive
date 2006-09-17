@@ -1,8 +1,7 @@
-//Background converted using Mollusk's PAImageConverter
+//Background converted using Mollusk's PAGfx Converter
 //This Background uses Rot_Pal
 
-int Rot_Width = 256;
-int Rot_Height = 256;
+const int Rot_Info[3] = {3, 256, 256}; // BgMode, Width, Height
 
 const unsigned char Rot_Map[1024] __attribute__ ((aligned (4))) = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 

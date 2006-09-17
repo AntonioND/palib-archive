@@ -1,0 +1,13 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Black
+
+1 backgrounds :
+  Photo8bit : 8bit, 256x192, Pal : bitmap_Pal, -> Photo8bit_Bitmap
+
+1 palettes :
+  bitmap_Pal, 254 colors
+
+Finished !

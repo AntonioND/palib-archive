@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/28/Examples/Sprites/ExtendedPalettes
+END
+ExtPal.pnproj
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/28/Examples/Sprites/ExtendedPalettes/ExtPal.pnproj
+END
+build.bat
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/28/Examples/Sprites/ExtendedPalettes/build.bat
+END
+clean.bat
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/28/Examples/Sprites/ExtendedPalettes/clean.bat
+END
+logo_wifi.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/28/Examples/Sprites/ExtendedPalettes/logo_wifi.bmp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/28/Examples/Sprites/ExtendedPalettes/Makefile
+END
+logo.bmp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/28/Examples/Sprites/ExtendedPalettes/logo.bmp
+END
