@@ -564,8 +564,8 @@ extern inline void PA_PlayFSMod(u16 PAFS_mod_number){
          \~english Stop a Stream
          \~french Stoppe un stream
     \param PA_Channel
-         \~english Audio channel, from 0 to 16
-         \~french Canal audio, de 0 à 16
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
 */
 void PA_StopStream(u8 PA_Channel);
 
@@ -574,8 +574,8 @@ void PA_StopStream(u8 PA_Channel);
          \~english Pause a Stream
          \~french Met en pause un stream
     \param PA_Channel
-         \~english Audio channel, from 0 to 16
-         \~french Canal audio, de 0 à 16
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
 */
 void PA_PauseStream(u8 PA_Channel);
 
@@ -584,8 +584,8 @@ void PA_PauseStream(u8 PA_Channel);
          \~english Unpause a Stream
          \~french Redémarre un stream
     \param PA_Channel
-         \~english Audio channel, from 0 to 16
-         \~french Canal audio, de 0 à 16
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
 */
 void PA_UnpauseStream(u8 PA_Channel);
 
@@ -610,11 +610,27 @@ extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(b
 */
 #define PA_MicStopRecording() StopRecording()
 
+
+
+
+/*! \fn extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)
+    \brief
+         \~english Check if a channel is busy...
+         \~french Vérifie si un canal est occupé...
+    \param PA_Channel
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
+*/
 extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)	{
 	DC_FlushRange((void*)PA_SoundsBusy, 16);
 	return ((volatile u8)PA_SoundsBusy[PA_Channel]);
 }
 
+/*! \fn extern inline s8 PA_GetFreeSoundChannel(void)
+    \brief
+         \~english Get the first available channel
+         \~french Récupérer le premier canal disponible
+*/
 extern inline s8 PA_GetFreeSoundChannel(void){
 	u8 i;
 	for (i = 0; i < 16; i++) if (!PA_SoundChannelIsBusy(i)) return i;

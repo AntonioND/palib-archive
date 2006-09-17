@@ -11,7 +11,7 @@
 #define PA_LoadTileEngine(screen, bg_select, bg_tiles) {\
 PA_DeleteBg(screen, bg_select);\
 PA_LoadBgTilesEx(screen, bg_select, (void*)Blank, (1008<<5));\
-PA_LargeMap[screen][bg_select].Tiles = (void*)bg_tiles;\
+PA_BgInfo[screen][bg_select].Tiles = (void*)bg_tiles;\
 PA_LoadBgMap(screen, bg_select, Blank, BG_512X256); \
 PA_InitBg(screen, bg_select, BG_512X256, 0, 1);\
 PA_BGScrollXY(screen, bg_select, 0, 0);}
@@ -80,8 +80,8 @@ void PA_LargeScrollYN(u8 screen, u8 bg_select, s32 y);
       \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
 */
 #define PA_LoadLargeBg(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly) {\
-PA_LargeMap[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)>>5;\
-if (PA_LargeMap[screen][bg_select].NTiles < MAX_TILES) {PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);}\
+PA_BgInfo[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)>>5;\
+if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) {PA_LoadSimpleBg(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);}\
 else{PA_LoadTileEngine(screen, bg_select, (void*)bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
@@ -142,8 +142,8 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
       \~french Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut.	  
 */
 #define PA_LoadLargeBgEx(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly) {\
-PA_LargeMap[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)>>5;\
-if (PA_LargeMap[screen][bg_select].NTiles < MAX_TILES) {PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);}\
+PA_BgInfo[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)>>5;\
+if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) {PA_LoadBg(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);}\
 else{PA_LoadTileEngine(screen, bg_select, bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 
@@ -167,7 +167,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 */
 
 extern inline void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autoselect
-	if (PA_LargeMap[screen][bg_select].NTiles < MAX_TILES) PA_InfLargeScrollXN(screen, bg_select, x);
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_InfLargeScrollXN(screen, bg_select, x);
 	else PA_InfTilesScrollX(screen, bg_select, x);
 }
 
@@ -187,7 +187,7 @@ extern inline void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autose
       \~french Valeur Y à déplacer
 */
 extern inline void PA_InfLargeScrollY(u8 screen, u8 bg_select, s32 y){ // Autoselect
-	if (PA_LargeMap[screen][bg_select].NTiles < MAX_TILES) PA_InfLargeScrollYN(screen, bg_select, y);
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_InfLargeScrollYN(screen, bg_select, y);
 	else PA_InfTilesScrollY(screen, bg_select, y);
 }
 
@@ -231,7 +231,7 @@ extern inline void PA_InfLargeScrollXY(u8 screen, u8 bg_select, s32 x, s32 y){
       \~french Valeur X à déplacer
 */
 extern inline void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autoselect
-	if (PA_LargeMap[screen][bg_select].NTiles < MAX_TILES) PA_LargeScrollXN(screen, bg_select, x);
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_LargeScrollXN(screen, bg_select, x);
 	else PA_InfTilesScrollX(screen, bg_select, x);
 }
 
@@ -251,7 +251,7 @@ extern inline void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autoselec
       \~french Valeur Y à déplacer
 */
 extern inline void PA_LargeScrollY(u8 screen, u8 bg_select, s32 y){ // Autoselect
-	if (PA_LargeMap[screen][bg_select].NTiles < MAX_TILES) PA_LargeScrollYN(screen, bg_select, y);
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_LargeScrollYN(screen, bg_select, y);
 	else PA_InfTilesScrollY(screen, bg_select, y);
 }
 

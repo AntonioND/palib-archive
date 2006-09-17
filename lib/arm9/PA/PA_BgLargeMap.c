@@ -191,7 +191,7 @@ s32 j;
 							)						
 							); // Tile numbers...		
 		PA_UpdateBgTile(screen, bg_select, tilenumber, 
-			(void*)(PA_LargeMap[screen][bg_select].Tiles+
+			(void*)(PA_BgInfo[screen][bg_select].Tiles+
 							((map[modulx+(modulj*lx)]&INF_JUSTTILE)<<6)
 			));
 	}
@@ -218,7 +218,7 @@ s32 i;
 							)						
 							); // Tile numbers...		
 		PA_UpdateBgTile(screen, bg_select, tilenumber, 
-			(void*)(PA_LargeMap[screen][bg_select].Tiles+
+			(void*)(PA_BgInfo[screen][bg_select].Tiles+
 							((map[moduli+(moduly*lx)]&INF_JUSTTILE)<<6)
 			));
 	}
@@ -294,7 +294,7 @@ else {
 scrollpos[screen][bg_select].bg_map = (u16*)bg_map;	
 
 
-if (PA_LargeMap[screen][bg_select].NTiles < 884){ // Normal largemap
+if (PA_BgInfo[screen][bg_select].NTiles < 884){ // Normal largemap
 	u16 *map = scrollpos[screen][bg_select].bg_map;
 	for (i = -2; i < scrollpos[screen][bg_select].maxx; i++)
 		for (j = -2; j < 30; j++)
@@ -316,7 +316,7 @@ else{ // Tile engine active
 								)						
 								); // Tile numbers...		
 			PA_UpdateBgTile(screen, bg_select, tilenumber, 
-				(void*)(PA_LargeMap[screen][bg_select].Tiles+
+				(void*)(PA_BgInfo[screen][bg_select].Tiles+
 								((map[moduli+((modulj)*lx)]&INF_JUSTTILE)<<6)
 				));
 		}
@@ -327,7 +327,7 @@ else{ // Tile engine active
 	for (i = -1; i < 33; i++)
 		for (j = -1; j < 25; j++){
 			PA_SetLargeMapTile(screen, bg_select, i&63, j&31, PA_TileNumber(i, j)); // Tile numbers...
-			PA_UpdateBgTile(screen, bg_select, PA_TileNumber(i, j), (void*)(PA_LargeMap[screen][bg_select].Tiles+((PA_Modulo(i, lx)<<6)+(PA_Modulo(j, ly)*(lx<<6)))));
+			PA_UpdateBgTile(screen, bg_select, PA_TileNumber(i, j), (void*)(PA_BgInfo[screen][bg_select].Tiles+((PA_Modulo(i, lx)<<6)+(PA_Modulo(j, ly)*(lx<<6)))));
 		}*/
 
 }

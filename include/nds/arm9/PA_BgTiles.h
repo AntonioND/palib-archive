@@ -54,42 +54,41 @@ extern inline u8 PA_GetPAGfxRotBgSize(u16 width)
 #define ScreenBaseBlock(screen, n) (((n)*0x800) + 0x6000000 + (0x200000 *  screen))
 
 typedef struct{
+	// Memory management info...
+
+
+	u32 tilesetsize; // Place utilisée pour chaque tileset
+	u16 mapsize; // Place utilisée pour chaque map
+//extern u8 tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
+	u8 mapchar;  // Emplacement mémoire de chaque map
+
+
 	u32 Map; // Map pointer
 	u8 TileSetChar;
 	
+	u32 NTiles;
+	u32 *TilePos;
+	void *Tiles;	
 	
 	u8 BgMode; // Background mode
 } PA_BgInfos;
 extern PA_BgInfos PA_BgInfo[2][4];
 
-
+extern u8 charblocks[2][70];
 //extern u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
 //extern u8 tilesetchar[2][4];
 
 // Quantité de données à charger en fonction de la taille de la map...
-extern u16 bg_sizes[4];
-extern u8 bg_place[4];
 
 extern u16 *PA_DrawBg[2]; // Fond dessinable
 
+extern u16 bg_sizes[4];
+extern u8 bg_place[4];
 
-extern u8 charblocks[2][70];
-extern u32 tilesetsize[2][4]; // Place utilisée pour chaque tileset
-extern u16 mapsize[2][4]; // Place utilisée pour chaque map
-//extern u8 tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
-extern u8 mapchar[2][4];  // Emplacement mémoire de chaque map
 
 extern u8 charsetstart[2];
 extern s32 PA_parallaxX[2][4];
 extern s32 PA_parallaxY[2][4];
-
-
-typedef struct{
-	u32 NTiles;
-	u32 *TilePos;
-	void *Tiles;
-} PA_LargeMaps;
-extern PA_LargeMaps PA_LargeMap[2][4];
 
 
 
@@ -757,12 +756,12 @@ extern inline void PA_SetBgPrio(u8 screen, u8 bg, u8 prio) {
 extern inline void PA_CreateBgFromTiles(u8 screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size){
 PA_LoadBgMap(screen, bg_select, bg_map, bg_size);
 scrollpos[screen][bg_select].infscroll = 0; // Par défaut pas de scrolling infini...
-PA_BgInfo[screen][bg_select].Map = ScreenBaseBlock(screen, mapchar[screen][bg_select]);
+PA_BgInfo[screen][bg_select].Map = ScreenBaseBlock(screen, PA_BgInfo[screen][bg_select].mapchar);
 PA_BgInfo[screen][bg_select].TileSetChar = PA_BgInfo[screen][bg_tiles].TileSetChar;
-tilesetsize[screen][bg_select] = tilesetsize[screen][bg_tiles];
+PA_BgInfo[screen][bg_select].tilesetsize = PA_BgInfo[screen][bg_tiles].tilesetsize;
 
 _REG16(REG_BGSCREEN(screen)) |= (0x100 << (bg_select));
-_REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(mapchar[screen][bg_select] << SCREEN_SHIFT) | (1 << 13) | (PA_BgInfo[screen][bg_select].TileSetChar << 2) | (1 << 7);
+_REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(PA_BgInfo[screen][bg_select].mapchar << SCREEN_SHIFT) | (1 << 13) | (PA_BgInfo[screen][bg_select].TileSetChar << 2) | (1 << 7);
 PA_BGScrollXY(screen, bg_select, 0, 0);	
 }
 
@@ -867,14 +866,14 @@ if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {	\
 	PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2]), 0, 1);\
 }\
 else{\
-	PA_LargeMap[screen][bg_number].NTiles = PA_FSFile[filenumber+3].Length>>5;\
-	if (PA_LargeMap[screen][bg_number].NTiles < MAX_TILES) { \
+	PA_BgInfo[screen][bg_number].NTiles = PA_FSFile[filenumber+3].Length>>5;\
+	if (PA_BgInfo[screen][bg_number].NTiles < MAX_TILES) { \
 		PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);\
 	}\
 	else{\
 		PA_LoadBgTilesEx(screen, bg_number, (void*)Blank, (1008<<5));\
 	}\
-	PA_LargeMap[screen][bg_number].Tiles = PA_PAFSFile(filenumber+3);\
+	PA_BgInfo[screen][bg_number].Tiles = PA_PAFSFile(filenumber+3);\
 	PA_LoadBgMap(screen, bg_number, Blank, BG_512X256); \
 	PA_InitBg(screen, bg_number, BG_512X256, 0, 1);\
 	PA_InitLargeBg(screen, bg_number, PA_BGinfo[1]>> 3, PA_BGinfo[2]>> 3, PA_PAFSFile(filenumber+1));\
@@ -954,7 +953,7 @@ tilepos = tilepos << 4;
 u32 *tilecopy = (u32*)tile;
 u8 i;
 	for (i = 0; i < 16; i++)
-		PA_LargeMap[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
+		PA_BgInfo[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
 }
 
 #endif

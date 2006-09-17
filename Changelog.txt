@@ -1,4 +1,4 @@
-
+PAlib 060917 : Biggest update ever ^^
 
 New Stuff
 ---------
@@ -27,7 +27,9 @@ New Stuff
 
 [FPS Counter] Added an FPS counter : PA_RTC.FPS... Yup, that simple, nothing more to do ^^ Check out the Other/FPSCounter example to see it running. It has a simple stress code to be sure the DS won't work at 60FPS, and you can actually change the amount of stress to see the FPS change...
 
-[SoundBusy] Added 2 functions : PA_SoundChannelIsBusy(channel) returns 1 if busy, 0 if free. PA_GetFreeSoundChannel() returns the first available sound channel, -1 if none free
+[SoundBusy] Added 2 functions : PA_SoundChannelIsBusy(channel) returns 1 if busy, 0 if free. PA_GetFreeSoundChannel() returns the first available sound channel, -1 if none free. 
+
+[StopSound] Checked, it worked... Added an example using it :)
 
 [LidSounds] Added PA_CloseLidSound(channel, close_sound) and PA_CloseLidSound2(channel, close_sound, open_sound), allowing you to play goodbye and welcome sounds when the lid is closed/opened ! Go see the Other/CloseLidSound example, sounds great :p  Big thanks to Timonator for the idea...
 
@@ -51,7 +53,9 @@ Updated Stuff
 
 [8/16bit Modes] Saved up to 50ko/file when using these modes (Giflib was included by default :s), saved 3ko/file for other .nds files
 
-[PAGfx] Now displays % progression when converting big backgrounds
+[PAGfx] Now displays % progression when converting big backgrounds, and total conversion time at the end
+
+[PAGfx] Quick fix, background could be corrupted on some small background sizes
 
 [Palettes] Added PA_Load8bitBgPal(u8 screen, void *Pal) to load palettes for the 8bit backgrounds :)
 
@@ -60,6 +64,8 @@ Updated Stuff
 [GBFS] Removed the GBFS examples
 
 [Installer] Added German language
+
+[Wifilib] Now uses libnds's wifilib
 
 
 Things Fixed

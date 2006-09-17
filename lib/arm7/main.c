@@ -40,7 +40,7 @@ int i;
 
 
 //////////////////////////////////////////////////////////////////////
-u8 testvar = 0;
+//u8 testvar = 0;
 
 void PA_VBL(void){
   static int heartbeat = 0;
@@ -87,21 +87,26 @@ void PA_VBL(void){
 		PA_ScreenLight(); // Update the screen lights...
 		//IPC->aux = touchRead(TSC_MEASURE_AUX); // update IPC with new values
 	}
-
+	
+	u8 itest;
+	/*if(PA_SoundBusyInit){  // Check for sound stopping
+		for (itest = 0; itest < 16; itest++){
+			if(PA_SoundsBusy[itest+16] == 1){
+				SCHANNEL_CR(itest)=0;  // Stop sound...
+				PA_SoundsBusy[itest+16] = 0; // Reset
+			}
+		}
+	}*/
+			
+			
 	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
 	
-	testvar++; testvar&=127;
-	
-	s32 testsound[16];
-	u8 itest;
-	for (itest = 0; itest < 16; itest++) testsound[itest] = (SCHANNEL_CR(itest)&SOUND_ENABLE);
-	
+//	testvar++; testvar&=127;
+
 	if(PA_SoundBusyInit){
-		 
 		for (itest = 0; itest < 16; itest++) {
 			PA_SoundsBusy[itest] = SCHANNEL_CR(itest)>>31;
-		}
-	//	PA_SoundsBusy[15] = testvar;
+		}	
 	}
 	else if(IPC->mailData != 0) {
 		PA_SoundsBusy = (u8*)(IPC->mailData); // Inits PA Sound busy commands
