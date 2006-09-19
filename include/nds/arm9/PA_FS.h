@@ -105,6 +105,25 @@ extern inline u32 PA_FSRamInit(void)
 
 
 
+/*! \fn extern inline s32 PA_FSGetFolder(char *name)
+    \brief
+         \~english Search in PAFS for a given folder. Returns the number of the folder in the PA File System, or -1 if no folder was found
+         \~french Chercher un dossier donné dans PAFS. Renvoie le numéro du dossier dans le systeme de fichier de PA, ou -1 si le dossier n'a pas été trouvé
+    \param name
+         \~english Folder name...
+         \~french Nom du dossier...
+*/
+extern inline s32 PA_FSGetFolder(char *name){
+u16 i;
+
+for (i = 0; i < PA_FSSys->Nfolders; i++){
+	if (PA_CompareText(PA_FSFolder[i].Name, name)) 
+		return i;
+}
+
+return -1;
+}
+
 
 /*! \fn extern inline s32 PA_FSGetFile(s16 start, char *name, char *extension)
     \brief
@@ -137,8 +156,8 @@ return -1;
          \~english Puts the number of all the PAFS files with a given extension in the array, and returns the number of files found
          \~french Cherche tous les fichiers de PAFS avec l'extension trouvée, place le numéro dans le tableau, et renvoie le nombre de fichiers trouvés...
     \param array
-         \~english Array in which to store the GBFS file positions
-         \~french Tableau dans lequel stocker la position des fichiers GBFS trouvés
+         \~english Array in which to store the PAFS file positions
+         \~french Tableau dans lequel stocker la position des fichiers PAFS trouvés
     \param extension
          \~english Extension to search, such as "txt" 
          \~french Extension à chercher, comme "txt"

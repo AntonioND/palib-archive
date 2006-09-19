@@ -1,3 +1,30 @@
+
+
+
+
+New Stuff
+---------
+
+
+Updated Stuff
+-------------
+
+[PAFS] Added PA_FSGetFolder(char *name), to get a folder number from its name... Returns -1 if not found
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 PAlib 060917 : Biggest update ever ^^
 
 New Stuff
