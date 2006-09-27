@@ -11,6 +11,8 @@ New Stuff
 
 [SpriteTouch] Added PA_SpriteStylusOver, similar to SpriteTouched, but which doesn't check if the stylus is held or not... Can therefore be used with Stylus.Released :)
 
+[DualBg] Added DualEasyBg functions, and an example to go with it : DualBackgrounds/EasyBg
+
 
 Updated Stuff
 -------------
