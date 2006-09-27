@@ -15,6 +15,8 @@ New Stuff
 
 [8bit] Added PA_InitBig8bitBg(u8 screen, u8 bg_priority) : Same as PA_Init8bitBg, but with an available size of 256x256. Takes up a little more space but allows correct vertical scrolling...
 
+[SpriteSys] PA_ResetSpriteSysScreen(screen) added, to reset the sprite system only for a given screen. Highly untested, might give unwanted results, especially for running animations, please report any bug :)
+
 
 Updated Stuff
 -------------
