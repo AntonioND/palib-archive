@@ -11,36 +11,53 @@ extern "C" {
 void PA_Draw8bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size);
 
 
-void PA_Init8bitBg(u8 screen, u8 bg_priority){
 
+void PA_Default8bitInit(u8 screen, u8 bg_priority){
 PA_DeleteBg(screen, 3);
 PA_nBit[screen] = 0; // 8 bit
 
-	PA_BGXPA(screen, 3) = 1 << 8;
-	PA_BGXPB(screen, 3) = 0;
-	PA_BGXPC(screen, 3) = 0;
-	PA_BGXPD(screen, 3) = 1 << 8;
-	PA_BGXX(screen, 3) = 0;
-	PA_BGXY(screen, 3) = 0;	
+PA_BGXPA(screen, 3) = 1 << 8;
+PA_BGXPB(screen, 3) = 0;
+PA_BGXPC(screen, 3) = 0;
+PA_BGXPD(screen, 3) = 1 << 8;
+PA_BGXX(screen, 3) = 0;
+PA_BGXY(screen, 3) = 0;	
+
+	_REG16(REG_BGSCREEN(screen)) &= ~7;
+	_REG16(REG_BGSCREEN(screen)) |= (0x100 << (3)) | MODE_3_2D;
+}
+
+
+void PA_Init8bitBg(u8 screen, u8 bg_priority){
+
+PA_Default8bitInit(screen, bg_priority);
+
 
 	PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + 320 * 256);
 	DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);
-		
-	//this is just used so we can write red color bits to one frame and green to the 
-	//other
 	
 charsetstart[screen] = 5; // On se réserve la moitié de la mémoire...
 charblocks[screen][40] = 1; // Block la mémoire
 
-	_REG16(REG_BGSCREEN(screen)) &= ~7;
-	_REG16(REG_BGSCREEN(screen)) |= (0x100 << (3)) | MODE_3_2D;
 	_REG16(REG_BGCNT(screen, 3)) = bg_priority | BG_BMP8_256x256 | BG_BMP_BASE(5);
 PA_SetDrawSize(screen, 1);
 }
 
 
 
+void PA_InitBig8bitBg(u8 screen, u8 bg_priority){
 
+PA_Default8bitInit(screen, bg_priority); 
+
+   PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + 256 * 256);
+   DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*128, DMA_16NOW);
+   
+charsetstart[screen] = 4; // On se réserve la moitié de la mémoire...
+charblocks[screen][32] = 1; // Block la mémoire
+
+   _REG16(REG_BGCNT(screen, 3)) = bg_priority | BG_BMP8_256x256 | BG_BMP_BASE(4);
+PA_SetDrawSize(screen, 1);
+}
 
 
 void PA_Draw8bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color){

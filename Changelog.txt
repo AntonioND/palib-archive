@@ -13,6 +13,8 @@ New Stuff
 
 [DualBg] Added DualEasyBg functions, and an example to go with it : DualBackgrounds/EasyBg
 
+[8bit] Added PA_InitBig8bitBg(u8 screen, u8 bg_priority) : Same as PA_Init8bitBg, but with an available size of 256x256. Takes up a little more space but allows correct vertical scrolling...
+
 
 Updated Stuff
 -------------

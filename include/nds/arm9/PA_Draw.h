@@ -77,6 +77,21 @@ extern u16 PA_temppal[256];
 void PA_Init8bitBg(u8 screen, u8 bg_priority);
 
 
+
+/*! \fn void PA_InitBig8bitBg(u8 screen, u8 bg_priority)
+    \brief
+         \~english Same as PA_Init8bitBg, but with an available size of 256x256. Takes up a little more space but allows correct vertical scrolling...
+         \~french Similaire à PA_Init8bitBg, mais avec une taille de 256x256. Ceci prend un peu plus de mémoire, mais autorise le scrolling vertical
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_priority
+         \~english Background priority (0-3)
+         \~english Background priority (0-3) 
+*/
+void PA_InitBig8bitBg(u8 screen, u8 bg_priority);
+
+
 /*! \fn void PA_Init16bitBg(u8 screen, u8 bg_priority)
     \brief
          \~english Initialise 16 bit draw mode (no palette mode, true colors)... Chose the screen and the background priority (0-3). This drawable background will replace Background 3, and must be loaded before all other backgrounds. Takes about 6/8 of the VRAM, so almost all the space !
