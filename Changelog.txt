@@ -9,6 +9,8 @@ New Stuff
 
 [Sound] Added PA_SetSoundVol(Volume) to change the global volume level, and the example to go with it...
 
+[SpriteTouch] Added PA_SpriteStylusOver, similar to SpriteTouched, but which doesn't check if the stylus is held or not... Can therefore be used with Stylus.Released :)
+
 
 Updated Stuff
 -------------

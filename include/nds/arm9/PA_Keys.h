@@ -229,6 +229,26 @@ extern inline void PA_UpdateMoveSprite(void) {
 }
 
 
+/*! \fn extern inline u8 PA_SpriteStylusOverEx(u8 sprite, u8 lx, u8 ly)
+    \brief
+         \~english Check if the stylus position is over a given sprite (stylus pressed or not)
+         \~french Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non)
+    \param sprite
+         \~english Sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite
+    \param lx
+         \~english Wideness
+         \~french Largeur
+    \param ly
+         \~english Height
+         \~french Hauter		 
+		 
+*/
+extern inline u8 PA_SpriteStylusOverEx(u8 sprite, u8 lx, u8 ly){
+	return ((Stylus.X > PA_GetSpriteX(PA_Screen, sprite)) && (Stylus.X < PA_GetSpriteX(PA_Screen, sprite) + lx)&& (Stylus.Y > PA_GetSpriteY(PA_Screen, sprite)) && (Stylus.Y < PA_GetSpriteY(PA_Screen, sprite) + ly));
+}
+
+
 
 /*! \fn extern inline u8 PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly)
     \brief
@@ -246,7 +266,7 @@ extern inline void PA_UpdateMoveSprite(void) {
 		 
 */
 extern inline u8 PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly){
-	return (Stylus.Held && (Stylus.X > PA_GetSpriteX(PA_Screen, sprite)) && (Stylus.X < PA_GetSpriteX(PA_Screen, sprite) + lx)&& (Stylus.Y > PA_GetSpriteY(PA_Screen, sprite)) && (Stylus.Y < PA_GetSpriteY(PA_Screen, sprite) + ly));
+	return (Stylus.Held && PA_SpriteStylusOverEx(sprite, lx, ly));
 }
 
 
@@ -264,6 +284,18 @@ extern inline u8 PA_SpriteTouched(u8 sprite) {
 }
 
 
+
+/*! \fn extern inline u8 PA_SpriteStylusOver(u8 sprite)
+    \brief
+         \~english Check if the stylus position is over a given sprite (stylus pressed or not)
+         \~french Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non)
+    \param sprite
+         \~english Sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite
+*/
+extern inline u8 PA_SpriteStylusOver(u8 sprite) {
+	return PA_SpriteStylusOverEx(sprite, PA_GetSpriteLx(PA_Screen, sprite), PA_GetSpriteLy(PA_Screen, sprite));
+}
 
 
 
