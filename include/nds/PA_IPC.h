@@ -8,6 +8,7 @@ extern "C" {
 
 
 typedef struct {
+	u16 MasterVol;
 	u8 Busy;
 	u8 Volume;  // New Volume
 	u8 ChangeVolume; // 1 if change volume set...

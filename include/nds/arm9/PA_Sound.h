@@ -658,7 +658,17 @@ extern inline void PA_SetSoundChannelVol(u8 PA_Channel, u8 Volume){
 }
 
 
-
+/*! \fn extern inline void PA_SetSoundVol(u8 Volume)
+    \brief
+         \~english Set the master sound volume
+         \~french Changer le volume global
+    \param Volume
+         \~english Volume, from 0 to 127. 
+         \~french Volume, de 0 à 127.
+*/
+extern inline void PA_SetSoundVol(u8 Volume){
+	PA_IPC[0].MasterVol = (1<<10) | Volume;  // Volume level, enable change bit
+}
 
 
 

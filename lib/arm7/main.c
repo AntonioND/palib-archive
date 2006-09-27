@@ -104,6 +104,10 @@ void PA_VBL(void){
 //	testvar++; testvar&=127;
 
 	if(PA_SoundBusyInit){  // Sound ready to use...
+		if(PA_IPC[0].MasterVol) {  // Change global sound volume
+			SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC[0].MasterVol);
+			PA_IPC[0].MasterVol = 0;
+		}
 		for (channel = 0; channel < 16; channel++) {
 			PA_IPC[channel].Busy = SCHANNEL_CR(channel)>>31;
 			if(PA_IPC[channel].ChangeVolume){ // If you need to change the sound volumes...

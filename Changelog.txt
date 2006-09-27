@@ -5,7 +5,9 @@
 New Stuff
 ---------
 
-[Sound] Added PA_SetSoundChannelVol(channel, volume) to change the sound's playing volume... Added SoundVolume as an example to show how it works
+[Sound] Added PA_SetSoundChannelVol(channel, volume) to change the sound's playing volume... Added SoundChannelVolume as an example to show how it works
+
+[Sound] Added PA_SetSoundVol(Volume) to change the global volume level, and the example to go with it...
 
 
 Updated Stuff
