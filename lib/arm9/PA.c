@@ -16,7 +16,7 @@ u32 Blank[130000>>2];
 infos PA_UserInfo;
 RTC PA_RTC;  // Infos RTC...
 
-volatile u8 PA_SoundsBusy[16];
+volatile PA_IPCType PA_IPC[16];
 
 
 typedef struct {
@@ -114,7 +114,7 @@ PA_VBLFunctionReset();
 irqInit();
 //PA_ResetInterrupts();
 
-IPC->mailData = (u32)(&PA_SoundsBusy);
+IPC->mailData = (u32)(&PA_IPC);
 
 for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans

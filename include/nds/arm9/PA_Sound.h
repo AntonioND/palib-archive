@@ -19,6 +19,8 @@
 	// of your largest MOD file (probably less than 256KB).
 #define SND_MEM_POOL_SIZE	256*1024
 
+volatile PA_IPCType PA_IPC[16];
+
 
 
 extern TransferSound snd;
@@ -622,8 +624,7 @@ extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(b
          \~french Canal audio, de 0 à 15
 */
 extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)	{
-	DC_FlushRange((void*)PA_SoundsBusy, 16);
-	return ((volatile u8)PA_SoundsBusy[PA_Channel]);
+	return ((volatile u8)PA_IPC[PA_Channel].Busy);
 }
 
 /*! \fn extern inline s8 PA_GetFreeSoundChannel(void)
@@ -637,6 +638,28 @@ extern inline s8 PA_GetFreeSoundChannel(void){
 	
 	return -1;
 }
+
+
+/*! \fn extern inline void PA_SetSoundChannelVol(u8 PA_Channel, u8 Volume)
+    \brief
+         \~english Change the volume of a playing sound
+         \~french Changer le volume d'un son en cours
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param Volume
+         \~english Volume, from 0 to 127. 
+         \~french Volume, de 0 à 127.
+*/
+extern inline void PA_SetSoundChannelVol(u8 PA_Channel, u8 Volume){
+	PA_IPC[PA_Channel].Volume = Volume;  // Volume level
+	PA_IPC[PA_Channel].ChangeVolume = 1; // Change volume
+
+}
+
+
+
+
 
 
 /** @} */ // end of SoundARM9

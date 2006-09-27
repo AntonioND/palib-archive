@@ -10,6 +10,9 @@ extern "C" {
 #include <nds/arm7/touch.h>
 #include <nds/arm7/clock.h>
 
+
+#include "PA_IPC.h"
+
 #include "arm7/PA_Sound.h"
 #include "Sound7.h"
 

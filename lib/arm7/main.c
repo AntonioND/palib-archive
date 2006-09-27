@@ -16,7 +16,7 @@
 #include <NDS/ARM7/clock.h>
 */
 
-u8 *PA_SoundsBusy;
+PA_IPCType *PA_IPC;
 u8 PA_SoundBusyInit;
 
 
@@ -88,7 +88,7 @@ void PA_VBL(void){
 		//IPC->aux = touchRead(TSC_MEASURE_AUX); // update IPC with new values
 	}
 	
-	u8 itest;
+	u8 channel;
 	/*if(PA_SoundBusyInit){  // Check for sound stopping
 		for (itest = 0; itest < 16; itest++){
 			if(PA_SoundsBusy[itest+16] == 1){
@@ -103,13 +103,18 @@ void PA_VBL(void){
 	
 //	testvar++; testvar&=127;
 
-	if(PA_SoundBusyInit){
-		for (itest = 0; itest < 16; itest++) {
-			PA_SoundsBusy[itest] = SCHANNEL_CR(itest)>>31;
+	if(PA_SoundBusyInit){  // Sound ready to use...
+		for (channel = 0; channel < 16; channel++) {
+			PA_IPC[channel].Busy = SCHANNEL_CR(channel)>>31;
+			if(PA_IPC[channel].ChangeVolume){ // If you need to change the sound volumes...
+				PA_IPC[channel].ChangeVolume = 0;
+				SCHANNEL_CR(channel) &= ~SOUND_VOL(127); // reset sound volume
+				SCHANNEL_CR(channel) |= SOUND_VOL(PA_IPC[channel].Volume);
+			}
 		}	
 	}
 	else if(IPC->mailData != 0) {
-		PA_SoundsBusy = (u8*)(IPC->mailData); // Inits PA Sound busy commands
+		PA_IPC = (PA_IPCType*)(IPC->mailData); // Inits PA Sound busy commands
 		IPC->mailData = 0;
 		PA_SoundBusyInit = 1;
 	}

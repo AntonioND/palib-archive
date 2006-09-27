@@ -5,11 +5,15 @@
 New Stuff
 ---------
 
+[Sound] Added PA_SetSoundChannelVol(channel, volume) to change the sound's playing volume... Added SoundVolume as an example to show how it works
+
 
 Updated Stuff
 -------------
 
 [PAFS] Added PA_FSGetFolder(char *name), to get a folder number from its name... Returns -1 if not found
+
+[Sound] SoundBusy doesn't flush the cache all the time anymore
 
 
 
