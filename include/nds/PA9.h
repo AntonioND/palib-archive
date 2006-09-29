@@ -31,7 +31,7 @@ extern "C" {
 
 
 
-#include "arm9/vidfile.h"
+#include "arm9/PA_Video.h"
 #include "arm9/PA_Sprite.h"
 #include "arm9/PA_SpriteDual.h"
 #include "arm9/PA_Sound.h"

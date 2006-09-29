@@ -259,7 +259,8 @@ void PA_EasyBgScrollY(u8 screen, u8 bg_number, s32 y){
 
 
 
-void PA_FSBgLoad(u8 screen, u8 bg_number, u32 filenumber)  {  
+
+/*
 u32 *PA_BGinfo = (u32*)PA_PAFSFile(filenumber);
 PA_BgInfo[screen][bg_number].BgMode = PA_BGinfo[0];   
 PA_LoadBgPal(screen, bg_number, (void*)(PA_PAFSFile(filenumber+2))); 
@@ -283,17 +284,54 @@ else{
 	PA_InitLargeBg(screen, bg_number, PA_BGinfo[1]>> 3, PA_BGinfo[2]>> 3, PA_PAFSFile(filenumber+1));
 }
 PA_BGScrollXY(screen, bg_number, 0, 0);
+}*/
+
+
+
+
+
+
+void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette){
+	PA_BgInfo[screen][bg_number].Infos.Type = Infos[0];
+	PA_BgInfo[screen][bg_number].Infos.Width = Infos[1];	
+	PA_BgInfo[screen][bg_number].Infos.Height = Infos[2];		
+	PA_BgInfo[screen][bg_number].Infos.Tiles = Tiles;
+	PA_BgInfo[screen][bg_number].Infos.TileSize = TileSize;
+	PA_BgInfo[screen][bg_number].Infos.Map = Map;
+	PA_BgInfo[screen][bg_number].Infos.MapSize = MapSize;	
+	PA_BgInfo[screen][bg_number].Infos.Palette = Palette;
 }
 
 
-void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name){
-	char completename[32];
-	u8 i;
-	for (i= 0; bg_name[i] != 0; i++) completename[i] = bg_name[i];
-	completename[i] = '_'; completename[i+1] = 'I'; completename[i+2] = 'n'; completename[i+3] = 'f'; completename[i+4] = 'o';  completename[i+5] = 0;
-	PA_FSBgLoad(screen, bg_number, PA_FSGetFile(0, completename, "bin"));
-//		PA_OutputText(1, 0, 4+screen, completename);
+	
+
+void PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette)  {  
+	PA_StoreEasyBgInfos(screen, bg_number, Infos, Tiles, TileSize, Map, MapSize, Palette);
+	PA_BgInfo[screen][bg_number].BgMode = Infos[0];   
+	PA_LoadBgPal(screen, bg_number, Palette); 
+	PA_DeleteBg(screen, bg_number);
+	if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {	
+		PA_LoadBgTilesEx(screen, bg_number, Tiles, TileSize);
+		PA_LoadBgMap(screen, bg_number, Map, MapSize); 
+		PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(Infos[1], Infos[2]), 0, 1);
+	}
+	else{
+		PA_BgInfo[screen][bg_number].NTiles = TileSize>>5;
+		if (PA_BgInfo[screen][bg_number].BgMode == BG_LARGEMAP) { 
+			PA_LoadBgTilesEx(screen, bg_number, Tiles, TileSize);
+		}
+		else{
+			PA_LoadBgTilesEx(screen, bg_number, (void*)Blank, (1008<<5));
+		}
+		PA_BgInfo[screen][bg_number].Tiles = Tiles;
+		PA_LoadBgMap(screen, bg_number, Blank, BG_512X256); 
+		PA_InitBg(screen, bg_number, BG_512X256, 0, 1);
+		PA_InitLargeBg(screen, bg_number, Infos[1]>> 3, Infos[2]>> 3, Map);
+	}
+	PA_BGScrollXY(screen, bg_number, 0, 0);
 }
+
+
 
 
 

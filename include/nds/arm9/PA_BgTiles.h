@@ -2,6 +2,7 @@
 #define _PA_BGTILES
 
 //#include <PA9.h>
+//#include <PA_FS.h>
 #include <nds.h>
 #include "PA_General.h"
 
@@ -11,7 +12,7 @@
 #define BG_LARGEMAP 4
 #define BG_INFINITEMAP 5
 
-
+void PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette);
 
 
 // Extracts the size from PAGfx convertions
@@ -53,6 +54,16 @@ extern inline u8 PA_GetPAGfxRotBgSize(u16 width)
 #define CharBaseBlock(screen, n) (((n)*0x4000) + 0x6000000 + (0x200000 *  screen))
 #define ScreenBaseBlock(screen, n) (((n)*0x800) + 0x6000000 + (0x200000 *  screen))
 
+// Pointers towards background arrays
+typedef struct{
+	void *Tiles;
+	void *Map;
+	void *Palette;
+	u32 TileSize, MapSize;
+	u32 Type, Width, Height; 
+} PA_BgDefaultInfos;
+	
+
 typedef struct{
 	// Memory management info...
 
@@ -69,6 +80,8 @@ typedef struct{
 	u32 NTiles;
 	u32 *TilePos;
 	void *Tiles;	
+	
+	PA_BgDefaultInfos Infos; // Pointers towards background arrays
 	
 	u8 BgMode; // Background mode
 } PA_BgInfos;
@@ -834,45 +847,14 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
          \~english Background name
          \~french Nom du fond	 
 */
-#define PA_EasyBgLoad(screen, bg_number, bg_name){\
-	PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
+#define PA_EasyBgLoad(screen, bg_number, bg_name)	PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name##_Info, (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal)
+/*	PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
 	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){	PA_LoadTiledBg(screen, bg_number, bg_name);}\
-	else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}\
-}
+	else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}\*/
 
 
-/*! \fn void PA_FSBgLoad(u8 screen, u8 bg_number, u32 filenumber)
-    \brief
-         \~english Easiest way to load a background converted with PAGfx... from PAFS !
-         \~french Moyen le plus simple de charger un fond créé avec PAGfx... depuis PAFS !
-    \param screen
-         \~english Choose de screen (0 or 1)
-         \~french Choix de l'écran (0 ou 1)
-    \param bg_number
-         \~english Background number... (0-3)
-         \~french Numéro du fond...	 (0-3)
-    \param filenumber
-         \~english backgroundname_Info's file number in PAFS
-         \~french Numéro du fichier nomdufond_Info dans PAFS
-*/
-void PA_FSBgLoad(u8 screen, u8 bg_number, u32 filenumber);
 
 
-/*! \fn void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name)
-    \brief
-         \~english Load a background from PAFS using its name...
-         \~french Charger un fond depuis PAFS en utilisant son nom...
-    \param screen
-         \~english Choose de screen (0 or 1)
-         \~french Choix de l'écran (0 ou 1)
-    \param bg_number
-         \~english Background number... (0-3)
-         \~french Numéro du fond...	 (0-3)
-    \param bg_name
-         \~english Background name
-         \~french Nom du fond
-*/
-void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name);
 
 /*!
     \fn void PA_EasyBgScrollX(u8 screen, u8 bg_number, s32 x)
@@ -936,6 +918,17 @@ extern inline void PA_EasyBgScrollXY(u8 screen, u8 bg_number, s32 x, s32 y){
 
 
 /** @} */ // end of BgTiles
+
+
+
+
+void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette);
+	
+
+
+
+
+
 
 
 

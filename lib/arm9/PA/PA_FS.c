@@ -58,6 +58,20 @@ return temp;
 
 
 
+void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name){
+	char completename[32];
+	u8 i;
+	for (i= 0; bg_name[i] != 0; i++) completename[i] = bg_name[i];
+	completename[i] = '_'; completename[i+1] = 'I'; completename[i+2] = 'n'; completename[i+3] = 'f'; completename[i+4] = 'o';  completename[i+5] = 0;
+	PA_FSBgLoad(screen, bg_number, PA_FSGetFile(0, completename, "bin"));
+//		PA_OutputText(1, 0, 4+screen, completename);
+}
+
+
+
+
+
+
 #ifdef __cplusplus
 }
 #endif

@@ -184,6 +184,50 @@ extern inline void PA_Malloc(void **pointer, u32 size){
 	*pointer = (void*)malloc(size);
 }
 
+
+
+/*! \fn void PA_FSBgLoad(u8 screen, u8 bg_number, u32 filenumber)
+    \brief
+         \~english Easiest way to load a background converted with PAGfx... from PAFS !
+         \~french Moyen le plus simple de charger un fond créé avec PAGfx... depuis PAFS !
+    \param screen
+         \~english Choose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+         \~english Background number... (0-3)
+         \~french Numéro du fond...	 (0-3)
+    \param filenumber
+         \~english backgroundname_Info's file number in PAFS
+         \~french Numéro du fichier nomdufond_Info dans PAFS
+*/
+extern inline void PA_FSBgLoad(u8 screen, u8 bg_number, u32 filenumber)  {  
+	PA_EasyBgLoadEx(screen, bg_number, (u32*)PA_PAFSFile(filenumber), PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length, PA_PAFSFile(filenumber+1), PA_FSFile[filenumber+1].Length, (void*)(PA_PAFSFile(filenumber+2)));
+}
+
+
+
+/*! \fn void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name)
+    \brief
+         \~english Load a background from PAFS using its name...
+         \~french Charger un fond depuis PAFS en utilisant son nom...
+    \param screen
+         \~english Choose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+         \~english Background number... (0-3)
+         \~french Numéro du fond...	 (0-3)
+    \param bg_name
+         \~english Background name
+         \~french Nom du fond
+*/
+void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name);
+
+
+
+
+
+
+
 /** @} */ // end of PAFS
 
 
