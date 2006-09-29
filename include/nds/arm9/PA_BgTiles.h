@@ -841,7 +841,7 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
 }
 
 
-/*! \def PA_FSBgLoad(screen, bg_number, filenumber)
+/*! \fn void PA_FSBgLoad(u8 screen, u8 bg_number, u32 filenumber)
     \brief
          \~english Easiest way to load a background converted with PAGfx... from PAFS !
          \~french Moyen le plus simple de charger un fond créé avec PAGfx... depuis PAFS !
@@ -855,33 +855,24 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
          \~english backgroundname_Info's file number in PAFS
          \~french Numéro du fichier nomdufond_Info dans PAFS
 */
-#define PA_FSBgLoad(screen, bg_number, filenumber)  {  \
-u32 *PA_BGinfo = (u32*)PA_PAFSFile(filenumber);\
-PA_BgInfo[screen][bg_number].BgMode = PA_BGinfo[0];   \
-PA_LoadBgPal(screen, bg_number, (void*)(PA_PAFSFile(filenumber+2))); \
-PA_DeleteBg(screen, bg_number);\
-if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {	\
-	PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);\
-	PA_LoadBgMap(screen, bg_number, PA_PAFSFile(filenumber+1), PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2])); \
-	PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2]), 0, 1);\
-}\
-else{\
-	PA_BgInfo[screen][bg_number].NTiles = PA_FSFile[filenumber+3].Length>>5;\
-	if (PA_BgInfo[screen][bg_number].NTiles < MAX_TILES) { \
-		PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);\
-	}\
-	else{\
-		PA_LoadBgTilesEx(screen, bg_number, (void*)Blank, (1008<<5));\
-	}\
-	PA_BgInfo[screen][bg_number].Tiles = PA_PAFSFile(filenumber+3);\
-	PA_LoadBgMap(screen, bg_number, Blank, BG_512X256); \
-	PA_InitBg(screen, bg_number, BG_512X256, 0, 1);\
-	PA_InitLargeBg(screen, bg_number, PA_BGinfo[1]>> 3, PA_BGinfo[2]>> 3, PA_PAFSFile(filenumber+1));\
-}\
-PA_BGScrollXY(screen, bg_number, 0, 0);\
-}
+void PA_FSBgLoad(u8 screen, u8 bg_number, u32 filenumber);
 
 
+/*! \fn void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name)
+    \brief
+         \~english Load a background from PAFS using its name...
+         \~french Charger un fond depuis PAFS en utilisant son nom...
+    \param screen
+         \~english Choose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+         \~english Background number... (0-3)
+         \~french Numéro du fond...	 (0-3)
+    \param bg_name
+         \~english Background name
+         \~french Nom du fond
+*/
+void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name);
 
 /*!
     \fn void PA_EasyBgScrollX(u8 screen, u8 bg_number, s32 x)

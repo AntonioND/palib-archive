@@ -17,6 +17,8 @@ New Stuff
 
 [SpriteSys] PA_ResetSpriteSysScreen(screen) added, to reset the sprite system only for a given screen. Highly untested, might give unwanted results, especially for running animations, please report any bug :)
 
+[PAFS_Bg] Added void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name) to load a background by inputting it's name (should be easier :)   ), and the example to go with it...
+
 
 Updated Stuff
 -------------
@@ -25,8 +27,17 @@ Updated Stuff
 
 [Sound] SoundBusy doesn't flush the cache all the time anymore
 
+[PAGfx] Better total time output (useless, but I don't care ^^). Removed the Palette generation purcentage, it always takes less than a second now :p
+
+[PAGfx] Completely new tile detection code, should be MUCH faster when converting very big/complex backgrounds... 
+
+[PAGfx] Found on the net a different method to read images, which is like 10 times faster, I'm pretty sure you'll be amazed by how fast it converts backgrounds now ^^. Works for very large sprites too
 
 
+Things Fixed
+------------
+
+[PAGfx] 256 pixel wide backgrounds were rounded up to 512, this is fixed
 
 
 

@@ -19,7 +19,7 @@
 	// of your largest MOD file (probably less than 256KB).
 #define SND_MEM_POOL_SIZE	256*1024
 
-volatile PA_IPCType PA_IPC[16];
+extern volatile PA_IPCType PA_IPC[16];
 
 
 

@@ -374,8 +374,8 @@ ALWAYSINLINE void PA_16c16X16(u8 screen, s16 x, s16 y, u32 *image){
 
 
 extern inline void PA_16cLetter(u8 screen, s16 x, s16 y, char letter, u8 size, u8 color){
-PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].X = x;
-PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].Y = y;
+PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].X = x-8;
+PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].Y = y-8;
 PA_16cLetterPos.NLetters++;
 	if (c16_policeheight[size]<=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<3)), color);
 	else PA_16c16X16Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<5)), color);

@@ -78,6 +78,8 @@ s16 ylimiy = maxy - ly;
 s16 wordx = 0; // Longueur de mot
 s16 wordletter = 0;
 
+PA_16cLetterPos.NLetters = 0; // 0 letters now...
+
 for (i = 0; (text[i] && y <= ylimiy && i < limit); i++) {
 	if (text[i] == '\n'){
 		/*if (transp == 0){
