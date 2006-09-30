@@ -21,29 +21,23 @@ s32 TOUCH_WIDTH;
 s32 TOUCH_HEIGHT;
 /*s32 TOUCH_OFFSET_X;
 s32 TOUCH_OFFSET_Y;*/
-
+u16 PA_ReadSPI(void);
 
 u16 PA_NewSPI;
 
 void PA_Init(void){
+ 	rtcReset();
 
-IPC->aux = 0x0F;
-PA_NewSPI = 0x0F;
-//	PA_InitSoundSystem(); // Initialisation des docs de son
-//PA_SoundOk = 0;
-//PA_InitVBL();
-
-// precalculate some values
-/*
-TOUCH_WIDTH  = TOUCH_CAL_X2 - TOUCH_CAL_X1;
-TOUCH_HEIGHT = TOUCH_CAL_Y2 - TOUCH_CAL_Y1;
-CNTRL_WIDTH  = TOUCH_CNTRL_X2 - TOUCH_CNTRL_X1;
-CNTRL_HEIGHT = TOUCH_CNTRL_Y2 - TOUCH_CNTRL_Y1;
-*/
-
-//screenlights = (IPC->aux&0xC);  // init the screen lights ok
-
-
+	//enable sound
+	powerON(POWER_SOUND);
+	SOUND_CR = SOUND_ENABLE | SOUND_VOL(0x7F);
+	IPC->soundData = 0;
+/*	IPC->aux = 0x0F;
+	PA_NewSPI = 0x0F;*/
+	
+	
+	PA_NewSPI = PA_ReadSPI();
+	IPC->aux = PA_NewSPI;
 }
 
 
@@ -83,7 +77,40 @@ void PA_UpdateStylus(void){
 	IPC->touchZ2 = touchRead(TSC_MEASURE_Z2);
 }
 
+/*
+void PA_ScreenLight(void){
+	SerialWaitBusy();
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz | SPI_CONTINUOUS;
+	REG_SPIDATA = 0;
+	SerialWaitBusy();
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz;
+	//u8 temp = ~0x0C;
+	
+	REG_SPIDATA = PA_NewSPI; // On met en fonction de ce qu'on a dans l'IPC
+}*/
 
+u16 PA_ReadSPI(void){
+	u8 pmData;
+ 
+	SerialWaitBusy();
+	
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz | SPI_CONTINUOUS; 
+	REG_SPIDATA = (1 << 7); 
+ 
+	SerialWaitBusy();
+ 
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz; // On revient en mode single byte ... 
+	REG_SPIDATA = 0; // On indique à nouveau qu'on veut lire ... 
+	
+	SerialWaitBusy();
+	
+	pmData = REG_SPIDATA; // Et on récupère la valeur du registre ! 
+	
+	REG_SPICNT = 0; // Pour finit on arrête le SPI ... 
+ 
+	return pmData;
+}
+/*
 u16 PA_ReadSPI(u8 pmReg){
 	u8 pmData;
  
@@ -94,17 +121,17 @@ u16 PA_ReadSPI(u8 pmReg){
  
 	SerialWaitBusy();
  
-	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz; /* On revient en mode single byte ... */
-	REG_SPIDATA = 0; /* On indique à nouveau qu'on veut lire ... */
+	REG_SPICNT = SPI_ENABLE | SPI_DEVICE_POWER | SPI_BAUD_1MHz; // On revient en mode single byte ... 
+	REG_SPIDATA = 0; // On indique à nouveau qu'on veut lire ... 
 	
 	SerialWaitBusy();
 	
-	pmData = REG_SPIDATA; /* Et on récupère la valeur du registre ! */
+	pmData = REG_SPIDATA; // Et on récupère la valeur du registre ! 
 	
-	REG_SPICNT = 0; /* Pour finit on arrête le SPI ... */
+	REG_SPICNT = 0; // Pour finit on arrête le SPI ... 
  
 	return pmData;
-}
+}*/
 
 void PA_WriteSPI(u8 pmReg, u8 pmData)
 {

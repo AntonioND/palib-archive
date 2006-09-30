@@ -379,7 +379,7 @@ extern inline void PA_SetScreenLight(u8 screen, u8 light){
 */
 extern inline void PA_SetLedBlink(u8 blink, u8 speed){
 	IPC->aux &= ~(3<<4);
-	IPC->aux |= (blink + (speed<<1))<<4;
+	IPC->aux |= ((blink&1) + ((speed&1)<<1))<<4;
 }
 
 

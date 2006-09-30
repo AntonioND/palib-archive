@@ -932,11 +932,47 @@ extern inline void PA_EasyBgScrollXY(u8 screen, u8 bg_number, s32 x, s32 y){
 }
 
 
-
+/*!
+    \fn extern inline u8 PA_EasyBgGetPixel(u8 screen, u8 bg_number, s32 x, s32 y)
+    \brief
+      \~english Returns the color (number in the palette) of the screen pixel...
+      \~french Renvoie le numéro dans la palette du pixel à l'écran...
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+      \~english Background number (0-3)
+      \~french Numéro du fond que l'on veut tourner (0-3)
+    \param x
+      \~english X screen pixel position
+      \~french Valeur X du pixel à l'écran
+    \param y
+      \~english Y screen pixel position
+      \~french Valeur Y du pixel à l'écran
+*/
 extern inline u8 PA_EasyBgGetPixel(u8 screen, u8 bg_number, s32 x, s32 y){
 	return PA_EasyBgPixel[PA_BgInfo[screen][bg_number].Infos.Type](screen, bg_number, x, y);
 }
 
+
+/*!
+    \fn extern inline u16 PA_EasyBgGetPixelCol(u8 screen, u8 bg_number, s32 x, s32 y)
+    \brief
+      \~english Returns the color (u16 value) of the screen pixel...
+      \~french Renvoie la couleur (valeur u16) du pixel à l'écran...
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+      \~english Background number (0-3)
+      \~french Numéro du fond que l'on veut tourner (0-3)
+    \param x
+      \~english X screen pixel position
+      \~french Valeur X du pixel à l'écran
+    \param y
+      \~english Y screen pixel position
+      \~french Valeur Y du pixel à l'écran
+*/
 extern inline u16 PA_EasyBgGetPixelCol(u8 screen, u8 bg_number, s32 x, s32 y){
 	return ((u16*)(PA_BgInfo[screen][bg_number].Infos.Palette))[PA_EasyBgGetPixel(screen, bg_number, x, y)];
 }

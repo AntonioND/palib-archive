@@ -89,20 +89,9 @@ void PA_VBL(void){
 	}
 	
 	u8 channel;
-	/*if(PA_SoundBusyInit){  // Check for sound stopping
-		for (itest = 0; itest < 16; itest++){
-			if(PA_SoundsBusy[itest+16] == 1){
-				SCHANNEL_CR(itest)=0;  // Stop sound...
-				PA_SoundsBusy[itest+16] = 0; // Reset
-			}
-		}
-	}*/
-			
 			
 	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
 	
-//	testvar++; testvar&=127;
-
 	if(PA_SoundBusyInit){  // Sound ready to use...
 		if(PA_IPC[0].MasterVol) {  // Change global sound volume
 			SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC[0].MasterVol);
@@ -151,7 +140,7 @@ int main(int argc, char ** argv) {
 IPC->mailData=0;
 IPC->mailSize=0; 
   PA_SoundBusyInit = 0;
-  PA_Init();
+
   
 
 
@@ -165,14 +154,7 @@ for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/
 
 
 
- 	rtcReset();
-
-	//enable sound
-	powerON(POWER_SOUND);
-	SOUND_CR = SOUND_ENABLE | SOUND_VOL(0x7F);
-	IPC->soundData = 0;
-
-	
+	PA_Init();
 	irqInit();
 	irqSet(IRQ_VBLANK, PA_VBL);
 	irqEnable(IRQ_VBLANK);

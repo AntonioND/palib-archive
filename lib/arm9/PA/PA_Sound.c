@@ -65,7 +65,6 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 }
 
 void PA_StopSound(u8 PA_Channel){
-//	PA_SoundsBusy[16+PA_Channel] = 1; // Stop the sound...
 	SndStop(PA_Channel);
 }
 /*

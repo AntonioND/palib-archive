@@ -19,7 +19,9 @@ New Stuff
 
 [PAFS_Bg] Added void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name) to load a background by inputting it's name (should be easier :)   ), and the example to go with it...
 
-[BgPixel] Added PA_EasyBgGetPixel(screen, bg_number, x, y) (to get the palette color number) and PA_EasyBgGetPixelCol (same thing but returns the u16 color). Added 3 examples to go with it (tested with normal backgrounds, largemaps and infinite tile backgrounds...)
+[BgPixel] Added PA_EasyBgGetPixel(screen, bg_number, x, y) (to get the palette color number) and PA_EasyBgGetPixelCol (same thing but returns the u16 color). Added 3 examples to go with it (tested with normal backgrounds, largemaps and infinite tile backgrounds...). Scrolling is of course taken into account ;)
+
+[Platform] Added Platform4 example, which changes the collision system to use PA_EasyBgGetPixel, and can now manage diagonal collisions :)
 
 
 Updated Stuff
@@ -48,6 +50,8 @@ Things Fixed
 [Video] Fixed the video system
 
 [EasyBg] Fixed Tile flip bug when loading an EasyBg with more than 1008 tiles, not sure why it was still there :)
+
+[Sound] Sound no longer stops when turning screens off or setting the led to blink mode...
 
 
 
