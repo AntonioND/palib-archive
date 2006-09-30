@@ -19,6 +19,8 @@ New Stuff
 
 [PAFS_Bg] Added void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name) to load a background by inputting it's name (should be easier :)   ), and the example to go with it...
 
+[BgPixel] Added PA_EasyBgGetPixel(screen, bg_number, x, y) (to get the palette color number) and PA_EasyBgGetPixelCol (same thing but returns the u16 color). Added 3 examples to go with it (tested with normal backgrounds, largemaps and infinite tile backgrounds...)
+
 
 Updated Stuff
 -------------
@@ -44,6 +46,8 @@ Things Fixed
 [PAGfx] 256 pixel wide backgrounds were rounded up to 512, this is fixed
 
 [Video] Fixed the video system
+
+[EasyBg] Fixed Tile flip bug when loading an EasyBg with more than 1008 tiles, not sure why it was still there :)
 
 
 

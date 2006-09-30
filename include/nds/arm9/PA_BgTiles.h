@@ -36,6 +36,11 @@ extern inline u8 PA_GetPAGfxRotBgSize(u16 width)
 	return bg_size;
 }
 
+
+typedef u8 (*EasyBgPixels)(u8, u8, s32, s32);  
+
+extern EasyBgPixels PA_EasyBgPixel[6];
+
 /*! \file PA_BgTiles.h
     \brief Everything concerning the Bg Tile modes
 
@@ -82,6 +87,8 @@ typedef struct{
 	void *Tiles;	
 	
 	PA_BgDefaultInfos Infos; // Pointers towards background arrays
+	
+	s32 ScrollX, ScrollY; // Scroll values
 	
 	u8 BgMode; // Background mode
 } PA_BgInfos;
@@ -486,10 +493,10 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
 
 
 /*!
-    \def PA_BGScrollX(screen, bg_number, x)
+    \fn extern inline void PA_BGScrollX(u8 screen, u8 bg_number, s32 x)
     \brief
-      \~english Scroll horizontaly any background
-      \~french Scroll horizontal de n'importe quel fond
+      \~english Scroll horizontaly a Tiled background
+      \~french Scroll horizontal d'un fond de type Tiled
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -500,13 +507,16 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
       \~english X value to scroll
       \~french Valeur X à déplacer, horizontalement...
 */
-#define PA_BGScrollX(screen, bg_number, x) _REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) << 2)) = (x)&1023
+extern inline void PA_BGScrollX(u8 screen, u8 bg_number, s32 x) {
+	PA_BgInfo[screen][bg_number].ScrollX = (x)&1023;
+	_REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) << 2)) = (x)&1023;
+}	
 
 /*!
-    \def PA_BGScrollY(screen, bg_number, y)
+    \fn extern inline void PA_BGScrollY(u8 screen, u8 bg_number, s32 y) 
     \brief
-      \~english Scroll vertically any background
-      \~french Scroll vertical de n'importe quel fond
+      \~english Scroll vertically a Tiled background
+      \~french Scroll vertical d'un fond de type Tiled
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -517,16 +527,18 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
       \~english Y value to scroll
       \~french Valeur Y à déplacer, verticalement...
 */
-#define PA_BGScrollY(screen, bg_number, y) _REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) << 2)) = (y)&1023
-
+extern inline void PA_BGScrollY(u8 screen, u8 bg_number, s32 y) {
+	PA_BgInfo[screen][bg_number].ScrollY = (y)&1023;
+	_REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) << 2)) = (y)&1023;
+}	
 
 
 
 /*!
     \def PA_BGScrollXY(screen, bg_number, x, y)
     \brief
-      \~english Scroll horizontaly and vertically any background
-      \~french Scroll horizontal et vertical de n'importe quel fond
+      \~english Scroll horizontaly and vertically a Tiled background
+      \~french Scroll horizontal et vertical d'un fond de type Tiled
     \param screen
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
@@ -540,7 +552,10 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
       \~english Y value to scroll
       \~french Valeur Y à déplacer, verticalement...
 */
-#define PA_BGScrollXY(screen, bg_number, x, y) {PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}
+extern inline void PA_BGScrollXY(u8 screen, u8 bg_number, s32 x, s32 y) {
+	PA_BGScrollX(screen, bg_number, x); 
+	PA_BGScrollY(screen, bg_number, y);
+}
 
 
 
@@ -917,20 +932,37 @@ extern inline void PA_EasyBgScrollXY(u8 screen, u8 bg_number, s32 x, s32 y){
 }
 
 
+
+extern inline u8 PA_EasyBgGetPixel(u8 screen, u8 bg_number, s32 x, s32 y){
+	return PA_EasyBgPixel[PA_BgInfo[screen][bg_number].Infos.Type](screen, bg_number, x, y);
+}
+
+extern inline u16 PA_EasyBgGetPixelCol(u8 screen, u8 bg_number, s32 x, s32 y){
+	return ((u16*)(PA_BgInfo[screen][bg_number].Infos.Palette))[PA_EasyBgGetPixel(screen, bg_number, x, y)];
+}
+
+
+
+
 /** @} */ // end of BgTiles
 
 
-
+/*
 
 void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette);
 	
+*/
 
 
+// Get pixel functions
 
+u8 PAEasyBgGetPixelTiled(u8 screen, u8 bg_number, s32 x, s32 y);
 
+u8 PAEasyBgGetPixelLarge(u8 screen, u8 bg_number, s32 x, s32 y);
 
+u8 PAEasyBgGetPixelInf(u8 screen, u8 bg_number, s32 x, s32 y);
 
-
+u8 PANoPixel(u8 screen, u8 bg_number, s32 x, s32 y);
 
 extern inline void PA_UpdateBgTile(u8 screen, u8 bg_select, u16 tilepos, void *tile){
 tilepos = tilepos << 4;

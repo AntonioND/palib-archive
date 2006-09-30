@@ -169,6 +169,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (void*)bg_map);}
 extern inline void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autoselect
 	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_InfLargeScrollXN(screen, bg_select, x);
 	else PA_InfTilesScrollX(screen, bg_select, x);
+	PA_BgInfo[screen][bg_select].ScrollX = x;
 }
 
 /*!
@@ -189,6 +190,7 @@ extern inline void PA_InfLargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autose
 extern inline void PA_InfLargeScrollY(u8 screen, u8 bg_select, s32 y){ // Autoselect
 	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_InfLargeScrollYN(screen, bg_select, y);
 	else PA_InfTilesScrollY(screen, bg_select, y);
+	PA_BgInfo[screen][bg_select].ScrollY = y;
 }
 
 
@@ -231,8 +233,14 @@ extern inline void PA_InfLargeScrollXY(u8 screen, u8 bg_select, s32 x, s32 y){
       \~french Valeur X à déplacer
 */
 extern inline void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autoselect
-	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_LargeScrollXN(screen, bg_select, x);
-	else PA_InfTilesScrollX(screen, bg_select, x);
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) {
+		PA_LargeScrollXN(screen, bg_select, x);
+		if (x < 0) x = 0;   else if (x >= PA_BgInfo[screen][bg_select].Infos.Width-256) x = PA_BgInfo[screen][bg_select].Infos.Width - 257;
+	}
+	else {
+		PA_InfTilesScrollX(screen, bg_select, x);
+	}	
+	PA_BgInfo[screen][bg_select].ScrollX = x;	
 }
 
 /*!
@@ -251,8 +259,12 @@ extern inline void PA_LargeScrollX(u8 screen, u8 bg_select, s32 x){ // Autoselec
       \~french Valeur Y à déplacer
 */
 extern inline void PA_LargeScrollY(u8 screen, u8 bg_select, s32 y){ // Autoselect
-	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) PA_LargeScrollYN(screen, bg_select, y);
+	if (PA_BgInfo[screen][bg_select].NTiles < MAX_TILES) {
+		PA_LargeScrollYN(screen, bg_select, y);
+		if (y < 0) y = 0;   else if (y >= PA_BgInfo[screen][bg_select].Infos.Height-192) y = PA_BgInfo[screen][bg_select].Infos.Height - 193;
+	}
 	else PA_InfTilesScrollY(screen, bg_select, y);
+	PA_BgInfo[screen][bg_select].ScrollY = y;
 }
 
 
