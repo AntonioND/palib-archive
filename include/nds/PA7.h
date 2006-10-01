@@ -38,6 +38,7 @@ extern s32 TOUCH_OFFSET_Y;
 extern u16 PA_NewSPI;
 
 
+
 /*! \file PA7.h
     \brief Contains prototypes and macros for the arm7...
 
@@ -59,7 +60,7 @@ void PA_UpdateStylus(void);
 void PA_ScreenLight(void);
 
 
-
+void PA_SetDSLiteBrightness(u8 level);
 
 
 

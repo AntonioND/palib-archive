@@ -5,8 +5,8 @@
 //////////////////////////////////////////////////////////////////////
 
 #include <PA7.h>
-#include <command.h>
-#include "microphone7.h"
+//#include <command.h>
+//#include "microphone7.h"
 #include <dswifi7.h>
 /*
 #include <NDS/NDS.h>
@@ -93,16 +93,25 @@ void PA_VBL(void){
 	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
 	
 	if(PA_SoundBusyInit){  // Sound ready to use...
-		if(PA_IPC[0].MasterVol) {  // Change global sound volume
-			SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC[0].MasterVol);
-			PA_IPC[0].MasterVol = 0;
+		PA_IPC->Mic.Volume = MIC_ReadData()-124; // Get volume
+		if(PA_IPC->Mic.Data){ // Record new sound...
+			StartRecording(PA_IPC->Mic.Data, PA_IPC->Mic.Length);
+			PA_IPC->Mic.Data = 0;
+		}
+		if(PA_IPC->Sound[16].ChangeVolume) {  // Change global sound volume
+			SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume);
+			PA_IPC->Sound[16].Volume = 0;
+		}
+		if(PA_IPC->Sound[16].Busy){  // Change Brightness
+			PA_SetDSLiteBrightness(PA_IPC->Sound[16].Busy&3);
+			PA_IPC->Sound[16].Busy = 0; // don't change anymore...
 		}
 		for (channel = 0; channel < 16; channel++) {
-			PA_IPC[channel].Busy = SCHANNEL_CR(channel)>>31;
-			if(PA_IPC[channel].ChangeVolume){ // If you need to change the sound volumes...
-				PA_IPC[channel].ChangeVolume = 0;
+			PA_IPC->Sound[channel].Busy = SCHANNEL_CR(channel)>>31;
+			if(PA_IPC->Sound[channel].ChangeVolume){ // If you need to change the sound volumes...
+				PA_IPC->Sound[channel].ChangeVolume = 0;
 				SCHANNEL_CR(channel) &= ~SOUND_VOL(127); // reset sound volume
-				SCHANNEL_CR(channel) |= SOUND_VOL(PA_IPC[channel].Volume);
+				SCHANNEL_CR(channel) |= SOUND_VOL(PA_IPC->Sound[channel].Volume);
 			}
 		}	
 	}
@@ -122,8 +131,8 @@ Wifi_Update();
  
  
 void timer0(void){
-
-SndTimerIrq();
+	ProcessMicrophoneTimerIRQ();
+	SndTimerIrq();
 }
  
 void arm7_synctoarm9() { // send fifo message
@@ -142,39 +151,18 @@ IPC->mailSize=0;
   PA_SoundBusyInit = 0;
 
   
-
-
- /*
-     TransferSound *snd = IPC->soundData;
-    IPC->soundData = 0;
-for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/	
-  //enable sound
-//  SOUND_CR = SCHANNEL_ENABLE | SOUND_VOL(0x7F);
-//  IPC->soundData = 0;
-
-
-
 	PA_Init();
 	irqInit();
 	irqSet(IRQ_VBLANK, PA_VBL);
 	irqEnable(IRQ_VBLANK);
 	irqSet(IRQ_TIMER0, timer0);
 	irqEnable(IRQ_TIMER0);	
-	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
-	irqEnable(IRQ_TIMER3);	
+//	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
+//	irqEnable(IRQ_TIMER3);	
 	
 	//supprime pour test
     irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
 	irqEnable(IRQ_WIFI);
-
-/*
-  // Set up the interrupt handler
-  REG_IME = 0;
-  IRQ_HANDLER = &InterruptHandler;
-  REG_IE = IRQ_VBLANK | IRQ_TIMER3|IRQ_TIMER0;
-  REG_IF = ~0;
-  DISP_SR = DISP_VBLANK_IRQ;
-  REG_IME = 1;*/
   
  //supprime pour test
   SndInit7 ();

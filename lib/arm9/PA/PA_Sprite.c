@@ -77,34 +77,34 @@ void PA_InitSpriteExtPrio(u8 SpritePrio){
 
 
 void PA_ResetSpriteSysScreen(u8 screen) {
-u8 n;
-
-   n_free_mem[screen] = 1;
-   free_mem[screen][0].mem_block = 0; free_mem[screen][0].free = 1024;
+	u8 n;
 	
-   DMA_Copy((void*)Blank, (void*)used_mem[screen], 256, DMA_32NOW);
-   DMA_Copy((void*)Blank, (void*)obj_per_gfx[screen], 256, DMA_32NOW);
-
+	   n_free_mem[screen] = 1;
+	   free_mem[screen][0].mem_block = 0; free_mem[screen][0].free = 1024;
+		
+	   DMA_Copy((void*)Blank, (void*)used_mem[screen], 256, DMA_32NOW);
+	   DMA_Copy((void*)Blank, (void*)obj_per_gfx[screen], 256, DMA_32NOW);
+	
+		for(n = 0; n < 128; n++) {
+			PA_obj[screen][n].atr0 = 192;
+			PA_obj[screen][n].atr1 = 256;
+			PA_obj[screen][n].atr2 = 0;
+			PA_obj[screen][n].atr3 = 0;
+		}
+		for(n = 0; n < 32; n++) {
+			PA_SetRotset(screen,n,0,256,256);  // Pas de zoom ou de rotation par défaut
+		}
+	
+	FirstGfx[screen] = 0;
+	
+	nspriteanims = 0; // No animations...
 	for(n = 0; n < 128; n++) {
-		PA_obj[screen][n].atr0 = 192;
-		PA_obj[screen][n].atr1 = 256;
-		PA_obj[screen][n].atr2 = 0;
-		PA_obj[screen][n].atr3 = 0;
+		nspriteanims -= spriteanims[screen][n].play; // remove sprites from sprite to animate list
+		spriteanims[screen][n].play = 0;
 	}
-	for(n = 0; n < 32; n++) {
-		PA_SetRotset(screen,n,0,256,256);  // Pas de zoom ou de rotation par défaut
-	}
-
-FirstGfx[screen] = 0;
-
-nspriteanims = 0; // No animations...
-for(n = 0; n < 128; n++) {
-	nspriteanims -= spriteanims[screen][n].play; // remove sprites from sprite to animate list
-	spriteanims[screen][n].play = 0;
-}
-
-
-if (screen == 0) PA_MoveSpriteType = 0; 
+	
+	
+	if (screen == 0) PA_MoveSpriteType = 0; 
 
 }
 

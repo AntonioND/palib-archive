@@ -21,7 +21,7 @@
 #include "ModFile.h"
 #include "PA_Sound.h"
 #include "Sound7.h"
-#include "microphone7.h"
+//#include "microphone7.h"
 
 #include "SoundCommon.h"
 
@@ -119,11 +119,11 @@ static void SngCmdPlay			(SND_COMMAND *cmd);
 static void SngCmdStop			(SND_COMMAND *cmd);
 static void SngCmdPause		(SND_COMMAND *cmd);
 static void FlashChannel		(u8 channel);
-
+/*
 	//Mic functions
 static void MicCmdStart		(SND_COMMAND *cmd);
 static void MicCmdStop			(SND_COMMAND *cmd);
-
+*/
 	// Command functions (communication from ARM9)
 static void SndCmdSetMemPool	(SND_COMMAND *cmd);
 static void SndCmdPlaySong		(SND_COMMAND *cmd);
@@ -275,8 +275,8 @@ static const COMMAND_FUNC_PTR cmdFuncTable[SND_CMD_NUM] =
 	SndCmdStopSong,				// SND_CMD_STOPSONG
 	SndCmdPauseSong,			// SND_CMD_PAUSESONG
 	SndCmdSetCallback,			// SND_CMD_SETCALLBACK
-	MicCmdStart,				// MIC_CMD_START
-	MicCmdStop,					// MIC_CMD_STOP
+//	MicCmdStart,				// MIC_CMD_START
+//	MicCmdStop,					// MIC_CMD_STOP
 };
 
 const u16 notePeriodTable[] =
@@ -318,7 +318,7 @@ static const s8 vibratoRandomTab[64] =
 void SndInit7()
 {
 	s32 i;
-	u16 oldIME;
+/*	u16 oldIME;
 
 	oldIME = REG_IME;
 	REG_IME = 0;
@@ -331,7 +331,7 @@ void SndInit7()
 		// My custom IRQ handler uses this, but ndslib doesn't have it so 
 		// the call to SndTimerIrq is hardcoded in ARM7 main.cpp's handler.
 //	irqTable[IRQTABLE_TM0] = (u32)SndTimerIrq;
-	REG_IE |= IRQ_TIMER0;
+	REG_IE |= IRQ_TIMER0;*/
 
 	memset(&sndVars, 0, sizeof(sndVars));
 	memset(&sndMod, 0, sizeof(sndMod));
@@ -348,7 +348,7 @@ void SndInit7()
 
 	sndVars.bInitialized = TRUE;
 
-	REG_IME = oldIME;
+//	REG_IME = oldIME;
 
 }	// SndInit
 
@@ -1401,6 +1401,7 @@ static void SngCmdPause(SND_COMMAND *cmd)
 
 	//Mic functions
 //start recording
+/*
 static void MicCmdStart(SND_COMMAND *cmd)
 {
 	PM_SetAmp(PM_AMP_ON);
@@ -1411,4 +1412,4 @@ static void MicCmdStart(SND_COMMAND *cmd)
 static void MicCmdStop(SND_COMMAND *cmd)
 {
 	StopRecording();
-}
+}*/

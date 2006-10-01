@@ -23,6 +23,8 @@ New Stuff
 
 [Platform] Added Platform4 example, which changes the collision system to use PA_EasyBgGetPixel, and can now manage diagonal collisions :)
 
+[DSLite] Added PA_SetDSLBrightness(u8 level) to change the DS Lite light level (0-3)
+
 
 Updated Stuff
 -------------
@@ -52,6 +54,8 @@ Things Fixed
 [EasyBg] Fixed Tile flip bug when loading an EasyBg with more than 1008 tiles, not sure why it was still there :)
 
 [Sound] Sound no longer stops when turning screens off or setting the led to blink mode...
+
+[Microphone] Recoded the whole microphone, now works, though it's ugly...PA_MicGetVol(), PA_MicStartRecording(u8 *Buffer, s32 Length), PA_MicReplay(u8 PA_Channel, u8 *Buffer, s32 Length). See the new example  ;)
 
 
 

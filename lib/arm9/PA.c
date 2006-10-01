@@ -16,7 +16,7 @@ u32 Blank[130000>>2];
 infos PA_UserInfo;
 RTC PA_RTC;  // Infos RTC...
 
-volatile PA_IPCType PA_IPC[16];
+volatile PA_IPCType PA_IPC;
 
 
 typedef struct {

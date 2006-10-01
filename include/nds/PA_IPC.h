@@ -8,12 +8,23 @@ extern "C" {
 
 
 typedef struct {
-	u16 MasterVol;
 	u8 Busy;
 	u8 Volume;  // New Volume
-	u8 ChangeVolume; // 1 if change volume set...
+	u8 ChangeVolume; // 1 if change volume set... Also used for screenlight on DSL
+} PA_IPCSound;
+
+typedef struct{
+	u8 *Data;
+	s32 Length;
+	u8 Volume; // Mic Volume
+} PA_MicInfo;
+
+
+typedef struct{
+	PA_IPCSound Sound[17];
+	PA_MicInfo Mic;
 } PA_IPCType;
-//extern volatile PA_IPCType PA_IPC[16];
+//PA_IPCType PA_IPC;
 
 
 
