@@ -626,9 +626,7 @@ extern inline s8 PA_GetFreeSoundChannel(void){
          \~french Volume, de 0 à 127.
 */
 extern inline void PA_SetSoundChannelVol(u8 PA_Channel, u8 Volume){
-	PA_IPC.Sound[PA_Channel].Volume = Volume;  // Volume level
-	PA_IPC.Sound[PA_Channel].ChangeVolume = 1; // Change volume
-
+	PA_IPC.Sound[PA_Channel].Volume = (Volume&127) + (1<<7);  // Volume level
 }
 
 
@@ -641,11 +639,25 @@ extern inline void PA_SetSoundChannelVol(u8 PA_Channel, u8 Volume){
          \~french Volume, de 0 à 127.
 */
 extern inline void PA_SetSoundVol(u8 Volume){
-	PA_IPC.Sound[16].Volume = Volume;  // Volume level, enable change bit
-	PA_IPC.Sound[16].ChangeVolume = 1; // Change volume
+	PA_IPC.Sound[16].Volume = (Volume&127) + (1<<7);  // Volume level, enable change bit
 }
 
 
+
+/*! \fn extern inline void PA_SetSoundChannelPan(u8 PA_Channel, u8 Pan)
+    \brief
+         \~english Change the pan of a playing sound
+         \~french Changer le pan d'un son en cours
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param Pan
+         \~english Pan, from 0 to 127. (left-right)
+         \~french Pan, de 0 à 127. (gauche-droite)
+*/
+extern inline void PA_SetSoundChannelPan(u8 PA_Channel, u8 Pan){
+	PA_IPC.Sound[PA_Channel].Pan = (Pan&127) + (1<<7);  // Pan level
+}
 
 /** @} */ // end of SoundARM9
 

@@ -25,6 +25,8 @@ New Stuff
 
 [DSLite] Added PA_SetDSLBrightness(u8 level) to change the DS Lite light level (0-3)
 
+[SoundPan] Added PA_SetSoundChannelPan(channel, pan) to set the pan level (left-right, from 0 to 127) of a sound channel. It is reset to 64 after each sound played. Added an example to test it, works well :)
+
 
 Updated Stuff
 -------------
@@ -43,6 +45,8 @@ Updated Stuff
 
 [Video] Video system moved to use PAFS. GBFS code removed. Example modified...
 
+[Sprites] Updated all the outdated sprite examples
+
 
 Things Fixed
 ------------
@@ -56,6 +60,8 @@ Things Fixed
 [Sound] Sound no longer stops when turning screens off or setting the led to blink mode...
 
 [Microphone] Recoded the whole microphone, now works, though it's ugly...PA_MicGetVol(), PA_MicStartRecording(u8 *Buffer, s32 Length), PA_MicReplay(u8 PA_Channel, u8 *Buffer, s32 Length). See the new example  ;)
+
+[DualSprites] Should work better with big sprites. Added a DualSprite example
 
 
 

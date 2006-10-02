@@ -9,8 +9,8 @@ extern "C" {
 
 typedef struct {
 	u8 Busy;
-	u8 Volume;  // New Volume
-	u8 ChangeVolume; // 1 if change volume set... Also used for screenlight on DSL
+	u8 Volume;  // (1<<7) to change Volume, &127 for new Volume
+	u8 Pan; // (1<<7) to change Pan, &127 to get value
 } PA_IPCSound;
 
 typedef struct{

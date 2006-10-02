@@ -45,6 +45,9 @@ const u16 PA_16bit_sizes[4][3] = {
 obj_inf PA_obj[2][128];  // Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...
 
 
+s16 DualSpriteX[128]; // memorize 128 pixel positions for dual sprites
+
+
 //PA_DrawSprites PA_DrawSprite[MAX_DRAW];  // Infos pour dessiner sur les sprites
 
 //unsigned char *PA_SpriteBuffer[MAX_DRAW]; // Pointeurs vers les buffers  que l'on créera à la volée

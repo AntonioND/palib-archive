@@ -39,6 +39,60 @@ int i;
 }
 
 
+extern inline void PA_Mic(void){
+	PA_IPC->Mic.Volume = MIC_ReadData()-124; // Get volume
+	if(PA_IPC->Mic.Data){ // Record new sound...
+		StartRecording(PA_IPC->Mic.Data, PA_IPC->Mic.Length);
+		PA_IPC->Mic.Data = 0;
+	}
+}
+
+
+extern inline void PA_SoundUpdates(void){
+u8 channel;
+	if(PA_IPC->Sound[16].Volume) {  // Change global sound volume
+		SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume&127);
+		PA_IPC->Sound[16].Volume = 0;
+	}
+	if(PA_IPC->Sound[16].Busy){  // Change Brightness
+		PA_SetDSLiteBrightness(PA_IPC->Sound[16].Busy&3);
+		PA_IPC->Sound[16].Busy = 0; // don't change anymore...
+	}
+	for (channel = 0; channel < 16; channel++) {
+		PA_IPC->Sound[channel].Busy = SCHANNEL_CR(channel)>>31;
+		
+		if(PA_IPC->Sound[channel].Volume){ // If you need to change the sound volumes...
+			SCHANNEL_CR(channel) &= ~SOUND_VOL(127); // reset sound volume
+			SCHANNEL_CR(channel) |= SOUND_VOL(PA_IPC->Sound[channel].Volume&127);
+			PA_IPC->Sound[channel].Volume = 0;
+		}
+		
+		if(PA_IPC->Sound[channel].Pan){ // If you need to change the sound volumes...
+			SCHANNEL_PAN(channel) = SOUND_VOL(PA_IPC->Sound[channel].Pan&127);
+			PA_IPC->Sound[channel].Pan = 0;
+		}		
+		
+	}	
+}
+
+
+
+void PA_IPCManage(void){
+	if(PA_SoundBusyInit){  // Sound ready to use...
+		PA_Mic(); // Manage Mic
+		PA_SoundUpdates();  // Get busy sound channels, change volume...
+	}
+	else if(IPC->mailData != 0) {
+		PA_IPC = (PA_IPCType*)(IPC->mailData); // Inits PA Sound busy commands
+		IPC->mailData = 0;
+		PA_SoundBusyInit = 1;
+	}
+
+}
+
+
+
+
 //////////////////////////////////////////////////////////////////////
 //u8 testvar = 0;
 
@@ -87,41 +141,12 @@ void PA_VBL(void){
 		PA_ScreenLight(); // Update the screen lights...
 		//IPC->aux = touchRead(TSC_MEASURE_AUX); // update IPC with new values
 	}
-	
-	u8 channel;
 			
 	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
 	
-	if(PA_SoundBusyInit){  // Sound ready to use...
-		PA_IPC->Mic.Volume = MIC_ReadData()-124; // Get volume
-		if(PA_IPC->Mic.Data){ // Record new sound...
-			StartRecording(PA_IPC->Mic.Data, PA_IPC->Mic.Length);
-			PA_IPC->Mic.Data = 0;
-		}
-		if(PA_IPC->Sound[16].ChangeVolume) {  // Change global sound volume
-			SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume);
-			PA_IPC->Sound[16].Volume = 0;
-		}
-		if(PA_IPC->Sound[16].Busy){  // Change Brightness
-			PA_SetDSLiteBrightness(PA_IPC->Sound[16].Busy&3);
-			PA_IPC->Sound[16].Busy = 0; // don't change anymore...
-		}
-		for (channel = 0; channel < 16; channel++) {
-			PA_IPC->Sound[channel].Busy = SCHANNEL_CR(channel)>>31;
-			if(PA_IPC->Sound[channel].ChangeVolume){ // If you need to change the sound volumes...
-				PA_IPC->Sound[channel].ChangeVolume = 0;
-				SCHANNEL_CR(channel) &= ~SOUND_VOL(127); // reset sound volume
-				SCHANNEL_CR(channel) |= SOUND_VOL(PA_IPC->Sound[channel].Volume);
-			}
-		}	
-	}
-	else if(IPC->mailData != 0) {
-		PA_IPC = (PA_IPCType*)(IPC->mailData); // Inits PA Sound busy commands
-		IPC->mailData = 0;
-		PA_SoundBusyInit = 1;
-	}
+	PA_IPCManage(); // PAlib IPC functions (sound busy, panning, etc...)
 	
-Wifi_Update();
+	Wifi_Update();
 }
 
 
