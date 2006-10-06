@@ -13,14 +13,14 @@ extern "C" {
 #include "PA_Text.h"
 
 typedef struct{
-	char Name[20];
+	char Name[64];
 	char Ext[6];
 	u32 Length;
 	u32 FilePos;
 }PAFSFiles;
 
 typedef struct{
-	char Name[20];
+	char Name[64];
 	u32 FirstFile;  // Number of the first file...
 	u32 NFiles;    // Number of files
 	u32 FirstFolder;  // Number of the first folder...

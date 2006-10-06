@@ -155,9 +155,19 @@ u8 i;
 
 u8 PA_oldVolume;
 
+extern inline void PA_UpdateMoveSprite(void) {
+	PA_MovedSprite.Time++;
+	if ((PA_MovedSprite.Time > 2) || Stylus.Released) {
+		PA_MovedSprite.Moving = 0;
+		PA_MovedSprite.Time = 0;
+	}
+}
+
 void PA_vblFunc(void){
 //PA_OutputText(0, 0, 0, "VBL Ok");
 PA_UpdateOAM(); // Updates the Object on screen
+//DC_FlushRange((void*)&Stylus, sizeof(Stylus));// Updates the stylus code
+//DC_FlushRange((void*)&Pad, sizeof(Pad));// Updates the stylus code
 PA_UpdatePad(); // Updates the Keypad...
 PA_UpdateStylus(); // Updates the stylus input
 PA_UpdateMoveSprite(); // Met à jour les infos sur les déplacements de sprites

@@ -48,6 +48,20 @@ const s16 winfades[][4] = {
 };
 
 
+
+
+//Keypad stuff...
+Pads Pad;
+PA_Pad* PadPointer;
+
+PA_Stylus Stylus;
+
+
+PA_movingsprite  PA_MovedSprite; // Pour les sprites que l'on bouge...
+
+u8 PA_MoveSpriteType = 0;
+
+
 /*
 typedef struct{
 	u8 snd_action[16]; // 0 - rien, 1 - play, 2 - stop, 3 - pause
@@ -113,7 +127,8 @@ Stylus.Y = 96;
 PA_VBLFunctionReset();
 irqInit();
 //PA_ResetInterrupts();
-
+PA_IPC.Stylus = &Stylus;  	// Gives access to the stylus data
+PA_IPC.Pad = &Pad;	      	// Gives access to the pad data
 IPC->mailData = (u32)(&PA_IPC);
 
 for (i = 0; i < 2; i++){

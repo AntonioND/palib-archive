@@ -3,7 +3,6 @@
 extern "C" {
 #endif
 #include <nds.h>
-#include "PA/PA_Sound.c"
 //#include "command.h"
 
 // precalculate some values
@@ -28,6 +27,9 @@ s32 TOUCH_HEIGHT;
 u16 PA_ReadSPI(void);
 
 u16 PA_NewSPI;
+
+PA_IPCType *PA_IPC;
+u8 PA_SoundBusyInit;
 
 void PA_Init(void){
  	rtcReset();
@@ -57,14 +59,13 @@ void PA_InitVBL(void){
 
 
 s32 oldx; s32 oldy; // Stylus positions...
-
+touchPosition tempPos;
 
 // stylus code from libnds
 //---------------------------------------------------------------------------------
 void PA_UpdateStylus(void){
 //---------------------------------------------------------------------------------
-
-	touchPosition tempPos = touchReadXY();
+	tempPos = touchReadXY();
 	
 	IPC->touchX    = tempPos.x;
     IPC->touchY    = tempPos.y;
@@ -288,11 +289,6 @@ void PA_DSLiteBrightness(u32 msg)
     } 
 }
 */
-
-
-
-
-
 
 
 

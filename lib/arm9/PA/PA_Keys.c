@@ -12,17 +12,56 @@ extern "C" {
 //////////////////////////////////////////////////////////////////////
 
 
-Pads Pad;
-PA_Pad* PadPointer;
 
-PA_Stylus Stylus;
+extern u16 CompletePad, ExPad, TempPad;
+#define UPDATEPAD(type, pad)  type.A = pad & BUTTON_A;\
+   type.B = (pad & BUTTON_B) >> 1;\
+   type.Select = (pad & BUTTON_SELECT) >> 2;\
+   type.Start = (pad & BUTTON_START) >> 3;\
+   type.Right = (pad & BUTTON_RIGHT) >> 4;\
+   type.Left = (pad & BUTTON_LEFT) >> 5;\
+   type.Up = (pad & BUTTON_UP) >> 6;\
+   type.Down = (pad & BUTTON_DOWN) >> 7;\
+   type.R = (pad & BUTTON_R) >> 8;\
+   type.L = (pad & BUTTON_L) >> 9;\
+   type.X = (pad & BUTTON_X) >> 10;\
+   type.Y = (pad & BUTTON_Y) >> 11;\
+   type.Anykey = (!(!((pad&2047))));
+  /*
+#define COPYPAD(new, old)  new.A = old.A;\
+   new.B = old.B;\
+   new.Select = old.Select;\
+   new.Start = old.Start;\
+   new.Right = old.Right;\
+   new.Left = old.Left;\
+   new.Up = old.Up;\
+   new.Down = old.Down;\
+   new.R = old.R;\
+   new.L =  old.L;\
+   new.X = old.X;\
+   new.Y = old.Y;*/
+   
+   #define PA_BUTTONS (*(volatile u16*)0x04000130)
+
+#ifndef REG_KEYCNT
+	#define REG_KEYCNT (*(volatile u16*)0x04000132)
+#endif
+
+#define BUTTON_A 1
+#define BUTTON_B 2
+#define BUTTON_SELECT 4
+#define BUTTON_START 8
+#define BUTTON_RIGHT 16
+#define BUTTON_LEFT 32
+#define BUTTON_UP 64
+#define BUTTON_DOWN 128
+#define BUTTON_R 256
+#define BUTTON_L 512
+#define BUTTON_X 1024
+#define BUTTON_Y 2048
 
 u16 CompletePad, ExPad, TempPad;
 
-
-PA_movingsprite  PA_MovedSprite; // Pour les sprites que l'on bouge...
-
-u8 PA_MoveSpriteType = 0;
 
 void PA_UpdatePad(void) {
    ExPad = CompletePad;
@@ -36,6 +75,12 @@ void PA_UpdatePad(void) {
 
 
 }
+
+
+
+
+
+
 
 void PA_UpdateStylus(void) {
 //u8 temp = (((~IPC->buttons) << 6) & (1<<12));
@@ -84,6 +129,9 @@ u8 temp = ((~IPC->buttons) >> 6) & 1;
 		
 	
 }
+
+
+
 
 
 u8 PA_MoveSpriteEx(u8 screen, u8 sprite, u8 lx, u8 ly) {
@@ -135,6 +183,9 @@ if (y >= 220) y -=256; // normalize the X coordinate...
 
 
 
+
+
+
 u8 PA_MoveSpritePix(u8 sprite){
 
 	if (Stylus.Released) {
@@ -150,7 +201,8 @@ u8 PA_MoveSpritePix(u8 sprite){
 				PA_MovedSprite.Sprite = sprite;
 				PA_MovedSprite.X = PA_GetSpriteX(PA_Screen, sprite);
 				PA_MovedSprite.Y = PA_GetSpriteY(PA_Screen, sprite);
-				
+				if (PA_MovedSprite.X >= 458) PA_MovedSprite.X -=511; // normalize the X coordinate...
+				if (PA_MovedSprite.Y >= 220) PA_MovedSprite.Y -=256; // normalize the y coordinate...
 			}
 		}	
 		else if ((!Stylus.Newpress) && PA_MovedSprite.Moving && (PA_MovedSprite.Sprite == sprite)) { // Si on peut le déplacer...

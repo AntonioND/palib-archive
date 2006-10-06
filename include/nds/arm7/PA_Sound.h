@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-#include "../PA7.h"
+#include <PA7.h>
 
 #define MAX_SOUNDS 128 // Nombre maximum de sons à 32...
 #define IPCSOUND 12  // Numéro de code pour le son en com...
@@ -18,6 +18,9 @@ extern "C" {
 #define ACTION_PLAY 1
 #define ACTION_STOP 2
 
+
+extern PA_IPCType *PA_IPC;
+extern u8 PA_SoundBusyInit;
 
 typedef struct {
 	s32 Rate; // Frequence
@@ -43,6 +46,7 @@ extern StartSoundInfo* PA_StartSoundInfo; // Permet de démarrer ou arreter le so
     Play sounds ! Arm7 only
 */
 
+void PA_SetDSLiteBrightness(u8 level);
 
 
 
@@ -175,6 +179,46 @@ extern inline void PA_SetChannelVolume(u8 Channel, u8 Volume) {
 	SCHANNEL_CR(Channel) &= ~SOUND_VOL(127);
 	SCHANNEL_CR(Channel) |= SOUND_VOL(Volume&127);
 }
+
+
+
+
+extern inline void PA_Mic(void){
+	PA_IPC->Mic.Volume = MIC_ReadData()-124; // Get volume
+	if(PA_IPC->Mic.Data){ // Record new sound...
+		StartRecording(PA_IPC->Mic.Data, PA_IPC->Mic.Length);
+		PA_IPC->Mic.Data = 0;
+	}
+}
+
+
+extern inline void PA_SoundUpdates(void){
+u8 channel;
+	if(PA_IPC->Sound[16].Volume) {  // Change global sound volume
+		SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume&127);
+		PA_IPC->Sound[16].Volume = 0;
+	}
+	if(PA_IPC->Sound[16].Busy){  // Change Brightness
+		PA_SetDSLiteBrightness(PA_IPC->Sound[16].Busy&3);
+		PA_IPC->Sound[16].Busy = 0; // don't change anymore...
+	}
+	for (channel = 0; channel < 16; channel++) {
+		PA_IPC->Sound[channel].Busy = SCHANNEL_CR(channel)>>31;
+		
+		if(PA_IPC->Sound[channel].Volume){ // If you need to change the sound volumes...
+			SCHANNEL_CR(channel) &= ~SOUND_VOL(127); // reset sound volume
+			SCHANNEL_CR(channel) |= SOUND_VOL(PA_IPC->Sound[channel].Volume&127);
+			PA_IPC->Sound[channel].Volume = 0;
+		}
+		
+		if(PA_IPC->Sound[channel].Pan){ // If you need to change the sound volumes...
+			SCHANNEL_PAN(channel) = SOUND_VOL(PA_IPC->Sound[channel].Pan&127);
+			PA_IPC->Sound[channel].Pan = 0;
+		}		
+		
+	}	
+}
+
 
 
 /** @} */ // end of SoundARM7

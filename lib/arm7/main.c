@@ -16,8 +16,6 @@
 #include <NDS/ARM7/clock.h>
 */
 
-PA_IPCType *PA_IPC;
-u8 PA_SoundBusyInit;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -39,48 +37,13 @@ int i;
 }
 
 
-extern inline void PA_Mic(void){
-	PA_IPC->Mic.Volume = MIC_ReadData()-124; // Get volume
-	if(PA_IPC->Mic.Data){ // Record new sound...
-		StartRecording(PA_IPC->Mic.Data, PA_IPC->Mic.Length);
-		PA_IPC->Mic.Data = 0;
-	}
-}
-
-
-extern inline void PA_SoundUpdates(void){
-u8 channel;
-	if(PA_IPC->Sound[16].Volume) {  // Change global sound volume
-		SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume&127);
-		PA_IPC->Sound[16].Volume = 0;
-	}
-	if(PA_IPC->Sound[16].Busy){  // Change Brightness
-		PA_SetDSLiteBrightness(PA_IPC->Sound[16].Busy&3);
-		PA_IPC->Sound[16].Busy = 0; // don't change anymore...
-	}
-	for (channel = 0; channel < 16; channel++) {
-		PA_IPC->Sound[channel].Busy = SCHANNEL_CR(channel)>>31;
-		
-		if(PA_IPC->Sound[channel].Volume){ // If you need to change the sound volumes...
-			SCHANNEL_CR(channel) &= ~SOUND_VOL(127); // reset sound volume
-			SCHANNEL_CR(channel) |= SOUND_VOL(PA_IPC->Sound[channel].Volume&127);
-			PA_IPC->Sound[channel].Volume = 0;
-		}
-		
-		if(PA_IPC->Sound[channel].Pan){ // If you need to change the sound volumes...
-			SCHANNEL_PAN(channel) = SOUND_VOL(PA_IPC->Sound[channel].Pan&127);
-			PA_IPC->Sound[channel].Pan = 0;
-		}		
-		
-	}	
-}
-
 
 
 void PA_IPCManage(void){
 	if(PA_SoundBusyInit){  // Sound ready to use...
 		PA_Mic(); // Manage Mic
 		PA_SoundUpdates();  // Get busy sound channels, change volume...
+	//	PA_UpdatePad();
 	}
 	else if(IPC->mailData != 0) {
 		PA_IPC = (PA_IPCType*)(IPC->mailData); // Inits PA Sound busy commands
@@ -108,8 +71,8 @@ void PA_VBL(void){
  
     // Read the X/Y buttons and the /PENIRQ line
     but = REG_KEYXY;
-    if (!(but & 0x40)) {
-		PA_UpdateStylus();
+    if (!(but & 0x40)) {   //
+		PA_UpdateStylus();  // If IPC set correctly
 		/*MIC_On();
 		StartRecording((u8*)33808000, 100000);
 		*(u8*)33807928 = 1;*/

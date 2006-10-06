@@ -27,6 +27,12 @@ New Stuff
 
 [SoundPan] Added PA_SetSoundChannelPan(channel, pan) to set the pan level (left-right, from 0 to 127) of a sound channel. It is reset to 64 after each sound played. Added an example to test it, works well :)
 
+[16cText] Added PA_16cLetterPos (.Letter[n].X/Y and .NLetters), which allows you to get the position of each letter outputted by the LAST 16cText...
+
+[Demos] Added a TypeWritter demo. It has a nice little cursor to add text anywhere in your string (not just at the end like the plain Keyboard example), and supports different text sizes, all this being done using the 16c Text system and the new PA_16cLetterPos structure
+
+[16c] Added PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2) to erase part of the screen
+
 
 Updated Stuff
 -------------
@@ -47,6 +53,12 @@ Updated Stuff
 
 [Sprites] Updated all the outdated sprite examples
 
+[PAFS] Name length passed to 64 characters. You'll need to use the latest PAFS.exe with the latest PAlib... (PAlib/Tools/PAFS)
+
+[PAGfx] Much better purcentage output (took into account the fact that it slowed down over time) and shows expected time left.
+
+[Arm7] Code cleaning...
+
 
 Things Fixed
 ------------
@@ -62,6 +74,8 @@ Things Fixed
 [Microphone] Recoded the whole microphone, now works, though it's ugly...PA_MicGetVol(), PA_MicStartRecording(u8 *Buffer, s32 Length), PA_MicReplay(u8 PA_Channel, u8 *Buffer, s32 Length). See the new example  ;)
 
 [DualSprites] Should work better with big sprites. Added a DualSprite example
+
+[MoveSpritePix] Fixed the bug where the sprite couldn't be moved if partly off-screen... Might not work well with 64x64 sprites that are too much offscreen though, sorry, but that reaches the DS's X/Y corrdinate limits ^^
 
 
 

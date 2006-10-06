@@ -25,7 +25,7 @@ extern u32 Blank[130000>>2];
 typedef struct{
 	s32 NLetters;
 	struct{
-		u8 X, Y;
+		s16 X, X2, Y;
 	}Letter[2048];
 } LetterPos16c;
 extern LetterPos16c PA_16cLetterPos;
@@ -374,12 +374,32 @@ ALWAYSINLINE void PA_16c16X16(u8 screen, s16 x, s16 y, u32 *image){
 
 
 extern inline void PA_16cLetter(u8 screen, s16 x, s16 y, char letter, u8 size, u8 color){
-PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].X = x-8;
-PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].Y = y-8;
-PA_16cLetterPos.NLetters++;
 	if (c16_policeheight[size]<=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<3)), color);
 	else PA_16c16X16Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<5)), color);
 }
+
+
+/*! \fn void PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2)
+    \brief
+         \~english Erase a 16c background zone
+         \~french Effacer une partie d'un fond 16c
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param x1
+         \~english Upper left corner...
+         \~french Coin supérieur gauche...
+    \param y1
+         \~english Upper left corner...
+         \~french Coin supérieur gauche...
+    \param x2
+         \~english Lower right corner...
+         \~french Coin inférieur droit...
+    \param y2
+         \~english Lower right corner...
+         \~french Coin inférieur droit...
+*/
+void PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2);
 
 
 

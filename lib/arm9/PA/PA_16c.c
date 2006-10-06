@@ -59,7 +59,10 @@ void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette){
 }   
 
 
-
+void PA_AddLetterPos(s16 Letter, s16 x, s16 y){
+	PA_16cLetterPos.Letter[Letter].X = x;
+	PA_16cLetterPos.Letter[Letter].Y = y;
+}
 
 
 s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, s32 limit){
@@ -82,15 +85,19 @@ PA_16cLetterPos.NLetters = 0; // 0 letters now...
 
 for (i = 0; (text[i] && y <= ylimiy && i < limit); i++) {
 	if (text[i] == '\n'){
+		PA_AddLetterPos(i, x, y);
 		/*if (transp == 0){
 			while(x < maxx) { // On efface tout ce qui suit
 				//for (j = 0; j < ly; j++) PA_Put8bitPixel(screen, x, y + j, 0);
 				x++;
 			}
 		}*/
-		if (text[i+1] == ' ') i++; // On vire s'il y a un espace	
 		x = basex;
 		y += ly;	
+		if (text[i+1] == ' ') {
+			PA_AddLetterPos(i+1, x, y);
+			i++; // On vire s'il y a un espace	
+		}		
 	}
 	else{
 		wordletter = 1;
@@ -121,6 +128,7 @@ for (i = 0; (text[i] && y <= ylimiy && i < limit); i++) {
 						if (letter > 128) letter -= 96; // pour les accents...
 						lx = c16_policesize[size][letter];
 						PA_16cLetter(screen, x, y, letter, size, color);
+						PA_AddLetterPos(j, x, y);
 						x += lx;
 					}
 					i+=wordletter-1;
@@ -137,6 +145,7 @@ for (i = 0; (text[i] && y <= ylimiy && i < limit); i++) {
 				lx = c16_policesize[size][letter];
 //				if (letter >= 0) {
 					PA_16cLetter(screen, x, y, letter, size, color);
+					PA_AddLetterPos(j, x, y);
 					//letters[transp](size, screen, x, y, letter, color);				
 					x += lx;
 //				}
@@ -146,10 +155,9 @@ for (i = 0; (text[i] && y <= ylimiy && i < limit); i++) {
 
 	}
 }
-PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].X = x;
-PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].Y = y;
+PA_AddLetterPos(i, x, y);
 length = i;
-
+PA_16cLetterPos.NLetters = length;
 
 
 return length;
@@ -157,6 +165,38 @@ return length;
 }
 
 
+
+void PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2){  
+	x1 += 8; y1 += 8; y2 += 8;
+	u16 temp, pos;
+	s16 i, j;
+	s16 minx = x1&(0xffffffff-7);
+	if (minx != x1) minx += 8;
+	s16 maxx = x2&(0xffffffff-7);
+
+	pos = PA_16cPos(x1, y1);	
+	temp = (x1&7)<<2;
+	for (j = 0; j <= y2-y1; j++){
+		PA_Draw1632[screen][pos] &= (0xffffffff>>(32-temp)); 
+		PA_Draw1632[screen][pos+(26*8)] &= (0xffffffff<<temp);	
+		pos++;
+	}
+   
+	for (i = minx; i <= maxx; i+=8){ // 8 by 8...
+		pos = PA_16cPos(i, y1);		
+		for (j = 0; j <= y2-y1; j++){
+			PA_Draw1632[screen][pos] = 0;
+			pos++;
+		}
+	}
+	pos = PA_16cPos(x2, y1);	
+	temp = (x2&7)<<2;
+	for (j = 0; j <= y2-y1; j++){
+		PA_Draw1632[screen][pos] &= (0xffffffff>>(32-temp)); 
+		PA_Draw1632[screen][pos+(26*8)] &= (0xffffffff<<temp);
+		pos++;
+	}	
+}  
 
 
 
@@ -170,13 +210,13 @@ return length;
 					  {2, 2, 4, 7, 6, 9, 0, 2, 4, 4, 2, 6, 3, 4, 3, 4, 6, 4, 6, 6, 6, 6, 6, 6, 6, 6, 3, 3, 4, 6, 4, 5,
 					   8, 6, 6, 6, 5, 5, 5, 6, 6, 4, 4, 6, 5, 6, 7, 7, 6, 7, 6, 6, 6, 6, 6, 8, 6, 6, 6, 4, 4, 4, 6, 6,
 				       2, 5, 5, 5, 5, 5, 5, 6, 5, 2, 4, 5, 2, 8, 5, 5, 5, 5, 5, 5, 4, 5, 4, 6, 6, 4, 5, 0, 0, 0, 0, 0},						   
-					  {2, 2, 4, 8, 6, 9, 0, 2, 4, 4, 2, 6, 3, 4, 3, 4, 6, 4, 7, 7, 7, 7, 7, 7, 7, 7, 3, 3, 6, 6, 6, 5,
+					  {3, 2, 4, 8, 6, 9, 0, 2, 4, 4, 2, 6, 3, 4, 3, 4, 6, 4, 7, 7, 7, 7, 7, 7, 7, 7, 3, 3, 6, 6, 6, 5,
 					   9, 9, 7, 8, 8, 7, 7, 9, 10, 4, 6, 8, 7, 10, 9, 9, 7, 9, 8, 7, 8, 9, 9, 12, 9, 8, 7, 4, 4, 4, 8, 6,
 				       2, 7, 7, 6, 7, 6, 6, 7, 8, 4, 4, 7, 4, 12, 8, 6, 7, 7, 6, 5, 5, 8, 7, 10, 7, 8, 5, 0, 0, 0, 0, 0},		
-					  {2, 3, 6, 9, 8, 11, 0, 3, 6, 6, 3, 8, 3, 6, 3, 5, 9, 5, 8, 8, 8, 8, 8, 8, 8, 8, 3, 3, 7, 8, 7, 7,
+					  {3, 3, 6, 9, 8, 11, 0, 3, 6, 6, 3, 8, 3, 6, 3, 5, 9, 5, 8, 8, 8, 8, 8, 8, 8, 8, 3, 3, 7, 8, 7, 7,
 					   13, 11, 10, 10, 11, 10, 9, 11, 12, 7, 8, 10, 11, 14, 11, 11, 9, 11, 10, 8, 11, 10, 11, 14, 10, 11, 9, 5, 7, 5, 8, 9,
 				       3, 8, 9, 8, 9, 8, 6, 9, 10, 5, 5, 9, 5, 15, 10, 9, 9, 9, 7, 7, 6, 10, 9, 12, 9, 9, 7, 0, 0, 0, 0, 0},		
-					  {2, 4, 8, 12, 11, 15, 0, 4, 6, 6, 4, 10, 5, 6, 4, 6, 12, 8, 10, 10, 12, 10, 11, 10, 11, 11, 4, 5, 10, 10, 10, 9,
+					  {4, 4, 8, 12, 11, 15, 0, 4, 6, 6, 4, 10, 5, 6, 4, 6, 12, 8, 10, 10, 12, 10, 11, 10, 11, 11, 4, 5, 10, 10, 10, 9,
 					   16, 15, 14, 13, 15, 13, 13, 16, 16, 8, 11, 15, 14, 16, 15, 14, 13, 14, 16, 11, 12, 15, 14, 16, 15, 16, 14, 5, 5, 5, 10, 9,
 				       4, 10, 11, 10, 11, 9, 8, 10, 12, 6, 7, 11, 6, 16, 12, 10, 11, 11, 9, 8, 8, 12, 11, 16, 12, 11, 10, 0, 0, 0, 0, 0},		
 					   };
