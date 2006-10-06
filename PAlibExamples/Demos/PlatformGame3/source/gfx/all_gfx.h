@@ -11,16 +11,16 @@ extern const unsigned char mario_Sprite[3072] __attribute__ ((aligned (4))) ;  /
 
 // Background files : 
 extern const int mario_world_Info[3]; // BgMode, Width, Height
-extern const unsigned short mario_world_Map[3072] __attribute__ ((aligned (4))) ;  // Pal : mario_world_Pal
+extern const unsigned short mario_world_Map[4096] __attribute__ ((aligned (4))) ;  // Pal : mario_world_Pal
 extern const unsigned char mario_world_Tiles[1024] __attribute__ ((aligned (4))) ;  // Pal : mario_world_Pal
 
 extern const int hills_Info[3]; // BgMode, Width, Height
-extern const unsigned short hills_Map[2304] __attribute__ ((aligned (4))) ;  // Pal : hills_Pal
+extern const unsigned short hills_Map[3072] __attribute__ ((aligned (4))) ;  // Pal : hills_Pal
 extern const unsigned char hills_Tiles[2432] __attribute__ ((aligned (4))) ;  // Pal : hills_Pal
 
 extern const int back_Info[3]; // BgMode, Width, Height
-extern const unsigned short back_Map[1536] __attribute__ ((aligned (4))) ;  // Pal : back_Pal
-extern const unsigned char back_Tiles[256] __attribute__ ((aligned (4))) ;  // Pal : back_Pal
+extern const unsigned short back_Map[2048] __attribute__ ((aligned (4))) ;  // Pal : back_Pal
+extern const unsigned char back_Tiles[320] __attribute__ ((aligned (4))) ;  // Pal : back_Pal
 
 
 // Palette files : 

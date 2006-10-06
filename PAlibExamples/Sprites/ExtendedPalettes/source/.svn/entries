@@ -1,31 +1,0 @@
-8
-
-dir
-28
-https://palibds.googlecode.com/svn/Examples/Sprites/ExtendedPalettes/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T12:16:56.359737Z
-28
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-
-
-
-
-2005-11-22T10:50:21.671875Z
-dd5a72dbd81ffc5ffe66a1c9597d99ab
-2006-09-12T12:16:56.359737Z
-28
-molousk
-

@@ -23,8 +23,8 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_FS.h::PA_FSRam"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_FSRam</b>(size)&nbsp;&nbsp;&nbsp;char PA_FileSystem[size] = "PAFS007";</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga5" doxytag="PA_FS.h::PA_PAFSFile"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga5">PA_PAFSFile</a>(FileN)&nbsp;&nbsp;&nbsp;((void*)(PAFSStart+PA_FSFile[FileN].FilePos))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga8" doxytag="PA_FS.h::PA_PAFSFile"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(FileN)&nbsp;&nbsp;&nbsp;((void*)(PAFSStart+PA_FSFile[FileN].FilePos))</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns a pointer towards the given file number <br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
@@ -34,20 +34,29 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_FSAllInit</b> (voi
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="PA_FS.h::PA_FSInit"></a>
 u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga0">PA_FSInit</a> (void)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialises PAFS and returns the number of files found... Stores the file infos in the following form : PA_FSFile[file number].Name is the file name without the extension, .Ext si the file extension (txt, html, etc...), and .Length is the file length. <a class="el" href="group___p_a_f_s.html#ga5">PA_PAFSFile(FileNumber)</a> is a pointer towards a given file <br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialises PAFS and returns the number of files found... Stores the file infos in the following form : PA_FSFile[file number].Name is the file name without the extension, .Ext si the file extension (txt, html, etc...), and .Length is the file length. <a class="el" href="group___p_a_f_s.html#ga8">PA_PAFSFile(FileNumber)</a> is a pointer towards a given file <br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga1" doxytag="PA_FS.h::PA_FSRamInit"></a>
 u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga1">PA_FSRamInit</a> (void)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialises PAFS and returns the number of files found... Stores the file infos in the following form : PA_FSFile[file number].Name is the file name without the extension, .Ext si the file extension (txt, html, etc...), and .Length is the file length. <a class="el" href="group___p_a_f_s.html#ga5">PA_PAFSFile(FileNumber)</a> is a pointer towards a given file. This version stores the files in the ram, which makes it work in emulators and on WMB, but is limited to a few megs... <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">s32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga2">PA_FSGetFile</a> (s16 start, char *name, char *extension)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialises PAFS and returns the number of files found... Stores the file infos in the following form : PA_FSFile[file number].Name is the file name without the extension, .Ext si the file extension (txt, html, etc...), and .Length is the file length. <a class="el" href="group___p_a_f_s.html#ga8">PA_PAFSFile(FileNumber)</a> is a pointer towards a given file. This version stores the files in the ram, which makes it work in emulators and on WMB, but is limited to a few megs... <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga2">PA_FSGetFolder</a> (char *name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Search in PAFS for a given file. Returns the number of the file in the PA File System, or -1 if no file was found  <a href="group___p_a_f_s.html#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga3">PA_FSSearchExt</a> (s16 *array, char *extension)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Search in PAFS for a given folder. Returns the number of the folder in the PA File System, or -1 if no folder was found  <a href="group___p_a_f_s.html#ga2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga3">PA_FSGetFile</a> (s16 start, char *name, char *extension)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Puts the number of all the PAFS files with a given extension in the array, and returns the number of files found  <a href="group___p_a_f_s.html#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga4">PA_Malloc</a> (void **pointer, u32 size)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Search in PAFS for a given file. Returns the number of the file in the PA File System, or -1 if no file was found  <a href="group___p_a_f_s.html#ga3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga4">PA_FSSearchExt</a> (s16 *array, char *extension)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Safe malloc, checks and frees the memory if necessary first  <a href="group___p_a_f_s.html#ga4"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Puts the number of all the PAFS files with a given extension in the array, and returns the number of files found  <a href="group___p_a_f_s.html#ga4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga5">PA_Malloc</a> (void **pointer, u32 size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Safe malloc, checks and frees the memory if necessary first  <a href="group___p_a_f_s.html#ga5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga6">PA_FSBgLoad</a> (u8 screen, u8 bg_number, u32 filenumber)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Easiest way to load a background converted with PAGfx... from PAFS !  <a href="group___p_a_f_s.html#ga6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___p_a_f_s.html#ga7">PA_FSBgNameLoad</a> (u8 screen, u8 bg_number, char *bg_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background from PAFS using its name...  <a href="group___p_a_f_s.html#ga7"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_FS.h::PA_FSSys"></a>
 PAFSSystems *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_FSSys</b></td></tr>
@@ -65,7 +74,7 @@ char *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAFSStart</b></td><
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 PA File System. 
 <p>
-PA File System<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:27 2006 for PAlib by&nbsp;
+PA File System<hr size="1"><address style="align: right;"><small>Generated on Fri Oct 6 17:35:24 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

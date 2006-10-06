@@ -99,8 +99,8 @@ u8 bg = 3;
 }
 
 
-#define INT_MIN 0
-#define INT_MAX 2147483647
+#define PA_INT_MIN 0
+#define PA_INT_MAX 2147483647
 
 void m7_horz_calc(void){
     if(_m7_cam.v.y != 0)
@@ -110,7 +110,7 @@ void m7_horz_calc(void){
 //        _m7_horizon= M7_TOP - swiDivide(horz<<M7_D_SH, M7_FAR_BG*_m7_cam.v.y);
     }
     else
-        _m7_horizon= _m7_cam.w.y > 0 ? INT_MIN : INT_MAX;
+        _m7_horizon= _m7_cam.w.y > 0 ? PA_INT_MIN : PA_INT_MAX;
 }
 
 

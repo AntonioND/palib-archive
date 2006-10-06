@@ -1,31 +1,0 @@
-8
-
-dir
-28
-https://palibds.googlecode.com/svn/Examples/Sprites/DrawOnSprite/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T12:16:56.359737Z
-28
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-
-
-
-
-2006-02-02T15:45:54.921875Z
-0de1cc7d044439511df447c218747dfd
-2006-09-12T12:16:56.359737Z
-28
-molousk
-

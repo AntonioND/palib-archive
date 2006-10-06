@@ -5,8 +5,8 @@
 //////////////////////////////////////////////////////////////////////
 
 #include <PA7.h>
-#include <command.h>
-#include "microphone7.h"
+//#include <command.h>
+//#include "microphone7.h"
 #include <dswifi7.h>
 /*
 #include <NDS/NDS.h>
@@ -16,8 +16,6 @@
 #include <NDS/ARM7/clock.h>
 */
 
-u8 *PA_SoundsBusy;
-u8 PA_SoundBusyInit;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -39,6 +37,25 @@ int i;
 }
 
 
+
+
+void PA_IPCManage(void){
+	if(PA_SoundBusyInit){  // Sound ready to use...
+		PA_Mic(); // Manage Mic
+		PA_SoundUpdates();  // Get busy sound channels, change volume...
+	//	PA_UpdatePad();
+	}
+	else if(IPC->mailData != 0) {
+		PA_IPC = (PA_IPCType*)(IPC->mailData); // Inits PA Sound busy commands
+		IPC->mailData = 0;
+		PA_SoundBusyInit = 1;
+	}
+
+}
+
+
+
+
 //////////////////////////////////////////////////////////////////////
 //u8 testvar = 0;
 
@@ -54,8 +71,8 @@ void PA_VBL(void){
  
     // Read the X/Y buttons and the /PENIRQ line
     but = REG_KEYXY;
-    if (!(but & 0x40)) {
-		PA_UpdateStylus();
+    if (!(but & 0x40)) {   //
+		PA_UpdateStylus();  // If IPC set correctly
 		/*MIC_On();
 		StartRecording((u8*)33808000, 100000);
 		*(u8*)33807928 = 1;*/
@@ -87,34 +104,12 @@ void PA_VBL(void){
 		PA_ScreenLight(); // Update the screen lights...
 		//IPC->aux = touchRead(TSC_MEASURE_AUX); // update IPC with new values
 	}
-	
-	u8 itest;
-	/*if(PA_SoundBusyInit){  // Check for sound stopping
-		for (itest = 0; itest < 16; itest++){
-			if(PA_SoundsBusy[itest+16] == 1){
-				SCHANNEL_CR(itest)=0;  // Stop sound...
-				PA_SoundsBusy[itest+16] = 0; // Reset
-			}
-		}
-	}*/
-			
 			
 	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
 	
-//	testvar++; testvar&=127;
-
-	if(PA_SoundBusyInit){
-		for (itest = 0; itest < 16; itest++) {
-			PA_SoundsBusy[itest] = SCHANNEL_CR(itest)>>31;
-		}	
-	}
-	else if(IPC->mailData != 0) {
-		PA_SoundsBusy = (u8*)(IPC->mailData); // Inits PA Sound busy commands
-		IPC->mailData = 0;
-		PA_SoundBusyInit = 1;
-	}
+	PA_IPCManage(); // PAlib IPC functions (sound busy, panning, etc...)
 	
-Wifi_Update();
+	Wifi_Update();
 }
 
 
@@ -124,8 +119,8 @@ Wifi_Update();
  
  
 void timer0(void){
-
-SndTimerIrq();
+	ProcessMicrophoneTimerIRQ();
+	SndTimerIrq();
 }
  
 void arm7_synctoarm9() { // send fifo message
@@ -142,48 +137,20 @@ int main(int argc, char ** argv) {
 IPC->mailData=0;
 IPC->mailSize=0; 
   PA_SoundBusyInit = 0;
-  PA_Init();
+
   
-
-
- /*
-     TransferSound *snd = IPC->soundData;
-    IPC->soundData = 0;
-for (u8 i = 0; i < 16; i++) snd->data[i].vol = 0;*/	
-  //enable sound
-//  SOUND_CR = SCHANNEL_ENABLE | SOUND_VOL(0x7F);
-//  IPC->soundData = 0;
-
-
-
- 	rtcReset();
-
-	//enable sound
-	powerON(POWER_SOUND);
-	SOUND_CR = SOUND_ENABLE | SOUND_VOL(0x7F);
-	IPC->soundData = 0;
-
-	
+	PA_Init();
 	irqInit();
 	irqSet(IRQ_VBLANK, PA_VBL);
 	irqEnable(IRQ_VBLANK);
 	irqSet(IRQ_TIMER0, timer0);
 	irqEnable(IRQ_TIMER0);	
-	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
-	irqEnable(IRQ_TIMER3);	
+//	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
+//	irqEnable(IRQ_TIMER3);	
 	
 	//supprime pour test
     irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
 	irqEnable(IRQ_WIFI);
-
-/*
-  // Set up the interrupt handler
-  REG_IME = 0;
-  IRQ_HANDLER = &InterruptHandler;
-  REG_IE = IRQ_VBLANK | IRQ_TIMER3|IRQ_TIMER0;
-  REG_IF = ~0;
-  DISP_SR = DISP_VBLANK_IRQ;
-  REG_IME = 1;*/
   
  //supprime pour test
   SndInit7 ();

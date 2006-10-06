@@ -9,23 +9,19 @@
 <h1>Sound ARM9 functions</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga26">PA_PlaySimpleSound</a>(PA_Channel, sound)&nbsp;&nbsp;&nbsp;PA_PlaySoundEx(PA_Channel, (void*)sound, (u32)sound##_size, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga28">PA_PlaySimpleSound</a>(PA_Channel, sound)&nbsp;&nbsp;&nbsp;PA_PlaySoundEx(PA_Channel, (void*)sound, (u32)sound##_size, PA_SoundOption.volume, PA_SoundOption.freq, PA_SoundOption.format)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="#ga26"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga27">PA_PlayMod</a>(mod_snd)&nbsp;&nbsp;&nbsp;SndPlayMOD((u8*)mod_snd)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Fonction la plus simple pour jouer un son... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound  <a href="#ga28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga29">PA_PlayMod</a>(mod_snd)&nbsp;&nbsp;&nbsp;SndPlayMOD((u8*)mod_snd)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Jouer un mod ! Merci à Deku pour le mod player !  <a href="#ga27"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga28" doxytag="SoundARM9::PA_StopMod"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga28">PA_StopMod</a>()&nbsp;&nbsp;&nbsp;SndStopMOD()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Jouer un mod ! Merci à Deku pour le mod player !  <a href="#ga29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga30" doxytag="SoundARM9::PA_StopMod"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga30">PA_StopMod</a>()&nbsp;&nbsp;&nbsp;SndStopMOD()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter de jouer le mod ! Merci à Deku pour le mod player ! <br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga29">PA_PauseMod</a>(u8)&nbsp;&nbsp;&nbsp;SndPauseMOD(u8)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga31">PA_PauseMod</a>(u8)&nbsp;&nbsp;&nbsp;SndPauseMOD(u8)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre le mod en pause ! Merci à Deku pour le mod player !  <a href="#ga29"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga30" doxytag="SoundARM9::PA_MicStopRecording"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga30">PA_MicStopRecording</a>()&nbsp;&nbsp;&nbsp;StopRecording()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrete l'enregistrement <br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre le mod en pause ! Merci à Deku pour le mod player !  <a href="#ga31"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga0">PA_SetDefaultSound</a> (u8 volume, int freq, s16 format)</td></tr>
 
@@ -99,20 +95,26 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_PauseStream</b> (u
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga22">PA_UnpauseStream</a> (u8 PA_Channel)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stoppe un stream  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga23">PA_MicStartRecording</a> (u8 *buffer, int length)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga23">PA_SoundChannelIsBusy</a> (u8 PA_Channel)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre l'enregistrement  <a href="#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga24">PA_SoundChannelIsBusy</a> (u8 PA_Channel)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si un canal est occupé...  <a href="#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga25" doxytag="SoundARM9::PA_GetFreeSoundChannel"></a>
-s8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga25">PA_GetFreeSoundChannel</a> (void)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si un canal est occupé...  <a href="#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga24" doxytag="SoundARM9::PA_GetFreeSoundChannel"></a>
+s8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga24">PA_GetFreeSoundChannel</a> (void)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer le premier canal disponible <br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga25">PA_SetSoundChannelVol</a> (u8 PA_Channel, u8 Volume)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le volume d'un son en cours  <a href="#ga25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga26">PA_SetSoundVol</a> (u8 Volume)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le volume global  <a href="#ga26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sound_a_r_m9.html#ga27">PA_SetSoundChannelPan</a> (u8 PA_Channel, u8 Pan)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le pan d'un son en cours  <a href="#ga27"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Play sounds, etc... <hr><h2>Documentation des macro</h2>
-<a class="anchor" name="ga29" doxytag="PA_Sound.h::PA_PauseMod"></a><p>
+<a class="anchor" name="ga31" doxytag="PA_Sound.h::PA_PauseMod"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -147,7 +149,7 @@ Mettre le mod en pause ! Merci à Deku pour le mod player !
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga27" doxytag="PA_Sound.h::PA_PlayMod"></a><p>
+<a class="anchor" name="ga29" doxytag="PA_Sound.h::PA_PlayMod"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -182,7 +184,7 @@ Jouer un mod ! Merci à Deku pour le mod player !
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga26" doxytag="PA_Sound.h::PA_PlaySimpleSound"></a><p>
+<a class="anchor" name="ga28" doxytag="PA_Sound.h::PA_PlaySimpleSound"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -222,51 +224,6 @@ Fonction la plus simple pour jouer un son... Utiliser les options par défaut pou
   </tr>
 </table>
 <hr><h2>Documentation des fonctions</h2>
-<a class="anchor" name="ga23" doxytag="PA_Sound.h::PA_MicStartRecording"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">inline void PA_MicStartRecording           </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">u8 *&nbsp;</td>
-          <td class="mdname" nowrap> <em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>int&nbsp;</td>
-          <td class="mdname" nowrap> <em>length</em></td>
-        </tr>
-        <tr>
-          <td class="md"></td>
-          <td class="md">)&nbsp;</td>
-          <td class="md" colspan="2"><code> [inline]</code></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Démarre l'enregistrement 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>buffer</em>&nbsp;</td><td>buffer d'enregistrement </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>length</em>&nbsp;</td><td>Longueur du buffer doit être divisible par 1600 </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
 <a class="anchor" name="ga19" doxytag="PA_Sound.h::PA_PlayFSMod"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1195,7 +1152,132 @@ Permet de régler options par défaut pour la fonction PlaySimpleSound
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga24" doxytag="PA_Sound.h::PA_SoundChannelIsBusy"></a><p>
+<a class="anchor" name="ga27" doxytag="PA_Sound.h::PA_SetSoundChannelPan"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetSoundChannelPan           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>PA_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>Pan</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Changer le pan d'un son en cours 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 0 à 7 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Pan</em>&nbsp;</td><td>Pan, de 0 à 127. (gauche-droite) </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga25" doxytag="PA_Sound.h::PA_SetSoundChannelVol"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetSoundChannelVol           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>PA_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>Volume</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Changer le volume d'un son en cours 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 0 à 7 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Volume</em>&nbsp;</td><td>Volume, de 0 à 127. </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga26" doxytag="PA_Sound.h::PA_SetSoundVol"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_SetSoundVol           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap> <em>Volume</em>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Changer le volume global 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Volume</em>&nbsp;</td><td>Volume, de 0 à 127. </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga23" doxytag="PA_Sound.h::PA_SoundChannelIsBusy"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1265,7 +1347,7 @@ Stoppe un stream
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:43 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:36 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

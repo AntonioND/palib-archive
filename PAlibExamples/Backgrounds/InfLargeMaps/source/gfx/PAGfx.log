@@ -5,9 +5,11 @@ Converting PAGfx.ini
 Transparent Color : Magenta
 
 1 backgrounds :
-  Large : EasyBg, 1024x1024, Pal : Large_Pal, Converted to LargeMap, 243 tiles -> Large_Tiles and Large_Map
+  Large : EasyBg, 1024x1024, Pal : Large_Pal, Converted to InfiniteMap, 9830 tiles -> Large_Tiles and Large_Map
 
 1 palettes :
   Large_Pal, 28 colors
+
+Converted in 0 minutes 6 seconds
 
 Finished !

@@ -15,8 +15,7 @@
 #define IS_INETADDR(s) (IS_DIGIT_OR_DOT(s[0])&&IS_DIGIT_OR_DOT(s[1])&&IS_DIGIT_OR_DOT(s[2])&&IS_DIGIT_OR_DOT(s[3])&&IS_DIGIT_OR_DOT(s[4])&&IS_DIGIT_OR_DOT(s[5])&&IS_DIGIT_OR_DOT(s[6]))
 
 // Dswifi stub functions
-void * sgIP_malloc(int size) { return malloc(size); }
-void sgIP_free(void * ptr) { free(ptr); }
+
 
 // sgIP_dbgprint only needed in debug version
 void sgIP_dbgprint(char * txt, ...) {		
@@ -168,14 +167,13 @@ int PA_InitServer(int *sock,int port,int mode, int num_connect)
         listen(*sock,num_connect);
         return 1;
      }
-     /*int j;
-     for(j=0;j<num_connect;j++)
-     {
-        while(!sock2[j])
+/*
+        while(!sock)
         {
-           sock2[j]=accept(*sock,(struct sockaddr *)&servaddr,&i);
+           sock=accept(*sock,(struct sockaddr *)&servaddr,&i);
         }
-     }*/       
+*/
+       
 return 0;
 }
 

@@ -1,3 +1,93 @@
+
+
+
+
+New Stuff
+---------
+
+[Sound] Added PA_SetSoundChannelVol(channel, volume) to change the sound's playing volume... Added SoundChannelVolume as an example to show how it works
+
+[Sound] Added PA_SetSoundVol(Volume) to change the global volume level, and the example to go with it...
+
+[SpriteTouch] Added PA_SpriteStylusOver, similar to SpriteTouched, but which doesn't check if the stylus is held or not... Can therefore be used with Stylus.Released :)
+
+[DualBg] Added DualEasyBg functions, and an example to go with it : DualBackgrounds/EasyBg
+
+[8bit] Added PA_InitBig8bitBg(u8 screen, u8 bg_priority) : Same as PA_Init8bitBg, but with an available size of 256x256. Takes up a little more space but allows correct vertical scrolling...
+
+[SpriteSys] PA_ResetSpriteSysScreen(screen) added, to reset the sprite system only for a given screen. Highly untested, might give unwanted results, especially for running animations, please report any bug :)
+
+[PAFS_Bg] Added void PA_FSBgNameLoad(u8 screen, u8 bg_number, char* bg_name) to load a background by inputting it's name (should be easier :)   ), and the example to go with it...
+
+[BgPixel] Added PA_EasyBgGetPixel(screen, bg_number, x, y) (to get the palette color number) and PA_EasyBgGetPixelCol (same thing but returns the u16 color). Added 3 examples to go with it (tested with normal backgrounds, largemaps and infinite tile backgrounds...). Scrolling is of course taken into account ;)
+
+[Platform] Added Platform4 example, which changes the collision system to use PA_EasyBgGetPixel, and can now manage diagonal collisions :)
+
+[DSLite] Added PA_SetDSLBrightness(u8 level) to change the DS Lite light level (0-3)
+
+[SoundPan] Added PA_SetSoundChannelPan(channel, pan) to set the pan level (left-right, from 0 to 127) of a sound channel. It is reset to 64 after each sound played. Added an example to test it, works well :)
+
+[16cText] Added PA_16cLetterPos (.Letter[n].X/Y and .NLetters), which allows you to get the position of each letter outputted by the LAST 16cText...
+
+[Demos] Added a TypeWritter demo. It has a nice little cursor to add text anywhere in your string (not just at the end like the plain Keyboard example), and supports different text sizes, all this being done using the 16c Text system and the new PA_16cLetterPos structure
+
+[16c] Added PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2) to erase part of the screen
+
+
+Updated Stuff
+-------------
+
+[PAFS] Added PA_FSGetFolder(char *name), to get a folder number from its name... Returns -1 if not found
+
+[Sound] SoundBusy doesn't flush the cache all the time anymore
+
+[PAGfx] Better total time output (useless, but I don't care ^^). Removed the Palette generation purcentage, it always takes less than a second now :p
+
+[PAGfx] Completely new tile detection code, should be MUCH faster when converting very big/complex backgrounds... 
+
+[PAGfx] Found on the net a different method to read images, which is like 10 times faster, I'm pretty sure you'll be amazed by how fast it converts backgrounds now ^^. Works for very large sprites too
+
+[EasyBg] Smaller code when using multiple backgrounds
+
+[Video] Video system moved to use PAFS. GBFS code removed. Example modified...
+
+[Sprites] Updated all the outdated sprite examples
+
+[PAFS] Name length passed to 64 characters. You'll need to use the latest PAFS.exe with the latest PAlib... (PAlib/Tools/PAFS)
+
+[PAGfx] Much better purcentage output (took into account the fact that it slowed down over time) and shows expected time left.
+
+[Arm7] Code cleaning...
+
+
+Things Fixed
+------------
+
+[PAGfx] 256 pixel wide backgrounds were rounded up to 512, this is fixed
+
+[Video] Fixed the video system
+
+[EasyBg] Fixed Tile flip bug when loading an EasyBg with more than 1008 tiles, not sure why it was still there :)
+
+[Sound] Sound no longer stops when turning screens off or setting the led to blink mode...
+
+[Microphone] Recoded the whole microphone, now works, though it's ugly...PA_MicGetVol(), PA_MicStartRecording(u8 *Buffer, s32 Length), PA_MicReplay(u8 PA_Channel, u8 *Buffer, s32 Length). See the new example  ;)
+
+[DualSprites] Should work better with big sprites. Added a DualSprite example
+
+[MoveSpritePix] Fixed the bug where the sprite couldn't be moved if partly off-screen... Might not work well with 64x64 sprites that are too much offscreen though, sorry, but that reaches the DS's X/Y corrdinate limits ^^
+
+
+
+
+
+
+
+
+
+
+
+
 PAlib 060917 : Biggest update ever ^^
 
 New Stuff

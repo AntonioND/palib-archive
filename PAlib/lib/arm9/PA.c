@@ -16,7 +16,7 @@ u32 Blank[130000>>2];
 infos PA_UserInfo;
 RTC PA_RTC;  // Infos RTC...
 
-volatile u8 PA_SoundsBusy[16];
+volatile PA_IPCType PA_IPC;
 
 
 typedef struct {
@@ -46,6 +46,20 @@ const s16 winfades[][4] = {
 	{0, 0, -8, -6},	
 	{8, 6, 0, 0},		
 };
+
+
+
+
+//Keypad stuff...
+Pads Pad;
+PA_Pad* PadPointer;
+
+PA_Stylus Stylus;
+
+
+PA_movingsprite  PA_MovedSprite; // Pour les sprites que l'on bouge...
+
+u8 PA_MoveSpriteType = 0;
 
 
 /*
@@ -113,8 +127,9 @@ Stylus.Y = 96;
 PA_VBLFunctionReset();
 irqInit();
 //PA_ResetInterrupts();
-
-IPC->mailData = (u32)(&PA_SoundsBusy);
+PA_IPC.Stylus = &Stylus;  	// Gives access to the stylus data
+PA_IPC.Pad = &Pad;	      	// Gives access to the pad data
+IPC->mailData = (u32)(&PA_IPC);
 
 for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans

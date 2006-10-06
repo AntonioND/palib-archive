@@ -3,7 +3,7 @@
    See: http://neimod.com/dstek/ 
    Chris Double (chris.double@double.co.nz)
    http://www.double.co.nz/nintendo_ds
-*/
+*//*
 #include <nds.h>
 #include "microphone7.h"
 
@@ -69,4 +69,4 @@ void  PA_ProcessMicrophoneTimerIRQ()
     PA_current_length++;
   }
   VBLANK_INTR_WAIT_FLAGS |= IRQ_TIMER3;
-}
+}*/

@@ -1,31 +1,0 @@
-8
-
-dir
-28
-https://palibds.googlecode.com/svn/Examples/Text/CustomFontBorder/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T12:16:56.359737Z
-28
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-main.c
-file
-
-
-
-
-2006-01-28T10:03:05.500000Z
-600dcc84ce7dd4129f0bbedb1eb3bc9b
-2006-09-12T12:16:56.359737Z
-28
-molousk
-
-font
-dir
-

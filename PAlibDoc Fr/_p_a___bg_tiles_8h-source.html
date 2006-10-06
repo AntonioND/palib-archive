@@ -10,379 +10,409 @@
 00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_BGTILES</span>
 00003 <span class="preprocessor"></span>
 00004 <span class="comment">//#include &lt;PA9.h&gt;</span>
-00005 <span class="preprocessor">#include &lt;nds.h&gt;</span>
-00006 <span class="preprocessor">#include "<a class="code" href="_p_a___general_8h.html">PA_General.h</a>"</span>
-00007 
+00005 <span class="comment">//#include &lt;PA_FS.h&gt;</span>
+00006 <span class="preprocessor">#include &lt;nds.h&gt;</span>
+00007 <span class="preprocessor">#include "<a class="code" href="_p_a___general_8h.html">PA_General.h</a>"</span>
 00008 
-00009 <span class="preprocessor">#define BG_TILEDBG   2</span>
-00010 <span class="preprocessor"></span><span class="preprocessor">#define BG_ROTBG     3</span>
-00011 <span class="preprocessor"></span><span class="preprocessor">#define BG_LARGEMAP 4</span>
-00012 <span class="preprocessor"></span><span class="preprocessor">#define BG_INFINITEMAP 5</span>
-00013 <span class="preprocessor"></span>
-00014 
-00015 
+00009 
+00010 <span class="preprocessor">#define BG_TILEDBG   2</span>
+00011 <span class="preprocessor"></span><span class="preprocessor">#define BG_ROTBG     3</span>
+00012 <span class="preprocessor"></span><span class="preprocessor">#define BG_LARGEMAP 4</span>
+00013 <span class="preprocessor"></span><span class="preprocessor">#define BG_INFINITEMAP 5</span>
+00014 <span class="preprocessor"></span>
+00015 <span class="keywordtype">void</span> PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, <span class="keywordtype">void</span> *Tiles, u32 TileSize, <span class="keywordtype">void</span> *Map, u32 MapSize, <span class="keywordtype">void</span> *Palette);
 00016 
-00017 <span class="comment">// Extracts the size from PAGfx convertions</span>
-00018 <span class="keyword">extern</span> <span class="keyword">inline</span> u8 PA_GetPAGfxBgSize(u16 width, u16 height)
-00019 {
-00020        u8 bg_size = 0;
-00021        <span class="keywordflow">if</span> (height == 512)   bg_size = 2;
-00022        <span class="keywordflow">if</span> (width == 512)    bg_size ++;   
-00023        <span class="keywordflow">return</span> bg_size;
-00024 }
-00025 
-00026 <span class="comment">// Extracts the size from PAGfx convertions</span>
-00027 <span class="keyword">extern</span> <span class="keyword">inline</span> u8 PA_GetPAGfxRotBgSize(u16 width)
-00028 {
-00029        u8 bg_size = 1; <span class="comment">//256x256 by default</span>
-00030        <span class="keywordflow">if</span> (width &lt;= 128)    bg_size = 0;  
-00031        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (width &lt;= 256)      bg_size = 1;  
-00032        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (width &lt;= 512)      bg_size = 2;         
-00033        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (width &lt;= 1024) bg_size = 3;             
-00034        
-00035        <span class="keywordflow">return</span> bg_size;
-00036 }
-00037 
-00047 
-00048 <span class="comment">// Système de Tiles</span>
-00050 <span class="comment"></span>
-00051 
-00052 <span class="comment">//background memory offset macros</span>
-00053 <span class="preprocessor">#define CharBaseBlock(screen, n) (((n)*0x4000) + 0x6000000 + (0x200000 *  screen))</span>
-00054 <span class="preprocessor"></span><span class="preprocessor">#define ScreenBaseBlock(screen, n) (((n)*0x800) + 0x6000000 + (0x200000 *  screen))</span>
-00055 <span class="preprocessor"></span>
-00056 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00057        <span class="comment">// Memory management info...</span>
-00058 
-00059 
-00060        u32 tilesetsize; <span class="comment">// Place utilisée pour chaque tileset</span>
-00061        u16 mapsize; <span class="comment">// Place utilisée pour chaque map</span>
-00062 <span class="comment">//extern u8 tilesetchar[2][4];  // Emplacement mémoire de chaque tileset</span>
-00063        u8 mapchar;  <span class="comment">// Emplacement mémoire de chaque map</span>
-00064 
-00065 
-00066        u32 Map; <span class="comment">// Map pointer</span>
-00067        u8 TileSetChar;
-00068        
-00069        u32 NTiles;
-00070        u32 *TilePos;
-00071        <span class="keywordtype">void</span> *Tiles;  
-00072        
-00073        u8 BgMode; <span class="comment">// Background mode</span>
-00074 } PA_BgInfos;
-00075 <span class="keyword">extern</span> PA_BgInfos PA_BgInfo[2][4];
-00076 
-00077 <span class="keyword">extern</span> u8 charblocks[2][70];
-00078 <span class="comment">//extern u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen</span>
-00079 <span class="comment">//extern u8 tilesetchar[2][4];</span>
+00017 
+00018 <span class="comment">// Extracts the size from PAGfx convertions</span>
+00019 <span class="keyword">extern</span> <span class="keyword">inline</span> u8 PA_GetPAGfxBgSize(u16 width, u16 height)
+00020 {
+00021        u8 bg_size = 0;
+00022        <span class="keywordflow">if</span> (height == 512)   bg_size = 2;
+00023        <span class="keywordflow">if</span> (width == 512)    bg_size ++;   
+00024        <span class="keywordflow">return</span> bg_size;
+00025 }
+00026 
+00027 <span class="comment">// Extracts the size from PAGfx convertions</span>
+00028 <span class="keyword">extern</span> <span class="keyword">inline</span> u8 PA_GetPAGfxRotBgSize(u16 width)
+00029 {
+00030        u8 bg_size = 1; <span class="comment">//256x256 by default</span>
+00031        <span class="keywordflow">if</span> (width &lt;= 128)    bg_size = 0;  
+00032        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (width &lt;= 256)      bg_size = 1;  
+00033        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (width &lt;= 512)      bg_size = 2;         
+00034        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (width &lt;= 1024) bg_size = 3;             
+00035        
+00036        <span class="keywordflow">return</span> bg_size;
+00037 }
+00038 
+00039 
+00040 <span class="keyword">typedef</span> u8 (*EasyBgPixels)(u8, u8, s32, s32);  
+00041 
+00042 <span class="keyword">extern</span> EasyBgPixels PA_EasyBgPixel[6];
+00043 
+00053 
+00054 <span class="comment">// Système de Tiles</span>
+00056 <span class="comment"></span>
+00057 
+00058 <span class="comment">//background memory offset macros</span>
+00059 <span class="preprocessor">#define CharBaseBlock(screen, n) (((n)*0x4000) + 0x6000000 + (0x200000 *  screen))</span>
+00060 <span class="preprocessor"></span><span class="preprocessor">#define ScreenBaseBlock(screen, n) (((n)*0x800) + 0x6000000 + (0x200000 *  screen))</span>
+00061 <span class="preprocessor"></span>
+00062 <span class="comment">// Pointers towards background arrays</span>
+00063 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00064        <span class="keywordtype">void</span> *Tiles;
+00065        <span class="keywordtype">void</span> *Map;
+00066        <span class="keywordtype">void</span> *Palette;
+00067        u32 TileSize, MapSize;
+00068        u32 Type, Width, Height; 
+00069 } PA_BgDefaultInfos;
+00070        
+00071 
+00072 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00073        <span class="comment">// Memory management info...</span>
+00074 
+00075 
+00076        u32 tilesetsize; <span class="comment">// Place utilisée pour chaque tileset</span>
+00077        u16 mapsize; <span class="comment">// Place utilisée pour chaque map</span>
+00078 <span class="comment">//extern u8 tilesetchar[2][4];  // Emplacement mémoire de chaque tileset</span>
+00079        u8 mapchar;  <span class="comment">// Emplacement mémoire de chaque map</span>
 00080 
-00081 <span class="comment">// Quantité de données à charger en fonction de la taille de la map...</span>
-00082 
-00083 <span class="keyword">extern</span> u16 *PA_DrawBg[2]; <span class="comment">// Fond dessinable</span>
-00084 
-00085 <span class="keyword">extern</span> u16 bg_sizes[4];
-00086 <span class="keyword">extern</span> u8 bg_place[4];
-00087 
-00088 
-00089 <span class="keyword">extern</span> u8 charsetstart[2];
-00090 <span class="keyword">extern</span> s32 PA_parallaxX[2][4];
-00091 <span class="keyword">extern</span> s32 PA_parallaxY[2][4];
-00092 
-00093 
-00094 
-00095 
+00081 
+00082        u32 Map; <span class="comment">// Map pointer</span>
+00083        u8 TileSetChar;
+00084        
+00085        u32 NTiles;
+00086        u32 *TilePos;
+00087        <span class="keywordtype">void</span> *Tiles;  
+00088        
+00089        PA_BgDefaultInfos Infos; <span class="comment">// Pointers towards background arrays</span>
+00090        
+00091        s32 ScrollX, ScrollY; <span class="comment">// Scroll values</span>
+00092        
+00093        u8 BgMode; <span class="comment">// Background mode</span>
+00094 } PA_BgInfos;
+00095 <span class="keyword">extern</span> PA_BgInfos PA_BgInfo[2][4];
 00096 
-00097 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-00098        u8 infscroll; <span class="comment">// Passe à 1 si scrolling infini activé...</span>
-00099        u16* bg_map; <span class="comment">// Map</span>
-00100 <span class="comment">//     s32 x, y;</span>
-00101        s32 lx, ly;
-00102        s32 scrollx, scrolly;
-00103        s32 maxx; <span class="comment">// 32 ou 64, en fonction de la largeur...</span>
-00104 <span class="comment">//     s32 startx, starty;</span>
-00105 }scrollpositions;
-00106 
-00107 <span class="keyword">extern</span> scrollpositions scrollpos[2][4]; <span class="comment">// Pour chaque écran et pour chaque fond :)</span>
+00097 <span class="keyword">extern</span> u8 charblocks[2][70];
+00098 <span class="comment">//extern u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen</span>
+00099 <span class="comment">//extern u8 tilesetchar[2][4];</span>
+00100 
+00101 <span class="comment">// Quantité de données à charger en fonction de la taille de la map...</span>
+00102 
+00103 <span class="keyword">extern</span> u16 *PA_DrawBg[2]; <span class="comment">// Fond dessinable</span>
+00104 
+00105 <span class="keyword">extern</span> u16 bg_sizes[4];
+00106 <span class="keyword">extern</span> u8 bg_place[4];
+00107 
 00108 
-00109 
-00110 
-00111 
+00109 <span class="keyword">extern</span> u8 charsetstart[2];
+00110 <span class="keyword">extern</span> s32 PA_parallaxX[2][4];
+00111 <span class="keyword">extern</span> s32 PA_parallaxY[2][4];
 00112 
 00113 
-00114 <span class="comment">// Mode de couleur</span>
-00115 <span class="preprocessor">#define BG_COLOR16 0x00</span>
-00116 <span class="preprocessor"></span><span class="preprocessor">#define BG_COLOR256 0x80</span>
-00117 <span class="preprocessor"></span>
-00118 
-00119 <span class="preprocessor">#define CHAR_SHIFT 2</span>
-00120 <span class="preprocessor"></span><span class="preprocessor">#define SCREEN_SHIFT 8</span>
-00121 <span class="preprocessor"></span><span class="preprocessor">#define WRAPAROUND 0x1</span>
-00122 <span class="preprocessor"></span>
-00123 <span class="preprocessor">#define SCREEN_TILES 24576  // Taille à convertir pour avoir un écran complet...</span>
-00124 <span class="preprocessor"></span>
-00125 
-00126 <span class="comment">//scrolling registers for background 0</span>
-00127 
+00114 
+00115 
+00116 
+00117 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00118        u8 infscroll; <span class="comment">// Passe à 1 si scrolling infini activé...</span>
+00119        u16* bg_map; <span class="comment">// Map</span>
+00120 <span class="comment">//     s32 x, y;</span>
+00121        s32 lx, ly;
+00122        s32 scrollx, scrolly;
+00123        s32 maxx; <span class="comment">// 32 ou 64, en fonction de la largeur...</span>
+00124 <span class="comment">//     s32 startx, starty;</span>
+00125 }scrollpositions;
+00126 
+00127 <span class="keyword">extern</span> scrollpositions scrollpos[2][4]; <span class="comment">// Pour chaque écran et pour chaque fond :)</span>
 00128 
-00129 <span class="comment">// Registre pour les controles de chaque écran</span>
+00129 
 00130 
-00131 <span class="preprocessor">#define REG_BGSCREEN0  0x04000000</span>
-00132 <span class="preprocessor"></span><span class="preprocessor">#define REG_BGSCREEN1  0x04001000</span>
-00133 <span class="preprocessor"></span><span class="preprocessor">#define REG_BGSCREEN(screen) (0x04000000 + (screen * 0x1000))</span>
-00134 <span class="preprocessor"></span>
-00135 <span class="preprocessor">#define REG_BGCNT(screen, bg_number) (0x4000008 + (screen * 0x1000) + (bg_number &lt;&lt; 1))</span>
-00136 <span class="preprocessor"></span>
-00137 <span class="comment">// Premier registre pour les scroll. On en déduit les autres en ajoutant pour le screen et le numéro du Bg</span>
-00138 <span class="preprocessor">#define REG_BGSCROLLX 0x4000010</span>
-00139 <span class="preprocessor"></span><span class="preprocessor">#define REG_BGSCROLLY 0x4000012</span>
-00140 <span class="preprocessor"></span>
-00141 
-00142 <span class="comment">// Tailles pour les Bg :</span>
-00143 <span class="preprocessor">#define BG_256X256 0</span>
-00144 <span class="preprocessor"></span><span class="preprocessor">#define BG_512X256 1</span>
-00145 <span class="preprocessor"></span><span class="preprocessor">#define BG_256X512 2</span>
-00146 <span class="preprocessor"></span><span class="preprocessor">#define BG_512X512 3</span>
-00147 <span class="preprocessor"></span>
+00131 
+00132 
+00133 
+00134 <span class="comment">// Mode de couleur</span>
+00135 <span class="preprocessor">#define BG_COLOR16 0x00</span>
+00136 <span class="preprocessor"></span><span class="preprocessor">#define BG_COLOR256 0x80</span>
+00137 <span class="preprocessor"></span>
+00138 
+00139 <span class="preprocessor">#define CHAR_SHIFT 2</span>
+00140 <span class="preprocessor"></span><span class="preprocessor">#define SCREEN_SHIFT 8</span>
+00141 <span class="preprocessor"></span><span class="preprocessor">#define WRAPAROUND 0x1</span>
+00142 <span class="preprocessor"></span>
+00143 <span class="preprocessor">#define SCREEN_TILES 24576  // Taille à convertir pour avoir un écran complet...</span>
+00144 <span class="preprocessor"></span>
+00145 
+00146 <span class="comment">//scrolling registers for background 0</span>
+00147 
 00148 
-00149 
-00150 <span class="comment">//ALL_BUT() pour faire tout sauf...</span>
-00151 <span class="preprocessor">#define TILE_N 1023</span>
-00152 <span class="preprocessor"></span><span class="preprocessor">#define TILE_PAL 61440</span>
-00153 <span class="preprocessor"></span><span class="preprocessor">#define TILE_HFLIP 1024</span>
-00154 <span class="preprocessor"></span><span class="preprocessor">#define TILE_VFLIP 2048</span>
-00155 <span class="preprocessor"></span>
-00156 
-00157 
-00158 
-00159 
-00171 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga0">PA_ResetBgSys</a>(<span class="keywordtype">void</span>);
-00172 
-00195 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga1">PA_InitBg</a>(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode);
-00196 <span class="comment">//#define PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode) {    PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, ((bg_select + 1) &lt;&lt; 3) - bg_place[bg_size]);_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select)); _REG16(REG_BGCNT(screen, bg_select)) = ((bg_select) | (bg_size &lt;&lt; 14) |((((bg_select + 1) &lt;&lt; 3) - bg_place[bg_size]) &lt;&lt; SCREEN_SHIFT) | (wraparound &lt;&lt; 13) | ((bg_select) &lt;&lt; 2)) + (color_mode &lt;&lt; 7);}</span>
-00197 
-00198 
-<a name="l00211"></a><a class="code" href="group___bg_tiles.html#ga18">00211</a> <span class="preprocessor">#define PA_HideBg(screen, bg_select) _REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</span>
-00212 <span class="preprocessor"></span>
-00213 
-<a name="l00226"></a><a class="code" href="group___bg_tiles.html#ga19">00226</a> <span class="preprocessor">#define PA_ShowBg(screen, bg_select) _REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</span>
-00227 <span class="preprocessor"></span>
-00228 
-<a name="l00238"></a><a class="code" href="group___bg_tiles.html#ga20">00238</a> <span class="preprocessor">#define PA_ResetBg(screen) _REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</span>
-00239 <span class="preprocessor"></span>
-00240 
-00241 
-<a name="l00257"></a><a class="code" href="group___bg_tiles.html#ga21">00257</a> <span class="preprocessor">#define PA_LoadBgTiles(screen, bg_select, bg_tiles) PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</span>
-00258 <span class="preprocessor"></span><span class="comment">//#define PA_LoadBgTiles(screen, bg_select, bg_tiles) {DMA_Copy((void*)(bg_tiles), (void*)CharBaseBlock(screen, bg_select),SIZEOF_16BIT(bg_tiles), DMA_16NOW);}</span>
-00259 
+00149 <span class="comment">// Registre pour les controles de chaque écran</span>
+00150 
+00151 <span class="preprocessor">#define REG_BGSCREEN0  0x04000000</span>
+00152 <span class="preprocessor"></span><span class="preprocessor">#define REG_BGSCREEN1  0x04001000</span>
+00153 <span class="preprocessor"></span><span class="preprocessor">#define REG_BGSCREEN(screen) (0x04000000 + (screen * 0x1000))</span>
+00154 <span class="preprocessor"></span>
+00155 <span class="preprocessor">#define REG_BGCNT(screen, bg_number) (0x4000008 + (screen * 0x1000) + (bg_number &lt;&lt; 1))</span>
+00156 <span class="preprocessor"></span>
+00157 <span class="comment">// Premier registre pour les scroll. On en déduit les autres en ajoutant pour le screen et le numéro du Bg</span>
+00158 <span class="preprocessor">#define REG_BGSCROLLX 0x4000010</span>
+00159 <span class="preprocessor"></span><span class="preprocessor">#define REG_BGSCROLLY 0x4000012</span>
+00160 <span class="preprocessor"></span>
+00161 
+00162 <span class="comment">// Tailles pour les Bg :</span>
+00163 <span class="preprocessor">#define BG_256X256 0</span>
+00164 <span class="preprocessor"></span><span class="preprocessor">#define BG_512X256 1</span>
+00165 <span class="preprocessor"></span><span class="preprocessor">#define BG_256X512 2</span>
+00166 <span class="preprocessor"></span><span class="preprocessor">#define BG_512X512 3</span>
+00167 <span class="preprocessor"></span>
+00168 
+00169 
+00170 <span class="comment">//ALL_BUT() pour faire tout sauf...</span>
+00171 <span class="preprocessor">#define TILE_N 1023</span>
+00172 <span class="preprocessor"></span><span class="preprocessor">#define TILE_PAL 61440</span>
+00173 <span class="preprocessor"></span><span class="preprocessor">#define TILE_HFLIP 1024</span>
+00174 <span class="preprocessor"></span><span class="preprocessor">#define TILE_VFLIP 2048</span>
+00175 <span class="preprocessor"></span>
+00176 
+00177 
+00178 
+00179 
+00191 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga0">PA_ResetBgSys</a>(<span class="keywordtype">void</span>);
+00192 
+00215 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga1">PA_InitBg</a>(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode);
+00216 <span class="comment">//#define PA_InitBg(screen, bg_select, bg_size, wraparound, color_mode) {    PA_bgmap[screen][bg_select] = ScreenBaseBlock(screen, ((bg_select + 1) &lt;&lt; 3) - bg_place[bg_size]);_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select)); _REG16(REG_BGCNT(screen, bg_select)) = ((bg_select) | (bg_size &lt;&lt; 14) |((((bg_select + 1) &lt;&lt; 3) - bg_place[bg_size]) &lt;&lt; SCREEN_SHIFT) | (wraparound &lt;&lt; 13) | ((bg_select) &lt;&lt; 2)) + (color_mode &lt;&lt; 7);}</span>
+00217 
+00218 
+<a name="l00231"></a><a class="code" href="group___bg_tiles.html#ga23">00231</a> <span class="preprocessor">#define PA_HideBg(screen, bg_select) _REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</span>
+00232 <span class="preprocessor"></span>
+00233 
+<a name="l00246"></a><a class="code" href="group___bg_tiles.html#ga24">00246</a> <span class="preprocessor">#define PA_ShowBg(screen, bg_select) _REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</span>
+00247 <span class="preprocessor"></span>
+00248 
+<a name="l00258"></a><a class="code" href="group___bg_tiles.html#ga25">00258</a> <span class="preprocessor">#define PA_ResetBg(screen) _REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</span>
+00259 <span class="preprocessor"></span>
 00260 
-00280 <span class="keywordtype">void</span> PA_LoadBgTilesEx(u8 screen, u8 bg_select, <span class="keywordtype">void</span>* bg_tiles, u32 size);
-00281 
-00282 
-00298 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga3">PA_ReLoadBgTiles</a>(u8 screen, u8 bg_select, <span class="keywordtype">void</span>* bg_tiles);
-00299 
-00300 
-00313 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga4">PA_DeleteTiles</a>(u8 screen, u8 bg_select);
-00314 
-00315 
-00328 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga5">PA_DeleteMap</a>(u8 screen, u8 bg_select);
-00329 
-00330 
-00331 
-<a name="l00344"></a><a class="code" href="group___bg_tiles.html#ga6">00344</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga6">PA_DeleteBg</a>(u8 screen, u8 bg_select) {
-00345        <a class="code" href="group___bg_tiles.html#ga18">PA_HideBg</a>(screen, bg_select);
-00346        <a class="code" href="group___bg_tiles.html#ga4">PA_DeleteTiles</a>(screen, bg_select);
-00347        <a class="code" href="group___bg_tiles.html#ga5">PA_DeleteMap</a>(screen, bg_select);
-00348 }
+00261 
+<a name="l00277"></a><a class="code" href="group___bg_tiles.html#ga26">00277</a> <span class="preprocessor">#define PA_LoadBgTiles(screen, bg_select, bg_tiles) PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</span>
+00278 <span class="preprocessor"></span><span class="comment">//#define PA_LoadBgTiles(screen, bg_select, bg_tiles) {DMA_Copy((void*)(bg_tiles), (void*)CharBaseBlock(screen, bg_select),SIZEOF_16BIT(bg_tiles), DMA_16NOW);}</span>
+00279 
+00280 
+00300 <span class="keywordtype">void</span> PA_LoadBgTilesEx(u8 screen, u8 bg_select, <span class="keywordtype">void</span>* bg_tiles, u32 size);
+00301 
+00302 
+00318 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga3">PA_ReLoadBgTiles</a>(u8 screen, u8 bg_select, <span class="keywordtype">void</span>* bg_tiles);
+00319 
+00320 
+00333 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga4">PA_DeleteTiles</a>(u8 screen, u8 bg_select);
+00334 
+00335 
+00348 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga5">PA_DeleteMap</a>(u8 screen, u8 bg_select);
 00349 
-00369 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga7">PA_LoadBgMap</a>(u8 screen, u8 bg_select, <span class="keywordtype">void</span>* bg_map, u8 bg_size);
-00370 
-00371 
-00372 
-00373 
-00374 
-<a name="l00391"></a><a class="code" href="group___bg_tiles.html#ga22">00391</a> <span class="preprocessor">#define PA_LoadTiledBg(screen, bg_number, bg_name){\</span>
-00392 <span class="preprocessor">       PA_LoadBgPal(screen, bg_number, (void*)bg_name##_Pal); \</span>
-00393 <span class="preprocessor">       PA_LoadSimpleBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Info[1], bg_name##_Info[2]), 0, 1);}</span>
-00394 <span class="preprocessor"></span>
-00395 
-00396 
-00397 
-<a name="l00426"></a><a class="code" href="group___bg_tiles.html#ga23">00426</a> <span class="preprocessor">#define PA_LoadSimpleBg(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode) {\</span>
-00427 <span class="preprocessor">PA_DeleteBg(screen, bg_select);\</span>
-00428 <span class="preprocessor">PA_LoadBgTiles(screen, bg_select, bg_tiles); \</span>
-00429 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
-00430 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, 0, color_mode);\</span>
-00431 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
-00432 <span class="preprocessor"></span>
-00433 
-00434 
-00435 
-<a name="l00467"></a><a class="code" href="group___bg_tiles.html#ga24">00467</a> <span class="preprocessor">#define PA_LoadBg(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode) {\</span>
-00468 <span class="preprocessor">PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, tile_size); \</span>
-00469 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
-00470 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, 0, color_mode);\</span>
-00471 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
-00472 <span class="preprocessor"></span>
-00473 
-00474 
-<a name="l00490"></a><a class="code" href="group___bg_tiles.html#ga25">00490</a> <span class="preprocessor">#define PA_BGScrollX(screen, bg_number, x) _REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023</span>
-00491 <span class="preprocessor"></span>
-<a name="l00507"></a><a class="code" href="group___bg_tiles.html#ga26">00507</a> <span class="preprocessor">#define PA_BGScrollY(screen, bg_number, y) _REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023</span>
-00508 <span class="preprocessor"></span>
-00509 
-00510 
-00511 
-<a name="l00530"></a><a class="code" href="group___bg_tiles.html#ga27">00530</a> <span class="preprocessor">#define PA_BGScrollXY(screen, bg_number, x, y) {PA_BGScrollX(screen, bg_number, x); PA_BGScrollY(screen, bg_number, y);}</span>
-00531 <span class="preprocessor"></span>
-00532 
-00533 
+00350 
+00351 
+<a name="l00364"></a><a class="code" href="group___bg_tiles.html#ga6">00364</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga6">PA_DeleteBg</a>(u8 screen, u8 bg_select) {
+00365        <a class="code" href="group___bg_tiles.html#ga23">PA_HideBg</a>(screen, bg_select);
+00366        <a class="code" href="group___bg_tiles.html#ga4">PA_DeleteTiles</a>(screen, bg_select);
+00367        <a class="code" href="group___bg_tiles.html#ga5">PA_DeleteMap</a>(screen, bg_select);
+00368 }
+00369 
+00389 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga7">PA_LoadBgMap</a>(u8 screen, u8 bg_select, <span class="keywordtype">void</span>* bg_map, u8 bg_size);
+00390 
+00391 
+00392 
+00393 
+00394 
+<a name="l00411"></a><a class="code" href="group___bg_tiles.html#ga27">00411</a> <span class="preprocessor">#define PA_LoadTiledBg(screen, bg_number, bg_name){\</span>
+00412 <span class="preprocessor">       PA_LoadBgPal(screen, bg_number, (void*)bg_name##_Pal); \</span>
+00413 <span class="preprocessor">       PA_LoadSimpleBg(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Info[1], bg_name##_Info[2]), 0, 1);}</span>
+00414 <span class="preprocessor"></span>
+00415 
+00416 
+00417 
+<a name="l00446"></a><a class="code" href="group___bg_tiles.html#ga28">00446</a> <span class="preprocessor">#define PA_LoadSimpleBg(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode) {\</span>
+00447 <span class="preprocessor">PA_DeleteBg(screen, bg_select);\</span>
+00448 <span class="preprocessor">PA_LoadBgTiles(screen, bg_select, bg_tiles); \</span>
+00449 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
+00450 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, 0, color_mode);\</span>
+00451 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
+00452 <span class="preprocessor"></span>
+00453 
+00454 
+00455 
+<a name="l00487"></a><a class="code" href="group___bg_tiles.html#ga29">00487</a> <span class="preprocessor">#define PA_LoadBg(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode) {\</span>
+00488 <span class="preprocessor">PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, tile_size); \</span>
+00489 <span class="preprocessor">PA_LoadBgMap(screen, bg_select, (void*)bg_map, bg_size); \</span>
+00490 <span class="preprocessor">PA_InitBg(screen, bg_select, bg_size, 0, color_mode);\</span>
+00491 <span class="preprocessor">PA_BGScrollXY(screen, bg_select, 0, 0);}</span>
+00492 <span class="preprocessor"></span>
+00493 
+00494 
+<a name="l00510"></a><a class="code" href="group___bg_tiles.html#ga8">00510</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga8">PA_BGScrollX</a>(u8 screen, u8 bg_number, s32 x) {
+00511        PA_BgInfo[screen][bg_number].ScrollX = (x)&amp;1023;
+00512        _REG16(REG_BGSCROLLX + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (x)&amp;1023;
+00513 }      
+00514 
+<a name="l00530"></a><a class="code" href="group___bg_tiles.html#ga9">00530</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga9">PA_BGScrollY</a>(u8 screen, u8 bg_number, s32 y) {
+00531        PA_BgInfo[screen][bg_number].ScrollY = (y)&amp;1023;
+00532        _REG16(REG_BGSCROLLY + ((screen) * 0x1000) + ((bg_number) &lt;&lt; 2)) = (y)&amp;1023;
+00533 }      
 00534 
-<a name="l00556"></a><a class="code" href="group___bg_tiles.html#ga8">00556</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga8">PA_SetMapTile</a>(u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number) {
-00557 *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ~(TILE_N); 
-00558 *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((tile_number)&amp;TILE_N);
-00559 }
+00535 
+00536 
+00555 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_BGScrollXY(u8 screen, u8 bg_number, s32 x, s32 y) {
+00556        <a class="code" href="group___bg_tiles.html#ga8">PA_BGScrollX</a>(screen, bg_number, x); 
+00557        <a class="code" href="group___bg_tiles.html#ga9">PA_BGScrollY</a>(screen, bg_number, y);
+00558 }
+00559 
 00560 
 00561 
-<a name="l00583"></a><a class="code" href="group___bg_tiles.html#ga28">00583</a> <span class="preprocessor">#define PA_SetMapTileAll(screen, bg_select, x, y, tile_info) *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_info)</span>
-00584 <span class="preprocessor"></span>
-00585 
-00586 
-00587 
+00562 
+<a name="l00584"></a><a class="code" href="group___bg_tiles.html#ga11">00584</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga11">PA_SetMapTile</a>(u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number) {
+00585 *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ~(TILE_N); 
+00586 *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((tile_number)&amp;TILE_N);
+00587 }
 00588 
-<a name="l00610"></a><a class="code" href="group___bg_tiles.html#ga9">00610</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga9">PA_SetLargeMapTile</a>(u8 screen, u8 bg_select, s32 x, s32 y, u32 tile_info) {
-00611        u32 truex;
-00612        u32 mapblock = 0;
-00613        truex = x&amp;31;
-00614        mapblock = (x &gt;&gt; 5) &lt;&lt; 11; <span class="comment">// Permet d'avoir le bon block...</span>
-00615        
-00616        *(u16*)(PA_BgInfo[screen][bg_select].Map + ((truex) &lt;&lt; 1) + ((y) &lt;&lt; 6) + mapblock) = tile_info;
-00617 }
-00618 
-00619 
-00620 
-<a name="l00642"></a><a class="code" href="group___bg_tiles.html#ga29">00642</a> <span class="preprocessor">#define PA_SetMapTileHflip(screen, bg_select, x, y, hflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</span>
-00643 <span class="preprocessor"></span>
-00644 
-<a name="l00666"></a><a class="code" href="group___bg_tiles.html#ga30">00666</a> <span class="preprocessor">#define PA_SetMapTileVflip(screen, bg_select, x, y, vflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</span>
-00667 <span class="preprocessor"></span>
-00668 
-<a name="l00690"></a><a class="code" href="group___bg_tiles.html#ga31">00690</a> <span class="preprocessor">#define PA_SetMapTilePal(screen, bg_select, x, y, palette_number) {*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</span>
-00691 <span class="preprocessor"></span>
-00692 
-00723 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_SetMapTileEx(u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_number, u8 hflip, u8 vflip, u8 palette_number) {
-00724        *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_number) + ((hflip) &lt;&lt; 10) + ((vflip) &lt;&lt; 11) + ((palette_number) &lt;&lt; 12);
-00725 }
-00726 
-00727 
-00728 
-00729 
-00730 
-00731 
-00732 
-00733 
-00734 
-00735 
-<a name="l00751"></a><a class="code" href="group___bg_tiles.html#ga11">00751</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga11">PA_SetBgPrio</a>(u8 screen, u8 bg, u8 prio) {
-00752        _REG16(REG_BGCNT(screen, bg)) &amp;= ~3;
-00753        _REG16(REG_BGCNT(screen, bg)) |= prio;
-00754 }
+00589 
+<a name="l00611"></a><a class="code" href="group___bg_tiles.html#ga30">00611</a> <span class="preprocessor">#define PA_SetMapTileAll(screen, bg_select, x, y, tile_info) *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_info)</span>
+00612 <span class="preprocessor"></span>
+00613 
+00614 
+00615 
+00616 
+<a name="l00638"></a><a class="code" href="group___bg_tiles.html#ga12">00638</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga12">PA_SetLargeMapTile</a>(u8 screen, u8 bg_select, s32 x, s32 y, u32 tile_info) {
+00639        u32 truex;
+00640        u32 mapblock = 0;
+00641        truex = x&amp;31;
+00642        mapblock = (x &gt;&gt; 5) &lt;&lt; 11; <span class="comment">// Permet d'avoir le bon block...</span>
+00643        
+00644        *(u16*)(PA_BgInfo[screen][bg_select].Map + ((truex) &lt;&lt; 1) + ((y) &lt;&lt; 6) + mapblock) = tile_info;
+00645 }
+00646 
+00647 
+00648 
+<a name="l00670"></a><a class="code" href="group___bg_tiles.html#ga31">00670</a> <span class="preprocessor">#define PA_SetMapTileHflip(screen, bg_select, x, y, hflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((hflip) &lt;&lt; 10);}</span>
+00671 <span class="preprocessor"></span>
+00672 
+<a name="l00694"></a><a class="code" href="group___bg_tiles.html#ga32">00694</a> <span class="preprocessor">#define PA_SetMapTileVflip(screen, bg_select, x, y, vflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((vflip) &lt;&lt; 11);}</span>
+00695 <span class="preprocessor"></span>
+00696 
+<a name="l00718"></a><a class="code" href="group___bg_tiles.html#ga33">00718</a> <span class="preprocessor">#define PA_SetMapTilePal(screen, bg_select, x, y, palette_number) {*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) &amp;= ALL_BUT(TILE_PAL); *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) |= ((palette_number) &lt;&lt; 12);}</span>
+00719 <span class="preprocessor"></span>
+00720 
+00751 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_SetMapTileEx(u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_number, u8 hflip, u8 vflip, u8 palette_number) {
+00752        *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_number) + ((hflip) &lt;&lt; 10) + ((vflip) &lt;&lt; 11) + ((palette_number) &lt;&lt; 12);
+00753 }
+00754 
 00755 
-00756 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_CreateBgFromTiles(u8 screen, u8 bg_select, u8 bg_tiles, <span class="keywordtype">void</span> *bg_map, u8 bg_size){
-00757 <a class="code" href="group___bg_tiles.html#ga7">PA_LoadBgMap</a>(screen, bg_select, bg_map, bg_size);
-00758 scrollpos[screen][bg_select].infscroll = 0; <span class="comment">// Par défaut pas de scrolling infini...</span>
-00759 PA_BgInfo[screen][bg_select].Map = ScreenBaseBlock(screen, PA_BgInfo[screen][bg_select].mapchar);
-00760 PA_BgInfo[screen][bg_select].TileSetChar = PA_BgInfo[screen][bg_tiles].TileSetChar;
-00761 PA_BgInfo[screen][bg_select].tilesetsize = PA_BgInfo[screen][bg_tiles].tilesetsize;
+00756 
+00757 
+00758 
+00759 
+00760 
+00761 
 00762 
-00763 _REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select));
-00764 _REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size &lt;&lt; 14) |(PA_BgInfo[screen][bg_select].mapchar &lt;&lt; SCREEN_SHIFT) | (1 &lt;&lt; 13) | (PA_BgInfo[screen][bg_select].TileSetChar &lt;&lt; 2) | (1 &lt;&lt; 7);
-00765 <a class="code" href="group___bg_tiles.html#ga27">PA_BGScrollXY</a>(screen, bg_select, 0, 0);   
-00766 }
-00767 
-00768 
-00769 
-00792 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_SetBgPrioSeq(u8 screen, u8  priority0, u8  priority1, u8  priority2, u8  priority3)
-00793 {
-00794    <a class="code" href="group___bg_tiles.html#ga11">PA_SetBgPrio</a>(screen, priority0, 0);
-00795    <a class="code" href="group___bg_tiles.html#ga11">PA_SetBgPrio</a>(screen, priority1, 1);
-00796    <a class="code" href="group___bg_tiles.html#ga11">PA_SetBgPrio</a>(screen, priority2, 2);
-00797    <a class="code" href="group___bg_tiles.html#ga11">PA_SetBgPrio</a>(screen, priority3, 3);
-00798 } 
-00799 
-00800 
-00801 
-00802 
-<a name="l00814"></a><a class="code" href="group___bg_tiles.html#ga14">00814</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga14">PA_ClearBg</a>(u8 screen, u8 bg_select){
-00815 u8 i, j;
-00816 <span class="keywordflow">for</span> (i = 0; i &lt; 32; i++) <span class="keywordflow">for</span> (j = 0; j &lt; 32; j++) <a class="code" href="group___bg_tiles.html#ga28">PA_SetMapTileAll</a>(screen, bg_select, i, j, 0);
-00817 }
-00818 
-00819 
-00820 
-00821 
-00822 
-<a name="l00837"></a><a class="code" href="group___bg_tiles.html#ga32">00837</a> <span class="preprocessor">#define PA_EasyBgLoad(screen, bg_number, bg_name){\</span>
-00838 <span class="preprocessor">       PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\</span>
-00839 <span class="preprocessor">       if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){  PA_LoadTiledBg(screen, bg_number, bg_name);}\</span>
-00840 <span class="preprocessor">       else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}\</span>
-00841 <span class="preprocessor">}</span>
-00842 <span class="preprocessor"></span>
-00843 
-<a name="l00858"></a><a class="code" href="group___bg_tiles.html#ga33">00858</a> <span class="preprocessor">#define PA_FSBgLoad(screen, bg_number, filenumber)  {  \</span>
-00859 <span class="preprocessor">u32 *PA_BGinfo = (u32*)PA_PAFSFile(filenumber);\</span>
-00860 <span class="preprocessor">PA_BgInfo[screen][bg_number].BgMode = PA_BGinfo[0];   \</span>
-00861 <span class="preprocessor">PA_LoadBgPal(screen, bg_number, (void*)(PA_PAFSFile(filenumber+2))); \</span>
-00862 <span class="preprocessor">PA_DeleteBg(screen, bg_number);\</span>
-00863 <span class="preprocessor">if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {       \</span>
-00864 <span class="preprocessor">       PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);\</span>
-00865 <span class="preprocessor">       PA_LoadBgMap(screen, bg_number, PA_PAFSFile(filenumber+1), PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2])); \</span>
-00866 <span class="preprocessor">       PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2]), 0, 1);\</span>
-00867 <span class="preprocessor">}\</span>
-00868 <span class="preprocessor">else{\</span>
-00869 <span class="preprocessor">       PA_BgInfo[screen][bg_number].NTiles = PA_FSFile[filenumber+3].Length&gt;&gt;5;\</span>
-00870 <span class="preprocessor">       if (PA_BgInfo[screen][bg_number].NTiles &lt; MAX_TILES) { \</span>
-00871 <span class="preprocessor">              PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);\</span>
-00872 <span class="preprocessor">       }\</span>
-00873 <span class="preprocessor">       else{\</span>
-00874 <span class="preprocessor">              PA_LoadBgTilesEx(screen, bg_number, (void*)Blank, (1008&lt;&lt;5));\</span>
-00875 <span class="preprocessor">       }\</span>
-00876 <span class="preprocessor">       PA_BgInfo[screen][bg_number].Tiles = PA_PAFSFile(filenumber+3);\</span>
-00877 <span class="preprocessor">       PA_LoadBgMap(screen, bg_number, Blank, BG_512X256); \</span>
-00878 <span class="preprocessor">       PA_InitBg(screen, bg_number, BG_512X256, 0, 1);\</span>
-00879 <span class="preprocessor">       PA_InitLargeBg(screen, bg_number, PA_BGinfo[1]&gt;&gt; 3, PA_BGinfo[2]&gt;&gt; 3, PA_PAFSFile(filenumber+1));\</span>
-00880 <span class="preprocessor">}\</span>
-00881 <span class="preprocessor">PA_BGScrollXY(screen, bg_number, 0, 0);\</span>
-00882 <span class="preprocessor">}</span>
-00883 <span class="preprocessor"></span>
-00884 
-00885 
-00901 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga15">PA_EasyBgScrollX</a>(u8 screen, u8 bg_number, s32 x);
-00902 
-00903 
-00904 
-00920 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga16">PA_EasyBgScrollY</a>(u8 screen, u8 bg_number, s32 y);
-00921 
-00922 
-<a name="l00941"></a><a class="code" href="group___bg_tiles.html#ga17">00941</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga17">PA_EasyBgScrollXY</a>(u8 screen, u8 bg_number, s32 x, s32 y){
-00942        <a class="code" href="group___bg_tiles.html#ga15">PA_EasyBgScrollX</a>(screen, bg_number, x);
-00943        <a class="code" href="group___bg_tiles.html#ga16">PA_EasyBgScrollY</a>(screen, bg_number, y);
-00944 }
-00945 
-00946  <span class="comment">// end of BgTiles</span>
-00948 
-00949 
-00950 
-00951 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_UpdateBgTile(u8 screen, u8 bg_select, u16 tilepos, <span class="keywordtype">void</span> *tile){
-00952 tilepos = tilepos &lt;&lt; 4;
-00953 u32 *tilecopy = (u32*)tile;
-00954 u8 i;
-00955        <span class="keywordflow">for</span> (i = 0; i &lt; 16; i++)
-00956               PA_BgInfo[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
-00957 }
-00958 
-00959 <span class="preprocessor">#endif</span>
-00960 <span class="preprocessor"></span>
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:40 2006 pour PAlib par&nbsp;
+00763 
+<a name="l00779"></a><a class="code" href="group___bg_tiles.html#ga14">00779</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga14">PA_SetBgPrio</a>(u8 screen, u8 bg, u8 prio) {
+00780        _REG16(REG_BGCNT(screen, bg)) &amp;= ~3;
+00781        _REG16(REG_BGCNT(screen, bg)) |= prio;
+00782 }
+00783 
+00784 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_CreateBgFromTiles(u8 screen, u8 bg_select, u8 bg_tiles, <span class="keywordtype">void</span> *bg_map, u8 bg_size){
+00785 <a class="code" href="group___bg_tiles.html#ga7">PA_LoadBgMap</a>(screen, bg_select, bg_map, bg_size);
+00786 scrollpos[screen][bg_select].infscroll = 0; <span class="comment">// Par défaut pas de scrolling infini...</span>
+00787 PA_BgInfo[screen][bg_select].Map = ScreenBaseBlock(screen, PA_BgInfo[screen][bg_select].mapchar);
+00788 PA_BgInfo[screen][bg_select].TileSetChar = PA_BgInfo[screen][bg_tiles].TileSetChar;
+00789 PA_BgInfo[screen][bg_select].tilesetsize = PA_BgInfo[screen][bg_tiles].tilesetsize;
+00790 
+00791 _REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select));
+00792 _REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size &lt;&lt; 14) |(PA_BgInfo[screen][bg_select].mapchar &lt;&lt; SCREEN_SHIFT) | (1 &lt;&lt; 13) | (PA_BgInfo[screen][bg_select].TileSetChar &lt;&lt; 2) | (1 &lt;&lt; 7);
+00793 PA_BGScrollXY(screen, bg_select, 0, 0);   
+00794 }
+00795 
+00796 
+00797 
+00820 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_SetBgPrioSeq(u8 screen, u8  priority0, u8  priority1, u8  priority2, u8  priority3)
+00821 {
+00822    <a class="code" href="group___bg_tiles.html#ga14">PA_SetBgPrio</a>(screen, priority0, 0);
+00823    <a class="code" href="group___bg_tiles.html#ga14">PA_SetBgPrio</a>(screen, priority1, 1);
+00824    <a class="code" href="group___bg_tiles.html#ga14">PA_SetBgPrio</a>(screen, priority2, 2);
+00825    <a class="code" href="group___bg_tiles.html#ga14">PA_SetBgPrio</a>(screen, priority3, 3);
+00826 } 
+00827 
+00828 
+00829 
+00830 
+<a name="l00842"></a><a class="code" href="group___bg_tiles.html#ga17">00842</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga17">PA_ClearBg</a>(u8 screen, u8 bg_select){
+00843 u8 i, j;
+00844 <span class="keywordflow">for</span> (i = 0; i &lt; 32; i++) <span class="keywordflow">for</span> (j = 0; j &lt; 32; j++) <a class="code" href="group___bg_tiles.html#ga30">PA_SetMapTileAll</a>(screen, bg_select, i, j, 0);
+00845 }
+00846 
+00847 
+00848 
+00849 
+00850 
+<a name="l00865"></a><a class="code" href="group___bg_tiles.html#ga34">00865</a> <span class="preprocessor">#define PA_EasyBgLoad(screen, bg_number, bg_name)       PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name##_Info, (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal)</span>
+00866 <span class="preprocessor"></span><span class="comment">/*     PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\</span>
+00867 <span class="comment">       if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){  PA_LoadTiledBg(screen, bg_number, bg_name);}\</span>
+00868 <span class="comment">       else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}\*/</span>
+00869 
+00870 
+00871 
+00872 
+00873 
+00889 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga18">PA_EasyBgScrollX</a>(u8 screen, u8 bg_number, s32 x);
+00890 
+00891 
+00892 
+00908 <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga19">PA_EasyBgScrollY</a>(u8 screen, u8 bg_number, s32 y);
+00909 
+00910 
+<a name="l00929"></a><a class="code" href="group___bg_tiles.html#ga20">00929</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___bg_tiles.html#ga20">PA_EasyBgScrollXY</a>(u8 screen, u8 bg_number, s32 x, s32 y){
+00930        <a class="code" href="group___bg_tiles.html#ga18">PA_EasyBgScrollX</a>(screen, bg_number, x);
+00931        <a class="code" href="group___bg_tiles.html#ga19">PA_EasyBgScrollY</a>(screen, bg_number, y);
+00932 }
+00933 
+00934 
+<a name="l00953"></a><a class="code" href="group___bg_tiles.html#ga21">00953</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___bg_tiles.html#ga21">PA_EasyBgGetPixel</a>(u8 screen, u8 bg_number, s32 x, s32 y){
+00954        <span class="keywordflow">return</span> PA_EasyBgPixel[PA_BgInfo[screen][bg_number].Infos.Type](screen, bg_number, x, y);
+00955 }
+00956 
+00957 
+<a name="l00976"></a><a class="code" href="group___bg_tiles.html#ga22">00976</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u16 <a class="code" href="group___bg_tiles.html#ga22">PA_EasyBgGetPixelCol</a>(u8 screen, u8 bg_number, s32 x, s32 y){
+00977        <span class="keywordflow">return</span> ((u16*)(PA_BgInfo[screen][bg_number].Infos.Palette))[<a class="code" href="group___bg_tiles.html#ga21">PA_EasyBgGetPixel</a>(screen, bg_number, x, y)];
+00978 }
+00979 
+00980 
+00981 
+00982  <span class="comment">// end of BgTiles</span>
+00984 
+00985 
+00986 <span class="comment">/*</span>
+00987 <span class="comment"></span>
+00988 <span class="comment">void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette);</span>
+00989 <span class="comment">       </span>
+00990 <span class="comment">*/</span>
+00991 
+00992 
+00993 <span class="comment">// Get pixel functions</span>
+00994 
+00995 u8 PAEasyBgGetPixelTiled(u8 screen, u8 bg_number, s32 x, s32 y);
+00996 
+00997 u8 PAEasyBgGetPixelLarge(u8 screen, u8 bg_number, s32 x, s32 y);
+00998 
+00999 u8 PAEasyBgGetPixelInf(u8 screen, u8 bg_number, s32 x, s32 y);
+01000 
+01001 u8 PANoPixel(u8 screen, u8 bg_number, s32 x, s32 y);
+01002 
+01003 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_UpdateBgTile(u8 screen, u8 bg_select, u16 tilepos, <span class="keywordtype">void</span> *tile){
+01004 tilepos = tilepos &lt;&lt; 4;
+01005 u32 *tilecopy = (u32*)tile;
+01006 u8 i;
+01007        <span class="keywordflow">for</span> (i = 0; i &lt; 16; i++)
+01008               PA_BgInfo[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
+01009 }
+01010 
+01011 <span class="preprocessor">#endif</span>
+01012 <span class="preprocessor"></span>
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:32 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

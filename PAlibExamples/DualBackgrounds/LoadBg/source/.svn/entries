@@ -1,31 +1,0 @@
-8
-
-dir
-24
-https://palibds.googlecode.com/svn/Examples/DualBackgrounds/LoadBg/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T08:54:33.783119Z
-24
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-
-
-
-
-2005-12-02T12:01:10.343750Z
-a0ed96ccf18c78f989b382914e9689c8
-2006-09-12T08:54:33.783119Z
-24
-molousk
-

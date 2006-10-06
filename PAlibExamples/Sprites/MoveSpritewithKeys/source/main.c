@@ -1,8 +1,10 @@
 //Move a sprite using the keys...
 
 #include <PA9.h>
-#include "gfx/vaisseau.raw.c" // include the ship gfx
-#include "gfx/master.pal.c"
+
+// PAGfx Include
+#include "gfx/all_gfx.c"
+#include "gfx/all_gfx.h"
 
 s32 x = 0;    s32 y = 0; // sprite position...
 
@@ -14,10 +16,12 @@ int main(void){
 	
 	PA_InitText(0,0);
 	
-	PA_LoadPal(PAL_SPRITE0, master_Palette); // Load the sprite palette
+	PA_LoadSpritePal(0, // Screen
+					0, // Palette number
+					(void*)sprite0_Pal);	// Palette name
 	
 	//Create the sprite
-	PA_CreateSprite(0, 0,(void*)vaisseau_Bitmap, OBJ_SIZE_32X32,1, 0, 0, 0);
+	PA_CreateSprite(0, 0,(void*)vaisseau_Sprite, OBJ_SIZE_32X32,1, 0, 0, 0);
 	
 	while(1){ // Main loop
 		

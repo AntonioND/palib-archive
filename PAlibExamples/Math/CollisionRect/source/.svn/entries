@@ -1,31 +1,0 @@
-8
-
-dir
-27
-https://palibds.googlecode.com/svn/Examples/Math/CollisionRect/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T11:42:07.780050Z
-27
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-
-
-
-
-2006-01-20T22:54:33.343750Z
-a0fe3c1e60bcd851f605a1aa91cdeab9
-2006-09-12T11:42:07.780050Z
-27
-molousk
-

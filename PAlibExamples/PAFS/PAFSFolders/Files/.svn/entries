@@ -1,76 +1,0 @@
-8
-
-dir
-27
-https://palibds.googlecode.com/svn/Examples/PAFS/PAFSFolders/Files
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T11:42:07.780050Z
-27
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-aa.txt
-file
-
-
-
-
-2005-11-17T12:20:09.453125Z
-f8bd7cd66732fad2b08ec68017e7aecb
-2006-09-12T11:42:07.780050Z
-27
-molousk
-
-dir1
-dir
-
-test2.txt
-file
-
-
-
-
-2005-11-13T11:09:48.609375Z
-81ffd8a607f7f8cb5f193c535092a824
-2006-09-12T11:42:07.780050Z
-27
-molousk
-
-dir2
-dir
-
-dir3
-dir
-
-dir4
-dir
-
-ok.txt
-file
-
-
-
-
-2005-11-13T11:11:58.203125Z
-9a2ef4ae59534059da9217c735acb57c
-2006-09-12T11:42:07.780050Z
-27
-molousk
-
-test.txt
-file
-
-
-
-
-2005-11-13T10:42:46.984375Z
-f190a0ed77bca8506e59ec50f2aedb84
-2006-09-12T11:42:07.780050Z
-27
-molousk
-

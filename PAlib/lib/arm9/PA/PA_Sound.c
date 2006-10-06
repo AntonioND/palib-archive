@@ -60,12 +60,11 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 
     DC_FlushAll();
     IPC->soundData = &snd;
-	PA_SoundsBusy[PA_Channel] = 1; // now busy
+	PA_IPC.Sound[PA_Channel].Busy = 1; // now busy
 	SndPlay(PA_Channel, (void*)FS_wav[PA_Channel], length, volume, freq, format, repeat, repeatPoint);
 }
 
 void PA_StopSound(u8 PA_Channel){
-//	PA_SoundsBusy[16+PA_Channel] = 1; // Stop the sound...
 	SndStop(PA_Channel);
 }
 /*

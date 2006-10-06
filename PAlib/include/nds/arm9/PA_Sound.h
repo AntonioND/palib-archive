@@ -20,7 +20,6 @@
 #define SND_MEM_POOL_SIZE	256*1024
 
 
-
 extern TransferSound snd;
 extern u32 *sndMemPool;
 
@@ -590,29 +589,6 @@ void PA_PauseStream(u8 PA_Channel);
 void PA_UnpauseStream(u8 PA_Channel);
 
 
-/*! \fn extern inline void PA_MicStartRecording(u8* buffer, int length)
-    \brief
-         \~english Start recording
-         \~french Démarre l'enregistrement
-    \param buffer
-         \~english recording buffer
-         \~french buffer d'enregistrement
-    \param length
-         \~english Buffer length must be dividable by 1600
-         \~french Longueur du buffer doit être divisible par 1600
-*/
-extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(buffer, length);}
-
-/*! \fn extern inline void PA_MicStopRecording()
-    \brief
-         \~english Stop Recording
-         \~french Arrete l'enregistrement
-*/
-#define PA_MicStopRecording() StopRecording()
-
-
-
-
 /*! \fn extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)
     \brief
          \~english Check if a channel is busy...
@@ -622,8 +598,7 @@ extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(b
          \~french Canal audio, de 0 à 15
 */
 extern inline u8 PA_SoundChannelIsBusy(u8 PA_Channel)	{
-	DC_FlushRange((void*)PA_SoundsBusy, 16);
-	return ((volatile u8)PA_SoundsBusy[PA_Channel]);
+	return ((volatile u8)PA_IPC.Sound[PA_Channel].Busy);
 }
 
 /*! \fn extern inline s8 PA_GetFreeSoundChannel(void)
@@ -638,6 +613,51 @@ extern inline s8 PA_GetFreeSoundChannel(void){
 	return -1;
 }
 
+
+/*! \fn extern inline void PA_SetSoundChannelVol(u8 PA_Channel, u8 Volume)
+    \brief
+         \~english Change the volume of a playing sound
+         \~french Changer le volume d'un son en cours
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param Volume
+         \~english Volume, from 0 to 127. 
+         \~french Volume, de 0 à 127.
+*/
+extern inline void PA_SetSoundChannelVol(u8 PA_Channel, u8 Volume){
+	PA_IPC.Sound[PA_Channel].Volume = (Volume&127) + (1<<7);  // Volume level
+}
+
+
+/*! \fn extern inline void PA_SetSoundVol(u8 Volume)
+    \brief
+         \~english Set the master sound volume
+         \~french Changer le volume global
+    \param Volume
+         \~english Volume, from 0 to 127. 
+         \~french Volume, de 0 à 127.
+*/
+extern inline void PA_SetSoundVol(u8 Volume){
+	PA_IPC.Sound[16].Volume = (Volume&127) + (1<<7);  // Volume level, enable change bit
+}
+
+
+
+/*! \fn extern inline void PA_SetSoundChannelPan(u8 PA_Channel, u8 Pan)
+    \brief
+         \~english Change the pan of a playing sound
+         \~french Changer le pan d'un son en cours
+    \param PA_Channel
+         \~english Audio channel, from 0 to 7
+         \~french Canal audio, de 0 à 7
+    \param Pan
+         \~english Pan, from 0 to 127. (left-right)
+         \~french Pan, de 0 à 127. (gauche-droite)
+*/
+extern inline void PA_SetSoundChannelPan(u8 PA_Channel, u8 Pan){
+	PA_IPC.Sound[PA_Channel].Pan = (Pan&127) + (1<<7);  // Pan level
+}
 
 /** @} */ // end of SoundARM9
 
@@ -670,6 +690,26 @@ extern inline s8 PA_GetFreeSoundChannel(void){
 //void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
 
 
+
+/*! \fn extern inline void PA_MicStartRecording(u8* buffer, int length)
+    \brief
+         \~english Start recording
+         \~french Démarre l'enregistrement
+    \param buffer
+         \~english recording buffer
+         \~french buffer d'enregistrement
+    \param length
+         \~english Buffer length must be dividable by 1600
+         \~french Longueur du buffer doit être divisible par 1600
+*/
+//extern inline void PA_MicStartRecording(u8* buffer, int length){StartRecording(buffer, length);}
+
+/*! \fn extern inline void PA_MicStopRecording()
+    \brief
+         \~english Stop Recording
+         \~french Arrete l'enregistrement
+*/
+//#define PA_MicStopRecording() StopRecording()
 
 
 

@@ -1,22 +1,0 @@
-8
-
-dir
-28
-https://palibds.googlecode.com/svn/Examples/SplashScreens
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T12:16:56.359737Z
-28
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-SplashEyes
-dir
-
-SplashBlue
-dir
-

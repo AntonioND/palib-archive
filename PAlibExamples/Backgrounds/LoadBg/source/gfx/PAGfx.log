@@ -5,9 +5,11 @@ Converting PAGfx.ini
 Transparent Color : Magenta
 
 1 backgrounds :
-  bg0 : EasyBg, 256x192, Pal : bg0_Pal, Converted to TileBg, 193 tiles -> bg0_Tiles and bg0_Map
+  bg0 : EasyBg, 256x192, Pal : bg0_Pal, 193 tiles -> bg0_Tiles and bg0_Map
 
 1 palettes :
   bg0_Pal, 251 colors
+
+Converted in 0 minutes 0 seconds
 
 Finished !

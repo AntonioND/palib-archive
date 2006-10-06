@@ -9,27 +9,30 @@
 <h1>Bg Modes on 2 Screens</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga20">PA_DualLoadTiledBg</a>(bg_number, bg_name)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga23">PA_DualLoadTiledBg</a>(bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available. On 2 screens as 1...  <a href="#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga21">PA_DualLoadSimpleBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available. On 2 screens as 1...  <a href="#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga24">PA_DualLoadSimpleBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simplest way to load a Background on both screens  <a href="#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga22">PA_DualLoadRotBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simplest way to load a Background on both screens  <a href="#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga25">PA_DualLoadRotBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background fit for rotating/scaling ! Warning, you must use PA_SetVideoMode to 1 if you want 1 rotating background (Bg3 only !), or 2 for 2 rotating backgrounds (Bg2 and 3). The background MUST be in 256 colors  <a href="#ga22"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga23">PA_DualLoadBg</a>(bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Load a background fit for rotating/scaling ! Warning, you must use PA_SetVideoMode to 1 if you want 1 rotating background (Bg3 only !), or 2 for 2 rotating backgrounds (Bg2 and 3). The background MUST be in 256 colors  <a href="#ga25"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga26">PA_DualLoadBg</a>(bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="#ga23"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga24">PA_DualLoadPAGfxLargeBg</a>(bg_number, bg_name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap  <a href="#ga26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga27">PA_DualLoadPAGfxLargeBg</a>(bg_number, bg_name)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx. Background on both screens, as one  <a href="#ga24"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga25">PA_DualLoadLargeBg</a>(bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx. Background on both screens, as one  <a href="#ga27"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga28">PA_DualLoadLargeBg</a>(bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), on both screens  <a href="#ga25"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga26">PA_DualLoadLargeBgEx</a>(bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), on both screens  <a href="#ga28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga29">PA_DualLoadLargeBgEx</a>(bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), but here you can put yourself the tile size...  <a href="#ga26"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), but here you can put yourself the tile size...  <a href="#ga29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga30">PA_DualEasyBgLoad</a>(bg_number, bg_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">EasyBg load, but for Dual screen...  <a href="#ga30"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga0">PA_DualHideBg</a> (u8 bg_select)</td></tr>
 
@@ -56,46 +59,98 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DualSetBgRot</b> (
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga7">PA_DualBGScrollXY</a> (u8 bg_number, s16 x, s16 y)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontaly and vertically any background  <a href="#ga7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga8">PA_DualInfLargeScrollX</a> (u8 bg_select, s32 x)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga8">PA_DualEasyBgScrollX</a> (u8 bg_select, s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly. It must have been initialised with PA_LoadLargeBg.  <a href="#ga8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a> (u8 bg_select, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll an EasyBg horizontaly. It must have been initialised with PA_LoadLargeBg.  <a href="#ga8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga9">PA_DualEasyBgScrollY</a> (u8 bg_select, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga10">PA_DualInfLargeScrollXY</a> (u8 bg_select, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll an EasyBg vertically.  <a href="#ga9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga10">PA_DualEasyBgScrollXY</a> (u8 bg_select, s32 x, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga10"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga11">PA_DualLargeScrollX</a> (u8 bg_select, s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a Dual EasyBg.  <a href="#ga10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga11">PA_DualInfLargeScrollX</a> (u8 bg_select, s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga11"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga12" doxytag="TileDual::PA_DualLargeScrollY"></a>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly. It must have been initialised with PA_LoadLargeBg.  <a href="#ga11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga12">PA_DualInfLargeScrollY</a> (u8 bg_select, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga12"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga13">PA_DualInfLargeScrollXY</a> (u8 bg_select, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large infinite scrolling background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg.  <a href="#ga13"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga14">PA_DualLargeScrollX</a> (u8 bg_select, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga15" doxytag="TileDual::PA_DualLargeScrollY"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DualLargeScrollY</b> (u8 bg_select, s32 y)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga13">PA_DualLargeScrollXY</a> (u8 bg_select, s32 x, s32 y)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga16">PA_DualLargeScrollXY</a> (u8 bg_select, s32 x, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga14">PA_DualInitParallaxX</a> (s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll a large background horizontaly and vertically. It must have been initialised with PA_LoadLargeBg. This function does not wrap around, but is faster than the InfLargeScroll...  <a href="#ga16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga17">PA_DualInitParallaxX</a> (s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga14"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga15">PA_DualInitParallaxY</a> (s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga17"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga18">PA_DualInitParallaxY</a> (s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga15"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga16">PA_DualParallaxScrollX</a> (s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the speed at which each background will scroll compared to the others. Then use PA_ParallaxScrollX to scroll...  <a href="#ga18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga19">PA_DualParallaxScrollX</a> (s32 x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga16"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga17">PA_DualParallaxScrollY</a> (s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga19"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga20">PA_DualParallaxScrollY</a> (s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga18">PA_DualParallaxScrollXY</a> (s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga21">PA_DualParallaxScrollXY</a> (s32 x, s32 y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga18"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga19">PA_DualSetBgPrio</a> (u8 bg, u8 prio)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll the backgrounds  <a href="#ga21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga22">PA_DualSetBgPrio</a> (u8 bg, u8 prio)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change a backgrounds priority  <a href="#ga19"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change a backgrounds priority  <a href="#ga22"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Documentation</h2>
-<a class="anchor" name="ga23" doxytag="PA_TileDual.h::PA_DualLoadBg"></a><p>
+<a class="anchor" name="ga30" doxytag="PA_TileDual.h::PA_DualEasyBgLoad"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_DualEasyBgLoad          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bg_number,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>bg_name&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<b>Value:</b><div class="fragment"><pre class="fragment">{\
+       <a class="code" href="group___bg_tiles.html#ga34">PA_EasyBgLoad</a>(0, bg_number, bg_name);\
+       <a class="code" href="group___bg_tiles.html#ga34">PA_EasyBgLoad</a>(1, bg_number, bg_name);\
+       <a class="code" href="group___tile_dual.html#ga9">PA_DualEasyBgScrollY</a>(bg_number, 0);}
+</pre></div>EasyBg load, but for Dual screen... 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Background number to load (from 0 to 3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Background name, in PAGfx </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga26" doxytag="PA_TileDual.h::PA_DualLoadBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -139,8 +194,8 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___bg_tiles.html#ga24">PA_LoadBg</a>(0, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\
-<a class="code" href="group___bg_tiles.html#ga24">PA_LoadBg</a>(1, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\
+<a class="code" href="group___bg_tiles.html#ga29">PA_LoadBg</a>(0, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\
+<a class="code" href="group___bg_tiles.html#ga29">PA_LoadBg</a>(1, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode);\
 <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_select, 0);}
 </pre></div>Simplest way to load a Background. Combines PA_InitBg, PA_LoadBgTiles, and PA_LoadBgMap 
 <p>
@@ -158,7 +213,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga25" doxytag="PA_TileDual.h::PA_DualLoadLargeBg"></a><p>
+<a class="anchor" name="ga28" doxytag="PA_TileDual.h::PA_DualLoadLargeBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -201,7 +256,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
 <a class="code" href="group___bg_large_map.html#ga11">PA_LoadLargeBg</a>(0, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\
 <a class="code" href="group___bg_large_map.html#ga11">PA_LoadLargeBg</a>(1, bg_select, bg_tiles, bg_map, color_mode, lx, ly);\
-<a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(bg_select, 0);}
+<a class="code" href="group___tile_dual.html#ga12">PA_DualInfLargeScrollY</a>(bg_select, 0);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), on both screens 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
@@ -217,7 +272,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga26" doxytag="PA_TileDual.h::PA_DualLoadLargeBgEx"></a><p>
+<a class="anchor" name="ga29" doxytag="PA_TileDual.h::PA_DualLoadLargeBgEx"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -263,7 +318,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
 <a class="code" href="group___bg_large_map.html#ga13">PA_LoadLargeBgEx</a>(0, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\
 <a class="code" href="group___bg_large_map.html#ga13">PA_LoadLargeBgEx</a>(1, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly);\
-<a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(bg_select, 0);}
+<a class="code" href="group___tile_dual.html#ga12">PA_DualInfLargeScrollY</a>(bg_select, 0);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), but here you can put yourself the tile size... 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
@@ -280,7 +335,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga24" doxytag="PA_TileDual.h::PA_DualLoadPAGfxLargeBg"></a><p>
+<a class="anchor" name="ga27" doxytag="PA_TileDual.h::PA_DualLoadPAGfxLargeBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -311,7 +366,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
        <a class="code" href="group___bg_large_map.html#ga12">PA_LoadPAGfxLargeBg</a>(0, bg_number, bg_name);\
        <a class="code" href="group___bg_large_map.html#ga12">PA_LoadPAGfxLargeBg</a>(1, bg_number, bg_name);\
-       <a class="code" href="group___tile_dual.html#ga9">PA_DualInfLargeScrollY</a>(bg_number, 0);}
+       <a class="code" href="group___tile_dual.html#ga12">PA_DualInfLargeScrollY</a>(bg_number, 0);}
 </pre></div>Completely load and initialise a background with infinite scrolling (usefull if larger or wider than 512 pixels), converted with PAGfx. Background on both screens, as one 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
@@ -323,7 +378,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga22" doxytag="PA_TileDual.h::PA_DualLoadRotBg"></a><p>
+<a class="anchor" name="ga25" doxytag="PA_TileDual.h::PA_DualLoadRotBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -378,7 +433,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga21" doxytag="PA_TileDual.h::PA_DualLoadSimpleBg"></a><p>
+<a class="anchor" name="ga24" doxytag="PA_TileDual.h::PA_DualLoadSimpleBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -419,8 +474,8 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-<a class="code" href="group___bg_tiles.html#ga23">PA_LoadSimpleBg</a>(0, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\
-<a class="code" href="group___bg_tiles.html#ga23">PA_LoadSimpleBg</a>(1, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\
+<a class="code" href="group___bg_tiles.html#ga28">PA_LoadSimpleBg</a>(0, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\
+<a class="code" href="group___bg_tiles.html#ga28">PA_LoadSimpleBg</a>(1, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode);\
 <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_select, 0);}
 </pre></div>Simplest way to load a Background on both screens 
 <p>
@@ -437,7 +492,7 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga20" doxytag="PA_TileDual.h::PA_DualLoadTiledBg"></a><p>
+<a class="anchor" name="ga23" doxytag="PA_TileDual.h::PA_DualLoadTiledBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -466,8 +521,8 @@ Load tiles, a map, scroll it... and 2 screens automatically <hr><h2>Define Docum
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment">{\
-       <a class="code" href="group___bg_tiles.html#ga22">PA_LoadTiledBg</a>(0, bg_number, bg_name);\
-       <a class="code" href="group___bg_tiles.html#ga22">PA_LoadTiledBg</a>(1, bg_number, bg_name);\
+       <a class="code" href="group___bg_tiles.html#ga27">PA_LoadTiledBg</a>(0, bg_number, bg_name);\
+       <a class="code" href="group___bg_tiles.html#ga27">PA_LoadTiledBg</a>(1, bg_number, bg_name);\
        <a class="code" href="group___tile_dual.html#ga6">PA_DualBGScrollY</a>(bg_number, 0);}
 </pre></div>This will never get easier... Loads a background TiledBg converted with PAGfx, with it's tiles, map, and palette. Only 256 color mode available. On 2 screens as 1... 
 <p>
@@ -658,6 +713,148 @@ Delete a complete background (tiles + map + hide it...)
     </td>
   </tr>
 </table>
+<a class="anchor" name="ga8" doxytag="PA_TileDual.h::PA_DualEasyBgScrollX"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_DualEasyBgScrollX           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Scroll an EasyBg horizontaly. It must have been initialised with PA_LoadLargeBg. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number to load (from 0 to 3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X value to scroll </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga10" doxytag="PA_TileDual.h::PA_DualEasyBgScrollXY"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_DualEasyBgScrollXY           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Scroll a Dual EasyBg. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number to load (from 0 to 3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>X value to scroll </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y value to scroll </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga9" doxytag="PA_TileDual.h::PA_DualEasyBgScrollY"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_DualEasyBgScrollY           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>s32&nbsp;</td>
+          <td class="mdname" nowrap> <em>y</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Scroll an EasyBg vertically. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Background number to load (from 0 to 3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Y value to scroll </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
 <a class="anchor" name="ga0" doxytag="PA_TileDual.h::PA_DualHideBg"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -693,7 +890,7 @@ Hide a background on both screens
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga8" doxytag="PA_TileDual.h::PA_DualInfLargeScrollX"></a><p>
+<a class="anchor" name="ga11" doxytag="PA_TileDual.h::PA_DualInfLargeScrollX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -738,7 +935,7 @@ Scroll a large infinite scrolling background horizontaly. It must have been init
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga10" doxytag="PA_TileDual.h::PA_DualInfLargeScrollXY"></a><p>
+<a class="anchor" name="ga13" doxytag="PA_TileDual.h::PA_DualInfLargeScrollXY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -790,7 +987,7 @@ Scroll a large infinite scrolling background horizontaly and vertically. It must
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga9" doxytag="PA_TileDual.h::PA_DualInfLargeScrollY"></a><p>
+<a class="anchor" name="ga12" doxytag="PA_TileDual.h::PA_DualInfLargeScrollY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -835,7 +1032,7 @@ Scroll a large infinite scrolling background vertically. It must have been initi
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga14" doxytag="PA_TileDual.h::PA_DualInitParallaxX"></a><p>
+<a class="anchor" name="ga17" doxytag="PA_TileDual.h::PA_DualInitParallaxX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -894,7 +1091,7 @@ Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the s
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga15" doxytag="PA_TileDual.h::PA_DualInitParallaxY"></a><p>
+<a class="anchor" name="ga18" doxytag="PA_TileDual.h::PA_DualInitParallaxY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -953,7 +1150,7 @@ Initialise Parallax Scrolling for multiple backgrounds, horizontaly. Chose the s
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga11" doxytag="PA_TileDual.h::PA_DualLargeScrollX"></a><p>
+<a class="anchor" name="ga14" doxytag="PA_TileDual.h::PA_DualLargeScrollX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -998,7 +1195,7 @@ Scroll a large background horizontaly. It must have been initialised with PA_Loa
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga13" doxytag="PA_TileDual.h::PA_DualLargeScrollXY"></a><p>
+<a class="anchor" name="ga16" doxytag="PA_TileDual.h::PA_DualLargeScrollXY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1050,7 +1247,7 @@ Scroll a large background horizontaly and vertically. It must have been initiali
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga16" doxytag="PA_TileDual.h::PA_DualParallaxScrollX"></a><p>
+<a class="anchor" name="ga19" doxytag="PA_TileDual.h::PA_DualParallaxScrollX"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1085,7 +1282,7 @@ Scroll the backgrounds
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga18" doxytag="PA_TileDual.h::PA_DualParallaxScrollXY"></a><p>
+<a class="anchor" name="ga21" doxytag="PA_TileDual.h::PA_DualParallaxScrollXY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1130,7 +1327,7 @@ Scroll the backgrounds
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga17" doxytag="PA_TileDual.h::PA_DualParallaxScrollY"></a><p>
+<a class="anchor" name="ga20" doxytag="PA_TileDual.h::PA_DualParallaxScrollY"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1165,7 +1362,7 @@ Scroll the backgrounds
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga19" doxytag="PA_TileDual.h::PA_DualSetBgPrio"></a><p>
+<a class="anchor" name="ga22" doxytag="PA_TileDual.h::PA_DualSetBgPrio"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -1245,7 +1442,7 @@ Show a hidden background, on both screens
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:31 2006 for PAlib by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Fri Oct 6 17:35:26 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

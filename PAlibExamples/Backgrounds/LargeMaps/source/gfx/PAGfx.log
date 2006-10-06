@@ -5,9 +5,11 @@ Converting PAGfx.ini
 Transparent Color : Magenta
 
 1 backgrounds :
-  zelda : EasyBg, 2048x2048, Pal : zelda_Pal, Converted to LargeMap, 243 tiles -> zelda_Tiles and zelda_Map
+  zelda : EasyBg, 2048x2048, Pal : zelda_Pal, Converted to LargeMap, 596 tiles -> zelda_Tiles and zelda_Map
 
 1 palettes :
   zelda_Pal, 28 colors
+
+Converted in 0 minutes 0 seconds
 
 Finished !

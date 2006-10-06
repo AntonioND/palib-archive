@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>PAlib:  Fichier source de PA_Video.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.3.9.1 -->
+<div class="qindex">  <form class="search" action="search.php" method="get">
+<a class="qindex" href="index.html">Page&nbsp;principale</a> | <a class="qindex" href="modules.html">Modules</a> | <a class="qindex" href="files.html">Liste&nbsp;des&nbsp;fichiers</a> | <a class="qindex" href="globals.html">Portée&nbsp;globale</a>  | <span class="search">Rechercher&nbsp;<input class="search" type="text" name="query" value="" size="20" accesskey="s"/></span></form></div>
+<h1>PA_Video.h</h1><div class="fragment"><pre class="fragment">00001 <span class="preprocessor">#ifndef _PA_VIDEO</span>
+00002 <span class="preprocessor"></span><span class="preprocessor">#define _PA_TEXT</span>
+00003 <span class="preprocessor"></span>
+00004 
+00005 <span class="preprocessor">#include &lt;PA9.h&gt;</span>
+00006 
+00007 
+00008 
+00009 <span class="keywordtype">char</span> *ligne(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">int</span> start, <span class="keywordtype">int</span> *end);
+00010 
+00011 <span class="keywordtype">char</span> *correctname(<span class="keywordtype">char</span> *name1);
+00012 
+00013 <span class="keywordtype">int</span> jpgcorrect(u8* video,<span class="keywordtype">int</span> num, <span class="keywordtype">int</span> *size);
+00014        
+00015 <span class="keywordtype">int</span> PA_LoadVid(u8* video,<span class="keywordtype">int</span> *taille, <span class="keywordtype">int</span> fps,<span class="keywordtype">int</span> depart);
+00016 
+00017 <span class="keywordtype">int</span> numligne(<span class="keywordtype">char</span> *buffer);
+00018 
+00019 <span class="keywordtype">int</span> remplacesize(<span class="keywordtype">int</span> num);
+00020 
+00021 <span class="keywordtype">int</span> PA_FSLoadVid(s8 file,<span class="keywordtype">int</span> *taille, <span class="keywordtype">int</span> fps,<span class="keywordtype">int</span> depart);
+00022 <span class="keywordtype">void</span> PA_LoadMultiVid(<span class="keywordtype">int</span> *taille, <span class="keywordtype">int</span> fps,<span class="keywordtype">int</span> numvid, ...);
+00023 
+00024 
+00025 <span class="keywordtype">void</span> PA_FSsizes(s8 file, <span class="keywordtype">int</span> start1, <span class="keywordtype">int</span> *end1);
+00026 <span class="keywordtype">int</span> PA_FSLoadMultiVid(s8 file);
+00027 
+00028 
+00029 <span class="preprocessor">#endif // TIMER_H</span>
+00030 <span class="preprocessor"></span>
+00031 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:32 2006 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
+</body>
+</html>

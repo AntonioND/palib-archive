@@ -13,12 +13,6 @@
 <a href="_p_a___keys_8h-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Data Structures</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Pad</b></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_Stylus</b></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>Pads</b></td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_movingsprite</b></td></tr>
 
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
@@ -40,58 +34,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_Keys.h::PA_TAB"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_TAB</b>&nbsp;&nbsp;&nbsp;3</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_Keys.h::PA_BUTTONS"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BUTTONS</b>&nbsp;&nbsp;&nbsp;(*(volatile u16*)0x04000130)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga10">PA_MoveSprite</a>(sprite)&nbsp;&nbsp;&nbsp;PA_MoveSpriteEx(PA_Screen, sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteLy(0, sprite))</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_Keys.h::REG_KEYCNT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>REG_KEYCNT</b>&nbsp;&nbsp;&nbsp;(*(volatile u16*)0x04000132)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Move a sprite according to the stylus's position. The sprite will be 'hooked' if the stylus passes over it, and then they'll be linked together. Returns 1 if the sprite is moved. You can also get information from PA_MovedSprite.Moving (1 if you are moving a sprite), .Sprite (sprite moved), .X (X position of the center of the sprite), .Y (Y position of the center of the sprite), .Vx (horizontal speed ! useful if you want to make the sprite continue to move when you release the stylus...), and .Vy  <a href="group___keys.html#ga10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga11">PA_StylusInZone</a>(x1, y1, x2, y2)&nbsp;&nbsp;&nbsp;((Stylus.X&gt;=x1)&amp;&amp;(Stylus.Y&gt;=y1)&amp;&amp;(Stylus.X&lt;x2)&amp;&amp;(Stylus.Y&lt;y2))</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_Keys.h::BUTTON_A"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_A</b>&nbsp;&nbsp;&nbsp;1</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_Keys.h::BUTTON_B"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_B</b>&nbsp;&nbsp;&nbsp;2</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Keys.h::BUTTON_SELECT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_SELECT</b>&nbsp;&nbsp;&nbsp;4</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_Keys.h::BUTTON_START"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_START</b>&nbsp;&nbsp;&nbsp;8</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_Keys.h::BUTTON_RIGHT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_RIGHT</b>&nbsp;&nbsp;&nbsp;16</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a13" doxytag="PA_Keys.h::BUTTON_LEFT"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_LEFT</b>&nbsp;&nbsp;&nbsp;32</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a14" doxytag="PA_Keys.h::BUTTON_UP"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_UP</b>&nbsp;&nbsp;&nbsp;64</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_Keys.h::BUTTON_DOWN"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_DOWN</b>&nbsp;&nbsp;&nbsp;128</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a16" doxytag="PA_Keys.h::BUTTON_R"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_R</b>&nbsp;&nbsp;&nbsp;256</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a17" doxytag="PA_Keys.h::BUTTON_L"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_L</b>&nbsp;&nbsp;&nbsp;512</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a18" doxytag="PA_Keys.h::BUTTON_X"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_X</b>&nbsp;&nbsp;&nbsp;1024</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a19" doxytag="PA_Keys.h::BUTTON_Y"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>BUTTON_Y</b>&nbsp;&nbsp;&nbsp;2048</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>UPDATEPAD</b>(type, pad)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>COPYPAD</b>(new, old)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga9">PA_MoveSprite</a>(sprite)&nbsp;&nbsp;&nbsp;PA_MoveSpriteEx(PA_Screen, sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteLy(0, sprite))</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Move a sprite according to the stylus's position. The sprite will be 'hooked' if the stylus passes over it, and then they'll be linked together. Returns 1 if the sprite is moved. You can also get information from PA_MovedSprite.Moving (1 if you are moving a sprite), .Sprite (sprite moved), .X (X position of the center of the sprite), .Y (Y position of the center of the sprite), .Vx (horizontal speed ! useful if you want to make the sprite continue to move when you release the stylus...), and .Vy  <a href="group___keys.html#ga9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga10">PA_StylusInZone</a>(x1, y1, x2, y2)&nbsp;&nbsp;&nbsp;((Stylus.X&gt;=x1)&amp;&amp;(Stylus.Y&gt;=y1)&amp;&amp;(Stylus.X&lt;x2)&amp;&amp;(Stylus.Y&lt;y2))</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the stylus is in a given zone... Returns 1 if yes, 0 if not  <a href="group___keys.html#ga10"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the stylus is in a given zone... Returns 1 if yes, 0 if not  <a href="group___keys.html#ga11"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="PA_Keys.h::PA_UpdatePad"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga0">PA_UpdatePad</a> (void)</td></tr>
@@ -110,137 +58,42 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga4">PA_MoveSpriteDistance</a> (u8 sprite, u8 distance)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Move a sprite according to the stylus's position. See PA_MoveSprite for more details... The difference is that here you chose the hooking distance in pixels  <a href="group___keys.html#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga5" doxytag="PA_Keys.h::PA_UpdateMoveSprite"></a>
-void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga5">PA_UpdateMoveSprite</a> (void)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga5">PA_SpriteStylusOverEx</a> (u8 sprite, u8 lx, u8 ly)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Update the moving sprite info. If you don't put this in the VBL (it already is in PA_InitVBL), then if you stop moving around a sprite, it might not be able to pick up other sprites... <br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the stylus position is over a given sprite (stylus pressed or not)  <a href="group___keys.html#ga5"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga6">PA_SpriteTouchedEx</a> (u8 sprite, u8 lx, u8 ly)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if a given sprite is touched. Returns 1 if touched... You can chose the width and height around the sprite  <a href="group___keys.html#ga6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga7">PA_SpriteTouched</a> (u8 sprite)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if a given sprite is touched. Returns 1 if touched...  <a href="group___keys.html#ga7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga8" doxytag="PA_Keys.h::PA_SpriteTouchedPix"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga8">PA_SpriteStylusOver</a> (u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check if the stylus position is over a given sprite (stylus pressed or not)  <a href="group___keys.html#ga8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga9" doxytag="PA_Keys.h::PA_SpriteTouchedPix"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_SpriteTouchedPix</b> (u8 sprite)</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a24" doxytag="PA_Keys.h::Stylus"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_Keys.h::Stylus"></a>
 PA_Stylus&nbsp;</td><td class="memItemRight" valign="bottom"><b>Stylus</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a25" doxytag="PA_Keys.h::Pad"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a9" doxytag="PA_Keys.h::Pad"></a>
 Pads&nbsp;</td><td class="memItemRight" valign="bottom"><b>Pad</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a26" doxytag="PA_Keys.h::PadPointer"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Keys.h::PadPointer"></a>
 PA_Pad *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PadPointer</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a27" doxytag="PA_Keys.h::PA_MovedSprite"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a11" doxytag="PA_Keys.h::PA_MovedSprite"></a>
 PA_movingsprite&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_MovedSprite</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a28" doxytag="PA_Keys.h::PA_MoveSpriteType"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a12" doxytag="PA_Keys.h::PA_MoveSpriteType"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_MoveSpriteType</b></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a29" doxytag="PA_Keys.h::CompletePad"></a>
-u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>CompletePad</b></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a30" doxytag="PA_Keys.h::ExPad"></a>
-u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>ExPad</b></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a31" doxytag="PA_Keys.h::TempPad"></a>
-u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>TempPad</b></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Everything concerning the keys and stylus. 
 <p>
-Update the keys and stylus inputs<hr><h2>Define Documentation</h2>
-<a class="anchor" name="a21" doxytag="PA_Keys.h::COPYPAD"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define COPYPAD          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">new,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>old&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keyword">new</span>.A = old.A;\
-   <span class="keyword">new</span>.B = old.B;\
-   <span class="keyword">new</span>.Select = old.Select;\
-   <span class="keyword">new</span>.Start = old.Start;\
-   <span class="keyword">new</span>.Right = old.Right;\
-   <span class="keyword">new</span>.Left = old.Left;\
-   <span class="keyword">new</span>.Up = old.Up;\
-   <span class="keyword">new</span>.Down = old.Down;\
-   <span class="keyword">new</span>.R = old.R;\
-   <span class="keyword">new</span>.L =  old.L;\
-   <span class="keyword">new</span>.X = old.X;\
-   <span class="keyword">new</span>.Y = old.Y;
-</pre></div>    </td>
-  </tr>
-</table>
-<a class="anchor" name="a20" doxytag="PA_Keys.h::UPDATEPAD"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">#define UPDATEPAD          </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">type,         <tr>
-          <td class="md" nowrap align="right"></td>
-          <td class="md"></td>
-          <td class="md" nowrap>pad&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-<b>Value:</b><div class="fragment"><pre class="fragment">type.A = pad &amp; BUTTON_A;\
-   type.B = (pad &amp; BUTTON_B) &gt;&gt; 1;\
-   type.Select = (pad &amp; BUTTON_SELECT) &gt;&gt; 2;\
-   type.Start = (pad &amp; BUTTON_START) &gt;&gt; 3;\
-   type.Right = (pad &amp; BUTTON_RIGHT) &gt;&gt; 4;\
-   type.Left = (pad &amp; BUTTON_LEFT) &gt;&gt; 5;\
-   type.Up = (pad &amp; BUTTON_UP) &gt;&gt; 6;\
-   type.Down = (pad &amp; BUTTON_DOWN) &gt;&gt; 7;\
-   type.R = (pad &amp; BUTTON_R) &gt;&gt; 8;\
-   type.L = (pad &amp; BUTTON_L) &gt;&gt; 9;\
-   type.X = (pad &amp; BUTTON_X) &gt;&gt; 10;\
-   type.Y = (pad &amp; BUTTON_Y) &gt;&gt; 11;\
-   type.Anykey = (!(!((pad&amp;2047))));
-</pre></div>    </td>
-  </tr>
-</table>
-<hr size="1"><address style="align: right;"><small>Generated on Sun Sep 17 18:20:27 2006 for PAlib by&nbsp;
+Update the keys and stylus inputs<hr size="1"><address style="align: right;"><small>Generated on Fri Oct 6 17:35:24 2006 for PAlib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

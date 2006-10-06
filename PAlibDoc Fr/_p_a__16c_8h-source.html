@@ -27,7 +27,7 @@
 00025 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
 00026        s32 NLetters;
 00027        <span class="keyword">struct</span>{
-00028               u8 X, Y;
+00028               s16 X, X2, Y;
 00029        }Letter[2048];
 00030 } LetterPos16c;
 00031 <span class="keyword">extern</span> LetterPos16c PA_16cLetterPos;
@@ -272,36 +272,36 @@
 00374 
 00375 
 00376 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_16cLetter(u8 screen, s16 x, s16 y, <span class="keywordtype">char</span> letter, u8 size, u8 color){
-00377 PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].X = x;
-00378 PA_16cLetterPos.Letter[PA_16cLetterPos.NLetters].Y = y;
-00379 PA_16cLetterPos.NLetters++;
-00380        <span class="keywordflow">if</span> (c16_policeheight[size]&lt;=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter&lt;&lt;3)), color);
-00381        <span class="keywordflow">else</span> PA_16c16X16Letter(screen, x, y, (u32*)(c16_font[size]+(letter&lt;&lt;5)), color);
-00382 }
-00383 
-00384 
-00385  <span class="comment">// end of 16c</span>
-00387 
-00388 
-00389 
-00390 
-00391 <span class="preprocessor">#ifdef __cplusplus</span>
-00392 <span class="preprocessor"></span>}
-00393 <span class="preprocessor">#endif</span>
-00394 <span class="preprocessor"></span>
-00395 
-00396 
-00397 
-00398 
-00399 
-00400 
-00401 
-00402 <span class="preprocessor">#endif</span>
-00403 <span class="preprocessor"></span>
+00377        <span class="keywordflow">if</span> (c16_policeheight[size]&lt;=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter&lt;&lt;3)), color);
+00378        <span class="keywordflow">else</span> PA_16c16X16Letter(screen, x, y, (u32*)(c16_font[size]+(letter&lt;&lt;5)), color);
+00379 }
+00380 
+00381 
+00402 <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga13">PA_16cClearZone</a>(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2);
+00403 
 00404 
-00405 
-00406 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:40 2006 pour PAlib par&nbsp;
+00405  <span class="comment">// end of 16c</span>
+00407 
+00408 
+00409 
+00410 
+00411 <span class="preprocessor">#ifdef __cplusplus</span>
+00412 <span class="preprocessor"></span>}
+00413 <span class="preprocessor">#endif</span>
+00414 <span class="preprocessor"></span>
+00415 
+00416 
+00417 
+00418 
+00419 
+00420 
+00421 
+00422 <span class="preprocessor">#endif</span>
+00423 <span class="preprocessor"></span>
+00424 
+00425 
+00426 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:32 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

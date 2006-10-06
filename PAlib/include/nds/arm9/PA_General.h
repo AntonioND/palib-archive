@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-//#include <PA9.h>
+#include <PA_IPC.h>
 
 
 #include <nds.h>
@@ -94,7 +94,7 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 //extern u32 *Blank;
 extern u32 Blank[130000>>2];
 
-extern volatile u8 PA_SoundsBusy[16];
+extern volatile PA_IPCType PA_IPC;
 
 
 
@@ -379,7 +379,7 @@ extern inline void PA_SetScreenLight(u8 screen, u8 light){
 */
 extern inline void PA_SetLedBlink(u8 blink, u8 speed){
 	IPC->aux &= ~(3<<4);
-	IPC->aux |= (blink + (speed<<1))<<4;
+	IPC->aux |= ((blink&1) + ((speed&1)<<1))<<4;
 }
 
 
@@ -395,6 +395,17 @@ extern inline void PA_SetLedBlink(u8 blink, u8 speed){
 #define PA_WaitFor(something) {PA_WaitForVBL(); while(!(something)){PA_WaitForVBL(); }}
 
 
+/*! \fn extern inline void PA_SetDSLBrightness(u8 level)
+    \brief
+         \~english Set the DS Lite Light level...
+         \~french Régler le niveau de lumière de la DS Lite
+    \param level
+         \~english Light level (0-3)
+         \~french Niveau de la lumière (0-3)
+*/
+extern inline void PA_SetDSLBrightness(u8 level){
+	PA_IPC.Sound[16].Busy = (1<<7) | level;  // Brightness level, 0-3
+}
 
 
 

@@ -100,7 +100,7 @@ Load Large Maps, scroll them... <hr><h2>Documentation des macro</h2>
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
 PA_BgInfo[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)&gt;&gt;5;\
-<span class="keywordflow">if</span> (PA_BgInfo[screen][bg_select].NTiles &lt; MAX_TILES) {<a class="code" href="group___bg_tiles.html#ga23">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);}\
+<span class="keywordflow">if</span> (PA_BgInfo[screen][bg_select].NTiles &lt; MAX_TILES) {<a class="code" href="group___bg_tiles.html#ga28">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, Blank, BG_512X256, 0, color_mode);}\
 <span class="keywordflow">else</span>{PA_LoadTileEngine(screen, bg_select, (<span class="keywordtype">void</span>*)bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>*)bg_map);}
 </pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large) 
@@ -167,7 +167,7 @@ PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
 PA_BgInfo[screen][bg_select].NTiles = SIZEOF_16BIT(bg_tiles)&gt;&gt;5;\
-<span class="keywordflow">if</span> (PA_BgInfo[screen][bg_select].NTiles &lt; MAX_TILES) {<a class="code" href="group___bg_tiles.html#ga24">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);}\
+<span class="keywordflow">if</span> (PA_BgInfo[screen][bg_select].NTiles &lt; MAX_TILES) {<a class="code" href="group___bg_tiles.html#ga29">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, Blank, BG_512X256, 0, color_mode);}\
 <span class="keywordflow">else</span>{PA_LoadTileEngine(screen, bg_select, bg_tiles);}\
 PA_InitLargeBg(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>*)bg_map);}
 </pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles 
@@ -834,7 +834,7 @@ Déplacer les fonds activés pour le parallax...
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Sun Sep 17 18:20:42 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:35 2006 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -1,6 +1,6 @@
 #include <PA9.h>
 
-// PAGfxConverter Include
+// PAGfx Include
 #include "gfx/all_gfx.c"
 #include "gfx/all_gfx.h"
 

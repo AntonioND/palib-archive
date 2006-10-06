@@ -5,6 +5,12 @@ extern "C" {
 
 #include "PA9.h"
 
+
+
+
+EasyBgPixels PA_EasyBgPixel[6] = {PANoPixel, PANoPixel, PAEasyBgGetPixelTiled, PANoPixel, PAEasyBgGetPixelLarge, PAEasyBgGetPixelInf}; // Background types
+
+
 PA_BgInfos PA_BgInfo[2][4];
 
 // Quantité de données à charger en fonction de la taille de la map...
@@ -256,6 +262,177 @@ void PA_EasyBgScrollY(u8 screen, u8 bg_number, s32 y){
 	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) PA_BGScrollY(screen, bg_number, y&511);
 	else PA_InfLargeScrollY(screen, bg_number, y);
 }
+
+
+
+
+/*
+u32 *PA_BGinfo = (u32*)PA_PAFSFile(filenumber);
+PA_BgInfo[screen][bg_number].BgMode = PA_BGinfo[0];   
+PA_LoadBgPal(screen, bg_number, (void*)(PA_PAFSFile(filenumber+2))); 
+PA_DeleteBg(screen, bg_number);
+if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {	
+	PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);
+	PA_LoadBgMap(screen, bg_number, PA_PAFSFile(filenumber+1), PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2])); 
+	PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(PA_BGinfo[1], PA_BGinfo[2]), 0, 1);
+}
+else{
+	PA_BgInfo[screen][bg_number].NTiles = PA_FSFile[filenumber+3].Length>>5;
+	if (PA_BgInfo[screen][bg_number].NTiles < MAX_TILES) { 
+		PA_LoadBgTilesEx(screen, bg_number, PA_PAFSFile(filenumber+3), PA_FSFile[filenumber+3].Length);
+	}
+	else{
+		PA_LoadBgTilesEx(screen, bg_number, (void*)Blank, (1008<<5));
+	}
+	PA_BgInfo[screen][bg_number].Tiles = PA_PAFSFile(filenumber+3);
+	PA_LoadBgMap(screen, bg_number, Blank, BG_512X256); 
+	PA_InitBg(screen, bg_number, BG_512X256, 0, 1);
+	PA_InitLargeBg(screen, bg_number, PA_BGinfo[1]>> 3, PA_BGinfo[2]>> 3, PA_PAFSFile(filenumber+1));
+}
+PA_BGScrollXY(screen, bg_number, 0, 0);
+}*/
+
+
+
+
+
+
+void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 Type, u32 Width, u32 Height, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette){
+	PA_BgInfo[screen][bg_number].Infos.Type = Type;
+	PA_BgInfo[screen][bg_number].Infos.Width = Width;	
+	PA_BgInfo[screen][bg_number].Infos.Height = Height;	
+	//PA_OutputText(1, 0,5, "%d - %d   ", PA_BgInfo[screen][bg_number].Infos.Width, PA_BgInfo[screen][bg_number].Infos.Height);
+	PA_BgInfo[screen][bg_number].Infos.Tiles = Tiles;
+	PA_BgInfo[screen][bg_number].Infos.TileSize = TileSize;
+	PA_BgInfo[screen][bg_number].Infos.Map = Map;
+	PA_BgInfo[screen][bg_number].Infos.MapSize = MapSize;	
+	PA_BgInfo[screen][bg_number].Infos.Palette = Palette;
+}
+
+
+	
+
+void PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette)  {  
+	PA_StoreEasyBgInfos(screen, bg_number, Infos[0], Infos[1], Infos[2], Tiles, TileSize, Map, MapSize, Palette);
+	PA_BgInfo[screen][bg_number].BgMode = Infos[0];   
+	PA_LoadBgPal(screen, bg_number, Palette); 
+	PA_DeleteBg(screen, bg_number);
+	if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {	
+		PA_LoadBgTilesEx(screen, bg_number, Tiles, TileSize);
+		PA_LoadBgMap(screen, bg_number, Map, MapSize); 
+		PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(Infos[1], Infos[2]), 0, 1);
+	}
+	else{
+		PA_BgInfo[screen][bg_number].NTiles = TileSize>>5;
+		if (PA_BgInfo[screen][bg_number].BgMode == BG_LARGEMAP) { 
+			PA_LoadBgTilesEx(screen, bg_number, Tiles, TileSize);
+		}
+		else{
+			PA_LoadBgTilesEx(screen, bg_number, (void*)Blank, (1008<<5));
+		}
+		PA_BgInfo[screen][bg_number].Tiles = Tiles;
+		PA_LoadBgMap(screen, bg_number, Blank, BG_512X256); 
+		PA_InitBg(screen, bg_number, BG_512X256, 0, 1);
+		PA_InitLargeBg(screen, bg_number, Infos[1]>> 3, Infos[2]>> 3, Map);
+	}
+	PA_BGScrollXY(screen, bg_number, 0, 0);
+}
+
+
+
+u8 PAEasyBgGetPixelTiled(u8 screen, u8 bg_number, s32 x, s32 y){
+	// Adjust X/Y values
+	x += PA_BgInfo[screen][bg_number].ScrollX; x &= (PA_BgInfo[screen][bg_number].Infos.Width-1);
+	y += PA_BgInfo[screen][bg_number].ScrollY; y %= (PA_BgInfo[screen][bg_number].Infos.Height);
+	
+
+		
+	s32 mappos;
+	
+	if ((x <= 256)&&(y <= 256)) {// Normal default size
+		mappos = (x>>3) + ((y>>3)*32); // Adjust position in map
+	}
+	else if ((x > 256)&&(y <= 256)){
+		mappos = 32*32 + ((x&255)>>3) + ((y>>3)*32); // Adjust position in map
+	}
+	else if ((x <= 256)&&(y>256)){ // Tall
+		mappos = 64*32 + (x>>3) + (((y-256)>>3)*32); // Adjust position in map	
+	}
+	else{
+		mappos = 96*32 + ((x-256)>>3) + (((y-256)>>3)*32); // Adjust position in map			
+	
+	}
+	
+	
+	 	
+	u16 *Map = (u16*)PA_BgInfo[screen][bg_number].Infos.Map;
+		
+	s32 tilepix = (Map[mappos]&1023)<<6;
+	u8 hflip = (Map[mappos]>>10)&1;
+	u8 vflip = (Map[mappos]>>11)&1;
+	
+	x&=7; y&=7; // Adjust in tile...
+	if (hflip) x = 7-x;   if (vflip) y = 7-y;   // Adjust flips...
+	
+	u8 *Tiles = (u8*)PA_BgInfo[screen][bg_number].Infos.Tiles;
+
+	return Tiles[tilepix+x+(y<<3)];
+}
+
+
+
+u8 PAEasyBgGetPixelLarge(u8 screen, u8 bg_number, s32 x, s32 y){
+	// Adjust X/Y values
+	x += PA_BgInfo[screen][bg_number].ScrollX; x = PA_Modulo(x, PA_BgInfo[screen][bg_number].Infos.Width);
+	y += PA_BgInfo[screen][bg_number].ScrollY; y = PA_Modulo(y, PA_BgInfo[screen][bg_number].Infos.Height);
+	s32 mappos = (x>>3) + ((y>>3)*(PA_BgInfo[screen][bg_number].Infos.Width>>3)); // Adjust position in map			
+	 	
+	u16 *Map = (u16*)PA_BgInfo[screen][bg_number].Infos.Map;
+		
+	s32 tilepix = (Map[mappos]&1023)<<6;
+	u8 hflip = (Map[mappos]>>10)&1;
+	u8 vflip = (Map[mappos]>>11)&1;
+	
+	x&=7; y&=7; // Adjust in tile...
+	if (hflip) x = 7-x;   if (vflip) y = 7-y;   // Adjust flips...
+	
+	u8 *Tiles = (u8*)PA_BgInfo[screen][bg_number].Infos.Tiles;
+
+	return Tiles[tilepix+x+(y<<3)];
+}
+
+
+
+u8 PANoPixel(u8 screen, u8 bg_number, s32 x, s32 y){
+	return 0;
+}
+
+
+
+u8 PAEasyBgGetPixelInf(u8 screen, u8 bg_number, s32 x, s32 y){
+	// Adjust X/Y values
+	x += PA_BgInfo[screen][bg_number].ScrollX; x = PA_Modulo(x, PA_BgInfo[screen][bg_number].Infos.Width);
+	y += PA_BgInfo[screen][bg_number].ScrollY; y = PA_Modulo(y, PA_BgInfo[screen][bg_number].Infos.Height);
+	
+	s32 mappos = (x>>3) + ((y>>3)*(PA_BgInfo[screen][bg_number].Infos.Width>>3)); // Adjust position in map			
+	 	
+	u32 *Map = (u32*)PA_BgInfo[screen][bg_number].Infos.Map;
+		
+	s32 tilepix = (Map[mappos]&INF_JUSTTILE)<<6;
+	u8 hflip = (Map[mappos]>>29)&1;
+	u8 vflip = (Map[mappos]>>30)&1;
+	
+	x&=7; y&=7; // Adjust in tile...
+	if (hflip) x = 7-x;   if (vflip) y = 7-y;   // Adjust flips...
+	
+	u8 *Tiles = (u8*)PA_BgInfo[screen][bg_number].Infos.Tiles;
+
+	return Tiles[tilepix+x+(y<<3)];
+}
+
+
+
+
 
 
 

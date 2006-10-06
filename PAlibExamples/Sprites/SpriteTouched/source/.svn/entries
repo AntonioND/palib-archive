@@ -1,31 +1,0 @@
-8
-
-dir
-28
-https://palibds.googlecode.com/svn/Examples/Sprites/SpriteTouched/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T12:16:56.359737Z
-28
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-
-
-
-
-2005-12-12T11:52:10.218750Z
-9071ee4d7a5d7ac249992f9b35dd200e
-2006-09-12T12:16:56.359737Z
-28
-molousk
-

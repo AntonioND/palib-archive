@@ -312,7 +312,7 @@ else{ // Tile engine active
 	//		PA_SetLargeMapTile(screen, bg_select, i&63, j&31, TEST_NUMBER(i, j)); // Tile numbers...
 			PA_SetLargeMapTile(screen, bg_select, i&63, j&31, 
 								(tilenumber
-								|((TILE_HFLIP|TILE_VFLIP)&(map[moduli+((modulj)*lx)]>>20))
+								|((TILE_HFLIP|TILE_VFLIP)&(map[moduli+((modulj)*lx)]>>19))
 								)						
 								); // Tile numbers...		
 			PA_UpdateBgTile(screen, bg_select, tilenumber, 
