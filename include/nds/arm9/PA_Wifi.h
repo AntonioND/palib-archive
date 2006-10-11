@@ -10,8 +10,7 @@
 #define PA_NORMAL_TCP 1
 #define PA_NONBLOCKING_TCP 2
 
-extern void * sgIP_malloc(int size);
-extern void sgIP_free(void * ptr);
+
 extern void sgIP_dbgprint(char * txt, ...);
 extern void Timer_50ms(void);
 extern void arm9_synctoarm7();
