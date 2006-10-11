@@ -14,7 +14,7 @@ extern "C" {
 
 #include <stdarg.h> // Pour le système de text
 #include <string.h>
-
+#include "arm9/PA_IO.h"
 #include "gbfs.h"
 #include "gba-jpeg-decode.h"
 #include "Sound9.h"
@@ -56,7 +56,6 @@ extern "C" {
 
 #include "arm9/PA_TileDual.h"
 
-#include "arm9/PA_FAT.h"  // fat driver by chrishm
 
 #include "arm9/PA_Keyboard.h"
 
