@@ -279,7 +279,7 @@ u8* PA_GifToTiles(void *gif, u16 *temppal){
 
 u8 zero = 0;
 u16 width = PA_GetGifWidth(gif);
-u16 height = PA_GetGifWidth(gif);
+u16 height = PA_GetGifHeight(gif);
 
 u8 *decodgif = (u8*)malloc(width*height);
 u8 *newtiles = (u8*)malloc(width*height);
@@ -292,12 +292,12 @@ tile = 0;
 s32 tempx, tempy;
 tempx = 0; tempy = 0;
 u16 temp;
-u8 pal0 = decodgif[2];
+/*u8 pal0 = decodgif[2];
 
 // Invert pal0 color...
 temp = temppal[pal0];
 temppal[pal0] = temppal[0];
-temppal[0] = temp;
+temppal[0] = temp;*/
 
 u16 tilemax = (width*height)>>6;
 /*for (j = 0; j < height; j++){
@@ -309,9 +309,8 @@ for (tile = 0; tile < tilemax; tile++){
 	for (i = 0; i < 8; i++){ // put the right transp color	
 		for (j = 0; j < 8; j++) {
 			temp = decodgif[tempx + i + ((tempy+j)*width)];
-			if (temp == 0) temp = pal0;
-			else if (temp == pal0) temp = 0;
-			//if (temp == pal0) temp = 0;
+			/*if (temp == 0) temp = pal0;
+			else if (temp == pal0) temp = 0;*/
 			newtiles[(tile<<6) + i + (j<<3)] = temp;
 			//tileexists[0][tile] |= temp;
 		}

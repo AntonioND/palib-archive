@@ -33,6 +33,8 @@ New Stuff
 
 [16c] Added PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2) to erase part of the screen
 
+[16c] Added 16cSprites example to show how to use the system to display 400 shots all over the screens ^^
+
 
 Updated Stuff
 -------------
@@ -76,6 +78,10 @@ Things Fixed
 [DualSprites] Should work better with big sprites. Added a DualSprite example
 
 [MoveSpritePix] Fixed the bug where the sprite couldn't be moved if partly off-screen... Might not work well with 64x64 sprites that are too much offscreen though, sorry, but that reaches the DS's X/Y corrdinate limits ^^
+
+[GifToTiles] Had a huge typo, width instead of height :s
+
+[PAFS] Paco found a bug that prevented from using other directories than Files...
 
 
 
