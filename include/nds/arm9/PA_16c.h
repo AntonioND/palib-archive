@@ -372,6 +372,45 @@ ALWAYSINLINE void PA_16c16X16(u8 screen, s16 x, s16 y, u32 *image){
 }  
 
 
+/*! \fn ALWAYSINLINE void PA_16c8Xi(u8 screen, s16 x, s16 y, u32 *image,u8 i)
+    \brief
+         \~english Load an 8xi row from a 8x16 pixels image at a given position. If i>16 the image is repeated.
+         \~french Afficher une image de 8x8 pixels à un endroit donné.
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param x
+         \~english X position in pixels of the top left corner. Note that it ranges from -8 to 255, in order to allow half-way offscreen images. NEVER DRAW BEYOND THESE LIMITS, or else you'll get major background glitches
+         \~french Position X en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 255, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques...
+    \param y
+         \~english y position in pixels of the top left corner. Note that it ranges from -8 to 191, in order to allow half-way offscreen images. NEVER DRAW BEYOND THESE LIMITS, or else you'll get major background glitches
+         \~french Position y en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 191, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques...
+    \param image
+         \~english 16 color image to load. Use (u32*)ImageName if you get an error...
+         \~french Image en 16 couleurs à charger. Utiliser (u32*)NomImage en cas d'erreur de compilation
+    \param i
+    		\~english Number of lines of the image drawn (if greater than 16 the image will be repeated).
+    		\~french Nombre de lignes à dessiner
+*/
+ALWAYSINLINE void PA_16c8Xi(u8 screen, s16 x, s16 y, u32 *image, u8 i)
+{  
+	x += 8; y += 8;
+	u16 temp = ((x)&7)<<2;
+	u16 temp2 = 32-temp;
+	u16 pos = PA_16cPos(x, y);
+	u16 pos2 = pos + 208; // Next columns
+	u8 j=0;
+	while (j<i)
+	{
+		PA_Draw1632[screen][pos++] |= (image[j & 0x000F]<<temp);
+		PA_Draw1632[screen][pos2++] |= (image[j & 0x000F]>>temp2);
+		++j;
+	}
+}  
+
+
+
+
 
 extern inline void PA_16cLetter(u8 screen, s16 x, s16 y, char letter, u8 size, u8 color){
 	if (c16_policeheight[size]<=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<3)), color);

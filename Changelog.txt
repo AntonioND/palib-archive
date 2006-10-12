@@ -35,6 +35,12 @@ New Stuff
 
 [16c] Added 16cSprites example to show how to use the system to display 400 shots all over the screens ^^
 
+[16c] Egon added a really nice 16c example on how to use sprite animations on a 16c background !
+
+[16c] Egon added PA_16c8Xi(u8 screen, s16 x, s16 y, u32 *image,u8 i) :)
+
+[Text] The 'u' letter in 16c and 8bit texts, size 2, had an added pixel... I saw that the 'v' following it was missplaced by 1 pixel, it is now fixed :)
+
 
 Updated Stuff
 -------------
