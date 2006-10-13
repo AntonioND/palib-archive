@@ -276,7 +276,7 @@ void FillTheGap(u8 PA_Channel, u32 size)
 
 void PA_StopStream(u8 PA_Channel)
 {
-	StreamSound=false;
+	StreamStarted=false;
 	Stream_Length[PA_Channel] = 0;
 	SndStop(PA_Channel);
 }
