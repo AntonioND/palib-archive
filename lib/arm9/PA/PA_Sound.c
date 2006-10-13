@@ -23,9 +23,17 @@ s64	Stream_Length[16];
 u32	Stream_Last_Tick[16];
 s32	Stream_Repeat[16];
 u8	Stream_Timer[16];
+bool StreamStarted=false;
 
 void PA_InitStreamSound(void) 
 {
+	
+	if(StreamStarted==true) {
+	
+		return;
+	}
+	
+	StreamStarted=true;
 	u8 i;
 	//to prevent errors setting Stream vars
 	for (i = 0; i < 16; i++)
@@ -114,7 +122,8 @@ void PA_PlayGBFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int 
 void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint)
 {
 	u32 Alloc;
-
+	PA_InitStreamSound();
+	
 	free(FS_wav[PA_Channel]);
 
 	if((freq == 11025) || ((freq == 22050) && (format == 0))) // Ptr have to be divided by 4
@@ -267,6 +276,7 @@ void FillTheGap(u8 PA_Channel, u32 size)
 
 void PA_StopStream(u8 PA_Channel)
 {
+	StreamSound=false;
 	Stream_Length[PA_Channel] = 0;
 	SndStop(PA_Channel);
 }
