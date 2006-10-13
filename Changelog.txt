@@ -41,6 +41,21 @@ New Stuff
 
 [Text] The 'u' letter in 16c and 8bit texts, size 2, had an added pixel... I saw that the 'v' following it was missplaced by 1 pixel, it is now fixed :)
 
+[Fat] Added latest snapshot of libfat
+
+[Fat] Added PA_IO.c/h
+
+[Fat] Added PA_InitFat()  to initialise any disk devices found, returns true if found.
+
+[Fat] Added PA_GetFileSize(FILE* pFile) to return a long of the file size
+
+[Fat] Added PA_ReadTextFile(char* pathname) to return the contents of a file to a char*
+
+[Fat] Added PA_WriteTextFile(char* pathname, char* text) to Write the contents of "text" to "pathname" returns the
+Number of bytes Written
+
+
+
 
 Updated Stuff
 -------------
@@ -53,7 +68,7 @@ Updated Stuff
 
 [PAGfx] Completely new tile detection code, should be MUCH faster when converting very big/complex backgrounds... 
 
-[PAGfx] Found on the net a different method to read images, which is like 10 times faster, I'm pretty sure you'll be amazed by how fast it converts backgrounds now ^^. Works for very large sprites too
+[PAGfx] Found on the net a different method to read images, which is 10 times faster, I'm pretty sure you'll be amazed by how fast it converts backgrounds now ^^. Works for very large sprites too
 
 [EasyBg] Smaller code when using multiple backgrounds
 
@@ -66,6 +81,8 @@ Updated Stuff
 [PAGfx] Much better purcentage output (took into account the fact that it slowed down over time) and shows expected time left.
 
 [Arm7] Code cleaning...
+
+[Fat] Updated Fat Example to use new driver/code
 
 
 Things Fixed
