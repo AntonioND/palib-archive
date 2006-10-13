@@ -84,6 +84,8 @@ Updated Stuff
 
 [Fat] Updated Fat Example to use new driver/code
 
+[Sound] Automatically calls PA_InitSteamSound() when a streaming sound is played
+
 
 Things Fixed
 ------------
