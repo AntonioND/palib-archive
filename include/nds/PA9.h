@@ -18,7 +18,7 @@ extern "C" {
 #include "gbfs.h"
 #include "gba-jpeg-decode.h"
 #include "Sound9.h"
-
+#include "fat.h"
 #include "PA_IPC.h"
 
 #include "arm9/PA_General.h"
