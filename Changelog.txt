@@ -41,6 +41,8 @@ New Stuff
 
 [Text] The 'u' letter in 16c and 8bit texts, size 2, had an added pixel... I saw that the 'v' following it was missplaced by 1 pixel, it is now fixed :)
 
+[Gif2Frames] Added an app I made to decompose an animated gif into all the frames (in a single gif file)
+
 [Fat] Added latest snapshot of libfat
 
 [Fat] Added PA_IO.c/h
@@ -53,8 +55,6 @@ New Stuff
 
 [Fat] Added PA_WriteTextFile(char* pathname, char* text) to Write the contents of "text" to "pathname" returns the
 Number of bytes Written
-
-
 
 
 Updated Stuff
