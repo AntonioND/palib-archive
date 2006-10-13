@@ -405,7 +405,7 @@ return length;
 	#include "8bitText/text3.c" // La police à taille variable...
 	#include "8bitText/text4.c" // La police à taille variable...
 
-	const u8 *textData[5] = {(u8*)(text0Data), (u8*)(text1Data), (u8*)(text2Data), (u8*)(text3Data), (u8*)(text4Data)};
+	const u8 *textData[5] = {(u8*)(text0Data), (u8*)(text1Data), (u8*)(text2Tiles), (u8*)(text3Data), (u8*)(text4Data)};
 	const u8 policeheight[5] = {6, 8, 9, 11, 14};
 	const u8 policesize[5][256] = {
 					  {2, 2, 4, 6, 6, 6, 0, 2, 3, 3, 2, 4, 3, 4, 2, 6, 5, 3, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 4, 4, 4, 5,
