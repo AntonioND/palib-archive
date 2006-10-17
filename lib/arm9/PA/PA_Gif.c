@@ -27,7 +27,8 @@ const short InterlacedJumps[] = { 8, 8, 4, 2 };    /* be read - offsets and jump
 
 int m;
 
-   GifPixelType LineBuf[1025]; // Buffer temporaire
+   GifPixelType LineBuf[2048]; // Buffer temporaire
+   
 
 
 //s32 PA_GifSpeed = 6;

@@ -131,7 +131,7 @@ s16 y = Stylus.Y;
 		if (Stylus.Newpress) {
 			Keyboard.oldX = x;
 			Keyboard.oldY = y;
-			Keyboard.Repeat = 60;
+			Keyboard.Repeat = 50;
 			
 			if (PA_Keyboard[0][y][x] == PA_CAPS) {
 				PA_ChangeKeyboardType();

@@ -86,6 +86,10 @@ Updated Stuff
 
 [Sound] Automatically calls PA_InitSteamSound() when a streaming sound is played
 
+[PAFS] Paco updated PAFS, should work better with FAT32 partitions :)
+
+[Gif] Gif files up to 2048 pixels wide will work now
+
 
 Things Fixed
 ------------

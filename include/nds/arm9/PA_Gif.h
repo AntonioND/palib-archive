@@ -22,7 +22,7 @@ extern "C" {
 extern GifFileType* gifinfo;
 extern s16 gifwidth, gifheight; 
 extern u8 PA_nBit[2]; // 8 or 16 bit Bg
-
+extern s32 GifCurrentLine;
 
 typedef struct{
 	s32 StartFrame;
