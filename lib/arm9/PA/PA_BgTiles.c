@@ -310,7 +310,7 @@ void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 Type, u32 Width, u32 Heigh
 }
 
 
-	/*
+	
 
 void PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette)  {  
 	PA_StoreEasyBgInfos(screen, bg_number, Infos[0], Infos[1], Infos[2], Tiles, TileSize, Map, MapSize, Palette);
@@ -337,7 +337,7 @@ void PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileS
 	}
 	PA_BGScrollXY(screen, bg_number, 0, 0);
 }
-*/
+
 
 
 u8 PAEasyBgGetPixelTiled(u8 screen, u8 bg_number, s32 x, s32 y){
