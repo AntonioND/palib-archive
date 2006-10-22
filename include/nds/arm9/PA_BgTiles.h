@@ -862,12 +862,12 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
          \~english Background name
          \~french Nom du fond	 
 */
-#define PA_EasyBgLoad(screen, bg_number, bg_name)	PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name##_Info, (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal)
-/*	PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
+#define PA_EasyBgLoad(screen, bg_number, bg_name)	PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
+	PA_StoreEasyBgInfos(screen, bg_number, bg_name##_Info[0], bg_name##_Info[1], bg_name##_Info[2], (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal);\
 	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){	PA_LoadTiledBg(screen, bg_number, bg_name);}\
-	else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}\*/
+	else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}
 
-
+/*PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name##_Info, (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal)*/
 
 
 
@@ -1007,6 +1007,9 @@ u8 i;
 	for (i = 0; i < 16; i++)
 		PA_BgInfo[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
 }
+
+void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 Type, u32 Width, u32 Height, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette);
+
 
 #endif
 

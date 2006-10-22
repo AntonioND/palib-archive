@@ -1542,7 +1542,7 @@ for (j = 0; j < 2; j++)
 */
 void PA_InitSpriteExtPrio(u8 SpritePrio);
 
-extern inline void PA_SetSPriteExtPrio(u8 screen, u8 sprite, u8 prio){
+extern inline void PA_SetSpriteExtPrio(u8 screen, u8 sprite, u8 prio){
 	PA_SpritePrio[screen][sprite] = prio;
 }
 

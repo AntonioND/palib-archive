@@ -70,8 +70,6 @@ Updated Stuff
 
 [PAGfx] Found on the net a different method to read images, which is 10 times faster, I'm pretty sure you'll be amazed by how fast it converts backgrounds now ^^. Works for very large sprites too
 
-[EasyBg] Smaller code when using multiple backgrounds
-
 [Video] Video system moved to use PAFS. GBFS code removed. Example modified...
 
 [Sprites] Updated all the outdated sprite examples
@@ -111,6 +109,10 @@ Things Fixed
 [GifToTiles] Had a huge typo, width instead of height :s
 
 [PAFS] Paco found a bug that prevented from using other directories than Files...
+
+[SpritePrio] There was a typo : PA_SetSPriteExtPrio instead of PA_SetSpriteExtPrio...
+
+[PAGfx] No longer hangs when loading non-8pixel-padded backgrounds
 
 
 
