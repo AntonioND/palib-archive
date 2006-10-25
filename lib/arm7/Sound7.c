@@ -21,7 +21,6 @@
 #include "ModFile.h"
 #include "PA_Sound.h"
 #include "Sound7.h"
-//#include "microphone7.h"
 
 #include "SoundCommon.h"
 
@@ -119,11 +118,7 @@ static void SngCmdPlay			(SND_COMMAND *cmd);
 static void SngCmdStop			(SND_COMMAND *cmd);
 static void SngCmdPause		(SND_COMMAND *cmd);
 static void FlashChannel		(u8 channel);
-/*
-	//Mic functions
-static void MicCmdStart		(SND_COMMAND *cmd);
-static void MicCmdStop			(SND_COMMAND *cmd);
-*/
+
 	// Command functions (communication from ARM9)
 static void SndCmdSetMemPool	(SND_COMMAND *cmd);
 static void SndCmdPlaySong		(SND_COMMAND *cmd);
@@ -275,8 +270,6 @@ static const COMMAND_FUNC_PTR cmdFuncTable[SND_CMD_NUM] =
 	SndCmdStopSong,				// SND_CMD_STOPSONG
 	SndCmdPauseSong,			// SND_CMD_PAUSESONG
 	SndCmdSetCallback,			// SND_CMD_SETCALLBACK
-//	MicCmdStart,				// MIC_CMD_START
-//	MicCmdStop,					// MIC_CMD_STOP
 };
 
 const u16 notePeriodTable[] =
@@ -366,6 +359,8 @@ void SndVblIrq()
 		sndVars.curCmd++;
 		sndVars.curCmd &= MAX_SND_COMMANDS-1;
 	}
+	
+	
 }
 
 void SndTimerIrq()
@@ -1398,18 +1393,3 @@ static void SngCmdPause(SND_COMMAND *cmd)
 	else
 		SCHANNEL_TIMER(cmd->param[0])  = SOUND_FREQ(sndChannel[cmd->param[0]].timer);
 }
-
-	//Mic functions
-//start recording
-/*
-static void MicCmdStart(SND_COMMAND *cmd)
-{
-	PM_SetAmp(PM_AMP_ON);
-	StartRecording((u8*)(cmd->param32) ,((int)(cmd->param[0]))*1600);
-}
-
-//stop recording
-static void MicCmdStop(SND_COMMAND *cmd)
-{
-	StopRecording();
-}*/

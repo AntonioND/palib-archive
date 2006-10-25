@@ -127,8 +127,7 @@ Stylus.Y = 96;
 PA_VBLFunctionReset();
 irqInit();
 //PA_ResetInterrupts();
-PA_IPC.Stylus = &Stylus;  	// Gives access to the stylus data
-PA_IPC.Pad = &Pad;	      	// Gives access to the pad data
+
 IPC->mailData = (u32)(&PA_IPC);
 
 for (i = 0; i < 2; i++){

@@ -22,163 +22,9 @@ extern "C" {
 extern PA_IPCType *PA_IPC;
 extern u8 PA_SoundBusyInit;
 
-typedef struct {
-	s32 Rate; // Frequence
-	u8* Raw;  // Pointeur vers le son
-	u32 Length; // Durée du son
-}PA_SoundInfo;
-
-extern PA_SoundInfo PA_Sound[MAX_SOUNDS];  
-
-extern u8 PA_SoundOk;
-
-typedef struct{
-	s32 Sound;
-	u8 State, Action; // 0 pour stopper, 1 pour démarrer, 2 pour en lecture
-	u8 Volume;
-} StartSoundInfo;
-
-extern StartSoundInfo* PA_StartSoundInfo; // Permet de démarrer ou arreter le son
-
-/*! \file PA_Sound.h
-    \brief Sound info
-
-    Play sounds ! Arm7 only
-*/
 
 void PA_SetDSLiteBrightness(u8 level);
 
-
-
-extern inline void PA_InitSoundSystem(void) {
-
-//	while(i != 2) i = IPC->mailRead; // On attend que ce soit à lire
-	PA_StartSoundInfo = (StartSoundInfo*)IPC->mailData;
-	IPC->mailRead = 0;
-	PA_SoundOk = 1; // initialisé
-
-	
-	// Turn on sound
-	powerON(POWER_SOUND);
-	
-	//SOUND_CR = SCHANNEL_ENABLE | SOUND_VOL(0x7F);
-}
-
-
-/** @defgroup SoundARM7 Sound ARM7 functions
- *  Initialise sounds, etc...
- *  @{
- */
-
-
-/*! \def PA_InitSimpleSound(Sound_Num, Rate, Data)
-    \brief
-         \~english Initialize a sound to be used later on, easy way
-         \~french Initialiser un son à utiliser par la suite, de manière simple
-    \param Sound_Num
-         \~english Sound number, from 0 to 127
-         \~french Numéro du son, de 0 à 127
-    \param Rate
-         \~english Rate...
-         \~french Frequence
-    \param Data
-         \~english Sound name
-         \~french Nom du son
-*/
-
-#define PA_InitSimpleSound(Sound_Num, Rate, Data)  PA_InitSound(Sound_Num, Rate , (u8*)GETRAW(Data), GETRAWSIZE(Data) >> 2)
-
-
-
-/*! \fn void PA_InitSound(s32 Sound_Num, s32 Rate, u8* Data, u32 Length)
-    \brief
-         \~english Initialize a sound to be used later on, complicated way
-         \~french Initialiser un son à utiliser par la suite, de manière compliquée
-    \param Sound_Num
-         \~english Sound number, from 0 to 127
-         \~french Numéro du son, de 0 à 127
-    \param Rate
-         \~english Rate...
-         \~french Frequence
-    \param Data
-         \~english Sound name
-         \~french Nom du son
-    \param Length
-         \~english Length (1/4 of the file size)
-         \~french Taille (1/4 de la taille)
-*/
-void PA_InitSound(s32 Sound_Num, s32 Rate, u8* Data, u32 Length);
-
-
-
-
-/*! \fn void PA_StartSound(u8 Channel, s32 Sound_Num, u8 Volume)
-    \brief
-         \~english Start a given sound
-         \~french Initialiser un son à utiliser par la suite, de manière compliquée
-    \param Channel
-         \~english Sound channel to use, from 0 to 15
-         \~french Canal à utiliser, de 0 à 15
-    \param Sound_Num
-         \~english Sound number, from 0 to 127
-         \~french Numéro du son, de 0 à 127
-    \param Volume
-         \~english Volume for that sound, 0-127
-         \~french Volume pour ce son, 0-127
-*/
-void PA_StartSound(u8 Channel, s32 Sound_Num, u8 Volume);
-
-
-
-/*! \fn extern inline void PA_StopSound(u8 Channel)
-    \brief
-         \~english Stop a given sound channel
-         \~french Arreter un canal
-    \param Channel
-         \~english Sound channel to use, from 0 to 15
-         \~french Canal à utiliser, de 0 à 15
-*/
-extern inline void PA_StopSound(u8 Channel){
-	SCHANNEL_CR(Channel) = 0;
-
-	PA_StartSoundInfo[Channel].State = 0; // Rien
-	PA_StartSoundInfo[Channel].Action = 0;
-}
-	
-
-
-
-
-/*! \fn extern inline void PA_SetSoundVolume(u8 Volume)
-    \brief
-         \~english Set the global sound volume
-         \~french Régler le volume global de la DS
-    \param Volume
-         \~english Volume, 0-127
-         \~french Volume, 0-127
-*/
-extern inline void PA_SetSoundVolume(u8 Volume) {
-	SOUND_CR &= ~SOUND_VOL(0x7F);
-	SOUND_CR |= SOUND_VOL(Volume&127);
-}
-
-
-
-/*! \fn extern inline void PA_SetChannelVolume(u8 Channel, u8 Volume)
-    \brief
-         \~english Set the channel sound volume
-         \~french Régler le volume d'un canal
-    \param Channel
-         \~english Sound channel to use, from 0 to 15
-         \~french Canal à utiliser, de 0 à 15
-    \param Volume
-         \~english Volume, 0-127
-         \~french Volume, 0-127
-*/
-extern inline void PA_SetChannelVolume(u8 Channel, u8 Volume) {
-	SCHANNEL_CR(Channel) &= ~SOUND_VOL(127);
-	SCHANNEL_CR(Channel) |= SOUND_VOL(Volume&127);
-}
 
 
 
@@ -218,6 +64,63 @@ u8 channel;
 		
 	}	
 }
+
+
+extern inline void PA_SoundPlay(u8 channel) {
+	SCHANNEL_TIMER(channel)  = SOUND_FREQ(PA_IPC->Sound[channel].Rate);
+	SCHANNEL_SOURCE(channel) = (u32)PA_IPC->Sound[channel].Data;
+	SCHANNEL_LENGTH(channel) = PA_IPC->Sound[channel].Length >> 2;
+	SCHANNEL_CR(channel)     = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(PA_IPC->Sound[channel].Volume) | SOUND_PAN(PA_IPC->Sound[channel].Pan) | (PA_IPC->Sound[channel].Format);
+}
+
+// Function to play/stop new sounds...
+extern inline void PA_SoundProcess(void){
+	u8 i;
+	for (i = 0; i < 16; i++) // for all sounds
+	{
+
+		if(PA_IPC->Sound[i].Command) // Something to do...
+		{
+			if((PA_IPC->Sound[i].Command>>PAIPC_STOP)&1) PA_SoundStop(i);
+			if((PA_IPC->Sound[i].Command>>PAIPC_PLAY)&1) PA_SoundPlay(i); // play sound		
+		}
+		PA_IPC->Sound[i].Command = 0;
+	}
+
+}
+
+
+/*
+extern inline void PA_SoundPlay(void)
+{
+	if (0 != snd) {
+
+		for (i=0; i<snd->count; i++) {
+			s32 chan = getFreeSoundChannel();
+
+			if (chan >= 0) {
+				PA_SoundPlayEx(snd->data[i].rate, snd->data[i].data, snd->data[i].len, chan, snd->data[i].vol, snd->data[i].pan, snd->data[i].format);
+			}
+		}
+	}
+}*/
+
+//stop a song
+extern inline void PA_SoundStop(u8 channel)
+{
+	SCHANNEL_CR(channel) = 0; 
+}
+
+//pause a song 0 for unpause 1 for pause
+extern inline void PA_SoundPause(u8 channel)
+{
+	//Frequency = 0 => bits are read at 0hz => pause read
+/*	if(cmd->param[1] == 1)
+		SCHANNEL_TIMER(cmd->param[0]) = 0;
+	else
+		SCHANNEL_TIMER(cmd->param[0])  = SOUND_FREQ(sndChannel[cmd->param[0]].timer);*/
+}
+
 
 
 

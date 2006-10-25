@@ -23,6 +23,20 @@ extern "C" {
 #define PA_RIEN      0    // Si y'a rien, faudra faire comme si on appuye sur rien
 #define PA_TAB       3    // tab...
 
+// Stylus and Pad definitions, will be used by the arm7 to auto-update positions...
+
+typedef struct {
+   u8 A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select, Anykey;
+} PA_Pad;
+
+typedef struct {
+   PA_Pad Held, Released, Newpress; // Pressed si on appuye, Held si on garde appuyé, et Released si on relache
+} Pads;
+
+typedef struct {
+   u8 Held, Released, Newpress, Newpress0;
+   s16 X, Y, altX, altY, Pressure, Vx, Vy, oldVx, oldVy, Downtime, Uptime, DblClick;
+} PA_Stylus;
 
 
 extern PA_Stylus Stylus;

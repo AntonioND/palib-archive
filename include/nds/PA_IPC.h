@@ -5,28 +5,23 @@
 extern "C" {
 #endif
 
-
-// Stylus and Pad definitions, will be used by the arm7 to auto-update positions...
-
-typedef struct {
-   u8 A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select, Anykey;
-} PA_Pad;
-
-typedef struct {
-   PA_Pad Held, Released, Newpress; // Pressed si on appuye, Held si on garde appuyé, et Released si on relache
-} Pads;
-
-typedef struct {
-   u8 Held, Released, Newpress, Newpress0;
-   s16 X, Y, altX, altY, Pressure, Vx, Vy, oldVx, oldVy, Downtime, Uptime, DblClick;
-} PA_Stylus;
-
+// Bits...
+#define PAIPC_PLAY 0
+#define PAIPC_PAUSE 1
+#define PAIPC_STOP 2
 
 
 typedef struct {
+	u8 Command; // Command bits : 0 play, 1 pause, 2 stop
+	void *Data;
 	u8 Busy;
 	u8 Volume;  // (1<<7) to change Volume, &127 for new Volume
 	u8 Pan; // (1<<7) to change Pan, &127 to get value
+	s32 Rate;
+	u32 Length;
+	u8 Format;
+	u8 Padding;
+	u8 Repeat; // used to swtich between both systems for now
 } PA_IPCSound;
 
 typedef struct{
@@ -39,8 +34,6 @@ typedef struct{
 typedef struct{
 	PA_IPCSound Sound[17];
 	PA_MicInfo Mic;
-	PA_Stylus *Stylus;
-	Pads *Pad;
 } PA_IPCType;
 //PA_IPCType PA_IPC;
 

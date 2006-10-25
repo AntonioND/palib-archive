@@ -1,0 +1,61 @@
+
+New Stuff
+---------
+
+[16c] Added PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2) to erase part of the screen
+
+[16c] Added 16cSprites example to show how to use the system to display 400 shots all over the screens ^^
+
+[16c] Egon added a really nice 16c example on how to use sprite animations on a 16c background !
+
+[16c] Egon added PA_16c8Xi(u8 screen, s16 x, s16 y, u32 *image,u8 i) :)
+
+[Text] The 'u' letter in 16c and 8bit texts, size 2, had an added pixel... I saw that the 'v' following it was missplaced by 1 pixel, it is now fixed :)
+
+[Gif2Frames] Added an app I made to decompose an animated gif into all the frames (in a single gif file)
+
+[Fat] Added latest snapshot of libfat and PA_IO.c/h
+
+[Fat] Added PA_InitFat()  to initialise any disk devices found, returns true if found.
+
+[Fat] Added PA_GetFileSize(FILE* pFile) to return a long of the file size
+
+[Fat] Added PA_ReadTextFile(char* pathname) to return the contents of a file to a char*. Added PA_WriteTextFile(char* pathname, char* text) to Write the contents of "text" to "pathname" returns the Number of bytes Written
+
+[Palettes] Added PA_LoadSprite16cPal(screen, n_palette, palette) and a 16colors sprite example
+
+[Demo] Platform examples 4 and 5 added to the examples/demo section, code updated to match the latest version :)
+
+
+Updated Stuff
+-------------
+
+[Arm7] Code cleaning... and again, and again ^^
+
+[Fat] Updated Fat Example to use new driver/code
+
+[Sound] Automatically calls PA_InitSteamSound() when a streaming sound is played
+
+[PAFS] Paco updated PAFS, should work better with FAT32 partitions :)
+
+[Gif] Gif files up to 2048 pixels wide will work now
+
+[MAKEFILE] MAJOR Makefile update, now pads the data files to 32bit, BIG THANKS TO GANDRAN !!! Should solve all the multiple sound inclusion problems/corruption... Please update your project makefile with any PAlibExample or PAlibTemplate makefile...
+
+[Sound] Sound code rewritten, you can now play several sounds per frame. The old sound system is present, it switches automatically to use if you call the Stream commands... You can also, in the same frame, stop a sound channel and launch a sound on that channel :)
+
+
+Things Fixed
+------------
+
+[DualSprites] Should work better with big sprites. Added a DualSprite example
+
+[MoveSpritePix] Fixed the bug where the sprite couldn't be moved if partly off-screen... Might not work well with 64x64 sprites that are too much offscreen though, sorry, but that reaches the DS's X/Y corrdinate limits ^^
+
+[GifToTiles] Had a huge typo, width instead of height :s
+
+[PAFS] Paco found a bug that prevented from using other directories than Files...
+
+[SpritePrio] There was a typo : PA_SetSPriteExtPrio instead of PA_SetSpriteExtPrio...
+
+[PAGfx] No longer hangs when loading non-8pixel-padded backgrounds

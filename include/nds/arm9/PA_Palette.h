@@ -85,7 +85,24 @@ u32 dest = PAL_BG0 + (screen<<10);
          \~english Palette name (ex : master_Palette)
          \~french Nom de la palette (ex : master_Palette)
 */
-#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette << 5)), 16, DMA_16NOW);
+#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette << 5)), 16, DMA_16NOW)
+
+/*! \def PA_LoadSprite16cPal(screen, n_palette, palette)
+    \brief
+         \~english Load a 16 color palette for sprites
+         \~french Charger une palette de 16 couleurs pour les sprites
+    \param screen
+         \~english Screen (0-1)
+         \~french Ecran (0-1)
+    \param n_palette
+         \~english Number of the 16 color palette to load (0-15)
+         \~french Numéro de la palette de 16 couleurs que l'on veut charger (0-15)
+
+    \param palette
+         \~english Palette name (ex : Sprite_Pal)
+         \~french Nom de la palette (ex : Sprite_Pal)
+*/
+#define PA_LoadSprite16cPal(screen, n_palette, palette) PA_LoadPal16((PAL_SPRITE0+(0x400*screen)), n_palette, palette)
 
 
 /*! \def PA_RGB(r,g,b)
