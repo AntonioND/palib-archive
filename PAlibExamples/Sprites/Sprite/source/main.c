@@ -8,7 +8,7 @@ int main(void){
 
 	PA_Init(); //PAlib inits
 	PA_InitVBL();
-	
+		
 	PA_LoadSpritePal(0, // Screen
 					0, // Palette number
 					(void*)sprite0_Pal);	// Palette name

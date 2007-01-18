@@ -23,6 +23,7 @@ int main(void){
 	//Create the sprite
 	PA_CreateSprite(0, 0,(void*)vaisseau_Sprite, OBJ_SIZE_32X32,1, 0, 0, 0);
 	
+	
 	while(1){ // Main loop
 		
 		// Update the position according to the keypad...
@@ -36,7 +37,6 @@ int main(void){
 					   y); // y...
 		
 		PA_WaitForVBL();
-	
 	}
 	return 0;
 }

@@ -1,7 +1,8 @@
 // Use 16 bit sprites ! No palettes needed for them, but they use twice as much memory...
 
 #include <PA9.h>
-#include "gfx/ship.c" 
+#include "gfx/all_gfx.h"
+#include "gfx/all_gfx.c"
 
 
 //Main...

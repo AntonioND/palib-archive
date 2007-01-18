@@ -1,0 +1,4 @@
+[Include]
+000=c:/devkitPro/PAlib/include/NDS/
+001=c:/devkitPro/PAlib/include/NDS/arm9/
+002=c:/devkitPro/PAlib/FAT/

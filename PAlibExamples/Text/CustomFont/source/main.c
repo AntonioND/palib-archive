@@ -48,7 +48,7 @@ int main(int argc, char ** argv)
 
 				
 		// Get the stylus position and show it on screen
-		PA_OutputText(1, 1, 11, "Stylus Position : %d, %d", Stylus.X, Stylus.Y);
+		PA_OutputText(1, 1, 11, "Stylus Position : %d, %d   ", Stylus.X, Stylus.Y);
 		
 		PA_WaitForVBL();
 	}

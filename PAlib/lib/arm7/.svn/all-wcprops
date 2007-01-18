@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 32
+/svn/!svn/ver/116/trunk/lib/arm7
+END
+ModFile.c
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/4/trunk/lib/arm7/ModFile.c
+END
+Sound7.c
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/119/trunk/lib/arm7/Sound7.c
+END
+PA.c
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/!svn/ver/94/trunk/lib/arm7/PA.c
+END
+build.bat
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/4/trunk/lib/arm7/build.bat
+END
+main.c
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/119/trunk/lib/arm7/main.c
+END
+microphone7.c
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/92/trunk/lib/arm7/microphone7.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/!svn/ver/4/trunk/lib/arm7/Makefile
+END
+arm7.bin
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/119/trunk/lib/arm7/arm7.bin
+END

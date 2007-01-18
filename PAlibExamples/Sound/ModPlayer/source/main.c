@@ -17,6 +17,7 @@ int main(int argc, char ** argv){
 	PA_PlayMod(modfile);  		// Play a given mod
 
 	while(1){	// Infinite loop
+	
 		PA_WaitForVBL();
 	}
 		

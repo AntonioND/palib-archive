@@ -9,8 +9,8 @@ extern "C" {
 PAFSSystems *PA_FSSys;
 PAFSFiles *PA_FSFile; // Pointeur sur les infos fichiers...
 PAFSFolders *PA_FSFolder; 
-char *PAFSStart = (char*)0x08000000;
-
+char *PAFSStart = (char*)PA_GBA_CART;
+//char *PAFSStart = (char*)PA_DS_CART;
 
 
 

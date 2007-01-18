@@ -190,6 +190,18 @@ extern scrollpositions scrollpos[2][4]; // Pour chaque écran et pour chaque fond
 */
 void PA_ResetBgSys(void);
 
+
+/*!
+    \fn void PA_ResetBgSysScreen(u8 screen)
+    \brief
+      \~english Reset the background system on 1 screen
+      \~french Reinitialise le systeme de fonds pour 1 écran
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+*/
+void PA_ResetBgSysScreen(u8 screen);
+
 /*!
     \fn void PA_InitBg(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode)
     \brief
@@ -639,9 +651,9 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
 	u32 truex;
 	u32 mapblock = 0;
 	truex = x&31;
-	mapblock = (x >> 5) << 11; // Permet d'avoir le bon block...
+	mapblock = ((x >> 5) << 11) + ((y >> 5) << 12); // Permet d'avoir le bon block...
 	
-	*(u16*)(PA_BgInfo[screen][bg_select].Map + ((truex) << 1) + ((y) << 6) + mapblock) = tile_info;
+	*(u16*)(PA_BgInfo[screen][bg_select].Map + ((truex) << 1) + ((y&31) << 6) + mapblock) = tile_info;
 }
 
 
@@ -862,12 +874,12 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
          \~english Background name
          \~french Nom du fond	 
 */
-#define PA_EasyBgLoad(screen, bg_number, bg_name)	PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name##_Info, (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal)
-/*	PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
+#define PA_EasyBgLoad(screen, bg_number, bg_name)	PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
+	PA_StoreEasyBgInfos(screen, bg_number, bg_name##_Info[0], bg_name##_Info[1], bg_name##_Info[2], (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal);\
 	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){	PA_LoadTiledBg(screen, bg_number, bg_name);}\
-	else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}\*/
+	else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}
 
-
+/*PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name##_Info, (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal)*/
 
 
 
@@ -1007,6 +1019,9 @@ u8 i;
 	for (i = 0; i < 16; i++)
 		PA_BgInfo[screen][bg_select].TilePos[tilepos+i] = tilecopy[i];
 }
+
+void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 Type, u32 Width, u32 Height, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette);
+
 
 #endif
 

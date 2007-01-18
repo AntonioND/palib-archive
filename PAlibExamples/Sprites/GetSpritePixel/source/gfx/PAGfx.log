@@ -1,0 +1,17 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Black
+
+2 sprites :
+  vaisseau : 256colors, 32x32, Pal : vaisseau_Pal, -> vaisseau_Sprite
+  vaisseau2 : 16colors, 32x32, Pal : vaisseau2_Pal, -> vaisseau2_Sprite
+
+2 palettes :
+  vaisseau_Pal, 12 colors
+  vaisseau2_Pal, 12 colors
+
+Converted in 0 minutes 0 seconds
+
+Finished !

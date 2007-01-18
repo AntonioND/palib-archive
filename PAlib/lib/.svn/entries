@@ -1,0 +1,73 @@
+8
+
+dir
+116
+https://palibds.googlecode.com/svn/trunk/lib
+https://palibds.googlecode.com/svn
+
+
+
+2006-10-17T20:08:41.542376Z
+116
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+70d487c4-6a1c-0410-9ca0-4d1b8e83941e
+
+libpa9.a
+file
+119
+
+
+
+2006-10-25T11:27:44.484375Z
+3c4a4a81b29e966ac9a779097659c33b
+2006-10-25T11:48:51.614416Z
+119
+molousk
+has-props
+
+libfat.a
+file
+
+
+
+
+2006-10-13T16:30:59.453125Z
+9fc91b5f964e384ff6c89caba4564076
+2006-10-12T12:43:01.415935Z
+101
+elhobito
+has-props
+
+arm7
+dir
+
+arm9
+dir
+
+libpa7.a
+file
+119
+
+
+
+2006-10-25T11:27:44.390625Z
+a5abdc2504fb6d0c1efa63bd8aefc451
+2006-10-25T11:48:51.614416Z
+119
+molousk
+has-props
+

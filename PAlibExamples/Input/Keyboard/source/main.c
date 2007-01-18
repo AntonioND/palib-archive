@@ -41,6 +41,14 @@ int main(int argc, char ** argv)
 			text[nletter] = letter;
 			nletter++;
 		}
+		else if(letter == PA_TAB){// TAB Pressed...
+			u8 i;
+			for (i = 0; i < 4; i++){ // put 4 spaces...
+				text[nletter] = ' ';
+				nletter++;
+			}
+	
+		}
 		else if ((letter == PA_BACKSPACE)&&nletter) { // Backspace pressed
 			nletter--;
 			text[nletter] = ' '; // Erase the last letter

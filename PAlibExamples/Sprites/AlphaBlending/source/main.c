@@ -21,7 +21,6 @@ int main(void){
 					0, // Sprite
 					1); // Alphablending
 	
-
 	s16 alpha = 7; // Transparency level
 
 	// Enable the alpha-blending

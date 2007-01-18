@@ -164,7 +164,22 @@ extern inline void PA_SetRotMapTile(u8 screen, u8 bg_select, s16 x, s16 y, u8 ti
    *where = hold; // save as 16 bit, as required by hardware
 } 
 
+// SetRotMapTile by gmiller
+extern inline u8 PA_GetRotMapTile(u8 screen, u8 bg_select, s16 x, s16 y)
+{
+   u16 hold, *where;
 
+   // Calculate offset into rotational background map x + (y*32) ... tile is 8x8 and each pixel is 8 bits to 32  bytes wide
+   where = (u16*)(PA_BgInfo[screen][bg_select].Map + (x + (y << (4+rotbg_size[screen][bg_select]))));
+
+   // Get current value as 16 bit but we only have 8 bits per pixes (must be written as 16 bit)
+   hold = *where;
+
+   // Odd or even (high or low byte
+   if ((x & 1) == 0) return (u8)(hold&255);
+   else return (u8)(hold>>8);
+
+} 
 
 /** @} */ // end of BgRot
 

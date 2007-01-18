@@ -1,14 +1,19 @@
 #include <PA9.h>
+
+#include <arm9/PA_Wifi.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include <dswifi9.h>
+#ifdef FD_SETSIZE
+	#undef FD_SETSIZE
+#endif
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
 
-#include <arm9/PA_Wifi.h>
+
 
 #define isdigit(c) (c>='0'&&c<='9')
 #define IS_DIGIT_OR_DOT(c) (isdigit(c)||(c=='.'))

@@ -10,6 +10,7 @@ TransferSound snd;
 
 u32 *sndMemPool;
 
+
 u32 Blank[130000>>2];
 
 
@@ -104,7 +105,7 @@ PA_InitBgExtPal(); // Init's bg extended palettes
 
 
 
-
+extern funcpointer MotionVBL;
 
 
 void PA_Init(void) {
@@ -127,8 +128,7 @@ Stylus.Y = 96;
 PA_VBLFunctionReset();
 irqInit();
 //PA_ResetInterrupts();
-PA_IPC.Stylus = &Stylus;  	// Gives access to the stylus data
-PA_IPC.Pad = &Pad;	      	// Gives access to the pad data
+
 IPC->mailData = (u32)(&PA_IPC);
 
 for (i = 0; i < 2; i++){
@@ -152,6 +152,8 @@ for (i = 0; i < 2; i++){
 	
 	PA_GifInfo.StartFrame = 0; // start from the beginning
 	PA_GifInfo.EndFrame = 10000; // random high number
+	
+	MotionVBL = PA_Nothing;
 }
 
 

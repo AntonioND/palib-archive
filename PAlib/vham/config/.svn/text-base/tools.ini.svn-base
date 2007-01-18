@@ -1,0 +1,25 @@
+[PAlib Documentation]
+ShortCut=112
+ExeProgram=%PAPATH%\..\PAlibDoc Eng\modules.html
+WorkingDir=%PAPATH%\..\PAlibDoc Eng\
+Parameters=
+[-]
+ShortCut=0
+ExeProgram=
+WorkingDir=
+Parameters=
+[Command Prompt]
+ShortCut=0
+ExeProgram=cmd
+WorkingDir=%VHAM_CURPROJECT%
+Parameters=
+[-]
+ShortCut=0
+ExeProgram=
+WorkingDir=
+Parameters=
+[Launch DeSmuME]
+ShortCut=0
+ExeProgram=%VHAM_ROOT%\..\Emulators\DeSmuME.exe
+WorkingDir=%VHAM_CURPROJECT%
+Parameters=

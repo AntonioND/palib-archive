@@ -39,7 +39,9 @@ int main(void)	{
 	PA_LoadSpritePal(0, 0, (void*)sprite0_Pal);	// Palette....	
 
 	PA_EasyBgLoad(0, 1, mario_world); // platfroms...
+//	PA_LoadTiledBg(0, 1, mario_world);
 	PA_EasyBgLoad(0, 3, back); // back
+
 	
 	mario.x = 0<<8; mario.y = (128-32)<<8; // bottom of the screen... fixed point
 	mario.vy = 0; // not jumping

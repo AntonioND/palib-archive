@@ -12,6 +12,10 @@ extern "C" {
 */
 #include "PA_Text.h"
 
+
+#define PA_DS_CART  0x02000000
+#define PA_GBA_CART 0x08000000
+
 typedef struct{
 	char Name[64];
 	char Ext[6];

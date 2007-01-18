@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/11/trunk/lib/arm9/PA/gif
+END
+dgif_lib.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/4/trunk/lib/arm9/PA/gif/dgif_lib.c
+END
+egif_lib.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/4/trunk/lib/arm9/PA/gif/egif_lib.c
+END
+gifalloc.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/4/trunk/lib/arm9/PA/gif/gifalloc.c
+END
+quantize.c
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/11/trunk/lib/arm9/PA/gif/quantize.c
+END
+dev2gif.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/4/trunk/lib/arm9/PA/gif/dev2gif.c
+END
+gif_font.c
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/4/trunk/lib/arm9/PA/gif/gif_font.c
+END
+gif_err.c
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/4/trunk/lib/arm9/PA/gif/gif_err.c
+END

@@ -19,7 +19,7 @@
 
 
 //////////////////////////////////////////////////////////////////////
-
+/*
 void startSound(int sampleRate, const void* data, uint32 bytes, u8 channel, u8 vol,  u8 pan, u8 format) {
   SCHANNEL_TIMER(channel)  = SOUND_FREQ(sampleRate);
   SCHANNEL_SOURCE(channel) = (uint32)data;
@@ -35,13 +35,14 @@ int i;
   }
   return -1;
 }
-
+*/
 
 
 
 void PA_IPCManage(void){
 	if(PA_SoundBusyInit){  // Sound ready to use...
 		PA_Mic(); // Manage Mic
+		PA_SoundProcess(); // Play/stop cmomands
 		PA_SoundUpdates();  // Get busy sound channels, change volume...
 	//	PA_UpdatePad();
 	}
@@ -147,13 +148,19 @@ IPC->mailSize=0;
 	irqEnable(IRQ_TIMER0);	
 //	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
 //	irqEnable(IRQ_TIMER3);	
+
+	//swiWaitForVBlank();
+	//swiWaitForVBlank();
 	
 	//supprime pour test
     irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
 	irqEnable(IRQ_WIFI);
   
+	//swiWaitForVBlank();
+	//swiWaitForVBlank();
+  
  //supprime pour test
-  SndInit7 ();
+//  SndInit7 ();
     
   u32 fifo_temp;   
 

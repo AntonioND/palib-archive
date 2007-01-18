@@ -14,12 +14,13 @@ LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
 #---------------------------------------------------------------------------------
 .SUFFIXES:
 #---------------------------------------------------------------------------------
-
 ifeq ($(strip $(DEVKITARM)),)
-$(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
+$(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM)
 endif
 
+
 include $(DEVKITARM)/ds_rules
+
 
 #---------------------------------------------------------------------------------
 # TARGET is the name of the output, if this ends with _mb generates a multiboot image
@@ -79,7 +80,7 @@ PREFIX			:=	arm-eabi-
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lnds9
+LIBS	:= -lnds9 -ldswifi9
 LIBSPA	:= -lpa9
  
  
@@ -162,8 +163,11 @@ DEPENDS	:=	$(OFILES:.o=.d)
 # main targets
 #---------------------------------------------------------------------------------
 $(OUTPUT).ds.gba	: 	$(OUTPUT).nds
+
 $(OUTPUT).nds	: 	$(OUTPUT).bin
+
 $(OUTPUT).bin	:	$(OUTPUT).elf
+ 
 $(OUTPUT).elf	:	$(OFILES)
  
 #---------------------------------------------------------------------------------
@@ -211,6 +215,21 @@ $(OUTPUT).elf	:	$(OFILES)
 	@echo $(notdir $<)
 	@$(CC) -MM $(CFLAGS) -o $*.d $<
 	@$(CC)  $(ASFLAGS) -c $< -o$@
+
+ 
+define bin2o
+	cp $(<) $(*).tmp
+	echo -n $$(( `cat $(*).tmp | wc -c` & 3 )) | sed -e 's/0//g' | sed -e 's/1/000/g' | sed -e 's/2/00/g' | sed -e 's/3/0/g' >> $(*).tmp
+	$(OBJCOPY) -I binary -O elf32-littlearm -B arm \
+	--rename-section .data=.rodata \
+	--redefine-sym _binary_$*_tmp_start=$*\
+	--redefine-sym _binary_$*_tmp_end=$*_end\
+	--redefine-sym _binary_$*_tmp_size=$*_size\
+	$(*).tmp $(@)		
+	echo "extern const u8" $(*)"[];" > $(*).h
+	echo "extern const u32" $(*)_size[]";" >> $(*).h
+	rm $(*).tmp
+endef
  
 #---------------------------------------------------------------------------------
 %.o	:	%.pcx

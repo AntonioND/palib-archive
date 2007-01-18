@@ -49,6 +49,7 @@ extern u16 PA_oldx[2];
 extern u16 PA_oldy[2];
 extern u8 PA_drawsize[2];
 extern u16 *PA_DrawBg[2];
+extern u32 *PA_DrawBg32[2];
 extern u8 PA_nBit[2]; // 8 or 16 bit Bg
 //extern PA_SCreen
 
@@ -207,8 +208,8 @@ extern inline void PA_PutDouble8bitPixels(u8 screen, s16 x, s16 y, u8 color1, u8
 	 
 */
 extern inline void PA_Put4_8bitPixels(u8 screen, s16 x, s16 y, u32 colors) {
-/*
-	(*u32*)(PA_DrawBg[screen] + (x >> 1) + (y << 7)) = colors;*/
+
+	PA_DrawBg32[screen][(x >> 2) + (y << 6)] = colors;
 }
 
 
@@ -275,7 +276,7 @@ extern inline void PA_Put16bitPixel(u8 screen, s16 x, s16 y, u16 color) {
          \~english Y position. Be carefull, if Y is not between 0 and 191, it'll give unwanted results
          \~french Position Y. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté
  */
-#define PA_Get16bitPixel(screen, x, y) PA_DrawBg[screen][x + (y << 8)]
+#define PA_Get16bitPixel(screen, x, y) PA_DrawBg[screen][(x) + ((y) << 8)]
 
 
 
@@ -479,7 +480,7 @@ void PA_16bitDraw(u8 screen, u16 color);
          \~english Bitmap name
          \~french Nom du bitmap
 */
-#define PA_Load8bitBitmap(screen, bitmap) DMA_Copy(bitmap, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);
+#define PA_Load8bitBitmap(screen, bitmap) DMA_Copy(bitmap, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW)
 
 /*! \def PA_Load16bitBitmap(screen, bitmap)
     \brief

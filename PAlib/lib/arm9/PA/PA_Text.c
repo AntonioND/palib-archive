@@ -23,6 +23,8 @@ u16 *PA_textmap[2]; //Pointeur vers la map et les tiles...
 u8 *PA_texttiles[2];
 u16 *PA_textpal[2]; // Palette !
 
+
+
 s8 PA_font[2] = {};  // 0 pour normal, 1 pour dégradé, -1 pour custom
 
 // Text system

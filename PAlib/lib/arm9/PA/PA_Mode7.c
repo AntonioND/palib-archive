@@ -39,10 +39,10 @@ BGAFF_EX _m7_bgaff_ex[192];  // affine parameters for each line
 
 void PA_InitMode7(u8 bg_select) {
 
-mode7cam_x = X0; mode7cam_y = Y0; mode7cam_z = Z0;
-mode7alpha = 0;
-mode7cos = 256; mode7sin = 0;	// temporaries for cos and sin alpha
-mode7_distance = 160;
+	mode7cam_x = X0; mode7cam_y = Y0; mode7cam_z = Z0;
+	mode7alpha = 0;
+	mode7cos = 256; mode7sin = 0;	// temporaries for cos and sin alpha
+	mode7_distance = 160;
 
 //PA_StartInt(INT_HBLANK, hbl_mode7);
 	irqSet(IRQ_HBLANK, hbl_mode7);
@@ -66,14 +66,16 @@ u8 m7_distance = 160;
 u8 PAcount;
 
 void hbl_mode7(void){
-u8 screen = 0;
-u8 bg = 3;
+	u8 screen = 0;
+	u8 bg = 3;
 
 	s32 ww, wcc, wss, wxr, wyr;
 
 
 //	ww= (mode7cam_y*DIV[REG_VCOUNT])>>12;		// .8*.16 /.12 = 20.12
-	ww= (mode7cam_y<<4)/(REG_VCOUNT+1);		// .8*.16 /.12 = 20.12
+	s16 vc = REG_VCOUNT;
+	if(vc > 192) vc = 0;
+	ww= (mode7cam_y<<4)/(vc+1);		// .8*.16 /.12 = 20.12
 	wcc= ww*mode7cos>>5;					// .12*.8 /.5 = 17.15
 	wss= ww*mode7sin>>5;					// .12*.8 /.5 = 17.15
 

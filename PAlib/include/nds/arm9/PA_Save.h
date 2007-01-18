@@ -74,11 +74,11 @@ u16 i = 0;
 	i++;
 	}
    SRAM[i + offset] = string[i];
-   return (i);
+   return (i+1);
 }
 
 
-/*! \fn extern inline void PA_SaveData(s32 offset, void* Data, u16 NBytes)
+/*! \fn extern inline void PA_SaveData(s32 offset, void* Data, u32 NBytes)
     \brief
          \~english Save N Bytes in SRAM. This function can be used to backup a whole array.
          \~french Sauvegarde N Octets en SRAM. Cette fonction peut être utilisée pour sauvegarder un tableau complet...
@@ -92,7 +92,7 @@ u16 i = 0;
          \~english Number of Bytes to save
          \~french Nombre d'octets à sauvegarder
 */
-extern inline void PA_SaveData(s32 offset, void* Data, u16 NBytes) {
+extern inline void PA_SaveData(s32 offset, void* Data, u32 NBytes) {
 u16 i = 0;
 u8 *adress = (u8*)Data;
 	for (i = 0; i < NBytes; i++) SRAM[i + offset] = adress[i];

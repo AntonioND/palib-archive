@@ -1,9 +1,27 @@
+PROGNAME = PAlib
+OFILES   +=
+ADD_LIBS +=
+
+PATH 		:= $(DEVKITARM)/bin:$(PATH)
+
+ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
+TEXT1 		:= PAlib Demo
+TEXT2 		:= using PAlib
+TEXT3 		:= www.palib.com
+ICON 		:= -b $(CURDIR)/../logo.bmp
+LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
+
 #---------------------------------------------------------------------------------
 .SUFFIXES:
 #---------------------------------------------------------------------------------
 ifeq ($(strip $(DEVKITARM)),)
 $(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM)
 endif
+
+
+include $(DEVKITARM)/ds_rules
+
+
 #---------------------------------------------------------------------------------
 # TARGET is the name of the output, if this ends with _mb generates a multiboot image
 # BUILD is the directory where object files & intermediate files will be placed
@@ -13,7 +31,7 @@ endif
 TARGET	:=	$(shell basename $(CURDIR))
 BUILD		:=	build
 SOURCES	:=	gfx source data
-INCLUDES	:=	include build
+INCLUDES	:=	include build data
 
 EXPORT_DIR := /c/ndsexamples/
 #---------------------------------------------------------------------------------
@@ -25,8 +43,7 @@ EXPORT_DIR := /c/ndsexamples/
 # 
 #---------------------------------------------------------------------------------
 
-ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
-ICON 		:= -b $(PAPATH)/logo.bmp
+
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -46,7 +63,6 @@ ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	:=	-g $(ARCH) -mno-fpu -L$(DEVKITPRO)/PAlib/lib
 
 
-
 #---------------------------------------------------------------------------------
 # path to tools - this can be deleted if you set the path in windows
 #---------------------------------------------------------------------------------
@@ -60,11 +76,11 @@ LDFLAGS	:=	-g $(ARCH) -mno-fpu -L$(DEVKITPRO)/PAlib/lib
 #---------------------------------------------------------------------------------
 # the prefix on the compiler executables
 #---------------------------------------------------------------------------------
-PREFIX			:=	arm-elf-
+PREFIX			:=	arm-eabi-
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lnds9
+LIBS	:= -lnds9 -ldswifi9
 LIBSPA	:= -lpa9
  
  
@@ -106,14 +122,17 @@ PALFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.pal)))
 RAWFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.raw)))
 MAPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.map)))
 JPEGFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.jpg)))
+MODFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.mod)))
+GIFFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.gif)))
+BMPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bmp)))
  
-export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o) $(JPEGFILES:.jpg=.o)\
+export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o) $(JPEGFILES:.jpg=.o) $(MODFILES:.mod=.o) $(GIFFILES:.gif=.o) $(BMPFILES:.bmp=.o)\
 					$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
  
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
-					$(foreach dir,$(LIBDIRS),-I$(dir)/include/NDS) \
-					-I$(PAPATH)/include/NDS\
+					$(foreach dir,$(LIBDIRS),-I$(dir)/include/nds) \
+					-I$(PAPATH)/include/nds\
 					-I$(CURDIR)/$(BUILD)
  
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
@@ -154,13 +173,13 @@ $(OUTPUT).elf	:	$(OFILES)
 #---------------------------------------------------------------------------------
 %.ds.gba: %.nds
 	@echo built ... $(notdir $@)
-	@dsbuild $<  
+	@dsbuild $< 
+	@cp $(CURDIR)/../$(notdir $@) ../$(notdir $(OUTPUT)).sc.nds 
 
 #---------------------------------------------------------------------------------
 %.nds: %.bin
 	
-	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(ICON) "$(shell basename $@);By Dovoto;www.drunkencoders.com"
-
+	@ndstool -c $@ -9 $(TARGET).bin $(ARM7BIN) $(LOGO) $(ICON) "$(TEXT1);$(TEXT2);$(TEXT3)"
 
 
 #---------------------------------------------------------------------------------
@@ -196,15 +215,17 @@ $(OUTPUT).elf	:	$(OFILES)
 	@echo $(notdir $<)
 	@$(CC) -MM $(CFLAGS) -o $*.d $<
 	@$(CC)  $(ASFLAGS) -c $< -o$@
+
  
 define bin2o
 	cp $(<) $(*).tmp
+	echo -n $$(( `cat $(*).tmp | wc -c` & 3 )) | sed -e 's/0//g' | sed -e 's/1/000/g' | sed -e 's/2/00/g' | sed -e 's/3/0/g' >> $(*).tmp
 	$(OBJCOPY) -I binary -O elf32-littlearm -B arm \
 	--rename-section .data=.rodata \
 	--redefine-sym _binary_$*_tmp_start=$*\
 	--redefine-sym _binary_$*_tmp_end=$*_end\
 	--redefine-sym _binary_$*_tmp_size=$*_size\
-	$(*).tmp $(@)
+	$(*).tmp $(@)		
 	echo "extern const u8" $(*)"[];" > $(*).h
 	echo "extern const u32" $(*)_size[]";" >> $(*).h
 	rm $(*).tmp
@@ -251,9 +272,27 @@ endef
 #---------------------------------------------------------------------------------
 	@echo $(notdir $<)
 	@$(bin2o)
+
+#---------------------------------------------------------------------------------
+%.o	:	%.mod
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
+
+#---------------------------------------------------------------------------------
+%.o	:	%.gif
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
+
+#---------------------------------------------------------------------------------
+%.o	:	%.bmp
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
+
  
--include $(DEPENDS)
- 
+-include $(DEPENDS) 
 #---------------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------------

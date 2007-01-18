@@ -3,8 +3,8 @@
 // Includes
 #include <PA9.h>       // Include for PA_Lib
 
-#include "Mollusk_gif.h" // gif to include
-#include "Zoom_raw.h" // sound to include
+#include "Mollusk.h" // gif to include
+#include "Zoom.h" // sound to include
 
 u16 spritepal[256]; // our sprite palette
 
@@ -21,7 +21,7 @@ int main(int argc, char ** argv){
 //	u8 *spritegfx = 0;
 
 	// First, convert the gif to a sprite format...
-	u8 *spritegfx = PA_GifToTiles((void*)Mollusk_gif, // Gif file
+	u8 *spritegfx = PA_GifToTiles((void*)Mollusk, // Gif file
 											spritepal); // our palette
 										
 	// Next, load the sprite...
@@ -38,7 +38,7 @@ int main(int argc, char ** argv){
 	PA_SetSpriteHflip(0, 0, 1); // Turn sprite around...	again...	
 	
   while(1)  {  
-  		PA_PlaySimpleSound(0, Zoom_raw); // Play sound...
+  		PA_PlaySimpleSound(0, Zoom); // Play sound...
   		
 		for (spritex = -64; spritex < 256; spritex +=2){
 			pan = spritex/2; 
@@ -51,7 +51,7 @@ int main(int argc, char ** argv){
 		
 		PA_SetSpriteHflip(0, 0, 0); // Turn sprite around...
 		
-		PA_PlaySimpleSound(1, Zoom_raw);
+		PA_PlaySimpleSound(1, Zoom);
  
  		for (spritex = 256; spritex > -65; spritex -=2){
 			pan = spritex/2; 

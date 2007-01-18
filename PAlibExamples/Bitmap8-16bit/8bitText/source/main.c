@@ -6,6 +6,7 @@
 
 
 
+
 // Function: main()
 int main(int argc, char ** argv)
 {
@@ -41,7 +42,7 @@ int main(int argc, char ** argv)
 				"Hello World", // Text
 				1, // Text palette color (0-255)
 				0, // Text size (0-4)
-				1, // Text mode (0 - normal, 1 - transparent, 2 - no text, 3 - rotated 90°, 4 - 90° other way)
+				0, // Text mode (0 - normal, 1 - transparent, 2 - no text, 3 - rotated 90°, 4 - 90° other way)
 				100); // Maximum number of characters, if you want to right letter by letter...
 	PA_SmartText(1, 0, 20, 255, 40, "Hello World", 2, 1, 1, 100);
 	PA_SmartText(1, 0, 40, 255, 60, "Hello World", 3, 2, 1, 100);
@@ -55,9 +56,7 @@ int main(int argc, char ** argv)
 
 	// And a centered text, to check if it works
 	PA_CenterSmartText(1, 0, 100, 255, 120, "Hello World", 2, 4, 1); // Same as Smart text, but no letter limit
-		
-	
-	
+
 	
 	// Infinite loop to keep the program running
 	while (1)
