@@ -75,13 +75,13 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 		PA_IPC.Sound[PA_Channel].Volume = volume;  
 		PA_IPC.Sound[PA_Channel].Pan = 64; 
 		PA_IPC.Sound[PA_Channel].Rate = freq;
-		PA_IPC.Sound[PA_Channel].Length = length;
+		PA_IPC.Sound[PA_Channel].Length = length-4;
 		PA_IPC.Sound[PA_Channel].Format = format;	
 		PA_IPC.Sound[PA_Channel].Repeat = 0;
 	}
 	else { // Use special system if repeating data involved
 		snd.data[PA_Channel].data = data;
-		snd.data[PA_Channel].len = length;
+		snd.data[PA_Channel].len = length-4;
 		snd.data[PA_Channel].rate = freq;
 		snd.data[PA_Channel].pan = 64;
 		snd.data[PA_Channel].vol = volume;

@@ -1,4 +1,13 @@
+#ifndef _PA_WIFI
+#define _PA_WIFI
+
+
 #include <dswifi9.h>
+
+#ifdef FD_SETSIZE
+	#undef FD_SETSIZE
+#endif
+
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
@@ -21,3 +30,6 @@ unsigned long PA_chartoip(char *message);
 int PA_InitSocket(int *socket,char *host,int port,int mode);
 int PA_InitServer(int *sock,int port,int mode, int num_connect);
 int PA_GetHTTP(char *buffer, char *adress);
+
+
+#endif

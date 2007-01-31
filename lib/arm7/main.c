@@ -148,10 +148,16 @@ IPC->mailSize=0;
 	irqEnable(IRQ_TIMER0);	
 //	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
 //	irqEnable(IRQ_TIMER3);	
+
+	//swiWaitForVBlank();
+	//swiWaitForVBlank();
 	
 	//supprime pour test
     irqSet(IRQ_WIFI, Wifi_Interrupt); // set up wifi interrupt
 	irqEnable(IRQ_WIFI);
+  
+	//swiWaitForVBlank();
+	//swiWaitForVBlank();
   
  //supprime pour test
   SndInit7 ();

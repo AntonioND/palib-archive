@@ -8,7 +8,6 @@ extern "C" {
 
 
 
-EasyBgPixels PA_EasyBgPixel[6] = {PANoPixel, PANoPixel, PAEasyBgGetPixelTiled, PANoPixel, PAEasyBgGetPixelLarge, PAEasyBgGetPixelInf}; // Background types
 
 
 PA_BgInfos PA_BgInfo[2][4];
@@ -35,47 +34,48 @@ u8 charsetstart[2] = {8, 8};
 u8 rotbg_size[2][4]; // Background size of each possible rotbg
 
 
-void PA_ResetBgSys(void) {
-u8 i, j;
+void PA_ResetBgSysScreen(u8 screen){
+u8 i;
 
-	PA_SetBgColor(0, 0); PA_SetBgColor(1, 0);  // Black color by default
-	PA_SetVideoMode(0, 0);	PA_SetVideoMode(1, 0);
+	PA_SetBgColor(screen, 0); 
+	PA_SetVideoMode(screen, 0);
 
 	for (i = 0; i < 4; i++){
-		PA_DeleteBg(0, i);
-		PA_DeleteBg(1, i);
+		PA_DeleteBg(screen, i);
 	}
 	for (i = 0; i < 4; i++) {
-		for (j = 0; j < 2; j++) {
-		//	u8 ;  // On met à 0 les emplacements utilisés... pour chaque écran...
-			PA_BgInfo[j][i].tilesetsize = 0; // Place utilisée pour chaque tileset
-			PA_BgInfo[j][i].mapsize = 0; // Place utilisée pour chaque map
-			PA_BgInfo[j][i].TileSetChar = 0;  // Emplacement mémoire de chaque tileset
-			PA_BgInfo[j][i].mapchar = 0;  // Emplacement mémoire de chaque map
-			tempsize = 0;
-			PA_parallaxX[j][i] = 0;
-			PA_parallaxY[j][i] = 0;
-			scrollpos[j][i].infscroll = 0;
-		}
+	//	u8 ;  // On met à 0 les emplacements utilisés... pour chaque écran...
+		PA_BgInfo[screen][i].tilesetsize = 0; // Place utilisée pour chaque tileset
+		PA_BgInfo[screen][i].mapsize = 0; // Place utilisée pour chaque map
+		PA_BgInfo[screen][i].TileSetChar = 0;  // Emplacement mémoire de chaque tileset
+		PA_BgInfo[screen][i].mapchar = 0;  // Emplacement mémoire de chaque map
+		tempsize = 0;
+		PA_parallaxX[screen][i] = 0;
+		PA_parallaxY[screen][i] = 0;
+		scrollpos[screen][i].infscroll = 0;
 	}
 
 	for (i = 0; i < 64; i++) 
-		for (j = 0; j < 2; j++) 
-			charblocks[j][i] = 0;
+		charblocks[screen][i] = 0;
 
 	// Emplacements pris à la suite, faut pas déborder...
 	for (i = 64; i < 70; i++) 
-		for (j = 0; j < 2; j++) 
-			charblocks[j][i] = 1;
+		charblocks[screen][i] = 1;
 
-charsetstart[0] = 8; // Par défaut à 8, pour dire de tout utiliser
-charsetstart[1] = 8; // Par défaut à 8, pour dire de tout utiliser
+charsetstart[screen] = 8; // Par défaut à 8, pour dire de tout utiliser
+
+}
+
+void PA_ResetBgSys(void) {
+	PA_ResetBgSysScreen(0);
+	PA_ResetBgSysScreen(1);	
 }
 
 
 
 void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u32 size) {
 u16 blocksize = (size + 1023) >> 10;
+
 s8 charset = charsetstart[screen]; // On commence par le dernier... soit le 8ème, et on ira vers le bas
 u8 charsetok = 0;
 
@@ -90,6 +90,7 @@ while ((charset >= 0) && (!charsetok)) {
 	--charset;
 	tempsize = blocksize;
 	for(i = 0; i < blocksize; i++) {
+//		if (charblocks[screen][(charset << 3) + i] == 0) { // Si on a de la place...
 		if (charblocks[screen][(charset << 3) + i] == 0) { // Si on a de la place...
 			--tempsize;
 		}
@@ -253,13 +254,15 @@ while ((charset < 31 ) && (!charsetok)) {
 
 
 void PA_EasyBgScrollX(u8 screen, u8 bg_number, s32 x){
-	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) PA_BGScrollX(screen, bg_number, x&511);
+	if((PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG)||(PA_BgInfo[screen][bg_number].BgMode == 0)) 
+		PA_BGScrollX(screen, bg_number, x&511);
 	else PA_InfLargeScrollX(screen, bg_number, x);
 }
 
 
 void PA_EasyBgScrollY(u8 screen, u8 bg_number, s32 y){
-	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) PA_BGScrollY(screen, bg_number, y&511);
+	if((PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG)||(PA_BgInfo[screen][bg_number].BgMode == 0)) 
+		PA_BGScrollY(screen, bg_number, y&511);
 	else PA_InfLargeScrollY(screen, bg_number, y);
 }
 
@@ -307,6 +310,8 @@ void PA_StoreEasyBgInfos(u8 screen, u8 bg_number, u32 Type, u32 Width, u32 Heigh
 	PA_BgInfo[screen][bg_number].Infos.Map = Map;
 	PA_BgInfo[screen][bg_number].Infos.MapSize = MapSize;	
 	PA_BgInfo[screen][bg_number].Infos.Palette = Palette;
+	
+	PA_BgInfo[screen][bg_number].BgMode = Type;
 }
 
 
@@ -340,95 +345,6 @@ void PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileS
 
 
 
-u8 PAEasyBgGetPixelTiled(u8 screen, u8 bg_number, s32 x, s32 y){
-	// Adjust X/Y values
-	x += PA_BgInfo[screen][bg_number].ScrollX; x &= (PA_BgInfo[screen][bg_number].Infos.Width-1);
-	y += PA_BgInfo[screen][bg_number].ScrollY; y %= (PA_BgInfo[screen][bg_number].Infos.Height);
-	
-
-		
-	s32 mappos;
-	
-	if ((x <= 256)&&(y <= 256)) {// Normal default size
-		mappos = (x>>3) + ((y>>3)*32); // Adjust position in map
-	}
-	else if ((x > 256)&&(y <= 256)){
-		mappos = 32*32 + ((x&255)>>3) + ((y>>3)*32); // Adjust position in map
-	}
-	else if ((x <= 256)&&(y>256)){ // Tall
-		mappos = 64*32 + (x>>3) + (((y-256)>>3)*32); // Adjust position in map	
-	}
-	else{
-		mappos = 96*32 + ((x-256)>>3) + (((y-256)>>3)*32); // Adjust position in map			
-	
-	}
-	
-	
-	 	
-	u16 *Map = (u16*)PA_BgInfo[screen][bg_number].Infos.Map;
-		
-	s32 tilepix = (Map[mappos]&1023)<<6;
-	u8 hflip = (Map[mappos]>>10)&1;
-	u8 vflip = (Map[mappos]>>11)&1;
-	
-	x&=7; y&=7; // Adjust in tile...
-	if (hflip) x = 7-x;   if (vflip) y = 7-y;   // Adjust flips...
-	
-	u8 *Tiles = (u8*)PA_BgInfo[screen][bg_number].Infos.Tiles;
-
-	return Tiles[tilepix+x+(y<<3)];
-}
-
-
-
-u8 PAEasyBgGetPixelLarge(u8 screen, u8 bg_number, s32 x, s32 y){
-	// Adjust X/Y values
-	x += PA_BgInfo[screen][bg_number].ScrollX; x = PA_Modulo(x, PA_BgInfo[screen][bg_number].Infos.Width);
-	y += PA_BgInfo[screen][bg_number].ScrollY; y = PA_Modulo(y, PA_BgInfo[screen][bg_number].Infos.Height);
-	s32 mappos = (x>>3) + ((y>>3)*(PA_BgInfo[screen][bg_number].Infos.Width>>3)); // Adjust position in map			
-	 	
-	u16 *Map = (u16*)PA_BgInfo[screen][bg_number].Infos.Map;
-		
-	s32 tilepix = (Map[mappos]&1023)<<6;
-	u8 hflip = (Map[mappos]>>10)&1;
-	u8 vflip = (Map[mappos]>>11)&1;
-	
-	x&=7; y&=7; // Adjust in tile...
-	if (hflip) x = 7-x;   if (vflip) y = 7-y;   // Adjust flips...
-	
-	u8 *Tiles = (u8*)PA_BgInfo[screen][bg_number].Infos.Tiles;
-
-	return Tiles[tilepix+x+(y<<3)];
-}
-
-
-
-u8 PANoPixel(u8 screen, u8 bg_number, s32 x, s32 y){
-	return 0;
-}
-
-
-
-u8 PAEasyBgGetPixelInf(u8 screen, u8 bg_number, s32 x, s32 y){
-	// Adjust X/Y values
-	x += PA_BgInfo[screen][bg_number].ScrollX; x = PA_Modulo(x, PA_BgInfo[screen][bg_number].Infos.Width);
-	y += PA_BgInfo[screen][bg_number].ScrollY; y = PA_Modulo(y, PA_BgInfo[screen][bg_number].Infos.Height);
-	
-	s32 mappos = (x>>3) + ((y>>3)*(PA_BgInfo[screen][bg_number].Infos.Width>>3)); // Adjust position in map			
-	 	
-	u32 *Map = (u32*)PA_BgInfo[screen][bg_number].Infos.Map;
-		
-	s32 tilepix = (Map[mappos]&INF_JUSTTILE)<<6;
-	u8 hflip = (Map[mappos]>>29)&1;
-	u8 vflip = (Map[mappos]>>30)&1;
-	
-	x&=7; y&=7; // Adjust in tile...
-	if (hflip) x = 7-x;   if (vflip) y = 7-y;   // Adjust flips...
-	
-	u8 *Tiles = (u8*)PA_BgInfo[screen][bg_number].Infos.Tiles;
-
-	return Tiles[tilepix+x+(y<<3)];
-}
 
 
 

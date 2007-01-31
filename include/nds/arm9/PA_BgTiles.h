@@ -190,6 +190,18 @@ extern scrollpositions scrollpos[2][4]; // Pour chaque écran et pour chaque fond
 */
 void PA_ResetBgSys(void);
 
+
+/*!
+    \fn void PA_ResetBgSysScreen(u8 screen)
+    \brief
+      \~english Reset the background system on 1 screen
+      \~french Reinitialise le systeme de fonds pour 1 écran
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+*/
+void PA_ResetBgSysScreen(u8 screen);
+
 /*!
     \fn void PA_InitBg(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode)
     \brief
@@ -639,9 +651,9 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
 	u32 truex;
 	u32 mapblock = 0;
 	truex = x&31;
-	mapblock = (x >> 5) << 11; // Permet d'avoir le bon block...
+	mapblock = ((x >> 5) << 11) + ((y >> 5) << 12); // Permet d'avoir le bon block...
 	
-	*(u16*)(PA_BgInfo[screen][bg_select].Map + ((truex) << 1) + ((y) << 6) + mapblock) = tile_info;
+	*(u16*)(PA_BgInfo[screen][bg_select].Map + ((truex) << 1) + ((y&31) << 6) + mapblock) = tile_info;
 }
 
 

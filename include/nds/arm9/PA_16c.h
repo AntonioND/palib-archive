@@ -34,45 +34,14 @@ extern LetterPos16c PA_16cLetterPos;
 
 #define PA_LoadPal16c(palette, source)   DMA_Copy(source, (void*)palette, 16, DMA_16NOW);
 #define PA_16cPos(x, y) (((x>>3)*26*8) + y + 8)
+ALWAYSINLINE void PA_16c8X8(u8 screen, s16 x, s16 y, u32 *image);
 
-	extern const u8 c16_policeheight[5];
-	extern const u8 c16_policesize[5][96];
-	extern u32 *c16_font[5];
-
-ALWAYSINLINE void PA_Plot8Pixels(u8 screen, u16 pos, u16 temp, u32 color){
-   PA_Draw1632[screen][pos] |= (color<<temp);
-   PA_Draw1632[screen][pos+(26*8)] |= (color>>(32-temp));   
-}  
-
-ALWAYSINLINE void PA_16c16X16Letter(u8 screen, s16 x, s16 y, u32 *image, u8 color){  
-   
-   x += 8; y += 8;
-
-   u16 temp = (x&7)<<2;
-   u16 pos = PA_16cPos(x, y);
-   u8 i;
-   for (i = 0; i < 2; i++){
-	   PA_Plot8Pixels(screen, pos, temp, image[0]*color);
-	   PA_Plot8Pixels(screen, pos+1, temp, image[1]*color);
-	   PA_Plot8Pixels(screen, pos+2, temp, image[2]*color);
-	   PA_Plot8Pixels(screen, pos+3, temp, image[3]*color);
-	   PA_Plot8Pixels(screen, pos+4, temp, image[4]*color);
-	   PA_Plot8Pixels(screen, pos+5, temp, image[5]*color);
-	   PA_Plot8Pixels(screen, pos+6, temp, image[6]*color); 
-	   PA_Plot8Pixels(screen, pos+7, temp, image[7]*color);
-	   PA_Plot8Pixels(screen, pos+8, temp, image[16]*color);
-	   PA_Plot8Pixels(screen, pos+9, temp, image[17]*color); 
-	   PA_Plot8Pixels(screen, pos+10, temp, image[18]*color);  
-	   PA_Plot8Pixels(screen, pos+11, temp, image[19]*color);
-	   PA_Plot8Pixels(screen, pos+12, temp, image[20]*color);
-	   PA_Plot8Pixels(screen, pos+13, temp, image[21]*color);
-	   PA_Plot8Pixels(screen, pos+14, temp, image[22]*color);
-	   PA_Plot8Pixels(screen, pos+15, temp, image[23]*color);		   
-	   pos+=26*8;
-	   image+=8;	   
-	}
-}  
-ALWAYSINLINE void PA_16c8X8Letter(u8 screen, s16 x, s16 y, u32 *image, u8 color){  
+	extern u32 *c16_tiles[10];
+	extern u16 *c16_maps[10];
+	extern u8 *pa16cdefaultsize[10];
+	extern u8 c16policeheight[10];
+	
+ALWAYSINLINE void PA_16c8X8Color(u8 screen, s16 x, s16 y, u32 *image, u8 color){  
    x += 8; y += 8;
    u16 temp = (x&7)<<2;
    u16 pos = PA_16cPos(x, y);
@@ -94,6 +63,27 @@ ALWAYSINLINE void PA_16c8X8Letter(u8 screen, s16 x, s16 y, u32 *image, u8 color)
    PA_Draw1632[screen][pos+5] |= (image[5]>>temp)*color;
    PA_Draw1632[screen][pos+6] |= (image[6]>>temp)*color;
    PA_Draw1632[screen][pos+7] |= (image[7]>>temp)*color;      
+} 
+
+ 
+
+ALWAYSINLINE void PA_Plot8Pixels(u8 screen, u16 pos, u16 temp, u32 color){
+   PA_Draw1632[screen][pos] |= (color<<temp);
+   PA_Draw1632[screen][pos+(26*8)] |= (color>>(32-temp));   
+}  
+
+ALWAYSINLINE void PA_16c16X16Letter(u8 screen, s16 x, s16 y, u8 letter, u8 size, u8 color)
+{  
+	u16 firstpos = ((letter&31)<<1)+((letter >> 5)<<7);
+	PA_16c8X8Color(screen, x, y, (c16_tiles[size]+(c16_maps[size][firstpos]<<3)), color);
+	PA_16c8X8Color(screen, x, y+8, (c16_tiles[size]+(c16_maps[size][firstpos+64]<<3)), color);
+	firstpos ++;
+	PA_16c8X8Color(screen, x+8, y, (c16_tiles[size]+(c16_maps[size][firstpos]<<3)), color);
+	PA_16c8X8Color(screen, x+8, y+8, (c16_tiles[size]+(c16_maps[size][firstpos+64]<<3)), color);	
+}  
+
+extern inline void PA_16c8X8Letter(u8 screen, s16 x, s16 y, u8 letter, u8 size, u8 color){  
+	PA_16c8X8Color(screen, x, y, (c16_tiles[size]+(c16_maps[size][letter]<<3)), color);
 }  
 
 
@@ -182,11 +172,83 @@ extern inline void PA_InitComplete16c(u8 bg, void *Palette){
 
 
 
-
+/*! \fn s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, s32 limit)
+    \brief
+         \~english This is a variable width and variable size function to draw text on the screen. 
+         \~french Cette fonction permet d'écrire du texte à chasse variable à l'écran. 
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param basex
+         \~english X coordinate of the top left corner
+         \~french Coordonnée X du coin supérieur gauche
+    \param basey
+         \~english Y coordinate of the top left corner
+         \~french Coordonnée Y du coin supérieur gauche
+    \param maxx
+         \~english X coordinate of the down right corner
+         \~french Coordonnée X du coin inférieur droit
+    \param maxy
+         \~english Y coordinate of the down right corner
+         \~french Coordonnée Y du coin inférieur droit
+    \param text
+         \~english Text, such as "Hello World"
+         \~french Texte, tel que "Hello World"
+    \param color
+         \~english Palette color to use (0-255)
+         \~french Couleur de la palette à utiliser (0-255)
+    \param size
+         \~english Size of the text, from 0 (really small) to 4 (pretty big)
+         \~french Taille du texte, de 0 (vraiment petit) à 4 (assez grand)  
+    \param limit
+         \~english You can give a maximum number of characters to output. This can be usefull to have a slowing drawing text (allow to draw 1 more character each frame...)
+         \~french On peut fixer une limite au nombre de caractères. Ceci peut etre utile pour dessiner un texte progressivement, en augmentant de 1 le nombre de caractères à chaque boucle....
+*/
 s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, s32 limit);
 
 
+/*! \def PA_16cCustomFont(c16_slot, c16_font)
+    \brief
+         \~english Add custom fonts to the 16cText system !! Font must be converted with PAGfx
+         \~french Ajouter une police perso dans le systeme de texte 16c !! Doit être convertie avec PAGfx
+    \param c16_slot
+         \~english Font slot... 0-4 are used by the defaut PAlib fonts, 5-9 are free to use. You can freely overwrite the PAlib fonts if you want
+         \~french Slot pour ajouter la police. Les slots 0-4 sont utilisés pour les polices par défaut de PAlib, et 5-9 sont libres. On peut néanmoins charger par-dessus les polices PAlib si on veut.
+    \param c16_font
+         \~english Font name;..
+         \~french Nom de la police... 
+*/
+#define PA_16cCustomFont(c16_slot, c16_font){\
+	c16_maps[c16_slot] = (u16*)(void*)c16_font##_Map;		\
+	c16_tiles[c16_slot] = (u32*)(void*)c16_font##_Tiles;	\
+	pa16cdefaultsize[c16_slot] = (u8*)c16_font##_Sizes;	\
+	c16policeheight[c16_slot] = c16_font##_Height;\
+}
 
+
+/*! \fn ALWAYSINLINE PA_16cPutPixel(u8 screen, s16 x, s16 y, u32 color)
+    \brief
+         \~english Plot a pixel on a 16c background
+         \~french Afficher un pixel sur un fond 16c
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param x
+         \~english X position in pixels of the top left corner. Note that it ranges from -8 to 263, in order to allow half-way offscreen images. NEVER DRAW BEYOND THESE LIMITS, or else you'll get major background glitches
+         \~french Position X en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 263, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques...
+    \param y
+         \~english y position in pixels of the top left corner. Note that it ranges from -8 to 199, in order to allow half-way offscreen images. NEVER DRAW BEYOND THESE LIMITS, or else you'll get major background glitches
+         \~french Position y en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 199, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques...
+    \param color
+         \~english Pixel value (0-15, uses the loaded palette)
+         \~french Valeur du pixel (0-15, prend la couleur dans la palette chargée)
+*/
+ALWAYSINLINE void PA_16cPutPixel(u8 screen, s16 x, s16 y, u32 color){
+   x += 8; y += 8;
+   u16 temp = (x&7)<<2;
+   u16 pos = PA_16cPos(x, y);
+   PA_Draw1632[screen][pos] |= (color<<temp);
+}
 
 
 /*! \fn ALWAYSINLINE void PA_16c8X4(u8 screen, s16 x, s16 y, u32 *image)
@@ -413,8 +475,10 @@ ALWAYSINLINE void PA_16c8Xi(u8 screen, s16 x, s16 y, u32 *image, u8 i)
 
 
 extern inline void PA_16cLetter(u8 screen, s16 x, s16 y, char letter, u8 size, u8 color){
-	if (c16_policeheight[size]<=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<3)), color);
-	else PA_16c16X16Letter(screen, x, y, (u32*)(c16_font[size]+(letter<<5)), color);
+	if (c16policeheight[size]<=8) PA_16c8X8Letter(screen, x, y, letter, size, color);
+	//(u32*)(c16_font[size]+(letter<<3))
+	else PA_16c16X16Letter(screen, x, y, letter, size, color);
+	//(u32*)(c16_font[size]+(letter<<5))
 }
 
 
@@ -439,6 +503,30 @@ extern inline void PA_16cLetter(u8 screen, s16 x, s16 y, char letter, u8 size, u
          \~french Coin inférieur droit...
 */
 void PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2);
+
+
+
+/*! \fn extern inline u8 PA_16cGetPixel(u8 screen, s16 x, s16 y)
+    \brief
+         \~english Returns the pixel value of a given point on a 16c background
+         \~french Renvoie la valeur d'un pixel donné sur un fond 16c
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param x
+         \~english X value...
+         \~french Valeur X...
+    \param y
+         \~english Y value...
+         \~french Valeur Y...		 		 
+*/
+extern inline u8 PA_16cGetPixel(u8 screen, s16 x, s16 y){
+	x += 8; y += 8;
+   u16 temp = (x&7)<<2;
+   u16 pos = PA_16cPos(x, y);
+   return (PA_Draw1632[screen][pos]&(15<<temp))>>temp;
+}
+
 
 
 

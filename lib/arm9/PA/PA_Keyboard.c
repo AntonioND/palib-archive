@@ -31,23 +31,24 @@ void PA_InitKeyboard(u8 bg_number) {
 // On charge le fond...
 	PA_LoadSimpleBg(0, bg_number, keyboard_Tiles, keyboard_Map, BG_256X512, 0, 0);
 	
-Keyboard.Bg = bg_number;
-Keyboard.Type = 0;
-Keyboard.Repeat = 0;
-/*
-	PA_LoadBgExtPal(0, base_palette, (void*)keyboardPal1);
-	PA_LoadBgExtPal(0, held_palette, (void*)keyboardPal2);*/
-
-PA_ReloadKeyboardCol();
-
-s16 i, j; 
-for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne palette...
-	for (i = 0; i < 32; i++) 
-		PA_SetMapTilePal(0, bg_number, i, j, 15);
-
-PA_SetKeyboardColor(0, 1); // Blue and Red
+	Keyboard.Bg = bg_number;
+	Keyboard.Type = 0;
+	Keyboard.Repeat = 0;
+	/*
+		PA_LoadBgExtPal(0, base_palette, (void*)keyboardPal1);
+		PA_LoadBgExtPal(0, held_palette, (void*)keyboardPal2);*/
+	
+	PA_ReloadKeyboardCol();
+	
+	s16 i, j; 
+	for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne palette...
+		for (i = 0; i < 32; i++) 
+			PA_SetMapTilePal(0, bg_number, i, j, 15);
+	
+	PA_SetKeyboardColor(0, 1); // Blue and Red
 
 }
+
 
 
 
@@ -81,7 +82,7 @@ const u8 PA_Keyboard[2][5][24] = {
 	  {PA_TAB, 'q', 'q', 'w', 'w', 'e', 'e', 'r', 'r', 't', 't', 'y', 'y', 'u', 'u', 'i', 'i', 'o', 'o', 'p', 'p',PA_BACKSPACE, PA_BACKSPACE, PA_BACKSPACE}, // qwertyuiop, Backspace
 	  {PA_CAPS, PA_CAPS, 'a', 'a', 's', 's', 'd', 'd', 'f', 'f', 'g', 'g', 'h', 'h', 'j', 'j', 'k', 'k', 'l', 'l', PA_ENTER, PA_ENTER, PA_ENTER, PA_ENTER}, // Caps, asdfghjkl, Enter
 	  {PA_SHIFT, PA_SHIFT, PA_SHIFT, 'z', 'z', 'x', 'x', 'c', 'c', 'v', 'v', 'b', 'b', 'n', 'n', 'm', 'm', ',', ',', '.', '.', '/', '/', PA_RIEN},  // Shift, zxcvbnm , . /
-	  {PA_RIEN, PA_RIEN, ';', ';', '`', '`', '`', '`', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '[', '[', ']', ']', '\\', '\\'}	  	  
+	  {PA_RIEN, PA_RIEN, ';', ';', '`', '`', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '[', '[', ']', ']', '\\', '\\'}	  	  
 	  },
 	  {
 	  {'!', '!' , '@', '@', '#', '#', '$', '$', '%', '%', '^', '^', '&', '&', '*', '*', '(', '(', ')', ')', '_', '_', '+', '+'}, // Touches de 0 à 9, puis - et =  
@@ -102,11 +103,18 @@ const u8 PA_Keyboard[2][5][24] = {
 
 void PA_ChangeKeyboardType(void){
 	Keyboard.Type = !Keyboard.Type;
-	DMA_Copy((void*)(keyboard_Map + (Keyboard.Type << 11)), (void*)ScreenBaseBlock(0, PA_BgInfo[0][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);
+
 	s16 i, j; 
-	for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne palette...
-		for (i = 0; i < 32; i++) 
-			PA_SetMapTilePal(0, Keyboard.Bg, i, j, 15);	
+	if(!Keyboard.Custom){
+		DMA_Copy((void*)(keyboard_Map + (Keyboard.Type << 11)), (void*)ScreenBaseBlock(0, PA_BgInfo[0][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);	
+	
+		for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne palette...
+			for (i = 0; i < 32; i++) 
+				PA_SetMapTilePal(0, Keyboard.Bg, i, j, 15);
+	}
+	else{
+		DMA_Copy((void*)(PA_BgInfo[0][Keyboard.Bg].Map + (Keyboard.Type << 12)), (void*)ScreenBaseBlock(0, PA_BgInfo[0][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);	
+	}
 }
 
 
@@ -176,7 +184,7 @@ s16 y = Stylus.Y;
 
 void PA_SetLetterPal(s16 x, s16 y, u8 Pal) {
 u8 value = PA_Keyboard[0][y][x];
-	if (value) {
+	if (value&&(!Keyboard.Custom)) {
 		while(PA_Keyboard[0][y][x-1] == value) --x;
 		while(PA_Keyboard[0][y][x] == value) {
 			PA_SetMapTilePal(0, Keyboard.Bg, x+1, (y << 1) + 1, Pal);

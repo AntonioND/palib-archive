@@ -87,6 +87,31 @@ extern inline u16 PA_GetGifHeight(void* gif){
 
 
 
+
+/*! \fn extern inline void PA_LoadGifXY(u8 screen, void *gif)
+    \brief
+         \~english Load a Gif on a 16 bit background... Don't forget to Init the background !
+         \~french Charger un Gif sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)	
+    \param x
+         \~english X position on the screen
+         \~french Position X à l'écran
+    \param y
+         \~english Y position on the screen
+         \~french Position Y à l'écran	 
+    \param gif
+         \~english Gif image...
+         \~french image au format Gif...	 
+*/
+extern inline void PA_LoadGifXY(u8 screen, s16 x, s16 y, void *gif){
+	if (PA_nBit[screen]) DecodeGif((const u8*)gif, (u8*)(PA_DrawBg[screen] + x + (y<<8)), (u16*)0x05000000, 1, 256);
+	else DecodeGif((const u8*)gif, (u8*)(PA_DrawBg[screen] + ((x + (y<<8))<<1)), (u16*)(0x05000000+(0x400*screen)), 0, 256);
+}
+
+
+
 /*! \fn extern inline void PA_LoadGif(u8 screen, void *gif)
     \brief
          \~english Load a Gif on a 16 bit background... Don't forget to Init the background !
@@ -99,9 +124,7 @@ extern inline u16 PA_GetGifHeight(void* gif){
          \~french image au format Gif...	 
 */
 extern inline void PA_LoadGif(u8 screen, void *gif){
-	if (PA_nBit[screen]) DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)0x05000000, 1, 256);
-	//PA_Load16bitGif(screen, 0, 0, gif); // 16 bit...
-	else DecodeGif((const u8*)gif, (u8*)PA_DrawBg[screen], (u16*)(0x05000000+(0x400*screen)), 0, 256);
+	PA_LoadGifXY(screen, 0, 0, gif);
 }
 
 
@@ -203,6 +226,11 @@ extern inline s32 PA_GifGetFrame(void){
 		 
 */
 u8* PA_GifToTiles(void *gif, u16 *temppal);
+
+
+/** @} */ // end of Gif
+
+
 
 
 

@@ -13,15 +13,15 @@ void PA_Draw8bitLineEx(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 c
 
 
 void PA_Default8bitInit(u8 screen, u8 bg_priority){
-PA_DeleteBg(screen, 3);
-PA_nBit[screen] = 0; // 8 bit
-
-PA_BGXPA(screen, 3) = 1 << 8;
-PA_BGXPB(screen, 3) = 0;
-PA_BGXPC(screen, 3) = 0;
-PA_BGXPD(screen, 3) = 1 << 8;
-PA_BGXX(screen, 3) = 0;
-PA_BGXY(screen, 3) = 0;	
+	PA_DeleteBg(screen, 3);
+	PA_nBit[screen] = 0; // 8 bit
+	
+	PA_BGXPA(screen, 3) = 1 << 8;
+	PA_BGXPB(screen, 3) = 0;
+	PA_BGXPC(screen, 3) = 0;
+	PA_BGXPD(screen, 3) = 1 << 8;
+	PA_BGXX(screen, 3) = 0;
+	PA_BGXY(screen, 3) = 0;	
 
 	_REG16(REG_BGSCREEN(screen)) &= ~7;
 	_REG16(REG_BGSCREEN(screen)) |= (0x100 << (3)) | MODE_3_2D;
@@ -30,14 +30,14 @@ PA_BGXY(screen, 3) = 0;
 
 void PA_Init8bitBg(u8 screen, u8 bg_priority){
 
-PA_Default8bitInit(screen, bg_priority);
-
+	PA_Default8bitInit(screen, bg_priority);
 
 	PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + 320 * 256);
+	PA_DrawBg32[screen] = (u32*)PA_DrawBg[screen];
 	DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);
-	
-charsetstart[screen] = 5; // On se réserve la moitié de la mémoire...
-charblocks[screen][40] = 1; // Block la mémoire
+		
+	charsetstart[screen] = 5; // On se réserve la moitié de la mémoire...
+	charblocks[screen][40] = 1; // Block la mémoire
 
 	_REG16(REG_BGCNT(screen, 3)) = bg_priority | BG_BMP8_256x256 | BG_BMP_BASE(5);
 PA_SetDrawSize(screen, 1);

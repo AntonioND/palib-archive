@@ -55,6 +55,26 @@ New Stuff
 
 [Demo] Platform examples 4 and 5 added to the examples/demo section, code updated to match the latest version :)
 
+[RotMaps] Added PA_SetRotMapTile(u8 screen, u8 bg_select, s16 x, s16 y, u8 tile_number) and PA_GetRotMapTile(u8 screen, u8 bg_select, s16 x, s16 y), using gmiller's code...
+
+[CustomFonts] Added PA_16cCustomFont(slot, fontname) and PA_8bitCustomFont(slot, fontname) and the examples to go with it... Wiki will be updated soon with the instructions. Requires the latest PAGfx version... PAGfx has been updated too, to do the conversion... 
+
+[DSMotion] Official DSMotion code added !!! Check the Input examples to see how it works (init/getting the data). Has 2 different ways of playing with it : either get the raw values and use that, or transform the data into Pad.Held.Up/etc data :)
+
+[DSMotion] Added MotionDraw, a simple demo...
+
+[Keyboard] Added PA_InitCustomKeyboard(bg_number, keyb_custom) to load custom keyboards (use instead of PA_InitKeyboard), and the example to go with it... Custom keyboards are 256 colors and should be converted as EasyBg...
+
+[DSMotion] Added MotionDraw2...
+
+[DSMotion] Added Angle and Force variables. Made a quick MotionTurn example to see how to use them
+
+[WifiBanner] Updated the WifiBanner to display PAlib (take the wifi.bmp file from any example)
+
+[Compo] Added CompoSplash demo to show the DS Dev Compo Splash screen... Also contains a custom logo for the DS Compo, if you feel like it
+
+[SpriteTouch] Added PA_Sprite16cTouchedPix
+
 
 Updated Stuff
 -------------
@@ -91,6 +111,16 @@ Updated Stuff
 
 [Sound] Sound code rewritten, you can now play several sounds per frame. The old sound system is present, it switches automatically to use if you call the Stream commands... You can also, in the same frame, stop a sound channel and launch a sound on that channel :)
 
+[Gif] Added PA_LoadGifXY, to load gifs to a specific part of the screen :). Updated the gif examples to work with it...
+
+[GetSpritePixel] Added PA_GetSprite16cPixel, for 16 color sprites, and an example to go with it...
+
+[Makefile] Makefiles updated, please copy one of the example/template makefiles and paste in your project. Includes the sound padding correction and includes the libwifi
+
+[DSMotion] Now uses an average, jitters less
+
+[Text] PAlib text output c files changed, saves up to 10KB/rom :)
+
 
 Things Fixed
 ------------
@@ -117,13 +147,19 @@ Things Fixed
 
 [PAGfx] No longer hangs when loading non-8pixel-padded backgrounds
 
+[Warnings] Fixed the FD_SETSIZE warnings
 
+[TextColors] TEXT_BLUE and TEXT_GREEN were inverted
 
+[Reco] Fixed upper screen mess-up when using the recognition system
 
+[SpriteAnims] Fixed first frame not showing when starting a new animation...
 
+[PAFSBg] Fixed PAFS Bg loading
 
+[PAGfx] No longer hangs if you have non-8 pixel multiple sprites. Automatically resizes it
 
-
+[Error] Fixed compilation error on projects with multiple cpp files
 
 
 

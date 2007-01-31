@@ -224,6 +224,17 @@ u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_
     \brief
          \~english Reset the sprite system, memory, etc...
          \~french Remise à 0 du système de sprite, de la mémoire...
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+*/
+void PA_ResetSpriteSysScreen(u8 screen);
+
+
+/*! \fn void PA_ResetSpriteSys(void)
+    \brief
+         \~english Reset the sprite system, memory, etc...
+         \~french Remise à 0 du système de sprite, de la mémoire...
 */
 void PA_ResetSpriteSys(void);
 
@@ -369,7 +380,7 @@ extern inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u
          \~french Position Y du sprite
 */
 extern inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
-   PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);
+   PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, 2) + (prio << 10);// + (15 << 12);
    PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
 }
@@ -577,7 +588,7 @@ extern inline void PA_CreateSpriteExFromGfx(u8 screen, u8 obj_number, u16 obj_gf
 
 
 extern inline void PA_UpdateGfx(u8 screen, u16 gfx_number, void *obj_data) {
-	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);
+	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << (MEM_DECAL+1)), DMA_16NOW);
 //	PA_OutputText(1, 25, PA_Rand()&15, "%dgfx   ", gfx_number);
 }
 
@@ -1500,6 +1511,36 @@ u8 hsize = spriteanims[screen][sprite].lx>>3;
 		return (pixel&255);
 	}
 }
+
+/*! \fn extern inline u8 PA_GetSprite16cPixel(u8 screen, u8 sprite, u8 x, u8 y)
+    \brief
+         \~english Get a 16 color sprite's pixel color. 
+         \~french Récupérer la couleur d'un pixel d'un sprite de 16 couleurs.
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english Sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite
+    \param x
+         \~english X coordinate of the pixel
+         \~french Coordonnée X du pixel
+    \param y
+         \~english Y coordinate of the pixel
+         \~french Coordonnée Y du pixel
+*/
+extern inline u8 PA_GetSprite16cPixel(u8 screen, u8 sprite, u8 x, u8 y) {
+	u8 hsize = spriteanims[screen][sprite].lx>>3;
+
+	s32 pos = (x >> 3) + ((y >> 3) * hsize);
+	x&=7; y&=7;
+	
+	pos = (pos << 4) + (x >> 2) + (y << 1);
+	
+	u16 pixel = spriteanims[screen][sprite].gfx[pos];
+	return ((pixel>>(4*(x&3)))&15);	
+}
+
 
 
 /*! \fn void PA_InitSpriteDraw(u8 screen, u8 sprite)

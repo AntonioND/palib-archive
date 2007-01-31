@@ -19,6 +19,12 @@ extern "C" {
 
 void PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b);
 
+extern u8 pa_printx[2];
+extern u8 pa_printy[2];
+extern s16 pa_printscroll[2];
+
+void PA_PrintYPlus(u8 screen);
+
 
 /*! \file PA_Text.h
     \brief Text system in tile mode
@@ -30,8 +36,8 @@ void PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b);
 
 #define TEXT_WHITE 0
 #define TEXT_RED 1
-#define TEXT_BLUE 2
-#define TEXT_GREEN 3
+#define TEXT_GREEN 2
+#define TEXT_BLUE 3
 #define TEXT_MAGENTA 4
 #define TEXT_CYAN 5
 #define TEXT_YELLOW 6
@@ -65,12 +71,18 @@ extern s8 PA_font[2];  // 0 pour normal, 1 pour dégradé, -1 pour custom
 	#include "text2.h" // La police à taille variable...
 	#include "text3.h" // La police à taille variable...
 	#include "text4.h" // La police à taille variable...
-	extern const u8 *textData[5];
-	extern const u8 policeheight[5];
-	extern const u16 policewidth[5];
-	extern const u8 policesize[5][256];	
+	extern const u8 *textData[10];
+	extern u8 policeheight[10];
+	extern u16 policewidth[10];
+	extern u8 *policesize[10];	
 //#endif
 
+
+	extern u8 *text_tiles[10];
+	extern u16 *text_maps[10];	
+
+	extern u8 *pa8bitdefaultsize[10];
+	extern u8 police8bitheight[10];
 
 typedef void(*letterfp)(u8 size, u8 screen, u16 x, u16 y, char lettertemp, u8 color);
 
@@ -383,6 +395,27 @@ s16 PA_SmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text
 s16 PA_CenterSmartText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, u8 transp);
 
 
+/*! \def PA_8bitCustomFont(bit8_slot, bit8_font)
+    \brief
+         \~english Add custom fonts to the 8bit Font system !! Font must be converted with PAGfx
+         \~french Ajouter une police perso dans le systeme de texte 8bit !! Doit être convertie avec PAGfx
+    \param bit8_slot
+         \~english Font slot... 0-4 are used by the defaut PAlib fonts, 5-9 are free to use. You can freely overwrite the PAlib fonts if you want
+         \~french Slot pour ajouter la police. Les slots 0-4 sont utilisés pour les polices par défaut de PAlib, et 5-9 sont libres. On peut néanmoins charger par-dessus les polices PAlib si on veut
+    \param bit8_font
+         \~english Font name;..
+         \~french Nom de la police... 
+*/
+#define PA_8bitCustomFont(bit8_slot, bit8_font){\
+	text_maps[bit8_slot] = (u16*)(void*)bit8_font##_Map;		\
+	text_tiles[bit8_slot] = (u8*)bit8_font##_Tiles;	\
+	pa8bitdefaultsize[bit8_slot] = (u8*)bit8_font##_Sizes;	\
+	police8bitheight[bit8_slot] = bit8_font##_Height;\
+}
+
+
+
+
 
 /*! \fn extern inline u8 PA_CompareText(char *text1, char *text2)
     \brief
@@ -483,7 +516,7 @@ extern inline u32 PA_SimpleBoxText(u8 screen, const char *text, u32 limit){
 return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
 }
 
-/*! \fn extern inline void PA_ClearTextBg(u8 screen)
+/*! \fn void PA_ClearTextBg(u8 screen)
     \brief
          \~english Erase all the text on a given screen
          \~french Effacer tout le texte sur un écran donné
@@ -491,11 +524,43 @@ return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_T
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
 */
-extern inline void PA_ClearTextBg(u8 screen){
-u8 i, j;
-for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, PAbgtext[screen], i, j, 0);
-}
+void PA_ClearTextBg(u8 screen);
 
+
+
+
+/*! \fn void PA_Print(u8 screen, char* text, ...)
+    \brief
+         \~english Output text on the DS screen. Works like a printf function
+         \~french Ecrire du texte à l'écran. Marche comme la fonction printf
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param text
+         \~english String to output. The following commands are avaiblable : \%s to output another string, \%d to output a value, \%fX to output a float with X digits, \\n to go to the line. Here's an example : PA_OutputText(0, 0, 1, "My name is %s and I have only %d teeth", "Mollusk", 20);
+         \~french Chaine de caractère à écrire. On dispose des commandes suivantes : \%s pour une autre chaine de caractères, \%d pour écrire la valeur d'une variables, \%fX pour afficher un nombre avec X chiffres après la virgule, \\n pour aller à la ligne. Voici un exemple : PA_OutputText(0, 0, 1, "Mon nom est %s et je n'ai que %d dents...", "Mollusk", 20);
+*/
+void PA_Print(u8 screen, char* text, ...);
+
+
+/*! \fn extern inline void PA_PrintLetter(u8 screen, char letter)
+    \brief
+         \~english Like PA_Print, but for a letter
+         \~french Comme PA_Print, mais juste pour une lettre
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param letter
+         \~english Any letter...
+         \~french Une lettre...
+*/
+extern inline void PA_PrintLetter(u8 screen, char letter){
+	PA_SetTileLetter(screen, pa_printx[screen], pa_printy[screen]&31, letter);
+	pa_printx[screen]++;
+	if(pa_printx[screen] >= 32){
+ 		PA_PrintYPlus(screen);
+	}   
+}
 
 
 void PA_OutputTextSpecial0(u8 screen, int x1, int y,char *text);

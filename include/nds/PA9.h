@@ -39,7 +39,7 @@ extern "C" {
 #include "arm9/PA_Draw.h"
 #include "arm9/PA_Interrupt.h"
 #include "arm9/PA_Keys.h"
-
+#include "arm9/PA_Motion.h"
 #include "arm9/PA_BgRot.h"
 
 #include "arm9/PA_Timer.h"

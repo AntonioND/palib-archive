@@ -14,6 +14,7 @@ extern "C" {
 
 //funcpointer interruptfunc[14];
 funcpointer CustomVBL;
+funcpointer MotionVBL;
 
 volatile u8 PA_vblok; // Passe à 1 quand VBL activé...
 
@@ -164,30 +165,31 @@ extern inline void PA_UpdateMoveSprite(void) {
 }
 
 void PA_vblFunc(void){
-//PA_OutputText(0, 0, 0, "VBL Ok");
-PA_UpdatePad(); // Updates the Keypad...
-PA_UpdateStylus(); // Updates the stylus input
-PA_UpdateMoveSprite(); // Met à jour les infos sur les déplacements de sprites
-PA_UpdateOAM(); // Updates the Object on screen
-//DC_FlushRange((void*)&Stylus, sizeof(Stylus));// Updates the stylus code
-//DC_FlushRange((void*)&Pad, sizeof(Pad));// Updates the stylus code
-
-
-PA_UpdateRTC(); // Mise à jour de l'horloge...
-DC_FlushRange((void*)&PA_IPC, sizeof(PA_IPCType));// Flush the cache...
-if((PA_oldVolume >= PA_IPC.Mic.Volume-1)&&(PA_oldVolume <= PA_IPC.Mic.Volume+1))	PA_IPC.Mic.Volume = PA_oldVolume;
-else PA_oldVolume = PA_IPC.Mic.Volume;
-
-PA_Newframe = 1; // Synch prog to screen
-
-++PA_nVBLs;
-++PA_TestVBLs;
-// Counters
-PA_RunCounters();
-CustomVBL(); // runs the user's custom VBL function
-
-
-PA_UpdateSpriteAnims(); // Update the sprite animations... done last because less important...
+	//PA_OutputText(0, 0, 0, "VBL Ok");
+	PA_UpdatePad(); // Updates the Keypad...
+	PA_UpdateStylus(); // Updates the stylus input
+	PA_UpdateMoveSprite(); // Met à jour les infos sur les déplacements de sprites
+	PA_UpdateOAM(); // Updates the Object on screen
+	MotionVBL(); // Update DS Motion info
+	//DC_FlushRange((void*)&Stylus, sizeof(Stylus));// Updates the stylus code
+	//DC_FlushRange((void*)&Pad, sizeof(Pad));// Updates the stylus code
+	
+	
+	PA_UpdateRTC(); // Mise à jour de l'horloge...
+	DC_FlushRange((void*)&PA_IPC, sizeof(PA_IPCType));// Flush the cache...
+	if((PA_oldVolume >= PA_IPC.Mic.Volume-1)&&(PA_oldVolume <= PA_IPC.Mic.Volume+1))	PA_IPC.Mic.Volume = PA_oldVolume;
+	else PA_oldVolume = PA_IPC.Mic.Volume;
+	
+	PA_Newframe = 1; // Synch prog to screen
+	
+	++PA_nVBLs;
+	++PA_TestVBLs;
+	// Counters
+	PA_RunCounters();
+	CustomVBL(); // runs the user's custom VBL function
+	
+	
+	PA_UpdateSpriteAnims(); // Update the sprite animations... done last because less important...
 
 
 }
