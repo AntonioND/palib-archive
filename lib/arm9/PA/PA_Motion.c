@@ -4,15 +4,16 @@ extern "C" {
 
 
 #include <PA9.h>
-
-#define CARD_WaitBusy()   while (CARD_CR1 & /*BUSY*/0x80);
+#include <nds/arm9/ndsmotion.h>
+/*
+#define CARD_WaitBusy()   while (CARD_CR1 & 0x80);
 
 // enables SPI bus at 4.19 MHz
-#define SPI_On() CARD_CR1 = /*E*/0x8000 | /*SEL*/0x2000 | /*MODE*/0x40 | 0;
+#define SPI_On() CARD_CR1 = 0x8000 |0x2000 | 0x40 | 0;
 
 // disables SPI bus
 #define SPI_Off() CARD_CR1 = 0;
-
+*/
 
 extern funcpointer MotionVBL; // VBL function... set to nothing by default
 motion_struct Motion;
@@ -29,41 +30,8 @@ int PA_Gsens = 825;// sensitivity of gyro (how many counts the output changes wi
 
 void PA_MotionVBL(void);
 
-// sends and receives 1 byte on the SPI bus
-unsigned char SPI(unsigned char in_byte)
-{
-	unsigned char out_byte;
-	CARD_EEPDATA = in_byte; // send the output byte to the SPI bus
-	CARD_WaitBusy(); // wait for transmission to complete
-	out_byte=CARD_EEPDATA; // read the input byte from the SPI bus
-	return out_byte;
-}
-
-// turn on the accelerometer
-u8 PA_MotionInit(void) {
-	WAIT_CR &= ~0x0880;	// DS Card access ARM9:bit11=0   GBA Cart access ARM9:bit7=0
-	// send 0x04, 0x04
-	SPI_On()
-	SPI(0x04); // command to write to control register
-	SPI(0x04); // enable
-	SPI_Off()
-    int enabled = 0;
-    SPI_On()
-    SPI(0x03); //command to read from KXB5 control register
-    if( SPI(0x00) == 0x04) {
-		enabled = 1; // control register equals 0x04 if enabled
-		MotionVBL = PA_MotionVBL;   // Enable VBL function
-	}
-    SPI_Off();
-    return enabled;
-}
 
 
-
-signed int readX();
-signed int readY();
-signed int readZ();
-signed int readGyro();
 
 u8 pamotiontopad;
 
@@ -81,10 +49,14 @@ void PA_MotionVBL(void){
 	s32 oldzrot = Motion.Zrot;   
 		
 	// Read commands
-   Motion.X = readX(); // this returns a value between 0 and 4095
-	Motion.Y = readY(); // this returns a value between 0 and 4095
-	Motion.Z = readZ(); // this returns a value between 0 and 4095		
-	Motion.Zrot = readGyro(); // this returns a value between 0 and 4095
+   Motion.X = motion_read_x(); // this returns a value between 0 and 4095
+	Motion.Y = motion_read_y(); // this returns a value between 0 and 4095
+	Motion.Z = motion_read_z(); // this returns a value between 0 and 4095	
+   Motion.AccelX = motion_acceleration_x(); // this returns a value between 0 and 4095
+	Motion.AccelY = motion_acceleration_y(); // this returns a value between 0 and 4095
+	Motion.AccelZ = motion_acceleration_z(); // this returns a value between 0 and 4095	
+	
+	Motion.Zrot = motion_read_gyro(); // this returns a value between 0 and 4095
 	Motion.X = ((Motion.X-PA_Xoffset)*1000/PA_Xsens)>>3; // this converts from counts to mg (milli-g) (1000 mg = 1 g)
 	Motion.Y = ((Motion.Y-PA_Yoffset)*1000/PA_Ysens)>>3; // 1 g is gravitational acceleration
 	Motion.Z = ((Motion.Z-PA_Zoffset)*1000/PA_Zsens)>>3;
@@ -145,64 +117,6 @@ void PA_MotionVBL(void){
 
 
 // read the X acceleration
-signed int readX() {
-	signed int output = 0;
-	SPI_On()
-	SPI(0x00); // command to convert X axis
-	swiDelay(625); // wait at least 40 microseconds for the A-D conversion
-	output = ( (SPI(0x00)<<8)|SPI(0x00) )>>4; // read 16 bits and store as a 12 bit number
-	SPI_Off()
-	return output;
-}
-
-// read the Y acceleration
-signed int readY() {
-	signed int output = 0;
-	SPI_On()
-	SPI(0x02); // command to convert Y axis
-	swiDelay(625); // wait at least 40 microseconds for the A-D conversion
-	output = ( (SPI(0x00)<<8)|SPI(0x00) )>>4; // read 16 bits and store as a 12 bit number
-	SPI_Off()
-	return output;
-}
-
-// read the Z acceleration
-signed int readZ() {
-	signed int output = 0;
-	SPI_On()
-	SPI(0x01); // command to convert Z axis
-	swiDelay(625); // wait at least 40 microseconds for the A-D conversion
-	output = ( (SPI(0x00)<<8)|SPI(0x00) )>>4; // read 16 bits and store as a 12 bit number
-	SPI_Off()
-	return output;
-}
-
-// read the Z rotational speed
-signed int readGyro() {
-	signed int output = 0;
-	SPI_On()
-	SPI(0x07); // command to convert analog Auxilliary input (the gyro)
-	swiDelay(625); // wait at least 40 microseconds for the A-D conversion
-	output = ( (SPI(0x00)<<8)|SPI(0x00) )>>4; // read 16 bits and store as a 12 bit number
-	SPI_Off()
-	return output;
-}
-
-// checks whether a DS Motion Card is plugged in
-u8 PA_CheckDSMotion(){
-    u8 plugged_in = 1;
-    SPI_On()
-    SPI(0x03); //command to read from KXB5 control register
-    // send dummy byte to receive contents of control register
-    // if there is nothing plugged in, this will return 255
-	// emulators will return 0
-    // if the DS Motion Card is plugged in, it will return a smaller nonzero number
-    int control_reg = SPI(0x00);
-	if( control_reg == 255 || control_reg == 0) plugged_in = 0;
-    SPI_Off()
-    return plugged_in;
-}
-
 
 
 

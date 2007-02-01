@@ -8,6 +8,8 @@
 //#include <command.h>
 //#include "microphone7.h"
 #include <dswifi7.h>
+#include <nds.h>
+#include <stdlib.h>
 /*
 #include <NDS/NDS.h>
  
@@ -55,29 +57,86 @@ void PA_IPCManage(void){
 }
 
 
+int vcount;
+touchPosition first,tempPos;
+
+
+//---------------------------------------------------------------------------------
+void VcountHandler() {
+//---------------------------------------------------------------------------------
+	static int lastbut = -1;
+	
+	uint16 but=0, x=0, y=0, xpx=0, ypx=0, z1=0, z2=0;
+
+	but = REG_KEYXY;
+
+	if (!( (but ^ lastbut) & (1<<6))) {
+ 
+		tempPos = touchReadXY();
+
+		if ( tempPos.x == 0 || tempPos.y == 0 ) {
+			but |= (1 <<6);
+			lastbut = but;
+		} else {
+			x = tempPos.x;
+			y = tempPos.y;
+			xpx = tempPos.px;
+			ypx = tempPos.py;
+			z1 = tempPos.z1;
+			z2 = tempPos.z2;
+		}
+		
+	} else {
+		lastbut = but;
+		but |= (1 <<6);
+	}
+
+	if ( vcount == 80 ) {
+		first = tempPos;
+	} else {
+		if (	abs( xpx - first.px) > 10 || abs( ypx - first.py) > 10 ||
+				(but & ( 1<<6)) ) {
+
+			but |= (1 <<6);
+			lastbut = but;
+
+		} else { 	
+			IPC->mailBusy = 1;
+			IPC->touchX			= x;
+			IPC->touchY			= y;
+			IPC->touchXpx		= xpx;
+			IPC->touchYpx		= ypx;
+			IPC->touchZ1		= z1;
+			IPC->touchZ2		= z2;
+			IPC->mailBusy = 0;
+		}
+	}
+	IPC->buttons		= but;
+	vcount ^= (80 ^ 130);
+	SetYtrigger(vcount);
+
+}
+
 
 
 //////////////////////////////////////////////////////////////////////
 //u8 testvar = 0;
 
 void PA_VBL(void){
-  static int heartbeat = 0;
-   s32 but=0, batt=0;// aux=0;
+//  static int heartbeat = 0;
+   s32 batt=0;// aux=0;
     int t1=0, t2=0;
     uint32 temp=0;
-    uint8 ct[sizeof(IPC->curtime)];
+    uint8 ct[sizeof(IPC->time.curtime)];
 
     // Update the heartbeat
-    heartbeat++;
+ //   heartbeat++;
  
     // Read the X/Y buttons and the /PENIRQ line
-    but = REG_KEYXY;
+ /*   but = REG_KEYXY;
     if (!(but & 0x40)) {   //
 		PA_UpdateStylus();  // If IPC set correctly
-		/*MIC_On();
-		StartRecording((u8*)33808000, 100000);
-		*(u8*)33807928 = 1;*/
-    }
+    }*/
 
     batt = touchRead(TSC_MEASURE_BATTERY);
     
@@ -87,13 +146,13 @@ void PA_VBL(void){
  
     // Read the temperature
     temp = touchReadTemperature(&t1, &t2);
-    IPC->heartbeat = heartbeat;
-    IPC->buttons   = but;
+//    IPC->heartbeat = heartbeat;
+  //  IPC->buttons   = but;
     IPC->battery   = batt;
     
     u32 i;
     for(i=0; i<sizeof(ct); i++) {
-      IPC->curtime[i] = ct[i];
+      IPC->time.curtime[i] = ct[i];
     }
 
     IPC->temperature = temp;
@@ -106,7 +165,8 @@ void PA_VBL(void){
 		//IPC->aux = touchRead(TSC_MEASURE_AUX); // update IPC with new values
 	}
 			
-	SndVblIrq();	// DekuTree64's version :)	modified by JiaLing
+	SndVblIrq();	// DekuTree64's version
+	
 	
 	PA_IPCManage(); // PAlib IPC functions (sound busy, panning, etc...)
 	
@@ -146,6 +206,11 @@ IPC->mailSize=0;
 	irqEnable(IRQ_VBLANK);
 	irqSet(IRQ_TIMER0, timer0);
 	irqEnable(IRQ_TIMER0);	
+	
+	SetYtrigger(80);
+	vcount = 80;
+	irqSet(IRQ_VCOUNT, VcountHandler);
+	irqEnable(IRQ_VBLANK | IRQ_VCOUNT);
 //	irqSet(IRQ_TIMER3, ProcessMicrophoneTimerIRQ);
 //	irqEnable(IRQ_TIMER3);	
 

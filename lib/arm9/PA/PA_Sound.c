@@ -80,13 +80,13 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 		PA_IPC.Sound[PA_Channel].Repeat = 0;
 	}
 	else { // Use special system if repeating data involved
-		snd.data[PA_Channel].data = data;
+/*		snd.data[PA_Channel].data = data;
 		snd.data[PA_Channel].len = length-4;
 		snd.data[PA_Channel].rate = freq;
 		snd.data[PA_Channel].pan = 64;
 		snd.data[PA_Channel].vol = volume;
 		snd.data[PA_Channel].format = format;	
-		SndPlay(PA_Channel, (void*)FS_wav[PA_Channel], length, volume, freq, format, repeat, repeatPoint);
+		SndPlay(PA_Channel, (void*)FS_wav[PA_Channel], length, volume, freq, format, repeat, repeatPoint);*/
 		PA_IPC.Sound[PA_Channel].Repeat = 1;
 	}
 	
@@ -95,8 +95,8 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 
 
 void PA_StopSound(u8 PA_Channel){
-	if(PA_IPC.Sound[PA_Channel].Repeat==0) PA_IPC.Sound[PA_Channel].Command |= (1<<PAIPC_STOP); 
-	else SndStop(PA_Channel);
+	PA_IPC.Sound[PA_Channel].Command |= (1<<PAIPC_STOP); 
+//	else SndStop(PA_Channel);
 }
 
 
@@ -148,8 +148,8 @@ void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int fr
 
 void PA_RegenStream()
 {
-	u8 i,j;
-	u32 Regen, Regen2;
+	u8 i;//j;
+	u32 Regen; //Regen2;
 	s32 RemainTillEnd;
 	s16 time;
 
@@ -168,7 +168,7 @@ void PA_RegenStream()
 				//calculate regen
 				Regen = (time/1000);
 				RemainTillEnd = Stream_Length[i] - ((u32)(Stream_Regen_Ptr[i]) - (u32)(Stream_Datas[i]));
-				if(SndChannel[i].format == 1) //16bit = 2*more datas
+/*FIXME				if(SndChannel[i].format == 1) //16bit = 2*more datas
 				{
 					Regen *= (SndChannel[i].timer) * 2;
 					RemainTillEnd /= 2;
@@ -220,7 +220,7 @@ void PA_RegenStream()
 				else
 				{
 					FillTheGap(i, Regen);
-				}
+				}*/
 			}
 		}
 	}
@@ -261,21 +261,21 @@ void PA_StopStream(u8 PA_Channel)
 {
 	StreamStarted=false;
 	Stream_Length[PA_Channel] = 0;
-	SndStop(PA_Channel);
+//	SndStop(PA_Channel);
 }
 
 void PA_PauseStream(u8 PA_Channel)
 {
 	Stream_Length[PA_Channel] = -(Stream_Length[PA_Channel]);
 	PauseTimer(Stream_Timer[PA_Channel]);
-	SndPause(PA_Channel);
+//	SndPause(PA_Channel);
 }
 
 void PA_UnpauseStream(u8 PA_Channel)
 {
 	Stream_Length[PA_Channel] = -(Stream_Length[PA_Channel]);
 	UnpauseTimer(Stream_Timer[PA_Channel]);
-	SndUnpause(PA_Channel);
+//	SndUnpause(PA_Channel);
 }
 
 

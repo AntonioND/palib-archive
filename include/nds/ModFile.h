@@ -5,7 +5,7 @@
 #ifndef MODFILE_H
 #define MODFILE_H
 
-#include <nds.h>
+#include <NDS.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -20,8 +20,5 @@ struct _MOD;	// Forward declaration
 u32 ModFileLoad(const void *modFile, struct _MOD *dest, void *memPool, u32 memPoolSize);
 
 // ----------
-#ifdef __cplusplus
-}
-#endif
 
 #endif	// MODFILE_H

@@ -40,7 +40,12 @@ extern inline void PA_8bitDrawTileTransp(u8 screen, u16 x, u16 y, s8 lx, s8 ly, 
 	u16 i, j;
 	for (j = 0; j < ly; j++){
 		for (i = 0; i < lx; i++){
-			PA_DrawBg[screen][((y+j) <<7) + ((x+i)>>1)] |= (data[i+(j<<3)]*color)<<(((x+i)&1)<<3);
+			u8 decal = (((x+i)&1)<<3);
+			u16 pixel = (data[i+(j<<3)]*color)<<decal;
+			if(pixel){
+				PA_DrawBg[screen][((y+j) <<7) + ((x+i)>>1)] &= 255<<(8-decal);
+				PA_DrawBg[screen][((y+j) <<7) + ((x+i)>>1)] |= pixel;
+			}
 		}
 	}
 }	
@@ -62,8 +67,8 @@ extern inline void PA_8bitDrawTileRot(u8 screen, u16 x, u16 y, s8 lx, s8 ly, u8 
 
 extern inline void PA_8bitDrawTileRot2(u8 screen, u16 x, u16 y, s8 lx, s8 ly, u8 *data, u8 color){
 	u16 i, j;
-	s16 temp = x;
-	x = 255- y;
+	s16 temp = 192 - x;
+	x = y;
 	y = temp;
 	
 	for (j = 0; j < ly; j++){
@@ -88,6 +93,7 @@ u8 ly = police8bitheight[size];
 u8 *data;
 
 if (ly > 8) {
+	ly--;
 	u16 firstpos = ((letter&31)<<1)+((letter >> 5)<<7);
 	data = (u8*)(text_tiles[size]+(text_maps[size][firstpos]<<6));
 	PA_8bitDrawTileRot(screen, x, y, 8, 8, data, color);
@@ -113,6 +119,7 @@ u8 ly = police8bitheight[size];
 u8 *data;
 
 if (ly > 8) {
+	ly--;
 	u16 firstpos = ((letter&31)<<1)+((letter >> 5)<<7);
 	data = (u8*)(text_tiles[size]+(text_maps[size][firstpos]<<6));
 	PA_8bitDrawTileRot2(screen, x, y, 8, 8, data, color);

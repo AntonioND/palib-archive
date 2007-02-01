@@ -14,8 +14,8 @@ void PA_InitSpriteExtPal(void) {
 	vramSetBankI(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 	PA_ExtPal[0][0] = 1;
 	PA_ExtPal[0][1] = 1;
-	DISPLAY_CR |= 1 << 31;
-	SUB_DISPLAY_CR |= 1 << 31;
+	DISPLAY_CR |= DISPLAY_SPR_EXT_PALETTE;
+	SUB_DISPLAY_CR |= DISPLAY_SPR_EXT_PALETTE;
 
 	PA_LoadSpritePal(0, 0, (void*)PAL_SPRITE0);
 	PA_LoadSpritePal(1, 0, (void*)PAL_SPRITE1);

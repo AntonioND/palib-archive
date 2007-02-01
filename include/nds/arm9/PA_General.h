@@ -238,8 +238,8 @@ void PA_NeoSplash(void);
          \~french Attendre le vbl...
 */
 extern inline void PA_WaitForVBL(void){
-PA_RTC.Frames++; // For the FPS counter
-swiWaitForVBlank();
+	PA_RTC.Frames++; // For the FPS counter
+	swiWaitForVBlank();
 }
 
 
@@ -250,8 +250,8 @@ swiWaitForVBlank();
          \~french Echange les écrans du haut et du bas
 */
 extern inline void PA_SwitchScreens(void) {
-POWER_CR ^= SWITCH_SCREENS; 
-PA_Screen = !PA_Screen;
+	REG_POWERCNT ^= SWITCH_SCREENS; 
+	PA_Screen = !PA_Screen;
 }
 
 
@@ -289,14 +289,14 @@ extern inline u8 PA_CheckLid(void) {
 
 if (!PA_LidClosed()) return 0;
 else {
-	u16 power_cr = POWER_CR; // backup the power...
-	POWER_CR = 0; // Shutdown everything :p
+	u16 power_cr = REG_POWERCNT; // backup the power...
+	REG_POWERCNT = 0; // Shutdown everything :p
 	
 	// Wait for the lid to be opened again...
 	while(PA_LidClosed()) PA_WaitForVBL();
 	
 	// Return the power !
-	POWER_CR = power_cr;
+	REG_POWERCNT = power_cr;
 	return 1;
 }
 

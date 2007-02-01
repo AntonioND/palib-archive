@@ -75,6 +75,8 @@ New Stuff
 
 [SpriteTouch] Added PA_Sprite16cTouchedPix
 
+[16bitSprites] Added PA_Set16bitSpriteAlpha and the example to go with it
+
 
 Updated Stuff
 -------------
@@ -121,6 +123,12 @@ Updated Stuff
 
 [Text] PAlib text output c files changed, saves up to 10KB/rom :)
 
+[Stylus] Updated code to the newer more reliable code :)
+
+[16bitSprites] Changed display settings, now uses less memory, requires latest PAGfx to work
+
+[3D] DEPRICATED
+
 
 Things Fixed
 ------------
@@ -160,6 +168,8 @@ Things Fixed
 [PAGfx] No longer hangs if you have non-8 pixel multiple sprites. Automatically resizes it
 
 [Error] Fixed compilation error on projects with multiple cpp files
+
+[8bitText] Fixed 3 8bit text bugs
 
 
 

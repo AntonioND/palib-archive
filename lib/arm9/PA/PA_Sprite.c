@@ -34,13 +34,13 @@ const u16 PA_obj_sizes[4][3] = {
    {1024, 512, 512},
    {4096, 2048, 2048}
 };
-
+/*
 const u16 PA_16bit_sizes[4][3] = {
    {64*16, 128*8, 128*16},
    {256*8, 256*4, 256*16},
    {1024*4, 512*4, 512*8},
    {4096*2, 2048*2, 2048*4}
-};
+};*/
 
 obj_inf PA_obj[2][128];  // Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...
 
@@ -174,7 +174,7 @@ PA_InitSpriteExtPrio(0);// normal priority system by default
 
 u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode) {
 	u16 mem_size = PA_obj_sizes[obj_size][obj_shape] >> (8 - color_mode);
-	if (color_mode == 2) mem_size = PA_16bit_sizes[obj_size][obj_shape] >> 6;
+	//if (color_mode == 2) mem_size = PA_16bit_sizes[obj_size][obj_shape] >> 6;
 	
 	if (mem_size == 0) mem_size++; // Peut faire 0 si 8x8...
 	

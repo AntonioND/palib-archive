@@ -1,22 +1,31 @@
 #ifndef PA_MOTIOn
 #define PA_MOTIOn
 
+#include <nds/arm9/ndsmotion.h>
+
 typedef struct {
    u8 Up, Down, Right, Left;
 } pamotionpad;
 
 
 typedef struct{
-   s32 X, Y, Z, Zrot, Angle, Force;
+   s32 X, Y, Z, AccelX, AccelY, AccelZ, Zrot, Angle, Force;
    s32 Vx, Vy, Vz, Vzrot;
    pamotionpad Newpress, Held, Released;
 } motion_struct;
 extern motion_struct Motion;
 
+// turn on the accelerometer
+extern inline void PA_MotionInit(void) {
+	motion_enable();
+}
 
-u8 PA_MotionInit(void);
+// checks whether a DS Motion Card is plugged in
+extern inline u8 PA_CheckDSMotion(){
+    return motion_is_inserted();
+}
 
-u8 PA_CheckDSMotion(void);
+
 
 extern u8 pamotiontopad;
 

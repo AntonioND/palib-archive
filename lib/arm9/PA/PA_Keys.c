@@ -106,25 +106,30 @@ u8 temp = ((~IPC->buttons) >> 6) & 1;
 	if (Stylus.Held) { // On en met à jour que si on touche l'écran, histoire de pas avoir un truc faussé
 		Stylus.altX =  ((IPC->touchX - 0x0113) / 14);
 		Stylus.altY =  ((IPC->touchY - 0x00E0) / 19);
+		
+	
 	
 		if(Stylus.Newpress){
-			Stylus.X =  IPC->touchXpx;
-			Stylus.Y =  IPC->touchYpx;
 			Stylus.Vx = Stylus.oldVx = 0;
 			Stylus.Vy = Stylus.oldVy = 0;
 		}
-		else if (PA_Distance (Stylus.oldVx, Stylus.oldVy, Stylus.Vx, Stylus.Vy) < 2500){ // Limit speed change
+		else{// if (PA_Distance (Stylus.oldVx, Stylus.oldVy, Stylus.Vx, Stylus.Vy) < 2500){ // Limit speed change
 			Stylus.oldVx = Stylus.Vx;
 			Stylus.oldVy = Stylus.Vy;	
 			Stylus.Vx = IPC->touchXpx - Stylus.X;
 			Stylus.Vy = IPC->touchYpx - Stylus.Y;					
-			Stylus.X = IPC->touchXpx;
-			Stylus.Y = IPC->touchYpx;
+//			Stylus.X = IPC->touchXpx;
+//			Stylus.Y = IPC->touchYpx;
 		}
-		else {
+		/*else {
 			Stylus.Vx = Stylus.oldVx;
 			Stylus.Vy = Stylus.oldVy;
-		}
+		}*/
+		
+		while (IPC->mailBusy);		
+		Stylus.X =  IPC->touchXpx;
+		Stylus.Y =  IPC->touchYpx;			
+		
 	}
 		
 	
