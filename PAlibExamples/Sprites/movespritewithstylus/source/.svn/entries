@@ -1,31 +1,0 @@
-8
-
-dir
-28
-https://palibds.googlecode.com/svn/Examples/Sprites/movespritewithstylus/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T12:16:56.359737Z
-28
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-
-
-
-
-2005-12-06T15:58:23.265625Z
-70aa1bd61da9444f17319603df7343f7
-2006-09-12T12:16:56.359737Z
-28
-molousk
-

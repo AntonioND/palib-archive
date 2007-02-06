@@ -1,37 +1,0 @@
-8
-
-dir
-22
-https://palibds.googlecode.com/svn/Examples/Bitmap8-16bit
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T07:42:13.511123Z
-22
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-Load16bitBitmap
-dir
-
-16bitDraw
-dir
-
-Load8bitBitmap
-dir
-
-8bitDraw
-dir
-
-LoadJpeg
-dir
-
-8bitText
-dir
-
-8bitText2
-dir
-

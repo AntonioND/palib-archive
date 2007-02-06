@@ -1,22 +1,26 @@
 #include <PA9.h>
+
+#include <arm9/PA_Wifi.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include <dswifi9.h>
+#ifdef FD_SETSIZE
+	#undef FD_SETSIZE
+#endif
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
 
-#include <arm9/PA_Wifi.h>
+
 
 #define isdigit(c) (c>='0'&&c<='9')
 #define IS_DIGIT_OR_DOT(c) (isdigit(c)||(c=='.'))
 #define IS_INETADDR(s) (IS_DIGIT_OR_DOT(s[0])&&IS_DIGIT_OR_DOT(s[1])&&IS_DIGIT_OR_DOT(s[2])&&IS_DIGIT_OR_DOT(s[3])&&IS_DIGIT_OR_DOT(s[4])&&IS_DIGIT_OR_DOT(s[5])&&IS_DIGIT_OR_DOT(s[6]))
 
 // Dswifi stub functions
-void * sgIP_malloc(int size) { return malloc(size); }
-void sgIP_free(void * ptr) { free(ptr); }
+
 
 // sgIP_dbgprint only needed in debug version
 void sgIP_dbgprint(char * txt, ...) {		
@@ -44,17 +48,18 @@ void arm9_fifo() { // check incoming fifo messages
 }
 
 void PA_InitWifi() {
-		REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_SEND_CLEAR; // enable & clear FIFO
+	
+	REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_SEND_CLEAR; // enable & clear FIFO
 		
-		u32 Wifi_pass= Wifi_Init(WIFIINIT_OPTION_USELED);
+	u32 Wifi_pass= Wifi_Init(WIFIINIT_OPTION_USELED);
    	REG_IPC_FIFO_TX=0x12345678;
    	REG_IPC_FIFO_TX=Wifi_pass;
    	
-		*((volatile u16 *)0x0400010E) = 0; // disable timer3
+	*((volatile u16 *)0x0400010E) = 0; // disable timer3
 		
-		//irqInit(); 
-		irqSet(IRQ_TIMER3, Timer_50ms); // setup timer IRQ
-		irqEnable(IRQ_TIMER3);
+	//irqInit(); 
+	irqSet(IRQ_TIMER3, Timer_50ms); // setup timer IRQ
+	irqEnable(IRQ_TIMER3);
    	irqSet(IRQ_FIFO_NOT_EMPTY, arm9_fifo); // setup fifo IRQ
    	irqEnable(IRQ_FIFO_NOT_EMPTY);
    	
@@ -62,53 +67,56 @@ void PA_InitWifi() {
    	
    	Wifi_SetSyncHandler(arm9_synctoarm7); // tell wifi lib to use our handler to notify arm7
 
-		// set timer3
-		*((volatile u16 *)0x0400010C) = -6553; // 6553.1 * 256 cycles = ~50ms;
-		*((volatile u16 *)0x0400010E) = 0x00C2; // enable, irq, 1/256 clock
-		
-		while(Wifi_CheckInit()==0) { // wait for arm7 to be initted successfully
-			while(VCOUNT>192); // wait for vblank
-			while(VCOUNT<192);
-		}
+	// set timer3
+	*((volatile u16 *)0x0400010C) = -6553; // 6553.1 * 256 cycles = ~50ms;
+	*((volatile u16 *)0x0400010E) = 0x00C2; // enable, irq, 1/256 clock
+	
+	while(Wifi_CheckInit()==0) { // wait for arm7 to be initted successfully
+		while(VCOUNT>192); // wait for vblank
+		while(VCOUNT<192);
+	}
 		
 }
 
 bool PA_ConnectWifiWFC() {
 	int i;
-		Wifi_AutoConnect(); // request connect
-		while(1) {
-			i=Wifi_AssocStatus(); // check status
-			if(i==ASSOCSTATUS_ASSOCIATED) {
-				return true;
-			}
-			if(i==ASSOCSTATUS_CANNOTCONNECT) {
-				return false;
-			}
+	
+	Wifi_AutoConnect(); // request connect
+	
+	while(1) {
+		i=Wifi_AssocStatus(); // check status
+		if(i==ASSOCSTATUS_ASSOCIATED) {
+			return true;
 		}
+		if(i==ASSOCSTATUS_CANNOTCONNECT) {
+			return false;
+		}
+	}
 }
 
 unsigned long makelong(unsigned char data1, unsigned char data2,unsigned char data3,unsigned char data4)
 {
-         return (data4<<24) | (data3<<16) | (data2<<8) | data1;  
+    return (data4<<24) | (data3<<16) | (data2<<8) | data1;  
 }
 
 unsigned long PA_chartoip(char *message)
 {
-int i,j;
-unsigned char data[4];
-int debut=0;
-for(j=0;j<4;j++)
-{
-char buffer[256];
-for(i=debut;message[i]!='.'&&message[i]!='\0';i++)
-{
-   buffer[i-debut]=message[i];
-}
-buffer[i-debut]='\0';
-debut=i+1;
-data[j]=atoi(buffer);
-}
-return makelong(data[0],data[1],data[2],data[3]);
+	int i,j;
+	unsigned char data[4];
+	int debut=0;
+	
+	for(j=0;j<4;j++)
+	{
+		char buffer[256];
+		for(i=debut;message[i]!='.'&&message[i]!='\0';i++)
+		{
+		   buffer[i-debut]=message[i];
+		}
+		buffer[i-debut]='\0';
+		debut=i+1;
+		data[j]=atoi(buffer);
+	}
+	return makelong(data[0],data[1],data[2],data[3]);
 }
 
 int PA_InitSocket(int *sock,char *host,int port,int mode)
@@ -144,6 +152,8 @@ int PA_InitSocket(int *sock,char *host,int port,int mode)
 return 0;
 }
 
+
+
 int PA_InitServer(int *sock,int port,int mode, int num_connect)
 {
     int i;
@@ -168,28 +178,36 @@ int PA_InitServer(int *sock,int port,int mode, int num_connect)
         listen(*sock,num_connect);
         return 1;
      }
-     /*int j;
-     for(j=0;j<num_connect;j++)
-     {
-        while(!sock2[j])
+/*
+        while(!sock)
         {
-           sock2[j]=accept(*sock,(struct sockaddr *)&servaddr,&i);
+           sock=accept(*sock,(struct sockaddr *)&servaddr,&i);
         }
-     }*/       
+*/
+       
 return 0;
 }
 
 int search_word(char *mot1, char *mot2, int depart){
-int i,j,erreur=1;
-for(i=depart;i<strlen(mot1);i++){
-if(mot1[i]==mot2[0]){
-                     erreur=0;
-for(j=0;j<strlen(mot2);j++)if(mot2[j]!=mot1[i+j])erreur=1;
-if(erreur==0)return i;
+	int i,j,erreur=1;
+	for(i=depart;i<strlen(mot1);i++){
+	
+		if(mot1[i]==mot2[0]){
+			erreur=0;
+			
+			for(j=0;j<strlen(mot2);j++) 
+				if(mot2[j]!=mot1[i+j]) 
+					erreur=1;
+					
+			if(erreur==0)
+				return i;
+		}
+	}
+	return -1;
 }
-}
-return -1;
-}
+
+
+
 int get_HTTP_serveur(char *buffer, char *buffer2)
 {
     int i,depart=0;
@@ -202,6 +220,9 @@ int get_HTTP_serveur(char *buffer, char *buffer2)
     buffer[i-depart]='\0';
 return i;
 }
+
+
+
 int PA_GetHTTP(char *buffer, char *adress)
 {
     int sock;
@@ -228,7 +249,7 @@ int PA_GetHTTP(char *buffer, char *adress)
     strcat(buffer,buffer3);
     }
     if(sock)
-       close(sock);
+       closesocket(sock);
 return 1;
 }
 

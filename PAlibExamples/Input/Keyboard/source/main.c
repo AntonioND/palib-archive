@@ -16,7 +16,7 @@ int main(int argc, char ** argv)
 	
 	PA_InitKeyboard(2); // Load the keyboard on background 2...
 	
-	PA_KeyboardIn(20, 100); // This scrolls the keyboard from the bottom, until it's at the right position
+	PA_KeyboardIn(20, 95); // This scrolls the keyboard from the bottom, until it's at the right position
 	// PA_KeyboardOut() can be used to scroll the Keyboard out
 	// PA_ScrollKeyboardXY(x, y) can be used to set the keyboards position
 	
@@ -40,6 +40,14 @@ int main(int argc, char ** argv)
 		if (letter > 31) { // there is a new letter
 			text[nletter] = letter;
 			nletter++;
+		}
+		else if(letter == PA_TAB){// TAB Pressed...
+			u8 i;
+			for (i = 0; i < 4; i++){ // put 4 spaces...
+				text[nletter] = ' ';
+				nletter++;
+			}
+	
 		}
 		else if ((letter == PA_BACKSPACE)&&nletter) { // Backspace pressed
 			nletter--;

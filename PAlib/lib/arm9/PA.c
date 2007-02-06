@@ -10,13 +10,14 @@ TransferSound snd;
 
 u32 *sndMemPool;
 
+
 u32 Blank[130000>>2];
 
 
 infos PA_UserInfo;
 RTC PA_RTC;  // Infos RTC...
 
-volatile u8 PA_SoundsBusy[16];
+volatile PA_IPCType PA_IPC;
 
 
 typedef struct {
@@ -48,6 +49,20 @@ const s16 winfades[][4] = {
 };
 
 
+
+
+//Keypad stuff...
+Pads Pad;
+PA_Pad* PadPointer;
+
+PA_Stylus Stylus;
+
+
+PA_movingsprite  PA_MovedSprite; // Pour les sprites que l'on bouge...
+
+u8 PA_MoveSpriteType = 0;
+
+
 /*
 typedef struct{
 	u8 snd_action[16]; // 0 - rien, 1 - play, 2 - stop, 3 - pause
@@ -63,34 +78,47 @@ PA_IPCinfo PA_IPC;*/
 //////////////////////////////////////////////////////////////////////
 
 void PA_Init2D(void){
-// Turn on the screens and 2D cores and switch to mode 0
-powerON(POWER_ALL);
-//  POWER_CR = POWER_ALL_2D;
-  
- POWER_CR &= ~SWITCH_SCREENS; // on s'assure que l'écran est bien
-
-  	VRAM_A_CR=VRAM_ENABLE|VRAM_A_MAIN_BG; 
+	// Turn on the screens and 2D cores and switch to mode 0
+	powerON(POWER_ALL);
+	//  POWER_CR = POWER_ALL_2D;
+	
+	REG_POWERCNT &= ~SWITCH_SCREENS; // on s'assure que l'écran est bien
+/*	
+	VRAM_A_CR=VRAM_ENABLE|VRAM_A_MAIN_BG; 
 	VRAM_B_CR=VRAM_ENABLE|VRAM_B_MAIN_SPRITE; 
 	VRAM_C_CR=VRAM_ENABLE|VRAM_C_SUB_BG;
-	VRAM_D_CR=VRAM_ENABLE|VRAM_D_SUB_SPRITE; 
+	VRAM_D_CR=VRAM_ENABLE|VRAM_D_SUB_SPRITE; */
+    videoSetMode(  MODE_0_2D | 
+                   DISPLAY_SPR_ACTIVE |    //turn on sprites
+                   DISPLAY_SPR_1D |        //this is used when in tile mode
+				   DISPLAY_SPR_1D_SIZE_128|
+                   DISPLAY_SPR_1D_BMP      //and this in bitmap mode
+                    );
+	videoSetModeSub(  MODE_0_2D | 
+                   DISPLAY_SPR_ACTIVE |    //turn on sprites  
+                   DISPLAY_SPR_1D |        //this is used when in tile mode
+				   DISPLAY_SPR_1D_SIZE_128|
+                   DISPLAY_SPR_1D_BMP      //and this in bitmap mode
+                    );		
+					
+//	DISPLAY_CR = MODE_0_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE|DISPLAY_SPR_1D_SIZE_128|DISPLAY_SPR_1D_BMP; 
+//	SUB_DISPLAY_CR = MODE_0_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE|DISPLAY_SPR_1D_SIZE_128|DISPLAY_SPR_1D_BMP;
 
-  DISPLAY_CR = MODE_0_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE|2<<20;  // 1 << 31 pour 256 couleurs avec palettes
-  SUB_DISPLAY_CR = MODE_0_2D | DISPLAY_SPR_1D_LAYOUT | DISPLAY_SPR_ACTIVE|2<<20;
-
-vramSetMainBanks(VRAM_A_MAIN_BG,VRAM_B_MAIN_SPRITE,VRAM_C_SUB_BG,VRAM_D_SUB_SPRITE);
-
-// Sprite inits...
-PA_ResetSpriteSys(); // Init's the sprite system
-PA_InitSpriteExtPal(); // Init's sprite extended palettes
-
-PA_ResetBgSys();
-PA_InitBgExtPal(); // Init's bg extended palettes
+	
+	vramSetMainBanks(VRAM_A_MAIN_SPRITE,VRAM_B_MAIN_BG_0x06000000,VRAM_C_SUB_BG,VRAM_D_SUB_SPRITE);
+	
+	// Sprite inits...
+	PA_ResetSpriteSys(); // Init's the sprite system
+	PA_InitSpriteExtPal(); // Init's sprite extended palettes
+	
+	PA_ResetBgSys();
+	PA_InitBgExtPal(); // Init's bg extended palettes
 
 }
 
 
 
-
+extern funcpointer MotionVBL;
 
 
 void PA_Init(void) {
@@ -99,7 +127,7 @@ for (i = 0; i < 130000>>2; i++) Blank[i] = 0;
 
 PA_Init2D();
 
-WAIT_CR &= ~(1 << 7);
+//WAIT_CR &= ~(1 << 7);
 
 PA_UpdateRTC();
 PA_SRand(35329 + PA_RTC.Minutes + PA_RTC.Seconds + PA_RTC.Hour + PA_RTC.Day);
@@ -114,7 +142,7 @@ PA_VBLFunctionReset();
 irqInit();
 //PA_ResetInterrupts();
 
-IPC->mailData = (u32)(&PA_SoundsBusy);
+IPC->mailData = (u32)(&PA_IPC);
 
 for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans
@@ -137,6 +165,8 @@ for (i = 0; i < 2; i++){
 	
 	PA_GifInfo.StartFrame = 0; // start from the beginning
 	PA_GifInfo.EndFrame = 10000; // random high number
+	
+	MotionVBL = PA_Nothing;
 }
 
 
@@ -171,7 +201,7 @@ void PA_UpdateRTC(void) {
 u8 i;
 u8 *temp;
 temp = (u8*)&PA_RTC;
-	for (i = 0; i < 8; i++) temp[i] = IPC->curtime[i];
+	for (i = 0; i < 8; i++) temp[i] = IPC->time.curtime[i];
 
 	if (PA_RTC.Hour > 12) PA_RTC.Hour -= 40;
  

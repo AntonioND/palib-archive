@@ -14,11 +14,12 @@ extern "C" {
 
 #include <stdarg.h> // Pour le système de text
 #include <string.h>
-
+#include "arm9/PA_IO.h"
 #include "gbfs.h"
 #include "gba-jpeg-decode.h"
 #include "Sound9.h"
-
+#include "fat.h"
+#include "PA_IPC.h"
 
 #include "arm9/PA_General.h"
 
@@ -30,7 +31,7 @@ extern "C" {
 
 
 
-#include "arm9/vidfile.h"
+#include "arm9/PA_Video.h"
 #include "arm9/PA_Sprite.h"
 #include "arm9/PA_SpriteDual.h"
 #include "arm9/PA_Sound.h"
@@ -38,7 +39,7 @@ extern "C" {
 #include "arm9/PA_Draw.h"
 #include "arm9/PA_Interrupt.h"
 #include "arm9/PA_Keys.h"
-
+#include "arm9/PA_Motion.h"
 #include "arm9/PA_BgRot.h"
 
 #include "arm9/PA_Timer.h"
@@ -55,7 +56,6 @@ extern "C" {
 
 #include "arm9/PA_TileDual.h"
 
-#include "arm9/PA_FAT.h"  // fat driver by chrishm
 
 #include "arm9/PA_Keyboard.h"
 
@@ -63,7 +63,7 @@ extern "C" {
 
 #include "arm9/PA_Mode7.h"
 
-#include "arm9/PA_3D.h"
+//#include "arm9/PA_3D.h"
 
 
 #include "arm9/PA_IA.h"

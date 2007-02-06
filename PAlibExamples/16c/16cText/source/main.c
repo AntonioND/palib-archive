@@ -3,6 +3,8 @@
 
 
 
+
+
 // Function: main()
 int main(int argc, char ** argv)
 {
@@ -12,7 +14,7 @@ int main(int argc, char ** argv)
 
 	
 	PA_Init16cBg(0, 3); 	PA_Init16cBg(1, 3);  // 16 color background init with default colors for text
-	
+
 	PA_16cText(1, //screen 
 					10, 10, 255, 20, //x1, y1, x2, y2 position
 					"Hello World", //text
@@ -23,9 +25,10 @@ int main(int argc, char ** argv)
 	PA_16cText(1, 10, 40, 255, 60, "Hello World", 1, 2, 100);
 	PA_16cText(1, 10, 60, 255, 80, "Hello World", 1, 3, 100);
 	PA_16cText(1, 10, 80, 255, 100, "Hello World", 1, 4, 100);
+	
+	u8 i;
 
 	// Different colors on the bottom sreen...
-	u8 i;
 	for (i = 0; i < 10; i++){
 		PA_16cText(0, 10, i*20, 255, i*20 + 20, "Hello World", i+1, 3, 100);
 	}		

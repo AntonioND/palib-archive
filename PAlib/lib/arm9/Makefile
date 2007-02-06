@@ -10,7 +10,7 @@
 #---------------------------------------------------------------------------------
 TARGET	    :=	PA_Game
 BUILD		:=	build
-SOURCES	    := data	. PA ../../FAT PA/gif
+SOURCES	    := data	. PA  PA/gif
 INCLUDES	:=	../../include/nds ../../include/nds/arm9 ../../include/nds/arm9/gif build
 
 include $(DEVKITARM)/ds_rules
@@ -64,14 +64,14 @@ PREFIX			:=	arm-eabi-
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lnds9 -L$(PAPATH)/lib -ldswifi9
+LIBS	:=  -lfat -lnds9 -L$(PAPATH)/lib -ldswifi9 -lfat
  
  
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-LIBDIRS	:=	$(DEVKITPRO)/libnds
+LIBDIRS	:=	$(DEVKITPRO)/libnds $(PAPATH)/lib
  
  
 #---------------------------------------------------------------------------------

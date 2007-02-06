@@ -1,31 +1,0 @@
-8
-
-dir
-28
-https://palibds.googlecode.com/svn/Examples/Sprites/Sprite_RotZoom/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T12:16:56.359737Z
-28
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-
-
-
-
-2005-11-29T15:11:53.796875Z
-0dd069a3053004c48141578ba2db4ee3
-2006-09-12T12:16:56.359737Z
-28
-molousk
-

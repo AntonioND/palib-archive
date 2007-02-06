@@ -1,5 +1,0 @@
-[Cout]
-RegExpr=^(.*):(\d.):
-FilenameMatch=1
-RowMatch=2
-ColumnMatch=-1

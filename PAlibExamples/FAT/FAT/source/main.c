@@ -1,9 +1,9 @@
-/* This shows how to use the basic PAFS functions ! PAFS is a file system for nintendo DS, which supports multiple files in multiple directories... See the PAFSFolders to see how to detect the different folders
-
+/* FAT functions....
 */
 
 // Includes
 #include <PA9.h>       // Include for PA_Lib
+#include "gba_nds_fat.h"
 
 char filename[20]; // Temporary string for file names
 

@@ -1,0 +1,26 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+2 sprites :
+  mario : 256colors, 32x96, Pal : sprite0_Pal, -> mario_Sprite
+  coin : 256colors, 8x8, Pal : sprite0_Pal, -> coin_Sprite
+
+4 backgrounds :
+  mario_world : LargeMap, 1024x192, Pal : mario_world_Pal, 16 tiles -> mario_world_Tiles and mario_world_Map
+  hills : LargeMap, 768x256, Pal : hills_Pal, 39 tiles -> hills_Tiles and hills_Map
+  back : LargeMap, 512x256, Pal : back_Pal, 4 tiles -> back_Tiles and back_Map
+  platformcollisionmap3 : LargeMap, 1024x192, Pal : platformcollisionmap3_Pal, 4 tiles -> platformcollisionmap3_Tiles and platformcollisionmap3_Map
+
+5 palettes :
+  sprite0_Pal, 59 colors
+  mario_world_Pal, 10 colors
+  hills_Pal, 14 colors
+  back_Pal, 6 colors
+  platformcollisionmap3_Pal, 4 colors
+
+Converted in 0 minutes 0 seconds
+
+Finished !

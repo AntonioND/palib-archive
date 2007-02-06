@@ -4,8 +4,7 @@
 #include <PA9.h>       // Include for PA_Lib
 
 
-
-// Converted using PAGfxConverter
+// Converted using PAGfx
 #include "gfx/all_gfx.c"
 #include "gfx/all_gfx.h"
 

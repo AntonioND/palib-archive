@@ -362,6 +362,82 @@ PA_DualInfLargeScrollY(bg_select, 0);}
 
 
 /*!
+    \def PA_DualEasyBgLoad(bg_number, bg_name)
+    \brief
+      \~english EasyBg load, but for Dual screen...
+      \~french Chargement de fond EasyBg, mais pour le Dual Screen...
+    \param bg_number
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (0-3)
+   \param  bg_name
+       \~english Background name, in PAGfx
+      \~french Nom du fond dans PAGfx 
+*/
+#define PA_DualEasyBgLoad(bg_number, bg_name){\
+	PA_EasyBgLoad(0, bg_number, bg_name);\
+	PA_EasyBgLoad(1, bg_number, bg_name);\
+	PA_DualEasyBgScrollY(bg_number, 0);}
+
+
+
+/*!
+    \fn extern inline void PA_DualEasyBgScrollX(u8 bg_select, s32 x)
+    \brief
+      \~english Scroll an EasyBg horizontaly. It must have been initialised with PA_LoadLargeBg.
+      \~french Déplacer un fond EasyBg horizontalement. Doit etre initialisé avec PA_LoadLargeBg.
+    \param bg_select
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
+    \param x
+      \~english X value to scroll
+      \~french Valeur X à déplacer
+*/
+extern inline void PA_DualEasyBgScrollX(u8 bg_select, s32 x){
+	PA_EasyBgScrollX(0, bg_select, x);
+	PA_EasyBgScrollX(1, bg_select, x);
+}
+
+/*!
+    \fn extern inline void PA_DualEasyBgScrollY(u8 bg_select, s32 y)
+    \brief
+      \~english Scroll an EasyBg vertically.
+      \~french Déplacer un fond EasyBg verticalement.
+    \param bg_select
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
+    \param y
+      \~english Y value to scroll
+      \~french Valeur Y à déplacer
+*/
+extern inline void PA_DualEasyBgScrollY(u8 bg_select, s32 y){
+	PA_EasyBgScrollY(0, bg_select, y+PA_ScreenSpace);
+	PA_EasyBgScrollY(1, bg_select, y);
+}
+
+/*!
+    \fn extern inline void PA_DualEasyBgScrollXY(u8 bg_select, s32 x, s32 y)
+    \brief
+      \~english Scroll a Dual EasyBg.
+      \~french Déplacer un fond EasyBg en Dual Screen.
+    \param bg_select
+      \~english Background number to load (from 0 to 3)
+      \~french Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2)
+    \param x
+      \~english X value to scroll
+      \~french Valeur X à déplacer
+    \param y
+      \~english Y value to scroll
+      \~french Valeur Y à déplacer
+*/
+extern inline void PA_DualEasyBgScrollXY(u8 bg_select, s32 x, s32 y){
+	PA_DualEasyBgScrollX(bg_select, x);
+	PA_DualEasyBgScrollY(bg_select, y);
+}
+
+
+
+
+/*!
     \fn extern inline void PA_DualInfLargeScrollX(u8 bg_select, s32 x)
     \brief
       \~english Scroll a large infinite scrolling background horizontaly. It must have been initialised with PA_LoadLargeBg.

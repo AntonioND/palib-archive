@@ -40,6 +40,7 @@ typedef struct {
 	s16 Repeat;  // Temps avant de répéter...
 	s16 oldX, oldY; // Ancienne zone touchée
 	u8 Color1, Color2; // Main color, pressed color...
+	u8 Custom; // using custom graphics
 } Keyboards;
 extern Keyboards Keyboard;
 
@@ -63,6 +64,27 @@ extern const u8 PA_Keyboard[2][5][24];
       \~french Numéro du fond que l'on veut tourner (0-3)
 */
 void PA_InitKeyboard(u8 bg_number);
+
+
+
+/*!
+    \def PA_InitCustomKeyboard(bg_number, keyb_custom)
+    \brief
+		\~english Initialise a custom Keyboard on a given background. 
+		\~french Initialiser un clavier perso sur un fond donné   
+	\param bg_number
+		\~english Background number (0-3)
+		\~french Numéro du fond que l'on veut tourner (0-3)
+	\param keyb_custom
+		\~english Custom Keyboard name, converted as EasyBg
+		\~french Claviet perso, converti comme EasyBg			
+*/
+#define PA_InitCustomKeyboard(bg_number, keyb_custom) {\
+	PA_LoadBgPal(0, bg_number, (void*)keyb_custom##_Pal);\
+	PA_LoadSimpleBg(0, bg_number, keyb_custom##_Tiles, keyb_custom##_Map, BG_256X512, 1, 1);\
+	Keyboard.Bg = bg_number;	Keyboard.Type = 0;	Keyboard.Repeat = 0;	Keyboard.Custom = 1;\
+	PA_BgInfo[0][Keyboard.Bg].Map = (u32)keyb_custom##_Map;\
+}
 
 
 /*!

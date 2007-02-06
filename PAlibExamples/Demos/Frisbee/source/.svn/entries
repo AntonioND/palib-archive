@@ -1,46 +1,0 @@
-8
-
-dir
-24
-https://palibds.googlecode.com/svn/Examples/Demos/Frisbee/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T08:54:33.783119Z
-24
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-
-
-
-
-2006-01-20T15:34:13.484375Z
-5bc2907c0fe7add7a3272b9d88a6ca1d
-2006-09-12T08:54:33.783119Z
-24
-molousk
-
-main.cpp
-file
-
-
-
-
-2005-09-12T15:20:16.000000Z
-db7eb61b5434331b0d1ef8d7de2cf1df
-2006-09-12T08:54:33.783119Z
-24
-molousk
-
-sprites
-dir
-

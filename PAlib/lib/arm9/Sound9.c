@@ -2,13 +2,16 @@
 // 05/09/05 - Created.
 // ----------------------
 
-#include <nds.h>
+#include <NDS.h>
 #include <string.h>
+#include <stdlib.h>
+
 #include "Sound9.h"
 #include "SoundCommon.h"
 
-//Channels
-SOUND_CHANNEL	SndChannel[SND_MAX_CHANNELS];
+inline void ASSERT(bool x) { }
+
+#define MEMPOOL_SIZE (90 * 1024)
 
 // ----- Global functions -----
 
@@ -17,6 +20,9 @@ void SndInit9()
 {
 	memset(sndControl, 0, sizeof(SND_CONTROL));
 	sndControl->bInitialized = TRUE;
+	sndControl->toFade = true;
+	SndSetMemPool((u32*)malloc(MEMPOOL_SIZE), MEMPOOL_SIZE);
+//	SndSetMemPool(new u32[MEMPOOL_SIZE/4], MEMPOOL_SIZE);
 }
 
 	// Send command to ARM7 to set the memory area to load MOD files into 
@@ -34,7 +40,7 @@ void SndSetMemPool(void *memPool, u32 memPoolSize)
 	memset(cmd, 0, sizeof(SND_COMMAND));
 
 	ASSERT(memPool != NULL);
-	ASSERT(size < (1<<24));	// Only 3 bytes available in parameters
+	ASSERT(memPoolSize < (1<<24));	// Only 3 bytes available in parameters
 
 	cmd->cmdType  = SND_CMD_SETMEMPOOL;
 	cmd->param[0] = (u8)(memPoolSize);
@@ -50,7 +56,7 @@ void SndSetMemPool(void *memPool, u32 memPoolSize)
 	//
 	// Args:
 	//	modFile		Pointer to a standard .mod file.
-void SndPlayMOD(void *modFile)
+void SndPlayMOD(const void *modFile)
 {
 	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
 
@@ -105,166 +111,14 @@ void SndSetMODCallback(MOD_CALLBACK callback)
 	sndControl->curCmd &= MAX_SND_COMMANDS-1;
 }
 
-
-void SndPlay(u8 PA_Channel, const void* data, s32 length, u8 volume, s16 freq, s16 format, BOOL repeat, int repeatPoint)
+void SoundSendCmd(SND_COMMAND_TYPE cmdType, u32 param32)
 {
 	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
 
 	memset(cmd, 0, sizeof(SND_COMMAND));
 
-	cmd->cmdType = SNG_CMD_PLAY;
-	cmd->param[0] = PA_Channel;
-	cmd->param[1] = repeat;
-	cmd->param32  = repeatPoint;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-extern void SndStop(u8 PA_Channel)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = SNG_CMD_STOP;
-	cmd->param[0] = PA_Channel;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-extern void SndPause(u8 PA_Channel)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = SNG_CMD_PAUSE;
-	cmd->param[0] = PA_Channel;
-	cmd->param[1] = 1;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-
-extern void SndUnpause(u8 PA_Channel)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = SNG_CMD_PAUSE;
-	cmd->param[0] = PA_Channel;
-	cmd->param[1] = 0;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-extern void SndChgVolume(u8 PA_Channel, u8 Volume)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	SndChannel[PA_Channel].vol = Volume;
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = SND_CHG_VOLUME;
-	cmd->param[0] = PA_Channel;
-	cmd->param[1] = Volume;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-extern void SndChgPan(u8 PA_Channel, u8 Pan)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	SndChannel[PA_Channel].pan = Pan;
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = SND_CHG_PAN;
-	cmd->param[0] = PA_Channel;
-	cmd->param[1] = Pan;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-extern void SndChgTimer(u8 PA_Channel, int Timer)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	SndChannel[PA_Channel].timer = Timer;
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = SND_CHG_TIMER;
-	cmd->param[0] = PA_Channel;
-	cmd->param32 = Timer;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-void SndChgRepeat(u8 PA_Channel, BOOL repeat, u32 RepeatPoint)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	SndChannel[PA_Channel].loopStart = RepeatPoint;
-	
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = SND_CHG_REPEAT;
-	cmd->param[0] = PA_Channel;
-	cmd->param[1] = repeat;
-	cmd->param32 = RepeatPoint;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-void SndChgLength(u8 PA_Channel, u32 Length)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	SndChannel[PA_Channel].loopLength = Length;
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = SND_CHG_LENGTH;
-	cmd->param[0] = PA_Channel;
-	cmd->param32 = Length;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-void StartRecording(u8* buffer, int length)
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = MIC_CMD_START;
-	cmd->param[0] = (length/1600);
-	cmd->param32 = (u32)buffer;
-
-	sndControl->curCmd++;
-	sndControl->curCmd &= MAX_SND_COMMANDS-1;
-}
-
-void StopRecording()
-{
-	SND_COMMAND *cmd = &sndControl->cmd[sndControl->curCmd];
-
-	memset(cmd, 0, sizeof(SND_COMMAND));
-
-	cmd->cmdType = MIC_CMD_STOP;
+	cmd->cmdType = cmdType;
+	cmd->param32 = param32;
 
 	sndControl->curCmd++;
 	sndControl->curCmd &= MAX_SND_COMMANDS-1;

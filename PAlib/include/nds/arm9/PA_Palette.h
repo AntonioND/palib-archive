@@ -4,7 +4,8 @@
 
 
 void PA_LoadSpriteExtPal(u8 screen, u16 palette_number, void* palette);
-void PA_LoadBgExtPal(u8 screen, u16 palette_number, void* palette);
+#define PA_LoadBgExtPal(screen, bg_number, palette) PA_LoadBgPal(screen, bg_number, palette)
+
 
 
 /*! \file PA_Palette.h
@@ -85,7 +86,24 @@ u32 dest = PAL_BG0 + (screen<<10);
          \~english Palette name (ex : master_Palette)
          \~french Nom de la palette (ex : master_Palette)
 */
-#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette << 5)), 16, DMA_16NOW);
+#define PA_LoadPal16(palette, n_palette, source)   DMA_Copy((void*)source, (void*)(palette + (n_palette << 5)), 16, DMA_16NOW)
+
+/*! \def PA_LoadSprite16cPal(screen, n_palette, palette)
+    \brief
+         \~english Load a 16 color palette for sprites
+         \~french Charger une palette de 16 couleurs pour les sprites
+    \param screen
+         \~english Screen (0-1)
+         \~french Ecran (0-1)
+    \param n_palette
+         \~english Number of the 16 color palette to load (0-15)
+         \~french Numéro de la palette de 16 couleurs que l'on veut charger (0-15)
+
+    \param palette
+         \~english Palette name (ex : Sprite_Pal)
+         \~french Nom de la palette (ex : Sprite_Pal)
+*/
+#define PA_LoadSprite16cPal(screen, n_palette, palette) PA_LoadPal16((PAL_SPRITE0+(0x400*screen)), (n_palette), palette)
 
 
 /*! \def PA_RGB(r,g,b)
@@ -131,10 +149,10 @@ void PA_SetBrightness(u8 screen, s8 bright);
          \~french Charger pour les Bg ou les Sprites, sur l'écran 0 ou 1 : PAL_BG0, PAL_SPRITE0, PAL_BG1, ou PAL_SPRITE1
 */
 extern inline void PA_SetPalNeg(u32 palette) {
-u16* pal = (u16*)palette;
-u16 i;
-
-for (i = 0; i < 256; i++) pal[i] = ~pal[i]; // On fout le négatif...
+	u16* pal = (u16*)palette;
+	u16 i;
+	
+	for (i = 0; i < 256; i++) pal[i] = ~pal[i]; // On fout le négatif...
 }
 
 
@@ -197,6 +215,24 @@ extern inline void PA_LoadSpritePal(u8 screen, u8 palette_number, void* palette)
 }
 
 
+/*! \fn PA_LoadBgPalN(u8 screen, u8 bg_number, u8 pal_number, void* palette)
+    \brief
+         \~english Load a 256 color palette in the Background palettes, to a given slot
+         \~french Charger une palette de 256 couleurs dans les palettes des fonds, à un slot donné
+    \param screen
+         \~english Screen...
+         \~french Ecran...
+    \param bg_number
+         \~english Background number (0-3)
+         \~french Numéro du fond (0-3)
+    \param pal_number
+         \~english Palette number
+         \~french Numéro de palette	 
+    \param palette
+         \~english Palette to load ((void*)palette_name)
+         \~french Nom de la palette à charger ((void*)nom_palette)
+*/
+void PA_LoadBgPalN(u8 screen, u8 bg_number, u8 pal_number, void* palette);
 
 
 /*! \fn void PA_LoadBgPal(u8 screen, u16 bg_number, void* palette)
@@ -214,7 +250,7 @@ extern inline void PA_LoadSpritePal(u8 screen, u8 palette_number, void* palette)
          \~french Nom de la palette à charger ((void*)nom_palette)
 */
 extern inline void PA_LoadBgPal(u8 screen, u16 bg_number, void* palette){
-	PA_LoadBgExtPal(screen, bg_number, palette);
+	PA_LoadBgPalN(screen, bg_number, 0, palette);
 }
 
 /*! \fn void PA_LoadBgPalN(u8 screen, u8 bg_number, u8 pal_number, void* palette)

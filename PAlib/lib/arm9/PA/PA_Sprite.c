@@ -34,15 +34,18 @@ const u16 PA_obj_sizes[4][3] = {
    {1024, 512, 512},
    {4096, 2048, 2048}
 };
-
+/*
 const u16 PA_16bit_sizes[4][3] = {
    {64*16, 128*8, 128*16},
    {256*8, 256*4, 256*16},
    {1024*4, 512*4, 512*8},
    {4096*2, 2048*2, 2048*4}
-};
+};*/
 
 obj_inf PA_obj[2][128];  // Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...
+
+
+s16 DualSpriteX[128]; // memorize 128 pixel positions for dual sprites
 
 
 //PA_DrawSprites PA_DrawSprite[MAX_DRAW];  // Infos pour dessiner sur les sprites
@@ -76,9 +79,54 @@ void PA_InitSpriteExtPrio(u8 SpritePrio){
 }
 
 
+void PA_ResetSpriteSysScreen(u8 screen) {
+	u8 n;
+	
+	   n_free_mem[screen] = 1;
+	   free_mem[screen][0].mem_block = 0; free_mem[screen][0].free = 1024;
+		
+	   DMA_Copy((void*)Blank, (void*)used_mem[screen], 256, DMA_32NOW);
+	   DMA_Copy((void*)Blank, (void*)obj_per_gfx[screen], 256, DMA_32NOW);
+	
+		for(n = 0; n < 128; n++) {
+			PA_obj[screen][n].atr0 = 192;
+			PA_obj[screen][n].atr1 = 256;
+			PA_obj[screen][n].atr2 = 0;
+			PA_obj[screen][n].atr3 = 0;
+		}
+		for(n = 0; n < 32; n++) {
+			PA_SetRotset(screen,n,0,256,256);  // Pas de zoom ou de rotation par défaut
+		}
+	
+	FirstGfx[screen] = 0;
+	
+	nspriteanims = 0; // No animations...
+	for(n = 0; n < 128; n++) {
+		nspriteanims -= spriteanims[screen][n].play; // remove sprites from sprite to animate list
+		spriteanims[screen][n].play = 0;
+	}
+	
+	
+	if (screen == 0) PA_MoveSpriteType = 0; 
+
+}
 
 
 
+
+void PA_ResetSpriteSys(void) {
+
+	PA_ResetSpriteSysScreen(0);
+	PA_ResetSpriteSysScreen(1);
+	
+	nspriteanims = 0; // No animations...
+	PA_InitSpriteExtPrio(0);// normal priority system by default
+}
+
+
+
+
+/*
 void PA_ResetSpriteSys(void) {
 u8 n;
 u8 i;
@@ -113,31 +161,34 @@ for (i = 0; i < 2; i++) {
 	}
 }
 
+//nspriteanims = 0; // No animations...
+
 PA_MoveSpriteType = 0; 
 
 PA_InitSpriteExtPrio(0);// normal priority system by default
 
 }
 
-
+*/
 
 
 u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode) {
-u16 mem_size = PA_obj_sizes[obj_size][obj_shape] >> (8 - color_mode);
-if (color_mode == 2) mem_size = PA_16bit_sizes[obj_size][obj_shape] >> 6;
-
-if (mem_size == 0) mem_size++; // Peut faire 0 si 8x8...
-u8 exit = 0;
-u16 n_mem = 0;
-u16 i, truenumber;
-
-for (i = 0; (i < n_free_mem[screen]) & !exit; i++) {
-   if (mem_size <= free_mem[screen][i].free) {
-      n_mem = i;
-      exit = 1;
-   }
-}
-
+	u16 mem_size = PA_obj_sizes[obj_size][obj_shape] >> (8 - color_mode);
+	//if (color_mode == 2) mem_size = PA_16bit_sizes[obj_size][obj_shape] >> 6;
+	
+	if (mem_size == 0) mem_size++; // Peut faire 0 si 8x8...
+	
+	u8 exit = 0;
+	u16 n_mem = 0;
+	u16 i, truenumber;
+	
+	for (i = 0; (i < n_free_mem[screen]) & !exit; i++) {
+	   if (mem_size <= free_mem[screen][i].free) {
+		  n_mem = i;
+		  exit = 1;
+	   }
+	}
+	
    i = free_mem[screen][n_mem].mem_block; // On met la valeur de coté pour la renvoyer...
    truenumber = i + FirstGfx[screen];
    DMA_Copy(obj_data, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (truenumber << NUMBER_DECAL)), (mem_size << MEM_DECAL), DMA_32NOW);
@@ -147,10 +198,10 @@ for (i = 0; (i < n_free_mem[screen]) & !exit; i++) {
    free_mem[screen][n_mem].free -= mem_size;
    if (free_mem[screen][n_mem].free > 0) free_mem[screen][n_mem].mem_block += mem_size; // S'il reste un bout libre, on garde...
    else {// On doit tout décaler d'un cran... vers la gauche
-      for (i = n_mem; i < n_free_mem[screen]; i++) {// On recopie la liste plus loin...
-         free_mem[screen][i] = free_mem[screen][i + 1];
-      }
-      -- n_free_mem[screen];
+	  for (i = n_mem; i < n_free_mem[screen]; i++) {// On recopie la liste plus loin...
+		 free_mem[screen][i] = free_mem[screen][i + 1];
+	  }
+	  --n_free_mem[screen];
    }
    
    PA_SpriteAnimP[screen][truenumber] = (u16*)obj_data; // mémorise la source de l'image...
@@ -221,9 +272,6 @@ obj_gfx -= FirstGfx[screen];
       // Effacage de la mémoire
       DMA_Copy((void*)Blank, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (obj_gfx << NUMBER_DECAL)), (used_mem[screen][obj_gfx] << MEM_DECAL), DMA_32NOW);
       used_mem[screen][obj_gfx] = 0;
- 
-
-
 }
 
 
@@ -387,12 +435,15 @@ void PA_StartSpriteAnimEx(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s
 	spriteanims[screen][sprite].type = type;
 	spriteanims[screen][sprite].ncycles = ncycles;
 	spriteanims[screen][sprite].framechange = 1; // normal change to start
-	if (!spriteanims[screen][sprite].play){ // If wasn't playing, say to play and display the first image
-		PA_SetSpriteAnimEx(screen, sprite, spriteanims[screen][sprite].lx, spriteanims[screen][sprite].ly, spriteanims[screen][sprite].colors, spriteanims[screen][sprite].currentframe);
-		spriteanims[screen][sprite].play = 1;	// playing...
+	
+	if (!spriteanims[screen][sprite].play){ // Counts number of sprites playing...	
+		
 		nspriteanims += 1;
 	}
-	
+		
+	PA_SetSpriteAnimEx(screen, sprite, spriteanims[screen][sprite].lx, spriteanims[screen][sprite].ly, spriteanims[screen][sprite].colors, spriteanims[screen][sprite].currentframe);
+	spriteanims[screen][sprite].play = 1;	// playing...
+
 	//PA_OutputText(1, 0, nanim+12, "%d : %d, %d   ", sprite, PA_GetSpriteX(0, sprite), PA_GetSpriteY(0, sprite));
 	//nanim++;
 }
@@ -436,8 +487,10 @@ for (screen = 0; screen < 2; screen++){
 					else { // Don't loop, go back -> switch speed and first/last frames
 						spriteanims[screen][currentsprite].framechange = -spriteanims[screen][currentsprite].framechange;
 						if (spriteanims[screen][currentsprite].ncycles == 1)// It was the last one
-							spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange; // stop on the correct animation
-						else spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange<<1; // continue going back and forth
+							spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange;
+							//spriteanims[screen][currentsprite].framechange; // stop on the correct animation
+						else spriteanims[screen][currentsprite].currentframe+=spriteanims[screen][currentsprite].framechange<<1; // continue going back and forth   
+						
 					}	
 
 					// In all cases :
@@ -469,6 +522,7 @@ void PA_UpdateOAM(void){
 s16 i;
 s32 value = 0;
 s32 value2 = 512;
+if (!PA_SpriteExtPrio){
 	for (i = 0; i < 128; i++){ // copy
 		OAM[value] = PA_obj[0][i].atr0;
 		OAM[value + 1] = PA_obj[0][i].atr1;
@@ -481,10 +535,16 @@ s32 value2 = 512;
 		value += 4;
 		value2 += 4;		
 	}
-	
-
-if (PA_SpriteExtPrio){ // Use the extended priorities
-
+}
+else{ // Use the extended priorities
+	value += 3;
+	value2 += 3;
+	for (i = 0; i < 128; i++){ // copy rotsets
+		OAM[value] = PA_obj[0][i].atr3;	
+		OAM[value2] = PA_obj[1][i].atr3;		
+		value += 4;
+		value2 += 4;		
+	}
 	
 	value = 0;
 	s8 sprite;

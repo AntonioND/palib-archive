@@ -1,31 +1,0 @@
-8
-
-dir
-22
-https://palibds.googlecode.com/svn/Examples/Bitmap8-16bit/Load16bitBitmap/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T07:42:13.511123Z
-22
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-main.c
-file
-
-
-
-
-2005-11-22T10:30:59.578125Z
-797ac1a83d974ec702e10a731554e80c
-2006-09-12T07:42:13.511123Z
-22
-molousk
-
-bitmap
-dir
-

@@ -10,15 +10,14 @@
 #ifndef SOUND7_H
 #define SOUND7_H
 
-#include <nds.h>
+#include <NDS.h>
 #include "SoundCommon.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define CODE_IN_IWRAM __attribute__ ((section (".iwram"), long_call))
-#define VAR_IN_IWRAM __attribute__ ((section (".iwram")))
+
 
 // ----- Constants -----
 
@@ -37,6 +36,18 @@ typedef enum _MOD_STATE
 
 // ----- Structures -----
 
+typedef struct _SOUND_CHANNEL
+{
+	const s8	*data;
+	u32			length;
+	u16			loopStart;
+	u16			loopLength;
+	u16			timer;
+	u8			vol;
+	u8			pan;
+
+} SOUND_CHANNEL;
+
 typedef struct _SOUND_VARS
 {
 	void	*memPool;				// Reserved memory area to load songs
@@ -45,6 +56,7 @@ typedef struct _SOUND_VARS
 	u16		channelBlocked;			// One bit per mixer channel
 	u8		curCmd;					// Index into shared sndControl.cmd[]
 	BOOL	bInitialized;			// Set by SndInit
+	u8*		cmprsdSong;				// Compressed song
 
 } SOUND_VARS;
 
@@ -153,7 +165,7 @@ extern SOUND_CHANNEL	sndChannel[SND_MAX_CHANNELS];
 extern SOUND_VARS		sndVars;
 extern MOD				sndMod;
 
-extern const u16		notePeriodTable[] VAR_IN_IWRAM;
+extern const u16		notePeriodTable[];
 
 // ----- Global functions -----
 

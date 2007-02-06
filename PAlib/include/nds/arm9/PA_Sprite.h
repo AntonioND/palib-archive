@@ -142,6 +142,7 @@ typedef struct{
 	u16 *gfx; // gfx pointer
 	u8 type;
 	s32 ncycles;
+	u32 HideX;
 //	bool exists; //
 } spriteanim;
 extern spriteanim spriteanims[2][128]; // Init the array on PAlib init...
@@ -218,6 +219,17 @@ void PA_UpdateOAM(void);
 */
 
 u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode);
+
+/*! \fn void PA_ResetSpriteSys(void)
+    \brief
+         \~english Reset the sprite system, memory, etc...
+         \~french Remise à 0 du système de sprite, de la mémoire...
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+*/
+void PA_ResetSpriteSysScreen(u8 screen);
+
 
 /*! \fn void PA_ResetSpriteSys(void)
     \brief
@@ -372,7 +384,6 @@ extern inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_da
    PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
 }
-
 
 
 
@@ -576,7 +587,7 @@ extern inline void PA_CreateSpriteExFromGfx(u8 screen, u8 obj_number, u16 obj_gf
 
 
 extern inline void PA_UpdateGfx(u8 screen, u16 gfx_number, void *obj_data) {
-	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << MEM_DECAL), DMA_32NOW);
+	DMA_Copy((obj_data), (void*)(SPRITE_GFX1 + (0x200000 *  (screen)) + ((gfx_number) << NUMBER_DECAL)), (used_mem[screen][gfx_number] << (MEM_DECAL+1)), DMA_16NOW);
 //	PA_OutputText(1, 25, PA_Rand()&15, "%dgfx   ", gfx_number);
 }
 
@@ -741,10 +752,6 @@ u8 obj_num = (rotset << 2);
 
 
 
-
-
-
-
 /*! \def PA_SetSpriteX(screen, obj, x)
     \brief
          \~english Set the X position of a sprite on screen
@@ -849,6 +856,31 @@ extern inline void PA_SetSpriteXY(u8 screen, u8 sprite, s16 x, s16 y) {
          \~french Numéro de la palette (de 0 à 15)
 */
 #define PA_SetSpritePal(screen, obj, pal) PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 & ALL_BUT_PAL) + ((pal) << 12)
+
+
+/*! \fn extern inline void PA_Set16bitSpriteAlpha(u8 screen, u8 sprite, u8 alpha)
+    \brief
+         \~english Set the X position of a sprite on screen
+         \~french Position X du sprite à l'écran
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english Object number in the sprite system, only for 16bit sprites
+         \~french Numéro de l'objet dans le systeme de sprite, uniquement pour les sprites 16bit
+    \param alpha
+         \~english Alpha parameter, 0-15
+         \~french Paramèter alpha, 0-15
+*/
+
+
+extern inline void PA_Set16bitSpriteAlpha(u8 screen, u8 sprite, u8 alpha){
+	PA_SetSpritePal(screen, sprite, alpha&15);
+}
+
+
+
+
 
 /*! \def PA_GetSpritePal(screen, obj)
     \brief
@@ -1500,6 +1532,36 @@ u8 hsize = spriteanims[screen][sprite].lx>>3;
 	}
 }
 
+/*! \fn extern inline u8 PA_GetSprite16cPixel(u8 screen, u8 sprite, u8 x, u8 y)
+    \brief
+         \~english Get a 16 color sprite's pixel color. 
+         \~french Récupérer la couleur d'un pixel d'un sprite de 16 couleurs.
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english Sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite
+    \param x
+         \~english X coordinate of the pixel
+         \~french Coordonnée X du pixel
+    \param y
+         \~english Y coordinate of the pixel
+         \~french Coordonnée Y du pixel
+*/
+extern inline u8 PA_GetSprite16cPixel(u8 screen, u8 sprite, u8 x, u8 y) {
+	u8 hsize = spriteanims[screen][sprite].lx>>3;
+
+	s32 pos = (x >> 3) + ((y >> 3) * hsize);
+	x&=7; y&=7;
+	
+	pos = (pos << 4) + (x >> 2) + (y << 1);
+	
+	u16 pixel = spriteanims[screen][sprite].gfx[pos];
+	return ((pixel>>(4*(x&3)))&15);	
+}
+
+
 
 /*! \fn void PA_InitSpriteDraw(u8 screen, u8 sprite)
     \brief
@@ -1541,7 +1603,7 @@ for (j = 0; j < 2; j++)
 */
 void PA_InitSpriteExtPrio(u8 SpritePrio);
 
-extern inline void PA_SetSPriteExtPrio(u8 screen, u8 sprite, u8 prio){
+extern inline void PA_SetSpriteExtPrio(u8 screen, u8 sprite, u8 prio){
 	PA_SpritePrio[screen][sprite] = prio;
 }
 

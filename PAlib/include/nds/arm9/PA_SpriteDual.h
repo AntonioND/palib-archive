@@ -1,7 +1,7 @@
 #ifndef _PA_SpriteDual
 #define _PA_SpriteDual
 
-
+extern s16 DualSpriteX[128];
 
 /*! \file PA_SpriteDual.h
     \brief Everything concerning the sprite system, but for 2 screens !
@@ -31,6 +31,21 @@ extern inline void PA_SetScreenSpace(s16 ScreenSpace){
 }
 
 
+/*! \fn extern inline void PA_DualSetSpriteX(u8 obj, s16 x)
+    \brief
+         \~english Set the X position of a sprite on screen
+         \~french Position X du sprite à l'écran
+    \param obj
+         \~english Object number in the sprite system
+         \~french Numéro de l'objet dans le systeme de sprite
+    \param x
+         \~english X position
+         \~french Position X
+*/
+extern inline void PA_DualSetSpriteX(u8 obj, s16 x){
+	PA_obj[0][obj].atr1 = PA_obj[1][obj].atr1 = (PA_obj[0][obj].atr1 & ALL_BUT(PA_OBJ_X)) + ((x) & PA_OBJ_X);
+	DualSpriteX[obj] = x;  // Memorize X, as moving out will be used to hide sprites
+}
 
 
 
@@ -46,13 +61,42 @@ extern inline void PA_SetScreenSpace(s16 ScreenSpace){
          \~english Y position
          \~french Position Y
 */
-extern inline void PA_DualSetSpriteY(u8 obj, s16 y){
-s16 y0 = 192; s16 y1 = 192;
-	if (y < 192) y1 = y;
-	if (y > PA_ScreenSpace-64) y0 = y - PA_ScreenSpace;
-	PA_SetSpriteY(0, obj, y0);
-	PA_SetSpriteY(1, obj, y1);	
+extern inline void PA_DualSetSpriteY(u8 obj, s16 y){ 
+	if (y < 192) {
+		PA_SetSpriteY(1, obj, y);
+		PA_SetSpriteX(1, obj, DualSpriteX[obj]);
+	}
+	else PA_SetSpriteX(1, obj, 256); // hide sprite if not on screen...
+	if (y > PA_ScreenSpace-64) {
+		PA_SetSpriteY(0, obj, y - PA_ScreenSpace);
+		PA_SetSpriteX(0, obj, DualSpriteX[obj]);
+	}
+	else PA_SetSpriteX(0, obj, 256);
 }
+
+
+
+
+
+/*! \fn extern inline void PA_DualSetSpriteXY(u8 sprite, s16 x, s16 y)
+    \brief
+         \~english Set the X and Y position of a sprite on screen
+         \~french Position X et Y du sprite à l'écran
+    \param sprite
+         \~english sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite
+    \param x
+         \~english X position
+         \~french Position Y
+    \param y
+         \~english X position
+         \~french Position Y
+*/
+extern inline void PA_DualSetSpriteXY(u8 sprite, s16 x, s16 y) {
+	PA_DualSetSpriteX(sprite, x); 
+	PA_DualSetSpriteY(sprite, y);
+}
+
 
 
 
@@ -88,7 +132,7 @@ s16 y0 = 192; s16 y1 = 192;
 extern inline void PA_DualCreateSprite(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
 	PA_CreateSprite(0, obj_number, obj_data, obj_shape, obj_size, color_mode, palette, x, 192);
 	PA_CreateSprite(1, obj_number, obj_data, obj_shape, obj_size, color_mode, palette, x, 192);	
-	PA_DualSetSpriteY(obj_number, y);
+PA_DualSetSpriteXY(obj_number, x, y);
 };
 
 /*! \fn extern inline void PA_DualCreateSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
@@ -141,7 +185,7 @@ extern inline void PA_DualCreateSprite(u8 obj_number, void* obj_data, u8 obj_sha
 extern inline void PA_DualCreateSpriteEx(u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
 	PA_CreateSpriteEx(0, obj_number, obj_data, obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 	PA_CreateSpriteEx(1, obj_number, obj_data, obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
-	PA_DualSetSpriteY(obj_number, y);
+PA_DualSetSpriteXY(obj_number, x, y);
 }
 
 
@@ -198,7 +242,7 @@ for (i = 0; i < mem_size; i++) gfx[i] = data[i] + (1 << 15);
    PA_obj[1][obj_number].atr2 = PA_CreateGfx(1, gfx, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);   
    PA_obj[1][obj_number].atr0 = PA_obj[0][obj_number].atr0 = (192 & PA_OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
    PA_obj[1][obj_number].atr1 = PA_obj[0][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
-   PA_DualSetSpriteY(obj_number, y);
+PA_DualSetSpriteXY(obj_number, x, y);
 
 free(gfx);
 }
@@ -267,7 +311,7 @@ PA_DualCreate16bitSpriteEx(obj_number, obj_data, obj_shape, obj_size, 0, 0, 0, 0
 extern inline void PA_DualCreateSpriteFromGfx(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y) {
    PA_CreateSpriteFromGfx(0, obj_number, obj_gfx[0], obj_shape, obj_size, color_mode, palette, x, 192);
    PA_CreateSpriteFromGfx(1, obj_number, obj_gfx[1], obj_shape, obj_size, color_mode, palette, x, 192);  
-PA_DualSetSpriteY(obj_number, y);
+PA_DualSetSpriteXY(obj_number, x, y);
 }
 
 /*! \fn extern inline void PA_DualCreateSpriteExFromGfx(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
@@ -320,7 +364,7 @@ PA_DualSetSpriteY(obj_number, y);
 extern inline void PA_DualCreateSpriteExFromGfx(u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y) {
 PA_CreateSpriteExFromGfx(0, obj_number, obj_gfx[0], obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
 PA_CreateSpriteExFromGfx(1, obj_number, obj_gfx[1], obj_shape, obj_size, color_mode, palette, obj_mode, mosaic, hflip, vflip, prio, dblsize, x, 192);
-PA_DualSetSpriteY(obj_number, y);
+PA_DualSetSpriteXY(obj_number, x, y);
 }
 
 
@@ -476,51 +520,6 @@ u8 obj_num = (rotset << 2);
 }
 
 
-
-
-
-
-
-/*! \fn extern inline void PA_DualSetSpriteX(u8 obj, s16 x)
-    \brief
-         \~english Set the X position of a sprite on screen
-         \~french Position X du sprite à l'écran
-    \param obj
-         \~english Object number in the sprite system
-         \~french Numéro de l'objet dans le systeme de sprite
-    \param x
-         \~english X position
-         \~french Position X
-*/
-extern inline void PA_DualSetSpriteX(u8 obj, s16 x){
-	PA_obj[0][obj].atr1 = PA_obj[1][obj].atr1 = (PA_obj[0][obj].atr1 & ALL_BUT(PA_OBJ_X)) + ((x) & PA_OBJ_X);
-}
-
-
-
-
-
-
-
-
-/*! \fn extern inline void PA_DualSetSpriteXY(u8 sprite, s16 x, s16 y)
-    \brief
-         \~english Set the X and Y position of a sprite on screen
-         \~french Position X et Y du sprite à l'écran
-    \param sprite
-         \~english sprite number in the sprite system
-         \~french Numéro du sprite dans le systeme de sprite
-    \param x
-         \~english X position
-         \~french Position Y
-    \param y
-         \~english X position
-         \~french Position Y
-*/
-extern inline void PA_DualSetSpriteXY(u8 sprite, s16 x, s16 y) {
-	PA_DualSetSpriteX(sprite, x); 
-	PA_DualSetSpriteY(sprite, y);
-}
 
 
 

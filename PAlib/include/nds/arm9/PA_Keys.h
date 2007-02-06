@@ -23,21 +23,23 @@ extern "C" {
 #define PA_RIEN      0    // Si y'a rien, faudra faire comme si on appuye sur rien
 #define PA_TAB       3    // tab...
 
+// Stylus and Pad definitions, will be used by the arm7 to auto-update positions...
 
 typedef struct {
    u8 A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select, Anykey;
 } PA_Pad;
 
 typedef struct {
+   PA_Pad Held, Released, Newpress; // Pressed si on appuye, Held si on garde appuyé, et Released si on relache
+} Pads;
+
+typedef struct {
    u8 Held, Released, Newpress, Newpress0;
    s16 X, Y, altX, altY, Pressure, Vx, Vy, oldVx, oldVy, Downtime, Uptime, DblClick;
 } PA_Stylus;
 
-extern PA_Stylus Stylus;
 
-typedef struct {
-   PA_Pad Held, Released, Newpress; // Pressed si on appuye, Held si on garde appuyé, et Released si on relache
-} Pads;
+extern PA_Stylus Stylus;
 
 extern Pads Pad;
 extern PA_Pad* PadPointer;
@@ -56,54 +58,11 @@ extern u8 PA_MoveSpriteType;
 
 
 // Button info
-#define PA_BUTTONS (*(volatile u16*)0x04000130)
-
-#ifndef REG_KEYCNT
-	#define REG_KEYCNT (*(volatile u16*)0x04000132)
-#endif
-
-#define BUTTON_A 1
-#define BUTTON_B 2
-#define BUTTON_SELECT 4
-#define BUTTON_START 8
-#define BUTTON_RIGHT 16
-#define BUTTON_LEFT 32
-#define BUTTON_UP 64
-#define BUTTON_DOWN 128
-#define BUTTON_R 256
-#define BUTTON_L 512
-#define BUTTON_X 1024
-#define BUTTON_Y 2048
 
 
 
-extern u16 CompletePad, ExPad, TempPad;
-#define UPDATEPAD(type, pad)  type.A = pad & BUTTON_A;\
-   type.B = (pad & BUTTON_B) >> 1;\
-   type.Select = (pad & BUTTON_SELECT) >> 2;\
-   type.Start = (pad & BUTTON_START) >> 3;\
-   type.Right = (pad & BUTTON_RIGHT) >> 4;\
-   type.Left = (pad & BUTTON_LEFT) >> 5;\
-   type.Up = (pad & BUTTON_UP) >> 6;\
-   type.Down = (pad & BUTTON_DOWN) >> 7;\
-   type.R = (pad & BUTTON_R) >> 8;\
-   type.L = (pad & BUTTON_L) >> 9;\
-   type.X = (pad & BUTTON_X) >> 10;\
-   type.Y = (pad & BUTTON_Y) >> 11;\
-   type.Anykey = (!(!((pad&2047))));
-  
-#define COPYPAD(new, old)  new.A = old.A;\
-   new.B = old.B;\
-   new.Select = old.Select;\
-   new.Start = old.Start;\
-   new.Right = old.Right;\
-   new.Left = old.Left;\
-   new.Up = old.Up;\
-   new.Down = old.Down;\
-   new.R = old.R;\
-   new.L =  old.L;\
-   new.X = old.X;\
-   new.Y = old.Y;
+
+
 /*
 #define PA_UpdatePad() ExPad = CompletePad;\
    CompletePad = ~(BUTTONS + (((IPC->buttons)&3) << 10));\
@@ -128,6 +87,8 @@ extern u16 CompletePad, ExPad, TempPad;
  *  Check which keys are pressed...
  *  @{
  */
+
+
 
 /*! \fn void PA_UpdatePad(void)
     \brief
@@ -219,13 +180,33 @@ extern inline u8 PA_MoveSpriteDistance(u8 sprite, u8 distance){
          \~english Update the moving sprite info. If you don't put this in the VBL (it already is in PA_InitVBL), then if you stop moving around a sprite, it might not be able to pick up other sprites...
          \~french Met à jour les infos de déplacement de sprites... Si on ne met pas ca dans le VBL (c'est déjà dans PA_InitVBL), alors on risque de ne pas pouvoir déplacer d'autre sprite...
 
-*/
+*//*
 extern inline void PA_UpdateMoveSprite(void) {
 	PA_MovedSprite.Time++;
 	if ((PA_MovedSprite.Time > 2) || Stylus.Released) {
 		PA_MovedSprite.Moving = 0;
 		PA_MovedSprite.Time = 0;
 	}
+}*/
+
+
+/*! \fn extern inline u8 PA_SpriteStylusOverEx(u8 sprite, u8 lx, u8 ly)
+    \brief
+         \~english Check if the stylus position is over a given sprite (stylus pressed or not)
+         \~french Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non)
+    \param sprite
+         \~english Sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite
+    \param lx
+         \~english Wideness
+         \~french Largeur
+    \param ly
+         \~english Height
+         \~french Hauter		 
+		 
+*/
+extern inline u8 PA_SpriteStylusOverEx(u8 sprite, u8 lx, u8 ly){
+	return ((Stylus.X > PA_GetSpriteX(PA_Screen, sprite)) && (Stylus.X < PA_GetSpriteX(PA_Screen, sprite) + lx)&& (Stylus.Y > PA_GetSpriteY(PA_Screen, sprite)) && (Stylus.Y < PA_GetSpriteY(PA_Screen, sprite) + ly));
 }
 
 
@@ -246,7 +227,7 @@ extern inline void PA_UpdateMoveSprite(void) {
 		 
 */
 extern inline u8 PA_SpriteTouchedEx(u8 sprite, u8 lx, u8 ly){
-	return (Stylus.Held && (Stylus.X > PA_GetSpriteX(PA_Screen, sprite)) && (Stylus.X < PA_GetSpriteX(PA_Screen, sprite) + lx)&& (Stylus.Y > PA_GetSpriteY(PA_Screen, sprite)) && (Stylus.Y < PA_GetSpriteY(PA_Screen, sprite) + ly));
+	return (Stylus.Held && PA_SpriteStylusOverEx(sprite, lx, ly));
 }
 
 
@@ -265,17 +246,42 @@ extern inline u8 PA_SpriteTouched(u8 sprite) {
 
 
 
-
-
-extern inline u8 PA_SpriteTouchedPix(u8 sprite){
-u16 x = Stylus.X - PA_GetSpriteX(PA_Screen, sprite);
-u16 y = Stylus.Y - PA_GetSpriteY(PA_Screen, sprite);
-
-return (Stylus.Held && (x < spriteanims[PA_Screen][sprite].lx) && (y < spriteanims[PA_Screen][sprite].ly) && PA_GetSpritePixel(PA_Screen, sprite, x, y));
+/*! \fn extern inline u8 PA_SpriteStylusOver(u8 sprite)
+    \brief
+         \~english Check if the stylus position is over a given sprite (stylus pressed or not)
+         \~french Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non)
+    \param sprite
+         \~english Sprite number in the sprite system
+         \~french Numéro du sprite dans le systeme de sprite
+*/
+extern inline u8 PA_SpriteStylusOver(u8 sprite) {
+	return PA_SpriteStylusOverEx(sprite, PA_GetSpriteLx(PA_Screen, sprite), PA_GetSpriteLy(PA_Screen, sprite));
 }
 
 
 
+extern inline u8 PA_SpriteTouchedPix(u8 sprite){
+	s16 spritex = PA_GetSpriteX(PA_Screen, sprite);
+	s16 spritey = PA_GetSpriteY(PA_Screen, sprite);
+	if (spritex >= 458) spritex -=511; // normalize the X coordinate...
+	if (spritey >= 220) spritey -=256; // normalize the y coordinate...
+	u16 x = Stylus.X - spritex;
+	u16 y = Stylus.Y - spritey;
+	
+	return (Stylus.Held && (x < spriteanims[PA_Screen][sprite].lx) && (y < spriteanims[PA_Screen][sprite].ly) && PA_GetSpritePixel(PA_Screen, sprite, x, y));
+}
+
+
+extern inline u8 PA_Sprite16cTouchedPix(u8 sprite){
+	s16 spritex = PA_GetSpriteX(PA_Screen, sprite);
+	s16 spritey = PA_GetSpriteY(PA_Screen, sprite);
+	if (spritex >= 458) spritex -=511; // normalize the X coordinate...
+	if (spritey >= 220) spritey -=256; // normalize the y coordinate...
+	u16 x = Stylus.X - spritex;
+	u16 y = Stylus.Y - spritey;
+	
+	return (Stylus.Held && (x < spriteanims[PA_Screen][sprite].lx) && (y < spriteanims[PA_Screen][sprite].ly) && PA_GetSprite16cPixel(PA_Screen, sprite, x, y));
+}
 
 /*! \def PA_StylusInZone(x1, y1, x2, y2)
     \brief
@@ -297,6 +303,17 @@ return (Stylus.Held && (x < spriteanims[PA_Screen][sprite].lx) && (y < spriteani
 #define PA_StylusInZone(x1, y1, x2, y2) ((Stylus.X>=x1)&&(Stylus.Y>=y1)&&(Stylus.X<x2)&&(Stylus.Y<y2))
 
 /** @} */ // end of Keys
+
+
+
+
+
+
+
+
+
+
+
 
 #ifdef __cplusplus
 }

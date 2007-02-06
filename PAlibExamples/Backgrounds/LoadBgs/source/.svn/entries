@@ -1,31 +1,0 @@
-8
-
-dir
-22
-https://palibds.googlecode.com/svn/Examples/Backgrounds/LoadBgs/source
-https://palibds.googlecode.com/svn
-
-
-
-2006-09-12T07:42:13.511123Z
-22
-molousk
-
-
-svn:special svn:externals svn:needs-lock
-
-gfx
-dir
-
-main.c
-file
-61
-
-
-
-2006-09-14T20:54:11.781250Z
-bc38b547abd4f7f7e3eaa1ac62f9248b
-2006-09-16T18:49:42.031890Z
-61
-molousk
-

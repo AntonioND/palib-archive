@@ -1,71 +1,62 @@
-#if !defined(COMMAND_H)
-#define COMMAND_H
-/* 
-   Thanks to Chris Double and Neimod
-   http://www.double.co.nz/nintendo_ds
+#ifndef _PA_MICRO
+#define _PA_MICRO
+
+#include "PA_General.h"
+
+
+
+/** @defgroup Micro Microphone
+ * Record a sound and replay it...
+ *  @{
+ */
+
+
+/*! \def PA_MicGetVol()
+    \brief
+         \~english Returns the Microphone volume
+         \~french Renvoie le volume du micro
 */
-/*
-  Structures and functions to allow the ARM9 to send commands to the
-  ARM7. Based on code from the MOD player example posted to the GBADEV
-  forums.
+#define PA_MicGetVol()	PA_IPC.Mic.Volume
+
+
+/*! \fn extern inline void PA_MicStartRecording(u8 *Buffer, s32 Length)
+    \brief
+         \~english Start recording from the microphone. The sound is really ugly and low though :/
+         \~french Commencer à enregistrer avec le microphone. Par contre, le son est super laid et faible :/
+    \param Buffer
+         \~english 8bit buffer in which to record the sound
+         \~french Buffer dans lequel enregistrer le son
+    \param Length
+         \~english Buffer length
+         \~french Longueur du buffer
 */
+extern inline void PA_MicStartRecording(u8 *Buffer, s32 Length){
+			PA_IPC.Mic.Data = Buffer; // Buffer
+			PA_IPC.Mic.Length = Length; // Length
+}
 
-/* Enumeration of commands that the ARM9 can send to the ARM7 */
-enum CommandType {PLAY_ONE_SHOT_SAMPLE,START_RECORDING,STOP_RECORDING};
 
-/* Command parameters for playing a sound sample */
-struct PlaySampleSoundCommand
-{
-  int channel;
-  int frequency;
-  void* data;
-  int length;
-  int volume;
-};
-
-/* Command parameters for starting to record from the microphone */
-struct StartRecordingCommand
-{
-  u8* buffer;  
-  int length;
-};
-
-/* The ARM9 fills out values in this structure to tell the ARM7 what
-   to do. */
-struct Command {
-  enum CommandType commandType;
-  union {
-    void* data;  
-     struct PlaySampleSoundCommand playSample;    
-     struct StartRecordingCommand  startRecording;
-  };
-};
-
-/* Maximum number of commands */
-#define MAX_COMMANDS 20
-
-/* A structure shared between the ARM7 and ARM9. The ARM9
-   places commands here and the ARM7 reads and acts upon them.
+/*! \fn extern inline void PA_MicReplay(u8 PA_Channel, u8 *Buffer, s32 Length)
+    \brief
+         \~english Play a recorded sound
+         \~french Rejouer un son enregistrer
+    \param PA_Channel
+         \~english Sound channel (0-15)
+         \~french Canal audio (0-15)	 
+    \param Buffer
+         \~english 8bit buffer in which the sound was recorded
+         \~french Buffer dans lequel on a enregistré le son
+    \param Length
+         \~english Buffer length
+         \~french Longueur du buffer
 */
-typedef struct CommandControl {
-  struct Command command[MAX_COMMANDS];
-  int currentCommand;
-  int return_data;
-}CommandControl;
+extern inline void PA_MicReplay(u8 PA_Channel, u8 *Buffer, s32 Length){
+	PA_PlaySound(PA_Channel, Buffer, Length, 127, 16384/2);
+}
 
-/* Address of the shared CommandControl structure */
-#define commandControl ((CommandControl*)((uint32)(IPC) + sizeof(TransferRegion)))
 
-#if defined(ARM9)
-void PA_MicInit();
-void PA_PlaySample(int channel, int frequency, void* data, int length, int volume);
-void PA_StartRecording(u8* buffer, int length);
-int PA_StopRecording();
-int PA_GetMicVol();
-#endif
+/** @} */ // end of Micro
 
-#if defined(ARM7)
-void CommandProcessCommands();
-#endif
+
 
 #endif

@@ -10,6 +10,9 @@ extern "C" {
 #include <nds/arm7/touch.h>
 #include <nds/arm7/clock.h>
 
+
+#include "PA_IPC.h"
+
 #include "arm7/PA_Sound.h"
 #include "Sound7.h"
 
@@ -35,6 +38,9 @@ extern s32 TOUCH_OFFSET_Y;
 extern u16 PA_NewSPI;
 
 
+extern PA_IPCType *PA_IPC;
+extern u8 PA_SoundBusyInit;
+
 /*! \file PA7.h
     \brief Contains prototypes and macros for the arm7...
 
@@ -52,14 +58,11 @@ extern inline u64 PA_Distance(s32 x1, s32 y1, s32 x2, s32 y2) {
 void PA_Init(void);
 //void InterruptHandler(void);
 void PA_InitVBL(void);
-void PA_UpdateStylus(void);
+void PA_UpdateStylus();
 void PA_ScreenLight(void);
 
 
-
-
-
-
+void PA_SetDSLiteBrightness(u8 level);
 
 
 #ifdef __cplusplus

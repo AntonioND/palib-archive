@@ -1,0 +1,1 @@
+Gif2Frames globe.gif globe2.gif

@@ -14,7 +14,7 @@ int main(int argc, char ** argv)
 	
 	PA_InitSound();  // Init the sound system
 	
-	PA_OutputSimpleText(0, 6, 10, "Press A to play the sound");
+	PA_OutputSimpleText(0, 4, 10, "Press A to play the sound");
 
 	// Infinite loop to keep the program running
 	while (1)

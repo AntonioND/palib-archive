@@ -1,0 +1,13 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+1 sprites :
+  Thingy : 256colors, 8x16, Pal : Thingy_Pal, -> Thingy_Sprite
+
+1 palettes :
+  Thingy_Pal, 2 colors
+
+Finished !

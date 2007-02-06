@@ -19,8 +19,7 @@ int main(int argc, char ** argv)
 	PA_EasyBgLoad(0, //screen
 						3, //background number (0-3)
 						zelda); // Name
-						
-						PA_InitText(0, 0);
+	
 		
 	// Next we'll scroll, here are the variables...
 	s32 scrollx = 0; 

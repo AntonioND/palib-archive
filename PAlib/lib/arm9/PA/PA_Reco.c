@@ -127,7 +127,7 @@ PA_AddStylusPos(px, py);
 
 char PA_AnalyzeShape(void){
    s32 i;
-   for (i = 0; i < 32; i++) PA_OutputSimpleText(1, 0, i, "             ");
+ //  for (i = 0; i < 32; i++) PA_OutputSimpleText(1, 0, i, "             ");
    
    PA_StylusPosition points[17];
    for (i = 0; i < 16; i++){

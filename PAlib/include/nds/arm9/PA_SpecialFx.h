@@ -112,11 +112,11 @@
          \~english Effect Type. 0 for non, 1 for alpha-blending, 2 for brightness increase, and 3 for brightness decrease. You can use the macros SFX_NONE, SFX_ALPHA, SFX_BRIGHTINC, SFX_BRIGHTDEC
          \~french Type d'effet. 0 pour aucun, 1 pour transparence, 2 pour augmentation de la luminosité, et 3 pour diminution de celle-ci... On peut utiliser les macors SFX_NONE, SFX_ALPHA, SFX_BRIGHTINC, SFX_BRIGHTDEC
     \param FirstTarget
-         \~english Backgrounds and sprites for which to activate the effect. Use the following macro : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (no idea what that is !)
-         \~french Fond et sprites à afficher aevc l'effet spécial, que l'on choisi de la facon suivante : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (aucune idée !)
+         \~english Backgrounds and sprites for which to activate the effect. Use the following macro : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (back drop)
+         \~french Fond et sprites à afficher aevc l'effet spécial, que l'on choisi de la facon suivante : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (back drop)
     \param SecondTarget
-         \~english Backgrounds and sprites to be seen behind the alpha-blending. Use the following macro : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (no idea what that is !)
-         \~french Fond et sprites à afficher derrière la transparence, que l'on choisi de la facon suivante : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (aucune idée !)
+         \~english Backgrounds and sprites to be seen behind the alpha-blending. Use the following macro : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (back drop)
+         \~french Fond et sprites à afficher derrière la transparence, que l'on choisi de la facon suivante : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (back drop)
 */
 #define PA_EnableSpecialFx(screen, EffectType, FirstTarget, SecondTarget) REG_BLDCNT(screen) = ((FirstTarget) + ((SecondTarget) << 8) + ((EffectType) << 6))
 
