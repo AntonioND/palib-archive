@@ -69,8 +69,6 @@ New Stuff
 
 [DSMotion] Added Angle and Force variables. Made a quick MotionTurn example to see how to use them
 
-[WifiBanner] Updated the WifiBanner to display PAlib (take the wifi.bmp file from any example)
-
 [Compo] Added CompoSplash demo to show the DS Dev Compo Splash screen... Also contains a custom logo for the DS Compo, if you feel like it
 
 [SpriteTouch] Added PA_Sprite16cTouchedPix
@@ -128,6 +126,10 @@ Updated Stuff
 [16bitSprites] Changed display settings, now uses less memory, requires latest PAGfx to work
 
 [3D] DEPRICATED
+
+[Vham] Added Compile + Launch in No$GBA, with F6. No$GBA isn't installed with PAlib, you must have a copy in c:\devkitpro\no$gba
+
+[Logo] Updated PAlib logo and wifi logo
 
 
 Things Fixed

@@ -537,7 +537,14 @@ if (!PA_SpriteExtPrio){
 	}
 }
 else{ // Use the extended priorities
-
+	value += 3;
+	value2 += 3;
+	for (i = 0; i < 128; i++){ // copy rotsets
+		OAM[value] = PA_obj[0][i].atr3;	
+		OAM[value2] = PA_obj[1][i].atr3;		
+		value += 4;
+		value2 += 4;		
+	}
 	
 	value = 0;
 	s8 sprite;
