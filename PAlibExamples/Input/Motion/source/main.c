@@ -27,13 +27,16 @@ int main(int argc, char ** argv)
 	PA_ClearTextBg(1);		// Erase text screen...
 	
 	 // Turn on the DS Motion...
-	while ( !PA_MotionInit()) { // Checks for the DS Motion, continues looking for it until it actually finds it...
+	 PA_MotionInit();
+	 
+	while ( !PA_CheckDSMotion()) { // Checks for the DS Motion, continues looking for it until it actually finds it...
 		PA_WaitForVBL();
 		
 		// If no DSMotion found...
 		PA_OutputText(1, 0, 5, "      DS Motion not found ! \nPlease insert your DS Motion and press any key"); // Ask to insert the DS Motion... again...
 		
 		PA_WaitFor(Pad.Newpress.Anykey);  // Wait for any key to be pressed before continuing...
+		PA_MotionInit();
 	}
 	
 	PA_ClearTextBg(1); // erase the text...
@@ -56,6 +59,9 @@ int main(int argc, char ** argv)
 		PA_OutputText(1, 3, 10, "Motion.Vz    : %d     ", Motion.Vz);		
 		PA_OutputText(1, 3, 11, "Motion.Zrot  : %d     ", Motion.Zrot);
 		PA_OutputText(1, 3, 12, "Motion.Vzrot : %d     ", Motion.Vzrot);
+		
+		PA_OutputText(1, 3, 14, "Motion.Angle : %d     ", Motion.Angle);
+		PA_OutputText(1, 3, 15, "Motion.Force : %d     ", Motion.Force);	
 		
 		PA_OutputText(0, 3, 7, "Up     : %d-%d-%d", Motion.Newpress.Up, Motion.Held.Up, Motion.Released.Up);
 		PA_OutputText(0, 3, 8, "Down   : %d-%d-%d", Motion.Newpress.Down, Motion.Held.Down, Motion.Released.Down);

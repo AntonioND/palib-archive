@@ -22,11 +22,11 @@
 00014 
 00015 <span class="preprocessor">#include &lt;stdarg.h&gt;</span> <span class="comment">// Pour le système de text</span>
 00016 <span class="preprocessor">#include &lt;string.h&gt;</span>
-00017 
+00017 <span class="preprocessor">#include "arm9/PA_IO.h"</span>
 00018 <span class="preprocessor">#include "gbfs.h"</span>
 00019 <span class="preprocessor">#include "gba-jpeg-decode.h"</span>
 00020 <span class="preprocessor">#include "Sound9.h"</span>
-00021 
+00021 <span class="preprocessor">#include "fat.h"</span>
 00022 <span class="preprocessor">#include "PA_IPC.h"</span>
 00023 
 00024 <span class="preprocessor">#include "<a class="code" href="_p_a___general_8h.html">arm9/PA_General.h</a>"</span>
@@ -47,7 +47,7 @@
 00039 <span class="preprocessor">#include "<a class="code" href="_p_a___draw_8h.html">arm9/PA_Draw.h</a>"</span>
 00040 <span class="preprocessor">#include "<a class="code" href="_p_a___interrupt_8h.html">arm9/PA_Interrupt.h</a>"</span>
 00041 <span class="preprocessor">#include "<a class="code" href="_p_a___keys_8h.html">arm9/PA_Keys.h</a>"</span>
-00042 
+00042 <span class="preprocessor">#include "arm9/PA_Motion.h"</span>
 00043 <span class="preprocessor">#include "<a class="code" href="_p_a___bg_rot_8h.html">arm9/PA_BgRot.h</a>"</span>
 00044 
 00045 <span class="preprocessor">#include "arm9/PA_Timer.h"</span>
@@ -64,38 +64,37 @@
 00056 
 00057 <span class="preprocessor">#include "<a class="code" href="_p_a___tile_dual_8h.html">arm9/PA_TileDual.h</a>"</span>
 00058 
-00059 <span class="preprocessor">#include "arm9/PA_FAT.h"</span>  <span class="comment">// fat driver by chrishm</span>
-00060 
-00061 <span class="preprocessor">#include "<a class="code" href="_p_a___keyboard_8h.html">arm9/PA_Keyboard.h</a>"</span>
-00062 
-00063 <span class="preprocessor">#include "<a class="code" href="_p_a___window_8h.html">arm9/PA_Window.h</a>"</span>
-00064 
-00065 <span class="preprocessor">#include "arm9/PA_Mode7.h"</span>
-00066 
-00067 <span class="preprocessor">#include "<a class="code" href="_p_a__3_d_8h.html">arm9/PA_3D.h</a>"</span>
+00059 
+00060 <span class="preprocessor">#include "<a class="code" href="_p_a___keyboard_8h.html">arm9/PA_Keyboard.h</a>"</span>
+00061 
+00062 <span class="preprocessor">#include "<a class="code" href="_p_a___window_8h.html">arm9/PA_Window.h</a>"</span>
+00063 
+00064 <span class="preprocessor">#include "arm9/PA_Mode7.h"</span>
+00065 
+00066 <span class="preprocessor">#include "<a class="code" href="_p_a__3_d_8h.html">arm9/PA_3D.h</a>"</span>
+00067 
 00068 
-00069 
-00070 <span class="preprocessor">#include "arm9/PA_IA.h"</span>
-00071 <span class="preprocessor">#include "<a class="code" href="_p_a___reco_8h.html">arm9/PA_Reco.h</a>"</span>
-00072 
-00073 <span class="preprocessor">#include "<a class="code" href="_p_a__16c_8h.html">arm9/PA_16c.h</a>"</span>
-00074 
-00075 <span class="preprocessor">#include "arm9/PA_Wifi.h"</span>
-00076 
-00077 <span class="preprocessor">#include "<a class="code" href="_p_a___splash_8h.html">arm9/PA_Splash.h</a>"</span>
-00078 
-00079 <span class="preprocessor">#include "<a class="code" href="_p_a___gif_8h.html">arm9/PA_Gif.h</a>"</span>
-00080 
-00081 <span class="preprocessor">#ifdef __cplusplus</span>
-00082 <span class="preprocessor"></span>}
-00083 <span class="preprocessor">#endif</span>
-00084 <span class="preprocessor"></span>
-00085 
-00086 <span class="preprocessor">#endif</span>
-00087 <span class="preprocessor"></span>
+00069 <span class="preprocessor">#include "arm9/PA_IA.h"</span>
+00070 <span class="preprocessor">#include "<a class="code" href="_p_a___reco_8h.html">arm9/PA_Reco.h</a>"</span>
+00071 
+00072 <span class="preprocessor">#include "<a class="code" href="_p_a__16c_8h.html">arm9/PA_16c.h</a>"</span>
+00073 
+00074 <span class="preprocessor">#include "arm9/PA_Wifi.h"</span>
+00075 
+00076 <span class="preprocessor">#include "<a class="code" href="_p_a___splash_8h.html">arm9/PA_Splash.h</a>"</span>
+00077 
+00078 <span class="preprocessor">#include "<a class="code" href="_p_a___gif_8h.html">arm9/PA_Gif.h</a>"</span>
+00079 
+00080 <span class="preprocessor">#ifdef __cplusplus</span>
+00081 <span class="preprocessor"></span>}
+00082 <span class="preprocessor">#endif</span>
+00083 <span class="preprocessor"></span>
+00084 
+00085 <span class="preprocessor">#endif</span>
+00086 <span class="preprocessor"></span>
+00087 
 00088 
-00089 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:32 2006 pour PAlib par&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:49 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -63,7 +63,7 @@ extern "C" {
 
 #include "arm9/PA_Mode7.h"
 
-#include "arm9/PA_3D.h"
+//#include "arm9/PA_3D.h"
 
 
 #include "arm9/PA_IA.h"

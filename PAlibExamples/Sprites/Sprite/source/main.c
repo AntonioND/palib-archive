@@ -12,7 +12,7 @@ int main(void){
 	PA_LoadSpritePal(0, // Screen
 					0, // Palette number
 					(void*)sprite0_Pal);	// Palette name
-					
+			
 	PA_CreateSprite(0, // Screen
 					0, // Sprite number
 					(void*)vaisseau_Sprite, // Sprite name

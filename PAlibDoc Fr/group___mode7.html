@@ -19,24 +19,21 @@ void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga2">PA_Mode7Angle</a> (s16 angle)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Définir l'angle  <a href="#ga2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga3">PA_Mode7MoveLeftRight</a> (s16 x_deplac)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga3">PA_Mode7MoveForwardBack</a> (s16 z_deplac)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Se déplacer latéralement  <a href="#ga3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga4">PA_Mode7MoveForwardBack</a> (s16 z_deplac)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga4">PA_Mode7X</a> (s16 mode7x)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Se déplacer latéralement  <a href="#ga4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga5">PA_Mode7X</a> (s16 mode7x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Se déplacer en un point donné de la carte  <a href="#ga4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga5">PA_Mode7Z</a> (s16 mode7z)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Se déplacer en un point donné de la carte  <a href="#ga5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga6">PA_Mode7Z</a> (s16 mode7z)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga6">PA_Mode7SetPointXZ</a> (s16 mode7x, s16 mode7z)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Se déplacer en un point donné de la carte  <a href="#ga6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga7">PA_Mode7SetPointXZ</a> (s16 mode7x, s16 mode7z)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Se déplacer en un point donné de la carte (de coordonnées x, z)  <a href="#ga6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga7">PA_Mode7Height</a> (s16 mode7y)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Se déplacer en un point donné de la carte (de coordonnées x, z)  <a href="#ga7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___mode7.html#ga8">PA_Mode7Height</a> (s16 mode7y)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler la hauteur de la caméra  <a href="#ga8"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler la hauteur de la caméra  <a href="#ga7"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Different commands for Mode 7 :p A big thanks to TONC for these... <hr><h2>Documentation des fonctions</h2>
@@ -110,7 +107,7 @@ Définir l'angle
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga8" doxytag="PA_Mode7.h::PA_Mode7Height"></a><p>
+<a class="anchor" name="ga7" doxytag="PA_Mode7.h::PA_Mode7Height"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -145,7 +142,7 @@ Régler la hauteur de la caméra
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga4" doxytag="PA_Mode7.h::PA_Mode7MoveForwardBack"></a><p>
+<a class="anchor" name="ga3" doxytag="PA_Mode7.h::PA_Mode7MoveForwardBack"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -180,42 +177,7 @@ Se déplacer latéralement
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga3" doxytag="PA_Mode7.h::PA_Mode7MoveLeftRight"></a><p>
-<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
-  <tr>
-    <td class="mdRow">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="md" nowrap valign="top">inline void PA_Mode7MoveLeftRight           </td>
-          <td class="md" valign="top">(&nbsp;</td>
-          <td class="md" nowrap valign="top">s16&nbsp;</td>
-          <td class="mdname1" valign="top" nowrap> <em>x_deplac</em>          </td>
-          <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap><code> [inline]</code></td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-<table cellspacing="5" cellpadding="0" border="0">
-  <tr>
-    <td>
-      &nbsp;
-    </td>
-    <td>
-
-<p>
-Se déplacer latéralement 
-<p>
-<dl compact><dt><b>Paramètres:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>x_deplac</em>&nbsp;</td><td>De combien de pixels se déplacer à gauche ou à droite </td></tr>
-  </table>
-</dl>
-    </td>
-  </tr>
-</table>
-<a class="anchor" name="ga7" doxytag="PA_Mode7.h::PA_Mode7SetPointXZ"></a><p>
+<a class="anchor" name="ga6" doxytag="PA_Mode7.h::PA_Mode7SetPointXZ"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -260,7 +222,7 @@ Se déplacer en un point donné de la carte (de coordonnées x, z)
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga5" doxytag="PA_Mode7.h::PA_Mode7X"></a><p>
+<a class="anchor" name="ga4" doxytag="PA_Mode7.h::PA_Mode7X"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -295,7 +257,7 @@ Se déplacer en un point donné de la carte
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga6" doxytag="PA_Mode7.h::PA_Mode7Z"></a><p>
+<a class="anchor" name="ga5" doxytag="PA_Mode7.h::PA_Mode7Z"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -330,7 +292,7 @@ Se déplacer en un point donné de la carte
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:36 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:51 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

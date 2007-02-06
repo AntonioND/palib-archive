@@ -65,6 +65,16 @@ New Stuff
 
 [Keyboard] Added PA_InitCustomKeyboard(bg_number, keyb_custom) to load custom keyboards (use instead of PA_InitKeyboard), and the example to go with it... Custom keyboards are 256 colors and should be converted as EasyBg...
 
+[DSMotion] Added MotionDraw2...
+
+[DSMotion] Added Angle and Force variables. Made a quick MotionTurn example to see how to use them
+
+[Compo] Added CompoSplash demo to show the DS Dev Compo Splash screen... Also contains a custom logo for the DS Compo, if you feel like it
+
+[SpriteTouch] Added PA_Sprite16cTouchedPix
+
+[16bitSprites] Added PA_Set16bitSpriteAlpha and the example to go with it
+
 
 Updated Stuff
 -------------
@@ -107,6 +117,20 @@ Updated Stuff
 
 [Makefile] Makefiles updated, please copy one of the example/template makefiles and paste in your project. Includes the sound padding correction and includes the libwifi
 
+[DSMotion] Now uses an average, jitters less
+
+[Text] PAlib text output c files changed, saves up to 10KB/rom :)
+
+[Stylus] Updated code to the newer more reliable code :)
+
+[16bitSprites] Changed display settings, now uses less memory, requires latest PAGfx to work
+
+[3D] DEPRICATED
+
+[Vham] Added Compile + Launch in No$GBA, with F6. No$GBA isn't installed with PAlib, you must have a copy in c:\devkitpro\no$gba
+
+[Logo] Updated PAlib logo and wifi logo
+
 
 Things Fixed
 ------------
@@ -141,6 +165,13 @@ Things Fixed
 
 [SpriteAnims] Fixed first frame not showing when starting a new animation...
 
+[PAFSBg] Fixed PAFS Bg loading
+
+[PAGfx] No longer hangs if you have non-8 pixel multiple sprites. Automatically resizes it
+
+[Error] Fixed compilation error on projects with multiple cpp files
+
+[8bitText] Fixed 3 8bit text bugs
 
 
 

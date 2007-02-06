@@ -24,11 +24,11 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_Text.h::TEXT_RED"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TEXT_RED</b>&nbsp;&nbsp;&nbsp;1</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_Text.h::TEXT_BLUE"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TEXT_BLUE</b>&nbsp;&nbsp;&nbsp;2</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_Text.h::TEXT_GREEN"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TEXT_GREEN</b>&nbsp;&nbsp;&nbsp;2</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_Text.h::TEXT_GREEN"></a>
-#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TEXT_GREEN</b>&nbsp;&nbsp;&nbsp;3</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_Text.h::TEXT_BLUE"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TEXT_BLUE</b>&nbsp;&nbsp;&nbsp;3</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_Text.h::TEXT_MAGENTA"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TEXT_MAGENTA</b>&nbsp;&nbsp;&nbsp;4</td></tr>
@@ -48,22 +48,28 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a10" doxytag="PA_Text.h::TEXT_BLACK"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>TEXT_BLACK</b>&nbsp;&nbsp;&nbsp;9</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga20">PA_SetTileLetter</a>(screen, x, y, letter)&nbsp;&nbsp;&nbsp;PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga22">PA_SetTileLetter</a>(screen, x, y, letter)&nbsp;&nbsp;&nbsp;PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire une lettre à l'écran.  <a href="group___text.html#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga21">PA_InitCustomText</a>(screen, bg_select, text)&nbsp;&nbsp;&nbsp;PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire une lettre à l'écran.  <a href="group___text.html#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga23">PA_InitCustomText</a>(screen, bg_select, text)&nbsp;&nbsp;&nbsp;PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le texte en utilisant une police perso  <a href="group___text.html#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga22">PA_ShowFont</a>(screen)&nbsp;&nbsp;&nbsp;PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le texte en utilisant une police perso  <a href="group___text.html#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga24">PA_ShowFont</a>(screen)&nbsp;&nbsp;&nbsp;PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret autrement  <a href="group___text.html#ga22"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret autrement  <a href="group___text.html#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga25">PA_8bitCustomFont</a>(bit8_slot, bit8_font)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajouter une police perso dans le systeme de texte 8bit !! Doit être convertie avec PAGfx  <a href="group___text.html#ga25"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a24" doxytag="PA_Text.h::letterfp"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a32" doxytag="PA_Text.h::letterfp"></a>
 typedef void(*&nbsp;</td><td class="memItemRight" valign="bottom"><b>letterfp</b> )(u8 size, u8 screen, u16 x, u16 y, char lettertemp, u8 color)</td></tr>
 
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a28" doxytag="PA_Text.h::PA_CreateTextPal"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a36" doxytag="PA_Text.h::PA_CreateTextPal"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_CreateTextPal</b> (u8 screen, u8 pal_number, u16 r, u16 g, u16 b)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a37" doxytag="PA_Text.h::PA_PrintYPlus"></a>
+void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_PrintYPlus</b> (u8 screen)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga0">PA_InitText</a> (u8 screen, u8 bg_select)</td></tr>
 
@@ -107,62 +113,89 @@ u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BoxText</b> (u8 scr
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga13">PA_ClearTextBg</a> (u8 screen)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer tout le texte sur un écran donné  <a href="group___text.html#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga14" doxytag="PA_Text.h::PA_OutputTextSpecial0"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga14">PA_Print</a> (u8 screen, char *text,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte à l'écran. Marche comme la fonction printf  <a href="group___text.html#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga15">PA_PrintLetter</a> (u8 screen, char letter)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comme PA_Print, mais juste pour une lettre  <a href="group___text.html#ga15"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga16" doxytag="PA_Text.h::PA_OutputTextSpecial0"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial0</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga15" doxytag="PA_Text.h::PA_OutputTextSpecial1"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="PA_Text.h::PA_OutputTextSpecial1"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial1</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga16" doxytag="PA_Text.h::PA_OutputTextSpecial2"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="PA_Text.h::PA_OutputTextSpecial2"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial2</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="PA_Text.h::PA_OutputTextSpecial3"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="PA_Text.h::PA_OutputTextSpecial3"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial3</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="PA_Text.h::PA_OutputTextSpecial4"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="PA_Text.h::PA_OutputTextSpecial4"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial4</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="PA_Text.h::PA_OutputTextSpecial5"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="PA_Text.h::PA_OutputTextSpecial5"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial5</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a14" doxytag="PA_Text.h::textcol"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_Text.h::pa_printx"></a>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>pa_printx</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a16" doxytag="PA_Text.h::pa_printy"></a>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>pa_printy</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a17" doxytag="PA_Text.h::pa_printscroll"></a>
+s16&nbsp;</td><td class="memItemRight" valign="bottom"><b>pa_printscroll</b> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a18" doxytag="PA_Text.h::textcol"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>textcol</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a15" doxytag="PA_Text.h::PAbgtext"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a19" doxytag="PA_Text.h::PAbgtext"></a>
 u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAbgtext</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a16" doxytag="PA_Text.h::PA_textmap"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a20" doxytag="PA_Text.h::PA_textmap"></a>
 u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_textmap</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a17" doxytag="PA_Text.h::PA_texttiles"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a21" doxytag="PA_Text.h::PA_texttiles"></a>
 u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_texttiles</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a18" doxytag="PA_Text.h::PA_textpal"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a22" doxytag="PA_Text.h::PA_textpal"></a>
 u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_textpal</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a19" doxytag="PA_Text.h::PA_font"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a23" doxytag="PA_Text.h::PA_font"></a>
 s8&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_font</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a20" doxytag="PA_Text.h::textData"></a>
-const u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>textData</b> [5]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a24" doxytag="PA_Text.h::textData"></a>
+const u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>textData</b> [10]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a21" doxytag="PA_Text.h::policeheight"></a>
-const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>policeheight</b> [5]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a25" doxytag="PA_Text.h::policeheight"></a>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>policeheight</b> [10]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a22" doxytag="PA_Text.h::policewidth"></a>
-const u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>policewidth</b> [5]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a26" doxytag="PA_Text.h::policewidth"></a>
+u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>policewidth</b> [10]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a23" doxytag="PA_Text.h::policesize"></a>
-const u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>policesize</b> [5][256]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a27" doxytag="PA_Text.h::policesize"></a>
+u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>policesize</b> [10]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a25" doxytag="PA_Text.h::letters"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a28" doxytag="PA_Text.h::text_tiles"></a>
+u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>text_tiles</b> [10]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a29" doxytag="PA_Text.h::text_maps"></a>
+u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>text_maps</b> [10]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a30" doxytag="PA_Text.h::pa8bitdefaultsize"></a>
+u8 *&nbsp;</td><td class="memItemRight" valign="bottom"><b>pa8bitdefaultsize</b> [10]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a31" doxytag="PA_Text.h::police8bitheight"></a>
+u8&nbsp;</td><td class="memItemRight" valign="bottom"><b>police8bitheight</b> [10]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a33" doxytag="PA_Text.h::letters"></a>
 letterfp&nbsp;</td><td class="memItemRight" valign="bottom"><b>letters</b> [5]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a26" doxytag="PA_Text.h::PAtext_pal"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a34" doxytag="PA_Text.h::PAtext_pal"></a>
 u16&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAtext_pal</b> [2]</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a27" doxytag="PA_Text.h::PA_TextBox"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a35" doxytag="PA_Text.h::PA_TextBox"></a>
 textborders&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_TextBox</b> [2]</td></tr>
 
 </table>
@@ -209,14 +242,14 @@ Not much to say, just a good debug option...<hr><h2>Documentation des macro</h2>
 <p>
 <b>Valeur:</b><div class="fragment"><pre class="fragment">{\
    PAbgtext[screen] = bg_select;\
-   <a class="code" href="group___bg_tiles.html#ga28">PA_LoadSimpleBg</a>(screen, bg_select, tiles, Blank, BG_256X256, 0, 1);\
-   <a class="code" href="group___palette.html#ga7">PA_LoadBgPal</a>(screen, bg_select, (<span class="keywordtype">void</span>*)pal);\
+   <a class="code" href="group___bg_tiles.html#ga29">PA_LoadSimpleBg</a>(screen, bg_select, tiles, Blank, BG_256X256, 0, 1);\
+   <a class="code" href="group___palette.html#ga8">PA_LoadBgPal</a>(screen, bg_select, (<span class="keywordtype">void</span>*)pal);\
    PA_textmap[screen] = (u16*)map;PA_textpal[screen] = (u16*)pal;PAtext_pal[screen]=0;\
-   u32 PAtexttempvar = 0; <span class="keywordflow">for</span> (PAtexttempvar = 0; PAtexttempvar &lt; 32*24; PAtexttempvar++) <a class="code" href="group___text.html#ga20">PA_SetTileLetter</a>(screen, PAtexttempvar, 0, 0);   }
+   u32 PAtexttempvar = 0; <span class="keywordflow">for</span> (PAtexttempvar = 0; PAtexttempvar &lt; 32*24; PAtexttempvar++) <a class="code" href="group___text.html#ga22">PA_SetTileLetter</a>(screen, PAtexttempvar, 0, 0);   }
 </pre></div>    </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:35 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:50 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

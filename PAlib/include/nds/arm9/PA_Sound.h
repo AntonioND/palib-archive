@@ -390,7 +390,7 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
 
 	PA_PlaySound(PA_Channel, (void*)FS_wav[PA_Channel], length << 2, volume, freq);
 
-	SndPlay(PA_Channel, (void*)FS_wav[PA_Channel], length << 2, volume, freq, 0, false, 0);
+//	SndPlay(PA_Channel, (void*)FS_wav[PA_Channel], length << 2, volume, freq, 0, false, 0);
 }
 
 

@@ -20,7 +20,13 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>PAFSSystems</b></td></tr>
 
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_FS.h::PA_FSRam"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a0" doxytag="PA_FS.h::PA_DS_CART"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_DS_CART</b>&nbsp;&nbsp;&nbsp;0x02000000</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a1" doxytag="PA_FS.h::PA_GBA_CART"></a>
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_GBA_CART</b>&nbsp;&nbsp;&nbsp;0x08000000</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_FS.h::PA_FSRam"></a>
 #define&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_FSRam</b>(size)&nbsp;&nbsp;&nbsp;char PA_FileSystem[size] = "PAFS007";</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga8" doxytag="PA_FS.h::PA_PAFSFile"></a>
@@ -28,7 +34,7 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie un pointeur vers le fichier donné... <br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_FS.h::PA_FSAllInit"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a8" doxytag="PA_FS.h::PA_FSAllInit"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_FSAllInit</b> (void)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga0" doxytag="PA_FS.h::PA_FSInit"></a>
@@ -58,23 +64,23 @@ u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond depuis PAFS en utilisant son nom...  <a href="group___p_a_f_s.html#ga7"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a2" doxytag="PA_FS.h::PA_FSSys"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_FS.h::PA_FSSys"></a>
 PAFSSystems *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_FSSys</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a3" doxytag="PA_FS.h::PA_FSFile"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_FS.h::PA_FSFile"></a>
 PAFSFiles *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_FSFile</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a4" doxytag="PA_FS.h::PA_FSFolder"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a6" doxytag="PA_FS.h::PA_FSFolder"></a>
 PAFSFolders *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_FSFolder</b></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a5" doxytag="PA_FS.h::PAFSStart"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="a7" doxytag="PA_FS.h::PAFSStart"></a>
 char *&nbsp;</td><td class="memItemRight" valign="bottom"><b>PAFSStart</b></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 PA File System. 
 <p>
-PA File System<hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:33 2006 pour PAlib par&nbsp;
+PA File System<hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:50 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

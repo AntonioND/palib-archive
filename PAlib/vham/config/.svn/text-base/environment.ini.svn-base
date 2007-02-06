@@ -1,5 +1,0 @@
-[EnviromentVariables]
-DEVKITPRO=/c/devkitPro
-MAKE_MODE=unix
-PAPATH=/c/devkitPro/PAlib
-PATH=c:\devkitPro\msys\bin;C:\GTK\bin;c:\devkitPro\devkitARM\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\ATI Technologies\ATI.ACE\;C:\Program Files\doxygen\bin;C:\Program Files\K-Lite Codec Pack\QuickTime\QTSystem\

@@ -19,6 +19,12 @@ extern "C" {
 
 void PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b);
 
+extern u8 pa_printx[2];
+extern u8 pa_printy[2];
+extern s16 pa_printscroll[2];
+
+void PA_PrintYPlus(u8 screen);
+
 
 /*! \file PA_Text.h
     \brief Text system in tile mode
@@ -510,7 +516,7 @@ extern inline u32 PA_SimpleBoxText(u8 screen, const char *text, u32 limit){
 return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_TextBox[screen].x2-1, PA_TextBox[screen].y2-1, text, limit);
 }
 
-/*! \fn extern inline void PA_ClearTextBg(u8 screen)
+/*! \fn void PA_ClearTextBg(u8 screen)
     \brief
          \~english Erase all the text on a given screen
          \~french Effacer tout le texte sur un écran donné
@@ -518,11 +524,43 @@ return PA_BoxText(screen, PA_TextBox[screen].x1+1, PA_TextBox[screen].y1+1, PA_T
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
 */
-extern inline void PA_ClearTextBg(u8 screen){
-u8 i, j;
-for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, PAbgtext[screen], i, j, 0);
-}
+void PA_ClearTextBg(u8 screen);
 
+
+
+
+/*! \fn void PA_Print(u8 screen, char* text, ...)
+    \brief
+         \~english Output text on the DS screen. Works like a printf function
+         \~french Ecrire du texte à l'écran. Marche comme la fonction printf
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param text
+         \~english String to output. The following commands are avaiblable : \%s to output another string, \%d to output a value, \%fX to output a float with X digits, \\n to go to the line. Here's an example : PA_OutputText(0, 0, 1, "My name is %s and I have only %d teeth", "Mollusk", 20);
+         \~french Chaine de caractère à écrire. On dispose des commandes suivantes : \%s pour une autre chaine de caractères, \%d pour écrire la valeur d'une variables, \%fX pour afficher un nombre avec X chiffres après la virgule, \\n pour aller à la ligne. Voici un exemple : PA_OutputText(0, 0, 1, "Mon nom est %s et je n'ai que %d dents...", "Mollusk", 20);
+*/
+void PA_Print(u8 screen, char* text, ...);
+
+
+/*! \fn extern inline void PA_PrintLetter(u8 screen, char letter)
+    \brief
+         \~english Like PA_Print, but for a letter
+         \~french Comme PA_Print, mais juste pour une lettre
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param letter
+         \~english Any letter...
+         \~french Une lettre...
+*/
+extern inline void PA_PrintLetter(u8 screen, char letter){
+	PA_SetTileLetter(screen, pa_printx[screen], pa_printy[screen]&31, letter);
+	pa_printx[screen]++;
+	if(pa_printx[screen] >= 32){
+ 		PA_PrintYPlus(screen);
+	}   
+}
 
 
 void PA_OutputTextSpecial0(u8 screen, int x1, int y,char *text);

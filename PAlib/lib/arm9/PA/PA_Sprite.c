@@ -34,13 +34,13 @@ const u16 PA_obj_sizes[4][3] = {
    {1024, 512, 512},
    {4096, 2048, 2048}
 };
-
+/*
 const u16 PA_16bit_sizes[4][3] = {
    {64*16, 128*8, 128*16},
    {256*8, 256*4, 256*16},
    {1024*4, 512*4, 512*8},
    {4096*2, 2048*2, 2048*4}
-};
+};*/
 
 obj_inf PA_obj[2][128];  // Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...
 
@@ -174,7 +174,7 @@ PA_InitSpriteExtPrio(0);// normal priority system by default
 
 u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode) {
 	u16 mem_size = PA_obj_sizes[obj_size][obj_shape] >> (8 - color_mode);
-	if (color_mode == 2) mem_size = PA_16bit_sizes[obj_size][obj_shape] >> 6;
+	//if (color_mode == 2) mem_size = PA_16bit_sizes[obj_size][obj_shape] >> 6;
 	
 	if (mem_size == 0) mem_size++; // Peut faire 0 si 8x8...
 	
@@ -272,9 +272,6 @@ obj_gfx -= FirstGfx[screen];
       // Effacage de la mémoire
       DMA_Copy((void*)Blank, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (obj_gfx << NUMBER_DECAL)), (used_mem[screen][obj_gfx] << MEM_DECAL), DMA_32NOW);
       used_mem[screen][obj_gfx] = 0;
- 
-
-
 }
 
 
@@ -525,6 +522,7 @@ void PA_UpdateOAM(void){
 s16 i;
 s32 value = 0;
 s32 value2 = 512;
+if (!PA_SpriteExtPrio){
 	for (i = 0; i < 128; i++){ // copy
 		OAM[value] = PA_obj[0][i].atr0;
 		OAM[value + 1] = PA_obj[0][i].atr1;
@@ -537,10 +535,16 @@ s32 value2 = 512;
 		value += 4;
 		value2 += 4;		
 	}
-	
-
-if (PA_SpriteExtPrio){ // Use the extended priorities
-
+}
+else{ // Use the extended priorities
+	value += 3;
+	value2 += 3;
+	for (i = 0; i < 128; i++){ // copy rotsets
+		OAM[value] = PA_obj[0][i].atr3;	
+		OAM[value2] = PA_obj[1][i].atr3;		
+		value += 4;
+		value2 += 4;		
+	}
 	
 	value = 0;
 	s8 sprite;

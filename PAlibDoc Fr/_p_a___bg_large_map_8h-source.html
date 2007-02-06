@@ -130,8 +130,8 @@
 00367 u8 i;
 00368        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
 00369               <span class="keywordflow">if</span> (PA_parallaxX[screen][i])  {
-00370                      <span class="keywordflow">if</span>(scrollpos[screen][i].infscroll) <a class="code" href="group___bg_tiles.html#ga18">PA_EasyBgScrollX</a>(screen, i, (PA_parallaxX[screen][i] * x) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
-00371                      <span class="keywordflow">else</span> <a class="code" href="group___bg_tiles.html#ga8">PA_BGScrollX</a>(screen, i, (PA_parallaxX[screen][i] * x) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
+00370                      <span class="keywordflow">if</span>(scrollpos[screen][i].infscroll) <a class="code" href="group___bg_tiles.html#ga19">PA_EasyBgScrollX</a>(screen, i, (PA_parallaxX[screen][i] * x) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
+00371                      <span class="keywordflow">else</span> <a class="code" href="group___bg_tiles.html#ga9">PA_BGScrollX</a>(screen, i, (PA_parallaxX[screen][i] * x) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
 00372               }
 00373        }
 00374 }
@@ -141,8 +141,8 @@
 00390 u8 i;
 00391        <span class="keywordflow">for</span>(i = 0; i &lt; 4; i++) {
 00392               <span class="keywordflow">if</span> (PA_parallaxY[screen][i])  {
-00393                      <span class="keywordflow">if</span>(scrollpos[screen][i].infscroll) <a class="code" href="group___bg_tiles.html#ga19">PA_EasyBgScrollY</a>(screen, i, (PA_parallaxY[screen][i] * y) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
-00394                      <span class="keywordflow">else</span> <a class="code" href="group___bg_tiles.html#ga9">PA_BGScrollY</a>(screen, i, (PA_parallaxY[screen][i] * y) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
+00393                      <span class="keywordflow">if</span>(scrollpos[screen][i].infscroll) <a class="code" href="group___bg_tiles.html#ga20">PA_EasyBgScrollY</a>(screen, i, (PA_parallaxY[screen][i] * y) &gt;&gt; 8); <span class="comment">// Si bg en scrolling infini</span>
+00394                      <span class="keywordflow">else</span> <a class="code" href="group___bg_tiles.html#ga10">PA_BGScrollY</a>(screen, i, (PA_parallaxY[screen][i] * y) &gt;&gt; 8); <span class="comment">// Sinon scrolling normal</span>
 00395               }
 00396        }
 00397 }
@@ -164,7 +164,7 @@
 00429 
 00430 <span class="preprocessor">#endif</span>
 00431 <span class="preprocessor"></span>
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:32 2006 pour PAlib par&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:49 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -1,5 +1,3 @@
-
-// ----- Change log -----
 // ----- Change log -----
 // 10/08/04 - Modified mixer to take any number of samples to mix, 
 //            rather than strictly a full buffer, added MOD updating 
@@ -14,15 +12,14 @@
 // 05/08/05 - Ported to DS.
 // ----------------------
 
-#include <nds.h>
-#include <string.h>
-#include <malloc.h>
+#include <NDS.h>
+#include <String.h>
+#include <nds/arm7/audio.h>
 
 #include "ModFile.h"
-#include "PA_Sound.h"
 #include "Sound7.h"
-
 #include "SoundCommon.h"
+
 
 // ----- Constants -----
 
@@ -108,36 +105,26 @@ typedef void (*COMMAND_FUNC_PTR)(SND_COMMAND *cmd);
 
 // ----- Local function prototypes -----
 
-	//Non - MOD functions
-static void SndChgVolume		(SND_COMMAND *cmd);
-static void SndChgPan			(SND_COMMAND *cmd);
-static void SndChgTimer		(SND_COMMAND *cmd);
-static void SndChgRepeat		(SND_COMMAND *cmd);
-static void SndChgLength		(SND_COMMAND *cmd);
-static void SngCmdPlay			(SND_COMMAND *cmd);
-static void SngCmdStop			(SND_COMMAND *cmd);
-static void SngCmdPause		(SND_COMMAND *cmd);
-static void FlashChannel		(u8 channel);
-
 	// Command functions (communication from ARM9)
 static void SndCmdSetMemPool	(SND_COMMAND *cmd);
 static void SndCmdPlaySong		(SND_COMMAND *cmd);
 static void SndCmdStopSong		(SND_COMMAND *cmd);
-static void SndCmdPauseSong		(SND_COMMAND *cmd);
+static void SndCmdPauseSong	(SND_COMMAND *cmd);
 static void SndCmdSetCallback	(SND_COMMAND *cmd);
+static void SndCmdSetVolume	(SND_COMMAND *cmd);
 
 	// MOD functions
 static void MODStartTimer		();
 static void MODStopTimer		();
-static void MODPlay				(const void *modFile);
-static void MODStop				();
-static BOOL MODSeek				(u32 order, u32 row);
+static void MODPlay			(const void *modFile);
+static void MODStop			();
+static BOOL MODSeek			(u32 order, u32 row);
 void MODUpdate					();
 static void MODProcessRow		();
 static void MODUpdateEffects	();
-static void MODPlayNote			(MOD_UPDATE_VARS *vars);
+static void MODPlayNote		(MOD_UPDATE_VARS *vars);
 static void MODHandleUpdateFlags(MOD_UPDATE_VARS *vars);
-static void MODSetTempo			(u32 tempo);
+static void MODSetTempo		(u32 tempo);
 static u32  MODGetNotePeriod	(u32 note, u32 finetune);
 
 	// Effect helper functions
@@ -147,31 +134,31 @@ static void MODInitVibrato		(MOD_UPDATE_VARS *vars, MOD_VIBRATO_PARAMS *vibrato)
 static s8   MODUpdateVibrato	(MOD_VIBRATO_PARAMS *vibrato);
 
 	// Effect functions
-static void MODFXSetVol			(MOD_UPDATE_VARS *vars);
+static void MODFXSetVol		(MOD_UPDATE_VARS *vars);
 static void MODFXSpeed			(MOD_UPDATE_VARS *vars);
 static void MODFXPan			(MOD_UPDATE_VARS *vars);
 static void MODFXSampleOffset	(MOD_UPDATE_VARS *vars);
 static void MODFXJumpToOrder	(MOD_UPDATE_VARS *vars);
-static void MODFXBreakToRow		(MOD_UPDATE_VARS *vars);
+static void MODFXBreakToRow	(MOD_UPDATE_VARS *vars);
 static void MODFXArpeggioRow	(MOD_UPDATE_VARS *vars);
 static void MODFXArpeggioMid	(MOD_UPDATE_VARS *vars);
 static void MODFXVolslideRow	(MOD_UPDATE_VARS *vars);
 static void MODFXVolslideMid	(MOD_UPDATE_VARS *vars);
 static void MODFXPortaRow		(MOD_UPDATE_VARS *vars);
 static void MODFXPortaDownMid	(MOD_UPDATE_VARS *vars);
-static void MODFXPortaUpMid		(MOD_UPDATE_VARS *vars);
+static void MODFXPortaUpMid	(MOD_UPDATE_VARS *vars);
 static void MODFXTonePortaRow	(MOD_UPDATE_VARS *vars);
 static void MODFXTonePortaMid	(MOD_UPDATE_VARS *vars);
-static void MODFXVibratoRow		(MOD_UPDATE_VARS *vars);
-static void MODFXVibratoMid		(MOD_UPDATE_VARS *vars);
-static void MODFXTremoloRow		(MOD_UPDATE_VARS *vars);
-static void MODFXTremoloMid		(MOD_UPDATE_VARS *vars);
+static void MODFXVibratoRow	(MOD_UPDATE_VARS *vars);
+static void MODFXVibratoMid	(MOD_UPDATE_VARS *vars);
+static void MODFXTremoloRow	(MOD_UPDATE_VARS *vars);
+static void MODFXTremoloMid	(MOD_UPDATE_VARS *vars);
 static void MODFXVSldTPortaRow	(MOD_UPDATE_VARS *vars);
 static void MODFXVSldTPortaMid	(MOD_UPDATE_VARS *vars);
-static void MODFXVSldVibratoRow	(MOD_UPDATE_VARS *vars);
-static void MODFXVSldVibratoMid	(MOD_UPDATE_VARS *vars);
-static void MODFXSpecialRow		(MOD_UPDATE_VARS *vars);
-static void MODFXSpecialMid		(MOD_UPDATE_VARS *vars);
+static void MODFXVSldVibratoRow(MOD_UPDATE_VARS *vars);
+static void MODFXVSldVibratoMid(MOD_UPDATE_VARS *vars);
+static void MODFXSpecialRow	(MOD_UPDATE_VARS *vars);
+static void MODFXSpecialMid	(MOD_UPDATE_VARS *vars);
 
 
 // ----- Variables -----
@@ -179,6 +166,7 @@ static void MODFXSpecialMid		(MOD_UPDATE_VARS *vars);
 SOUND_CHANNEL	sndChannel[SND_MAX_CHANNELS];
 SOUND_VARS		sndVars;
 MOD				sndMod;
+
 
 // ----- Tables -----
 
@@ -257,19 +245,12 @@ static const EFFECT_FUNC_PTR modEffectTable[MOD_EFFECT_TABLE_NUM][16] =
 
 static const COMMAND_FUNC_PTR cmdFuncTable[SND_CMD_NUM] = 
 {
-	SndChgVolume,				// SND_CHG_VOLUME
-	SndChgPan,					// SND_CHG_PAN
-	SndChgTimer,				// SND_CHG_TIMER
-	SndChgRepeat,				// SND_CHG_REPEAT
-	SndChgLength,				// SND_CHG_LENGTH
-	SngCmdPlay,					// SNG_CMD_PLAY
-	SngCmdStop,					// SNG_CMD_STOP
-	SngCmdPause,				// SNG_CMD_PAUSE
 	SndCmdSetMemPool,			// SND_CMD_SETMEMPOOL
 	SndCmdPlaySong,				// SND_CMD_PLAYSONG
 	SndCmdStopSong,				// SND_CMD_STOPSONG
 	SndCmdPauseSong,			// SND_CMD_PAUSESONG
 	SndCmdSetCallback,			// SND_CMD_SETCALLBACK
+	SndCmdSetVolume,			// SND_CMD_SETCALLBACK
 };
 
 const u16 notePeriodTable[] =
@@ -311,20 +292,20 @@ static const s8 vibratoRandomTab[64] =
 void SndInit7()
 {
 	s32 i;
-/*	u16 oldIME;
+	u16 oldIME;
 
 	oldIME = REG_IME;
 	REG_IME = 0;
 
 		// Enable sound, full volume
-	POWER_CR = POWER_SOUND;
-	SOUND_CR = SOUND_ENABLE | 127;
+//	POWER_CR = POWER_SOUND;
+//	SOUND_CR = SOUND_ENABLE | 127;
 
 	TIMER0_CR = 0;
 		// My custom IRQ handler uses this, but ndslib doesn't have it so 
 		// the call to SndTimerIrq is hardcoded in ARM7 main.cpp's handler.
 //	irqTable[IRQTABLE_TM0] = (u32)SndTimerIrq;
-	REG_IE |= IRQ_TIMER0;*/
+	REG_IE |= IRQ_TIMER0;
 
 	memset(&sndVars, 0, sizeof(sndVars));
 	memset(&sndMod, 0, sizeof(sndMod));
@@ -338,10 +319,9 @@ void SndInit7()
 		sndChannel[i].pan			= 0;
 		sndChannel[i].vol			= 0;
 	}
-
 	sndVars.bInitialized = TRUE;
 
-//	REG_IME = oldIME;
+	REG_IME = oldIME;
 
 }	// SndInit
 
@@ -354,13 +334,11 @@ void SndVblIrq()
 	{
 		SND_COMMAND *cmd = &sndControl->cmd[sndVars.curCmd];
 
-		ASSERT(cmd->cmdType < SND_CMD_NUM);
+//		ASSERT(cmd->cmdType < SND_CMD_NUM);
 		cmdFuncTable[cmd->cmdType](cmd);
 		sndVars.curCmd++;
 		sndVars.curCmd &= MAX_SND_COMMANDS-1;
 	}
-	
-	
 }
 
 void SndTimerIrq()
@@ -404,13 +382,10 @@ static void SndCmdStopSong(SND_COMMAND *cmd)
 
 static void SndCmdPauseSong(SND_COMMAND *cmd)
 {
-	if(cmd->param[0] == 0)
-	{
+	if(cmd->param[0] == 0) {
 		if(sndMod.state == MOD_STATE_PAUSE)
 			sndMod.state = MOD_STATE_PLAY;
-	}
-	else
-	{
+	} else {
 		if(sndMod.state == MOD_STATE_PLAY)
 			sndMod.state = MOD_STATE_PAUSE;
 	}
@@ -421,7 +396,10 @@ static void SndCmdSetCallback(SND_COMMAND *cmd)
 	sndMod.callback = (MOD_CALLBACK)cmd->param32;
 }
 
-
+static void SndCmdSetVolume(SND_COMMAND *cmd)
+{
+	SOUND_CR = SOUND_ENABLE | cmd->param32;
+}
 
 // --- MOD functions ---
 
@@ -452,19 +430,19 @@ static void MODStopTimer()
 static void MODPlay(const void *modFile)
 {
 	s32 i;
-
+		
 	memset(&sndMod, 0, sizeof(sndMod));
-
-	ModFileLoad(modFile, &sndMod, sndVars.memPool, sndVars.memPoolSize);
 	sndMod.tick			= 0;
 	sndMod.speed		= MOD_DEFAULT_SPEED;
 	sndMod.state		= MOD_STATE_PLAY;
-
+		
+	ModFileLoad(modFile, &sndMod, sndVars.memPool, sndVars.memPoolSize);
+		
 	for(i = 0; i < sndMod.channelCount; i++)
 	{
 		sndMod.channel[i].period = notePeriodTable[2*12];	// Middle C
-		sndMod.channel[i].vol = 64;							// Full volume
-
+		sndMod.channel[i].vol = 64;	// Full volume
+			
 		if((i & 3) == 0 || (i & 3) == 3)	// Panning levels go in 
 			sndMod.channel[i].pan = 32;		// a down-up-up-down pattern
 		else
@@ -1272,124 +1250,3 @@ static void MODFXSpecialMid(MOD_UPDATE_VARS *vars)
 	}
 
 }	// MODFXSpecialMid
-
-	//Non - MOD function
-//Activate a channel with all parameters if already activate do it to update status
-static void FlashChannel(u8 channel)
-{
-  if(sndChannel[channel].loopLength == 0)//one shot
-  {
-	switch(sndChannel[channel].format)
-	{
-	case 0 : // 8 BITS
-		SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(sndChannel[channel].vol) | SOUND_PAN(sndChannel[channel].pan) | SOUND_FORMAT_8BIT;
-		break;
-	case 1 : // 16 BITS
-		SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(sndChannel[channel].vol) | SOUND_PAN(sndChannel[channel].pan) | SOUND_FORMAT_16BIT;
-		break;
-	case 2 : // ADPCM
-		SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(sndChannel[channel].vol) | SOUND_PAN(sndChannel[channel].pan) | SOUND_FORMAT_ADPCM;
-		break;
-	case 3 : // PSG
-		SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(sndChannel[channel].vol) | SOUND_PAN(sndChannel[channel].pan) | SOUND_FORMAT_PSG;
-		break;
-	}
-  }
-  else
-  {
-	switch(sndChannel[channel].format)
-	{
-	case 0 : // 8 BITS
-		SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_REPEAT | SOUND_VOL(sndChannel[channel].vol) | SOUND_PAN(sndChannel[channel].pan) | SOUND_FORMAT_8BIT;
-		break;
-	case 1 : // 16 BITS
-		SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_REPEAT | SOUND_VOL(sndChannel[channel].vol) | SOUND_PAN(sndChannel[channel].pan) | SOUND_FORMAT_16BIT;
-		break;
-	case 2 : // ADPCM
-		SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_REPEAT | SOUND_VOL(sndChannel[channel].vol) | SOUND_PAN(sndChannel[channel].pan) | SOUND_FORMAT_ADPCM;
-		break;
-	case 3 : // PSG
-		SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_REPEAT | SOUND_VOL(sndChannel[channel].vol) | SOUND_PAN(sndChannel[channel].pan) | SOUND_FORMAT_PSG;
-		break;
-	}
-  }
-}
-
-static void SndChgRepeat(SND_COMMAND *cmd)
-{
-  //change volume and reflash SCHANNEL_CR with all parameters (don't work if not)
-  sndChannel[cmd->param[0]].loopLength = cmd->param[1];
-  SCHANNEL_REPEAT_POINT(cmd->param[0]) = (u16)cmd->param32;
-  FlashChannel(cmd->param[0]);
-}
-
-static void SndChgLength(SND_COMMAND *cmd)
-{
-  //change volume and reflash SCHANNEL_CR with all parameters (don't work if not)
-  SCHANNEL_LENGTH(cmd->param[0]) = cmd->param32;
-  FlashChannel(cmd->param[0]);
-}
-
-static void SndChgVolume(SND_COMMAND *cmd)
-{
-  //change volume and reflash SCHANNEL_CR with all parameters (don't work if not)
-  sndChannel[cmd->param[0]].vol = cmd->param[1];
-  FlashChannel(cmd->param[0]);
-}
-
-static void SndChgPan(SND_COMMAND *cmd)
-{
-  //change volume and reflash SCHANNEL_CR with all parameters (don't work if not)
-  sndChannel[cmd->param[0]].pan = cmd->param[1];
-  FlashChannel(cmd->param[0]);
-}
-
-static void SndChgTimer(SND_COMMAND *cmd)
-{
-  //change volume and reflash SCHANNEL_CR with all parameters (don't work if not)
-  sndChannel[cmd->param[0]].timer = (int)(cmd->param32);
-  SCHANNEL_TIMER(cmd->param[0])  = SOUND_FREQ(sndChannel[cmd->param[0]].timer);
-}
-
-//Start a song
-static void SngCmdPlay(SND_COMMAND *cmd)
-{
-  TransferSound *snd = IPC->soundData;
-  IPC->soundData = 0;
-
-  sndChannel[cmd->param[0]].timer = ((int)(snd->data[cmd->param[0]].rate));
-  sndChannel[cmd->param[0]].vol = snd->data[cmd->param[0]].vol;
-  sndChannel[cmd->param[0]].pan = snd->data[cmd->param[0]].pan;
-  sndChannel[cmd->param[0]].format = snd->data[cmd->param[0]].format;
-  SCHANNEL_TIMER(cmd->param[0])  = SOUND_FREQ(sndChannel[cmd->param[0]].timer);
-  SCHANNEL_SOURCE(cmd->param[0]) = (uint32)(snd->data[cmd->param[0]].data);
-  SCHANNEL_LENGTH(cmd->param[0]) = (snd->data[cmd->param[0]].len) >> 2;
-  if(cmd->param[1] == 0)//one shot
-  {
-	sndChannel[cmd->param[0]].loopLength = 0;
-	SCHANNEL_REPEAT_POINT(cmd->param[0]) = 0;
-  }
-  else
-  {
-	sndChannel[cmd->param[0]].loopLength = ((snd->data[cmd->param[0]].len) >> 2);
-	SCHANNEL_REPEAT_POINT(cmd->param[0]) = (u16)cmd->param32;
-  }
-  FlashChannel(cmd->param[0]);
-}
-
-//stop a song
-static void SngCmdStop(SND_COMMAND *cmd)
-{
-	//Desactivate Channel
-	SCHANNEL_CR(cmd->param[0]) = 0; 
-}
-
-//pause a song 0 for unpause 1 for pause
-static void SngCmdPause(SND_COMMAND *cmd)
-{
-	//Frequency = 0 => bits are read at 0hz => pause read
-	if(cmd->param[1] == 1)
-		SCHANNEL_TIMER(cmd->param[0]) = 0;
-	else
-		SCHANNEL_TIMER(cmd->param[0])  = SOUND_FREQ(sndChannel[cmd->param[0]].timer);
-}

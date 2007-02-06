@@ -1,9 +1,10 @@
-/*  Add backgrounds using PAFS !
-
-*/
+/*  Add backgrounds using PAFS ! */
 
 // Includes
 #include <PA9.h>       // Include for PAlib
+
+
+
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -20,14 +21,13 @@ int main(int argc, char ** argv)
 
 	PA_OutputText(1, 0, 1, "  Files   : %d    ", FileNumber);		
 
-	PA_FSBgLoad(0, 		// Screen
-					0, 		// Bg Number
-					0);  		// First background in PAFS
-					
-	PA_FSBgLoad(1, 1, 4);	// On the top screen, second background in PAFS (each background has 4 files, so every 4 files...)
-	
-	
-	
+	PA_FSBgLoad(1, 		// Screen
+					1, 		// Bg Number
+					4);  		// Second background in PAFS (each background has 4 files, so every 4 files...)
+						
+						
+	FSBgNameLoad(0, 0, "Large"); // Same thing but using background name...
+
 	
 	s32 scrollx = 0; 
 	s32 scrolly = 0;

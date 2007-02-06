@@ -15,139 +15,143 @@
 00007 <span class="preprocessor"></span>
 00013 <span class="preprocessor">#include "<a class="code" href="_p_a___text_8h.html">PA_Text.h</a>"</span>
 00014 
-00015 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00016        <span class="keywordtype">char</span> Name[64];
-00017        <span class="keywordtype">char</span> Ext[6];
-00018        u32 Length;
-00019        u32 FilePos;
-00020 }PAFSFiles;
-00021 
-00022 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00023        <span class="keywordtype">char</span> Name[64];
-00024        u32 FirstFile;  <span class="comment">// Number of the first file...</span>
-00025        u32 NFiles;    <span class="comment">// Number of files</span>
-00026        u32 FirstFolder;  <span class="comment">// Number of the first folder...</span>
-00027        u32 NFolders;    <span class="comment">// Number of folders     </span>
-00028 }PAFSFolders;
-00029 
-00030 
-00031 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
-00032        u32 Nfolders; <span class="comment">// Nombre de fichiers</span>
-00033        u32 Nfiles; <span class="comment">// Nombre de dossiers</span>
-00034 } PAFSSystems;
-00035 
-00036 <span class="keyword">extern</span> PAFSSystems *PA_FSSys;
-00037 <span class="keyword">extern</span> PAFSFiles *PA_FSFile; <span class="comment">// Pointeur sur les infos fichiers...</span>
-00038 <span class="keyword">extern</span> PAFSFolders *PA_FSFolder; 
+00015 
+00016 <span class="preprocessor">#define PA_DS_CART  0x02000000</span>
+00017 <span class="preprocessor"></span><span class="preprocessor">#define PA_GBA_CART 0x08000000</span>
+00018 <span class="preprocessor"></span>
+00019 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00020        <span class="keywordtype">char</span> Name[64];
+00021        <span class="keywordtype">char</span> Ext[6];
+00022        u32 Length;
+00023        u32 FilePos;
+00024 }PAFSFiles;
+00025 
+00026 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00027        <span class="keywordtype">char</span> Name[64];
+00028        u32 FirstFile;  <span class="comment">// Number of the first file...</span>
+00029        u32 NFiles;    <span class="comment">// Number of files</span>
+00030        u32 FirstFolder;  <span class="comment">// Number of the first folder...</span>
+00031        u32 NFolders;    <span class="comment">// Number of folders     </span>
+00032 }PAFSFolders;
+00033 
+00034 
+00035 <span class="keyword">typedef</span> <span class="keyword">struct</span>{
+00036        u32 Nfolders; <span class="comment">// Nombre de fichiers</span>
+00037        u32 Nfiles; <span class="comment">// Nombre de dossiers</span>
+00038 } PAFSSystems;
 00039 
-00040 <span class="keyword">extern</span> <span class="keywordtype">char</span> *PAFSStart;
-00041 
-00042 <span class="comment">// PAFS Start if in Ram...</span>
-00043 <span class="preprocessor">#define PA_FSRam(size) char PA_FileSystem[size] = "PAFS007"; </span>
-00044 <span class="preprocessor"></span>
+00040 <span class="keyword">extern</span> PAFSSystems *PA_FSSys;
+00041 <span class="keyword">extern</span> PAFSFiles *PA_FSFile; <span class="comment">// Pointeur sur les infos fichiers...</span>
+00042 <span class="keyword">extern</span> PAFSFolders *PA_FSFolder; 
+00043 
+00044 <span class="keyword">extern</span> <span class="keywordtype">char</span> *PAFSStart;
 00045 
-00046 <span class="keywordtype">void</span> PA_FSAllInit(<span class="keywordtype">void</span>);<span class="comment">// Inits for all systems</span>
-00047 
-00048 
+00046 <span class="comment">// PAFS Start if in Ram...</span>
+00047 <span class="preprocessor">#define PA_FSRam(size) char PA_FileSystem[size] = "PAFS007"; </span>
+00048 <span class="preprocessor"></span>
 00049 
-<a name="l00060"></a><a class="code" href="group___p_a_f_s.html#ga0">00060</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___p_a_f_s.html#ga0">PA_FSInit</a>(<span class="keywordtype">void</span>)
-00061 {
-00062        PA_FSAllInit();
-00063        <span class="keywordflow">return</span> (PA_FSSys-&gt;Nfiles);
-00064 }
-00065 
-00066 
-00067 
-<a name="l00073"></a><a class="code" href="group___p_a_f_s.html#ga1">00073</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___p_a_f_s.html#ga1">PA_FSRamInit</a>(<span class="keywordtype">void</span>)
-00074 {
-00075        PAFSStart-=8;
-00076        
-00077        <span class="keywordflow">while</span> (!((PAFSStart[0] == <span class="charliteral">'P'</span>) &amp;&amp; (PAFSStart[1] == <span class="charliteral">'A'</span>) &amp;&amp; (PAFSStart[2] == <span class="charliteral">'F'</span>) &amp;&amp; (PAFSStart[3] == <span class="charliteral">'S'</span>) &amp;&amp; (PAFSStart[4] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[5] == <span class="charliteral">'0'</span>))) PAFSStart++;
-00078        
-00079        PAFSStart += 8;
-00080        PA_FSSys = (PAFSSystems*)PAFSStart;
-00081 
-00082        <span class="keywordflow">while</span> (!((PAFSStart[0] == <span class="charliteral">'D'</span>) &amp;&amp; (PAFSStart[1] == <span class="charliteral">'I'</span>) &amp;&amp; (PAFSStart[2] == <span class="charliteral">'R'</span>) &amp;&amp; (PAFSStart[3] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[4] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[5] == <span class="charliteral">'0'</span>))) PAFSStart++;
-00083        
-00084        PAFSStart += 8;
-00085        PA_FSFolder = (PAFSFolders*)PAFSStart;
-00086        
-00087        <span class="keywordflow">while</span> (!((PAFSStart[0] == <span class="charliteral">'F'</span>) &amp;&amp; (PAFSStart[1] == <span class="charliteral">'I'</span>) &amp;&amp; (PAFSStart[2] == <span class="charliteral">'L'</span>) &amp;&amp; (PAFSStart[3] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[4] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[5] == <span class="charliteral">'0'</span>))) PAFSStart++;
-00088        
-00089        PAFSStart+=8;
-00090        PA_FSFile = (PAFSFiles*)PAFSStart;
-00091        
-00092        <span class="keywordflow">while</span> (!((PAFSStart[0] == <span class="charliteral">'B'</span>) &amp;&amp; (PAFSStart[1] == <span class="charliteral">'I'</span>) &amp;&amp; (PAFSStart[2] == <span class="charliteral">'N'</span>) &amp;&amp; (PAFSStart[3] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[4] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[5] == <span class="charliteral">'0'</span>))) PAFSStart++;
-00093 
-00094        PAFSStart+=8;
-00095        <span class="keywordflow">return</span> (PA_FSSys-&gt;Nfiles);
-00096 }
+00050 <span class="keywordtype">void</span> PA_FSAllInit(<span class="keywordtype">void</span>);<span class="comment">// Inits for all systems</span>
+00051 
+00052 
+00053 
+<a name="l00064"></a><a class="code" href="group___p_a_f_s.html#ga0">00064</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___p_a_f_s.html#ga0">PA_FSInit</a>(<span class="keywordtype">void</span>)
+00065 {
+00066        PA_FSAllInit();
+00067        <span class="keywordflow">return</span> (PA_FSSys-&gt;Nfiles);
+00068 }
+00069 
+00070 
+00071 
+<a name="l00077"></a><a class="code" href="group___p_a_f_s.html#ga1">00077</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u32 <a class="code" href="group___p_a_f_s.html#ga1">PA_FSRamInit</a>(<span class="keywordtype">void</span>)
+00078 {
+00079        PAFSStart-=8;
+00080        
+00081        <span class="keywordflow">while</span> (!((PAFSStart[0] == <span class="charliteral">'P'</span>) &amp;&amp; (PAFSStart[1] == <span class="charliteral">'A'</span>) &amp;&amp; (PAFSStart[2] == <span class="charliteral">'F'</span>) &amp;&amp; (PAFSStart[3] == <span class="charliteral">'S'</span>) &amp;&amp; (PAFSStart[4] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[5] == <span class="charliteral">'0'</span>))) PAFSStart++;
+00082        
+00083        PAFSStart += 8;
+00084        PA_FSSys = (PAFSSystems*)PAFSStart;
+00085 
+00086        <span class="keywordflow">while</span> (!((PAFSStart[0] == <span class="charliteral">'D'</span>) &amp;&amp; (PAFSStart[1] == <span class="charliteral">'I'</span>) &amp;&amp; (PAFSStart[2] == <span class="charliteral">'R'</span>) &amp;&amp; (PAFSStart[3] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[4] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[5] == <span class="charliteral">'0'</span>))) PAFSStart++;
+00087        
+00088        PAFSStart += 8;
+00089        PA_FSFolder = (PAFSFolders*)PAFSStart;
+00090        
+00091        <span class="keywordflow">while</span> (!((PAFSStart[0] == <span class="charliteral">'F'</span>) &amp;&amp; (PAFSStart[1] == <span class="charliteral">'I'</span>) &amp;&amp; (PAFSStart[2] == <span class="charliteral">'L'</span>) &amp;&amp; (PAFSStart[3] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[4] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[5] == <span class="charliteral">'0'</span>))) PAFSStart++;
+00092        
+00093        PAFSStart+=8;
+00094        PA_FSFile = (PAFSFiles*)PAFSStart;
+00095        
+00096        <span class="keywordflow">while</span> (!((PAFSStart[0] == <span class="charliteral">'B'</span>) &amp;&amp; (PAFSStart[1] == <span class="charliteral">'I'</span>) &amp;&amp; (PAFSStart[2] == <span class="charliteral">'N'</span>) &amp;&amp; (PAFSStart[3] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[4] == <span class="charliteral">'0'</span>) &amp;&amp; (PAFSStart[5] == <span class="charliteral">'0'</span>))) PAFSStart++;
 00097 
-00098 
-<a name="l00104"></a><a class="code" href="group___p_a_f_s.html#ga8">00104</a> <span class="preprocessor">#define PA_PAFSFile(FileN) ((void*)(PAFSStart+PA_FSFile[FileN].FilePos))</span>
-00105 <span class="preprocessor"></span>
-00106 
-00107 
-<a name="l00116"></a><a class="code" href="group___p_a_f_s.html#ga2">00116</a> <span class="keyword">extern</span> <span class="keyword">inline</span> s32 <a class="code" href="group___p_a_f_s.html#ga2">PA_FSGetFolder</a>(<span class="keywordtype">char</span> *name){
-00117 u16 i;
-00118 
-00119 <span class="keywordflow">for</span> (i = 0; i &lt; PA_FSSys-&gt;Nfolders; i++){
-00120        <span class="keywordflow">if</span> (<a class="code" href="group___text.html#ga23">PA_CompareText</a>(PA_FSFolder[i].Name, name)) 
-00121               <span class="keywordflow">return</span> i;
-00122 }
-00123 
-00124 <span class="keywordflow">return</span> -1;
-00125 }
-00126 
+00098        PAFSStart+=8;
+00099        <span class="keywordflow">return</span> (PA_FSSys-&gt;Nfiles);
+00100 }
+00101 
+00102 
+<a name="l00108"></a><a class="code" href="group___p_a_f_s.html#ga8">00108</a> <span class="preprocessor">#define PA_PAFSFile(FileN) ((void*)(PAFSStart+PA_FSFile[FileN].FilePos))</span>
+00109 <span class="preprocessor"></span>
+00110 
+00111 
+<a name="l00120"></a><a class="code" href="group___p_a_f_s.html#ga2">00120</a> <span class="keyword">extern</span> <span class="keyword">inline</span> s32 <a class="code" href="group___p_a_f_s.html#ga2">PA_FSGetFolder</a>(<span class="keywordtype">char</span> *name){
+00121 u16 i;
+00122 
+00123 <span class="keywordflow">for</span> (i = 0; i &lt; PA_FSSys-&gt;Nfolders; i++){
+00124        <span class="keywordflow">if</span> (<a class="code" href="group___text.html#ga26">PA_CompareText</a>(PA_FSFolder[i].Name, name)) 
+00125               <span class="keywordflow">return</span> i;
+00126 }
 00127 
-<a name="l00142"></a><a class="code" href="group___p_a_f_s.html#ga3">00142</a> <span class="keyword">extern</span> <span class="keyword">inline</span> s32 <a class="code" href="group___p_a_f_s.html#ga3">PA_FSGetFile</a>(s16 start, <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *extension){
-00143 u16 i;
-00144 
-00145 <span class="keywordflow">for</span> (i = start; i &lt; PA_FSSys-&gt;Nfiles; i++){
-00146        <span class="keywordflow">if</span> (<a class="code" href="group___text.html#ga23">PA_CompareText</a>(PA_FSFile[i].Name, name)&amp;&amp; <a class="code" href="group___text.html#ga23">PA_CompareText</a>(PA_FSFile[i].Ext, extension)) 
-00147               <span class="keywordflow">return</span> i;
-00148 }
-00149 
-00150 <span class="keywordflow">return</span> -1;
-00151 }
-00152 
+00128 <span class="keywordflow">return</span> -1;
+00129 }
+00130 
+00131 
+<a name="l00146"></a><a class="code" href="group___p_a_f_s.html#ga3">00146</a> <span class="keyword">extern</span> <span class="keyword">inline</span> s32 <a class="code" href="group___p_a_f_s.html#ga3">PA_FSGetFile</a>(s16 start, <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *extension){
+00147 u16 i;
+00148 
+00149 <span class="keywordflow">for</span> (i = start; i &lt; PA_FSSys-&gt;Nfiles; i++){
+00150        <span class="keywordflow">if</span> (<a class="code" href="group___text.html#ga26">PA_CompareText</a>(PA_FSFile[i].Name, name)&amp;&amp; <a class="code" href="group___text.html#ga26">PA_CompareText</a>(PA_FSFile[i].Ext, extension)) 
+00151               <span class="keywordflow">return</span> i;
+00152 }
 00153 
-00165 s16 <a class="code" href="group___p_a_f_s.html#ga4">PA_FSSearchExt</a>(s16 *array, <span class="keywordtype">char</span> *extension);
-00166 
-00167 
-00168 
-<a name="l00180"></a><a class="code" href="group___p_a_f_s.html#ga5">00180</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___p_a_f_s.html#ga5">PA_Malloc</a>(<span class="keywordtype">void</span> **pointer, u32 size){
-00181        <span class="keywordflow">if</span> (*pointer) {
-00182               free(*pointer);
-00183        }
-00184        *pointer = (<span class="keywordtype">void</span>*)malloc(size);
-00185 }
-00186 
-00187 
-00188 
-<a name="l00203"></a><a class="code" href="group___p_a_f_s.html#ga6">00203</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___p_a_f_s.html#ga6">PA_FSBgLoad</a>(u8 screen, u8 bg_number, u32 filenumber)  {  
-00204        PA_EasyBgLoadEx(screen, bg_number, (u32*)<a class="code" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(filenumber), <a class="code" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(filenumber+3), PA_FSFile[filenumber+3].Length, <a class="code" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(filenumber+1), PA_FSFile[filenumber+1].Length, (<span class="keywordtype">void</span>*)(<a class="code" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(filenumber+2)));
-00205 }
-00206 
-00207 
-00208 
-00223 <span class="keywordtype">void</span> <a class="code" href="group___p_a_f_s.html#ga7">PA_FSBgNameLoad</a>(u8 screen, u8 bg_number, <span class="keywordtype">char</span>* bg_name);
-00224 
-00225 
-00226 
-00227 
+00154 <span class="keywordflow">return</span> -1;
+00155 }
+00156 
+00157 
+00169 s16 <a class="code" href="group___p_a_f_s.html#ga4">PA_FSSearchExt</a>(s16 *array, <span class="keywordtype">char</span> *extension);
+00170 
+00171 
+00172 
+<a name="l00184"></a><a class="code" href="group___p_a_f_s.html#ga5">00184</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___p_a_f_s.html#ga5">PA_Malloc</a>(<span class="keywordtype">void</span> **pointer, u32 size){
+00185        <span class="keywordflow">if</span> (*pointer) {
+00186               free(*pointer);
+00187        }
+00188        *pointer = (<span class="keywordtype">void</span>*)malloc(size);
+00189 }
+00190 
+00191 
+00192 
+<a name="l00207"></a><a class="code" href="group___p_a_f_s.html#ga6">00207</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group___p_a_f_s.html#ga6">PA_FSBgLoad</a>(u8 screen, u8 bg_number, u32 filenumber)  {  
+00208        PA_EasyBgLoadEx(screen, bg_number, (u32*)<a class="code" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(filenumber), <a class="code" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(filenumber+3), PA_FSFile[filenumber+3].Length, <a class="code" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(filenumber+1), PA_FSFile[filenumber+1].Length, (<span class="keywordtype">void</span>*)(<a class="code" href="group___p_a_f_s.html#ga8">PA_PAFSFile</a>(filenumber+2)));
+00209 }
+00210 
+00211 
+00212 
+00227 <span class="keywordtype">void</span> <a class="code" href="group___p_a_f_s.html#ga7">PA_FSBgNameLoad</a>(u8 screen, u8 bg_number, <span class="keywordtype">char</span>* bg_name);
 00228 
 00229 
-00230  <span class="comment">// end of PAFS</span>
+00230 
+00231 
 00232 
 00233 
-00234 <span class="preprocessor">#ifdef __cplusplus</span>
-00235 <span class="preprocessor"></span>}
-00236 <span class="preprocessor">#endif</span>
-00237 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-00238 <span class="preprocessor"></span>
-00239 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:32 2006 pour PAlib par&nbsp;
+00234  <span class="comment">// end of PAFS</span>
+00236 
+00237 
+00238 <span class="preprocessor">#ifdef __cplusplus</span>
+00239 <span class="preprocessor"></span>}
+00240 <span class="preprocessor">#endif</span>
+00241 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+00242 <span class="preprocessor"></span>
+00243 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:49 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

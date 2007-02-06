@@ -53,6 +53,7 @@ int main(int argc, char ** argv)
 	// Let's have some rotated text :p
 	// X and Y positions are taken as if the DS was turned
 	PA_SmartText(1, 1, 1, 190, 20, "Hello World", 3, 3, 3, 100);
+	PA_SmartText(1, 1, 200, 190, 220, "Hello World", 3, 3, 4, 100);	
 
 	// And a centered text, to check if it works
 	PA_CenterSmartText(1, 0, 100, 255, 120, "Hello World", 2, 4, 1); // Same as Smart text, but no letter limit

@@ -228,6 +228,11 @@ extern inline s32 PA_GifGetFrame(void){
 u8* PA_GifToTiles(void *gif, u16 *temppal);
 
 
+/** @} */ // end of Gif
+
+
+
+
 
 #ifdef __cplusplus
 }

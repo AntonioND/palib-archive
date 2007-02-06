@@ -5,13 +5,13 @@ extern "C" {
 
 #include "PA_Timer.h"
 
+
 #define TICK ((TIMER1_DATA>>5) + (TIMER2_DATA<<11))
 struct tTimeMgr gTime;
 
 void StartTime(u8 bNew)
 {
 	struct tTimer * pTimer = &(gTime.rBank[0]);
-	ASSERT(pTimer != NULL);
 
 	pTimer->bRunning = true;
 
@@ -35,7 +35,7 @@ void StartTime(u8 bNew)
 void PauseTime()
 {
 	struct tTimer * pTimer = &(gTime.rBank[0]);
-	ASSERT(pTimer != NULL);
+//	ASSERT(pTimer != NULL);
 
 	pTimer->bRunning = false;
 
@@ -45,10 +45,10 @@ u8	NewTimer(u8 bStarted)
 {
 	struct tTimer * pTimer = NULL;
 
-	ASSERT(gTime.nCount < TIME_MGR_CAPACITY-1);
+//	ASSERT(gTime.nCount < TIME_MGR_CAPACITY-1);
 
 	pTimer = &(gTime.rBank[gTime.nCount]);
-	ASSERT(pTimer != NULL);
+//	ASSERT(pTimer != NULL);
 
 	pTimer->bRunning = bStarted;
 	pTimer->nRefTick = 0;
@@ -62,7 +62,7 @@ u8	NewTimer(u8 bStarted)
 void	StartTimer(u8 nTimerId)
 {
 	struct tTimer * pTimer = &(gTime.rBank[nTimerId]);
-	ASSERT(pTimer != NULL);
+//	ASSERT(pTimer != NULL);
 
 	pTimer->bRunning = true;
 	pTimer->nRefTick = TICK-pTimer->nRefTick;
@@ -71,7 +71,7 @@ void	StartTimer(u8 nTimerId)
 u32	Tick(u8	nTimerId)
 {
 	struct tTimer * pTimer = &(gTime.rBank[nTimerId]);
-	ASSERT(pTimer != NULL);
+//	ASSERT(pTimer != NULL);
 
 	if (pTimer->bRunning == true)
 		return TICK-pTimer->nRefTick;
@@ -82,7 +82,7 @@ u32	Tick(u8	nTimerId)
 void PauseTimer(u8 nTimerId)
 {
 	struct tTimer * pTimer = &(gTime.rBank[nTimerId]);
-	ASSERT(pTimer != NULL);
+//	ASSERT(pTimer != NULL);
 
 	pTimer->nPauseTick = TICK;
 
@@ -92,7 +92,7 @@ void PauseTimer(u8 nTimerId)
 void UnpauseTimer(u8 nTimerId)
 {
 	struct tTimer * pTimer = &(gTime.rBank[nTimerId]);
-	ASSERT(pTimer != NULL);
+//	ASSERT(pTimer != NULL);
 
 
 	pTimer->nRefTick += TICK - pTimer->nPauseTick;
@@ -103,7 +103,7 @@ void UnpauseTimer(u8 nTimerId)
 void ResetTimer(u8 nTimerId)
 {
 	struct tTimer * pTimer = &(gTime.rBank[nTimerId]);
-	ASSERT(pTimer != NULL);
+//	ASSERT(pTimer != NULL);
 
 	pTimer->nRefTick = TICK;
 }

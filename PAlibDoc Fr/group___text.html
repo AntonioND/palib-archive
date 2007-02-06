@@ -9,15 +9,18 @@
 <h1>Text output system</h1><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Macros</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga20">PA_SetTileLetter</a>(screen, x, y, letter)&nbsp;&nbsp;&nbsp;PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga22">PA_SetTileLetter</a>(screen, x, y, letter)&nbsp;&nbsp;&nbsp;PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire une lettre à l'écran.  <a href="#ga20"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga21">PA_InitCustomText</a>(screen, bg_select, text)&nbsp;&nbsp;&nbsp;PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire une lettre à l'écran.  <a href="#ga22"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga23">PA_InitCustomText</a>(screen, bg_select, text)&nbsp;&nbsp;&nbsp;PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le texte en utilisant une police perso  <a href="#ga21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga22">PA_ShowFont</a>(screen)&nbsp;&nbsp;&nbsp;PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le texte en utilisant une police perso  <a href="#ga23"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga24">PA_ShowFont</a>(screen)&nbsp;&nbsp;&nbsp;PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret autrement  <a href="#ga22"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret autrement  <a href="#ga24"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga25">PA_8bitCustomFont</a>(bit8_slot, bit8_font)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajouter une police perso dans le systeme de texte 8bit !! Doit être convertie avec PAGfx  <a href="#ga25"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga0">PA_InitText</a> (u8 screen, u8 bg_select)</td></tr>
 
@@ -61,31 +64,82 @@ u32&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_BoxText</b> (u8 scr
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga13">PA_ClearTextBg</a> (u8 screen)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer tout le texte sur un écran donné  <a href="#ga13"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga14" doxytag="Text::PA_OutputTextSpecial0"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga14">PA_Print</a> (u8 screen, char *text,...)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte à l'écran. Marche comme la fonction printf  <a href="#ga14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga15">PA_PrintLetter</a> (u8 screen, char letter)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comme PA_Print, mais juste pour une lettre  <a href="#ga15"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga16" doxytag="Text::PA_OutputTextSpecial0"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial0</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga15" doxytag="Text::PA_OutputTextSpecial1"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="Text::PA_OutputTextSpecial1"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial1</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga16" doxytag="Text::PA_OutputTextSpecial2"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="Text::PA_OutputTextSpecial2"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial2</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga17" doxytag="Text::PA_OutputTextSpecial3"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="Text::PA_OutputTextSpecial3"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial3</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga18" doxytag="Text::PA_OutputTextSpecial4"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga20" doxytag="Text::PA_OutputTextSpecial4"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial4</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga19" doxytag="Text::PA_OutputTextSpecial5"></a>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="ga21" doxytag="Text::PA_OutputTextSpecial5"></a>
 void&nbsp;</td><td class="memItemRight" valign="bottom"><b>PA_OutputTextSpecial5</b> (u8 screen, int x1, int y, char *text)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga23">PA_CompareText</a> (char *text1, char *text2)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___text.html#ga26">PA_CompareText</a> (char *text1, char *text2)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comparer une chaine de caractère à une autre. Exemple : PA_CompareText(Playname, "Mollusk");  <a href="#ga23"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comparer une chaine de caractère à une autre. Exemple : PA_CompareText(Playname, "Mollusk");  <a href="#ga26"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Description détaillée</h2>
 Allows you to output text... <hr><h2>Documentation des macro</h2>
-<a class="anchor" name="ga21" doxytag="PA_Text.h::PA_InitCustomText"></a><p>
+<a class="anchor" name="ga25" doxytag="PA_Text.h::PA_8bitCustomFont"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">#define PA_8bitCustomFont          </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">bit8_slot,         <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>bit8_font&nbsp;</td>
+          <td class="mdname1" valign="top" nowrap>          </td>
+          <td class="md" valign="top">&nbsp;)&nbsp;</td>
+          <td class="md" nowrap></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+<b>Valeur:</b><div class="fragment"><pre class="fragment">{\
+       text_maps[bit8_slot] = (u16*)(<span class="keywordtype">void</span>*)bit8_font##_Map;           \
+       text_tiles[bit8_slot] = (u8*)bit8_font##_Tiles;  \
+       pa8bitdefaultsize[bit8_slot] = (u8*)bit8_font##_Sizes;  \
+       police8bitheight[bit8_slot] = bit8_font##_Height;\
+}
+</pre></div>Ajouter une police perso dans le systeme de texte 8bit !! Doit être convertie avec PAGfx 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bit8_slot</em>&nbsp;</td><td>Slot pour ajouter la police. Les slots 0-4 sont utilisés pour les polices par défaut de PAlib, et 5-9 sont libres. On peut néanmoins charger par-dessus les polices PAlib si on veut </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bit8_font</em>&nbsp;</td><td>Nom de la police... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga23" doxytag="PA_Text.h::PA_InitCustomText"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -128,7 +182,7 @@ Initialiser le texte en utilisant une police perso
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga20" doxytag="PA_Text.h::PA_SetTileLetter"></a><p>
+<a class="anchor" name="ga22" doxytag="PA_Text.h::PA_SetTileLetter"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -175,7 +229,7 @@ Ecrire une lettre à l'écran.
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga22" doxytag="PA_Text.h::PA_ShowFont"></a><p>
+<a class="anchor" name="ga24" doxytag="PA_Text.h::PA_ShowFont"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -391,12 +445,12 @@ En gros la meme chose que SmartText, mais en centré...
     <td class="mdRow">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td class="md" nowrap valign="top">inline void PA_ClearTextBg           </td>
+          <td class="md" nowrap valign="top">void PA_ClearTextBg           </td>
           <td class="md" valign="top">(&nbsp;</td>
           <td class="md" nowrap valign="top">u8&nbsp;</td>
           <td class="mdname1" valign="top" nowrap> <em>screen</em>          </td>
           <td class="md" valign="top">&nbsp;)&nbsp;</td>
-          <td class="md" nowrap><code> [inline]</code></td>
+          <td class="md" nowrap></td>
         </tr>
       </table>
     </td>
@@ -420,7 +474,7 @@ Effacer tout le texte sur un écran donné
     </td>
   </tr>
 </table>
-<a class="anchor" name="ga23" doxytag="PA_GBFS.h::PA_CompareText"></a><p>
+<a class="anchor" name="ga26" doxytag="PA_GBFS.h::PA_CompareText"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
     <td class="mdRow">
@@ -780,6 +834,102 @@ Ecrire du texte à l'écran. Ne marche qu'en modes 0-2
     </td>
   </tr>
 </table>
+<a class="anchor" name="ga14" doxytag="PA_Text.h::PA_Print"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">void PA_Print           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char *&nbsp;</td>
+          <td class="mdname" nowrap> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>&nbsp;</td>
+          <td class="mdname" nowrap> <em>...</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Ecrire du texte à l'écran. Marche comme la fonction printf 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Chaine de caractère à écrire. On dispose des commandes suivantes : %s pour une autre chaine de caractères, %d pour écrire la valeur d'une variables, %fX pour afficher un nombre avec X chiffres après la virgule, \n pour aller à la ligne. Voici un exemple : PA_OutputText(0, 0, 1, "Mon nom est %s et je n'ai que %d dents...", "Mollusk", 20); </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
+<a class="anchor" name="ga15" doxytag="PA_Text.h::PA_PrintLetter"></a><p>
+<table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
+  <tr>
+    <td class="mdRow">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="md" nowrap valign="top">inline void PA_PrintLetter           </td>
+          <td class="md" valign="top">(&nbsp;</td>
+          <td class="md" nowrap valign="top">u8&nbsp;</td>
+          <td class="mdname" nowrap> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="md" nowrap align="right"></td>
+          <td class="md"></td>
+          <td class="md" nowrap>char&nbsp;</td>
+          <td class="mdname" nowrap> <em>letter</em></td>
+        </tr>
+        <tr>
+          <td class="md"></td>
+          <td class="md">)&nbsp;</td>
+          <td class="md" colspan="2"><code> [inline]</code></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table cellspacing="5" cellpadding="0" border="0">
+  <tr>
+    <td>
+      &nbsp;
+    </td>
+    <td>
+
+<p>
+Comme PA_Print, mais juste pour une lettre 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>letter</em>&nbsp;</td><td>Une lettre... </td></tr>
+  </table>
+</dl>
+    </td>
+  </tr>
+</table>
 <a class="anchor" name="ga6" doxytag="PA_Text.h::PA_SetTextCol"></a><p>
 <table class="mdTable" width="100%" cellpadding="2" cellspacing="0">
   <tr>
@@ -1037,7 +1187,7 @@ Cette fonction permet d'écrire du texte à chasse variable à l'écran. Elle nécess
     </td>
   </tr>
 </table>
-<hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:37 2006 pour PAlib par&nbsp;
+<hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:51 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

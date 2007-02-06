@@ -80,7 +80,7 @@ PREFIX			:=	arm-eabi-
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lnds9 -ldswifi9
+LIBS	:= -lfat -lnds9 -ldswifi9
 LIBSPA	:= -lpa9
  
  

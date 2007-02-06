@@ -380,11 +380,10 @@ extern inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u
          \~french Position Y du sprite
 */
 extern inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y){
-   PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, 2) + (prio << 10);// + (15 << 12);
+   PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);
    PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
    PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
 }
-
 
 
 
@@ -753,10 +752,6 @@ u8 obj_num = (rotset << 2);
 
 
 
-
-
-
-
 /*! \def PA_SetSpriteX(screen, obj, x)
     \brief
          \~english Set the X position of a sprite on screen
@@ -861,6 +856,31 @@ extern inline void PA_SetSpriteXY(u8 screen, u8 sprite, s16 x, s16 y) {
          \~french Numéro de la palette (de 0 à 15)
 */
 #define PA_SetSpritePal(screen, obj, pal) PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 & ALL_BUT_PAL) + ((pal) << 12)
+
+
+/*! \fn extern inline void PA_Set16bitSpriteAlpha(u8 screen, u8 sprite, u8 alpha)
+    \brief
+         \~english Set the X position of a sprite on screen
+         \~french Position X du sprite à l'écran
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param sprite
+         \~english Object number in the sprite system, only for 16bit sprites
+         \~french Numéro de l'objet dans le systeme de sprite, uniquement pour les sprites 16bit
+    \param alpha
+         \~english Alpha parameter, 0-15
+         \~french Paramèter alpha, 0-15
+*/
+
+
+extern inline void PA_Set16bitSpriteAlpha(u8 screen, u8 sprite, u8 alpha){
+	PA_SetSpritePal(screen, sprite, alpha&15);
+}
+
+
+
+
 
 /*! \def PA_GetSpritePal(screen, obj)
     \brief

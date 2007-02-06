@@ -261,18 +261,27 @@ extern inline u8 PA_SpriteStylusOver(u8 sprite) {
 
 
 extern inline u8 PA_SpriteTouchedPix(u8 sprite){
-s16 spritex = PA_GetSpriteX(PA_Screen, sprite);
-s16 spritey = PA_GetSpriteY(PA_Screen, sprite);
-if (spritex >= 458) spritex -=511; // normalize the X coordinate...
-if (spritey >= 220) spritey -=256; // normalize the y coordinate...
-u16 x = Stylus.X - spritex;
-u16 y = Stylus.Y - spritey;
-
-return (Stylus.Held && (x < spriteanims[PA_Screen][sprite].lx) && (y < spriteanims[PA_Screen][sprite].ly) && PA_GetSpritePixel(PA_Screen, sprite, x, y));
+	s16 spritex = PA_GetSpriteX(PA_Screen, sprite);
+	s16 spritey = PA_GetSpriteY(PA_Screen, sprite);
+	if (spritex >= 458) spritex -=511; // normalize the X coordinate...
+	if (spritey >= 220) spritey -=256; // normalize the y coordinate...
+	u16 x = Stylus.X - spritex;
+	u16 y = Stylus.Y - spritey;
+	
+	return (Stylus.Held && (x < spriteanims[PA_Screen][sprite].lx) && (y < spriteanims[PA_Screen][sprite].ly) && PA_GetSpritePixel(PA_Screen, sprite, x, y));
 }
 
 
-
+extern inline u8 PA_Sprite16cTouchedPix(u8 sprite){
+	s16 spritex = PA_GetSpriteX(PA_Screen, sprite);
+	s16 spritey = PA_GetSpriteY(PA_Screen, sprite);
+	if (spritex >= 458) spritex -=511; // normalize the X coordinate...
+	if (spritey >= 220) spritey -=256; // normalize the y coordinate...
+	u16 x = Stylus.X - spritex;
+	u16 y = Stylus.Y - spritey;
+	
+	return (Stylus.Held && (x < spriteanims[PA_Screen][sprite].lx) && (y < spriteanims[PA_Screen][sprite].ly) && PA_GetSprite16cPixel(PA_Screen, sprite, x, y));
+}
 
 /*! \def PA_StylusInZone(x1, y1, x2, y2)
     \brief

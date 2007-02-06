@@ -25,147 +25,170 @@
 00023 <span class="preprocessor"></span><span class="preprocessor">#define PA_RIEN      0    // Si y'a rien, faudra faire comme si on appuye sur rien</span>
 00024 <span class="preprocessor"></span><span class="preprocessor">#define PA_TAB       3    // tab...</span>
 00025 <span class="preprocessor"></span>
-00026 
+00026 <span class="comment">// Stylus and Pad definitions, will be used by the arm7 to auto-update positions...</span>
 00027 
-00028 <span class="keyword">extern</span> PA_Stylus Stylus;
-00029 
-00030 <span class="keyword">extern</span> Pads Pad;
-00031 <span class="keyword">extern</span> PA_Pad* PadPointer;
-00032 
-00033 <span class="comment">// Structure pour les sprites que l'on déplace...</span>
-00034 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
-00035        u8 Moving;
-00036        u8 Sprite;
-00037        s16 X, Y, Vx, Vy, NextVx, NextVy;
-00038        u8 Time; <span class="comment">// Si trop longtemps sans bouger le sprite, il décroche...</span>
-00039 } PA_movingsprite;
+00028 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00029    u8 A, B, X, Y, L, R, Up, Down, Right, Left, Start, Select, Anykey;
+00030 } PA_Pad;
+00031 
+00032 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00033    PA_Pad Held, Released, Newpress; <span class="comment">// Pressed si on appuye, Held si on garde appuyé, et Released si on relache</span>
+00034 } Pads;
+00035 
+00036 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00037    u8 Held, Released, Newpress, Newpress0;
+00038    s16 X, Y, altX, altY, Pressure, Vx, Vy, oldVx, oldVy, Downtime, Uptime, DblClick;
+00039 } PA_Stylus;
 00040 
-00041 <span class="keyword">extern</span> PA_movingsprite PA_MovedSprite;
-00042 
-00043 <span class="keyword">extern</span> u8 PA_MoveSpriteType; 
-00044 
-00045 
-00046 <span class="comment">// Button info</span>
-00047 
-00048 
-00049 
-00050 
-00051 
-00052 <span class="comment">/*</span>
-00053 <span class="comment">#define PA_UpdatePad() ExPad = CompletePad;\</span>
-00054 <span class="comment">   CompletePad = ~(BUTTONS + (((IPC-&gt;buttons)&amp;3) &lt;&lt; 10));\</span>
-00055 <span class="comment">   UPDATEPAD(Pad.Held, CompletePad);\</span>
-00056 <span class="comment">   UPDATEPAD(Pad.Released, (ExPad &amp; (~CompletePad)));\</span>
-00057 <span class="comment">   UPDATEPAD(Pad.Newpress, (CompletePad &amp; (~ExPad)));</span>
-00058 <span class="comment"></span>
-00059 <span class="comment">#define PA_UpdateStylus() u8 temp = ((~IPC-&gt;buttons) &gt;&gt; 6) &amp; 1;\</span>
-00060 <span class="comment">       Stylus.Newpress = temp &amp; (!Stylus.Held);\</span>
-00061 <span class="comment">       Stylus.Released = (!temp) &amp; Stylus.Held;\</span>
-00062 <span class="comment">       Stylus.Held = temp;\</span>
-00063 <span class="comment">       if(Stylus.Held)Stylus.altX =  ((IPC-&gt;touchX - 0x0113) / 14);\</span>
-00064 <span class="comment">       if(Stylus.Held)Stylus.altY =  ((IPC-&gt;touchY - 0x00E0) / 19);\</span>
-00065 <span class="comment">       if(Stylus.Held)Stylus.X =  IPC-&gt;touchXpx;\</span>
-00066 <span class="comment">       if(Stylus.Held)Stylus.Y =  IPC-&gt;touchYpx;\</span>
-00067 <span class="comment">       if(Stylus.Held)Stylus.Pressure = (((Stylus.X * IPC-&gt;touchZ2) &gt;&gt; 6) / IPC-&gt;touchZ1) - (Stylus.X &gt;&gt; 6);</span>
-00068 <span class="comment">*/</span>
-00069 <span class="comment">//#define BUTTON_AND 16384</span>
-00070 <span class="comment">//#define BUTTON_OR 0</span>
-00071 
-00085 <span class="keywordtype">void</span> <a class="code" href="group___keys.html#ga0">PA_UpdatePad</a>(<span class="keywordtype">void</span>);
-00086 
-00087 
-00088 
-00095 <span class="keywordtype">void</span> <a class="code" href="group___keys.html#ga1">PA_UpdateStylus</a>(<span class="keywordtype">void</span>);
-00096 
-00097 
-00106 u8 <a class="code" href="group___keys.html#ga2">PA_MoveSpritePix</a>(u8 sprite);
-00107 
-00108 
-00109 
+00041 
+00042 <span class="keyword">extern</span> PA_Stylus Stylus;
+00043 
+00044 <span class="keyword">extern</span> Pads Pad;
+00045 <span class="keyword">extern</span> PA_Pad* PadPointer;
+00046 
+00047 <span class="comment">// Structure pour les sprites que l'on déplace...</span>
+00048 <span class="keyword">typedef</span> <span class="keyword">struct </span>{
+00049        u8 Moving;
+00050        u8 Sprite;
+00051        s16 X, Y, Vx, Vy, NextVx, NextVy;
+00052        u8 Time; <span class="comment">// Si trop longtemps sans bouger le sprite, il décroche...</span>
+00053 } PA_movingsprite;
+00054 
+00055 <span class="keyword">extern</span> PA_movingsprite PA_MovedSprite;
+00056 
+00057 <span class="keyword">extern</span> u8 PA_MoveSpriteType; 
+00058 
+00059 
+00060 <span class="comment">// Button info</span>
+00061 
+00062 
+00063 
+00064 
+00065 
+00066 <span class="comment">/*</span>
+00067 <span class="comment">#define PA_UpdatePad() ExPad = CompletePad;\</span>
+00068 <span class="comment">   CompletePad = ~(BUTTONS + (((IPC-&gt;buttons)&amp;3) &lt;&lt; 10));\</span>
+00069 <span class="comment">   UPDATEPAD(Pad.Held, CompletePad);\</span>
+00070 <span class="comment">   UPDATEPAD(Pad.Released, (ExPad &amp; (~CompletePad)));\</span>
+00071 <span class="comment">   UPDATEPAD(Pad.Newpress, (CompletePad &amp; (~ExPad)));</span>
+00072 <span class="comment"></span>
+00073 <span class="comment">#define PA_UpdateStylus() u8 temp = ((~IPC-&gt;buttons) &gt;&gt; 6) &amp; 1;\</span>
+00074 <span class="comment">       Stylus.Newpress = temp &amp; (!Stylus.Held);\</span>
+00075 <span class="comment">       Stylus.Released = (!temp) &amp; Stylus.Held;\</span>
+00076 <span class="comment">       Stylus.Held = temp;\</span>
+00077 <span class="comment">       if(Stylus.Held)Stylus.altX =  ((IPC-&gt;touchX - 0x0113) / 14);\</span>
+00078 <span class="comment">       if(Stylus.Held)Stylus.altY =  ((IPC-&gt;touchY - 0x00E0) / 19);\</span>
+00079 <span class="comment">       if(Stylus.Held)Stylus.X =  IPC-&gt;touchXpx;\</span>
+00080 <span class="comment">       if(Stylus.Held)Stylus.Y =  IPC-&gt;touchYpx;\</span>
+00081 <span class="comment">       if(Stylus.Held)Stylus.Pressure = (((Stylus.X * IPC-&gt;touchZ2) &gt;&gt; 6) / IPC-&gt;touchZ1) - (Stylus.X &gt;&gt; 6);</span>
+00082 <span class="comment">*/</span>
+00083 <span class="comment">//#define BUTTON_AND 16384</span>
+00084 <span class="comment">//#define BUTTON_OR 0</span>
+00085 
+00099 <span class="keywordtype">void</span> <a class="code" href="group___keys.html#ga0">PA_UpdatePad</a>(<span class="keywordtype">void</span>);
+00100 
+00101 
+00102 
+00109 <span class="keywordtype">void</span> <a class="code" href="group___keys.html#ga1">PA_UpdateStylus</a>(<span class="keywordtype">void</span>);
 00110 
 00111 
-00112 
-00113 
-<a name="l00122"></a><a class="code" href="group___keys.html#ga10">00122</a> <span class="preprocessor">#define PA_MoveSprite(sprite) PA_MoveSpriteEx(PA_Screen, sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteLy(0, sprite))</span>
-00123 <span class="preprocessor"></span>
+00120 u8 <a class="code" href="group___keys.html#ga2">PA_MoveSpritePix</a>(u8 sprite);
+00121 
+00122 
+00123 
 00124 
 00125 
-00143 u8 <a class="code" href="group___keys.html#ga3">PA_MoveSpriteEx</a>(u8 screen, u8 sprite, u8 lx, u8 ly);
-00144 
-00145 
-<a name="l00157"></a><a class="code" href="group___keys.html#ga4">00157</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga4">PA_MoveSpriteDistance</a>(u8 sprite, u8 distance){
-00158        PA_MoveSpriteType = 1; <span class="comment">// mode distance</span>
-00159        u8 touched = <a class="code" href="group___keys.html#ga3">PA_MoveSpriteEx</a>(PA_Screen, sprite, distance, distance);
-00160        PA_MoveSpriteType = 0; <span class="comment">// normal mode</span>
-00161        <span class="keywordflow">return</span> touched;
-00162 }
-00163 <span class="comment">/*</span>
-00170 <span class="comment">extern inline void PA_UpdateMoveSprite(void) {</span>
-00171 <span class="comment">       PA_MovedSprite.Time++;</span>
-00172 <span class="comment">       if ((PA_MovedSprite.Time &gt; 2) || Stylus.Released) {</span>
-00173 <span class="comment">              PA_MovedSprite.Moving = 0;</span>
-00174 <span class="comment">              PA_MovedSprite.Time = 0;</span>
-00175 <span class="comment">       }</span>
-00176 <span class="comment">}*/</span>
-00177 
-00178 
-<a name="l00194"></a><a class="code" href="group___keys.html#ga5">00194</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga5">PA_SpriteStylusOverEx</a>(u8 sprite, u8 lx, u8 ly){
-00195        <span class="keywordflow">return</span> ((Stylus.X &gt; <a class="code" href="group___sprite.html#ga42">PA_GetSpriteX</a>(PA_Screen, sprite)) &amp;&amp; (Stylus.X &lt; <a class="code" href="group___sprite.html#ga42">PA_GetSpriteX</a>(PA_Screen, sprite) + lx)&amp;&amp; (Stylus.Y &gt; <a class="code" href="group___sprite.html#ga44">PA_GetSpriteY</a>(PA_Screen, sprite)) &amp;&amp; (Stylus.Y &lt; <a class="code" href="group___sprite.html#ga44">PA_GetSpriteY</a>(PA_Screen, sprite) + ly));
-00196 }
-00197 
-00198 
-00199 
-<a name="l00215"></a><a class="code" href="group___keys.html#ga6">00215</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga6">PA_SpriteTouchedEx</a>(u8 sprite, u8 lx, u8 ly){
-00216        <span class="keywordflow">return</span> (Stylus.Held &amp;&amp; <a class="code" href="group___keys.html#ga5">PA_SpriteStylusOverEx</a>(sprite, lx, ly));
-00217 }
-00218 
-00219 
-00220 
-<a name="l00229"></a><a class="code" href="group___keys.html#ga7">00229</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga7">PA_SpriteTouched</a>(u8 sprite) {
-00230        <span class="keywordflow">return</span> <a class="code" href="group___keys.html#ga6">PA_SpriteTouchedEx</a>(sprite, <a class="code" href="group___sprite.html#ga63">PA_GetSpriteLx</a>(PA_Screen, sprite), <a class="code" href="group___sprite.html#ga64">PA_GetSpriteLy</a>(PA_Screen, sprite));
+00126 
+00127 
+<a name="l00136"></a><a class="code" href="group___keys.html#ga11">00136</a> <span class="preprocessor">#define PA_MoveSprite(sprite) PA_MoveSpriteEx(PA_Screen, sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteLy(0, sprite))</span>
+00137 <span class="preprocessor"></span>
+00138 
+00139 
+00157 u8 <a class="code" href="group___keys.html#ga3">PA_MoveSpriteEx</a>(u8 screen, u8 sprite, u8 lx, u8 ly);
+00158 
+00159 
+<a name="l00171"></a><a class="code" href="group___keys.html#ga4">00171</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga4">PA_MoveSpriteDistance</a>(u8 sprite, u8 distance){
+00172        PA_MoveSpriteType = 1; <span class="comment">// mode distance</span>
+00173        u8 touched = <a class="code" href="group___keys.html#ga3">PA_MoveSpriteEx</a>(PA_Screen, sprite, distance, distance);
+00174        PA_MoveSpriteType = 0; <span class="comment">// normal mode</span>
+00175        <span class="keywordflow">return</span> touched;
+00176 }
+00177 <span class="comment">/*</span>
+00184 <span class="comment">extern inline void PA_UpdateMoveSprite(void) {</span>
+00185 <span class="comment">       PA_MovedSprite.Time++;</span>
+00186 <span class="comment">       if ((PA_MovedSprite.Time &gt; 2) || Stylus.Released) {</span>
+00187 <span class="comment">              PA_MovedSprite.Moving = 0;</span>
+00188 <span class="comment">              PA_MovedSprite.Time = 0;</span>
+00189 <span class="comment">       }</span>
+00190 <span class="comment">}*/</span>
+00191 
+00192 
+<a name="l00208"></a><a class="code" href="group___keys.html#ga5">00208</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga5">PA_SpriteStylusOverEx</a>(u8 sprite, u8 lx, u8 ly){
+00209        <span class="keywordflow">return</span> ((Stylus.X &gt; <a class="code" href="group___sprite.html#ga44">PA_GetSpriteX</a>(PA_Screen, sprite)) &amp;&amp; (Stylus.X &lt; <a class="code" href="group___sprite.html#ga44">PA_GetSpriteX</a>(PA_Screen, sprite) + lx)&amp;&amp; (Stylus.Y &gt; <a class="code" href="group___sprite.html#ga46">PA_GetSpriteY</a>(PA_Screen, sprite)) &amp;&amp; (Stylus.Y &lt; <a class="code" href="group___sprite.html#ga46">PA_GetSpriteY</a>(PA_Screen, sprite) + ly));
+00210 }
+00211 
+00212 
+00213 
+<a name="l00229"></a><a class="code" href="group___keys.html#ga6">00229</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga6">PA_SpriteTouchedEx</a>(u8 sprite, u8 lx, u8 ly){
+00230        <span class="keywordflow">return</span> (Stylus.Held &amp;&amp; <a class="code" href="group___keys.html#ga5">PA_SpriteStylusOverEx</a>(sprite, lx, ly));
 00231 }
 00232 
 00233 
 00234 
-<a name="l00243"></a><a class="code" href="group___keys.html#ga8">00243</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga8">PA_SpriteStylusOver</a>(u8 sprite) {
-00244        <span class="keywordflow">return</span> <a class="code" href="group___keys.html#ga5">PA_SpriteStylusOverEx</a>(sprite, <a class="code" href="group___sprite.html#ga63">PA_GetSpriteLx</a>(PA_Screen, sprite), <a class="code" href="group___sprite.html#ga64">PA_GetSpriteLy</a>(PA_Screen, sprite));
+<a name="l00243"></a><a class="code" href="group___keys.html#ga7">00243</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga7">PA_SpriteTouched</a>(u8 sprite) {
+00244        <span class="keywordflow">return</span> <a class="code" href="group___keys.html#ga6">PA_SpriteTouchedEx</a>(sprite, <a class="code" href="group___sprite.html#ga65">PA_GetSpriteLx</a>(PA_Screen, sprite), <a class="code" href="group___sprite.html#ga66">PA_GetSpriteLy</a>(PA_Screen, sprite));
 00245 }
 00246 
 00247 
 00248 
-00249 <span class="keyword">extern</span> <span class="keyword">inline</span> u8 PA_SpriteTouchedPix(u8 sprite){
-00250 s16 spritex = <a class="code" href="group___sprite.html#ga42">PA_GetSpriteX</a>(PA_Screen, sprite);
-00251 s16 spritey = <a class="code" href="group___sprite.html#ga44">PA_GetSpriteY</a>(PA_Screen, sprite);
-00252 <span class="keywordflow">if</span> (spritex &gt;= 458) spritex -=511; <span class="comment">// normalize the X coordinate...</span>
-00253 <span class="keywordflow">if</span> (spritey &gt;= 220) spritey -=256; <span class="comment">// normalize the y coordinate...</span>
-00254 u16 x = Stylus.X - spritex;
-00255 u16 y = Stylus.Y - spritey;
-00256 
-00257 <span class="keywordflow">return</span> (Stylus.Held &amp;&amp; (x &lt; spriteanims[PA_Screen][sprite].lx) &amp;&amp; (y &lt; spriteanims[PA_Screen][sprite].ly) &amp;&amp; <a class="code" href="group___sprite.html#ga31">PA_GetSpritePixel</a>(PA_Screen, sprite, x, y));
-00258 }
-00259 
+<a name="l00257"></a><a class="code" href="group___keys.html#ga8">00257</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group___keys.html#ga8">PA_SpriteStylusOver</a>(u8 sprite) {
+00258        <span class="keywordflow">return</span> <a class="code" href="group___keys.html#ga5">PA_SpriteStylusOverEx</a>(sprite, <a class="code" href="group___sprite.html#ga65">PA_GetSpriteLx</a>(PA_Screen, sprite), <a class="code" href="group___sprite.html#ga66">PA_GetSpriteLy</a>(PA_Screen, sprite));
+00259 }
 00260 
 00261 
 00262 
-<a name="l00280"></a><a class="code" href="group___keys.html#ga11">00280</a> <span class="preprocessor">#define PA_StylusInZone(x1, y1, x2, y2) ((Stylus.X&gt;=x1)&amp;&amp;(Stylus.Y&gt;=y1)&amp;&amp;(Stylus.X&lt;x2)&amp;&amp;(Stylus.Y&lt;y2))</span>
-00281 <span class="preprocessor"></span> <span class="comment">// end of Keys</span>
-00283 
-00284 
+00263 <span class="keyword">extern</span> <span class="keyword">inline</span> u8 PA_SpriteTouchedPix(u8 sprite){
+00264        s16 spritex = <a class="code" href="group___sprite.html#ga44">PA_GetSpriteX</a>(PA_Screen, sprite);
+00265        s16 spritey = <a class="code" href="group___sprite.html#ga46">PA_GetSpriteY</a>(PA_Screen, sprite);
+00266        <span class="keywordflow">if</span> (spritex &gt;= 458) spritex -=511; <span class="comment">// normalize the X coordinate...</span>
+00267        <span class="keywordflow">if</span> (spritey &gt;= 220) spritey -=256; <span class="comment">// normalize the y coordinate...</span>
+00268        u16 x = Stylus.X - spritex;
+00269        u16 y = Stylus.Y - spritey;
+00270        
+00271        <span class="keywordflow">return</span> (Stylus.Held &amp;&amp; (x &lt; spriteanims[PA_Screen][sprite].lx) &amp;&amp; (y &lt; spriteanims[PA_Screen][sprite].ly) &amp;&amp; <a class="code" href="group___sprite.html#ga32">PA_GetSpritePixel</a>(PA_Screen, sprite, x, y));
+00272 }
+00273 
+00274 
+00275 <span class="keyword">extern</span> <span class="keyword">inline</span> u8 PA_Sprite16cTouchedPix(u8 sprite){
+00276        s16 spritex = <a class="code" href="group___sprite.html#ga44">PA_GetSpriteX</a>(PA_Screen, sprite);
+00277        s16 spritey = <a class="code" href="group___sprite.html#ga46">PA_GetSpriteY</a>(PA_Screen, sprite);
+00278        <span class="keywordflow">if</span> (spritex &gt;= 458) spritex -=511; <span class="comment">// normalize the X coordinate...</span>
+00279        <span class="keywordflow">if</span> (spritey &gt;= 220) spritey -=256; <span class="comment">// normalize the y coordinate...</span>
+00280        u16 x = Stylus.X - spritex;
+00281        u16 y = Stylus.Y - spritey;
+00282        
+00283        <span class="keywordflow">return</span> (Stylus.Held &amp;&amp; (x &lt; spriteanims[PA_Screen][sprite].lx) &amp;&amp; (y &lt; spriteanims[PA_Screen][sprite].ly) &amp;&amp; <a class="code" href="group___sprite.html#ga33">PA_GetSprite16cPixel</a>(PA_Screen, sprite, x, y));
+00284 }
 00285 
-00286 
-00287 
-00288 
-00289 
-00290 
-00291 
-00292 
-00293 
-00294 
-00295 <span class="preprocessor">#ifdef __cplusplus</span>
-00296 <span class="preprocessor"></span>}
-00297 <span class="preprocessor">#endif</span>
-00298 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:32 2006 pour PAlib par&nbsp;
+<a name="l00303"></a><a class="code" href="group___keys.html#ga12">00303</a> <span class="preprocessor">#define PA_StylusInZone(x1, y1, x2, y2) ((Stylus.X&gt;=x1)&amp;&amp;(Stylus.Y&gt;=y1)&amp;&amp;(Stylus.X&lt;x2)&amp;&amp;(Stylus.Y&lt;y2))</span>
+00304 <span class="preprocessor"></span> <span class="comment">// end of Keys</span>
+00306 
+00307 
+00308 
+00309 
+00310 
+00311 
+00312 
+00313 
+00314 
+00315 
+00316 
+00317 
+00318 <span class="preprocessor">#ifdef __cplusplus</span>
+00319 <span class="preprocessor"></span>}
+00320 <span class="preprocessor">#endif</span>
+00321 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:49 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>

@@ -2,11 +2,13 @@
 // 05/08/05 - Created.
 // ----------------------
 
-#include <nds.h>
+#include <NDS.h>
 #include <string.h>
 
 #include "ModFile.h"
 #include "Sound7.h"
+
+inline void ASSERT(bool x) { }
 
 // ----- Constants -----
 
@@ -41,8 +43,8 @@ static void LoadSamples		(MODFILE_LOAD_VARS *vars);
 static void LoadOrders		(MODFILE_LOAD_VARS *vars);
 static void LoadPatterns	(MODFILE_LOAD_VARS *vars);
 static void LoadSampleDatas	(MODFILE_LOAD_VARS *vars);
-u32 NoteBinarySearch		(u32 period, u32 min, u32 max) CODE_IN_IWRAM;
-u32 FindClosestNote			(u32 period) CODE_IN_IWRAM;
+u32 NoteBinarySearch		(u32 period, u32 min, u32 max);
+u32 FindClosestNote			(u32 period);
 
 
 // ----- Global functions -----
@@ -66,7 +68,7 @@ u32 ModFileLoad(const void *modFile, MOD *dest, void *memPool, u32 memPoolSize)
 	}
 	else if(!memcmp(vars.src + 1, "CHN", 3))
 	{
-		ASSERT(src[0] >= '0' && vars.src[0] <= '9');
+		ASSERT(vars.src[0] >= '0' && vars.src[0] <= '9');
 		vars.dest->channelCount = vars.src[0] - '0';
 	}
 	else if(!memcmp(vars.src + 2, "CH", 2))
@@ -258,7 +260,7 @@ static void LoadSampleDatas(MODFILE_LOAD_VARS *vars)
 
 // ----- Helpers -----
 
-u32 CODE_IN_IWRAM NoteBinarySearch(u32 period, u32 min, u32 max)
+u32 NoteBinarySearch(u32 period, u32 min, u32 max)
 {
 	if(min == max - 1)
 		return min;
@@ -268,7 +270,7 @@ u32 CODE_IN_IWRAM NoteBinarySearch(u32 period, u32 min, u32 max)
 		return NoteBinarySearch(period, (min + max) >> 1, max);
 }
 
-u32 CODE_IN_IWRAM FindClosestNote(u32 period)
+u32 FindClosestNote(u32 period)
 {
 	u32 note = NoteBinarySearch(period, 0, 12*5);
 

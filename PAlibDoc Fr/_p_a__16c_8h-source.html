@@ -36,272 +36,305 @@
 00034 
 00035 <span class="preprocessor">#define PA_LoadPal16c(palette, source)   DMA_Copy(source, (void*)palette, 16, DMA_16NOW);</span>
 00036 <span class="preprocessor"></span><span class="preprocessor">#define PA_16cPos(x, y) (((x&gt;&gt;3)*26*8) + y + 8)</span>
-00037 <span class="preprocessor"></span>
-00038        <span class="keyword">extern</span> <span class="keyword">const</span> u8 c16_policeheight[5];
-00039        <span class="keyword">extern</span> <span class="keyword">const</span> u8 c16_policesize[5][96];
-00040        <span class="keyword">extern</span> u32 *c16_font[5];
-00041 
-00042 ALWAYSINLINE <span class="keywordtype">void</span> PA_Plot8Pixels(u8 screen, u16 pos, u16 temp, u32 color){
-00043    PA_Draw1632[screen][pos] |= (color&lt;&lt;temp);
-00044    PA_Draw1632[screen][pos+(26*8)] |= (color&gt;&gt;(32-temp));   
-00045 }  
-00046 
-00047 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c16X16Letter(u8 screen, s16 x, s16 y, u32 *image, u8 color){  
-00048    
-00049    x += 8; y += 8;
-00050 
-00051    u16 temp = (x&amp;7)&lt;&lt;2;
-00052    u16 pos = PA_16cPos(x, y);
-00053    u8 i;
-00054    <span class="keywordflow">for</span> (i = 0; i &lt; 2; i++){
-00055           PA_Plot8Pixels(screen, pos, temp, image[0]*color);
-00056           PA_Plot8Pixels(screen, pos+1, temp, image[1]*color);
-00057           PA_Plot8Pixels(screen, pos+2, temp, image[2]*color);
-00058           PA_Plot8Pixels(screen, pos+3, temp, image[3]*color);
-00059           PA_Plot8Pixels(screen, pos+4, temp, image[4]*color);
-00060           PA_Plot8Pixels(screen, pos+5, temp, image[5]*color);
-00061           PA_Plot8Pixels(screen, pos+6, temp, image[6]*color); 
-00062           PA_Plot8Pixels(screen, pos+7, temp, image[7]*color);
-00063           PA_Plot8Pixels(screen, pos+8, temp, image[16]*color);
-00064           PA_Plot8Pixels(screen, pos+9, temp, image[17]*color); 
-00065           PA_Plot8Pixels(screen, pos+10, temp, image[18]*color);  
-00066           PA_Plot8Pixels(screen, pos+11, temp, image[19]*color);
-00067           PA_Plot8Pixels(screen, pos+12, temp, image[20]*color);
-00068           PA_Plot8Pixels(screen, pos+13, temp, image[21]*color);
-00069           PA_Plot8Pixels(screen, pos+14, temp, image[22]*color);
-00070           PA_Plot8Pixels(screen, pos+15, temp, image[23]*color);                
-00071           pos+=26*8;
-00072           image+=8;     
-00073        }
-00074 }  
-00075 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c8X8Letter(u8 screen, s16 x, s16 y, u32 *image, u8 color){  
-00076    x += 8; y += 8;
-00077    u16 temp = (x&amp;7)&lt;&lt;2;
-00078    u16 pos = PA_16cPos(x, y);
-00079    PA_Draw1632[screen][pos] |= (image[0]&lt;&lt;temp)*color;
-00080    PA_Draw1632[screen][pos+1] |= (image[1]&lt;&lt;temp)*color;
-00081    PA_Draw1632[screen][pos+2] |= (image[2]&lt;&lt;temp)*color;
-00082    PA_Draw1632[screen][pos+3] |= (image[3]&lt;&lt;temp)*color;
-00083    PA_Draw1632[screen][pos+4] |= (image[4]&lt;&lt;temp)*color;   
-00084    PA_Draw1632[screen][pos+5] |= (image[5]&lt;&lt;temp)*color;
-00085    PA_Draw1632[screen][pos+6] |= (image[6]&lt;&lt;temp)*color;
-00086    PA_Draw1632[screen][pos+7] |= (image[7]&lt;&lt;temp)*color;  
-00087    pos += (26*8); <span class="comment">// Next columns</span>
-00088    temp = 32-temp;
-00089    PA_Draw1632[screen][pos] |= (image[0]&gt;&gt;temp)*color;
-00090    PA_Draw1632[screen][pos+1] |= (image[1]&gt;&gt;temp)*color;
-00091    PA_Draw1632[screen][pos+2] |= (image[2]&gt;&gt;temp)*color;
-00092    PA_Draw1632[screen][pos+3] |= (image[3]&gt;&gt;temp)*color;
-00093    PA_Draw1632[screen][pos+4] |= (image[4]&gt;&gt;temp)*color;   
-00094    PA_Draw1632[screen][pos+5] |= (image[5]&gt;&gt;temp)*color;
-00095    PA_Draw1632[screen][pos+6] |= (image[6]&gt;&gt;temp)*color;
-00096    PA_Draw1632[screen][pos+7] |= (image[7]&gt;&gt;temp)*color;      
-00097 }  
-00098 
-00099 
-00118 <span class="keywordtype">void</span> PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette);
-00119 
-00120 
-00121 
-<a name="l00133"></a><a class="code" href="group__c.html#ga1">00133</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga1">PA_Init16cBg</a>(u8 screen, u8 bg){
-00134        PA_Init16cBgEx(screen, bg, 0);
-00135 }
-00136 
-00137 
-00138 
-00139 
-00140 
-<a name="l00149"></a><a class="code" href="group__c.html#ga2">00149</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga2">PA_16cErase</a>(u8 screen){
-00150        DMA_Copy(Blank, PA_Draw1632[screen], 26*8*34, DMA_32NOW)
-00151 }
-00152 
+00037 <span class="preprocessor"></span>ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga9">PA_16c8X8</a>(u8 screen, s16 x, s16 y, u32 *image);
+00038 
+00039        <span class="keyword">extern</span> u32 *c16_tiles[10];
+00040        <span class="keyword">extern</span> u16 *c16_maps[10];
+00041        <span class="keyword">extern</span> u8 *pa16cdefaultsize[10];
+00042        <span class="keyword">extern</span> u8 c16policeheight[10];
+00043        
+00044 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c8X8Color(u8 screen, s16 x, s16 y, u32 *image, u8 color){  
+00045    x += 8; y += 8;
+00046    u16 temp = (x&amp;7)&lt;&lt;2;
+00047    u16 pos = PA_16cPos(x, y);
+00048    PA_Draw1632[screen][pos] |= (image[0]&lt;&lt;temp)*color;
+00049    PA_Draw1632[screen][pos+1] |= (image[1]&lt;&lt;temp)*color;
+00050    PA_Draw1632[screen][pos+2] |= (image[2]&lt;&lt;temp)*color;
+00051    PA_Draw1632[screen][pos+3] |= (image[3]&lt;&lt;temp)*color;
+00052    PA_Draw1632[screen][pos+4] |= (image[4]&lt;&lt;temp)*color;   
+00053    PA_Draw1632[screen][pos+5] |= (image[5]&lt;&lt;temp)*color;
+00054    PA_Draw1632[screen][pos+6] |= (image[6]&lt;&lt;temp)*color;
+00055    PA_Draw1632[screen][pos+7] |= (image[7]&lt;&lt;temp)*color;  
+00056    pos += (26*8); <span class="comment">// Next columns</span>
+00057    temp = 32-temp;
+00058    PA_Draw1632[screen][pos] |= (image[0]&gt;&gt;temp)*color;
+00059    PA_Draw1632[screen][pos+1] |= (image[1]&gt;&gt;temp)*color;
+00060    PA_Draw1632[screen][pos+2] |= (image[2]&gt;&gt;temp)*color;
+00061    PA_Draw1632[screen][pos+3] |= (image[3]&gt;&gt;temp)*color;
+00062    PA_Draw1632[screen][pos+4] |= (image[4]&gt;&gt;temp)*color;   
+00063    PA_Draw1632[screen][pos+5] |= (image[5]&gt;&gt;temp)*color;
+00064    PA_Draw1632[screen][pos+6] |= (image[6]&gt;&gt;temp)*color;
+00065    PA_Draw1632[screen][pos+7] |= (image[7]&gt;&gt;temp)*color;      
+00066 } 
+00067 
+00068  
+00069 
+00070 ALWAYSINLINE <span class="keywordtype">void</span> PA_Plot8Pixels(u8 screen, u16 pos, u16 temp, u32 color){
+00071    PA_Draw1632[screen][pos] |= (color&lt;&lt;temp);
+00072    PA_Draw1632[screen][pos+(26*8)] |= (color&gt;&gt;(32-temp));   
+00073 }  
+00074 
+00075 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c16X16Letter(u8 screen, s16 x, s16 y, u8 letter, u8 size, u8 color)
+00076 {  
+00077        u16 firstpos = ((letter&amp;31)&lt;&lt;1)+((letter &gt;&gt; 5)&lt;&lt;7);
+00078        PA_16c8X8Color(screen, x, y, (c16_tiles[size]+(c16_maps[size][firstpos]&lt;&lt;3)), color);
+00079        PA_16c8X8Color(screen, x, y+8, (c16_tiles[size]+(c16_maps[size][firstpos+64]&lt;&lt;3)), color);
+00080        firstpos ++;
+00081        PA_16c8X8Color(screen, x+8, y, (c16_tiles[size]+(c16_maps[size][firstpos]&lt;&lt;3)), color);
+00082        PA_16c8X8Color(screen, x+8, y+8, (c16_tiles[size]+(c16_maps[size][firstpos+64]&lt;&lt;3)), color);      
+00083 }  
+00084 
+00085 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_16c8X8Letter(u8 screen, s16 x, s16 y, u8 letter, u8 size, u8 color){  
+00086        PA_16c8X8Color(screen, x, y, (c16_tiles[size]+(c16_maps[size][letter]&lt;&lt;3)), color);
+00087 }  
+00088 
+00089 
+00108 <span class="keywordtype">void</span> PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette);
+00109 
+00110 
+00111 
+<a name="l00123"></a><a class="code" href="group__c.html#ga1">00123</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga1">PA_Init16cBg</a>(u8 screen, u8 bg){
+00124        PA_Init16cBgEx(screen, bg, 0);
+00125 }
+00126 
+00127 
+00128 
+00129 
+00130 
+<a name="l00139"></a><a class="code" href="group__c.html#ga2">00139</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga2">PA_16cErase</a>(u8 screen){
+00140        DMA_Copy(Blank, PA_Draw1632[screen], 26*8*34, DMA_32NOW)
+00141 }
+00142 
+00143 
+00144 
+<a name="l00150"></a><a class="code" href="group__c.html#ga3">00150</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga3">PA_Dual16cErase</a>(<span class="keywordtype">void</span>){
+00151        <a class="code" href="group__c.html#ga2">PA_16cErase</a>(0); <a class="code" href="group__c.html#ga2">PA_16cErase</a>(1);
+00152 }
 00153 
 00154 
-<a name="l00160"></a><a class="code" href="group__c.html#ga3">00160</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga3">PA_Dual16cErase</a>(<span class="keywordtype">void</span>){
-00161        <a class="code" href="group__c.html#ga2">PA_16cErase</a>(0); <a class="code" href="group__c.html#ga2">PA_16cErase</a>(1);
-00162 }
-00163 
-00164 
-<a name="l00176"></a><a class="code" href="group__c.html#ga4">00176</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga4">PA_InitComplete16c</a>(u8 bg, <span class="keywordtype">void</span> *Palette){
-00177        PA_LoadPal16c(PAL_BG0, Palette);
-00178        PA_LoadPal16c(PAL_BG1, Palette);   
-00179        <a class="code" href="group__c.html#ga1">PA_Init16cBg</a>(0, bg); <a class="code" href="group__c.html#ga1">PA_Init16cBg</a>(1, bg);
-00180 }
-00181 
-00182 
-00183 
-00184 
-00185 
-00186 s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, s32 limit);
-00187 
-00188 
-00189 
-00190 
-00191 
-<a name="l00209"></a><a class="code" href="group__c.html#ga6">00209</a> ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga6">PA_16c8X4</a>(u8 screen, s16 x, s16 y, u32 *image){  
-00210    x += 8; y += 8;
-00211    u16 temp = (x&amp;7)&lt;&lt;2;
-00212    u16 pos = PA_16cPos(x, y);
-00213    PA_Draw1632[screen][pos] |= (image[0]&lt;&lt;temp);
-00214    PA_Draw1632[screen][pos+1] |= (image[1]&lt;&lt;temp);
-00215    PA_Draw1632[screen][pos+2] |= (image[2]&lt;&lt;temp);
-00216    PA_Draw1632[screen][pos+3] |= (image[3]&lt;&lt;temp);
-00217    pos += (26*8); <span class="comment">// Next columns</span>
-00218    temp = 32-temp;
-00219    PA_Draw1632[screen][pos] |= (image[0]&gt;&gt;temp);
-00220    PA_Draw1632[screen][pos+1] |= (image[1]&gt;&gt;temp);
-00221    PA_Draw1632[screen][pos+2] |= (image[2]&gt;&gt;temp);
-00222    PA_Draw1632[screen][pos+3] |= (image[3]&gt;&gt;temp);
-00223 }  
-00224 
-00225 
-<a name="l00243"></a><a class="code" href="group__c.html#ga7">00243</a> ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga7">PA_16c8X6</a>(u8 screen, s16 x, s16 y, u32 *image){  
-00244    
-00245    x += 8; y += 8;
-00246    u16 temp = (x&amp;7)&lt;&lt;2;
-00247    u16 pos = PA_16cPos(x, y);
-00248    PA_Plot8Pixels(screen, pos, temp, image[0]);
-00249    PA_Plot8Pixels(screen, pos+1, temp, image[1]);  
-00250    PA_Plot8Pixels(screen, pos+2, temp, image[2]);   
-00251    PA_Plot8Pixels(screen, pos+3, temp, image[3]); 
-00252    PA_Plot8Pixels(screen, pos+4, temp, image[4]);
-00253    PA_Plot8Pixels(screen, pos+5, temp, image[5]);  
-00254 }  
-00255 
-00256 
-<a name="l00274"></a><a class="code" href="group__c.html#ga8">00274</a> ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga8">PA_16c8X8</a>(u8 screen, s16 x, s16 y, u32 *image){  
-00275    x += 8; y += 8;
-00276    u16 temp = (x&amp;7)&lt;&lt;2;
-00277    u16 pos = PA_16cPos(x, y);
-00278    PA_Draw1632[screen][pos] |= (image[0]&lt;&lt;temp);
-00279    PA_Draw1632[screen][pos+1] |= (image[1]&lt;&lt;temp);
-00280    PA_Draw1632[screen][pos+2] |= (image[2]&lt;&lt;temp);
-00281    PA_Draw1632[screen][pos+3] |= (image[3]&lt;&lt;temp);
-00282    PA_Draw1632[screen][pos+4] |= (image[4]&lt;&lt;temp);   
-00283    PA_Draw1632[screen][pos+5] |= (image[5]&lt;&lt;temp);
-00284    PA_Draw1632[screen][pos+6] |= (image[6]&lt;&lt;temp);
-00285    PA_Draw1632[screen][pos+7] |= (image[7]&lt;&lt;temp);  
-00286    pos += (26*8); <span class="comment">// Next columns</span>
-00287    temp = 32-temp;
-00288    PA_Draw1632[screen][pos] |= (image[0]&gt;&gt;temp);
-00289    PA_Draw1632[screen][pos+1] |= (image[1]&gt;&gt;temp);
-00290    PA_Draw1632[screen][pos+2] |= (image[2]&gt;&gt;temp);
-00291    PA_Draw1632[screen][pos+3] |= (image[3]&gt;&gt;temp);
-00292    PA_Draw1632[screen][pos+4] |= (image[4]&gt;&gt;temp);   
-00293    PA_Draw1632[screen][pos+5] |= (image[5]&gt;&gt;temp);
-00294    PA_Draw1632[screen][pos+6] |= (image[6]&gt;&gt;temp);
-00295    PA_Draw1632[screen][pos+7] |= (image[7]&gt;&gt;temp);      
-00296 }  
-00297 
-00298 
-00299 
-00300 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c16X8(u8 screen, s16 x, s16 y, u32 *image){  
-00301    x += 8; y += 8;
-00302    u16 temp = (x&amp;7)&lt;&lt;2;
-00303    u16 pos = PA_16cPos(x, y);
-00304    u8 i;
-00305    <span class="keywordflow">for</span> (i = 0; i &lt; 2; i++){
-00306           PA_Plot8Pixels(screen, pos, temp, image[0]);
-00307           PA_Plot8Pixels(screen, pos+1, temp, image[1]);  
-00308           PA_Plot8Pixels(screen, pos+2, temp, image[2]);   
-00309           PA_Plot8Pixels(screen, pos+3, temp, image[3]); 
-00310           PA_Plot8Pixels(screen, pos+4, temp, image[4]);
-00311           PA_Plot8Pixels(screen, pos+5, temp, image[5]);  
-00312           PA_Plot8Pixels(screen, pos+6, temp, image[6]);   
-00313           PA_Plot8Pixels(screen, pos+7, temp, image[7]);       
-00314           pos+=26*8;
-00315           image+=8;     
-00316        }
-00317 } 
+<a name="l00166"></a><a class="code" href="group__c.html#ga4">00166</a> <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga4">PA_InitComplete16c</a>(u8 bg, <span class="keywordtype">void</span> *Palette){
+00167        PA_LoadPal16c(PAL_BG0, Palette);
+00168        PA_LoadPal16c(PAL_BG1, Palette);   
+00169        <a class="code" href="group__c.html#ga1">PA_Init16cBg</a>(0, bg); <a class="code" href="group__c.html#ga1">PA_Init16cBg</a>(1, bg);
+00170 }
+00171 
+00172 
+00173 
+00174 
+00207 s16 <a class="code" href="group__c.html#ga5">PA_16cText</a>(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, <span class="keywordtype">char</span>* text, u8 color, u8 size, s32 limit);
+00208 
+00209 
+<a name="l00221"></a><a class="code" href="group__c.html#ga17">00221</a> <span class="preprocessor">#define PA_16cCustomFont(c16_slot, c16_font){\</span>
+00222 <span class="preprocessor">       c16_maps[c16_slot] = (u16*)(void*)c16_font##_Map;              \</span>
+00223 <span class="preprocessor">       c16_tiles[c16_slot] = (u32*)(void*)c16_font##_Tiles;    \</span>
+00224 <span class="preprocessor">       pa16cdefaultsize[c16_slot] = (u8*)c16_font##_Sizes;     \</span>
+00225 <span class="preprocessor">       c16policeheight[c16_slot] = c16_font##_Height;\</span>
+00226 <span class="preprocessor">}</span>
+00227 <span class="preprocessor"></span>
+00228 
+<a name="l00246"></a><a class="code" href="group__c.html#ga6">00246</a> ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga6">PA_16cPutPixel</a>(u8 screen, s16 x, s16 y, u32 color){
+00247    x += 8; y += 8;
+00248    u16 temp = (x&amp;7)&lt;&lt;2;
+00249    u16 pos = PA_16cPos(x, y);
+00250    PA_Draw1632[screen][pos] |= (color&lt;&lt;temp);
+00251 }
+00252 
+00253 
+<a name="l00271"></a><a class="code" href="group__c.html#ga7">00271</a> ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga7">PA_16c8X4</a>(u8 screen, s16 x, s16 y, u32 *image){  
+00272    x += 8; y += 8;
+00273    u16 temp = (x&amp;7)&lt;&lt;2;
+00274    u16 pos = PA_16cPos(x, y);
+00275    PA_Draw1632[screen][pos] |= (image[0]&lt;&lt;temp);
+00276    PA_Draw1632[screen][pos+1] |= (image[1]&lt;&lt;temp);
+00277    PA_Draw1632[screen][pos+2] |= (image[2]&lt;&lt;temp);
+00278    PA_Draw1632[screen][pos+3] |= (image[3]&lt;&lt;temp);
+00279    pos += (26*8); <span class="comment">// Next columns</span>
+00280    temp = 32-temp;
+00281    PA_Draw1632[screen][pos] |= (image[0]&gt;&gt;temp);
+00282    PA_Draw1632[screen][pos+1] |= (image[1]&gt;&gt;temp);
+00283    PA_Draw1632[screen][pos+2] |= (image[2]&gt;&gt;temp);
+00284    PA_Draw1632[screen][pos+3] |= (image[3]&gt;&gt;temp);
+00285 }  
+00286 
+00287 
+<a name="l00305"></a><a class="code" href="group__c.html#ga8">00305</a> ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga8">PA_16c8X6</a>(u8 screen, s16 x, s16 y, u32 *image){  
+00306    
+00307    x += 8; y += 8;
+00308    u16 temp = (x&amp;7)&lt;&lt;2;
+00309    u16 pos = PA_16cPos(x, y);
+00310    PA_Plot8Pixels(screen, pos, temp, image[0]);
+00311    PA_Plot8Pixels(screen, pos+1, temp, image[1]);  
+00312    PA_Plot8Pixels(screen, pos+2, temp, image[2]);   
+00313    PA_Plot8Pixels(screen, pos+3, temp, image[3]); 
+00314    PA_Plot8Pixels(screen, pos+4, temp, image[4]);
+00315    PA_Plot8Pixels(screen, pos+5, temp, image[5]);  
+00316 }  
+00317 
 00318 
-00319 
-00320 
-00321 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c16X12(u8 screen, s16 x, s16 y, u32 *image){  
-00322    
-00323    x += 8; y += 8;
-00324    u16 temp = (x&amp;7)&lt;&lt;2;
-00325    u16 pos = PA_16cPos(x, y);
-00326    u8 i;
-00327    <span class="keywordflow">for</span> (i = 0; i &lt; 2; i++){
-00328           PA_Plot8Pixels(screen, pos, temp, image[0]);
-00329           PA_Plot8Pixels(screen, pos+1, temp, image[1]);  
-00330           PA_Plot8Pixels(screen, pos+2, temp, image[2]);   
-00331           PA_Plot8Pixels(screen, pos+3, temp, image[3]); 
-00332           PA_Plot8Pixels(screen, pos+4, temp, image[4]);
-00333           PA_Plot8Pixels(screen, pos+5, temp, image[5]);  
-00334           PA_Plot8Pixels(screen, pos+6, temp, image[6]);   
-00335           PA_Plot8Pixels(screen, pos+7, temp, image[7]);       
-00336           PA_Plot8Pixels(screen, pos+8, temp, image[16]);
-00337           PA_Plot8Pixels(screen, pos+9, temp, image[17]);  
-00338           PA_Plot8Pixels(screen, pos+10, temp, image[18]);   
-00339           PA_Plot8Pixels(screen, pos+11, temp, image[19]);        
-00340           pos+=26*8;
-00341           image+=8;     
-00342        }
-00343 } 
-00344 
-00345 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c16X16(u8 screen, s16 x, s16 y, u32 *image){  
-00346    
-00347    x += 8; y += 8;
-00348 
-00349    u16 temp = (x&amp;7)&lt;&lt;2;
-00350    u16 pos = PA_16cPos(x, y);
-00351    u8 i;
-00352    <span class="keywordflow">for</span> (i = 0; i &lt; 2; i++){
-00353           PA_Plot8Pixels(screen, pos, temp, image[0]);
-00354           PA_Plot8Pixels(screen, pos+1, temp, image[1]);  
-00355           PA_Plot8Pixels(screen, pos+2, temp, image[2]);   
-00356           PA_Plot8Pixels(screen, pos+3, temp, image[3]); 
-00357           PA_Plot8Pixels(screen, pos+4, temp, image[4]);
-00358           PA_Plot8Pixels(screen, pos+5, temp, image[5]);  
-00359           PA_Plot8Pixels(screen, pos+6, temp, image[6]);   
-00360           PA_Plot8Pixels(screen, pos+7, temp, image[7]);       
-00361           PA_Plot8Pixels(screen, pos+8, temp, image[16]);
-00362           PA_Plot8Pixels(screen, pos+9, temp, image[17]);  
-00363           PA_Plot8Pixels(screen, pos+10, temp, image[18]);   
-00364           PA_Plot8Pixels(screen, pos+11, temp, image[19]); 
-00365           PA_Plot8Pixels(screen, pos+12, temp, image[20]);
-00366           PA_Plot8Pixels(screen, pos+13, temp, image[21]);  
-00367           PA_Plot8Pixels(screen, pos+14, temp, image[22]);   
-00368           PA_Plot8Pixels(screen, pos+15, temp, image[23]);               
-00369           pos+=26*8;
-00370           image+=8;     
-00371        }
-00372 }  
-00373 
-00374 
-00375 
-00376 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_16cLetter(u8 screen, s16 x, s16 y, <span class="keywordtype">char</span> letter, u8 size, u8 color){
-00377        <span class="keywordflow">if</span> (c16_policeheight[size]&lt;=8) PA_16c8X8Letter(screen, x, y, (u32*)(c16_font[size]+(letter&lt;&lt;3)), color);
-00378        <span class="keywordflow">else</span> PA_16c16X16Letter(screen, x, y, (u32*)(c16_font[size]+(letter&lt;&lt;5)), color);
-00379 }
+<a name="l00336"></a><a class="code" href="group__c.html#ga9">00336</a> ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga9">PA_16c8X8</a>(u8 screen, s16 x, s16 y, u32 *image){  
+00337    x += 8; y += 8;
+00338    u16 temp = (x&amp;7)&lt;&lt;2;
+00339    u16 pos = PA_16cPos(x, y);
+00340    PA_Draw1632[screen][pos] |= (image[0]&lt;&lt;temp);
+00341    PA_Draw1632[screen][pos+1] |= (image[1]&lt;&lt;temp);
+00342    PA_Draw1632[screen][pos+2] |= (image[2]&lt;&lt;temp);
+00343    PA_Draw1632[screen][pos+3] |= (image[3]&lt;&lt;temp);
+00344    PA_Draw1632[screen][pos+4] |= (image[4]&lt;&lt;temp);   
+00345    PA_Draw1632[screen][pos+5] |= (image[5]&lt;&lt;temp);
+00346    PA_Draw1632[screen][pos+6] |= (image[6]&lt;&lt;temp);
+00347    PA_Draw1632[screen][pos+7] |= (image[7]&lt;&lt;temp);  
+00348    pos += (26*8); <span class="comment">// Next columns</span>
+00349    temp = 32-temp;
+00350    PA_Draw1632[screen][pos] |= (image[0]&gt;&gt;temp);
+00351    PA_Draw1632[screen][pos+1] |= (image[1]&gt;&gt;temp);
+00352    PA_Draw1632[screen][pos+2] |= (image[2]&gt;&gt;temp);
+00353    PA_Draw1632[screen][pos+3] |= (image[3]&gt;&gt;temp);
+00354    PA_Draw1632[screen][pos+4] |= (image[4]&gt;&gt;temp);   
+00355    PA_Draw1632[screen][pos+5] |= (image[5]&gt;&gt;temp);
+00356    PA_Draw1632[screen][pos+6] |= (image[6]&gt;&gt;temp);
+00357    PA_Draw1632[screen][pos+7] |= (image[7]&gt;&gt;temp);      
+00358 }  
+00359 
+00360 
+00361 
+00362 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c16X8(u8 screen, s16 x, s16 y, u32 *image){  
+00363    x += 8; y += 8;
+00364    u16 temp = (x&amp;7)&lt;&lt;2;
+00365    u16 pos = PA_16cPos(x, y);
+00366    u8 i;
+00367    <span class="keywordflow">for</span> (i = 0; i &lt; 2; i++){
+00368           PA_Plot8Pixels(screen, pos, temp, image[0]);
+00369           PA_Plot8Pixels(screen, pos+1, temp, image[1]);  
+00370           PA_Plot8Pixels(screen, pos+2, temp, image[2]);   
+00371           PA_Plot8Pixels(screen, pos+3, temp, image[3]); 
+00372           PA_Plot8Pixels(screen, pos+4, temp, image[4]);
+00373           PA_Plot8Pixels(screen, pos+5, temp, image[5]);  
+00374           PA_Plot8Pixels(screen, pos+6, temp, image[6]);   
+00375           PA_Plot8Pixels(screen, pos+7, temp, image[7]);       
+00376           pos+=26*8;
+00377           image+=8;     
+00378        }
+00379 } 
 00380 
 00381 
-00402 <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga13">PA_16cClearZone</a>(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2);
-00403 
-00404 
-00405  <span class="comment">// end of 16c</span>
-00407 
-00408 
-00409 
+00382 
+00383 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c16X12(u8 screen, s16 x, s16 y, u32 *image){  
+00384    
+00385    x += 8; y += 8;
+00386    u16 temp = (x&amp;7)&lt;&lt;2;
+00387    u16 pos = PA_16cPos(x, y);
+00388    u8 i;
+00389    <span class="keywordflow">for</span> (i = 0; i &lt; 2; i++){
+00390           PA_Plot8Pixels(screen, pos, temp, image[0]);
+00391           PA_Plot8Pixels(screen, pos+1, temp, image[1]);  
+00392           PA_Plot8Pixels(screen, pos+2, temp, image[2]);   
+00393           PA_Plot8Pixels(screen, pos+3, temp, image[3]); 
+00394           PA_Plot8Pixels(screen, pos+4, temp, image[4]);
+00395           PA_Plot8Pixels(screen, pos+5, temp, image[5]);  
+00396           PA_Plot8Pixels(screen, pos+6, temp, image[6]);   
+00397           PA_Plot8Pixels(screen, pos+7, temp, image[7]);       
+00398           PA_Plot8Pixels(screen, pos+8, temp, image[16]);
+00399           PA_Plot8Pixels(screen, pos+9, temp, image[17]);  
+00400           PA_Plot8Pixels(screen, pos+10, temp, image[18]);   
+00401           PA_Plot8Pixels(screen, pos+11, temp, image[19]);        
+00402           pos+=26*8;
+00403           image+=8;     
+00404        }
+00405 } 
+00406 
+00407 ALWAYSINLINE <span class="keywordtype">void</span> PA_16c16X16(u8 screen, s16 x, s16 y, u32 *image){  
+00408    
+00409    x += 8; y += 8;
 00410 
-00411 <span class="preprocessor">#ifdef __cplusplus</span>
-00412 <span class="preprocessor"></span>}
-00413 <span class="preprocessor">#endif</span>
-00414 <span class="preprocessor"></span>
-00415 
-00416 
-00417 
-00418 
-00419 
-00420 
-00421 
-00422 <span class="preprocessor">#endif</span>
-00423 <span class="preprocessor"></span>
-00424 
-00425 
-00426 
-</pre></div><hr size="1"><address style="align: right;"><small>Généré le Fri Oct 6 17:35:32 2006 pour PAlib par&nbsp;
+00411    u16 temp = (x&amp;7)&lt;&lt;2;
+00412    u16 pos = PA_16cPos(x, y);
+00413    u8 i;
+00414    <span class="keywordflow">for</span> (i = 0; i &lt; 2; i++){
+00415           PA_Plot8Pixels(screen, pos, temp, image[0]);
+00416           PA_Plot8Pixels(screen, pos+1, temp, image[1]);  
+00417           PA_Plot8Pixels(screen, pos+2, temp, image[2]);   
+00418           PA_Plot8Pixels(screen, pos+3, temp, image[3]); 
+00419           PA_Plot8Pixels(screen, pos+4, temp, image[4]);
+00420           PA_Plot8Pixels(screen, pos+5, temp, image[5]);  
+00421           PA_Plot8Pixels(screen, pos+6, temp, image[6]);   
+00422           PA_Plot8Pixels(screen, pos+7, temp, image[7]);       
+00423           PA_Plot8Pixels(screen, pos+8, temp, image[16]);
+00424           PA_Plot8Pixels(screen, pos+9, temp, image[17]);  
+00425           PA_Plot8Pixels(screen, pos+10, temp, image[18]);   
+00426           PA_Plot8Pixels(screen, pos+11, temp, image[19]); 
+00427           PA_Plot8Pixels(screen, pos+12, temp, image[20]);
+00428           PA_Plot8Pixels(screen, pos+13, temp, image[21]);  
+00429           PA_Plot8Pixels(screen, pos+14, temp, image[22]);   
+00430           PA_Plot8Pixels(screen, pos+15, temp, image[23]);               
+00431           pos+=26*8;
+00432           image+=8;     
+00433        }
+00434 }  
+00435 
+00436 
+<a name="l00457"></a><a class="code" href="group__c.html#ga13">00457</a> ALWAYSINLINE <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga13">PA_16c8Xi</a>(u8 screen, s16 x, s16 y, u32 *image, u8 i)
+00458 {  
+00459        x += 8; y += 8;
+00460        u16 temp = ((x)&amp;7)&lt;&lt;2;
+00461        u16 temp2 = 32-temp;
+00462        u16 pos = PA_16cPos(x, y);
+00463        u16 pos2 = pos + 208; <span class="comment">// Next columns</span>
+00464        u8 j=0;
+00465        <span class="keywordflow">while</span> (j&lt;i)
+00466        {
+00467               PA_Draw1632[screen][pos++] |= (image[j &amp; 0x000F]&lt;&lt;temp);
+00468               PA_Draw1632[screen][pos2++] |= (image[j &amp; 0x000F]&gt;&gt;temp2);
+00469               ++j;
+00470        }
+00471 }  
+00472 
+00473 
+00474 
+00475 
+00476 
+00477 <span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> PA_16cLetter(u8 screen, s16 x, s16 y, <span class="keywordtype">char</span> letter, u8 size, u8 color){
+00478        <span class="keywordflow">if</span> (c16policeheight[size]&lt;=8) PA_16c8X8Letter(screen, x, y, letter, size, color);
+00479        <span class="comment">//(u32*)(c16_font[size]+(letter&lt;&lt;3))</span>
+00480        <span class="keywordflow">else</span> PA_16c16X16Letter(screen, x, y, letter, size, color);
+00481        <span class="comment">//(u32*)(c16_font[size]+(letter&lt;&lt;5))</span>
+00482 }
+00483 
+00484 
+00505 <span class="keywordtype">void</span> <a class="code" href="group__c.html#ga15">PA_16cClearZone</a>(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2);
+00506 
+00507 
+00508 
+<a name="l00523"></a><a class="code" href="group__c.html#ga16">00523</a> <span class="keyword">extern</span> <span class="keyword">inline</span> u8 <a class="code" href="group__c.html#ga16">PA_16cGetPixel</a>(u8 screen, s16 x, s16 y){
+00524        x += 8; y += 8;
+00525    u16 temp = (x&amp;7)&lt;&lt;2;
+00526    u16 pos = PA_16cPos(x, y);
+00527    <span class="keywordflow">return</span> (PA_Draw1632[screen][pos]&amp;(15&lt;&lt;temp))&gt;&gt;temp;
+00528 }
+00529 
+00530 
+00531 
+00532  <span class="comment">// end of 16c</span>
+00534 
+00535 
+00536 
+00537 
+00538 <span class="preprocessor">#ifdef __cplusplus</span>
+00539 <span class="preprocessor"></span>}
+00540 <span class="preprocessor">#endif</span>
+00541 <span class="preprocessor"></span>
+00542 
+00543 
+00544 
+00545 
+00546 
+00547 
+00548 
+00549 <span class="preprocessor">#endif</span>
+00550 <span class="preprocessor"></span>
+00551 
+00552 
+00553 
+</pre></div><hr size="1"><address style="align: right;"><small>Généré le Tue Jan 30 23:10:49 2007 pour PAlib par&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.3.9.1 </small></address>
 </body>
