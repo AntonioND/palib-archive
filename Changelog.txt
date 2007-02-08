@@ -1,6 +1,13 @@
 
+Things Fixed
+------------
+
+[RotBg] Fixed a bug in PA_Set/GetRotBgTile
+
+[APIButtons] Fixed API Button example, the text wasn't set correctly
 
 
+PAlib 070206 : devkitpro r20 version
 
 New Stuff
 ---------
