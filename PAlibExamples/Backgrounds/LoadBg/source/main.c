@@ -9,6 +9,7 @@
 #include "gfx/all_gfx.h"
 
 
+
 // Function: main()
 int main(int argc, char ** argv)
 {
@@ -19,6 +20,7 @@ int main(int argc, char ** argv)
 	PA_EasyBgLoad(0, // screen
 					3, // background number (0-3)
 					bg0); // Background name, used by PAGfx...
+	
 	PA_EasyBgLoad(1, 0, bg0);	
 
 	// Infinite loop to keep the program running

@@ -743,7 +743,7 @@ u8 obj_num = (rotset << 2);
          \~french Zoom vertical. 256 est pas de zoom, 512 2 fois plus petit, et 128 2 fois plus grand... Ajuster au mieux ! :p
 */
 extern inline void PA_SetRotsetNoAngle(u8 screen, u8 rotset, u16 zoomx, u16 zoomy) {
-u8 obj_num = (rotset << 2);
+	u8 obj_num = (rotset << 2);
 	PA_obj[screen][obj_num].atr3 = zoomx;
 	PA_obj[screen][obj_num + 1].atr3 = 0;
 	PA_obj[screen][obj_num + 2].atr3 = 0;

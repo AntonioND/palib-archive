@@ -12,6 +12,7 @@
 #define BG_LARGEMAP 4
 #define BG_INFINITEMAP 5
 
+
 void PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette);
 
 
@@ -860,7 +861,7 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
 
 
 
-/*! \def PA_EasyBgLoad(screen, bg_number, bg_name)
+/*! \fn extern inline void PA_EasyBgLoad(u8 screen, u8 bg_number, PAGfx_struct bg_name)
     \brief
          \~english Easiest way to load a background converted with PAGfx...
          \~french Moyen le plus simple de charger un fond créé avec PAGfx
@@ -878,6 +879,30 @@ for (i = 0; i < 32; i++) for (j = 0; j < 32; j++) PA_SetMapTileAll(screen, bg_se
 	PA_StoreEasyBgInfos(screen, bg_number, bg_name##_Info[0], bg_name##_Info[1], bg_name##_Info[2], (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal);\
 	if(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){	PA_LoadTiledBg(screen, bg_number, bg_name);}\
 	else{PA_LoadPAGfxLargeBg(screen, bg_number, bg_name);}
+	
+/*! \fn extern inline void PA_EasyBgLoadPtr(u8 screen, u8 bg_number, PAGfx_struct bg_name)
+    \brief
+         \~english Easiest way to load a background converted with PAGfx... Can take pointers !
+         \~french Moyen le plus simple de charger un fond créé avec PAGfx... Peut prendre des pointeurs !
+    \param screen
+         \~english Choose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg_number
+         \~english Background number... (0-3)
+         \~french Numéro du fond...	 (0-3)
+    \param bg_name
+         \~english Background, like &bg0
+         \~french Fond, par exemple &bg0
+*/	
+#define PA_EasyBgLoadPtr(screen, bg_number, bg_name) PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name->Info, bg_name->Tiles, bg_name->TileSize, bg_name->Map, bg_name->MapSize, bg_name->Palette);
+
+/*
+extern inline void PA_EasyBgLoadPtr(u8 screen, u8 bg_number, PAGfx_struct *bg_name){
+   PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name->Info, bg_name->Tiles, bg_name->TileSize, bg_name->Map, bg_name->MapSize, bg_name->Palette);
+}
+*/
+
+//#define PA_EasyBgLoad(screen, bg_number, bg_name)   PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name.Info, (void*)bg_name.Tiles, (u32)bg_name.TileSize, (void*)bg_name.Map, (u32)bg_name.MapSize, (void*)bg_name.Palette)
 
 /*PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name##_Info, (void*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (void*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (void*)bg_name##_Pal)*/
 

@@ -12,8 +12,8 @@
 // 05/08/05 - Ported to DS.
 // ----------------------
 
-#include <NDS.h>
-#include <String.h>
+#include <nds.h>
+#include <string.h>
 #include <nds/arm7/audio.h>
 
 #include "ModFile.h"

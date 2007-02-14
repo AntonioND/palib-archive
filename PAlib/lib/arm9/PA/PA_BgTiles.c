@@ -24,7 +24,7 @@ s32  PA_parallaxY[2][4];
 
 scrollpositions  scrollpos[2][4]; // Pour chaque écran et pour chaque fond :)
 
-u8  charblocks[2][70];  // On met à 0 les emplacements utilisés... pour chaque écran...
+u8  charblocks[2][70];  // On met à 0 les emplacements libres... pour chaque écran...
 //u8  tilesetchar[2][4];  // Emplacement mémoire de chaque tileset
 u16 tempsize;
 
@@ -74,7 +74,7 @@ void PA_ResetBgSys(void) {
 
 
 void PA_LoadBgTilesEx(u8 screen, u8 bg_select, void* bg_tiles, u32 size) {
-u16 blocksize = (size + 1023) >> 10;
+u32 blocksize = (size + 1023) >> 10;
 
 s8 charset = charsetstart[screen]; // On commence par le dernier... soit le 8ème, et on ira vers le bas
 u8 charsetok = 0;
@@ -99,17 +99,26 @@ while ((charset >= 0) && (!charsetok)) {
 }
 
 if (!charsetok) { // Si jamais on n'a pas trouvé de créneaux, on affiche un message d'erreur...
+	u8 usedblocks[64];
+	for(i = 0; i < 64; i++) usedblocks[i] = charblocks[screen][i];
 	PA_ResetBgSys();
 
 	PA_InitText(1, 0);
 	PALETTE[512] = 0; // On met le fond du haut au noir histoire que tout se voit...
-	PA_OutputSimpleText(1, 0, 3, "Sorry, there just seems to not be enough place to put all your backgrounds... ou could try loading them in a different order, sometimes it changes a little, but I would advise trying to optimise them by reducing the number of tile...");
-	PA_OutputSimpleText(1, 0, 10, "Je suis désolé mon vieux, mais là je n'ai plus assez de place pour charger les tiles en mémoire ! Va falloir virer un fond ou alors réduire le nombre de tiles des autres fonds... Je ne peux rien faire d'autre pour toi");
+	u8 j;
+	for(j = 0; j < 8; j++)
+		for(i = 0; i < 8; i++)
+			PA_OutputText(1, j, i, "%d", usedblocks[i+j*8]);	
+			
+	PA_OutputText(1, 2, 10, "Needed %d free blocks", blocksize);	
+	PA_WaitFor(Stylus.Newpress);	
+	PA_OutputSimpleText(1, 0, 12, "Sorry, there just seems to not be enough place to put all your backgrounds... ou could try loading them in a different order, sometimes it changes a little, but I would advise trying to optimise them by reducing the number of tile...");
+	PA_OutputSimpleText(1, 0, 19, "Je suis désolé mon vieux, mais là je n'ai plus assez de place pour charger les tiles en mémoire ! Va falloir virer un fond ou alors réduire le nombre de tiles des autres fonds...");
 	
-	PA_WaitForVBL();
-	while(!Stylus.Newpress) PA_WaitForVBL();
+	PA_WaitFor(Stylus.Newpress);
 
 }
+
 
 	PA_BgInfo[screen][bg_select].TileSetChar = charset; // On place les tiles à un endroit précis...
 	PA_BgInfo[screen][bg_select].tilesetsize = size;    // On mémorise aussi la taille que ca fait pour pouvoir effacer plus tard...
@@ -121,6 +130,12 @@ if (!charsetok) { // Si jamais on n'a pas trouvé de créneaux, on affiche un mess
 	PA_BgInfo[screen][bg_select].TilePos = (u32*)CharBaseBlock(screen, PA_BgInfo[screen][bg_select].TileSetChar); // used for tile swapping
 
 	for (i = 0; i < blocksize; i++) charblocks[screen][(charset << 3) + i] = 1;  // Les blocs sont occupés
+	/*
+	u8 j;
+	for(j = 0; j < 8; j++)
+		for(i = 0; i < 8; i++)
+			PA_OutputText(1, j, i, "%d", charblocks[screen][i+j*8]);		
+	*/
 }
 
 
@@ -323,14 +338,14 @@ void PA_EasyBgLoadEx(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileS
 	PA_LoadBgPal(screen, bg_number, Palette); 
 	PA_DeleteBg(screen, bg_number);
 	if (PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG) {	
-		PA_LoadBgTilesEx(screen, bg_number, Tiles, TileSize);
+		PA_LoadBgTilesEx(screen, bg_number, Tiles, TileSize>>1);
 		PA_LoadBgMap(screen, bg_number, Map, PA_GetPAGfxBgSize(Infos[1], Infos[2])); 
 		PA_InitBg(screen, bg_number, PA_GetPAGfxBgSize(Infos[1], Infos[2]), 0, 1);
 	}
 	else{
 		PA_BgInfo[screen][bg_number].NTiles = TileSize>>5;
 		if (PA_BgInfo[screen][bg_number].BgMode == BG_LARGEMAP) { 
-			PA_LoadBgTilesEx(screen, bg_number, Tiles, TileSize);
+			PA_LoadBgTilesEx(screen, bg_number, Tiles, TileSize>>1);
 		}
 		else{
 			PA_LoadBgTilesEx(screen, bg_number, (void*)Blank, (1008<<5));

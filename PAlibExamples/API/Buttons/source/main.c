@@ -41,11 +41,10 @@ int main(int argc, char ** argv)
 					  32, // Y size
 					  &Test, // function to execute on button press
 					  "Test", // Text displayed on the button
-					  0, // Text palette color, we'll put 0 for transparent
+					  1, // Text palette color, we'll put 1
 					  1); // Text size (you must enable all text sizes in PA9.h to use this)
-	PAPI_CreateButton(0, 120, 40, 64, 16, &Test2, "Other button", 0, 1);
-	PAPI_CreateButton(0, 120, 0, 64, 32, &Test3, "Third button", 0, 1); 	
-	
+	PAPI_CreateButton(0, 120, 40, 64, 16, &Test2, "Other button", 1, 1);
+	PAPI_CreateButton(0, 120, 0, 64, 32, &Test3, "Third button", 1, 1); 	
 	
 	// Infinite loop to keep the program running
 	while (1){
