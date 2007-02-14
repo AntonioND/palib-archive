@@ -5,7 +5,7 @@
 #ifndef SOUNDCOMMON_H
 #define SOUNDCOMMON_H
 
-#include <NDS.h>
+#include <nds.h>
 
 #ifdef __cplusplus
 extern "C" {

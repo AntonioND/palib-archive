@@ -36,7 +36,7 @@ LetterPos16c PA_16cLetterPos; // Letter positions
 
 
 void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette){
-	PA_LoadBg(screen, bg, Blank, (8*4*34*26)+4, Blank, BG_512X256, 0, 0);
+	PA_LoadBg(screen, bg, Blank, ((8*4*34*26)+8)>>1, Blank, BG_512X256, 0, 0);
 	PA_BGScrollXY(screen, bg, 8, 8);
 
 	s32 i, j;

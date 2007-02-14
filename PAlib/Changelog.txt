@@ -1,6 +1,28 @@
 
 
+New Stuff
+---------
 
+[EasyBg] Added PA_EasyBgLoadPtr(screen, bg_number, bg), which can take the new background pointers ! Requires to convert with the new PAGfx... Added LoadBgPtr example to show how to use an array with it.
+
+
+Things Fixed
+------------
+
+[RotBg] Fixed a bug in PA_Set/GetRotBgTile
+
+[APIButtons] Fixed API Button example, the text wasn't set correctly
+
+[16c] Was using twice as much memory as needed :s
+
+[DSMotion] I had forgotten to update some of the DS Motion examples...
+
+
+
+
+
+
+PAlib 070206 : devkitpro r20 version
 
 New Stuff
 ---------

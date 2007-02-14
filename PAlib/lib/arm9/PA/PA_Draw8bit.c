@@ -37,7 +37,7 @@ void PA_Init8bitBg(u8 screen, u8 bg_priority){
 	DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);
 		
 	charsetstart[screen] = 5; // On se réserve la moitié de la mémoire...
-	charblocks[screen][40] = 1; // Block la mémoire
+	u8 i; for(i = 40; i < 64; i++)	charblocks[screen][i] = 1; // Block la mémoire
 
 	_REG16(REG_BGCNT(screen, 3)) = bg_priority | BG_BMP8_256x256 | BG_BMP_BASE(5);
 PA_SetDrawSize(screen, 1);
@@ -50,10 +50,11 @@ void PA_InitBig8bitBg(u8 screen, u8 bg_priority){
 PA_Default8bitInit(screen, bg_priority); 
 
    PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + 256 * 256);
+   PA_DrawBg32[screen] = (u32*)PA_DrawBg[screen];
    DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*128, DMA_16NOW);
    
-charsetstart[screen] = 4; // On se réserve la moitié de la mémoire...
-charblocks[screen][32] = 1; // Block la mémoire
+	charsetstart[screen] = 4; // On se réserve la moitié de la mémoire...
+	u8 i; for(i = 32; i < 64; i++)	charblocks[screen][i] = 1; // Block la mémoire
 
    _REG16(REG_BGCNT(screen, 3)) = bg_priority | BG_BMP8_256x256 | BG_BMP_BASE(4);
 PA_SetDrawSize(screen, 1);

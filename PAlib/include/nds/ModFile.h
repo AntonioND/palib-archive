@@ -5,7 +5,7 @@
 #ifndef MODFILE_H
 #define MODFILE_H
 
-#include <NDS.h>
+#include <nds.h>
 
 #ifdef __cplusplus
 extern "C" {

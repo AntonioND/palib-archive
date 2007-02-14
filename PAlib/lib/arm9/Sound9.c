@@ -2,7 +2,7 @@
 // 05/09/05 - Created.
 // ----------------------
 
-#include <NDS.h>
+#include <nds.h>
 #include <string.h>
 #include <stdlib.h>
 

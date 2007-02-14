@@ -10,7 +10,7 @@
 #ifndef SOUND7_H
 #define SOUND7_H
 
-#include <NDS.h>
+#include <nds.h>
 #include "SoundCommon.h"
 
 #ifdef __cplusplus

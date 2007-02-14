@@ -93,38 +93,38 @@ void PAPI_LoadPal(u8 screen){
 
 
 u8 PAPI_CreateButton(u8 screen, s16 x, s16 y, s16 lx, s16 ly, fp funct, char* text, u8 color, s8 textsize){
-u8 nbutton; // Numéro que l'on va avoir pour ce bouton...
-s16 i;
-
-nbutton = PAPI_buttoninfo[screen].free[PAPI_buttoninfo[screen].n]; // Premier des dispos
-
-if(PAPI_buttoninfo[screen].n == 0){ // Premier !
-	PAPI_button[screen][nbutton].previous = -1; // Aucun avant lui...
-	PAPI_buttoninfo[screen].first = nbutton; // Premier
-}
-else {
-	PAPI_button[screen][nbutton].previous = PAPI_buttoninfo[screen].last;
-	PAPI_button[screen][nbutton].next = -1; // Aucun apres...
-	PAPI_button[screen][PAPI_buttoninfo[screen].last].next = nbutton;
-}
-
-
-PAPI_buttoninfo[screen].last = nbutton; // C'est le dernier pour l'instant
-
-PAPI_buttoninfo[screen].n++;
-
-PAPI_button[screen][nbutton].x = x; PAPI_button[screen][nbutton].y = y;
-PAPI_button[screen][nbutton].lx = lx; PAPI_button[screen][nbutton].ly = ly;
-PAPI_button[screen][nbutton].funct = funct;
-PAPI_button[screen][nbutton].color = color;
-PAPI_button[screen][nbutton].textsize = textsize;
-
-for (i = 0; text[i]; i++) PAPI_button[screen][nbutton].text[i] = text[i];
-PAPI_button[screen][nbutton].text[i] = 0; // Signal la fin
-
-PAPI_DrawButton(screen, nbutton, 0);
-
-return nbutton;
+	u8 nbutton; // Numéro que l'on va avoir pour ce bouton...
+	s16 i;
+	
+	nbutton = PAPI_buttoninfo[screen].free[PAPI_buttoninfo[screen].n]; // Premier des dispos
+	
+	if(PAPI_buttoninfo[screen].n == 0){ // Premier !
+		PAPI_button[screen][nbutton].previous = -1; // Aucun avant lui...
+		PAPI_buttoninfo[screen].first = nbutton; // Premier
+	}
+	else {
+		PAPI_button[screen][nbutton].previous = PAPI_buttoninfo[screen].last;
+		PAPI_button[screen][nbutton].next = -1; // Aucun apres...
+		PAPI_button[screen][PAPI_buttoninfo[screen].last].next = nbutton;
+	}
+	
+	
+	PAPI_buttoninfo[screen].last = nbutton; // C'est le dernier pour l'instant
+	
+	PAPI_buttoninfo[screen].n++;
+	
+	PAPI_button[screen][nbutton].x = x; PAPI_button[screen][nbutton].y = y;
+	PAPI_button[screen][nbutton].lx = lx; PAPI_button[screen][nbutton].ly = ly;
+	PAPI_button[screen][nbutton].funct = funct;
+	PAPI_button[screen][nbutton].color = color;
+	PAPI_button[screen][nbutton].textsize = textsize;
+	
+	for (i = 0; text[i]; i++) PAPI_button[screen][nbutton].text[i] = text[i];
+	PAPI_button[screen][nbutton].text[i] = 0; // Signal la fin
+	
+	PAPI_DrawButton(screen, nbutton, 0);
+	
+	return nbutton;
 
 }
 
@@ -133,43 +133,43 @@ return nbutton;
 
 
 void PAPI_CheckButton(void){
-u8 i;
-s16 x, y, lx, ly;
-u8 screen = PA_Screen;
-u8 n; // N en cours
-
-if (PAPI_buttoninfo[screen].n) { // Uniquement si on a des boutons affichés
-	if(Stylus.Newpress){ // Que si nouvelle pression
-		n = PAPI_buttoninfo[screen].first;
-		for (i = 0; i < PAPI_buttoninfo[screen].n; i++){
-			// Si on touche...
-			x = PAPI_button[screen][n].x; y = PAPI_button[screen][n].y;
-			lx = PAPI_button[screen][n].lx; ly = PAPI_button[screen][n].ly;
-				
-			if (PA_StylusInZone(x, y, x + lx, y + ly)){
-				PAPI_button[screen][n].funct();
-				PAPI_DrawButton(screen, n, 1);
-				PAPI_buttoninfo[screen].touched = n;
-				PAPI_buttonpressed[screen] = 1;
-			}
-			
-			//PA_OutputText(1, 25, i, "%d  ", n);
-			n = PAPI_button[screen][n].next;
-		}
-	}
-	else {
-		n = PAPI_buttoninfo[screen].touched;
-		
-		if(Stylus.Released && PAPI_buttonpressed[screen]){ // Si on relève et 1 bouton appuyé
-			x = PAPI_button[screen][n].x; y = PAPI_button[screen][n].y;
-			lx = PAPI_button[screen][n].lx; ly = PAPI_button[screen][n].ly;
+	u8 i;
+	s16 x, y, lx, ly;
+	u8 screen = PA_Screen;
+	u8 n; // N en cours
 	
-			PAPI_DrawButton(screen, n, 0);
-			PAPI_buttoninfo[screen].touched = n;
-			PAPI_buttonpressed[screen] = 0;			
+	if (PAPI_buttoninfo[screen].n) { // Uniquement si on a des boutons affichés
+		if(Stylus.Newpress){ // Que si nouvelle pression
+			n = PAPI_buttoninfo[screen].first;
+			for (i = 0; i < PAPI_buttoninfo[screen].n; i++){
+				// Si on touche...
+				x = PAPI_button[screen][n].x; y = PAPI_button[screen][n].y;
+				lx = PAPI_button[screen][n].lx; ly = PAPI_button[screen][n].ly;
+					
+				if (PA_StylusInZone(x, y, x + lx, y + ly)){
+					PAPI_button[screen][n].funct();
+					PAPI_DrawButton(screen, n, 1);
+					PAPI_buttoninfo[screen].touched = n;
+					PAPI_buttonpressed[screen] = 1;
+				}
+				
+				//PA_OutputText(1, 25, i, "%d  ", n);
+				n = PAPI_button[screen][n].next;
+			}
+		}
+		else {
+			n = PAPI_buttoninfo[screen].touched;
+			
+			if(Stylus.Released && PAPI_buttonpressed[screen]){ // Si on relève et 1 bouton appuyé
+				x = PAPI_button[screen][n].x; y = PAPI_button[screen][n].y;
+				lx = PAPI_button[screen][n].lx; ly = PAPI_button[screen][n].ly;
+		
+				PAPI_DrawButton(screen, n, 0);
+				PAPI_buttoninfo[screen].touched = n;
+				PAPI_buttonpressed[screen] = 0;			
+			}
 		}
 	}
-}
 
 
 }
@@ -180,70 +180,70 @@ if (PAPI_buttoninfo[screen].n) { // Uniquement si on a des boutons affichés
 
 
 void PAPI_DrawButton(u8 screen, s16 n, u8 value){
-s16 i, j;
-u8* data = (u8*)(PAPI_buttoninfo[screen].image[value]);
-s16 tempx, tempy;
-s16 x, y, lx, ly;
-
-
-x = PAPI_button[screen][n].x; y = PAPI_button[screen][n].y;
-lx = PAPI_button[screen][n].lx; ly = PAPI_button[screen][n].ly;
-s16 color = PAPI_button[screen][n].color;
-tempx = x + lx - 3;
-tempy = y + ly - 3;
-
-for (i = 0; i < 3; i++){
-	for (j = 0; j < 3; j++){
-		PA_Put8bitPixel(screen, i + x, j + y, data[i + (j << 3)]);
-		PA_Put8bitPixel(screen, i + tempx, j + y, data[i + 5 + (j << 3)]);		
-		PA_Put8bitPixel(screen, i + x, j + tempy, data[i + ((j + 5) << 3)]);
-		PA_Put8bitPixel(screen, i + tempx, j + tempy, data[i + 5 + ((j + 5) << 3)]);
+	s16 i, j;
+	u8* data = (u8*)(PAPI_buttoninfo[screen].image[value]);
+	s16 tempx, tempy;
+	s16 x, y, lx, ly;
+	
+	
+	x = PAPI_button[screen][n].x; y = PAPI_button[screen][n].y;
+	lx = PAPI_button[screen][n].lx; ly = PAPI_button[screen][n].ly;
+	s16 color = PAPI_button[screen][n].color;
+	tempx = x + lx - 3;
+	tempy = y + ly - 3;
+	
+	for (i = 0; i < 3; i++){
+		for (j = 0; j < 3; j++){
+			PA_Put8bitPixel(screen, i + x, j + y, data[i + (j << 3)]);
+			PA_Put8bitPixel(screen, i + tempx, j + y, data[i + 5 + (j << 3)]);		
+			PA_Put8bitPixel(screen, i + x, j + tempy, data[i + ((j + 5) << 3)]);
+			PA_Put8bitPixel(screen, i + tempx, j + tempy, data[i + 5 + ((j + 5) << 3)]);
+		}
 	}
-}
-
-tempx = x + 3;
-for (i = 0; i < (lx - 6); i++) {
-	PA_Put8bitPixel(screen, i + tempx, y, data[4]);
-	PA_Put8bitPixel(screen, i + tempx, y+1, data[12]);	
-	PA_Put8bitPixel(screen, i + tempx, y+2, data[20]);	
-	PA_Put8bitPixel(screen, i + tempx, y+ly - 3, data[44]);
-	PA_Put8bitPixel(screen, i + tempx, y+ly - 2, data[52]);	
-	PA_Put8bitPixel(screen, i + tempx, y+ly - 1, data[60]);		
-}
-
-tempy = y + 3;
-for (j = 0; j < (ly - 6); j++) {
-	PA_Put8bitPixel(screen, x, j + tempy, data[24]);
-	PA_Put8bitPixel(screen, x+1, j + tempy, data[25]);	
-	PA_Put8bitPixel(screen, x+2, j + tempy, data[26]);	
-	PA_Put8bitPixel(screen, x+lx-3, j + tempy, data[29]);
-	PA_Put8bitPixel(screen, x+lx-2, j + tempy, data[30]);	
-	PA_Put8bitPixel(screen, x+lx-1, j + tempy, data[31]);		
-}
-
-i = 0;
-u16 colors = data[28] + (data[28] << 8);
-
-if ((i + tempx)&1){ // Premier pixel à mettre tout seul peut-etre
-	for (j = 0; j < (ly - 6); j++) PA_Put8bitPixel(screen, i + tempx, j + tempy, data[28]);
-	i++;
-}
-
-// Tant qu'il reste au moins 2 pixels à mettre, on fait 2 par 2
-while((i < (lx - 6)-1)){
+	
+	tempx = x + 3;
+	for (i = 0; i < (lx - 6); i++) {
+		PA_Put8bitPixel(screen, i + tempx, y, data[4]);
+		PA_Put8bitPixel(screen, i + tempx, y+1, data[12]);	
+		PA_Put8bitPixel(screen, i + tempx, y+2, data[20]);	
+		PA_Put8bitPixel(screen, i + tempx, y+ly - 3, data[44]);
+		PA_Put8bitPixel(screen, i + tempx, y+ly - 2, data[52]);	
+		PA_Put8bitPixel(screen, i + tempx, y+ly - 1, data[60]);		
+	}
+	
+	tempy = y + 3;
 	for (j = 0; j < (ly - 6); j++) {
-		PA_Put2_8bitPixels(screen, i + tempx, j + tempy, colors);
+		PA_Put8bitPixel(screen, x, j + tempy, data[24]);
+		PA_Put8bitPixel(screen, x+1, j + tempy, data[25]);	
+		PA_Put8bitPixel(screen, x+2, j + tempy, data[26]);	
+		PA_Put8bitPixel(screen, x+lx-3, j + tempy, data[29]);
+		PA_Put8bitPixel(screen, x+lx-2, j + tempy, data[30]);	
+		PA_Put8bitPixel(screen, x+lx-1, j + tempy, data[31]);		
 	}
-	i+=2;
-}
-
-if (!((i + tempx)&1)){ // Dernier pixel à mettre tout seul peut-etre
-	for (j = 0; j < (ly - 6); j++) PA_Put8bitPixel(screen, i + tempx, j + tempy, data[28]);
-	i++;
-}
-
-
-PA_CenterSmartText(screen, x, y, x+lx, y+ly, PAPI_button[screen][n].text, color, PAPI_button[screen][n].textsize, 1);
+	
+	i = 0;
+	u16 colors = data[28] + (data[28] << 8);
+	
+	if ((i + tempx)&1){ // Premier pixel à mettre tout seul peut-etre
+		for (j = 0; j < (ly - 6); j++) PA_Put8bitPixel(screen, i + tempx, j + tempy, data[28]);
+		i++;
+	}
+	
+	// Tant qu'il reste au moins 2 pixels à mettre, on fait 2 par 2
+	while((i < (lx - 6)-1)){
+		for (j = 0; j < (ly - 6); j++) {
+			PA_Put2_8bitPixels(screen, i + tempx, j + tempy, colors);
+		}
+		i+=2;
+	}
+	
+	if (!((i + tempx)&1)){ // Dernier pixel à mettre tout seul peut-etre
+		for (j = 0; j < (ly - 6); j++) PA_Put8bitPixel(screen, i + tempx, j + tempy, data[28]);
+		i++;
+	}
+	
+	
+	PA_CenterSmartText(screen, x, y, x+lx, y+ly, PAPI_button[screen][n].text, color, PAPI_button[screen][n].textsize, 1);
 
 
 }
