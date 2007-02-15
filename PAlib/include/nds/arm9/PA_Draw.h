@@ -126,8 +126,10 @@ void PA_Init16bitBg(u8 screen, u8 bg_priority);
          \~french Couleur de la palette du fond (0-255) 
 */
 extern inline void PA_Put8bitPixel(u8 screen, s16 x, s16 y, u8 color) {
-   PA_DrawBg[screen][(y <<7) + (x>>1)] &= (0xff00>>((x&1)<<3));
-   PA_DrawBg[screen][(y <<7) + (x>>1)] |= color<<((x&1)<<3);
+	u32 pos = (y <<7) + (x>>1);
+	u8 decal = ((x&1)<<3);
+   PA_DrawBg[screen][pos] &= 0xff00>>decal;
+   PA_DrawBg[screen][pos] |= color<<decal;
 
 	//s32 pos = (x >> 1) + (y << 7);
 	//u16 pixel = PA_DrawBg[screen][pos];
@@ -160,7 +162,8 @@ extern inline void PA_Put8bitPixel(u8 screen, s16 x, s16 y, u8 color) {
          \~french Couleurs des premier et deuxième pixels (*256 pour le deuxième)
 	 
 */
-extern inline void PA_Put2_8bitPixels(u8 screen, s16 x, s16 y, u16 colors) {		PA_DrawBg[screen][(x >> 1) + (y << 7)] = colors;
+extern inline void PA_Put2_8bitPixels(u8 screen, s16 x, s16 y, u16 colors) {		
+	PA_DrawBg[screen][(x >> 1) + (y << 7)] = colors;
 }
 
 /*! \fn extern inline void PA_PutDouble8bitPixels(u8 screen, s16 x, s16 y, u8 color1, u8 color2)

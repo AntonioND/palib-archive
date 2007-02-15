@@ -63,6 +63,7 @@ void PA_FSAllInit(void);// Inits for all systems
 */
 extern inline u32 PA_FSInit(void)
 {
+	REG_EXEMEMCNT &= ~0x80; // GBA cart access
 	PA_FSAllInit();
 	return (PA_FSSys->Nfiles);
 }

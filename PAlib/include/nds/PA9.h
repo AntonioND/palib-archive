@@ -77,6 +77,8 @@ extern "C" {
 
 #include "arm9/PA_Gif.h"
 
+#include "arm9/PA_BgTrans.h"
+
 #ifdef __cplusplus
 }
 #endif
