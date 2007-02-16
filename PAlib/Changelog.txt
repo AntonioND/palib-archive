@@ -1,4 +1,27 @@
 
+------------------------------------
+| PAlib 070216 : Transitions Rule  |
+------------------------------------
+
+New Stuff
+---------
+
+[BgTrans] Completely new Background Transition effects, check them out in the Transition examples !
+
+[8bitText] Added a StarWars Text example, in the Text folder. Useless ? Yeah, I know ^^
+
+
+Things Fixed
+------------
+
+[PAFS] Fixed on DS (to be confirmed :/)
+
+
+
+
+-------------------------------
+| PAlib 070214 : Love Edition |
+-------------------------------
 
 New Stuff
 ---------
@@ -21,8 +44,9 @@ Things Fixed
 
 
 
-
+------------------------------------
 PAlib 070206 : devkitpro r20 version
+------------------------------------
 
 New Stuff
 ---------

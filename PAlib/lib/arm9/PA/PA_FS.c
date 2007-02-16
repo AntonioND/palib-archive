@@ -10,7 +10,6 @@ PAFSSystems *PA_FSSys;
 PAFSFiles *PA_FSFile; // Pointeur sur les infos fichiers...
 PAFSFolders *PA_FSFolder; 
 char *PAFSStart = (char*)PA_GBA_CART;
-//char *PAFSStart = (char*)PA_DS_CART;
 
 
 
