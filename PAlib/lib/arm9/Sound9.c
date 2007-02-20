@@ -9,7 +9,8 @@
 #include "Sound9.h"
 #include "SoundCommon.h"
 
-inline void ASSERT(bool x) { }
+//inline void ASSERT(bool x) { }
+
 
 #define MEMPOOL_SIZE (90 * 1024)
 
@@ -39,8 +40,8 @@ void SndSetMemPool(void *memPool, u32 memPoolSize)
 
 	memset(cmd, 0, sizeof(SND_COMMAND));
 
-	ASSERT(memPool != NULL);
-	ASSERT(memPoolSize < (1<<24));	// Only 3 bytes available in parameters
+//	//ASSERT(memPool != NULL);
+//	//ASSERT(memPoolSize < (1<<24));	// Only 3 bytes available in parameters
 
 	cmd->cmdType  = SND_CMD_SETMEMPOOL;
 	cmd->param[0] = (u8)(memPoolSize);
