@@ -8,7 +8,7 @@ Transparent Color : White
   text0 : 8bitFont, 256x64, Pal : text0_Pal, 99 tiles -> text0_Tiles and text0_Map
   text1 : 8bitFont, 256x64, Pal : text1_Pal, 104 tiles -> text1_Tiles and text1_Map
   text2 : 8bitFont, 512x128, Pal : text2_Pal, 113 tiles -> text2_Tiles and text2_Map
-  text3 : 8bitFont, 512x128, Pal : text3_Pal, 194 tiles -> text3_Tiles and text3_Map
+  text3 : 8bitFont, 512x128, Pal : text3_Pal, 193 tiles -> text3_Tiles and text3_Map
   text4 : 8bitFont, 512x128, Pal : text4_Pal, 258 tiles -> text4_Tiles and text4_Map
 
 5 palettes :

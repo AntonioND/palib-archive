@@ -5,9 +5,9 @@ ADD_LIBS +=
 PATH 		:= $(DEVKITARM)/bin:$(PATH)
 
 ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
-TEXT1 		:= PAlib Demo
+TEXT1 		:= PAlib Project
 TEXT2 		:= using PAlib
-TEXT3 		:= www.palib.com
+TEXT3 		:= www.palib.info
 ICON 		:= -b $(CURDIR)/../logo.bmp
 LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
 
@@ -17,6 +17,11 @@ LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
 ifeq ($(strip $(DEVKITARM)),)
 $(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM)
 endif
+
+
+include $(DEVKITARM)/ds_rules
+
+
 #---------------------------------------------------------------------------------
 # TARGET is the name of the output, if this ends with _mb generates a multiboot image
 # BUILD is the directory where object files & intermediate files will be placed
@@ -47,8 +52,9 @@ ARCH	:=	-mthumb-interwork
 
 # note: arm9tdmi isn't the correct CPU arch, but anything newer and LD
 # *insists* it has a FPU or VFP, and it won't take no for an answer!
-CFLAGS	:=	-g -Wall -O2\
- 		-mcpu=arm9tdmi -mtune=arm9tdmi -fomit-frame-pointer\
+CFLAGS	:=	-g  -Wformat=2 -Winline -Wall -O2\
+
+ 		-mcpu=arm946e-s -mtune=arm946e-s -fomit-frame-pointer\
 		-ffast-math \
 		$(ARCH)
 
@@ -75,7 +81,7 @@ PREFIX			:=	arm-eabi-
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:= -lnds9
+LIBS	:= -lfat -lnds9 -ldswifi9
 LIBSPA	:= -lpa9
  
  
@@ -210,15 +216,17 @@ $(OUTPUT).elf	:	$(OFILES)
 	@echo $(notdir $<)
 	@$(CC) -MM $(CFLAGS) -o $*.d $<
 	@$(CC)  $(ASFLAGS) -c $< -o$@
+
  
 define bin2o
 	cp $(<) $(*).tmp
+	echo -n $$(( `cat $(*).tmp | wc -c` & 3 )) | sed -e 's/0//g' | sed -e 's/1/000/g' | sed -e 's/2/00/g' | sed -e 's/3/0/g' >> $(*).tmp
 	$(OBJCOPY) -I binary -O elf32-littlearm -B arm \
 	--rename-section .data=.rodata \
 	--redefine-sym _binary_$*_tmp_start=$*\
 	--redefine-sym _binary_$*_tmp_end=$*_end\
 	--redefine-sym _binary_$*_tmp_size=$*_size\
-	$(*).tmp $(@)
+	$(*).tmp $(@)		
 	echo "extern const u8" $(*)"[];" > $(*).h
 	echo "extern const u32" $(*)_size[]";" >> $(*).h
 	rm $(*).tmp

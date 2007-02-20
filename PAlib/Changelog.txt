@@ -1,4 +1,34 @@
 
+New Stuff
+---------
+
+[3DSprites] Completely new 3D Sprite system, only for one screen though... Check out the examples, there's too much stuff to post here :/ You can all flood DAVIDO with thanks, because he really helped me alot ^^
+
+[Examples] Added Demos/MultipleFiles example to show how to use header and .c files correctly
+
+[PAGfx] Updated to convert textures, still limited right now (check 3DSprite examples). Supported modes : 4colors, 16colors, 256colors, 16bit, A3I5, and A5I3
+
+
+Updated Oldies
+--------------
+
+[Makefile] Makefile updated, thanks to DAVIDO ! Please take the on in the template or any example...
+
+[PAGfxLinux] Updated to match Windows PAGfx...
+
+[Examples] Reorganized examples into subfolders, should make looking for a specific example easier. Please erase your exemple folder before reinstalling...
+
+[TextFont] Updated the Tiled Text Font to Liquid Kidz : http://www.dafont.com/liquid-kidz.font. Hope it pleases more people than the old one ^^
+
+
+Things Fixed
+------------
+
+[PAGfx] 16bit sprite transparency and occasionnal bg compilation error
+
+[Fonts] 16c and 8bit now have the dot at the right height...
+
+
 ------------------------------------
 | PAlib 070216 : Transitions Rule  |
 ------------------------------------

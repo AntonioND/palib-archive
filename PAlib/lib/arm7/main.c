@@ -193,7 +193,7 @@ void arm7_fifo() { // check incoming fifo messages
    if(msg==0x87654321) Wifi_Sync();
 }
 
-int main(int argc, char ** argv) {
+int main(void) {
   REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_SEND_CLEAR;
 IPC->mailData=0;
 IPC->mailSize=0; 

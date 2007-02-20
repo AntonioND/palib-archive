@@ -5,9 +5,9 @@ ADD_LIBS +=
 PATH 		:= $(DEVKITARM)/bin:$(PATH)
 
 ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
-TEXT1 		:= PAlib Demo
+TEXT1 		:= PAlib Project
 TEXT2 		:= using PAlib
-TEXT3 		:= www.palib.com
+TEXT3 		:= www.palib.info
 ICON 		:= -b $(CURDIR)/../logo.bmp
 LOGO		:= -o $(CURDIR)/../logo_wifi.bmp
 
@@ -52,8 +52,9 @@ ARCH	:=	-mthumb-interwork
 
 # note: arm9tdmi isn't the correct CPU arch, but anything newer and LD
 # *insists* it has a FPU or VFP, and it won't take no for an answer!
-CFLAGS	:=	-g -Wall -O2\
- 		-mcpu=arm9tdmi -mtune=arm9tdmi -fomit-frame-pointer\
+CFLAGS	:=	-g  -Wformat=2 -Winline -Wall -O2\
+
+ 		-mcpu=arm946e-s -mtune=arm946e-s -fomit-frame-pointer\
 		-ffast-math \
 		$(ARCH)
 
