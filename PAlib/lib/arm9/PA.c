@@ -1,9 +1,11 @@
-#include "PA9.h"
-#include <nds.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#include "PA9.h"
+#include <nds.h>
+
 
 #define VAR_IN_EXRAM __attribute__ ((section (".ewram")))
 TransferSound snd;
@@ -12,6 +14,11 @@ u32 *sndMemPool;
 
 
 u32 Blank[130000>>2];
+
+extern const int PA_text_Info[3]; // BgMode, Width, Height
+extern const unsigned short PA_text_Map[768] __attribute__ ((aligned (4))) ;  // Pal : PA_text_Pal
+extern const unsigned char PA_text_Tiles[6080] __attribute__ ((aligned (4))) ;  // Pal : PA_text_Pal
+extern const unsigned short PA_text_Pal[5] __attribute__ ((aligned (4)));
 
 
 infos PA_UserInfo;
@@ -148,16 +155,16 @@ for (i = 0; i < 2; i++){
 	PA_SetBrightness(i, 0); // On affiche les écrans
 
 	PA_font[i] = 0;
-	#ifndef TEXT_ALLCHARACTERS
+//	#ifndef TEXT_ALLCHARACTERS
 		PA_textmap[i] = (u16*)PA_text_Map;
 		PA_texttiles[i] = (u8*)PA_text_Tiles;
 		PA_textpal[i] = (u16*)PA_text_Pal;	
-	#endif
-	#ifdef TEXT_ALLCHARACTERS
+//	#endif
+/*	#ifdef TEXT_ALLCHARACTERS
 		PA_textmap[i] = (u16*)PA_text2_Map;
 		PA_texttiles[i] = (u8*)PA_text2_Tiles;
 		PA_textpal[i] = (u16*)PA_text2_Pal;	
-	#endif	
+	#endif	*/
 }
 	PA_UpdateUserInfo();
 	PA_ResetRecoSys(); // Reco system init

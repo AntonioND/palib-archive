@@ -1,12 +1,20 @@
+
+
+
 #include <PA9.h>
 
 // PAGfxConverter Include
 #include "gfx/all_gfx.h" // Only include the .h to use the .bin files in the data folder
 
+
 int main(void){
 
 	PA_Init(); //PAlib inits
 	PA_InitVBL();
+	
+	PA_InitText(1, 0);
+	
+	PA_OutputSimpleText(1, 2, 6, "BinFile example");
 	
 	PA_LoadSpritePal(0, // Screen
 					0, // Palette number
