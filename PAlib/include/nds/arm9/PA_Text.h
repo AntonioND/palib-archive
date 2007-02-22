@@ -7,8 +7,10 @@ extern "C" {
 #endif
 
 #include "PA_BgTiles.h"
-#include "../../../lib/arm9/PA/Text/all_gfx.h" // Include the text !
-
+//#include "../../../lib/arm9/PA/Text/PA_Font.h" // Include the text !
+extern const int PA_text_Info[3]; // BgMode, Width, Height
+extern const unsigned short PA_text_Map[768] __attribute__ ((aligned (4))) ;  // Pal : PA_text_Pal
+extern const unsigned char PA_text_Tiles[6080] __attribute__ ((aligned (4))) ;  // Pal : PA_text_Pal
 
 #define PA_InitCustomTextEx(screen, bg_select, tiles, map, pal) {\
    PAbgtext[screen] = bg_select;\

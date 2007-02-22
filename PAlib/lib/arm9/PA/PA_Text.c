@@ -6,14 +6,14 @@ extern "C" {
 
 #include "PA9.h"
 
-#ifndef TEXT_ALLCHARACTERS
+//#ifndef TEXT_ALLCHARACTERS
 	#include "Text/PA_text.c" // Include the text !
 	#include "Text/PA_text.pal.c" // Include the text !	
-#endif
-#ifdef TEXT_ALLCHARACTERS
+//#endif
+/*#ifdef TEXT_ALLCHARACTERS
 	#include "Text/PA_text2.c" // Include the text !
 	#include "Text/PA_text2.pal.c" // Include the text !	
-#endif
+#endif*/
 
 
 u8 PAbgtext[2];

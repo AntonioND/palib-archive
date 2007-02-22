@@ -8,16 +8,26 @@ extern "C" {
 pa3dsprites pa_3dsprites[PA_NMAXSPRITES];  // 3D Sprite infos
 
 
-s16 pa_ntextures = 0;
-u32 *pa_3dnextblock = (u32*)0x06800000;
+s16 pa_freetextures;
+//u32 *pa_3dnextblock = (u32*);
+
+#define N_TEXTURES 1024
 
 
 u16 n_free_mem3D; // nombre d'emplacements libres
-u8 used_mem3D[8192]; // Note la quantité de mémoire utilisée en chaque point de la mémoire pour pouvoir effacer les gfx...
-u8 obj_per_gfx3D[8192]; // Nombre de sprites utilisant un gfx donné...
+u16 used_mem3D[8192]; // Note la quantité de mémoire utilisée en chaque point de la mémoire pour pouvoir effacer les gfx...
+s16 obj_per_gfx3D[N_TEXTURES]; // Nombre de sprites utilisant un gfx donné...
 mem_usage free_mem3D[8192];
 
+type_3danims sprite3danims[2048];
 
+u16 n3Dspriteanims;
+
+u16 freetexslots[N_TEXTURES]; // Free Texture Slots...
+
+
+void *texturesptr[MAX_TEXTURES];
+void PA_3DUpdateSpriteAnims(void);
 
 
 /* 40004A4h - Cmd 29h - POLYGON_ATTR
@@ -38,69 +48,137 @@ mem_usage free_mem3D[8192];
   */
 //   	POLYGON_ATTR = (0<<3)|(0<<4)|(1<<6)|(1<<7)|(0<<11)|(0<<12)|(15<<16);
    	  
+ 
+extern inline void PA_glRotateX(u32 angle) {	
+   angle = (((angle&511) * LUT_SIZE)>>9);
+
+  	int32 sine = SIN[angle &  LUT_MASK];
+	int32 cosine = COS[angle & LUT_MASK];
+
+	MATRIX_MULT3x3 = inttof32(1);
+	MATRIX_MULT3x3 = 0;
+	MATRIX_MULT3x3 = 0;
+
+	MATRIX_MULT3x3 = 0;
+	MATRIX_MULT3x3 = cosine;
+	MATRIX_MULT3x3 = sine;
+  
+	MATRIX_MULT3x3 = 0;
+	MATRIX_MULT3x3 = -sine;
+	MATRIX_MULT3x3 = cosine;	
+	
+}
+extern inline void PA_glRotateY(u32 angle) {	
+   angle = (((angle&511) * LUT_SIZE)>>9);
+
+	int32 sine = SIN[angle &  LUT_MASK];
+	int32 cosine = COS[angle & LUT_MASK];
+
+	MATRIX_MULT3x3 = cosine;
+	MATRIX_MULT3x3 = 0;
+	MATRIX_MULT3x3 = -sine;
+  
+	MATRIX_MULT3x3 = 0;
+	MATRIX_MULT3x3 = inttof32(1);
+	MATRIX_MULT3x3 = 0;
+  
+	MATRIX_MULT3x3 = sine;
+	MATRIX_MULT3x3 = 0;
+	MATRIX_MULT3x3 = cosine;	
+}
+extern inline void PA_glRotateZ(u32 angle) {	
+   angle = (((angle&511) * LUT_SIZE)>>9);
+	
+	int32 sine = SIN[angle &  LUT_MASK];
+	int32 cosine = COS[angle & LUT_MASK];
+
+	MATRIX_MULT3x3 = cosine;
+	MATRIX_MULT3x3 = sine;
+	MATRIX_MULT3x3 = 0;
+
+	MATRIX_MULT3x3 = - sine;
+	MATRIX_MULT3x3 = cosine;
+	MATRIX_MULT3x3 = 0;
+  
+	MATRIX_MULT3x3 = 0;
+	MATRIX_MULT3x3 = 0;
+	MATRIX_MULT3x3 = inttof32(1);		
+}   
+  
+ 
+extern inline void PA_glVertex(u16 x, u16 y, u16 z){
+	GFX_VERTEX16 = (y << 16) | (x & 0xFFFF);
+	GFX_VERTEX16 = ((uint32)z);
+}	
+
+
+
+
+extern inline void PA_glTranslate(s32 x, s32 y, s32 z) {
+  MATRIX_TRANSLATE = (x);
+  MATRIX_TRANSLATE = (y);
+  MATRIX_TRANSLATE = (z);
+}
+
   
 void PA_3DSpriteToScreen(u16 sprite){
-   
- 
-   	glPushMatrix();		
+    
+   MATRIX_PUSH = 0;
   
 	PA_glTranslate(pa_3dsprites[sprite].X, (191-pa_3dsprites[sprite].Y), pa_3dsprites[sprite].Priority);
-//   	glBindTexture(0, textureID);
+
 	GFX_TEX_FORMAT = textures[pa_3dsprites[sprite].textureID]; 
 	activeTexture = pa_3dsprites[sprite].textureID; 
 	
-	glRotateX((pa_3dsprites[sprite].RotX*360)>>9);	
-	glRotateY((pa_3dsprites[sprite].RotY*360)>>9); 
-	glRotateZ((pa_3dsprites[sprite].RotZ*360)>>9); // Convert from 512 angle
+	PA_glRotateX(pa_3dsprites[sprite].RotX);	
+	PA_glRotateY(pa_3dsprites[sprite].RotY); 
+	PA_glRotateZ(pa_3dsprites[sprite].RotZ); 
    	
-//	PA_glTranslate((pa_3dsprites[sprite].X-128)*58, (96-pa_3dsprites[sprite].Y)*58, 0);
+   POLYGON_ATTR = (0<<3)|(0<<4)|(1<<6)|(1<<7)|(0<<11)|(0<<12)|(pa_3dsprites[sprite].alpha<<16);
+   PA_PLTT_BASE = pa_3dsprites[sprite].palette<<5;
 
-   	POLYGON_ATTR = (0<<3)|(0<<4)|(1<<6)|(1<<7)|(0<<11)|(0<<12)|(31<<16);
-   	PA_PLTT_BASE = pa_3dsprites[sprite].palette<<5;
-
-   	
-   	u32 x1, x2, y1, y2;
-   	u8 hflip = pa_3dsprites[sprite].Hflip;
-   	u8 vflip = pa_3dsprites[sprite].Vflip; 
-		  	
-   	x1 = inttot16(pa_3dsprites[sprite].ImgWidth)*(!vflip);
-   	x2 = inttot16(pa_3dsprites[sprite].ImgWidth)*(vflip);
-   	y1 = inttot16(pa_3dsprites[sprite].ImgHeight)*(!hflip);
-   	y2 = inttot16(pa_3dsprites[sprite].ImgHeight)*(hflip);  
-		
-		s32 zoomx =  	pa_3dsprites[sprite].Width>>1;
-		s32 zoomy =  	pa_3dsprites[sprite].Height>>1;					
-   	
-		//draw the obj
-		glBegin(GL_QUAD);
-		
-			glNormal(NORMAL_PACK(0,inttov10(-1),0));
-
-			glTexCoord1i(TEXTURE_PACK(x1, y2));
-			glVertex3v16(-zoomx,	-zoomy, 0 );
 	
-			glTexCoord1i(TEXTURE_PACK(x1,y1));
-			glVertex3v16(zoomx,	-zoomy, 0 );
-	
-			glTexCoord1i(TEXTURE_PACK(x2, y1));
-			glVertex3v16(zoomx,	zoomy, 0 );
+	u32 x1, x2, y1, y2;
+	u8 hflip = pa_3dsprites[sprite].Hflip;	u8 vflip = pa_3dsprites[sprite].Vflip; 
+	  	
+	x1 = inttot16(pa_3dsprites[sprite].ImgWidth)*(!vflip);	x2 = inttot16(pa_3dsprites[sprite].ImgWidth)*(vflip);
+	y1 = inttot16(pa_3dsprites[sprite].ImgHeight)*(!hflip);	y2 = inttot16(pa_3dsprites[sprite].ImgHeight)*(hflip);  
+		
+	s32 zoomx =  	pa_3dsprites[sprite].Width>>1;	s32 zoomy =  	pa_3dsprites[sprite].Height>>1;					
 
-			glTexCoord1i(TEXTURE_PACK(x2,y2));
-			glVertex3v16(-zoomx,	zoomy, 0 );
-		glEnd();   
+	// Start drawing texture
+	GFX_BEGIN = GL_QUAD;
+	
+		GFX_NORMAL = NORMAL_PACK(0,inttov10(-1),0);
+
+		GFX_TEX_COORD = (TEXTURE_PACK(x1, y2));
+		PA_glVertex(-zoomx+pa_3dsprites[sprite].corner[2].x,	-zoomy-pa_3dsprites[sprite].corner[2].y, 0 );
+
+		GFX_TEX_COORD = (TEXTURE_PACK(x1,y1));
+		PA_glVertex(zoomx+pa_3dsprites[sprite].corner[3].x,	-zoomy-pa_3dsprites[sprite].corner[3].y, 0 );
+
+		GFX_TEX_COORD = (TEXTURE_PACK(x2, y1));
+		PA_glVertex(zoomx+pa_3dsprites[sprite].corner[1].x,	zoomy-pa_3dsprites[sprite].corner[1].y, 0 );
+
+		GFX_TEX_COORD = (TEXTURE_PACK(x2,y2));
+		PA_glVertex(-zoomx+pa_3dsprites[sprite].corner[0].x,	zoomy-pa_3dsprites[sprite].corner[0].y, 0 );
+	GFX_END = 0;
    
-   	glPopMatrix(1);
+   MATRIX_POP = 1;
+
 }   
 
 
 void PA_3DProcess(void){
 
+
+	PA_3DUpdateSpriteAnims(); // Update animations...
 	glReset();
-//		glPushMatrix();
+	glEnable(GL_BLEND);
+
 //	PA_Set3D(0, 0, 0, 1, 1, 0, 0, 0, 0, 1);
-		
-	//any floating point gl call is being converted to fixed prior to being implemented
-	glMatrixMode(GL_PROJECTION);
+
+	MATRIX_CONTROL = GL_PROJECTION;
 	glLoadIdentity();
 //		gluPerspectivef32(50, 5461, 4096, 204800);
 	glOrthof32 (0, 256, 0, 192, 1, 204800);
@@ -109,13 +187,10 @@ void PA_3DProcess(void){
 				0.0, 0.0, 0.0,		//look at
 				0.0, 1.0, 0.0);		//up
 
-	//move it away from the camera
-//		glTranslate3f32(0, 0, floattof32(-1));
-	
-	glMatrixMode(GL_TEXTURE);
+	MATRIX_CONTROL = GL_TEXTURE;
 	glIdentity();
 	
-	glMatrixMode(GL_MODELVIEW);
+	MATRIX_CONTROL = GL_MODELVIEW;
 
 	glMaterialf(GL_AMBIENT, RGB15(31,31,31));
 	glMaterialf(GL_DIFFUSE, RGB15(31,31,31));
@@ -123,23 +198,19 @@ void PA_3DProcess(void){
 	glMaterialf(GL_EMISSION, RGB15(31,31,31));   
 
 	//ds uses a table for shinyness..this generates a half-ass one
-	glMaterialShinyness();
-
-	//not a real gl function and will likely change
-	glPolyFmt(POLY_ALPHA(31) | POLY_CULL_BACK); 
+	glMaterialShinyness(); 
+	
+	PA_TEXIMAGE_PARAM |= (1<<29); // Palette index 0 = transparent
 
 	s32 i;
-	PA_TEXIMAGE_PARAM |= (1<<29); // Palette index 0 = transparent
 	for(i = 0; i < PA_NMAXSPRITES; i++) if(pa_3dsprites[i].Alive)  PA_3DSpriteToScreen(i);
-
-//	glFlush();   
+ 
 	GFX_FLUSH = 0;
-   
 }   
 
 
 
-void PA_3DDeleteTex(u16 tex_gfx) {
+void PA_3DDeleteTex(u32 tex_gfx) {
 u16 i;
 u16 j;
 u8 exit = 0;
@@ -147,44 +218,52 @@ s8 decal = 0; // Décalage que l'on aura à faire pour classer le tableau...
 
 
    obj_per_gfx3D[tex_gfx] = 0;
+   
+    freetexslots[pa_freetextures] = tex_gfx;
+    pa_freetextures++; 
+   
+    tex_gfx = (textures[tex_gfx]&(0xFFFF))<<1;
+   
 
-      // Gestion dynamique de la mémoire...
-      for (i = 0; ((i < n_free_mem3D) & !exit); i++) { // On regarde les différents emplacements mémoire pour ajouter le morceau libre dans le tas...
-         if (tex_gfx < free_mem3D[i].mem_block) { // Si on a un trou qui précède le premier trou dispo, on va devoir tout décaler...peut-etre !
-            exit = 1; // On va pourvoir sortir, après avir ordonné le tableau...
-            decal = 1;
-            if ((tex_gfx > 0) & (free_mem3D[i - 1].mem_block + free_mem3D[i - 1].free == tex_gfx)) { // On a 2 cases côtes à côtes, donc pas besoin de décaler, on ajouter la mem dispo...
-               free_mem3D[i-1].free += used_mem3D[tex_gfx];
-               tex_gfx = free_mem3D[i-1].mem_block;
-               used_mem3D[tex_gfx] = free_mem3D[i-1].free;
-               decal = 0;
-            }
-            if (tex_gfx + used_mem3D[tex_gfx] == free_mem3D[i].mem_block) { // Si le bloc d'après suit parfaitement le bloc qu'on vient d'ajouter...
-               -- decal;
-               free_mem3D[i].mem_block = tex_gfx;
-               free_mem3D[i].free += used_mem3D[tex_gfx];
-            }
-            // Si le décalage est de 0, on touche à rien
-            if (decal == -1) { // On doit décaler vers la gauche... les données sont déjà dans le tableau
-               for (j = i - 1; j < n_free_mem3D; j++) {// On recopie la liste plus loin...
-                  free_mem3D[j] = free_mem3D[j + 1];
-               }
-               -- n_free_mem3D;
-            }
-            else if (decal == 1) { // On doit tout décaler pour faire rentrer la case vide...
-               ++n_free_mem3D;
-               for (j = n_free_mem3D; j > i; j--) {// On recopie la liste plus loin...
-                  free_mem3D[j] = free_mem3D[j - 1];
-               }
-               free_mem3D[i].mem_block = tex_gfx;
-               free_mem3D[i].free = used_mem3D[tex_gfx];
-            }
-         }
-      }
+  // Gestion dynamique de la mémoire...
+  for (i = 0; ((i < n_free_mem3D) & !exit); i++) { // On regarde les différents emplacements mémoire pour ajouter le morceau libre dans le tas...
+	 if (tex_gfx < free_mem3D[i].mem_block) { // Si on a un trou qui précède le premier trou dispo, on va devoir tout décaler...peut-etre !
+		exit = 1; // On va pourvoir sortir, après avir ordonné le tableau...
+		decal = 1;
+		if ((tex_gfx > 0) & (free_mem3D[i - 1].mem_block + free_mem3D[i - 1].free == tex_gfx)) { // On a 2 cases côtes à côtes, donc pas besoin de décaler, on ajouter la mem dispo...
+		   free_mem3D[i-1].free += used_mem3D[tex_gfx];
+		   tex_gfx = free_mem3D[i-1].mem_block;
+		   used_mem3D[tex_gfx] = free_mem3D[i-1].free;
+		   decal = 0;
+		}
+		if (tex_gfx + used_mem3D[tex_gfx] == free_mem3D[i].mem_block) { // Si le bloc d'après suit parfaitement le bloc qu'on vient d'ajouter...
+		   -- decal;
+		   free_mem3D[i].mem_block = tex_gfx;
+		   free_mem3D[i].free += used_mem3D[tex_gfx];
+		}
+		// Si le décalage est de 0, on touche à rien
+		if (decal == -1) { // On doit décaler vers la gauche... les données sont déjà dans le tableau
+		   for (j = i - 1; j < n_free_mem3D; j++) {// On recopie la liste plus loin...
+			  free_mem3D[j] = free_mem3D[j + 1];
+		   }
+		   -- n_free_mem3D;
+		}
+		else if (decal == 1) { // On doit tout décaler pour faire rentrer la case vide...
+		   ++n_free_mem3D;
+		   for (j = n_free_mem3D; j > i; j--) {// On recopie la liste plus loin...
+			  free_mem3D[j] = free_mem3D[j - 1];
+		   }
+		   free_mem3D[i].mem_block = tex_gfx;
+		   free_mem3D[i].free = used_mem3D[tex_gfx];
+		}
+	 }
+  }
 
-      // Effacage de la mémoire
+  // Effacage de la mémoire
 //      DMA_Copy((void*)Blank, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (tex_gfx << NUMBER_DECAL)), (used_mem3D[tex_gfx] << MEM_DECAL), DMA_32NOW);
-      used_mem3D[tex_gfx] = 0;
+  used_mem3D[tex_gfx] = 0;
+
+
 }
 
 
@@ -194,8 +273,9 @@ s8 decal = 0; // Décalage que l'on aura à faire pour classer le tableau...
 
 s16 PA_3DCreateTex(void* obj_data, u16 width, u16 height, u8 type) {
    
-	s16 currenttex = pa_ntextures;
-	pa_ntextures++;
+   
+   pa_freetextures--; // One less texture slot
+	s16 currenttex = freetexslots[pa_freetextures];
 	GFX_TEX_FORMAT = textures[currenttex]; 
 	activeTexture = currenttex;   
    
@@ -242,6 +322,7 @@ s16 PA_3DCreateTex(void* obj_data, u16 width, u16 height, u8 type) {
 	
    i = free_mem3D[n_mem].mem_block; // On met la valeur de coté pour la renvoyer...
    truenumber = 0x06800000  + (i << 4);
+   used_mem3D[i] = block_size;   // Nombre de blocks  
    
    // Start Copy...
    vramSetBankA(VRAM_A_LCD);  
@@ -250,10 +331,6 @@ s16 PA_3DCreateTex(void* obj_data, u16 width, u16 height, u8 type) {
    
    PA_glTexParameter(texwidth, texheight, (u32*)truenumber, type, TEXGEN_TEXCOORD);
    
-   // Remove from free Mem
-   used_mem3D[i] = block_size;   // Nombre de blocks
-   obj_per_gfx3D[i] = 1; // Nombre d'objets sur ce gfx...
-
    free_mem3D[n_mem].free -= block_size;
    if (free_mem3D[n_mem].free > 0) free_mem3D[n_mem].mem_block += block_size; // S'il reste un bout libre, on garde...
    else {// On doit tout décaler d'un cran... vers la gauche
@@ -262,6 +339,9 @@ s16 PA_3DCreateTex(void* obj_data, u16 width, u16 height, u8 type) {
 	  }
 	  --n_free_mem3D;
    }
+   texturesptr[currenttex] = (void*)obj_data; // Save pointer for animations
+   obj_per_gfx3D[currenttex] = 1; // Nombre d'objets sur ce gfx...
+    
    return currenttex;
 }
 
@@ -274,12 +354,22 @@ void PA_3DCreateSpriteFromTex(u16 sprite, u16 texture, u16 width, u16 height, u8
 	pa_3dsprites[sprite].RotX = 0; pa_3dsprites[sprite].RotY = 0; pa_3dsprites[sprite].RotZ = 0;
 	pa_3dsprites[sprite].textureID = texture;
 	pa_3dsprites[sprite].Priority = 1024;
+	pa_3dsprites[sprite].alpha = 31; // Solid
+	
+	u8 i;
+	for(i = 0; i < 4; i++){
+		pa_3dsprites[sprite].corner[i].x = 0;
+		pa_3dsprites[sprite].corner[i].y = 0;	
+	}	
+	
 	if(((textures[texture]>>26)&7) == TEX_4COL){
 	   pa_3dsprites[sprite].palette = palette<<1; // 1 more...
 	}
 	else{
 	   pa_3dsprites[sprite].palette = palette; // 1 more...
 	}		   
+	
+	obj_per_gfx3D[texture]++;
 }   
 
 
@@ -287,10 +377,114 @@ void PA_Reset3DSprites(void){
    n_free_mem3D = 1;
 	free_mem3D[0].mem_block = 0; free_mem3D[0].free = 8192; // Number of free blocks in memory   
 	s32 i;
-	for(i = 0; i < PA_NMAXSPRITES; i++) pa_3dsprites[i].Alive = 0; // Delete sprite
+	for(i = 0; i < PA_NMAXSPRITES; i++) {
+		pa_3dsprites[i].Alive = 0; // Delete sprite
+		sprite3danims[i].play = 0; // No animation
+	}
+	for(i = 0; i < 1024; i++) freetexslots[i] = 1023-i; // free slots...
+	pa_freetextures = 1024;
+	n3Dspriteanims = 0;
 }   
 
 
+
+
+
+void PA_3DUpdateGfx(u16 texture, void *image) {
+   s32 mem_size = 1 <<(6+((textures[texture]>>20)&7)+((textures[texture]>>23)&7));
+   u8 type = ((textures[texture]>>26)&7);
+   switch (type) {
+	 case TEX_16BITS:
+	   mem_size = mem_size << 1;
+	   break;
+	 case TEX_4COL:
+	   mem_size = mem_size >> 2;
+	   break;
+	 case TEX_16COL:
+	   mem_size = mem_size >> 1;
+	   break;
+	 default:
+	   break;
+	}	
+	vramSetBankA(VRAM_A_LCD);  
+	DMA_Copy((image), (void*)(0x06800000 + ((textures[texture]&0xFFFF)<<3)), (mem_size>>1), DMA_16NOW);
+   vramSetBankA(VRAM_A_TEXTURE);
+}
+
+
+void PA_3DSetSpriteFrame(u16 sprite, u16 frame){
+   
+   u16 texture = pa_3dsprites[sprite].textureID;
+   s16 mem_size = pa_3dsprites[sprite].ImgWidth * pa_3dsprites[sprite].ImgHeight;
+   u8 type = ((textures[texture]>>26)&7);
+   switch (type) {
+	 case TEX_16BITS:
+	   mem_size = mem_size << 1;
+	   break;
+	 case TEX_4COL:
+	   mem_size = mem_size >> 2;
+	   break;
+	 case TEX_16COL:
+	   mem_size = mem_size >> 1;
+	   break;
+	 default:
+	   break;
+	}	   
+   PA_3DUpdateGfx(texture, texturesptr[texture] + mem_size*frame);
+   
+   
+}   
+
+
+
+void PA_3DUpdateSpriteAnims(void)
+{
+u16 anims = n3Dspriteanims;
+u16 currentsprite = 0;
+
+while((anims > 0) && (currentsprite < 2048))
+{
+	if (sprite3danims[currentsprite].play)
+	{
+		//++nanim;
+		sprite3danims[currentsprite].time += sprite3danims[currentsprite].speed;
+		if (sprite3danims[currentsprite].time >= 60) 
+		{
+			while (sprite3danims[currentsprite].time >= 60)
+			{
+				sprite3danims[currentsprite].time -= 60;
+				sprite3danims[currentsprite].currentframe+=sprite3danims[currentsprite].framechange;
+				if (((sprite3danims[currentsprite].framechange > 0) && (sprite3danims[currentsprite].currentframe > sprite3danims[currentsprite].lastframe))||((sprite3danims[currentsprite].framechange < 0) && (sprite3danims[currentsprite].currentframe < sprite3danims[currentsprite].firstframe))){
+					if (sprite3danims[currentsprite].type == ANIM_LOOP){ // Loop
+						sprite3danims[currentsprite].currentframe = sprite3danims[currentsprite].firstframe;	
+					}
+					else { // Don't loop, go back -> switch speed and first/last frames
+						sprite3danims[currentsprite].framechange = -sprite3danims[currentsprite].framechange;
+						if (sprite3danims[currentsprite].ncycles == 1)// It was the last one
+							sprite3danims[currentsprite].currentframe+=sprite3danims[currentsprite].framechange;
+							//sprite3danims[currentsprite].framechange; // stop on the correct animation
+						else sprite3danims[currentsprite].currentframe+=sprite3danims[currentsprite].framechange<<1; // continue going back and forth   
+						
+					}	
+
+					// In all cases :
+					sprite3danims[currentsprite].ncycles--; // 1 less to do
+					if (sprite3danims[currentsprite].ncycles == 0) {
+						PA_3DStopSpriteAnim(currentsprite);
+					}
+					else if (sprite3danims[currentsprite].ncycles<0) sprite3danims[currentsprite].ncycles = -1; // Inifinite
+				}
+			}
+			//PA_OutputText(1, 0, nanim+18, "%d : %d, %d %d  ", currentsprite, PA_GetSpriteX(0, currentsprite), PA_GetSpriteY(0, currentsprite), PA_GetSpriteGfx(0, currentsprite));
+			PA_3DSetSpriteFrame(currentsprite, sprite3danims[currentsprite].currentframe);
+			
+		}
+		anims--; // Une de faite !
+	}
+currentsprite++; // next sprite...
+}
+
+}
 
 
 /*
@@ -406,6 +600,29 @@ int PAglTexImage2D(int target, int empty1, int type, int sizeX, int sizeY, int e
   return 1;
 }
 */
+
+
+void PA_3DStartSpriteAnimEx(u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)
+{
+	sprite3danims[sprite].currentframe = sprite3danims[sprite].firstframe = firstframe;
+	sprite3danims[sprite].lastframe = lastframe;
+	sprite3danims[sprite].speed = speed;	
+	sprite3danims[sprite].time = 0;
+	sprite3danims[sprite].type = type;
+	sprite3danims[sprite].ncycles = ncycles;
+	sprite3danims[sprite].framechange = 1; // normal change to start
+	
+	if (!sprite3danims[sprite].play){ // Counts number of sprites playing...	
+		
+		n3Dspriteanims += 1;
+	}
+	
+	PA_3DSetSpriteFrame(sprite, firstframe); // Set first animation frame
+	sprite3danims[sprite].play = 1;	// playing...
+
+	//PA_OutputText(1, 0, nanim+12, "%d : %d, %d   ", sprite, PA_GetSpriteX(0, sprite), PA_GetSpriteY(0, sprite));
+	//nanim++;
+}
 
 
 

@@ -19,6 +19,7 @@ int main(int argc, char ** argv)
 	PA_InitVBL(); // Initializes a standard VBL
 	
 	PA_Init3D(); // Uses Bg0
+	PA_Reset3DSprites();
 	
 	// Initialise the text system on the top screen
 	PA_InitText(0, 1);

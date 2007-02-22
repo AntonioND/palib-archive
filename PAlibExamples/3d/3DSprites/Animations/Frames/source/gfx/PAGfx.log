@@ -1,0 +1,15 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+1 textures :
+  frames : 256colors, 32x128, Pal : frames_Pal, -> frames_Texture
+
+1 palettes :
+  frames_Pal, 19 colors
+
+Converted in 0 minutes 1 seconds
+
+Finished !

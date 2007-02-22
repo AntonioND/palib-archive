@@ -30,6 +30,7 @@ int main(int argc, char ** argv)
 		PA_16cText(0, 10, 40, 255, 60, text, 1, 3, 100);	// Display the text transformed :)
 
 		PA_WaitForVBL();
+		PA_16cErase(0);
 	}
 	
 	return 0;

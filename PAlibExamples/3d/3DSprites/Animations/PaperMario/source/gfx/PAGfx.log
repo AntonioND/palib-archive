@@ -1,0 +1,19 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+1 backgrounds :
+  mariobg : EasyBg, 256x192, Pal : mariobg_Pal, 185 tiles -> mariobg_Tiles and mariobg_Map
+
+1 textures :
+  mario : 256colors, 64x256, Pal : mario_Pal, -> mario_Texture
+
+2 palettes :
+  mariobg_Pal, 253 colors
+  mario_Pal, 54 colors
+
+Converted in 0 minutes 0 seconds
+
+Finished !

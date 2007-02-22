@@ -14,7 +14,7 @@ int main(int argc, char ** argv){
 	
 	PA_Init16bitBg(0, 3); 	// Init a 16 bit Bg on screen 0
 	PA_Init8bitBg(1, 3); 	// Init a 8 bit Bg on screen 1	
-	
+
 	PA_LoadGif(	1, // Screen, which is 8 bit...
 				(void*)Mollusk); // Gif File
 

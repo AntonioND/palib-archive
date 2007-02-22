@@ -1,3 +1,35 @@
+----------------------------------
+| PAlib 070222 : Not doing 3D... |
+----------------------------------
+
+New Stuff
+---------
+
+[3DSprites] Animations made it in this release ! Check the 3DSprites Animation examples ;) Works 100% like the normal sprite animations, shouldn't be too hard
+
+[3DSprites] You can now change the corner positions in textures. Check out Deform examples
+
+
+Updated Oldies
+--------------
+
+[3DSprites] Added PA_3DCreateSprite, and DeleteTex now works :)
+
+[Examples] Updates for the whole 3D examples
+
+
+Things Fixed
+------------
+
+[BinFiles] Fixed Bin examples, was a all_gfx.h problem in PAlib
+
+[16cExample] Fixed 16cText2 example, forgot to erase text :s
+
+
+
+--------------------------------
+| PAlib 070220 : 3DSprites WIP |
+--------------------------------
 
 New Stuff
 ---------
