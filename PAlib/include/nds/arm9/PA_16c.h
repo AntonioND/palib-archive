@@ -33,7 +33,7 @@ extern LetterPos16c PA_16cLetterPos;
 
 
 #define PA_LoadPal16c(palette, source)   DMA_Copy(source, (void*)palette, 16, DMA_16NOW);
-#define PA_16cPos(x, y) (((x>>3)*26*8) + y + 8)
+#define PA_16cPos(x, y) ((((x)>>3)*26*8) + (y) + 8)
 ALWAYSINLINE void PA_16c8X8(u8 screen, s16 x, s16 y, u32 *image);
 
 	extern u32 *c16_tiles[10];
@@ -65,12 +65,16 @@ ALWAYSINLINE void PA_16c8X8Color(u8 screen, s16 x, s16 y, u32 *image, u8 color){
    PA_Draw1632[screen][pos+7] |= (image[7]>>temp)*color;      
 } 
 
- 
+
 
 ALWAYSINLINE void PA_Plot8Pixels(u8 screen, u16 pos, u16 temp, u32 color){
    PA_Draw1632[screen][pos] |= (color<<temp);
    PA_Draw1632[screen][pos+(26*8)] |= (color>>(32-temp));   
 }  
+
+extern inline void PA_16c8pixels(u8 screen, s16 x, s16 y, u32 colors){
+	PA_Plot8Pixels(screen, PA_16cPos(x+8, y+8), ((x&7)<<2), colors);
+}
 
 ALWAYSINLINE void PA_16c16X16Letter(u8 screen, s16 x, s16 y, u8 letter, u8 size, u8 color)
 {  
@@ -249,6 +253,14 @@ ALWAYSINLINE void PA_16cPutPixel(u8 screen, s16 x, s16 y, u32 color){
    u16 pos = PA_16cPos(x, y);
    PA_Draw1632[screen][pos] |= (color<<temp);
 }
+
+ALWAYSINLINE void PA_16cDeletePixel(u8 screen, s16 x, s16 y){
+   x += 8; y += 8;
+   u16 temp = (x&7)<<2;
+   u16 pos = PA_16cPos(x, y);
+   PA_Draw1632[screen][pos] &= ~(15<<temp);
+}
+
 
 
 /*! \fn ALWAYSINLINE void PA_16c8X4(u8 screen, s16 x, s16 y, u32 *image)

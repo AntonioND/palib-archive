@@ -42,7 +42,7 @@ const u16 PA_16bit_sizes[4][3] = {
    {4096*2, 2048*2, 2048*4}
 };*/
 
-obj_inf PA_obj[2][128];  // Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...
+obj_inf PA_obj[2][128] __attribute__ ((aligned (4)));  // Les 128 premiers pour l'écran du haut, et encore 128 pour l'écran du bas...
 
 
 s16 DualSpriteX[128]; // memorize 128 pixel positions for dual sprites
@@ -523,6 +523,9 @@ s16 i;
 s32 value = 0;
 s32 value2 = 512;
 if (!PA_SpriteExtPrio){
+	DMA_CopyEx(0, PA_obj, OAM, 512, DMA_32NOW); // DMA0 Copy 
+	//dmaCopy(PA_obj, OAM, 128 * sizeof(SpriteEntry));
+/*
 	for (i = 0; i < 128; i++){ // copy
 		OAM[value] = PA_obj[0][i].atr0;
 		OAM[value + 1] = PA_obj[0][i].atr1;
@@ -534,7 +537,7 @@ if (!PA_SpriteExtPrio){
 		OAM[value2 + 3] = PA_obj[1][i].atr3;		
 		value += 4;
 		value2 += 4;		
-	}
+	}*/
 }
 else{ // Use the extended priorities
 	value += 3;

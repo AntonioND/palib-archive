@@ -32,7 +32,7 @@ charblocks[screen][16] = 1; // Block la mémoire
 	_REG16(REG_BGSCREEN(screen)) |= (0x100 << (3)) | MODE_3_2D;
 	_REG16(REG_BGCNT(screen, 3)) = bg_priority | BG_BMP16_256x256 | BG_BMP_BASE(2);
 
-PA_SetDrawSize(screen, 1);
+	PA_SetDrawSize(screen, 1);
 }
 
 
@@ -200,10 +200,13 @@ if (lx){ // Si y'a une surface à faire
 	if (endy > 191) endy = 191;
 	
 	
-	u16 *start = (u16*)PA_DrawBg[screen] + basex;
-	tempvar = color;	
+	//u16 *start = (u16*)PA_DrawBg[screen] + basex;
+	//tempvar = color;	
 	for (j = basey; j < endy; j++){
-		DMA_Force(tempvar, (void*)(start + (j << 8)), lx, DMA_16NOW);
+		for(i = basex; i < endx; i++){
+			PA_Put16bitPixel(screen, i, j, color);
+		//DMA_Force(tempvar, (void*)(start + (j << 8)), lx, DMA_16NOW);
+		}
 	}
 }
 }

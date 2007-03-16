@@ -22,6 +22,7 @@
 
 extern TransferSound snd;
 extern u32 *sndMemPool;
+extern inline void PA_PlayModEx(u8 *mod_snd);
 
 typedef struct{ // Default sound format
 	u8 volume;
@@ -92,6 +93,8 @@ extern inline void PA_InitSound(void) {
 	{
 		FS_wav[i] = NULL; // to be able to free
 	}
+	
+	PA_IPC.Mod.Volume = 127;
 
 }
 
@@ -123,8 +126,8 @@ extern void FillTheGap(u8 PA_Channel, u32 size);
          \~english Play a given sound effect, but chose your format
          \~french Joue une fois un son, mais en choisissant le format
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param data
          \~english Sound data
          \~french Données du son
@@ -154,8 +157,8 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
          \~english Play a given sound effect, but chose your format
          \~french Joue une fois un son, mais en choisissant le format
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param data
          \~english Sound data
          \~french Données du son
@@ -181,8 +184,8 @@ PA_PlaySoundEx2(PA_Channel, data, length, volume, freq, format,false,0);
          \~english Play a given sound effect, but chose your format, from GBFS
          \~french Joue une fois un son, mais en choisissant le format, depuis GBFS
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param FS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -211,8 +214,8 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~english Play a given sound effect, but chose your format and how to loop it, from GBFS
          \~french Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis GBFS
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param FS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -249,8 +252,8 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~english Play a given sound effect, but chose your format, from PAFS
          \~french Joue une fois un son, mais en choisissant le format, depuis PAFS
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param PAFS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -279,8 +282,8 @@ extern inline void PA_PlayFSSoundEx(u8 PA_Channel, u16 PAFS_wav_number, u8 volum
          \~english Play a given sound effect, but chose your format, from PAFS
          \~french Joue une fois un son, mais en choisissant le format, depuis PAFS
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param PAFS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -315,8 +318,8 @@ extern inline void PA_PlayFSSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volu
          \~english Play a given sound effect, but chose your format and how to loop it, from PAFS with a stream effect
          \~french Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis PAFS avec un effet de streaming
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param PAFS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -345,8 +348,8 @@ extern inline void PA_PlayFSStreamSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u
          \~english Play a given sound effect, with default format (raw)
          \~french Joue une fois un son, avec format par défaut (raw)
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param data
          \~english Sound data
          \~french Données du son
@@ -369,8 +372,8 @@ PA_PlaySoundEx2(PA_Channel, data, length, volume, freq, 1,false,0);
          \~english Play a given sound effect, with default format (raw), from GBFS
          \~french Joue une fois un son, avec format par défaut (raw), depuis GBFS
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param FS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -399,8 +402,8 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~english Play a given sound effect, with default format (raw), from PAFS
          \~french Joue une fois un son, avec format par défaut (raw), depuis PAFS
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param PAFS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -428,8 +431,8 @@ extern inline void PA_PlayFSSound(u8 PA_Channel, u16 PAFS_wav_number, u8 volume,
          \~english Simplest sound playing function... Takes the default options for volume, format, and rate (11025). You can change these options by using PA_SetDefaultSound
          \~french Fonction la plus simple pour jouer un son... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param sound
          \~english Sound name...
          \~french Nom du son...
@@ -443,8 +446,8 @@ extern inline void PA_PlayFSSound(u8 PA_Channel, u16 PAFS_wav_number, u8 volume,
          \~english Simplest sound playing function... From GBFS... Takes the default options for volume, format, and rate (11025). You can change these options by using PA_SetDefaultSound
          \~french Fonction la plus simple pour jouer un son... Depuis GBFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param FS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -467,8 +470,8 @@ s32 length = (PA_GBFSfile[FS_wav_number].Length >> 2) + 1; // Pour etre sur...
          \~english Simplest sound playing function... From PAFS... Takes the default options for volume, format, and rate (11025). You can change these options by using PA_SetDefaultSound
          \~french Fonction la plus simple pour jouer un son... Depuis PAFS... Utiliser les options par défaut pour le volume, le format, et la fréquence (11025). On peut changer ces options avec PA_SetDefaultSound
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param PAFS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -485,6 +488,37 @@ extern inline void PA_PlayFSSimpleSound(u8 PA_Channel, u16 PAFS_wav_number){
 
 
 
+/*! \def extern inline void PA_SetModChanPan(u8 channel, u8 pan)
+    \brief
+         \~english Change a mod channel pan
+         \~french Changer le pan d'un canal du mod
+    \param channel
+         \~english Mod channel
+         \~french Canal du mode
+    \param pan
+         \~english Pan (0-127 for left-right)
+         \~french Pan (0-127 pour gauche/droite)	 
+*/
+extern inline void PA_SetModChanPan(u8 channel, u8 pan){
+   PA_IPC.Mod.Pan[channel] = pan;
+}   
+
+
+/*! \def extern inline void PA_SetModPan(u8 pan)
+    \brief
+         \~english Change mod pan
+         \~french Changer le pan du mod
+    \param pan
+         \~english Pan (0-127 for left-right)
+         \~french Pan (0-127 pour gauche/droite)	 
+*/
+extern inline void PA_SetModPan(u8 pan){
+   u8 i;
+   for(i = 0; i < 16; i++){
+      PA_SetModChanPan(i, pan); 
+   }   
+}   
+
 
 
 
@@ -496,7 +530,7 @@ extern inline void PA_PlayFSSimpleSound(u8 PA_Channel, u16 PAFS_wav_number){
          \~english Mod name
          \~french Nom du mod
 */
-#define PA_PlayMod(mod_snd) SndPlayMOD((u8*)mod_snd)
+#define PA_PlayMod(mod_snd) PA_PlayModEx((u8*)mod_snd);
 
 
 /*! \fn extern inline void PA_PlayGBFSMod(u16 FS_mod_number)
@@ -619,8 +653,8 @@ extern inline s8 PA_GetFreeSoundChannel(void){
          \~english Change the volume of a playing sound
          \~french Changer le volume d'un son en cours
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param Volume
          \~english Volume, from 0 to 127. 
          \~french Volume, de 0 à 127.
@@ -649,8 +683,8 @@ extern inline void PA_SetSoundVol(u8 Volume){
          \~english Change the pan of a playing sound
          \~french Changer le pan d'un son en cours
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param Pan
          \~english Pan, from 0 to 127. (left-right)
          \~french Pan, de 0 à 127. (gauche-droite)
@@ -659,6 +693,49 @@ extern inline void PA_SetSoundChannelPan(u8 PA_Channel, u8 Pan){
 	PA_IPC.Sound[PA_Channel].Pan = (Pan&127) + (1<<7);  // Pan level
 }
 
+/*! \fn void PA_PlayPSG(u8 PA_Channel, u8 vol, u8 pan, s32 freq, u8 duty)
+    \brief
+         \~english Use the Programmable Sound Generators
+         \~french Utiliser les Programmable Sound Generators
+    \param PA_Channel
+         \~english Audio channel, from 8 to 15
+         \~french Canal audio, de 8 à 15
+    \param vol
+         \~english Volume (0-127)
+         \~french Volume (0-127)	 		 
+    \param freq
+         \~english Frenquency
+         \~french Fréquence
+    \param duty
+         \~english Duty (0-7)
+         \~french Duty (0-7)		 
+*/
+void PA_PlayPSG(u8 PA_Channel, u8 vol, u8 pan, s32 freq, u8 duty);
+
+
+/*! \fn extern inline void PA_SetModVolume(u8 volume)
+    \brief
+         \~english Change the Modplayer Volume
+         \~french Changer le volume du modplayer
+    \param volume
+         \~english Volume (0-127)
+         \~french Volume (0-127)	 		 		 
+*/
+extern inline void PA_SetModVolume(u8 volume){
+   PA_IPC.Mod.Volume = volume;
+} 
+  
+  
+ /*! \fn extern inline u8 PA_GetModVolume(void)
+    \brief
+         \~english Get the Modplayer Volume
+         \~french Lire le volume du modplayer	 		 		 
+*/ 
+extern inline u8 PA_GetModVolume(void){
+   return PA_IPC.Mod.Volume;
+}   
+
+
 /** @} */ // end of SoundARM9
 
 /*! \fn extern inline void PA_PlayGBFSSoundEx2(u8 PA_Channel, u16 FS_wav_number, u8 volume, int freq, s16 format)
@@ -666,8 +743,8 @@ extern inline void PA_SetSoundChannelPan(u8 PA_Channel, u8 Pan){
          \~english Play a given sound effect, but chose your format and how to loop it, from GBFS with a stream effect
          \~french Joue une fois un son, mais en choisissant le format et si vous le faites boucler, depuis GBFS avec un effet de streaming
     \param PA_Channel
-         \~english Audio channel, from 0 to 7
-         \~french Canal audio, de 0 à 7
+         \~english Audio channel, from 0 to 15
+         \~french Canal audio, de 0 à 15
     \param FS_wav_number
          \~english Number of your sound RAW file in the PA GBFS system
          \~french Numéro du son RAW dans PA GBFS
@@ -710,6 +787,12 @@ extern inline void PA_SetSoundChannelPan(u8 PA_Channel, u8 Pan){
          \~french Arrete l'enregistrement
 */
 //#define PA_MicStopRecording() StopRecording()
+
+
+extern inline void PA_PlayModEx(u8 *mod_snd){
+	SndPlayMOD(mod_snd);
+	PA_SetModPan(64);
+}
 
 
 

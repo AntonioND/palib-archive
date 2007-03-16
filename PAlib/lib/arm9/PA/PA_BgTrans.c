@@ -12,18 +12,23 @@ extern const unsigned char patransition_Tiles[3584] __attribute__ ((aligned (4))
 extern const int patransition_Info[3]; 
 extern const unsigned short patransition_Map[768] __attribute__ ((aligned (4)));
 
+u8 pa_bg_trans[2];
 
-void PA_InitBgTrans(u8 screen){
-   PA_EasyBgLoad(screen, 0, patransition); // Load
+void PA_InitBgTransEx(u8 screen, u8 bg){
+	pa_bg_trans[screen] = bg;
+   PA_EasyBgLoad(screen, bg, patransition); // Load
    PA_BgTransUpDown(screen, 0, 0, TRANS_LENGTH); // Hide
 }   
 
 
+
+
+
 void PA_BgTransTile(u8 screen, u16 type, s16 x, s16 y, s16 temptile){
-   PA_SetMapTileAll(screen, 0, x, y, patransition_Map[temptile*2+type]);
-   PA_SetMapTileAll(screen, 0, x+1, y, patransition_Map[temptile*2+1+type]);
-   PA_SetMapTileAll(screen, 0, x, y+1, patransition_Map[temptile*2+32+type]);
-   PA_SetMapTileAll(screen, 0, x+1,y+1, patransition_Map[temptile*2+1+32+type]);	
+   PA_SetMapTileAll(screen, pa_bg_trans[screen], x, y, patransition_Map[temptile*2+type]);
+   PA_SetMapTileAll(screen, pa_bg_trans[screen], x+1, y, patransition_Map[temptile*2+1+type]);
+   PA_SetMapTileAll(screen, pa_bg_trans[screen], x, y+1, patransition_Map[temptile*2+32+type]);
+   PA_SetMapTileAll(screen, pa_bg_trans[screen], x+1,y+1, patransition_Map[temptile*2+1+32+type]);	
 }
 
 void PA_BgTransUpDown(u8 screen, u16 type, u8 vflip, s16 state){
@@ -103,6 +108,38 @@ void PA_BgTransDiag(u8 screen, u16 type, u8 hflip, u8 vflip, s16 state){
 	   if(tile) tile--; 	
 	}		  
    
+}   
+
+
+
+void PA_BgTransCenter(u8 screen, u16 type, u8 invert, s16 state){
+	s16 i, j;
+//	s16 tile = state >> 1;
+	s16 tile = state>>1;
+	s16 temptile;
+	s16 y;
+	type = type << 6;
+	y = 0;
+
+	for(j = 0; j < 16; j++){
+	   y = j;
+	   if(invert) y = 15-j;
+//	   if(screen == 1) y = 15-y;
+	   temptile = tile; 
+	   if(temptile > 15) temptile = 15; // limit range...
+	   	   
+	   for(i = 0; (i  < 8)&&(y>=0); i++){	 
+			if((y >= 0)&&(y < 6)){
+				PA_BgTransTile(screen, type, i*2, y*2, temptile);	
+				PA_BgTransTile(screen, type, i*2, (11-y)*2, temptile);	 
+				PA_BgTransTile(screen, type, (15-i)*2, y*2, temptile);	
+				PA_BgTransTile(screen, type, (15-i)*2, (11-y)*2, temptile);	 				 
+			}						
+			if(i&1)y--;	
+		//	y--;		
+		}					   
+	   if(tile) tile--; 	
+	}		    
 }   
 
 

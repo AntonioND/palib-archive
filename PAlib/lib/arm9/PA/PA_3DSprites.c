@@ -15,15 +15,18 @@ s16 pa_freetextures;
 
 
 u16 n_free_mem3D; // nombre d'emplacements libres
-u16 used_mem3D[8192]; // Note la quantité de mémoire utilisée en chaque point de la mémoire pour pouvoir effacer les gfx...
+u16 used_mem3D[16384]; // Note la quantité de mémoire utilisée en chaque point de la mémoire pour pouvoir effacer les gfx...
 s16 obj_per_gfx3D[N_TEXTURES]; // Nombre de sprites utilisant un gfx donné...
-mem_usage free_mem3D[8192];
+mem_usage free_mem3D[16384];
 
-type_3danims sprite3danims[2048];
+type_3danims sprite3danims[PA_NMAXSPRITES];
 
 u16 n3Dspriteanims;
 
 u16 freetexslots[N_TEXTURES]; // Free Texture Slots...
+
+
+u8 pa_3Dbanks;
 
 
 void *texturesptr[MAX_TEXTURES];
@@ -120,6 +123,7 @@ extern inline void PA_glTranslate(s32 x, s32 y, s32 z) {
   MATRIX_TRANSLATE = (z);
 }
 
+#define PA_TEXTURE_PACK(u,v)    (((u) & 0xFFFF) | ((v) << 16))
   
 void PA_3DSpriteToScreen(u16 sprite){
     
@@ -134,34 +138,44 @@ void PA_3DSpriteToScreen(u16 sprite){
 	PA_glRotateY(pa_3dsprites[sprite].RotY); 
 	PA_glRotateZ(pa_3dsprites[sprite].RotZ); 
    	
-   POLYGON_ATTR = (0<<3)|(0<<4)|(1<<6)|(1<<7)|(0<<11)|(0<<12)|(pa_3dsprites[sprite].alpha<<16);
+   POLYGON_ATTR = (0<<3)|(0<<4)|(1<<6)|(1<<7)|(0<<11)|(0<<12)|(pa_3dsprites[sprite].alpha<<16)|(pa_3dsprites[sprite].polyID<<24);
    PA_PLTT_BASE = pa_3dsprites[sprite].palette<<5;
 
 	
 	u32 x1, x2, y1, y2;
 	u8 hflip = pa_3dsprites[sprite].Hflip;	u8 vflip = pa_3dsprites[sprite].Vflip; 
 	  	
-	x1 = inttot16(pa_3dsprites[sprite].ImgWidth)*(!vflip);	x2 = inttot16(pa_3dsprites[sprite].ImgWidth)*(vflip);
-	y1 = inttot16(pa_3dsprites[sprite].ImgHeight)*(!hflip);	y2 = inttot16(pa_3dsprites[sprite].ImgHeight)*(hflip);  
+	x1 = inttot16(pa_3dsprites[sprite].ImgWidth)*(hflip);	
+	x2 = inttot16(pa_3dsprites[sprite].ImgWidth)*(!hflip);
+	y1 = inttot16(pa_3dsprites[sprite].ImgHeight)*(!vflip);	
+	y2 = inttot16(pa_3dsprites[sprite].ImgHeight)*(vflip);  
 		
-	s32 zoomx =  	pa_3dsprites[sprite].Width>>1;	s32 zoomy =  	pa_3dsprites[sprite].Height>>1;					
+	s32 zoomx0 =  	pa_3dsprites[sprite].Width>>1;	s32 zoomx1 =  	(pa_3dsprites[sprite].Width+1)>>1;	
+	s32 zoomy0 =  	pa_3dsprites[sprite].Height>>1;	s32 zoomy1 =  	(pa_3dsprites[sprite].Height+1)>>1;					
 
 	// Start drawing texture
 	GFX_BEGIN = GL_QUAD;
 	
 		GFX_NORMAL = NORMAL_PACK(0,inttov10(-1),0);
 
-		GFX_TEX_COORD = (TEXTURE_PACK(x1, y2));
-		PA_glVertex(-zoomx+pa_3dsprites[sprite].corner[2].x,	-zoomy-pa_3dsprites[sprite].corner[2].y, 0 );
 
-		GFX_TEX_COORD = (TEXTURE_PACK(x1,y1));
-		PA_glVertex(zoomx+pa_3dsprites[sprite].corner[3].x,	-zoomy-pa_3dsprites[sprite].corner[3].y, 0 );
+		GFX_TEX_COORD = (PA_TEXTURE_PACK(x1,y1));
+		PA_glVertex(-zoomx1+pa_3dsprites[sprite].corner[2].x,	-zoomy1-pa_3dsprites[sprite].corner[2].y, 0 );			
 
-		GFX_TEX_COORD = (TEXTURE_PACK(x2, y1));
-		PA_glVertex(zoomx+pa_3dsprites[sprite].corner[1].x,	zoomy-pa_3dsprites[sprite].corner[1].y, 0 );
+		
+		GFX_TEX_COORD = (PA_TEXTURE_PACK(x2, y1));
+		PA_glVertex(zoomx0+pa_3dsprites[sprite].corner[3].x,	-zoomy1-pa_3dsprites[sprite].corner[3].y, 0 );	
+		
 
-		GFX_TEX_COORD = (TEXTURE_PACK(x2,y2));
-		PA_glVertex(-zoomx+pa_3dsprites[sprite].corner[0].x,	zoomy-pa_3dsprites[sprite].corner[0].y, 0 );
+		GFX_TEX_COORD = (PA_TEXTURE_PACK(x2,y2));				
+		PA_glVertex(zoomx0+pa_3dsprites[sprite].corner[1].x,	zoomy0-pa_3dsprites[sprite].corner[1].y, 0 );		
+
+		
+		
+		
+		GFX_TEX_COORD = (PA_TEXTURE_PACK(x1, y2));
+		PA_glVertex(-zoomx1+pa_3dsprites[sprite].corner[0].x,	zoomy0-pa_3dsprites[sprite].corner[0].y, 0 );		
+
 	GFX_END = 0;
    
    MATRIX_POP = 1;
@@ -175,13 +189,14 @@ void PA_3DProcess(void){
 	PA_3DUpdateSpriteAnims(); // Update animations...
 	glReset();
 	glEnable(GL_BLEND);
+	glAlphaFunc(BLEND_ALPHA);
 
 //	PA_Set3D(0, 0, 0, 1, 1, 0, 0, 0, 0, 1);
 
 	MATRIX_CONTROL = GL_PROJECTION;
 	glLoadIdentity();
-//		gluPerspectivef32(50, 5461, 4096, 204800);
-	glOrthof32 (0, 256, 0, 192, 1, 204800);
+
+	glOrthof32 (0, 256, 0, 192, 1, 8192);
 
 	gluLookAt(	0.0, 0.0, 1.0,		//camera possition 
 				0.0, 0.0, 0.0,		//look at
@@ -288,7 +303,7 @@ s16 PA_3DCreateTex(void* obj_data, u16 width, u16 height, u8 type) {
 	}			   
 	   
 	
-	u16 mem_size = width*height;
+	u32 mem_size = width*height;
 	// Correct size
 	switch (type) {
 	 case TEX_16BITS:
@@ -305,7 +320,7 @@ s16 PA_3DCreateTex(void* obj_data, u16 width, u16 height, u8 type) {
 	}	
 
 	
-	u16 block_size = mem_size >> 4; // block size
+	u32 block_size = mem_size >> 4; // block size
 	
 	
 
@@ -326,7 +341,9 @@ s16 PA_3DCreateTex(void* obj_data, u16 width, u16 height, u8 type) {
    
    // Start Copy...
    vramSetBankA(VRAM_A_LCD);  
+   if(pa_3Dbanks == 2) vramSetBankB(VRAM_B_LCD);  
    DMA_Copy(obj_data, (void*)(truenumber), (mem_size>>1), DMA_16NOW);
+   if(pa_3Dbanks == 2) vramSetBankB(VRAM_B_TEXTURE);  
    vramSetBankA(VRAM_A_TEXTURE);
    
    PA_glTexParameter(texwidth, texheight, (u32*)truenumber, type, TEXGEN_TEXCOORD);
@@ -355,6 +372,7 @@ void PA_3DCreateSpriteFromTex(u16 sprite, u16 texture, u16 width, u16 height, u8
 	pa_3dsprites[sprite].textureID = texture;
 	pa_3dsprites[sprite].Priority = 1024;
 	pa_3dsprites[sprite].alpha = 31; // Solid
+	pa_3dsprites[sprite].polyID = 0; // 0 polyID by default
 	
 	u8 i;
 	for(i = 0; i < 4; i++){
@@ -366,11 +384,12 @@ void PA_3DCreateSpriteFromTex(u16 sprite, u16 texture, u16 width, u16 height, u8
 	   pa_3dsprites[sprite].palette = palette<<1; // 1 more...
 	}
 	else{
-	   pa_3dsprites[sprite].palette = palette; // 1 more...
+	   pa_3dsprites[sprite].palette = palette; 
 	}		   
 	
 	obj_per_gfx3D[texture]++;
 }   
+
 
 
 void PA_Reset3DSprites(void){
@@ -384,8 +403,23 @@ void PA_Reset3DSprites(void){
 	for(i = 0; i < 1024; i++) freetexslots[i] = 1023-i; // free slots...
 	pa_freetextures = 1024;
 	n3Dspriteanims = 0;
+	pa_3Dbanks = 1;
 }   
 
+
+void PA_Reset3DSprites2Banks(void){
+   n_free_mem3D = 1;
+	free_mem3D[0].mem_block = 0; free_mem3D[0].free = 16384; // Number of free blocks in memory   
+	s32 i;
+	for(i = 0; i < PA_NMAXSPRITES; i++) {
+		pa_3dsprites[i].Alive = 0; // Delete sprite
+		sprite3danims[i].play = 0; // No animation
+	}
+	for(i = 0; i < 1024; i++) freetexslots[i] = 1023-i; // free slots...
+	pa_freetextures = 1024;
+	n3Dspriteanims = 0;
+	pa_3Dbanks = 2; 
+}   
 
 
 
@@ -406,8 +440,10 @@ void PA_3DUpdateGfx(u16 texture, void *image) {
 	 default:
 	   break;
 	}	
-	vramSetBankA(VRAM_A_LCD);  
+   vramSetBankA(VRAM_A_LCD);  
+   if(pa_3Dbanks == 2) vramSetBankB(VRAM_B_LCD); 
 	DMA_Copy((image), (void*)(0x06800000 + ((textures[texture]&0xFFFF)<<3)), (mem_size>>1), DMA_16NOW);
+   if(pa_3Dbanks == 2) vramSetBankB(VRAM_B_TEXTURE);  
    vramSetBankA(VRAM_A_TEXTURE);
 }
 

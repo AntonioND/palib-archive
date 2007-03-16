@@ -38,13 +38,13 @@ void PA_SetBgPalNCol(u8 screen, u8 bg_number, u8 pal_number, u8 color_number, u1
 	u16 *palcolor;
 	if (screen == 0) {
 		vramSetBankE(VRAM_E_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
-		palcolor = (u16*)(VRAM_E + (bg_number << 12) + (pal_number << 8));
+		palcolor = (u16*)(VRAM_E + (bg_number << 12) + (pal_number << 9));
 		palcolor[color_number] = color;
 		vramSetBankE(VRAM_E_BG_EXT_PALETTE);
 	}
 	else {
 		vramSetBankH(VRAM_H_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
-		palcolor = (u16*)(VRAM_H + (bg_number << 12) + (pal_number << 8));
+		palcolor = (u16*)(VRAM_H + (bg_number << 12) + (pal_number << 9));
 		palcolor[color_number] = color;
 		vramSetBankH(VRAM_H_SUB_BG_EXT_PALETTE);
 	}
@@ -56,13 +56,13 @@ void PA_SetSpritePalCol(u8 screen, u8 pal_number, u8 color_number, u16 color)
 	u16 *palcolor;
 	if (screen == 0) {
 		vramSetBankE(VRAM_G_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
-		palcolor = (u16*)(VRAM_G + (pal_number << 8));
+		palcolor = (u16*)(VRAM_G + (pal_number << 9));
 		palcolor[color_number] = color;
 		vramSetBankE(VRAM_G_OBJ_EXT_PALETTE);
 	}
 	else {
 		vramSetBankH(VRAM_I_LCD);  // On passe en mode LCD pour pouvoir ecrire dessus, on reviendre en palette apres
-		palcolor = (u16*)(VRAM_I + (pal_number << 8));
+		palcolor = (u16*)(VRAM_I + (pal_number << 9));
 		palcolor[color_number] = color;
 		vramSetBankH(VRAM_I_SUB_SPRITE_EXT_PALETTE);
 	}

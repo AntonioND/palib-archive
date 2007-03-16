@@ -1015,6 +1015,26 @@ extern inline u16 PA_EasyBgGetPixelCol(u8 screen, u8 bg_number, s32 x, s32 y){
 }
 
 
+/*!
+    \fn extern inline void PA_SetBgWrap(u8 screen, u8 bg, u8 wrap)
+    \brief
+      \~english Set on/off the background wrapping (for rotating, 8bit, and 16bit backgrounds)
+      \~french Active ou non le wrapping des fonds (rotatifs, 8bit, et 16bit)
+    \param screen
+         \~english Chose de screen (0 or 1)
+         \~french Choix de l'écran (0 ou 1)
+    \param bg
+      \~english Background number (0-3)
+      \~french Numéro du fond que l'on veut tourner (0-3)
+    \param wrap
+      \~english Wrap around on or off...
+      \~french Wrap activé ou désactivé...
+*/
+extern inline void PA_SetBgWrap(u8 screen, u8 bg, u8 wrap){
+   _REG16(REG_BGCNT(screen, bg)) &= ~(1<<13); // Remove
+	_REG16(REG_BGCNT(screen, bg)) |= (wrap<<13);
+}
+
 
 
 /** @} */ // end of BgTiles

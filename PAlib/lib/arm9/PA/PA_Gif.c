@@ -314,7 +314,7 @@ u8* PA_GifToTiles(void *gif, u16 *temppal){
 		}
 	}
 	
-	//free(decodgif); // free the malloc
+	free(decodgif); // free the malloc
 	
 	
 	return (newtiles);

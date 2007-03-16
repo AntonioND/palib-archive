@@ -1,6 +1,10 @@
 // ----- Change log -----
 // 05/08/05 - Created.
 // ----------------------
+//10/03/07- Added support 
+//for older trackers (Abrexxes)
+//-----------------------
+
 
 #include <NDS.h>
 #include <string.h>
@@ -61,27 +65,50 @@ u32 ModFileLoad(const void *modFile, MOD *dest, void *memPool, u32 memPoolSize)
 	vars.memPoolSize	= memPoolSize;
 	vars.memPoolUsed	= 0;
 
-	vars.src = (const u8*)modFile + 1080;
-	if(!memcmp(vars.src, "M.K.", 4))
-	{
-		vars.dest->channelCount = 4;
-	}
-	else if(!memcmp(vars.src + 1, "CHN", 3))
-	{
-		ASSERT(vars.src[0] >= '0' && vars.src[0] <= '9');
-		vars.dest->channelCount = vars.src[0] - '0';
-	}
-	else if(!memcmp(vars.src + 2, "CH", 2))
-	{
-		ASSERT(vars.src[0] >= '0' && vars.src[0] <= '9');
-		ASSERT(vars.src[1] >= '0' && vars.src[1] <= '9');
-		vars.dest->channelCount = (vars.src[0] - '0') * 10 + (vars.src[1] - '0');
-	}
-	else
-	{
-		ASSERT(0);
-	}
+	vars.src = (const u8*)modFile + 1080; //Protracker pt2.3 spec
+	
+		if(!memcmp(vars.src, "M.K.", 4))	vars.dest->channelCount = 4; // old Protracker spec 
+		else if(!memcmp(vars.src, "M!K!", 4))	vars.dest->channelCount = 4; // new Protracker spec 
 
+		// Note: "Noisetracker" use the same values as "Protracker"
+		// Note: Old "Soundtracker" Format (Amiga) not supported. Use a tracker like modplug to convert!
+
+		else if(!memcmp(vars.src, "FLT4", 4))	vars.dest->channelCount = 4; // Startracker 4 channels
+		else if(!memcmp(vars.src, "FLT8", 4))	vars.dest->channelCount = 8; // Startracker 8 channels
+
+		else if(!memcmp(vars.src, "2CHN", 4))	vars.dest->channelCount = 2; // Fasttracker 2 channels 
+		else if(!memcmp(vars.src, "4CHN", 4))	vars.dest->channelCount = 4; // Fasttracker 4 channels	
+		else if(!memcmp(vars.src, "6CHN", 4))	vars.dest->channelCount = 6; // Fasttracker 6 channels
+		else if(!memcmp(vars.src, "8CHN", 4))	vars.dest->channelCount = 8; // Fasttracker 8 channels
+		else if(!memcmp(vars.src, "10CH", 4))	vars.dest->channelCount = 10; // Fasttracker 10 channels
+		else if(!memcmp(vars.src, "12CH", 4))	vars.dest->channelCount = 12; // Fasttracker 12 channels
+		else if(!memcmp(vars.src, "14CH", 4))	vars.dest->channelCount = 14; // Fasttracker 14 channels
+		else if(!memcmp(vars.src, "16CH", 4))	vars.dest->channelCount = 16; // Fasttracker 16 channels
+
+		// Note: This is also used by "Milkytracker" or "Modplugtracker" 
+
+		else if(!memcmp(vars.src, "TDZ1", 4))	vars.dest->channelCount = 1; // TakeTracker 1 channel
+		else if(!memcmp(vars.src, "TDZ2", 4))	vars.dest->channelCount = 2; // TakeTracker 2 channels
+		else if(!memcmp(vars.src, "TDZ3", 4))	vars.dest->channelCount = 3; // TakeTracker 3 channels
+		else if(!memcmp(vars.src, "5CHN", 4))	vars.dest->channelCount = 5; // TakeTracker 5 channels
+		else if(!memcmp(vars.src, "7CHN", 4))	vars.dest->channelCount = 7; // TakeTracker 7 channels
+		else if(!memcmp(vars.src, "9CHN", 4))	vars.dest->channelCount = 9; // TakeTracker 9 channels
+		else if(!memcmp(vars.src, "11CH", 4))	vars.dest->channelCount = 11; // TakeTracker 11 channels
+		else if(!memcmp(vars.src, "13CH", 4))	vars.dest->channelCount = 13; // TakeTracker 13 channels
+		else if(!memcmp(vars.src, "15CH", 4))	vars.dest->channelCount = 15; // TakeTracker 15 channels
+		else if(!memcmp(vars.src, "16CN", 4))	vars.dest->channelCount = 16; // TakeTracker 16 channels
+
+		// Note: 4,6,8,10,12,14 channels Fasttracker/Taketracker are the same values. 2 and 16 channels is different
+
+		else if(!memcmp(vars.src, "CD81", 4))	vars.dest->channelCount = 8; // new Atari Oktalyzer 8 channels spec
+
+		// Note: "Falcon 8 channel" use the same values as "Oktalyzer
+
+		else if(!memcmp(vars.src, "OCTA", 4))	vars.dest->channelCount = 8; // old Atari Oktalyzer 8 channels spec
+
+			
+	else return 0;  // error, modfile format  not supported or too much channels !!!
+		
 	vars.src = (const u8*)modFile;
 	for (i = 0; i < 20; i++)
 		vars.dest->name[i] = *vars.src++;

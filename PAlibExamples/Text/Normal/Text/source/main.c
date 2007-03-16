@@ -59,6 +59,7 @@ int main(int argc, char ** argv)
 		PA_OutputText(1, 1, 11, "Stylus Position : %d, %d   ", Stylus.X, Stylus.Y);
 		
 		PA_WaitForVBL();
+		PA_OutputText(0, 0, 0, "%d   ", PA_GetVcount());
 	}
 	
 	return 0;

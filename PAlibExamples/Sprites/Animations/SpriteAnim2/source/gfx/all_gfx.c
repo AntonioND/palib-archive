@@ -8,10 +8,10 @@ extern "C" {
 
 
 // Sprite files : 
-#include "som.c"
+#include "explosion.c"
 
 // Palette files : 
-#include "sprite0.pal.c"
+#include "explosion.pal.c"
 
 
 #ifdef __cplusplus

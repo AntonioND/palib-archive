@@ -61,20 +61,7 @@ void PA_InitVBL(void){
 s32 oldx; s32 oldy; // Stylus positions...
 touchPosition tempPos;
 
-// stylus code from libnds
-//---------------------------------------------------------------------------------
-/*void PA_UpdateStylus(void){
-//---------------------------------------------------------------------------------
-	tempPos = touchReadXY();
-	
-	IPC->touchX    = tempPos.x;
-    IPC->touchY    = tempPos.y;
-    IPC->touchXpx  = tempPos.px;
-    IPC->touchYpx  = tempPos.py;	
-	
-	IPC->touchZ1 = touchRead(TSC_MEASURE_Z1);
-	IPC->touchZ2 = touchRead(TSC_MEASURE_Z2);
-}*/
+
 
 u16 PA_ReadSPI(void){
 	u8 pmData;

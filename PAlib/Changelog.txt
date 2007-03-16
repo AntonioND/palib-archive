@@ -1,3 +1,67 @@
+
+----------------------------------
+| PAlib 070316 : Community Build |
+----------------------------------
+
+New Stuff
+---------
+
+
+[3DSprites] Added PA_Init3D2Banks(void) and PA_Reset3DSprites2Banks(void) to use 2 banks instead of 1, but it removes the backgrounds from screen 0...
+
+[3DSprites] Added functions to load from gif files. Check the example to see how it works. This is much slower than the normal texture functions :)
+
+[3DSprites] Added PA_3DSetSpriteAlpha(sprite, alpha) and PA_3DSetSpritePolyID(sprite, polyID (0-64)) and the example... Sprites must have different polyIDs to alphablend. You might want to set the sprites to different priorities too ;)
+
+[FATlib] Added Sumiguchi's FAT example :) (http://palib.info/forum/modules/newbb/viewtopic.php?topic_id=2556&post_id=16028#forumpost16028)
+
+[Sound] PSG support added, check example for more info
+
+[BgWrap] PA_SetBgWrap(u8 screen, u8 bg, u8 wrap) added, for RotBg, 8bit, and 16bit backgrounds. Usefull if you need to scroll around 8bit/16bit backgrounds. Thanks to mastertop for the tip :)
+
+[BgTrans] Added PA_BgTransCenter(u8 screen, u16 type, u8 invert, s16 state); and the example...
+
+[Transitions] Added BrightnessFade2 and the example
+
+[ModPlayer] Added PA_SetModVolume(0-127) and PA_GetModVolume(), plus a nice example :)
+
+[ModPlayer] Added PA_SetModChanPan(u8 channel, u8 pan) and PA_SetModPan(u8 pan), with the example, as always ^^
+
+[Hardware] Now auto-turns off the DS on lid close by default. You can change that by using PA_SetAutoCheckLid (if you want to have it always on, or have your custom CheckLid).
+
+
+Updated Oldies
+--------------
+
+[PAGfx] Now returns an error message if you give it wrong filenames (typo or name starting with a number)
+
+[ModPlayer] Abrexxes updated the modplayer, should with more mods now :)(http://palib.info/forum/modules/newbb/viewtopic.php?post_id=16043#forumpost16043)
+
+[Sound] Repeat is back. Also added PA_PlaySoundRepeat(PA_Channel, sound) and an example using it. 
+
+
+
+Things Fixed
+------------
+
+[Sprite] PA_SpriteTouched now works in all corners, sorry
+
+[DSMotion] Fixed
+
+[GifToTile] Cedric fixed a memory leak, thanks :)
+
+[3DSprites] Textures were overlapping when using very large sizes, fixed :)
+
+[3DSprites] Textures were overlapping when using very large sizes, fixed :)
+
+[3DSprites] Fixed width/height, now supports non-square textures/sprites. Added rectangle example with 256x32 sprite
+
+[3DSprites] Fixed Priorities on DS
+
+[16bit] PA_Draw16bitRect should be fixed
+
+
+
 ----------------------------------
 | PAlib 070222 : Not doing 3D... |
 ----------------------------------

@@ -22,6 +22,8 @@ typedef struct {
 	u8 Format;
 	u8 Padding;
 	u8 Repeat; // used to swtich between both systems for now
+	u32 RepeatPoint;
+	u8 Duty;
 } PA_IPCSound;
 
 typedef struct{
@@ -30,10 +32,15 @@ typedef struct{
 	u8 Volume; // Mic Volume
 } PA_MicInfo;
 
+typedef struct{
+	u8 Volume;
+	u8 Pan[16];
+} PA_ModInfo;
 
 typedef struct{
 	PA_IPCSound Sound[17];
 	PA_MicInfo Mic;
+	PA_ModInfo Mod;
 } PA_IPCType;
 //PA_IPCType PA_IPC;
 

@@ -50,7 +50,7 @@ int main(int argc, char ** argv){
 		angle += Pad.Held.R - Pad.Held.L;
 		
 		PA_SetBgRot(0, 3, scrollx, scrolly, rotcenterx, rotcentery, angle, zoom);
-		
+
 		PA_WaitForVBL();
 	}
 	
