@@ -15,6 +15,7 @@
 #include <nds.h>
 #include <string.h>
 #include <nds/arm7/audio.h>
+#include <PA7.h>
 
 #include "ModFile.h"
 #include "Sound7.h"
@@ -283,6 +284,10 @@ static const s8 vibratoRandomTab[64] =
 	 -30,  45, -13, 114, -69,  49,  88, -57, 
 	  35, -40,-106,   0,  74, -22,  25,  39, 
 };
+
+
+s32 modvolume = 127; 
+
 
 // ----- Functions -----
 
@@ -667,11 +672,17 @@ static void MODHandleUpdateFlags(MOD_UPDATE_VARS *vars)
 	{
 		if(SCHANNEL_CR(vars->chnIdx) & SCHANNEL_ENABLE)
 			schnEnable = SCHANNEL_ENABLE;
-
+			
+		s32 volume = ((vars->sndChn->vol)*PA_IPC->Mod.Volume)>>7;
+		if(volume > 127) volume = 127;
+		
+		s16 pan = (vars->sndChn->pan)-64+PA_IPC->Mod.Pan[vars->chnIdx];
+		if(pan < 0) pan = 0; if(pan > 127) pan = 127; // Adjust
+		
 		SCHANNEL_TIMER(vars->chnIdx) = vars->sndChn->timer;
 		SCHANNEL_CR(vars->chnIdx) = 
-			SOUND_VOL(vars->sndChn->vol) | 
-			SOUND_PAN(vars->sndChn->pan) | 
+			SOUND_VOL(volume) | 
+			SOUND_PAN(pan) | 
 			(vars->sndChn->loopLength == 0 ? SOUND_ONE_SHOT : SOUND_REPEAT) | 
 			SOUND_8BIT | 
 			schnEnable;

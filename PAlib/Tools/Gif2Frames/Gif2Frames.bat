@@ -1,1 +1,1 @@
-Gif2Frames pinkwait.gif pinkanim.gif
+Gif2Frames globe.gif globe2.png

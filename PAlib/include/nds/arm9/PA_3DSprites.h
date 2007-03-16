@@ -1,6 +1,8 @@
 #ifndef _PA_3DSPRITES_
 #define _PA_3DSPRITES_
 
+extern inline u16 PA_GetGifWidth(void* gif);
+extern inline u16 PA_GetGifHeight(void* gif);
 
 #define PA_NMAXSPRITES 1024
 
@@ -42,7 +44,7 @@ typedef struct{
    u16 palette; // Palette...
    u16 Priority;
    pa3dcorners corner[4]; // Corners...
-   u8 alpha;
+   u8 alpha, polyID;
 } pa3dsprites   ;
 extern pa3dsprites pa_3dsprites[PA_NMAXSPRITES];
 
@@ -59,7 +61,7 @@ typedef struct{
 	u8 play;
 	s32 ncycles;
 }	type_3danims;
-extern type_3danims sprite3danims[2048];
+extern type_3danims sprite3danims[PA_NMAXSPRITES];
 extern u16 n3Dspriteanims;
 
 
@@ -89,12 +91,14 @@ extern inline void PA_glTexParameter(	uint8 sizeX, uint8 sizeY,uint32* addr,uint
 
 
 void PA_Init3D(void);
+void PA_Init3D2Banks(void);
 void PA_3DProcess(void);
 s16 PA_3DCreateTex(void* obj_data, u16 width, u16 height, u8 type);
 /*u16 PA_3DCreate16bitGfx(void *gfx, s16 width, s16 height);
 u16 PA_3DCreateGfx(void *gfx, s16 width, s16 height);*/
 void PA_3DCreateSpriteFromTex(u16 sprite, u16 texture, u16 width, u16 height, u8 palette, s16 x, s16 y);
 void PA_Reset3DSprites(void);
+void PA_Reset3DSprites2Banks(void);
 
 
 extern inline void PA_3DCreateSprite(u16 sprite, void *image, u16 width, u16 height, u8 type, u8 palette, s16 x, s16 y){
@@ -201,6 +205,18 @@ extern inline void PA_3DSetSpriteBottomLeft(u16 sprite, s16 x, s16 y){
 extern inline void PA_3DSetSpriteBottomRight(u16 sprite, s16 x, s16 y){
    pa_3dsprites[sprite].corner[3].x = x; pa_3dsprites[sprite].corner[3].y = y;
 } 
+
+extern inline void PA_3DSetSpritePrio(u16 sprite, u16 priority){
+   pa_3dsprites[sprite].Priority = priority;
+}   
+
+extern inline void PA_3DSetSpritePolyID(u16 sprite, u8 polyID){
+   pa_3dsprites[sprite].polyID = polyID;
+}   
+
+extern inline void PA_3DSetSpriteAlpha(u16 sprite, u8 alpha){
+	pa_3dsprites[sprite].alpha = alpha;
+}
 
 
 /*! \fn void PA_StartSpriteAnimEx(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)
@@ -412,6 +428,17 @@ extern inline void PA_3DSpriteAnimPause(u8 sprite, u8 pause)
 	else if ((!pause)&&(!sprite3danims[sprite].play)) n3Dspriteanims++;
 	sprite3danims[sprite].play = !pause;
 }
+
+
+
+void PA_GifToTexTransp(u8 on, u16 color);
+
+u16 PA_3DCreateTexFromGif(void *gif, u8 palette);
+
+extern inline void PA_3DCreateSpriteFromGif(u16 sprite, void *gif, u8 palette, s16 x, s16 y){
+   PA_3DCreateSpriteFromTex(sprite, PA_3DCreateTexFromGif(gif, palette), PA_GetGifWidth(gif), PA_GetGifHeight(gif), palette, x, y);
+}   
+
 
 
 

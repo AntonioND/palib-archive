@@ -36,6 +36,14 @@ extern inline void PA_WaitForVBL(void);
 
 extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 
+extern inline void PAWaitForVBL(void){
+	PA_RTC.Frames++; // For the FPS counter
+	swiWaitForVBlank();
+}
+
+extern u8 pa_checklid;
+
+
 #define BG_GFX1			0x6000000
 #define BG_GFX2			0x6200000
 #define SPRITE_GFX1		0x6400000
@@ -57,6 +65,9 @@ extern s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
 #define DMA_Clear(dest, count, mode) {REG_DMA3SRC = (u32)Blank; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) | (mode);}
 
 #define DMA_Force(ulVal,dest, count, mode) {REG_DMA3SRC=(u32)&ulVal; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) |(mode) | DMA_SRC_FIX;}
+
+#define DMA_CopyEx(type, source, dest, count, mode) {DMA_SRC(type) = (u32)source; DMA_DEST(type) = (u32)dest; DMA_CR(type) = (count) | (mode);}
+
 
 // Commandes pour la lumière des écrans
 #define BACKLIGHT(screen)	BIT(2+screen)
@@ -232,17 +243,6 @@ void PA_NeoSplash(void);
 
 
 
-/*! \fn extern inline void PA_WaitForVBL(void)
-    \brief
-         \~english Wait for the VBlank to occur
-         \~french Attendre le vbl...
-*/
-extern inline void PA_WaitForVBL(void){
-	PA_RTC.Frames++; // For the FPS counter
-	swiWaitForVBlank();
-}
-
-
 
 /*! \fn extern inline void PA_SwitchScreens(void)
     \brief
@@ -280,6 +280,18 @@ extern inline void PA_InitCPUMeter() {
 #define PA_LidClosed() (IPC->buttons>>7)
 
 
+/*! \fn extern inline void PA_SetAutoCheckLid(u8 on)
+    \brief
+         \~english Automatically check if the DS is closed in PA_WaitForVBL
+         \~french Vérifie automatiquement si la DS est fermée dans PA_WaitForVBL
+    \param on
+         \~english 1 for on, 0 for off
+         \~french 1 pour activer, 0 pour désactiver
+*/
+extern inline void PA_SetAutoCheckLid(u8 on){
+	pa_checklid = on;
+}
+
 /*! \fn extern inline u8 PA_CheckLid(void)
     \brief
          \~english Check if the DS is closed. If closed, it pauses the DS, and returns 1.
@@ -287,20 +299,32 @@ extern inline void PA_InitCPUMeter() {
 */
 extern inline u8 PA_CheckLid(void) {
 
-if (!PA_LidClosed()) return 0;
-else {
-	u16 power_cr = REG_POWERCNT; // backup the power...
-	REG_POWERCNT = 0; // Shutdown everything :p
-	
-	// Wait for the lid to be opened again...
-	while(PA_LidClosed()) PA_WaitForVBL();
-	
-	// Return the power !
-	REG_POWERCNT = power_cr;
-	return 1;
-}
+	if (!PA_LidClosed()) return 0;
+	else {
+		u16 power_cr = REG_POWERCNT; // backup the power...
+		REG_POWERCNT = 0; // Shutdown everything :p
+		
+		// Wait for the lid to be opened again...
+		while(PA_LidClosed()) PAWaitForVBL();
+		
+		// Return the power !
+		REG_POWERCNT = power_cr;
+		return 1;
+	}
 
 }
+
+
+/*! \fn extern inline void PA_WaitForVBL(void)
+    \brief
+         \~english Wait for the VBlank to occur
+         \~french Attendre le vbl...
+*/
+extern inline void PA_WaitForVBL(void){
+	if(pa_checklid) PA_CheckLid();
+	PAWaitForVBL();
+}
+
 
 
 /*! \def PA_CloseLidSound(channel, close_sound)

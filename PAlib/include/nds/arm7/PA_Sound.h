@@ -21,6 +21,7 @@ extern "C" {
 
 extern PA_IPCType *PA_IPC;
 extern u8 PA_SoundBusyInit;
+extern s32 modvolume; 
 
 
 void PA_SetDSLiteBrightness(u8 level);
@@ -39,7 +40,8 @@ extern inline void PA_Mic(void){
 
 
 extern inline void PA_SoundUpdates(void){
-u8 channel;
+	u8 channel;
+	
 	if(PA_IPC->Sound[16].Volume) {  // Change global sound volume
 		SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume&127);
 		PA_IPC->Sound[16].Volume = 0;
@@ -61,16 +63,21 @@ u8 channel;
 			SCHANNEL_PAN(channel) = SOUND_VOL(PA_IPC->Sound[channel].Pan&127);
 			PA_IPC->Sound[channel].Pan = 0;
 		}		
-		
 	}	
+	//modvolume  = PA_IPC->Mod.Volume; 
 }
+
+
 
 
 extern inline void PA_SoundPlay(u8 channel) {
 	SCHANNEL_TIMER(channel)  = SOUND_FREQ(PA_IPC->Sound[channel].Rate);
 	SCHANNEL_SOURCE(channel) = (u32)PA_IPC->Sound[channel].Data;
 	SCHANNEL_LENGTH(channel) = PA_IPC->Sound[channel].Length >> 2;
-	SCHANNEL_CR(channel)     = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(PA_IPC->Sound[channel].Volume) | SOUND_PAN(PA_IPC->Sound[channel].Pan) | ((PA_IPC->Sound[channel].Format)<<29);
+	
+	SCHANNEL_CR(channel)     = SCHANNEL_ENABLE | ((SOUND_ONE_SHOT)>>(PA_IPC->Sound[channel].Repeat)) | SOUND_VOL(PA_IPC->Sound[channel].Volume) | SOUND_PAN(PA_IPC->Sound[channel].Pan) | ((PA_IPC->Sound[channel].Format)<<29)|(PA_IPC->Sound[channel].Duty<<24);
+	if(PA_IPC->Sound[channel].Repeat) SCHANNEL_REPEAT_POINT(channel) = PA_IPC->Sound[channel].RepeatPoint;
+	else SCHANNEL_REPEAT_POINT(channel) = 0;
 }
 
 

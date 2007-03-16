@@ -11,9 +11,9 @@
 
 u16 gfx[3];
 
-extern inline void PA_3DSetSpritePrio(u16 sprite, u16 priority){
-   pa_3dsprites[sprite].Priority = priority;
-}   
+ 
+
+
 
 // Function: main()
 int main(int argc, char ** argv)
@@ -34,6 +34,7 @@ int main(int argc, char ** argv)
 	gfx[0] = PA_3DCreateTex((void*)mollusk_Texture,  // Texture
 									64, 64,						// Width, Height
 									TEX_256COL );				// Texture Format
+
 	
 	// Load the Palettes !
 	PA_Load3DSpritePal(0, // Slot
@@ -53,7 +54,6 @@ int main(int argc, char ** argv)
 		   PA_3DSetSpriteXY(0, Stylus.X, Stylus.Y);
 		   PA_3DSetSpritePrio(0, 1024 + Stylus.Y); // Priority depending on Y position...
 		}   
-
 		PA_3DProcess();  // Update sprites
 
 		PA_WaitForVBL();

@@ -21,6 +21,23 @@ void PA_Init3D(void){
 }
 
 
+void PA_Init3D2Banks(void){
+   videoSetMode(  MODE_0_3D ); // Set 3d on...
+	DISPLAY_CR |= 1 << 30; // Bg extended palette
+
+	vramSetBankA(VRAM_A_TEXTURE); // Say good-bye to sprites ^^
+	vramSetBankB(VRAM_B_TEXTURE); // Say good-bye to sprites ^^	
+	vramSetBankF(VRAM_F_TEX_PALETTE); // Palettes for the textures...
+
+	//this should work the same as the normal gl call
+	glViewPort(0,0,255,191);
+	
+	glClearDepth(0x7FFF);		
+	*(u32*)0x04000350=0; // CLEAR_COLOR
+}
+
+
+
 
 
 void PA_Load3DSpritePal(u16 palette_number, void* palette){

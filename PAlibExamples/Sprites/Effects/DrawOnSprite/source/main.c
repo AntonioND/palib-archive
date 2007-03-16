@@ -33,7 +33,7 @@ int main(void){
 	
 	while(1) // Infinite loops
 	{
-	   x+= Pad.Held.Right - Pad.Held.Left;
+	   x += Pad.Held.Right - Pad.Held.Left;
 	   y += Pad.Held.Down - Pad.Held.Up;
 	   
 	   PA_SetSpritePixel(0, 0, x, y, 10); // draw on sprite 0 on the bottom screen, color 10

@@ -11,7 +11,7 @@ extern "C" {
 TransferSound snd;
 
 u32 *sndMemPool;
-
+u8 pa_checklid;
 
 u32 Blank[130000>>2];
 
@@ -133,6 +133,7 @@ s32 i;
 for (i = 0; i < 130000>>2; i++) Blank[i] = 0;
 
 PA_Init2D();
+pa_checklid = 1; // Autochecklid by default
 
 //WAIT_CR &= ~(1 << 7);
 

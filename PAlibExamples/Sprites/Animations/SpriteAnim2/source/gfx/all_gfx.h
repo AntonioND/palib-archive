@@ -7,10 +7,10 @@
 
 
 // Sprite files : 
-extern const unsigned char som_Sprite[6144] __attribute__ ((aligned (4))) ;  // Pal : sprite0_Pal
+extern const unsigned char explosion_Sprite[28672] __attribute__ ((aligned (4))) ;  // Pal : explosion_Pal
 
 // Palette files : 
-extern const unsigned short sprite0_Pal[17] __attribute__ ((aligned (4))) ;
+extern const unsigned short explosion_Pal[15] __attribute__ ((aligned (4))) ;
 
 
 #endif

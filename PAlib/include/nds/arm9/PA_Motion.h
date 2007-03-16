@@ -3,6 +3,7 @@
 
 #include <nds/arm9/ndsmotion.h>
 
+
 typedef struct {
    u8 Up, Down, Right, Left;
 } pamotionpad;
@@ -15,9 +16,12 @@ typedef struct{
 } motion_struct;
 extern motion_struct Motion;
 
+void PA_MotionVBL(void);
+
 // turn on the accelerometer
 extern inline void PA_MotionInit(void) {
 	motion_enable();
+	MotionVBL = PA_MotionVBL;
 }
 
 // checks whether a DS Motion Card is plugged in

@@ -206,7 +206,9 @@ extern inline void PA_UpdateMoveSprite(void) {
 		 
 */
 extern inline u8 PA_SpriteStylusOverEx(u8 sprite, u8 lx, u8 ly){
-	return ((Stylus.X > PA_GetSpriteX(PA_Screen, sprite)) && (Stylus.X < PA_GetSpriteX(PA_Screen, sprite) + lx)&& (Stylus.Y > PA_GetSpriteY(PA_Screen, sprite)) && (Stylus.Y < PA_GetSpriteY(PA_Screen, sprite) + ly));
+	s16 x = PA_GetSpriteX(PA_Screen, sprite); if(x > 256) x-= 512;
+	s16 y = PA_GetSpriteY(PA_Screen, sprite); if(y > 192) y-= 256;	
+	return ((Stylus.X > x) && (Stylus.X < x + lx)&& (Stylus.Y > y) && (Stylus.Y < y + ly));
 }
 
 

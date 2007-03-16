@@ -55,42 +55,34 @@ void PA_SetDefaultSound(u8 volume, int freq, s16 format){
 void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint){
 
 	
-	
-	
-   /*	SndChannel[PA_Channel].timer = freq;
-	SndChannel[PA_Channel].vol = volume;
-	SndChannel[PA_Channel].pan = 64;
-	SndChannel[PA_Channel].format = format;
-   	SndChannel[PA_Channel].loopStart = repeatPoint;
-   	SndChannel[PA_Channel].length = length;*/
-
     DC_FlushAll();
-    IPC->soundData = &snd;
 	PA_IPC.Sound[PA_Channel].Busy = 1; // now busy
 	
-	if(!repeat){ // use PA system for normal sounds
-		// Sound commands
-		PA_IPC.Sound[PA_Channel].Command |= (1<<PAIPC_PLAY); // play
-		PA_IPC.Sound[PA_Channel].Data = (u32*)data;
-		PA_IPC.Sound[PA_Channel].Volume = volume;  
-		PA_IPC.Sound[PA_Channel].Pan = 64; 
-		PA_IPC.Sound[PA_Channel].Rate = freq;
-		PA_IPC.Sound[PA_Channel].Length = length-4;
-		PA_IPC.Sound[PA_Channel].Format = format;	
-		PA_IPC.Sound[PA_Channel].Repeat = 0;
-	}
-	else { // Use special system if repeating data involved
-/*		snd.data[PA_Channel].data = data;
-		snd.data[PA_Channel].len = length-4;
-		snd.data[PA_Channel].rate = freq;
-		snd.data[PA_Channel].pan = 64;
-		snd.data[PA_Channel].vol = volume;
-		snd.data[PA_Channel].format = format;	
-		SndPlay(PA_Channel, (void*)FS_wav[PA_Channel], length, volume, freq, format, repeat, repeatPoint);*/
-		PA_IPC.Sound[PA_Channel].Repeat = 1;
-	}
-	
+	// use PA system for normal sounds
+	// Sound commands
+	PA_IPC.Sound[PA_Channel].Command |= (1<<PAIPC_PLAY); // play
+	PA_IPC.Sound[PA_Channel].Data = (u32*)data;
+	PA_IPC.Sound[PA_Channel].Volume = volume;  
+	PA_IPC.Sound[PA_Channel].Pan = 64; 
+	PA_IPC.Sound[PA_Channel].Rate = freq;
+	PA_IPC.Sound[PA_Channel].Length = length-4;
+	PA_IPC.Sound[PA_Channel].Format = format;	
+	PA_IPC.Sound[PA_Channel].Repeat = repeat;
+	PA_IPC.Sound[PA_Channel].RepeatPoint = repeatPoint;
+	PA_IPC.Sound[PA_Channel].Duty = 0;
 }
+
+void PA_PlayPSG(u8 PA_Channel, u8 vol, u8 pan, s32 freq, u8 duty){  
+	PA_IPC.Sound[PA_Channel].Busy = 1; // now busy
+	PA_IPC.Sound[PA_Channel].Command |= (1<<PAIPC_PLAY); // play
+	PA_IPC.Sound[PA_Channel].Volume = vol;  
+	PA_IPC.Sound[PA_Channel].Pan = pan; 
+	PA_IPC.Sound[PA_Channel].Rate = freq;
+	PA_IPC.Sound[PA_Channel].Format = 3;// PSG Sound	
+	PA_IPC.Sound[PA_Channel].Repeat = 0;
+	PA_IPC.Sound[PA_Channel].Duty = duty&7; // Limit values
+}
+
 
 
 

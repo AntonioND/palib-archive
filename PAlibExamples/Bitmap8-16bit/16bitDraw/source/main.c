@@ -4,7 +4,6 @@
 #include <PA9.h>       // Include for PA_Lib
 
 
-
 // Function: main()
 int main(int argc, char ** argv)
 {
@@ -22,9 +21,7 @@ int main(int argc, char ** argv)
 	// your backgrounds...
 	PA_Init16bitBg(0, 3);
 	PA_Init16bitBg(1, 3);
-	
-	
-	
+		
 	// Infinite loop to keep the program running
 	while (1)
 	{
