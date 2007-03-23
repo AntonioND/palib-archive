@@ -62,7 +62,11 @@ extern inline void PA_SoundUpdates(void){
 		if(PA_IPC->Sound[channel].Pan){ // If you need to change the sound volumes...
 			SCHANNEL_PAN(channel) = SOUND_VOL(PA_IPC->Sound[channel].Pan&127);
 			PA_IPC->Sound[channel].Pan = 0;
-		}		
+		}	
+	/*	
+		if(PA_IPC->Sound[channel].Pause){
+			SOUND_CR |= 1 << 15; // Pause
+		}*/
 	}	
 	//modvolume  = PA_IPC->Mod.Volume; 
 }

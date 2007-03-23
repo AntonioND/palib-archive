@@ -31,6 +31,14 @@ typedef struct{
 extern LetterPos16c PA_16cLetterPos;
 
 
+#define ALIGN_LEFT 0
+#define ALIGN_RIGHT 1
+#define ALIGN_CENTER 2
+#define ALIGN_JUSTIFY 3
+
+extern u8 pa_16ctextalign;
+
+
 
 #define PA_LoadPal16c(palette, source)   DMA_Copy(source, (void*)palette, 16, DMA_16NOW);
 #define PA_16cPos(x, y) ((((x)>>3)*26*8) + (y) + 8)
@@ -538,6 +546,13 @@ extern inline u8 PA_16cGetPixel(u8 screen, s16 x, s16 y){
    u16 pos = PA_16cPos(x, y);
    return (PA_Draw1632[screen][pos]&(15<<temp))>>temp;
 }
+
+
+
+extern inline void PA_16cTextAlign(u8 align){
+   pa_16ctextalign = align;
+}  
+
 
 
 

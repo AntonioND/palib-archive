@@ -24,6 +24,7 @@ typedef struct {
 	u8 Repeat; // used to swtich between both systems for now
 	u32 RepeatPoint;
 	u8 Duty;
+//	u8 Pause;
 } PA_IPCSound;
 
 typedef struct{

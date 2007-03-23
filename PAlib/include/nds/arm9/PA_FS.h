@@ -182,11 +182,12 @@ s16 PA_FSSearchExt(s16 *array, char *extension);
          \~english Malloc size
          \~french Taille du malloc
 */
-extern inline void PA_Malloc(void **pointer, u32 size){
-	if (*pointer) {
-		free(*pointer);
+extern inline void *PA_Malloc(void *pointer, u32 size){  
+	if (pointer) {
+		free(pointer);
 	}
-	*pointer = (void*)malloc(size);
+
+	return (void*)malloc(size) ;
 }
 
 

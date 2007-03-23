@@ -37,12 +37,12 @@ int main(int argc, char ** argv)
 
 		// Check the stylus presses :
 		if (Stylus.Held){
-		   PA_play_PSG(8, 127, pan, note, duty);
-		   PA_play_PSG(9, 127, pan, note*2, duty);//octave
+		   PA_PlayPSG(8, 127, pan, note, duty);
+		   PA_PlayPSG(9, 127, pan, note*2, duty);//octave
 			 }
 		else{
-		    PA_play_PSG(8, 0, 0, 0, 0);  // Blank sound
-			 PA_play_PSG(9, 0, 0, 0, 0);  // Blank sound
+		    PA_PlayPSG(8, 0, 0, 0, 0);  // Blank sound
+			 PA_PlayPSG(9, 0, 0, 0, 0);  // Blank sound
 			}			 
 
 				

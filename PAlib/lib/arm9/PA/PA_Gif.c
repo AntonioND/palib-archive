@@ -20,6 +20,14 @@ GifFileType* gifinfo;
 u8 *tempscreen; // Ecran temporaire...
 extern u8 PA_nBit[2]; 
 
+extern u8 pa_giftotextransp;
+extern u16 pa_giftotexcolor;
+
+void PA_GifToTexTransp(u8 on, u16 color){
+   pa_giftotextransp = on;
+   pa_giftotexcolor = color;
+} 
+
 u8 GifBits; // Mode 8 ou 16 bits
 
 const short InterlacedOffset[] = { 0, 4, 2, 1 }; /* The way Interlaced image should. */
@@ -313,6 +321,30 @@ u8* PA_GifToTiles(void *gif, u16 *temppal){
 			tempx = 0;
 		}
 	}
+	
+	if(pa_giftotextransp){
+		// Scan palette for magenta...
+		s16 magenta = 0;
+		u32 pos = 0;
+		while((magenta < 255) && ((temppal[magenta]|(1<<15)) != pa_giftotexcolor)) magenta++;
+		if(magenta == 256) magenta = 255;
+		temppal[magenta] = temppal[0];
+		
+		if(magenta != 0){
+			for(j = 0; j < height; j++){
+			   pos = j*width;
+			   for(i = 0; i < width; i++){
+			      if(newtiles[pos] == 0){
+			         newtiles[pos] = magenta;
+			      }   
+			      else if(newtiles[pos] == magenta){
+			         newtiles[pos] = 0;
+			      }   			      
+			      pos++;
+			   }
+			}	
+		}					   
+	}	
 	
 	free(decodgif); // free the malloc
 	

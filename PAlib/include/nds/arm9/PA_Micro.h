@@ -3,7 +3,7 @@
 
 #include "PA_General.h"
 
-
+void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint);
 
 /** @defgroup Micro Microphone
  * Record a sound and replay it...
@@ -51,7 +51,7 @@ extern inline void PA_MicStartRecording(u8 *Buffer, s32 Length){
          \~french Longueur du buffer
 */
 extern inline void PA_MicReplay(u8 PA_Channel, u8 *Buffer, s32 Length){
-	PA_PlaySound(PA_Channel, Buffer, Length, 127, 16384/2);
+	PA_PlaySoundEx2(PA_Channel, Buffer, Length, 127, 16384/2, 0, 0, 0);
 }
 
 
