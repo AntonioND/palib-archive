@@ -1,11 +1,38 @@
 
+
+New Stuff
+---------
+
+[16cText] Added PA_16cTextAlign(u8 align), taking as arguments ALIGN_LEFT, ALIGN_RIGHT, ALIGN_CENTER, or ALIGN_JUSTIFY.
+
+
+Updated Oldies
+--------------
+
+[16cText] Saves 10 to 20kB on the default font sizes : their stores as 1bit fonts instead of 4bit, and only converted to 4bit if used. So unused font sizes won't take up that much space anymore :)
+
+
+Things Fixed
+------------
+
+[TextColors] Fixed them, thanks to Tom :)
+
+[Gif] PA_LoadGifXY fixed, thanks to Ashai Rey
+
+[Sound] PA_PlaySoundRepeat is back, looks like I forgot to save PAlib when I added it :s
+
+[PAFS] Sound is fixed
+
+[PSG] ClrFog fixed the example :s
+
+
+
 ----------------------------------
 | PAlib 070316 : Community Build |
 ----------------------------------
 
 New Stuff
 ---------
-
 
 [3DSprites] Added PA_Init3D2Banks(void) and PA_Reset3DSprites2Banks(void) to use 2 banks instead of 1, but it removes the backgrounds from screen 0...
 

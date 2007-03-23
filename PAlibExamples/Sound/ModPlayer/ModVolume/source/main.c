@@ -19,7 +19,6 @@ int main(int argc, char ** argv){
 	
 	PA_OutputText(0, 8, 10, "Playing Mod...");
 
-	u8 i;
 	
 	while(1){	// Infinite loop
 		

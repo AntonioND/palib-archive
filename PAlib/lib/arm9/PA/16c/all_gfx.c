@@ -24,11 +24,11 @@ extern "C" {
 #include "c16_text4.pal.c"
 
 // Background Pointers :
-PAGfx_struct c16_text0 = {(void*)c16_text0_Map, 256, (void*)c16_text0_Tiles, 3168, (void*)c16_text0_Pal, (int*)c16_text0_Info };
-PAGfx_struct c16_text1 = {(void*)c16_text1_Map, 256, (void*)c16_text1_Tiles, 3328, (void*)c16_text1_Pal, (int*)c16_text1_Info };
-PAGfx_struct c16_text2 = {(void*)c16_text2_Map, 1024, (void*)c16_text2_Tiles, 3616, (void*)c16_text2_Pal, (int*)c16_text2_Info };
-PAGfx_struct c16_text3 = {(void*)c16_text3_Map, 1024, (void*)c16_text3_Tiles, 6176, (void*)c16_text3_Pal, (int*)c16_text3_Info };
-PAGfx_struct c16_text4 = {(void*)c16_text4_Map, 1024, (void*)c16_text4_Tiles, 8256, (void*)c16_text4_Pal, (int*)c16_text4_Info };
+PAGfx_struct c16_text0 = {(void*)c16_text0_Map, 256, (void*)c16_text0_Tiles, 6336, (void*)c16_text0_Pal, (int*)c16_text0_Info };
+PAGfx_struct c16_text1 = {(void*)c16_text1_Map, 256, (void*)c16_text1_Tiles, 6656, (void*)c16_text1_Pal, (int*)c16_text1_Info };
+PAGfx_struct c16_text2 = {(void*)c16_text2_Map, 1024, (void*)c16_text2_Tiles, 7232, (void*)c16_text2_Pal, (int*)c16_text2_Info };
+PAGfx_struct c16_text3 = {(void*)c16_text3_Map, 1024, (void*)c16_text3_Tiles, 12352, (void*)c16_text3_Pal, (int*)c16_text3_Info };
+PAGfx_struct c16_text4 = {(void*)c16_text4_Map, 1024, (void*)c16_text4_Tiles, 16512, (void*)c16_text4_Pal, (int*)c16_text4_Info };
 
 
 #ifdef __cplusplus

@@ -107,7 +107,7 @@ extern inline u16 PA_GetGifHeight(void* gif){
 */
 extern inline void PA_LoadGifXY(u8 screen, s16 x, s16 y, void *gif){
 	if (PA_nBit[screen]) DecodeGif((const u8*)gif, (u8*)(PA_DrawBg[screen] + x + (y<<8)), (u16*)0x05000000, 1, 256);
-	else DecodeGif((const u8*)gif, (u8*)(PA_DrawBg[screen] + ((x + (y<<8))<<1)), (u16*)(0x05000000+(0x400*screen)), 0, 256);
+	else DecodeGif((const u8*)gif, (u8*)(PA_DrawBg[screen] + ((x + (y<<8))>>1)), (u16*)(0x05000000+(0x400*screen)), 0, 256);
 }
 
 

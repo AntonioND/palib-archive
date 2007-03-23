@@ -13,6 +13,10 @@ TransferSound snd;
 u32 *sndMemPool;
 u8 pa_checklid;
 
+u8 pa_giftotextransp = 1;
+u16 pa_giftotexcolor= PA_RGB(31, 0, 31);
+
+
 u32 Blank[130000>>2];
 
 extern const int PA_text_Info[3]; // BgMode, Width, Height

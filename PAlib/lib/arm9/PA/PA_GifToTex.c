@@ -5,14 +5,9 @@ extern "C" {
 
 #include <PA9.h>
 
-u8 pa_giftotextransp = 1;
-u16 pa_giftotexcolor= PA_RGB(31, 0, 31);
 
-void PA_GifToTexTransp(u8 on, u16 color){
-   pa_giftotextransp = on;
-   pa_giftotexcolor = color;
-} 
-
+extern u8 pa_giftotextransp;
+extern u16 pa_giftotexcolor;
 
 
 u8* PA_GifToTex(void *gif, u16 *temppal){
