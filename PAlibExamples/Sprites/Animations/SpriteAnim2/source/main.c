@@ -44,9 +44,12 @@ int main(void)	{
 	PA_StartSpriteAnim(0, 2, 0, 6, 30); // for the third one, speed of 30 fps...	
 	PA_StartSpriteAnim(0, 3, 0, 6, 60); // for the last one, speed of 60 fps...
 	
-
+	u8 i;
+	
 	while(1)
 	{
+	   // Display the frame number on the top screen
+	   for(i = 0; i < 4; i++) PA_OutputText(1, 2, i, "Sprite %d Frame : %d   ", i, PA_GetSpriteAnimFrame(0, i));
 		PA_WaitForVBL();
 	}
 	

@@ -209,7 +209,7 @@ PA_PlaySoundEx2(PA_Channel, data, length, volume, freq, format,false,0);
          \~french  Point de répétition
 */
 extern inline void PA_PlayFSSoundEx2(u8 PA_Channel, u16 PAFS_wav_number, u8 volume, int freq, s16 format, BOOL repeat, int repeatPoint){
-	FS_wav[PA_Channel] = PA_Malloc(FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
+	FS_wav[PA_Channel] = (u32*)PA_Malloc(FS_wav[PA_Channel], PA_FSFile[PAFS_wav_number].Length+4);
 
 	s32 i;
 	s32 length = (PA_FSFile[PAFS_wav_number].Length>>2) + 1; // Pour etre sur...
@@ -427,7 +427,7 @@ extern inline void PA_SetModPan(u8 pan){
          \~french Numéro de fichier PA GBFS du mod que l'on veut jouer
 */
 extern inline void PA_PlayFSMod(u16 PAFS_mod_number){
-	FS_mod = PA_Malloc(FS_mod, PA_FSFile[PAFS_mod_number].Length+4);
+	FS_mod = (u32*)PA_Malloc(FS_mod, PA_FSFile[PAFS_mod_number].Length+4);
 
 	s32 i;
 	s32 length = (PA_FSFile[PAFS_mod_number].Length>>2) + 1; // Pour etre sur...

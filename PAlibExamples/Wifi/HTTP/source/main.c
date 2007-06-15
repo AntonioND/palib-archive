@@ -14,7 +14,7 @@ int main(int argc, char ** argv)
 	// Initialise the text system on the top screen
 	PA_InitText(0,0);
 	PA_InitText(1, 0);
-	int sock;
+
 	char *buffer2 = malloc(256*256);
 
     PA_GetHTTP(buffer2, "http://www.google.be/index.html");

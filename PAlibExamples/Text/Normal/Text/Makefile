@@ -52,7 +52,7 @@ ARCH	:=	-mthumb-interwork
 
 # note: arm9tdmi isn't the correct CPU arch, but anything newer and LD
 # *insists* it has a FPU or VFP, and it won't take no for an answer!
-CFLAGS	:=	-g  -Wformat=2 -Winline -Wall -O2\
+CFLAGS	:=	-Wformat=2 -Winline -Wall -O2\
 
  		-mcpu=arm946e-s -mtune=arm946e-s -fomit-frame-pointer\
 		-ffast-math \
@@ -60,8 +60,8 @@ CFLAGS	:=	-g  -Wformat=2 -Winline -Wall -O2\
 
 CFLAGS	+=	$(INCLUDE) -DARM9 -I$(DEVKITPRO)/PAlib/include/nds
 
-ASFLAGS	:=	-g $(ARCH)
-LDFLAGS	:=	-g $(ARCH) -mno-fpu -L$(DEVKITPRO)/PAlib/lib
+ASFLAGS	:=	$(ARCH)
+LDFLAGS	:=	$(ARCH) -mno-fpu -L$(DEVKITPRO)/PAlib/lib
 
 
 #---------------------------------------------------------------------------------

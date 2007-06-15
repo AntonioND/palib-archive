@@ -28,7 +28,7 @@ u16 PA_ReadSPI(void);
 
 u16 PA_NewSPI;
 
-PA_IPCType *PA_IPC;
+volatile PA_IPCType *PA_IPC;
 u8 PA_SoundBusyInit;
 
 void PA_Init(void){

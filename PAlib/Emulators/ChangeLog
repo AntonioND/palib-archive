@@ -1,3 +1,38 @@
+0.7.0 -> 0.7.1
+ general:
+  - Added GDB debugger stub [masscat]
+  - Added new/different GBAMP CFlash image reader/writer [masscat]
+ gpu:
+  - Major speedup to the 2D core [shash]
+ gtk-glade:
+  - Added command line options. [masscat]
+  - Added FPS limiter [masscat]
+ cli:
+  - Added command line options. [masscat]
+  - Added FPS limiter [masscat]
+  - Added option to use OpenGl to render window (allows resizing). [masscat]
+ windows port:
+  - Added command line options. [masscat]
+  - Added multiple language support [cyberwarriorx]
+  - Added Danish language translation [thomas-2007]
+
+0.6.0 -> 0.7.0
+ general:
+  - Added support for *.duc files [cyberwarriorx]
+ gpu:
+  - Added support for sprite rotation/scaling [shash]
+  - Added support for the 3D core (openGL and null plugins) [shash] 
+ windows port:
+  - A bunch of fixes [Dmitry Krutskih]
+  - Fixed a bug in sound that was causing it to still not work for some
+    people [cyberwarriorx]
+ gtk:
+  - Added 3D emulation
+  - Added command line options.
+  - Added option to use OpenGL to render window (allows resizing).
+ gtk-glade:
+  - Added 3D emulation
+
 0.5.0 -> 0.6.0
  general:
   - Added zipped (based on zziplib) and gzipped (based on zlib) rom support.

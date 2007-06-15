@@ -19,7 +19,7 @@ extern "C" {
 #define ACTION_STOP 2
 
 
-extern PA_IPCType *PA_IPC;
+extern volatile PA_IPCType *PA_IPC;
 extern u8 PA_SoundBusyInit;
 extern s32 modvolume; 
 

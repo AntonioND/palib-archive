@@ -148,7 +148,7 @@ extern inline void PA_SetWin0XY(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2) {
 #define PA_DisableWin1(screen) DISPCNTL(screen) &= ~WINDOW1
 
 
-/*! \def PA_EnableWinObj(screen, bg_sprites)
+/*! \fn extern inline void PA_EnableWinObj(u8 screen, u16 bg_sprites)
     \brief
          \~english Enable and set which backgrounds will be visible and whether sprites will too or not, for Object Winodw (created from sprites in Window mode).
          \~french Activer et choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, pour la fenetre objets (créée à partir des sprites en mode Window).
@@ -159,7 +159,11 @@ extern inline void PA_SetWin0XY(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2) {
          \~english Backgrounds and sprites, use the following macro : WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ | WIN_SFX (for special effects)
          \~french Fond et sprites à afficher, que l'on choisi de la facon suivante : WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ | WIN_SFX (pour les effets spéciaux)
 */
-#define PA_EnableWinObj(screen, bg_sprites) {DISPCNTL(screen) |= WINDOWOBJ; WINOUT(screen) &= 255; WINOUT |= (bg_sprites << 8);}
+extern inline void PA_EnableWinObj(u8 screen, u16 bg_sprites) {
+	DISPCNTL(screen) |= WINDOWOBJ; 
+	WINOUT(screen) &= 255; 
+	WINOUT(screen) |= (bg_sprites << 8);
+}
 
 
 /*! \def PA_DisableWinObj(screen)
@@ -201,14 +205,14 @@ extern inline void PA_SetWin0XY(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2) {
          \~english Type... 8 different types are available (0-7)
          \~french Type... 8 différents types sont disponibles (0-7)
     \param time
-         \~english Time, from 0 to 32 (included). 0 is a completely vuable screen, 32 is completely out
+         \~english Time, from 0 to 32 (included). 0 is a completely viewable screen, 32 is completely out
          \~french Temps, de 0 à 32 (inclus). 0 est écran visisble, 32 invisible	 
 */
 extern inline void PA_WindowFade(u8 screen, u8 type, u8 time){
 	PA_EnableWin0(screen, WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ);
-	PA_SetWin0XY(screen, (time*winfades[type][0]), 
+	PA_SetWin0XY(screen, ((time*winfades[type][0])*255)>>8, 
 						(time*winfades[type][1]), 
-						(time*winfades[type][2]) + 256, 
+						(((time*winfades[type][2]) + 256)*255)>>8, 
 						(time*winfades[type][3]) + 192);
 	if (time == 0) PA_DisableWin0(screen);
 }

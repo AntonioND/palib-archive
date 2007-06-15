@@ -72,8 +72,7 @@ void PA_InitWifi() {
 	*((volatile u16 *)0x0400010E) = 0x00C2; // enable, irq, 1/256 clock
 	
 	while(Wifi_CheckInit()==0) { // wait for arm7 to be initted successfully
-		while(VCOUNT>192); // wait for vblank
-		while(VCOUNT<192);
+		PA_WaitForVBL();
 	}
 		
 }
@@ -248,9 +247,9 @@ int PA_GetHTTP(char *buffer, char *adress)
        break;
     strcat(buffer,buffer3);
     }
-    if(sock)
-       closesocket(sock);
-return 1;
+    if(sock) close(sock);
+       //closesocket(sock);
+	return 1;
 }
 
 

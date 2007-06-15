@@ -660,7 +660,7 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
 
 
 /*!
-    \def PA_SetMapTileHflip(screen, bg_select, x, y, hflip)
+    \fn void PA_SetMapTileHflip(u8 screen, u8 bg_select, u8 x, u8 y, u8 hflip) 
     \brief
       \~english Flip a given tile horizontaly
       \~french Flipper une tile de la carte, horizontalement
@@ -680,11 +680,15 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
       \~english Set the map tile to horizontal flip
       \~french Mettre la tile de la carte en flip horizontal
 */
-#define PA_SetMapTileHflip(screen, bg_select, x, y, hflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ALL_BUT(TILE_HFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) |= ((hflip) << 10);}
+extern inline void PA_SetMapTileHflip(u8 screen, u8 bg_select, u8 x, u8 y, u8 hflip) {
+	u16 *pointer = (u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6));	
+	*pointer &= ~TILE_HFLIP; 
+	*pointer |= ((hflip) << 10);
+}
 
 
 /*!
-    \def PA_SetMapTileVflip(screen, bg_select, x, y, vflip)
+    \def extern inline void PA_SetMapTileVflip(u8 screen, u8 bg_select, u8 x, u8 y, u8 vflip)
     \brief
       \~english Flip a given tile verticaly
       \~french Flipper une tile de la carte, verticalement
@@ -704,11 +708,14 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
       \~english Set the map tile to vertical flip
       \~french Mettre la tile de la carte en flip vertical
 */
-#define PA_SetMapTileVflip(screen, bg_select, x, y, vflip) {*(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) &= ALL_BUT(TILE_VFLIP); *(u16*)(PA_bgmap[screen][bg_select] + ((x) << 1) + ((y) << 6)) |= ((vflip) << 11);}
-
+extern inline void PA_SetMapTileVflip(u8 screen, u8 bg_select, u8 x, u8 y, u8 vflip) {
+	u16 *pointer = (u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6));	
+	*pointer &= ~TILE_VFLIP; 
+	*pointer |= ((vflip) << 10);
+}
 
 /*!
-    \def PA_SetMapTilePal(screen, bg_select, x, y, palette_number)
+    \fn extern inline void PA_SetMapTilePal(u8 screen, u8 bg_select, u8 x, u8 y, u8 palette_number)
     \brief
       \~english Change the 16 color palette used by a tile. Works only if the Bg is in 16 colors...
       \~french Changer la palette de 16 couleurs utilisée par une tile de la carte. Marche uniquement en mode 16 couleurs pour le Bg.
@@ -728,8 +735,11 @@ extern inline void PA_SetLargeMapTile(u8 screen, u8 bg_select, s32 x, s32 y, u32
       \~english Palette number (0-15)
       \~french Numéro de la palette (0-15)
 */
-#define PA_SetMapTilePal(screen, bg_select, x, y, palette_number) {*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6)) &= ALL_BUT(TILE_PAL); *(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6)) |= ((palette_number) << 12);}
-
+extern inline void PA_SetMapTilePal(u8 screen, u8 bg_select, u8 x, u8 y, u8 palette_number) {
+	u16 *pointer = (u16*)(PA_BgInfo[screen][bg_select].Map + ((x) << 1) + ((y) << 6));	
+	*pointer &= ~TILE_PAL; 
+	*pointer |= ((palette_number) << 12);
+}
 
 /*!
     \def PA_SetMapTileEx(screen, bg_select, x, y, tile_number, hflip, vflip, palette_number)
@@ -795,15 +805,15 @@ extern inline void PA_SetBgPrio(u8 screen, u8 bg, u8 prio) {
 }
 
 extern inline void PA_CreateBgFromTiles(u8 screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size){
-PA_LoadBgMap(screen, bg_select, bg_map, bg_size);
-scrollpos[screen][bg_select].infscroll = 0; // Par défaut pas de scrolling infini...
-PA_BgInfo[screen][bg_select].Map = ScreenBaseBlock(screen, PA_BgInfo[screen][bg_select].mapchar);
-PA_BgInfo[screen][bg_select].TileSetChar = PA_BgInfo[screen][bg_tiles].TileSetChar;
-PA_BgInfo[screen][bg_select].tilesetsize = PA_BgInfo[screen][bg_tiles].tilesetsize;
-
-_REG16(REG_BGSCREEN(screen)) |= (0x100 << (bg_select));
-_REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(PA_BgInfo[screen][bg_select].mapchar << SCREEN_SHIFT) | (1 << 13) | (PA_BgInfo[screen][bg_select].TileSetChar << 2) | (1 << 7);
-PA_BGScrollXY(screen, bg_select, 0, 0);	
+	PA_LoadBgMap(screen, bg_select, bg_map, bg_size);
+	scrollpos[screen][bg_select].infscroll = 0; // Par défaut pas de scrolling infini...
+	PA_BgInfo[screen][bg_select].Map = ScreenBaseBlock(screen, PA_BgInfo[screen][bg_select].mapchar);
+	PA_BgInfo[screen][bg_select].TileSetChar = PA_BgInfo[screen][bg_tiles].TileSetChar;
+	PA_BgInfo[screen][bg_select].tilesetsize = PA_BgInfo[screen][bg_tiles].tilesetsize;
+	
+	_REG16(REG_BGSCREEN(screen)) |= (0x100 << (bg_select));
+	_REG16(REG_BGCNT(screen, bg_select)) = bg_select | (bg_size << 14) |(PA_BgInfo[screen][bg_select].mapchar << SCREEN_SHIFT) | (1 << 13) | (PA_BgInfo[screen][bg_select].TileSetChar << 2) | (1 << 7);
+	PA_BGScrollXY(screen, bg_select, 0, 0);	
 }
 
 

@@ -229,21 +229,21 @@ IPC->mailSize=0;
     
   u32 fifo_temp;   
 
-	  while(1) { // wait for magic number
-    	while(REG_IPC_FIFO_CR&IPC_FIFO_RECV_EMPTY) swiWaitForVBlank();
-      fifo_temp=REG_IPC_FIFO_RX;
-      if(fifo_temp==0x12345678) break;
-   	}
-   	while(REG_IPC_FIFO_CR&IPC_FIFO_RECV_EMPTY) swiWaitForVBlank();
-   	fifo_temp=REG_IPC_FIFO_RX; // give next value to wifi_init
-   	Wifi_Init(fifo_temp);
-   	
-   	irqSet(IRQ_FIFO_NOT_EMPTY,arm7_fifo); // set up fifo irq
-   	irqEnable(IRQ_FIFO_NOT_EMPTY);
-   	REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_RECV_IRQ;
+while(1) { // wait for magic number
+	while(REG_IPC_FIFO_CR&IPC_FIFO_RECV_EMPTY) swiWaitForVBlank();
+	fifo_temp=REG_IPC_FIFO_RX;
+	if(fifo_temp==0x12345678) break;
+}
+while(REG_IPC_FIFO_CR&IPC_FIFO_RECV_EMPTY) swiWaitForVBlank();
+fifo_temp=REG_IPC_FIFO_RX; // give next value to wifi_init
+Wifi_Init(fifo_temp);
 
-   	Wifi_SetSyncHandler(arm7_synctoarm9); // allow wifi lib to notify arm9
-  
+irqSet(IRQ_FIFO_NOT_EMPTY,arm7_fifo); // set up fifo irq
+irqEnable(IRQ_FIFO_NOT_EMPTY);
+REG_IPC_FIFO_CR = IPC_FIFO_ENABLE | IPC_FIFO_RECV_IRQ;
+
+Wifi_SetSyncHandler(arm7_synctoarm9); // allow wifi lib to notify arm9
+
   // Keep the ARM7 out of main RAM
 
   while (1) {

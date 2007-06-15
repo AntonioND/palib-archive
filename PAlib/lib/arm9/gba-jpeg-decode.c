@@ -143,7 +143,7 @@ const unsigned char JPEG_ComponentRange [32 * 3] =
 };
 
 /* Compute the columns half of the IDCT. */
-static void JPEG_IDCT_Columns (JPEG_FIXED_TYPE *zz)
+void JPEG_IDCT_Columns (JPEG_FIXED_TYPE *zz)
 {
     JPEG_FIXED_TYPE tmp0, tmp1, tmp2, tmp3, tmp4, tmp5, tmp6, tmp7, tmp8, tmp9, tmp10, tmp11;
     JPEG_FIXED_TYPE *ez = zz + JPEG_DCTSIZE;
@@ -212,7 +212,7 @@ JPEG_FUNCTION_END (JPEG_IDCT_Columns)
  * of that range.  chunkStride is the number of bytes in a row in chunk.
  */
  
-static void JPEG_IDCT_Rows (const JPEG_FIXED_TYPE *zz, signed char *chunk, int chunkStride)
+void JPEG_IDCT_Rows (const JPEG_FIXED_TYPE *zz, signed char *chunk, int chunkStride)
 {
     JPEG_FIXED_TYPE tmp0, tmp1, tmp2, tmp3, tmp10, tmp11, tmp12, tmp13;
     JPEG_FIXED_TYPE tmp4, tmp5, tmp6, tmp7, z5, z10, z11, z12, z13;
@@ -295,7 +295,7 @@ void JPEG_IDCT (JPEG_FIXED_TYPE *zz, signed char *chunk, int chunkStride)
  * JPEG_ToZigZag or to its IWRAM copy.
  */
  
-static void JPEG_DecodeCoefficients (
+void JPEG_DecodeCoefficients (
     JPEG_FIXED_TYPE *dcLast, JPEG_FIXED_TYPE *zz, JPEG_FIXED_TYPE *quant,
     JPEG_HuffmanTable *dcTable, JPEG_HuffmanTable *acTable,
     const unsigned char **dataBase, unsigned int *bitsLeftBase,
@@ -369,7 +369,7 @@ JPEG_FUNCTION_END (JPEG_DecodeCoefficients)
  * JPEG_ComponentRange array.
  */
  
-static void JPEG_ConvertBlock (
+void JPEG_ConvertBlock (
     signed char *YBlock, signed char *CbBlock, signed char *CrBlock,
     int YHorzFactor, int YVertFactor, int CbHorzFactor, int CbVertFactor, int CrHorzFactor, int CrVertFactor, int horzMax, int vertMax,
     char M211, volatile JPEG_OUTPUT_TYPE *out, int outStride, const unsigned char *ComponentRange)

@@ -1,5 +1,65 @@
 
 
+-----------------------------------
+| PAlib 070615 : Sumiguchi's Work |
+-----------------------------------
+
+
+New Stuff
+---------
+
+[Keyboard] Added PA_SetKeyboardScreen(screen) to select the screen to use for the keyboard prior to loading it... Added a 3DSprite examples (on the top screen) using the keyboard. Optimized the code slightly
+
+[Fatlib] Ashai Rey's LoadGif example added, using FAT
+
+[Examples] Sumiguchi's Fireworks demo, using 3DSprite, is now in Demos/Fireworks :)
+
+[Vham+iDeaS] Thanks to Lino, iDeaS (my new best friend ^^) now comes bundled with PAlib, and is included in Vham. Press F8 to compile+load in iDeaS :). Runs at a much more accurate speed for 3DSprites than no$gba
+
+[BgAlpha] Added Sumiguchi's example
+
+[DblBuffer] Added PA_8bitSwapBuffer(u8 screen) and PA_Init8bitDblBuffer(u8 screen, u8 bg_priority)
+
+[8bit] Double-Buffering made it in...
+
+[Wifi] Sumiguchi's LeaderBoard code got added ! bool PA_SubmitScore(char *response, char *gamekey, char *playername, int score, char *level, u8 responsetype)
+
+
+Updated Oldies
+--------------
+
+[libnds] Updated to latest release
+
+[Sprites] Added Error message when overloading Sprite VRAM
+
+
+Things Fixed
+------------
+
+[PAFSSound] Fixed compilation errors in CPP
+
+[Microphone] Should sound better
+
+[VHam IDE] NdsLauncher updated, now looks for no$gba in Devkitpro/No$GBA and PAlib/Emulators/
+
+[16cText] Word Wrap is better now
+
+[Tiles] Fixed Hflip, Vflip, and Pal functions, thanks to Pouer
+
+[TextPrint] Quick fix in PA_Print, nothing major
+
+[WindowFade] Fixed 1 pixel showing incorrectly in some fades
+
+[16bi] Minor fix
+
+
+
+
+----------------------------------
+| PAlib 070323 : Texts revisited |
+----------------------------------
+
+
 New Stuff
 ---------
 

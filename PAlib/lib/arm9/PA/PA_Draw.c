@@ -27,13 +27,17 @@ u16 tempvar;
 void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth){
 
 	u8 *temp = (u8*)bmp;
+	BMPHeader0 *Bmpinfo0 = (BMPHeader0 *) (temp);
 	BMP_Headers *Bmpinfo = (BMP_Headers*)(temp+14);
 	
-	u8 *gfx = temp+54;
-	u16 *gfx2 = (u16*)(temp+54); // Pour le mode 16 bit...
+//	u8 *gfx = temp+54;
+	u8 *gfx = temp+Bmpinfo0->ImageStart;
+	u16 *gfx2 = (u16*)(temp+Bmpinfo0->ImageStart);
+//	u16 *gfx2 = (u16*)(temp+54); // Pour le mode 16 bit...
 	s32 r, g, b;  s16 tempx, tempy;
 	s16 lx = Bmpinfo->Width;   s16 ly = Bmpinfo->Height;
 	u16 Bits = Bmpinfo->BitsperPixel;
+
 	//Buffer = (u16*)(Buffer + ((x + (y*SWidth)) << 1)); // Position de départ
 	
 	s32 i = 0;
@@ -50,7 +54,7 @@ void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth){
 			while(i&3) i++; // Padding....
 		}
 	}
-	if (Bits == 16){
+	else if (Bits == 16){
 		for (tempy = ly-1; tempy > -1; tempy--){
 			for (tempx = 0; tempx < lx; tempx++){
 				b = *gfx2&31;
@@ -64,6 +68,23 @@ void PA_LoadBmpToBuffer(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth){
 			while(temp&3) temp++; // Padding....
 			gfx2 = (u16*)temp;
 		}	
+	}
+	if (Bits == 8) {
+		// look for palette data if present //
+		u8 *colormap = temp+14+Bmpinfo->SizeofHeader;
+		u16 palette[256];
+		for(i = 0; i < 256; i++) {
+			b = ((colormap[(i<<2)+0])>>3)&31;
+			g = ((colormap[(i<<2)+1])>>3)&31;
+			r = ((colormap[(i<<2)+2])>>3)&31;
+			palette[i] = PA_RGB(r, g, b);
+		}
+		for (tempy = ly-1; tempy > -1; tempy--){
+			for (tempx = 0; tempx < lx; tempx++){
+				Buffer[x + tempx + ((y + tempy) * SWidth)] =  palette[gfx[i]];
+				i++;
+			}
+		}
 	}
 }
 

@@ -191,6 +191,15 @@ u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_
 		  exit = 1;
 	   }
 	}
+	if(exit == 0){
+		PA_ResetBgSysScreen(1);
+		PA_InitText(1, 0);
+		PA_OutputSimpleText(1, 0, 8, "Sorry, there just seems to not be enough place to put all your sprites !! Load less sprites, or use PA_CloneSprite or PA_CreateGfx and PA_CreateSpriteFromGfx to optimise the space used. You can also use 16color sprites...");
+		PA_OutputSimpleText(1, 0, 16, "Je suis désolé mon vieux, mais là je n'ai plus assez de place pour charger les sprites en mémoire ! Utilises moins de fonds, ou alors sers-toi de PA_CloneSprite ou PA_CreateGfx et PA_CreateSpriteFromGfx pour optimiser la place nécessaire... Tu peux aussi utiliser des sprites en 16 couleurs...");
+		
+		PA_WaitFor(Stylus.Newpress);
+	
+	}
 	
    i = free_mem[screen][n_mem].mem_block; // On met la valeur de coté pour la renvoyer...
    truenumber = i + FirstGfx[screen];

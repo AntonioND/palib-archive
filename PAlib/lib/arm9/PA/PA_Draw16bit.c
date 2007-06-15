@@ -20,6 +20,7 @@ PA_nBit[screen] = 1; // 16 bit
 	PA_BGXY(screen, 3) = 0;	
 
 	PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + 128 * 256);
+	PA_DrawBg32[screen] = (u32*)PA_DrawBg[screen];
 	DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW);
 		
 	//this is just used so we can write red color bits to one frame and green to the 

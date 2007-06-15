@@ -1,0 +1,40 @@
+8
+
+dir
+116
+https://palibds.googlecode.com/svn/trunk/vham/templates/project/PAlibC++Template/source
+https://palibds.googlecode.com/svn
+
+
+
+2006-09-03T16:21:26.676623Z
+4
+molousk
+
+
+svn:special svn:externals svn:needs-lock
+
+main.cpp
+file
+
+
+
+
+2006-08-25T19:57:28.000000Z
+da00acbb2d29ecb973bce16404da2654
+2006-09-03T16:21:26.676623Z
+4
+molousk
+
+main.h
+file
+
+
+
+
+2006-08-25T19:57:52.000000Z
+8017d530b12467a9a24d4a3695baaa76
+2006-09-03T16:21:26.676623Z
+4
+molousk
+

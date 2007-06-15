@@ -8,7 +8,7 @@ extern "C" {
 #include "PA9.h"
 
 
-
+extern u8 keyb_screen;
 
 /*! \file PA_Keyboard.h
     \brief Keyboard functions
@@ -80,10 +80,10 @@ void PA_InitKeyboard(u8 bg_number);
 		\~french Claviet perso, converti comme EasyBg			
 */
 #define PA_InitCustomKeyboard(bg_number, keyb_custom) {\
-	PA_LoadBgPal(0, bg_number, (void*)keyb_custom##_Pal);\
-	PA_LoadSimpleBg(0, bg_number, keyb_custom##_Tiles, keyb_custom##_Map, BG_256X512, 1, 1);\
+	PA_LoadBgPal(keyb_screen, bg_number, (void*)keyb_custom##_Pal);\
+	PA_LoadSimpleBg(keyb_screen, bg_number, keyb_custom##_Tiles, keyb_custom##_Map, BG_256X512, 1, 1);\
 	Keyboard.Bg = bg_number;	Keyboard.Type = 0;	Keyboard.Repeat = 0;	Keyboard.Custom = 1;\
-	PA_BgInfo[0][Keyboard.Bg].Map = (u32)keyb_custom##_Map;\
+	PA_BgInfo[keyb_screen][Keyboard.Bg].Map = (u32)keyb_custom##_Map;\
 }
 
 
@@ -107,7 +107,7 @@ char PA_CheckKeyboard(void);
       \~french Position X
 */
 extern inline void PA_ScrollKeyboardX(s16 x) {
-	PA_BGScrollX(0, Keyboard.Bg, -x);
+	PA_BGScrollX(keyb_screen, Keyboard.Bg, -x);
 	Keyboard.ScrollX = x;
 }
 
@@ -122,7 +122,7 @@ extern inline void PA_ScrollKeyboardX(s16 x) {
       \~french Position Y
 */
 extern inline void PA_ScrollKeyboardY(s16 y) {
-	PA_BGScrollY(0, Keyboard.Bg, -y);
+	PA_BGScrollY(keyb_screen, Keyboard.Bg, -y);
 	Keyboard.ScrollY = y;
 }
 
@@ -140,7 +140,7 @@ extern inline void PA_ScrollKeyboardY(s16 y) {
       \~french Position Y
 */
 extern inline void PA_ScrollKeyboardXY(s16 x, s16 y) {
-	PA_BGScrollXY(0, Keyboard.Bg, -x, -y);
+	PA_BGScrollXY(keyb_screen, Keyboard.Bg, -x, -y);
 	Keyboard.ScrollX = x;
 	Keyboard.ScrollY = y;
 }
@@ -222,6 +222,19 @@ extern inline void PA_SetKeyboardColor(u8 color1, u8 color2){
 	Keyboard.Color2 = color2;
 	PA_ReloadKeyboardCol();
 }
+
+/*!
+    \fn extern inline void PA_SetKeyboardScreen(u8 screen)
+    \brief
+		\~english Set Keyboard screen. Must be used BEFORE the keyboard init..
+		\~french Régler l'écran du clavier. Doit être utilisé AVANT l'init du clavier
+    \param screen
+      \~english 0 (bottom) or 1 (top)
+      \~french 0 (bas) or 1 (haut)
+*/
+extern inline void PA_SetKeyboardScreen(u8 screen){
+   keyb_screen = screen; // Top screen
+} 
 
 
 /** @} */ // end of Keyboard

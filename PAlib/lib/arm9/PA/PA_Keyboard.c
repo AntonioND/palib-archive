@@ -23,13 +23,14 @@ const unsigned short keyboardPal2[16] = {
 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000
 };*/
 
+u8 keyb_screen = 0;
 
 Keyboards Keyboard;
 void PA_ReloadKeyboardCol(void);
 
 void PA_InitKeyboard(u8 bg_number) {
 // On charge le fond...
-	PA_LoadSimpleBg(0, bg_number, keyboard_Tiles, keyboard_Map, BG_256X512, 0, 0);
+	PA_LoadSimpleBg(keyb_screen, bg_number, keyboard_Tiles, keyboard_Map, BG_256X512, 0, 0);
 	
 	Keyboard.Bg = bg_number;
 	Keyboard.Type = 0;
@@ -43,7 +44,7 @@ void PA_InitKeyboard(u8 bg_number) {
 	s16 i, j; 
 	for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne palette...
 		for (i = 0; i < 32; i++) 
-			PA_SetMapTilePal(0, bg_number, i, j, 15);
+			PA_SetMapTilePal(keyb_screen, bg_number, i, j, 15);
 	
 	PA_SetKeyboardColor(0, 1); // Blue and Red
 
@@ -66,10 +67,10 @@ u8 tempr, tempg, tempb;
 		// Si dominante rouge
 		if (Keyboard.Color1 == 1) {tempr = b; tempb = r;} //rouge
 		else if (Keyboard.Color1 == 2) {tempg = b; tempb = g;} //vert
-		BG_PALETTE[(15 << 4) + i] = PA_RGB(tempr, tempg, tempb);
+		BG_PALETTE[(keyb_screen << 9) + (15 << 4) + i] = PA_RGB(tempr, tempg, tempb);
 		if (Keyboard.Color2 == 1) {tempr = b; tempb = r;} //rouge
 		else if (Keyboard.Color2 == 2) {tempg = b; tempb = g;} //vert		
-		BG_PALETTE[(14 << 4) + i] = PA_RGB(tempr, tempg, tempb);
+		BG_PALETTE[(keyb_screen << 9) + (14 << 4) + i] = PA_RGB(tempr, tempg, tempb);
 	}
 }
 
@@ -106,14 +107,14 @@ void PA_ChangeKeyboardType(void){
 
 	s16 i, j; 
 	if(!Keyboard.Custom){
-		DMA_Copy((void*)(keyboard_Map + (Keyboard.Type << 11)), (void*)ScreenBaseBlock(0, PA_BgInfo[0][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);	
+		DMA_Copy((void*)(keyboard_Map + (Keyboard.Type << 11)), (void*)ScreenBaseBlock(keyb_screen, PA_BgInfo[keyb_screen][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);	
 	
 		for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne palette...
 			for (i = 0; i < 32; i++) 
-				PA_SetMapTilePal(0, Keyboard.Bg, i, j, 15);
+				PA_SetMapTilePal(keyb_screen, Keyboard.Bg, i, j, 15);
 	}
 	else{
-		DMA_Copy((void*)(PA_BgInfo[0][Keyboard.Bg].Map + (Keyboard.Type << 12)), (void*)ScreenBaseBlock(0, PA_BgInfo[0][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);	
+		DMA_Copy((void*)(PA_BgInfo[keyb_screen][Keyboard.Bg].Map + (Keyboard.Type << 12)), (void*)ScreenBaseBlock(keyb_screen, PA_BgInfo[keyb_screen][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);	
 	}
 }
 
@@ -173,7 +174,7 @@ s16 y = Stylus.Y;
 		}	
 	}
 
-	if (Stylus.Released) {
+	if (!Stylus.Held) {
 		if (Keyboard.Letter != PA_SHIFT) PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15);		
 	}
 	return 0;
@@ -187,8 +188,8 @@ u8 value = PA_Keyboard[0][y][x];
 	if (value&&(!Keyboard.Custom)) {
 		while(PA_Keyboard[0][y][x-1] == value) --x;
 		while(PA_Keyboard[0][y][x] == value) {
-			PA_SetMapTilePal(0, Keyboard.Bg, x+1, (y << 1) + 1, Pal);
-			PA_SetMapTilePal(0, Keyboard.Bg, x+1, (y << 1) + 2, Pal);			
+			PA_SetMapTilePal(keyb_screen, Keyboard.Bg, x+1, (y << 1) + 1, Pal);
+			PA_SetMapTilePal(keyb_screen, Keyboard.Bg, x+1, (y << 1) + 2, Pal);			
 			x++;
 		}
 	}

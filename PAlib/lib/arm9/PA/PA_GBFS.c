@@ -15,7 +15,7 @@ u32 PA_InitGBFS(void){
 s16 dot = 0;
 s16 i = 0;
 
-	 REG_EXEMEMCNT &= ~0x80;
+	 REG_EXMEMCNT &= ~0x80;
  
 	PA_GBFS_FILE = find_first_gbfs_file((void*)0x08000000);
 	PA_GBFS_nfiles = 0;

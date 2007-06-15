@@ -23,9 +23,9 @@ void PA_CreatePalTransition(u16 *pal, u16 *newpal, s8 level, u8 destr, u8 destg,
 u16 i;
 s16 r, g, b;
 for (i = 0; i < 256; i++){
-	r = ((pal[i]&31)*(1-level) + level*destr)>>5;
-	g = (((pal[i]>>5)&31)*(1-level) + level*destr)>>5;
-	b = (((pal[i]>>10)&31)*(1-level) + level*destr)>>5;
+	r = ((pal[i]&31)*(31-level) + level*destr)>>5;
+	g = (((pal[i]>>5)&31)*(31-level) + level*destr)>>5;
+	b = (((pal[i]>>10)&31)*(31-level) + level*destr)>>5;
 	newpal[i] = PA_RGB(r, g, b);
 }
 
