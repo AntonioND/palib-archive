@@ -1,12 +1,13 @@
 /*---------------------------------------------------------------------------------
-	$Id: ndsmotion.h,v 1.4 2007/01/10 16:58:16 dovoto Exp $
+	$Id: ndsmotion.h,v 1.6 2007/05/22 18:05:26 dovoto Exp $
 
-	DS Motion Card functionality
+	DS Motion Card/DS Motion Pak functionality
 	
 	Copyright (C) 2007
 		Michael Noland (joat)
 		Jason Rogers (dovoto)
 		Dave Murphy (WinterMute)
+		Keith Epstein (KeithE)
 
 	This software is provided 'as-is', without any express or implied
 	warranty.  In no event will the authors be held liable for any
@@ -26,6 +27,17 @@
 		distribution.
 
 	$Log: ndsmotion.h,v $
+	Revision 1.6  2007/05/22 18:05:26  dovoto
+	updated to support multiple ds motion cards.  motion_enable is now motion_init...see ds_motion example
+
+	
+	Revision 1.5  2007/05/18 9:36:45  KeithE
+	Added support for DS Motion Pak and MK6
+	Added motion_init() to determine which type of motion sensor is present (0 if none)
+	motion_init() NEEDS TO BE RUN BEFORE USING THE MOTION SENSOR FUNCTIONS
+	Added input parameter to motion_read_ functions that contains the motion sensor type
+	Use motion_init() to check whether a DS Motion Sensor is inserted
+	
 	Revision 1.4  2007/01/10 16:58:16  dovoto
 	Fixed a type in motion_set_sens_z()
 	
@@ -42,7 +54,7 @@
 ---------------------------------------------------------------------------------*/
 
 /*! \file motion.h 
-\brief interface code for the ds motion card 
+\brief interface code for the ds motion card, ds motion pak, MK6 
 
 */
 #ifndef NDS_MOTION_INCLUDE
@@ -60,10 +72,17 @@ typedef struct
 extern "C" {
 #endif
 
-/*! \fn void motion_enable()
-\brief  turn on the accelerometer
+/*! \fn int motion_init()
+\brief  Initializes the DS Motion Sensor.
+Run this before using any of the DS Motion Sensor functions
+save the return value and pass it to the other motion_ functions
 */
-void motion_enable();
+int motion_init();
+
+/*! \fn int motion_deinit()
+\brief  Deinitializes the DS Motion Sensor
+*/
+void motion_deinit();
 
 /*! \fn void motion_enable()
 \brief  read the X acceleration
@@ -85,26 +104,20 @@ signed int motion_read_z();
 */
 signed int motion_read_gyro();
 
-/*! \fn int motion_is_inserted()
-\brief check whether a DS Motion Card is plugged in
-*/
-int motion_is_inserted();
-
 /*! \fn int motion_acceleration_x()
 \brief gets acceleration value to mili G (where g is 9.8 m/s*s)
 */
 int motion_acceleration_x();
 
-/*! \fn int motion_acceleration_x()
+/*! \fn int motion_acceleration_y()
 \brief gets acceleration value to mili G (where g is 9.8 m/s*s)
 */
 int motion_acceleration_y();
 
-/*! \fn int motion_acceleration_x()
+/*! \fn int motion_acceleration_z()
 \brief gets acceleration value to mili G (where g is 9.8 m/s*s)
 */
 int motion_acceleration_z();
-
 
 /*! \fn void motion_set_sens_x(int sens)
 \brief this should be passed the raw reading at 1g for accurate
@@ -159,10 +172,10 @@ void motion_set_offs_gyro();
 */
 int motion_rotation();
 
-/*! \fn MotionCalibration* motion_get_calibraion()
+/*! \fn MotionCalibration* motion_get_calibration()
 \brief This returns the current calibration settings for saving
 */
-MotionCalibration* motion_get_calibraion();
+MotionCalibration* motion_get_calibration();
 
 /*! \fn MotionCalibration* motion_get_calibraion()
 \brief This sets the calibration settings.  Intended
@@ -170,8 +183,35 @@ to restore saved calibration settings
 */
 void motion_set_calibration(MotionCalibration* cal);
 
+/*! \fn MotionCalibration* motion_enable_ain_1()
+\brief This enables the analog input number 1.
+Required before reading analog input number 1.
+*/
+void motion_enable_ain_1();
+
+/*! \fn MotionCalibration* motion_enable_ain_2()
+\brief This enables the analog input number 2.
+Required before reading analog input number 2.
+*/
+void motion_enable_ain_2();
+
+/*! \fn MotionCalibration* motion_read_ain_1()
+\brief This reads the analog input number 1.
+analog input number 1 needs to be enabled before reading.
+*/
+int motion_read_ain_1();
+
+/*! \fn MotionCalibration* motion_read_ain_2()
+\brief This reads the analog input number 2.
+analog input number 2 needs to be enabled before reading.
+*/
+int motion_read_ain_2();
+
 #ifdef __cplusplus
 }
 #endif
 
 #endif
+
+
+

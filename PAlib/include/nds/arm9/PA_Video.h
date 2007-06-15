@@ -6,7 +6,7 @@
 
 
 
-char *ligne(char *buffer, int start, int *end);
+char *vidligne(char *buffer, int start, int *end);
 
 char *correctname(char *name1);
 

@@ -21,8 +21,8 @@ extern const unsigned char PA_text_Tiles[6080] __attribute__ ((aligned (4))) ;  
 
 void PA_CreateTextPal(u8 screen, u8 pal_number, u16 r, u16 g, u16 b);
 
-extern u8 pa_printx[2];
-extern u8 pa_printy[2];
+extern u32 pa_printx[2];
+extern u32 pa_printy[2];
 extern s16 pa_printscroll[2];
 
 void PA_PrintYPlus(u8 screen);

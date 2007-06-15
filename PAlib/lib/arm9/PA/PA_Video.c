@@ -17,7 +17,7 @@ char *buffer2;
 
 
 
-char *ligne(char *buffer, int start, int *end){
+char *vidligne(char *buffer, int start, int *end){
 	int i;
 	free(buffer2);
 	buffer2 = (char*)malloc(sizeof(char)*10);
@@ -104,7 +104,7 @@ int numligne(char *buffer){
 int remplacesize(int num){
 	if(deja0==0&&vidpos<(int)strlen((char*)PA_PAFSFile(hvidfile))){
 		int end;
-		vidsizes[num]=atoi(ligne((char*)PA_PAFSFile(hvidfile),vidpos,&end));
+		vidsizes[num]=atoi(vidligne((char*)PA_PAFSFile(hvidfile),vidpos,&end));
 		if(vidsizes[num]==0)deja0=1;
 		vidpos=end;
 		//PA_OutputText(0, 0, 23, "%d",vidsizes[num]);
@@ -165,13 +165,13 @@ void PA_FSsizes(s8 file, int start1, int *end1){
 	memset(vidsizes,0,sizeof(vidsizes));
 	int i=0;
 	int start=start1, end=0;
-	ligne((char*)PA_PAFSFile(file),start,&end);
+	vidligne((char*)PA_PAFSFile(file),start,&end);
 	//PA_OutputText(0, 0, 5, "ligne en cours : %d",i);
 	start=end;
 	//PA_OutputText(0, 0, 15, "start : %d         ",start);
 	
 	for(i=0;i<numligne((char*)PA_PAFSFile(file))-1;i++){
-		temp=atoi(ligne((char*)PA_PAFSFile(file),start,&end));
+		temp=atoi(vidligne((char*)PA_PAFSFile(file),start,&end));
 		vidsizes[i]=temp;
 		start=end;
 		PA_OutputText(0, 0, 5, "                             \n                               ");

@@ -51,7 +51,7 @@ extern inline void PA_MicStartRecording(u8 *Buffer, s32 Length){
          \~french Longueur du buffer
 */
 extern inline void PA_MicReplay(u8 PA_Channel, u8 *Buffer, s32 Length){
-	PA_PlaySoundEx2(PA_Channel, Buffer, Length, 127, 16384/2, 0, 0, 0);
+	PA_PlaySoundEx2(PA_Channel, Buffer, Length, 127, 16384, 0, 0, 0);
 }
 
 

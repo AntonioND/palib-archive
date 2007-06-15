@@ -31,5 +31,7 @@ int PA_InitSocket(int *socket,char *host,int port,int mode);
 int PA_InitServer(int *sock,int port,int mode, int num_connect);
 int PA_GetHTTP(char *buffer, char *adress);
 
+bool PA_SubmitScore(char *response, char *gamekey, char *playername, int score, char *level, u8 responsetype);
+
 
 #endif

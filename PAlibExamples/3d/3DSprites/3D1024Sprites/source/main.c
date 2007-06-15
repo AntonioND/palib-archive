@@ -18,6 +18,8 @@ typedef struct{
 spritepos sprites[1024];  // Let's manage the sprite positions ^^
 
 
+  
+
 // Function: main()
 int main(void)
 {
@@ -39,12 +41,12 @@ int main(void)
 									TEX_16BITS );				// Texture Format
 	gfx[1] = PA_3DCreateTex((void*)AnarX_Texture, 64, 64, TEX_16BITS);	
 	gfx[2] = PA_3DCreateTex((void*)Abrexxes_Texture, 64, 64, TEX_16BITS);
-	
+
 	s32 i;
 	u16 angle;
 	for(i = 0; i < N_SPRITES; i++) {
-	   sprites[i].x = ((i&31)<<3);
-	   sprites[i].y = ((i>>5)<<3)-32;
+	   sprites[i].x = 16+(PA_Rand()%224);
+	   sprites[i].y = 16+(PA_Rand()%160);
 		PA_3DCreateSpriteFromTex(i, 					// Sprite number
 								gfx[PA_Rand()%3], // Gfx, random one :p
 								64, 64, 				// Width, Height
@@ -54,8 +56,10 @@ int main(void)
 		angle = PA_Rand()&511; // random angle
 		sprites[i].vx = PA_Cos(angle)>>7;
 		sprites[i].vy = -PA_Sin(angle)>>7;
-	}		
-	
+	}	
+
+
+
 	while(1) {
 
 		for(i = 0; i < N_SPRITES; i++){ // Move them around and change speed if touches screen
@@ -64,7 +68,7 @@ int main(void)
 		   sprites[i].y += sprites[i].vy;
 		   if(((sprites[i].y <= 8)&&(sprites[i].vy < 0))||((sprites[i].y>=191-8)&&(sprites[i].vy > 0)))	sprites[i].vy = -sprites[i].vy;
 			PA_3DSetSpriteXY(i, sprites[i].x, sprites[i].y); // Set new position
-		}   
+		} 
 		
 		PA_3DProcess();  // Update 3DSprites
 
@@ -72,6 +76,6 @@ int main(void)
 	}
 
 
-	
 	return 0;
 } // End of main()
+

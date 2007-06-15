@@ -61,6 +61,38 @@ PA_SetDrawSize(screen, 1);
 }
 
 
+
+u8 pa8bitbuffer[2];
+
+void PA_8bitSwapBuffer(u8 screen){
+	pa8bitbuffer[screen] = !pa8bitbuffer[screen];
+	PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + (320-pa8bitbuffer[screen]*192) * 256);
+	PA_DrawBg32[screen] = (u32*)PA_DrawBg[screen];
+	_REG16(REG_BGCNT(screen, 3)) &= ~(BG_BMP_BASE(7));
+	_REG16(REG_BGCNT(screen, 3)) |= BG_BMP_BASE(2+pa8bitbuffer[screen]*3);
+}
+
+void PA_Init8bitDblBuffer(u8 screen, u8 bg_priority){
+
+	PA_Default8bitInit(screen, bg_priority);
+
+	DMA_Copy(Blank, (0x06000000 + (0x200000 *  screen) + 128 * 256), 256*192, DMA_16NOW);
+	PA_DrawBg[screen] =  (u16*)(0x06000000 + (0x200000 *  screen) + 320 * 256);
+	PA_DrawBg32[screen] = (u32*)PA_DrawBg[screen];
+	
+	
+	pa8bitbuffer[screen] = 0; // First buffer...
+	
+		
+	charsetstart[screen] = 2; // On se réserve la moitié de la mémoire...
+	u8 i; for(i = 8; i < 64; i++)	charblocks[screen][i] = 1; // Block la mémoire
+
+	_REG16(REG_BGCNT(screen, 3)) = bg_priority | BG_BMP8_256x256 | BG_BMP_BASE(2);
+	PA_SetDrawSize(screen, 1);
+}
+
+
+
 void PA_Draw8bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color){
   int i,dx,dy,sdx,sdy,dxabs,dyabs,x,y,px,py;
 

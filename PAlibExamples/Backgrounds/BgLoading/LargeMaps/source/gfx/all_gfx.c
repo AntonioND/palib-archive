@@ -11,10 +11,12 @@ extern "C" {
 
 // Background files : 
 #include "zelda.c"
-PAGfx_struct zelda = {(void*)zelda_Map, 65536, (void*)zelda_Tiles, 15552, (void*)zelda_Pal, (int*)zelda_Info };
 
 // Palette files : 
 #include "zelda.pal.c"
+
+// Background Pointers :
+PAGfx_struct zelda = {(void*)zelda_Map, 65536, (void*)zelda_Tiles, 15552, (void*)zelda_Pal, (int*)zelda_Info };
 
 
 #ifdef __cplusplus

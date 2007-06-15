@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------------
-  $Id: serial.h,v 1.9 2006/07/08 06:25:31 wntrmute Exp $
+  $Id: serial.h,v 1.12 2007/02/25 15:54:47 wntrmute Exp $
 
   ARM7 serial control
 
@@ -26,6 +26,15 @@
     distribution.
 
   $Log: serial.h,v $
+  Revision 1.12  2007/02/25 15:54:47  wntrmute
+  add FIRMWARE_FAST
+
+  Revision 1.11  2007/02/19 01:27:26  wntrmute
+  use gbatek names for registers
+
+  Revision 1.10  2007/02/06 11:59:12  wntrmute
+  *** empty log message ***
+
   Revision 1.9  2006/07/08 06:25:31  wntrmute
   move old register definitions to registers_alt.h
 
@@ -64,12 +73,12 @@
 
 
 // 'Networking'
-#define R_CR            (*(vuint16*)0x04000134)
-#define REG_KEYXY       (*(vuint16*)0x04000136)
-#define RTC_CR          (*(vuint16*)0x04000138)
-#define RTC_CR8         (*(vuint8*)0x04000138)
+#define REG_RCNT	(*(vuint16*)0x04000134)
+#define REG_KEYXY	(*(vuint16*)0x04000136)
+#define RTC_CR		(*(vuint16*)0x04000138)
+#define RTC_CR8		(*( vuint8*)0x04000138)
 
-#define SIO_CR          (*(vuint16*)0x04000128)
+#define REG_SIOCNT	(*(vuint16*)0x04000128)
 
 #define SIO_DATA8       (*(vuint8*)0x0400012A)
 #define SIO_DATA32      (*(vuint32*)0x04000120)
@@ -156,13 +165,18 @@
 #define FIRMWARE_READ 0x03
 #define FIRMWARE_PW   0x0A
 #define FIRMWARE_PP   0x02
+#define FIRMWARE_FAST 0x0B
 #define FIRMWARE_PE   0xDB
 #define FIRMWARE_SE   0xD8
 #define FIRMWARE_DP   0xB9
 #define FIRMWARE_RDP  0xAB
 
 
-static inline void SerialWaitBusy() { while (REG_SPICNT & SPI_BUSY) swiDelay(1); }
+static inline
+void SerialWaitBusy() {
+	while (REG_SPICNT & SPI_BUSY)
+		swiDelay(1);
+}
 
 
 // Warning: These functions use the SPI chain, and are thus 'critical'
@@ -171,7 +185,11 @@ static inline void SerialWaitBusy() { while (REG_SPICNT & SPI_BUSY) swiDelay(1);
 
 // Read/write a power management register
 int writePowerManagement(int reg, int command);
-static inline int readPowerManagement(int reg) { return writePowerManagement((reg)|PM_READ_REGISTER, 0); }
+
+static inline
+int readPowerManagement(int reg) {
+	return writePowerManagement((reg)|PM_READ_REGISTER, 0);
+}
 
 // Read the firmware
 void readFirmware(uint32 address, void * destination, uint32 size);

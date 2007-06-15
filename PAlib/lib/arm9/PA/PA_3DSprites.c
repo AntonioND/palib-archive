@@ -129,7 +129,7 @@ void PA_3DSpriteToScreen(u16 sprite){
     
    MATRIX_PUSH = 0;
   
-	PA_glTranslate(pa_3dsprites[sprite].X, (191-pa_3dsprites[sprite].Y), pa_3dsprites[sprite].Priority);
+	PA_glTranslate(pa_3dsprites[sprite].X, (192-pa_3dsprites[sprite].Y), pa_3dsprites[sprite].Priority);
 
 	GFX_TEX_FORMAT = textures[pa_3dsprites[sprite].textureID]; 
 	activeTexture = pa_3dsprites[sprite].textureID; 
@@ -158,20 +158,15 @@ void PA_3DSpriteToScreen(u16 sprite){
 	
 		GFX_NORMAL = NORMAL_PACK(0,inttov10(-1),0);
 
-
 		GFX_TEX_COORD = (PA_TEXTURE_PACK(x1,y1));
 		PA_glVertex(-zoomx1+pa_3dsprites[sprite].corner[2].x,	-zoomy1-pa_3dsprites[sprite].corner[2].y, 0 );			
 
 		
 		GFX_TEX_COORD = (PA_TEXTURE_PACK(x2, y1));
 		PA_glVertex(zoomx0+pa_3dsprites[sprite].corner[3].x,	-zoomy1-pa_3dsprites[sprite].corner[3].y, 0 );	
-		
 
 		GFX_TEX_COORD = (PA_TEXTURE_PACK(x2,y2));				
 		PA_glVertex(zoomx0+pa_3dsprites[sprite].corner[1].x,	zoomy0-pa_3dsprites[sprite].corner[1].y, 0 );		
-
-		
-		
 		
 		GFX_TEX_COORD = (PA_TEXTURE_PACK(x1, y2));
 		PA_glVertex(-zoomx1+pa_3dsprites[sprite].corner[0].x,	zoomy0-pa_3dsprites[sprite].corner[0].y, 0 );		
@@ -180,14 +175,35 @@ void PA_3DSpriteToScreen(u16 sprite){
    
    MATRIX_POP = 1;
 
-}   
+}  
 
+//---------------------------------------------------------------------------------
+void PA_glReset(void) {
+//---------------------------------------------------------------------------------
+	while (GFX_STATUS & (1<<27)); // wait till gfx engine is not busy
+  
+	// Clear the FIFO
+	GFX_STATUS |= (1<<29);
+
+	// Clear overflows for list memory
+	GFX_CONTROL = ((1<<12) | (1<<13)) | GL_TEXTURE_2D;
+	glResetMatrixStack();
+
+	GFX_TEX_FORMAT = 0;
+	GFX_POLY_FORMAT = 0;
+  
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+} 
 
 void PA_3DProcess(void){
 
 
 	PA_3DUpdateSpriteAnims(); // Update animations...
-	glReset();
+	PA_glReset();
 	glEnable(GL_BLEND);
 	glAlphaFunc(BLEND_ALPHA);
 
@@ -196,14 +212,14 @@ void PA_3DProcess(void){
 	MATRIX_CONTROL = GL_PROJECTION;
 	glLoadIdentity();
 
-	glOrthof32 (0, 256, 0, 192, 1, 8192);
+	glOrthof32 (0, 255, 0, 191, 1, 8192);
 
 	gluLookAt(	0.0, 0.0, 1.0,		//camera possition 
 				0.0, 0.0, 0.0,		//look at
 				0.0, 1.0, 0.0);		//up
 
 	MATRIX_CONTROL = GL_TEXTURE;
-	glIdentity();
+	glLoadIdentity();
 	
 	MATRIX_CONTROL = GL_MODELVIEW;
 
@@ -222,6 +238,7 @@ void PA_3DProcess(void){
  
 	GFX_FLUSH = 0;
 }   
+
 
 
 

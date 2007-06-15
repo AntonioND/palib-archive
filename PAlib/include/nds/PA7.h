@@ -38,7 +38,7 @@ extern s32 TOUCH_OFFSET_Y;
 extern u16 PA_NewSPI;
 
 
-extern PA_IPCType *PA_IPC;
+extern volatile PA_IPCType *PA_IPC;
 extern u8 PA_SoundBusyInit;
 
 /*! \file PA7.h

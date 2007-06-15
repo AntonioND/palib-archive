@@ -25,6 +25,12 @@ extern u16 tempvar;
 
 #define PA_RGB8(r,g,b)	((((b)>>3)<<10)|(((g)>>3)<<5)|((r)>>3)|(1 << 15))
 
+#ifdef __GNUC__
+ #define __PACKED __attribute__ ((__packed__))
+#else
+ #define __PACKED 
+ #pragma pack(1)
+#endif
 
 typedef struct{
 	u16 Id; // ?
@@ -43,6 +49,7 @@ typedef struct{
 	u32 WidthperMeter, HeightperMeter; // Don't care
 	u32 NColors, ImportantColors; // Number of colors used, important colors ?
 } BMP_Headers;
+
 
 
 extern u16 PA_oldx[2];
@@ -91,6 +98,9 @@ void PA_Init8bitBg(u8 screen, u8 bg_priority);
          \~english Background priority (0-3) 
 */
 void PA_InitBig8bitBg(u8 screen, u8 bg_priority);
+
+void PA_8bitSwapBuffer(u8 screen);
+void PA_Init8bitDblBuffer(u8 screen, u8 bg_priority);
 
 
 /*! \fn void PA_Init16bitBg(u8 screen, u8 bg_priority)

@@ -18,7 +18,7 @@ PA_BGScrollXY(screen, bg_select, 0, 0);}
 
 
 #define INF_JUSTTILE 268435455
-#define MAX_TILES 1008
+#define MAX_TILES 1024
 
 void PA_InfTilesScrollX(u8 screen, u8 bg_select, s32 x);
 void PA_InfTilesScrollY(u8 screen, u8 bg_select, s32 y);

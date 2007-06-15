@@ -20,13 +20,13 @@ void PA_MotionVBL(void);
 
 // turn on the accelerometer
 extern inline void PA_MotionInit(void) {
-	motion_enable();
+	motion_init();
 	MotionVBL = PA_MotionVBL;
 }
 
 // checks whether a DS Motion Card is plugged in
 extern inline u8 PA_CheckDSMotion(){
-    return motion_is_inserted();
+    return motion_init();
 }
 
 

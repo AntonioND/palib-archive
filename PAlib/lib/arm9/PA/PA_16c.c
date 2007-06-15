@@ -86,16 +86,8 @@ extern inline s16 pa16csetbasex(s16 basex, s16 maxx, s16 linewidth){
 	
 }	 
 
-
-
-u8 pa_16ctextalign = ALIGN_LEFT;
-
-s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, s32 limit){
-	
-	s16 i, j;
-	s16 x, y;
-	s16 lx, ly;
-	s16 letter; 
+void pa_16cTextDecompress(u8 size){
+	s16 i;
 	
 	if((size < 5)&&(((void*)c16_tiles_blank[size]) == ((void*)c16_tiles[size]))){ // Using default font and still compressed
 		u32 tilesize = c16sizes[size];
@@ -105,6 +97,17 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 								(((c16_tiles_blank[size][i]>>4)&1)<<16)   | (((c16_tiles_blank[size][i]>>5)&1)<<20) | (((c16_tiles_blank[size][i]>>6)&1)<<24)  | (((c16_tiles_blank[size][i]>>7)&1)<<28);
 		}   				
 	}
+}
+
+u8 pa_16ctextalign = ALIGN_LEFT;
+s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, s32 limit){
+	
+	s16 i, j;
+	s16 x, y;
+	s16 lx, ly;
+	s16 letter; 
+	
+	pa_16cTextDecompress(size);
 	
 	ly = c16policeheight[size];
 	
@@ -144,7 +147,7 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 				wordletter = 1;
 				wordx = 0;
 				
-				while(!((text[i+wordletter] <= 32) || (i + wordletter >= limit))) { // >= 32, donc si 0, '\n', on ' ' :)
+				while(!((text[i+wordletter] <= 32) || (i + wordletter >= limit+100))) { // >= 32, donc si 0, '\n', on ' ' :)
 					letter = text[i+wordletter];
 					lx = pa16cdefaultsize[size][letter];
 					wordx += lx;
@@ -214,7 +217,7 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 			wordletter = 1;
 			wordx = 0;
 			
-			while(!((text[i+wordletter] <= 32) || (i + wordletter >= limit))) { // >= 32, donc si 0, '\n', on ' ' :)
+			while(!((text[i+wordletter] <= 32) || (i + wordletter >= limit+100))) { // >= 32, donc si 0, '\n', on ' ' :)
 				letter = text[i+wordletter];
 				lx = pa16cdefaultsize[size][letter];
 				wordx += lx;
@@ -237,14 +240,14 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 				s32 jmax = (i + wordletter);
 				if (text[(i + wordletter-1)] < 32) jmax--; // On ne dessinera pas ce caractère
 				
-				for (j = i; j < jmax; j++) {
+				for (j = i; (j < jmax)&&(j<limit); j++) {
 					letter = text[j];
 					lx = pa16cdefaultsize[size][letter];
 					PA_16cLetter(screen, x-basex+startx, y, letter, size, color);
 					PA_AddLetterPos(j, x-basex+startx, y);			
 					x += lx;
 				}
-				i+=wordletter-1;
+				i=j-1;
 				
 				if ((pa_16ctextalign == ALIGN_JUSTIFY)&&(text[i+1] != '\n')&&(nlines != lastline)){ // Justifiy
 					s16 diff = (((2+maxx-basex)-linewidth[nlines])/(nspaces[nlines]-1))+0.5;
@@ -266,7 +269,6 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 	return length;
 
 }
-
 
 
 void PA_16cClearZone(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2){  

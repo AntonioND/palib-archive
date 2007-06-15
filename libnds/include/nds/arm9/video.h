@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------------
-	$Id: video.h,v 1.32 2007/01/14 11:41:51 wntrmute Exp $
+	$Id: video.h,v 1.38 2007/05/01 22:48:09 wntrmute Exp $
 
 	Video registers and defines
 
@@ -26,6 +26,25 @@
 		distribution.
 
 	$Log: video.h,v $
+	Revision 1.38  2007/05/01 22:48:09  wntrmute
+	DISP_CAPTURE	becomes REG_DISPCAPCNT
+	
+	Revision 1.37  2007/04/02 07:44:32  gabebear
+	- MATRIX_READ_MODELVIEW is MATRIX_READ_CLIP
+	- add defines for fog
+	
+	Revision 1.36  2007/02/20 05:17:04  gabebear
+	added position test defines
+	
+	Revision 1.35  2007/02/12 03:32:29  wntrmute
+	add leading zero to VRAM_B_MAIN_SPRITE enums
+	
+	Revision 1.34  2007/02/10 05:30:11  dovoto
+	Added background control overlay struct for easier access to background control registers
+	
+	Revision 1.33  2007/02/07 17:02:00  wntrmute
+	add global CHAR and SCREEN offset macros
+	
 	Revision 1.32  2007/01/14 11:41:51  wntrmute
 	add leading zero to VRAM macros with addresses
 	
@@ -181,8 +200,8 @@ typedef enum {
 	VRAM_B_MAIN_BG_0x06040000	= 1 | VRAM_OFFSET(2),
 	VRAM_B_MAIN_BG_0x06060000	= 1 | VRAM_OFFSET(3),
 	VRAM_B_MAIN_SPRITE	= 2 | VRAM_OFFSET(1),
-	VRAM_B_MAIN_SPRITE_0x6400000	= 2,
-	VRAM_B_MAIN_SPRITE_0x6420000	= 2 | VRAM_OFFSET(1),
+	VRAM_B_MAIN_SPRITE_0x06400000	= 2,
+	VRAM_B_MAIN_SPRITE_0x06420000	= 2 | VRAM_OFFSET(1),
 	VRAM_B_TEXTURE	= 3 | VRAM_OFFSET(1),
 	VRAM_B_TEXTURE_SLOT0	= 3 | VRAM_OFFSET(0),
 	VRAM_B_TEXTURE_SLOT1	= 3 | VRAM_OFFSET(1),
@@ -290,7 +309,6 @@ typedef _palette _ext_palette[16];
 
 uint32 vramSetMainBanks(VRAM_A_TYPE a, VRAM_B_TYPE b, VRAM_C_TYPE c, VRAM_D_TYPE d);
 void vramRestoreMainBanks(uint32 vramTemp);
-void vramRestorMainBanks(uint32 vramTemp) __attribute__((deprecated));
 
 void vramSetBankA(VRAM_A_TYPE a);
 void vramSetBankB(VRAM_B_TYPE b);
@@ -368,6 +386,16 @@ void vramSetBankI(VRAM_I_TYPE i);
 
 #define DISPLAY_SCREEN_OFF     (1 << 7)
 
+// The next two defines only apply to MAIN 2d engine
+// In tile modes, this is multiplied by 64KB and added to BG_TILE_BASE
+// In all bitmap modes, it is not used.
+#define DISPLAY_CHAR_BASE(n) (((n)&7)<<24)
+
+// In tile modes, this is multiplied by 64KB and added to BG_MAP_BASE
+// In bitmap modes, this is multiplied by 64KB and added to BG_BMP_BASE
+// In large bitmap modes, this is not used
+#define DISPLAY_SCREEN_BASE(n) (((n)&7)<<27)
+
 static inline
 void videoSetMode( uint32 mode)  { DISPLAY_CR = mode; }
 static inline
@@ -444,9 +472,28 @@ void videoSetModeSub( uint32 mode)  { SUB_DISPLAY_CR = mode; }
 #define BG_PALETTE_SLOT3 BIT(13)
 
 typedef struct {
-	vu16 x;
-	vu16 y;
+	u16 x;
+	u16 y;
 } bg_scroll;
+
+typedef struct {
+    u16 xdx;
+    u16 xdy;
+    u16 ydx;
+    u16 ydy;
+    u32 centerX;
+    u32 centerY;    
+} bg_rotation;
+
+typedef struct {
+    u16 control[4];
+    bg_scroll scroll[4];
+    bg_rotation bg2_rotation;
+    bg_rotation bg3_rotation;
+} bg_attribute;
+
+#define BACKGROUND           (*((bg_attribute *)0x04000008))
+#define BACKGROUND_SUB       (*((bg_attribute *)0x04001008))
 
 #define BG_OFFSET ((bg_scroll *)(0x04000010))
 
@@ -558,7 +605,7 @@ typedef struct {
 
 // Display capture control
 
-#define	DISP_CAPTURE  (*(vuint32*)0x04000064)
+#define	REG_DISPCAPCNT	(*(vuint32*)0x04000064)
 
 #define DCAP_ENABLE    BIT(31)
 #define DCAP_MODE(n)   (((n) & 3) << 29)
@@ -698,7 +745,12 @@ typedef struct sSpriteRotation {
 #define GFX_VIEWPORT		(*(vuint32*) 0x04000580)
 #define GFX_TOON_TABLE		((vuint16*)  0x04000380)
 #define GFX_EDGE_TABLE		((vuint16*)  0x04000330)
+#define GFX_FOG_COLOR		(*(vuint32*) 0x04000358)
+#define GFX_FOG_OFFSET		(*(vuint32*) 0x0400035C)
+#define GFX_FOG_TABLE		((vuint8*)   0x04000360)
 #define GFX_BOX_TEST		(*(vint32*)  0x040005C0)
+#define GFX_POS_TEST		(*(vuint32*) 0x040005C4)
+#define GFX_POS_RESULT		((vint32*)   0x04000620)
 
 #define GFX_BUSY (GFX_STATUS & BIT(27))
 
@@ -724,8 +776,8 @@ typedef struct sSpriteRotation {
 #define MATRIX_MULT3x3		(*(vint32*) 0x04000468)
 
 //matrix operation results
-#define MATRIX_READ_MODELVIEW	((vint32*) (0x04000640))
-#define MATRIX_READ_ROTATION	((vint32*) (0x04000680))
+#define MATRIX_READ_CLIP		((vint32*) (0x04000640))
+#define MATRIX_READ_VECTOR		((vint32*) (0x04000680))
 #define POINT_RESULT			((vint32*) (0x04000620))
 #define VECTOR_RESULT			((vuint16*)(0x04000630))
 

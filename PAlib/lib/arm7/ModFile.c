@@ -6,7 +6,7 @@
 //-----------------------
 
 
-#include <NDS.h>
+#include <nds.h>
 #include <string.h>
 
 #include "ModFile.h"

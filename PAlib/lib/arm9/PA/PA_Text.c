@@ -25,8 +25,8 @@ u16 *PA_textpal[2]; // Palette !
 
 
 
-u8 pa_printx[2];
-u8 pa_printy[2];
+u32 pa_printx[2];
+u32 pa_printy[2];
 s16 pa_printscroll[2];
 
 
