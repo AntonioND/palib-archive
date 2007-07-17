@@ -52,6 +52,20 @@ void PA_Print(u8 screen, char* text, ...) {
             }
             j += 1;
          }
+         else if ((text[j+1] == 'x')) {
+			u32 test = va_arg(varg, u32);
+			u8 temp;
+			u8 started = 0;
+			for(i = 0; i < 32; i+=4){
+			   temp = (test>>(28-i))&15;
+			   if(started || temp){
+				   if(temp >= 10) PA_PrintLetter(screen, 'A'+(temp-10));
+				   else PA_PrintLetter(screen, '0'+(temp));
+				   started = 1;
+				}		   
+			}   	
+			j++;
+		}	
          else if ((text[j+1] == 'd') || (text[j+1] == 'f')) {
 			double test = 0;
             if (text[j+1] == 'd') {

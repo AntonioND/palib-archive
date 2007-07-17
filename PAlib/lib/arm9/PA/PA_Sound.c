@@ -26,7 +26,7 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 	
 	// use PA system for normal sounds
 	// Sound commands
-	PA_IPC.Sound[PA_Channel].Command |= (1<<PAIPC_PLAY); // play
+	//PA_IPC.Sound[PA_Channel].Command |= (1<<PAIPC_PLAY); // play
 	PA_IPC.Sound[PA_Channel].Data = (u32*)data;
 	PA_IPC.Sound[PA_Channel].Volume = volume;  
 	PA_IPC.Sound[PA_Channel].Pan = 64; 
@@ -37,6 +37,7 @@ void PA_PlaySoundEx2(u8 PA_Channel, const void* data, s32 length, u8 volume, int
 	PA_IPC.Sound[PA_Channel].RepeatPoint = repeatPoint;
 	PA_IPC.Sound[PA_Channel].Duty = 0;
 //	PA_IPC.Sound[PA_Channel].Pause = 0;
+	PA_IPC.Sound[PA_Channel].Command |= (1<<PAIPC_PLAY); // play
 
 }
 

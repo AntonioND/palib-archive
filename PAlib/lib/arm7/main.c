@@ -10,34 +10,7 @@
 #include <dswifi7.h>
 #include <nds.h>
 #include <stdlib.h>
-/*
-#include <NDS/NDS.h>
- 
-#include <NDS/ARM7/BIOS.h>
-#include <NDS/ARM7/touch.h>
-#include <NDS/ARM7/clock.h>
-*/
 
-
-
-//////////////////////////////////////////////////////////////////////
-/*
-void startSound(int sampleRate, const void* data, uint32 bytes, u8 channel, u8 vol,  u8 pan, u8 format) {
-  SCHANNEL_TIMER(channel)  = SOUND_FREQ(sampleRate);
-  SCHANNEL_SOURCE(channel) = (uint32)data;
-  SCHANNEL_LENGTH(channel) = bytes >> 2;
-  SCHANNEL_REPEAT_POINT(channel) = 0;
-  SCHANNEL_CR(channel) = SCHANNEL_ENABLE | SOUND_ONE_SHOT | SOUND_VOL(vol) | SOUND_PAN(pan) | format;
-}
-
-s8 getFreeSoundChannel() {
-int i;
-  for (i=0; i<16; i++) {
-    if ( (SCHANNEL_CR(i) & SOUND_ENABLE) == 0 ) return i;
-  }
-  return -1;
-}
-*/
 
 
 
@@ -117,7 +90,20 @@ void VcountHandler() {
 
 }
 
+#define READ_DATA_REG1     0x65
+#define READ_STATUS_REG1   0x61
 
+void PA_rtcGetTime(uint8 * time) {
+//---------------------------------------------------------------------------------
+	uint8 command, status;
+
+	time[0] = READ_DATA_REG1;
+	rtcTransaction(&(time[0]), 1, &(time[1]), 7);
+
+	command = READ_STATUS_REG1;
+	rtcTransaction(&command, 1, &status, 1);
+	time[0] = status;
+}
 
 //////////////////////////////////////////////////////////////////////
 //u8 testvar = 0;
@@ -141,7 +127,7 @@ void PA_VBL(void){
     batt = touchRead(TSC_MEASURE_BATTERY);
     
     // Read the time
-    rtcGetTime((uint8 *)ct);
+    PA_rtcGetTime((uint8 *)ct);
     BCDToInteger((uint8 *)&(ct[1]), 7);
  
     // Read the temperature

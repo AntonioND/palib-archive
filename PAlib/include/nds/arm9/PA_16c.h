@@ -31,12 +31,19 @@ typedef struct{
 extern LetterPos16c PA_16cLetterPos;
 
 
+typedef struct{
+	u8 linespacing;
+	u8 letterspacing;
+	u8 align;
+} text16c_type;
+extern text16c_type text16c;
+
+
 #define ALIGN_LEFT 0
 #define ALIGN_RIGHT 1
 #define ALIGN_CENTER 2
 #define ALIGN_JUSTIFY 3
 
-extern u8 pa_16ctextalign;
 
 
 
@@ -550,10 +557,15 @@ extern inline u8 PA_16cGetPixel(u8 screen, s16 x, s16 y){
 
 
 extern inline void PA_16cTextAlign(u8 align){
-   pa_16ctextalign = align;
+   text16c.align = align;
 }  
 
-
+extern inline void PA_16cTextLineSpacing(u8 spacing){
+   text16c.linespacing = spacing;
+}  
+extern inline void PA_16cTextLetterSpacing(u8 spacing){
+   text16c.letterspacing = spacing;
+}  
 
 
 

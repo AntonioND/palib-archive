@@ -24,10 +24,8 @@ int main(int argc, char ** argv)
 
 
 
-
 	PA_16cText(1, 10, 25, 255, 40, "Small custom font...", 1, 5, 100);
 	PA_16cText(1, 10, 40, 255, 60, "Big custom font...", 1, 6, 100);
-
 	
 	u8 i;
 

@@ -1,0 +1,1 @@
+ImageSplitter img173.gif 192 192 64 64

@@ -23,7 +23,7 @@ extern "C" {
 	
 	u8 c16policeheight[10];
 
-	
+text16c_type text16c = {1, 1, ALIGN_LEFT};
 
 // Pointers...
 u16 *PA_Draw16[2];
@@ -69,7 +69,6 @@ void PA_Init16cBgEx(u8 screen, u8 bg, u8 npalette){
 	c16policeheight[2] = c16_text2_Height;
 	c16policeheight[3] = c16_text3_Height;
 	c16policeheight[4] = c16_text4_Height;	
-
 }   
 
 
@@ -80,8 +79,8 @@ extern inline void PA_AddLetterPos(s16 Letter, s16 x, s16 y){
 
 
 extern inline s16 pa16csetbasex(s16 basex, s16 maxx, s16 linewidth){
-   if((pa_16ctextalign == ALIGN_LEFT)||(pa_16ctextalign == ALIGN_JUSTIFY)) return basex;
-   if(pa_16ctextalign == ALIGN_RIGHT) return (2+maxx-linewidth);
+   if((text16c.align == ALIGN_LEFT)||(text16c.align == ALIGN_JUSTIFY)) return basex;
+   if(text16c.align == ALIGN_RIGHT) return (2+maxx-linewidth);
 	return (1+((basex+maxx)>>1))-(linewidth>>1);
 	
 }	 
@@ -99,7 +98,8 @@ void pa_16cTextDecompress(u8 size){
 	}
 }
 
-u8 pa_16ctextalign = ALIGN_LEFT;
+	
+	
 s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, u8 color, u8 size, s32 limit){
 	
 	s16 i, j;
@@ -109,7 +109,7 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 	
 	pa_16cTextDecompress(size);
 	
-	ly = c16policeheight[size];
+	ly = c16policeheight[size]+text16c.linespacing;
 	
 	x = basex;
 	y = basey;
@@ -129,7 +129,7 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 	linewidth[0] = 0;
 	nspaces[0] = 0;
 	
-	if(pa_16ctextalign != ALIGN_LEFT){
+	if(text16c.align != ALIGN_LEFT){
 	
 		for (i = 0; (text[i] && y <= ylimiy && i < limit); i++) {
 			if (text[i] == '\n'){
@@ -149,7 +149,7 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 				
 				while(!((text[i+wordletter] <= 32) || (i + wordletter >= limit+100))) { // >= 32, donc si 0, '\n', on ' ' :)
 					letter = text[i+wordletter];
-					lx = pa16cdefaultsize[size][letter];
+					lx = pa16cdefaultsize[size][letter]+text16c.letterspacing;
 					wordx += lx;
 					wordletter++;
 				}
@@ -171,7 +171,7 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 					
 					for (j = i; j < jmax; j++) {
 						letter = text[j];
-						lx = pa16cdefaultsize[size][letter];
+						lx = pa16cdefaultsize[size][letter]+text16c.letterspacing;
 						linewidth[nlines]+=lx;
 						x += lx;
 					}
@@ -219,7 +219,7 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 			
 			while(!((text[i+wordletter] <= 32) || (i + wordletter >= limit+100))) { // >= 32, donc si 0, '\n', on ' ' :)
 				letter = text[i+wordletter];
-				lx = pa16cdefaultsize[size][letter];
+				lx = pa16cdefaultsize[size][letter]+text16c.letterspacing;
 				wordx += lx;
 				wordletter++;
 			}
@@ -242,14 +242,14 @@ s16 PA_16cText(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, char* text, 
 				
 				for (j = i; (j < jmax)&&(j<limit); j++) {
 					letter = text[j];
-					lx = pa16cdefaultsize[size][letter];
+					lx = pa16cdefaultsize[size][letter]+text16c.letterspacing;
 					PA_16cLetter(screen, x-basex+startx, y, letter, size, color);
 					PA_AddLetterPos(j, x-basex+startx, y);			
 					x += lx;
 				}
 				i=j-1;
 				
-				if ((pa_16ctextalign == ALIGN_JUSTIFY)&&(text[i+1] != '\n')&&(nlines != lastline)){ // Justifiy
+				if ((text16c.align == ALIGN_JUSTIFY)&&(text[i+1] != '\n')&&(nlines != lastline)){ // Justifiy
 					s16 diff = (((2+maxx-basex)-linewidth[nlines])/(nspaces[nlines]-1))+0.5;
 					x+= diff;
 					linewidth[nlines]+=diff;

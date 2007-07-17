@@ -1215,6 +1215,7 @@ extern inline void PA_Set16bitSpriteAlpha(u8 screen, u8 sprite, u8 alpha){
 */
 extern inline void PA_SetSpriteAnimEx(u8 screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe){
 	u16 gfx = PA_GetSpriteGfx(screen, sprite);
+	spriteanims[screen][sprite].currentframe = animframe;
 	//PA_OutputText(1, 0, PA_Rand()&15, "%03d - %03d   ", gfx, sprite);
 	PA_UpdateGfx(screen, gfx, (void*)(PA_SpriteAnimP[screen][gfx] + (animframe * (lx * ly) >> (2 - ncolors))));
 }

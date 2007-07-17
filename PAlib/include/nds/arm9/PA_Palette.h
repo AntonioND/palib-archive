@@ -289,7 +289,7 @@ void PA_LoadBgPalN(u8 screen, u8 bg_number, u8 pal_number, void* palette);
          \~english RGB value, like PA_RGB(31, 31, 31) for white
          \~french Valeur RGB, comme PA_RGB(31, 31, 31) pour blanc
 */
-#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + (screen << 9)] = colorRGB
+#define PA_SetBgPalCol(screen, color_number, colorRGB) BG_PALETTE[color_number + ((screen) << 9)] = colorRGB
 
 
 
