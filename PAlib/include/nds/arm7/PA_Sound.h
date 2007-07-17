@@ -38,7 +38,7 @@ extern inline void PA_Mic(void){
 	}
 }
 
-
+/*
 extern inline void PA_SoundUpdates(void){
 	u8 channel;
 	
@@ -63,14 +63,41 @@ extern inline void PA_SoundUpdates(void){
 			SCHANNEL_PAN(channel) = SOUND_VOL(PA_IPC->Sound[channel].Pan&127);
 			PA_IPC->Sound[channel].Pan = 0;
 		}	
-	/*	
-		if(PA_IPC->Sound[channel].Pause){
-			SOUND_CR |= 1 << 15; // Pause
-		}*/
 	}	
 	//modvolume  = PA_IPC->Mod.Volume; 
+}*/
+extern inline void PA_SoundUpdates(void){
+	u8 channel;
+	static PA_IPCSound Soundold[17];
+	
+	if(PA_IPC->Sound[16].Volume!=Soundold[16].Volume) { // Change global sound volume
+		SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume&127);
+		Soundold[16].Volume=PA_IPC->Sound[16].Volume;
+	}
+	if(PA_IPC->Sound[16].Busy){ // Change Brightness
+		PA_SetDSLiteBrightness(PA_IPC->Sound[16].Busy&3);
+		PA_IPC->Sound[16].Busy = 0; // don't change anymore...
+	}
+	for (channel = 0; channel < 16; channel++) {
+		PA_IPC->Sound[channel].Busy = SCHANNEL_CR(channel)>>31;
+		
+		if(PA_IPC->Sound[channel].Volume!=Soundold[channel].Volume){ // If you need to change the sound volumes...
+			SCHANNEL_CR(channel) &= ~SOUND_VOL(127); // reset sound volume
+			SCHANNEL_CR(channel) |= SOUND_VOL(PA_IPC->Sound[channel].Volume&127);
+			Soundold[channel].Volume=PA_IPC->Sound[channel].Volume;
+		}
+		
+		if(PA_IPC->Sound[channel].Pan!=Soundold[channel].Pan){ // If you need to change the sound volumes...
+			SCHANNEL_PAN(channel) = SOUND_VOL(PA_IPC->Sound[channel].Pan&127);
+			Soundold[channel].Pan = PA_IPC->Sound[channel].Pan;
+		}
+		/*
+		if(PA_IPC->Sound[channel].Pause){
+		SOUND_CR |= 1 << 15; // Pause
+		}*/
+	}
+	//modvolume = PA_IPC->Mod.Volume;
 }
-
 
 
 
@@ -101,9 +128,10 @@ extern inline void PA_SoundProcess(void){
 		if(PA_IPC->Sound[i].Command) // Something to do...
 		{
 			if((PA_IPC->Sound[i].Command>>PAIPC_STOP)&1) PA_SoundStop(i);
-			if((PA_IPC->Sound[i].Command>>PAIPC_PLAY)&1) PA_SoundPlay(i); // play sound		
+			if((PA_IPC->Sound[i].Command>>PAIPC_PLAY)&1) PA_SoundPlay(i); // play sound
+			PA_IPC->Sound[i].Command = 0;		
 		}
-		PA_IPC->Sound[i].Command = 0;
+		
 	}
 
 }

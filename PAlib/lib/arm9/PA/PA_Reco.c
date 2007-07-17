@@ -193,6 +193,8 @@ char PA_AnalyzeShape(void){
 		}		
 	
 	}
+	PA_RecoInfo.Difference = diff; // Difference to perfect shape
+	PA_RecoInfo.Shape = letter;
 	
 	return letter;
 }   
@@ -200,30 +202,30 @@ char PA_AnalyzeShape(void){
 
 
 char PA_CheckLetter(void){
-	   if(Stylus.Newpress){
-			PA_Reco.nvalues = 0; // Start over again
-			PA_Reco.oldn = 0;
-			PA_Reco.veryold = 0;
-			
-			PA_RecoInfo.startX = PA_StylusPos[PA_Reco.nvalues].x = Stylus.X; // start values
-			PA_RecoInfo.startY = PA_StylusPos[PA_Reco.nvalues].y = Stylus.Y;  
-			PA_RecoInfo.minX = PA_RecoInfo.maxX = PA_RecoInfo.startX;
-			PA_RecoInfo.minY = PA_RecoInfo.maxY = PA_RecoInfo.startY;			
-  			PA_Reco.nvalues++;
-		}
-		else if(Stylus.Held) {
-			PA_StylusLine(PA_StylusPos[PA_Reco.nvalues-1].x, PA_StylusPos[PA_Reco.nvalues-1].y, Stylus.X, Stylus.Y);
-			
-		}
+   if(Stylus.Newpress){
+		PA_Reco.nvalues = 0; // Start over again
+		PA_Reco.oldn = 0;
+		PA_Reco.veryold = 0;
+		
+		PA_RecoInfo.startX = PA_StylusPos[PA_Reco.nvalues].x = Stylus.X; // start values
+		PA_RecoInfo.startY = PA_StylusPos[PA_Reco.nvalues].y = Stylus.Y;  
+		PA_RecoInfo.minX = PA_RecoInfo.maxX = PA_RecoInfo.startX;
+		PA_RecoInfo.minY = PA_RecoInfo.maxY = PA_RecoInfo.startY;			
+		PA_Reco.nvalues++;
+	}
+	else if(Stylus.Held) {
+		PA_StylusLine(PA_StylusPos[PA_Reco.nvalues-1].x, PA_StylusPos[PA_Reco.nvalues-1].y, Stylus.X, Stylus.Y);
+		
+	}
 
-		      
-		if(Stylus.Released){ // Start analyzing...
-			PA_Reco.nvalues = PA_Reco.veryold;
-			return PA_AnalyzeShape();
-		}	
-		PA_Reco.veryold = PA_Reco.oldn;
-		PA_Reco.oldn = PA_Reco.nvalues;
-		return 0;
+		  
+	if(Stylus.Released){ // Start analyzing...
+		PA_Reco.nvalues = PA_Reco.veryold;
+		return PA_AnalyzeShape();
+	}	
+	PA_Reco.veryold = PA_Reco.oldn;
+	PA_Reco.oldn = PA_Reco.nvalues;
+	return 0;
 }		
 
 

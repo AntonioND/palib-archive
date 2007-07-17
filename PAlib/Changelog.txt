@@ -1,4 +1,47 @@
 
+-----------------------------
+| PAlib 070717 : Misc Stuff |
+-----------------------------
+
+
+
+New Stuff
+---------
+
+[16bit] Double Buffering added
+
+[Image] ImageSplitter added, an app to split up big images with frames into several smaller sprites. See example to use the app. It's basic and doesn't manage any 'error' ^^
+
+
+Updated Oldies
+--------------
+
+[Text] Now supports %x for Hex output
+
+[16cText] Added PA_16cTextLineSpacing(u8 spacing) and PA_16cTextLetterSpacing(u8 spacing)
+
+[iDeaS] Updated to 1.0.1.7
+
+[Size] Optimised a bit more how PAlib code is organized, saves a few kB everywhere for some projects :)
+
+[Reco] Added PA_RecoInfo.Difference and PA_RecoInfo.Shape for the shape found and the amount of difference (test to find the values you like ^^) to that shape
+
+[Wifi] Updated to latest version
+
+
+Things Fixed
+------------
+
+[RTC] Reverted back to older code, now works
+
+[Linux] PAlib compilation fixed
+
+[3DSprites] Fixed bug of 3D not showing after using scrollable backgrounds. Big thanks to Sumiguchi ^^
+
+[Timers] Chris Liu fixed the Timers !
+
+[Sprites] Fixed PA_GetSpriteAnim (thanks to Doud !)
+
 
 -----------------------------------
 | PAlib 070615 : Sumiguchi's Work |

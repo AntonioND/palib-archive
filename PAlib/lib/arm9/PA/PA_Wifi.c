@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #include <PA9.h>
 
 #include <arm9/PA_Wifi.h>
@@ -247,10 +252,17 @@ int PA_GetHTTP(char *buffer, char *adress)
        break;
     strcat(buffer,buffer3);
     }
-    if(sock) close(sock);
+    if(sock) closesocket(sock);
        //closesocket(sock);
 	return 1;
 }
+
+
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 

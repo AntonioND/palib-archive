@@ -602,6 +602,24 @@ else{ // Use the extended priorities
 
 
 
+
+
+extern inline void PA_UpdateMoveSprite(void) {
+	PA_MovedSprite.Time++;
+	if ((PA_MovedSprite.Time > 2) || Stylus.Released) {
+		PA_MovedSprite.Moving = 0;
+		PA_MovedSprite.Time = 0;
+	}
+}
+
+
+void PA_UpdateSpriteVBL(void){
+	PA_UpdateMoveSprite(); // Met à jour les infos sur les déplacements de sprites
+	PA_UpdateOAM(); // Updates the Object on screen
+	PA_UpdateSpriteAnims(); // Update the sprite animations... done last because less important...
+}
+
+
 #ifdef __cplusplus
 }
 #endif

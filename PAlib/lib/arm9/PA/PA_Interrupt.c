@@ -13,14 +13,13 @@ extern "C" {
 //u16 Int_Flag;
 
 //funcpointer interruptfunc[14];
-funcpointer CustomVBL;
-funcpointer MotionVBL;
+funcpointer CustomVBL = PA_Nothing;
+funcpointer MotionVBL = PA_Nothing;
+funcpointer SpriteVBL = PA_Nothing;
 
 volatile u8 PA_vblok; // Passe à 1 quand VBL activé...
 
 volatile u8 PA_Newframe;
-
-void PA_UpdateSpriteAnims(void);
 
 volatile s32 PA_TestVBLs;
 
@@ -55,21 +54,18 @@ u8 i;
 
 u8 PA_oldVolume;
 
-extern inline void PA_UpdateMoveSprite(void) {
-	PA_MovedSprite.Time++;
-	if ((PA_MovedSprite.Time > 2) || Stylus.Released) {
-		PA_MovedSprite.Moving = 0;
-		PA_MovedSprite.Time = 0;
-	}
-}
+
 
 void PA_vblFunc(void){
 	//PA_OutputText(0, 0, 0, "VBL Ok");
 	DC_FlushAll();
 	PA_UpdatePad(); // Updates the Keypad...
 	PA_UpdateStylus(); // Updates the stylus input
-	PA_UpdateMoveSprite(); // Met à jour les infos sur les déplacements de sprites
-	PA_UpdateOAM(); // Updates the Object on screen
+	
+	(*SpriteVBL)();
+	
+	
+
 	MotionVBL(); // Update DS Motion info
 
 	
@@ -84,10 +80,6 @@ void PA_vblFunc(void){
 	// Counters
 	PA_RunCounters();
 	CustomVBL(); // runs the user's custom VBL function
-	
-	
-	PA_UpdateSpriteAnims(); // Update the sprite animations... done last because less important...
-
 
 }
 

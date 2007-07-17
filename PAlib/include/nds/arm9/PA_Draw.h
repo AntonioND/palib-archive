@@ -116,7 +116,8 @@ void PA_Init8bitDblBuffer(u8 screen, u8 bg_priority);
 */
 void PA_Init16bitBg(u8 screen, u8 bg_priority);
 
-
+void PA_Init16bitDblBuffer(u8 screen, u8 bg_priority);
+void PA_16bitSwapBuffer(u8 screen);
 
 /*! \fn extern inline void PA_Put8bitPixel(u8 screen, s16 x, s16 y, u8 color) 
     \brief
@@ -140,17 +141,8 @@ extern inline void PA_Put8bitPixel(u8 screen, s16 x, s16 y, u8 color) {
 	u8 decal = ((x&1)<<3);
    PA_DrawBg[screen][pos] &= 0xff00>>decal;
    PA_DrawBg[screen][pos] |= color<<decal;
-
-	//s32 pos = (x >> 1) + (y << 7);
-	//u16 pixel = PA_DrawBg[screen][pos];
-	//PA_DrawBg[screen][pos] = (color << ((x&1)<<3)) | (pixel&(0xFF00>>((x&1)<<3)));
-	/*if (x&1){
-		PA_DrawBg[screen][pos] = (color << 8) | (pixel&0x00FF);			
-	}
-	else {
-		PA_DrawBg[screen][pos] = color | (pixel&0xFF00);	
-	}*/
 }
+
 
 
 
@@ -273,6 +265,7 @@ extern inline u8 PA_Get8bitPixel(u8 screen, u8 x, u8 y) {
 extern inline void PA_Put16bitPixel(u8 screen, s16 x, s16 y, u16 color) {
 	PA_DrawBg[screen][x + (y << 8)] = color;
 }
+
 
 
 /*! \def PA_Get16bitPixel(x, y)

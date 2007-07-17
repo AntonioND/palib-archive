@@ -44,6 +44,8 @@ typedef struct{
 	u8 minX, minY, maxX, maxY; // Shape limits
 	u8 startX, startY, endX, endY; // Start and end position
 	s16 Angle;
+	s32 Difference;
+	u8 Shape;
 } PA_RecoInfos;
 extern PA_RecoInfos PA_RecoInfo;
 
