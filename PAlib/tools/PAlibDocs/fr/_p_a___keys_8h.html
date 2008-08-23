@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: RÃ©fÃ©rence du fichier PAlib/lib/include/nds/arm9/PA_Keys.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;donnÃ©es</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>RÃ©fÃ©rence du fichier PAlib/lib/include/nds/arm9/PA_Keys.h</h1>Everything concerning the keys and stylus. <a href="#_details">Plus de dÃ©tails...</a>
+<p>
+<code>#include &quot;<a class="el" href="_p_a9_8h.html">PA9.h</a>&quot;</code><br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de donnÃ©es</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_a___pad.html">PA_Pad</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pads.html">Pads</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_a___stylus.html">PA_Stylus</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_a__movingsprite.html">PA_movingsprite</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#fa4ff2ba60e7f34310147a657dfa9276">PA_BACKSPACE</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#6cc8bcb33920d13ec8bb84444a21f406">PA_CAPS</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#da0a67f79f4ef1e6c9583a8a01976b55">PA_ENTER</a>&nbsp;&nbsp;&nbsp;'\n'</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#be4d17d7e966012db2aab489a1fdff15">PA_SHIFT</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#86279f83d0f65598c38cbb453bc86f1a">PA_RIEN</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#ad4b1c43d0e66b44e1955d2383f023b4">PA_TAB</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#gdca042bc805ff171828274782abde43d">PA_MoveSprite</a>(sprite)&nbsp;&nbsp;&nbsp;PA_MoveSpriteEx(<a class="el" href="_p_a___general_8h.html#b201e0052d72f154e3713dcda628a5ba">PA_Screen</a>, sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteLy(0, sprite))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un sprite en fonction du stylet. Le sprite sera accroché si le stylet passe aud-dessus, puis il sera déplacé en fonction... Donne 1 si on a déplacé ce sprite, sinon 0. On peut ensuite récupérer des <a class="el" href="structinfos.html">infos</a> avec PA_MovedSprite.Moving (1 si on déplace un sprite), .Sprite (numéro du sprite déplacé), .X (position X du centre du sprite), .Y (position Y du centre du sprite déplacé), .Vx (vitesse horizontale du sprite déplacé !! Utile si l'on veut que le sprite continue à se déplacer par la suite...), et .Vy.  <a href="group___keys.html#gdca042bc805ff171828274782abde43d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#g9433372a42c248a4ea8c2f73144f9bc6">PA_StylusInZone</a>(x1, y1, x2, y2)&nbsp;&nbsp;&nbsp;((Stylus.X&gt;=x1)&amp;&amp;(Stylus.Y&gt;=y1)&amp;&amp;(Stylus.X&lt;x2)&amp;&amp;(Stylus.Y&lt;y2))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si le stylet est dans une zone délimitée donnée... Renvoie 1 si oui, 0 sinon.  <a href="group___keys.html#g9433372a42c248a4ea8c2f73144f9bc6"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#g6ebcd54f6f4d30672d0b5614c1d3b0ce">PA_UpdatePad</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet de mettre à jour les touches appuyées. A utilisé une fois par frame (genre dans le vbl). On a ensuite accès aux touches pressées avec Pad.Held.A (ou Up, Down, L...), aux touches nouvellement pressées avec Pad.Newpress.R, et aux touches tout juste relachées avec Pad.Released.Up...  <a href="group___keys.html#g6ebcd54f6f4d30672d0b5614c1d3b0ce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#g7a1b0b3498630e595af60ec656a258a8">PA_UpdateStylus</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#gc8118f627bd0af3e9f5895e7c0f13db7">PA_MoveSpritePix</a> (u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un sprite en fonction du stylet, avec détection au pixel pret. Ceci est comme PA_MoveSprite, mais un peu plus lent, et nécessite PA_InitSpriteDraw(screen, sprite). Le sprite sera accroché si le stylet passe aud-dessus, puis il sera déplacé en fonction... Donne 1 si on a déplacé ce sprite, sinon 0. On peut ensuite récupérer des <a class="el" href="structinfos.html">infos</a> avec PA_MovedSprite.Moving (1 si on déplace un sprite), .Sprite (numéro du sprite déplacé), .X (position X du coin sup gauche du sprite), .Y (position Y du point sup gauche du sprite déplacé), .Vx (vitesse horizontale du sprite déplacé !! Utile si l'on veut que le sprite continue à se déplacer par la suite...), et .Vy.  <a href="group___keys.html#gc8118f627bd0af3e9f5895e7c0f13db7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#g6260f4cd6762e1858ee4624028336405">PA_MoveSpriteEx</a> (u8 screen, u8 sprite, u8 lx, u8 ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un sprite en fonction du stylet. Voir PA_MoveSprite pour plus de détails. La différence est qu'ici on précise la largeur et la hauteur du sprite, utile si le sprite ne fait pas vraiment la meme taille que la taille standard DS (genre si c'est un sprite de 20x20). Ceci limitera donc aussi la distance d'accrochage.  <a href="group___keys.html#g6260f4cd6762e1858ee4624028336405"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#ga711b5de65ba948f1df9aa02ea3f1226">PA_MoveSpriteDistance</a> (u8 sprite, u8 distance)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un sprite en fonction du stylet. Voir PA_MoveSprite pour plus de détails. La différence est qu'ici on précise la distance d'accrochage, en pixels.  <a href="group___keys.html#ga711b5de65ba948f1df9aa02ea3f1226"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#g3fb118bf97ac088d640191392fa202b2">PA_SpriteStylusOverEx</a> (u8 sprite, u8 lx, u8 ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non).  <a href="group___keys.html#g3fb118bf97ac088d640191392fa202b2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#gab4bc5f7d5ca77aab036159812e2ac69">PA_SpriteTouchedEx</a> (u8 sprite, u8 lx, u8 ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si l'on touche un sprite donné. Renvoie 1 si touché... On peut choisir la hauteur et la largeur autour du sprite.  <a href="group___keys.html#gab4bc5f7d5ca77aab036159812e2ac69"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#gbf97dc88160e7433707434ceac42217a">PA_SpriteTouched</a> (u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si l'on touche un sprite donné. Renvoie 1 si touché...  <a href="group___keys.html#gbf97dc88160e7433707434ceac42217a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#g2e55f14da05b60cd2a1d767448e28e07">PA_SpriteStylusOver</a> (u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non).  <a href="group___keys.html#g2e55f14da05b60cd2a1d767448e28e07"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#g21cf45e8f3d336360df415a9f29a383a">PA_SpriteTouchedPix</a> (u8 sprite)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___keys.html#g2e231507105539f00b66ec5864688dee">PA_Sprite16cTouchedPix</a> (u8 sprite)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_p_a___stylus.html">PA_Stylus</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#ffc425c90546f140a46643d9b35b2033">Stylus</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_pads.html">Pads</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#dcdc7da4092f631eee24f6bf863a34af">Pad</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_p_a___pad.html">PA_Pad</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#8a9cd4d72de261f0ecdebf1e28e8415a">PadPointer</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_p_a__movingsprite.html">PA_movingsprite</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#fc6542b5d0427c1b57615d5b3124bfeb">PA_MovedSprite</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___keys_8h.html#7e6173c70b96e28b50c97a5b0d153854">PA_MoveSpriteType</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description dÃ©taillÃ©e</h2>
+Everything concerning the keys and stylus. 
+<p>
+Update the keys and stylus inputs <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="fa4ff2ba60e7f34310147a657dfa9276"></a><!-- doxytag: member="PA_Keys.h::PA_BACKSPACE" ref="fa4ff2ba60e7f34310147a657dfa9276" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_BACKSPACE&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6cc8bcb33920d13ec8bb84444a21f406"></a><!-- doxytag: member="PA_Keys.h::PA_CAPS" ref="6cc8bcb33920d13ec8bb84444a21f406" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_CAPS&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="da0a67f79f4ef1e6c9583a8a01976b55"></a><!-- doxytag: member="PA_Keys.h::PA_ENTER" ref="da0a67f79f4ef1e6c9583a8a01976b55" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_ENTER&nbsp;&nbsp;&nbsp;'\n'          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="86279f83d0f65598c38cbb453bc86f1a"></a><!-- doxytag: member="PA_Keys.h::PA_RIEN" ref="86279f83d0f65598c38cbb453bc86f1a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_RIEN&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="be4d17d7e966012db2aab489a1fdff15"></a><!-- doxytag: member="PA_Keys.h::PA_SHIFT" ref="be4d17d7e966012db2aab489a1fdff15" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SHIFT&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ad4b1c43d0e66b44e1955d2383f023b4"></a><!-- doxytag: member="PA_Keys.h::PA_TAB" ref="ad4b1c43d0e66b44e1955d2383f023b4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_TAB&nbsp;&nbsp;&nbsp;3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="fc6542b5d0427c1b57615d5b3124bfeb"></a><!-- doxytag: member="PA_Keys.h::PA_MovedSprite" ref="fc6542b5d0427c1b57615d5b3124bfeb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_p_a__movingsprite.html">PA_movingsprite</a> <a class="el" href="_p_a___keys_8h.html#fc6542b5d0427c1b57615d5b3124bfeb">PA_MovedSprite</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7e6173c70b96e28b50c97a5b0d153854"></a><!-- doxytag: member="PA_Keys.h::PA_MoveSpriteType" ref="7e6173c70b96e28b50c97a5b0d153854" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 <a class="el" href="_p_a___keys_8h.html#7e6173c70b96e28b50c97a5b0d153854">PA_MoveSpriteType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dcdc7da4092f631eee24f6bf863a34af"></a><!-- doxytag: member="PA_Keys.h::Pad" ref="dcdc7da4092f631eee24f6bf863a34af" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_pads.html">Pads</a> <a class="el" href="_p_a___keys_8h.html#dcdc7da4092f631eee24f6bf863a34af">Pad</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8a9cd4d72de261f0ecdebf1e28e8415a"></a><!-- doxytag: member="PA_Keys.h::PadPointer" ref="8a9cd4d72de261f0ecdebf1e28e8415a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_p_a___pad.html">PA_Pad</a>* <a class="el" href="_p_a___keys_8h.html#8a9cd4d72de261f0ecdebf1e28e8415a">PadPointer</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ffc425c90546f140a46643d9b35b2033"></a><!-- doxytag: member="PA_Keys.h::Stylus" ref="ffc425c90546f140a46643d9b35b2033" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_p_a___stylus.html">PA_Stylus</a> <a class="el" href="_p_a___keys_8h.html#ffc425c90546f140a46643d9b35b2033">Stylus</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>GÃ©nÃ©rÃ© le Fri Aug 22 13:34:54 2008 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

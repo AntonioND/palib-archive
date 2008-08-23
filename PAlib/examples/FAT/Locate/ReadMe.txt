@@ -1,0 +1,2 @@
+To test the example, patch the .nds file with a DLDI driver ( http://dldi.drunkencoders.com/index.php?title=Main_Page ) and put it on your flash card.
+Also copy the TestDir directory to a location somewhere on your card.

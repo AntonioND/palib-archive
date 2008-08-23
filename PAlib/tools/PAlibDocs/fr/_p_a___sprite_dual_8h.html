@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: RÃ©fÃ©rence du fichier PAlib/lib/include/nds/arm9/PA_SpriteDual.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;donnÃ©es</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>RÃ©fÃ©rence du fichier PAlib/lib/include/nds/arm9/PA_SpriteDual.h</h1>Everything concerning the sprite system, but for 2 screens ! <a href="#_details">Plus de dÃ©tails...</a>
+<p>
+<code>#include &quot;<a class="el" href="_p_a___sprite_8h.html">PA_Sprite.h</a>&quot;</code><br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gf59907952617fce4157eb2662851bce0">PA_SetScreenSpace</a> (s16 ScreenSpace)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Désigner l'espace entre les 2 écrans, 48 pixels par défaut.  <a href="group___sprite_dual.html#gf59907952617fce4157eb2662851bce0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gb0199a28e61c089dfa36e62256dca4e0">PA_DualSetSpriteX</a> (u8 obj, s16 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran.  <a href="group___sprite_dual.html#gb0199a28e61c089dfa36e62256dca4e0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g79c3f172c287fa042b0ff8508ac2c091">PA_DualSetSpriteY</a> (u8 obj, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran.  <a href="group___sprite_dual.html#g79c3f172c287fa042b0ff8508ac2c091"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g38203912e930977c8926b35ee6425669">PA_DualSetSpriteXY</a> (u8 sprite, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X et Y du sprite à l'écran.  <a href="group___sprite_dual.html#g38203912e930977c8926b35ee6425669"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g3320482ddd6234f447a701029996f6c6">PA_DualCreateSprite</a> (u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfxsur les 2 écrans.  <a href="group___sprite_dual.html#g3320482ddd6234f447a701029996f6c6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gcc4a589784b751cb2b960e29359a83ee">PA_DualCreateSpriteEx</a> (u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction.  <a href="group___sprite_dual.html#gcc4a589784b751cb2b960e29359a83ee"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g4e27590c9b70368bbbd4d566b1435c87">PA_DualCreate16bitSpriteEx</a> (u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite de 16 bits avec ses gfx... Ceci est la version complexe de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche.  <a href="group___sprite_dual.html#g4e27590c9b70368bbbd4d566b1435c87"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g2cbbd139dfbdb5075473cc9d35a93387">PA_DualCreate16bitSprite</a> (u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche.  <a href="group___sprite_dual.html#g2cbbd139dfbdb5075473cc9d35a93387"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#ge47a8f93dfdc98b9f936aac39bf14052">PA_DualCreateSpriteFromGfx</a> (u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version simple de la fonction.  <a href="group___sprite_dual.html#ge47a8f93dfdc98b9f936aac39bf14052"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g051a0478bc2e5f580d44758ec9f34b5a">PA_DualCreateSpriteExFromGfx</a> (u8 obj_number, u16 *obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction.  <a href="group___sprite_dual.html#g051a0478bc2e5f580d44758ec9f34b5a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g8b448e84e2b8dad334dba4b3dce4bd94">PA_DualUpdateSpriteGfx</a> (u8 obj_number, void *obj_data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné.  <a href="group___sprite_dual.html#g8b448e84e2b8dad334dba4b3dce4bd94"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g3b021b2884f509a6ea0f7fa20380fa6e">PA_DualUpdateGfx</a> (u16 gfx_number, void *obj_data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné.  <a href="group___sprite_dual.html#g3b021b2884f509a6ea0f7fa20380fa6e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gcc2dd92dade8dd24cfd68ec3c222db99">PA_DualDeleteSprite</a> (u8 obj_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un sprite. S'il était le seul à utiliser un gfx, il sera effacé lui aussi.  <a href="group___sprite_dual.html#gcc2dd92dade8dd24cfd68ec3c222db99"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g2c3483368db674d5783c43eda76755d4">PA_DualSetSpriteRotEnable</a> (u8 sprite, u8 rotset)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner et zoomer un sprite.  <a href="group___sprite_dual.html#g2c3483368db674d5783c43eda76755d4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gfec313d12a7cfdbf50b76e20ee5dda09">PA_DualSetSpriteRotDisable</a> (u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arreter de faire tourner et zoomer un sprite.  <a href="group___sprite_dual.html#gfec313d12a7cfdbf50b76e20ee5dda09"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g479f898dc3d66d33dd05918e520bd9fa">PA_DualSetRotset</a> (u8 rotset, s16 angle, u16 zoomx, u16 zoomy)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner et zoomer un sprite.  <a href="group___sprite_dual.html#g479f898dc3d66d33dd05918e520bd9fa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g079df630fe93779cf09b7f9a882f2511">PA_DualSetRotsetNoZoom</a> (u8 rotset, s16 angle)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner un sprite sans zoomer. C'est un peu plus rapide que la fonction PA_SetRotset.  <a href="group___sprite_dual.html#g079df630fe93779cf09b7f9a882f2511"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#ge5d56c2e443f472cd86189ac60a74700">PA_DualSetRotsetNoAngle</a> (u8 rotset, u16 zoomx, u16 zoomy)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Zoomer un sprite sans le faire tourner. C'est un peu plus rapide que la fonction PA_SetRotset.  <a href="group___sprite_dual.html#ge5d56c2e443f472cd86189ac60a74700"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gab0af556f952e9d6ba7bddaae67714b6">PA_DualSetSpritePal</a> (u8 obj, u8 pal)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette d'un sprite.  <a href="group___sprite_dual.html#gab0af556f952e9d6ba7bddaae67714b6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g798491c3dfc777ec081eff53da215a06">PA_DualSetSpriteDblsize</a> (u8 obj, u8 dblsize)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer ou désactiver le mode Doublesize pour un sprite.  <a href="group___sprite_dual.html#g798491c3dfc777ec081eff53da215a06"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g5c2184ff709c897e0204c2139936eb21">PA_DualSetSpriteColors</a> (u8 sprite, u8 n_colors)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le mode de couleur du sprite.  <a href="group___sprite_dual.html#g5c2184ff709c897e0204c2139936eb21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gc46a072defdf1e15b642c81588e7a5a7">PA_DualSetSpriteMode</a> (u8 sprite, u8 obj_mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre.  <a href="group___sprite_dual.html#gc46a072defdf1e15b642c81588e7a5a7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gd576d25462044beb9160c9fc96a48dba">PA_DualSetSpriteMosaic</a> (u8 obj, u8 mosaic)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre ou non un sprite en mode mosaic.  <a href="group___sprite_dual.html#gd576d25462044beb9160c9fc96a48dba"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g5a5068e3aa495d1e2ee25863d80d8cbe">PA_DualSetSpriteHflip</a> (u8 obj, u8 hflip)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip horizontal pour un sprite.  <a href="group___sprite_dual.html#g5a5068e3aa495d1e2ee25863d80d8cbe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g1170418b441f9de237246550fd40d1e2">PA_DualSetSpriteVflip</a> (u8 obj, u8 vflip)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip vertical pour un sprite.  <a href="group___sprite_dual.html#g1170418b441f9de237246550fd40d1e2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g993b731daea36f17e539c462eaf9f477">PA_DualSetSpriteGfx</a> (u8 obj, u16 *gfx)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Modifier les graphismes utilisés par un sprite.  <a href="group___sprite_dual.html#g993b731daea36f17e539c462eaf9f477"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#ge2f8a07b6a7a61610d9b855c40189995">PA_DualSetSpritePrio</a> (u8 obj, u8 prio)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler la priorité d'un sprite par rapport au Bg.  <a href="group___sprite_dual.html#ge2f8a07b6a7a61610d9b855c40189995"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g1441ebe38fee909acaaf78c69a83890a">PA_DualCloneSprite</a> (u8 obj, u8 target)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cloner un sprite. Marche uniquement pour les sprites sur un meme écran.  <a href="group___sprite_dual.html#g1441ebe38fee909acaaf78c69a83890a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g0453de97c9127091a5d4a158c8224aa6">PA_DualSetSpriteAnimEx</a> (u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler l'image du sprite dans l'animation. Cette fonction est plus rapide que PA_SetSpriteAnim parce qu'elle n'a pas à rechercher les dimensions du sprite.  <a href="group___sprite_dual.html#g0453de97c9127091a5d4a158c8224aa6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g8332f6d28991e0b3873fac3ca48af2d0">PA_DualSetSpriteAnim</a> (u8 sprite, s16 animframe)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler l'image du sprite dans l'animation. Identique à PA_SetSpriteAnimEx, mais plus simple à utiliser, par contre plus lent.  <a href="group___sprite_dual.html#g8332f6d28991e0b3873fac3ca48af2d0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g571991a7f41b99488bd79e32bffb247c">PA_DualStartSpriteAnimEx</a> (u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre une animation de sprite pour DualSprites. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !  <a href="group___sprite_dual.html#g571991a7f41b99488bd79e32bffb247c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g44af2cb6bd882e037b12b66770a581a1">PA_DualStartSpriteAnim</a> (u8 sprite, s16 firstframe, s16 lastframe, s16 speed)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre une animation de sprite pour DualSprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !  <a href="group___sprite_dual.html#g44af2cb6bd882e037b12b66770a581a1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g4cea68d3d4f41d2417bf70764ffff794">PA_DualStopSpriteAnim</a> (u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter une animation de sprite pour les DualSprites.  <a href="group___sprite_dual.html#g4cea68d3d4f41d2417bf70764ffff794"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gec3f386950cfda924ceee7b96bd549a2">PA_DualSetSpriteAnimFrame</a> (u8 sprite, u16 frame)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le numéro actuel de la frame d'animation pour les DualSprites.  <a href="group___sprite_dual.html#gec3f386950cfda924ceee7b96bd549a2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g0fc7d25386dfa413de7f3f3bfa2845bc">PA_DualGetSpriteAnimFrame</a> (u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le numéro actuel de la frame d'animation pour les DualSprites.  <a href="group___sprite_dual.html#g0fc7d25386dfa413de7f3f3bfa2845bc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g640193d04e35489c30a4f6031cbbb93e">PA_DualSetSpriteAnimSpeed</a> (u8 sprite, s16 speed)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la vitesse de l'animation pour les DualSprites.  <a href="group___sprite_dual.html#g640193d04e35489c30a4f6031cbbb93e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#g8b79a9a1c8fece0b7143b966f758bfc1">PA_DualGetSpriteAnimSpeed</a> (u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la vitesse de l'animation pour les DualSprites.  <a href="group___sprite_dual.html#g8b79a9a1c8fece0b7143b966f758bfc1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite_dual.html#gde78c89b3bc1908c6ff16d735aca2496">PA_DualSpriteAnimPause</a> (u8 sprite, u8 pause)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre en Pause en remettre en lecture une animation de sprite pour les DualSprites.  <a href="group___sprite_dual.html#gde78c89b3bc1908c6ff16d735aca2496"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___sprite_dual_8h.html#88b8a2477384c335e1db87ed7056abba">DualSpriteX</a> [128]</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description dÃ©taillÃ©e</h2>
+Everything concerning the sprite system, but for 2 screens ! 
+<p>
+This file contains all macros, variables, and prototypes regarding the sprite system (OAM, Sprite mouvement, Gfx loading...) on 2 screens, easily, like if it was just one screen <hr><h2>Documentation des variables</h2>
+<a class="anchor" name="88b8a2477384c335e1db87ed7056abba"></a><!-- doxytag: member="PA_SpriteDual.h::DualSpriteX" ref="88b8a2477384c335e1db87ed7056abba" args="[128]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">s16 <a class="el" href="_p_a___sprite_dual_8h.html#88b8a2477384c335e1db87ed7056abba">DualSpriteX</a>[128]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>GÃ©nÃ©rÃ© le Fri Aug 22 13:34:54 2008 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

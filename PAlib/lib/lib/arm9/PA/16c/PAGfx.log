@@ -1,0 +1,23 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : White
+
+5 backgrounds :
+  c16_text0 : 1bitFont, 256x64, Pal : c16_text0_Pal, 100 tiles -> c16_text0_Tiles and c16_text0_Map
+  c16_text1 : 1bitFont, 256x64, Pal : c16_text1_Pal, 105 tiles -> c16_text1_Tiles and c16_text1_Map
+  c16_text2 : 1bitFont, 512x128, Pal : c16_text2_Pal, 115 tiles -> c16_text2_Tiles and c16_text2_Map
+  c16_text3 : 1bitFont, 512x128, Pal : c16_text3_Pal, 196 tiles -> c16_text3_Tiles and c16_text3_Map
+  c16_text4 : 1bitFont, 512x128, Pal : c16_text4_Pal, 262 tiles -> c16_text4_Tiles and c16_text4_Map
+
+5 palettes :
+  c16_text0_Pal, 2 colors
+  c16_text1_Pal, 2 colors
+  c16_text2_Pal, 2 colors
+  c16_text3_Pal, 2 colors
+  c16_text4_Pal, 2 colors
+
+Converted in 0 minutes 2 seconds
+
+Finished !

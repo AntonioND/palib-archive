@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: RÃ©fÃ©rence du fichier PAlib/lib/include/nds/arm9/PA_TileDual.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;donnÃ©es</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>RÃ©fÃ©rence du fichier PAlib/lib/include/nds/arm9/PA_TileDual.h</h1>Everything concerning the Bg Tile modes on 2 screens. <a href="#_details">Plus de dÃ©tails...</a>
+<p>
+<code>#include &quot;<a class="el" href="_p_a___bg_tiles_8h.html">PA_BgTiles.h</a>&quot;</code><br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g365b95ee65869c19e97f84c334be70b1">PA_DualLoadTiledBg</a>(bg_number, bg_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs. Sur 2 écrans, comme un seul grand.  <a href="group___tile_dual.html#g365b95ee65869c19e97f84c334be70b1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g45cdc8cf0618541966b1186889411e5d">PA_DualLoadSimpleBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond sur les 2 écrans.  <a href="group___tile_dual.html#g45cdc8cf0618541966b1186889411e5d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g172c80cb643ad28819f06696711dcb3c">PA_DualLoadRotBg</a>(bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs.  <a href="group___tile_dual.html#g172c80cb643ad28819f06696711dcb3c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ge25db631890aa760f199d671df4a3e52">PA_DualLoadBg</a>(bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap.  <a href="group___tile_dual.html#ge25db631890aa760f199d671df4a3e52"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g416964cdd0d0573b814763e93a53dd1b">PA_DualLoadPAGfxLargeBg</a>(bg_number, bg_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx. Fond sur les 2 écrans comme un seul.  <a href="group___tile_dual.html#g416964cdd0d0573b814763e93a53dd1b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#ga39c731f38e2c5c68ca275b2648bf0c3">PA_DualLoadLargeBg</a>(bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), sur les 2 écrans.  <a href="group___tile_dual.html#ga39c731f38e2c5c68ca275b2648bf0c3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#gc98180e37506ddf0dec14c1306a473f7">PA_DualLoadLargeBgEx</a>(bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles.  <a href="group___tile_dual.html#gc98180e37506ddf0dec14c1306a473f7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g6d5908db9eb6fba2b50a589f184771b5">PA_DualEasyBgLoad</a>(bg_number, bg_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Chargement de fond EasyBg, mais pour le Dual Screen...  <a href="group___tile_dual.html#g6d5908db9eb6fba2b50a589f184771b5"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g13d84bb50481f5a896f3fd53954a2a66">PA_DualHideBg</a> (u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cacher un fond sur les 2 écrans.  <a href="group___tile_dual.html#g13d84bb50481f5a896f3fd53954a2a66"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g30af17d02cea05ad96c8218d95d424c3">PA_DualShowBg</a> (u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher un fond auparavant caché sur les 2 écrans.  <a href="group___tile_dual.html#g30af17d02cea05ad96c8218d95d424c3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g4d466760c93dd27f5688e0cdda816a9f">PA_DualResetBg</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialiser les fonds d'un écran. En fait ca ne fait que cacher tous les fonds.  <a href="group___tile_dual.html#g4d466760c93dd27f5688e0cdda816a9f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g32b36d73bfecfd0151bb0cfdc44edfff">PA_DualDeleteBg</a> (u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un fond complètement (tiles + map + cacher).  <a href="group___tile_dual.html#g32b36d73bfecfd0151bb0cfdc44edfff"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g5c62c5e603572476be66c379ec4597d1">PA_DualSetBgRot</a> (u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g8954263ccc2a53f743bc8ef2fa1f5203">PA_DualBGScrollX</a> (u8 bg_number, s16 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal de n'importe quel fond, sur les 2 écrans.  <a href="group___tile_dual.html#g8954263ccc2a53f743bc8ef2fa1f5203"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g4305b8e14bb8f240b266fc390cba3192">PA_DualBGScrollY</a> (u8 bg_number, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertical de n'importe quel fond.  <a href="group___tile_dual.html#g4305b8e14bb8f240b266fc390cba3192"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g5ad99c1835143671f5938b685e12668e">PA_DualBGScrollXY</a> (u8 bg_number, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal et vertical de n'importe quel fond.  <a href="group___tile_dual.html#g5ad99c1835143671f5938b685e12668e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#gd034bb8ee5f15d49bcdb3efb576f22f6">PA_DualEasyBgScrollX</a> (u8 bg_select, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond EasyBg horizontalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile_dual.html#gd034bb8ee5f15d49bcdb3efb576f22f6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g52ac0752259cc5bea2244227f3387404">PA_DualEasyBgScrollY</a> (u8 bg_select, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond EasyBg verticalement.  <a href="group___tile_dual.html#g52ac0752259cc5bea2244227f3387404"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g28278bb0f65cead4855b7a748c5f2368">PA_DualEasyBgScrollXY</a> (u8 bg_select, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond EasyBg en Dual Screen.  <a href="group___tile_dual.html#g28278bb0f65cead4855b7a748c5f2368"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g0389c06e784a18609ee2a6cf5dd14c45">PA_DualInfLargeScrollX</a> (u8 bg_select, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' horizontalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile_dual.html#g0389c06e784a18609ee2a6cf5dd14c45"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g98645d7c1eb0f1f3a04885012b9420a0">PA_DualInfLargeScrollY</a> (u8 bg_select, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' verticalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile_dual.html#g98645d7c1eb0f1f3a04885012b9420a0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g06c31e94f3795a6849a07d95e75f78c0">PA_DualInfLargeScrollXY</a> (u8 bg_select, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="group___tile_dual.html#g06c31e94f3795a6849a07d95e75f78c0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g060948dc8d1382d3ee80683a928837aa">PA_DualLargeScrollX</a> (u8 bg_select, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling horizontalement.Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="group___tile_dual.html#g060948dc8d1382d3ee80683a928837aa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g56c6fc9de5d9dba543ab230e52ca48a2">PA_DualLargeScrollY</a> (u8 bg_select, s32 y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g5b079679726f21552825d359a62e9100">PA_DualLargeScrollXY</a> (u8 bg_select, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="group___tile_dual.html#g5b079679726f21552825d359a62e9100"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g8646148c2f34c591ae829c8ad00b08a4">PA_DualInitParallaxX</a> (s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller.  <a href="group___tile_dual.html#g8646148c2f34c591ae829c8ad00b08a4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#gfef6004e9653245cf0328e00e0e4511e">PA_DualInitParallaxY</a> (s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller.  <a href="group___tile_dual.html#gfef6004e9653245cf0328e00e0e4511e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g5fa887715716f6b7542eecfd8b2a7924">PA_DualParallaxScrollX</a> (s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile_dual.html#g5fa887715716f6b7542eecfd8b2a7924"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#gb1ef278385f5c274d770183b22988641">PA_DualParallaxScrollY</a> (s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile_dual.html#gb1ef278385f5c274d770183b22988641"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g93d3db0719f80f5f20c86357d8323206">PA_DualParallaxScrollXY</a> (s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="group___tile_dual.html#g93d3db0719f80f5f20c86357d8323206"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___tile_dual.html#g24dc9ba6d75422c8caa6b6fc3b9a51e8">PA_DualSetBgPrio</a> (u8 bg, u8 prio)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la priorité d'un fond.  <a href="group___tile_dual.html#g24dc9ba6d75422c8caa6b6fc3b9a51e8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___tile_dual_8h.html#d0076bcf234c9088b218a0890050c15c">PA_InitLargeBg</a> (u8 screen, u8 bg_select, s32 lx, s32 ly, void *bg_map)</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description dÃ©taillÃ©e</h2>
+Everything concerning the Bg Tile modes on 2 screens. 
+<p>
+This file contains all the macros and variables regarding Tile modes (0-2), loading tiles and Bg, etc... on 2 screens ! <hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="d0076bcf234c9088b218a0890050c15c"></a><!-- doxytag: member="PA_TileDual.h::PA_InitLargeBg" ref="d0076bcf234c9088b218a0890050c15c" args="(u8 screen, u8 bg_select, s32 lx, s32 ly, void *bg_map)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InitLargeBg           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>lx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>ly</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bg_map</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>GÃ©nÃ©rÃ© le Fri Aug 22 13:34:54 2008 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

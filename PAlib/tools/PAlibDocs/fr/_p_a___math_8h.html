@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Référence du fichier PAlib/lib/include/nds/arm9/PA_Math.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier PAlib/lib/include/nds/arm9/PA_Math.h</h1><code>#include &quot;<a class="el" href="_p_a9_8h.html">PA9.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_p_a___interrupt_8h.html">PA_Interrupt.h</a>&quot;</code><br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_a___test_infos.html">PA_TestInfos</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___math_8h.html#dd01157530624da0923ce281ca225ef3">PA_TESTSTART</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___math_8h.html#152911c18db7523fb112f315f585af08">PA_TESTEND</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#gb5ea9e1c5c885643135248810033aadf">PA_Cos</a>(angle)&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___sprite_8h.html#75bb07159afc82a86d37f0f97037ee72">PA_SIN</a>[((angle) + 128)&amp;511]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la valeur Cosinus d'un angle. Cette valeur est comprise entre -256 et 256... Attention : l'angle n'est pas en 360 degr?s, mais en 512 !  <a href="group___math.html#gb5ea9e1c5c885643135248810033aadf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#g154d0c5d208521b2bd2d0a9866277bd7">PA_Sin</a>(angle)&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___sprite_8h.html#75bb07159afc82a86d37f0f97037ee72">PA_SIN</a>[((angle))&amp;511]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la valeur Sinus d'un angle. Cette valeur est comprise entre -256 et 256... Attention : l'angle n'est pas en 360 degr?s, mais en 256 !  <a href="group___math.html#g154d0c5d208521b2bd2d0a9866277bd7"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___math_8h.html#2100ef63639ce384cb42b87a93b4900e">PA_TestInit</a> (u8 screen, float time)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___math_8h.html#3afc25e4e8f7ccd4f95d91e549657808">PA_TestResults</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#geff90e78a49a8dc9ec257d7765bd348c">PA_Rand</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Donne un num?ro al?atoire... Ceci est pris de Ham, je n'ai aucun m?rite.  <a href="group___math.html#geff90e78a49a8dc9ec257d7765bd348c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#g14f08eb19ebb96b73e19bb4b288409df">PA_InitRand</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialisation automatique du rand, bas? sur l'horloge interne...  <a href="group___math.html#g14f08eb19ebb96b73e19bb4b288409df"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#g39c1d23b109fb9beb62af235a640ed6e">PA_SRand</a> (s32 r)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le random avec un seed. Ceci est pris de Ham, je n'ai aucun m?rite. J'ai juste raccourci/acc?l?r? un peu le tout.  <a href="group___math.html#g39c1d23b109fb9beb62af235a640ed6e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#g91b70f6602f5cdd6f58e22ddbf4ca115">PA_RandMax</a> (u32 max)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Donne un num?ro al?atoire... Entre 0 et le nombre donn? (inclus).  <a href="group___math.html#g91b70f6602f5cdd6f58e22ddbf4ca115"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#g59d6bd78294b8e0d69960110441d9fce">PA_RandMinMax</a> (u32 min, u32 max)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Donne un num?ro al?atoire... Entre les 2 nombres donn?s (inclus).  <a href="group___math.html#g59d6bd78294b8e0d69960110441d9fce"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga20066cef57dc07cac50cbd44763921e">PA_Distance</a> (s32 x1, s32 y1, s32 x2, s32 y2)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#ga44efbeeb9356c715b6fe3136bd934f5">PA_TrueDistance</a> (s32 x1, s32 y1, s32 x2, s32 y2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calculer la vraie distance entre 2 points. Beaucoup plus lent que PA_Distance.  <a href="group___math.html#ga44efbeeb9356c715b6fe3136bd934f5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#gc783db640f98f30b541c50d79ce86e40">PA_AdjustAngle</a> (u16 angle, s16 anglerot, s32 startx, s32 starty, s32 targetx, s32 targety)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajuster un angle, par exemple pour calculer la direction ? prendre par un vaisseau.  <a href="group___math.html#gc783db640f98f30b541c50d79ce86e40"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#g895f32ca2b2b16c9f703520bff5df074">PA_GetAngle</a> (s32 startx, s32 starty, s32 targetx, s32 targety)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">R?cup?rer l'angle, de 0 ? 511, par rapport ? l'horizontale...  <a href="group___math.html#g895f32ca2b2b16c9f703520bff5df074"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___math_8h.html#aaf8207652c773674394ccc0cf7aa317">PA_Modulo</a> (s32 var, s32 modulo)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_p_a___test_infos.html">PA_TestInfos</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___math.html#g82afd4ee4b5e20680f857f158ba86aab">RandomValue</a></td></tr>
+
+</table>
+<hr><h2>Documentation des macros</h2>
+<a class="anchor" name="152911c18db7523fb112f315f585af08"></a><!-- doxytag: member="PA_Math.h::PA_TESTEND" ref="152911c18db7523fb112f315f585af08" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_TESTEND          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><a class="code" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a>.<a class="code" href="struct_p_a___test_infos.html#6151fbd8c5f865a8336c10346fc2a926">Runs</a>[<a class="code" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a>.<a class="code" href="struct_p_a___test_infos.html#76bd853cdd8b1f5b5aa0a8fe05ddb566">Functions</a>] ++; }\
+                                        <a class="code" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a>.<a class="code" href="struct_p_a___test_infos.html#76bd853cdd8b1f5b5aa0a8fe05ddb566">Functions</a>++;}
+</pre></div>
+</div>
+</div><p>
+<a class="anchor" name="dd01157530624da0923ce281ca225ef3"></a><!-- doxytag: member="PA_Math.h::PA_TESTSTART" ref="dd01157530624da0923ce281ca225ef3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_TESTSTART          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{ <a class="code" href="group___text.html#g77a558e6d1e7e6077f1f109b5f450681" title="Ecrire du texte � l&amp;#39;�cran. Ne marche qu&amp;#39;en modes 0-2.">PA_OutputText</a>(<a class="code" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a>.<a class="code" href="struct_p_a___test_infos.html#6bff612caa6b8a5afd50239d9c204851">Screen</a>, 0, 4+<a class="code" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a>.<a class="code" href="struct_p_a___test_infos.html#76bd853cdd8b1f5b5aa0a8fe05ddb566">Functions</a>, <span class="stringliteral">"Testing function %02d"</span>, <a class="code" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a>.<a class="code" href="struct_p_a___test_infos.html#76bd853cdd8b1f5b5aa0a8fe05ddb566">Functions</a>+1);\
+                                <a class="code" href="group___general.html#ge18e07cfae596008dcab087c5d3064ea" title="Attendre le vbl...">PA_WaitForVBL</a>();\
+                                <a class="code" href="_p_a___interrupt_8h.html#bc9b835146bba3ae8b5776f6a00f9b50">PA_TestVBLs</a> = 0;\
+                                <span class="keywordflow">while</span>( PA_TestVBLs &lt; <a class="code" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a>.<a class="code" href="struct_p_a___test_infos.html#7a3de9c0fdbe8d56dbc4aa0ac16409d1">Time</a>){
+</pre></div>
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="aaf8207652c773674394ccc0cf7aa317"></a><!-- doxytag: member="PA_Math.h::PA_Modulo" ref="aaf8207652c773674394ccc0cf7aa317" args="(s32 var, s32 modulo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">s32 PA_Modulo           </td>
+          <td>(</td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>var</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>modulo</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="2100ef63639ce384cb42b87a93b4900e"></a><!-- doxytag: member="PA_Math.h::PA_TestInit" ref="2100ef63639ce384cb42b87a93b4900e" args="(u8 screen, float time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_TestInit           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>time</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3afc25e4e8f7ccd4f95d91e549657808"></a><!-- doxytag: member="PA_Math.h::PA_TestResults" ref="3afc25e4e8f7ccd4f95d91e549657808" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_TestResults           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="69d8933e54a218187b401746d40113e3"></a><!-- doxytag: member="PA_Math.h::PA_TestInfo" ref="69d8933e54a218187b401746d40113e3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_p_a___test_infos.html">PA_TestInfos</a> <a class="el" href="_p_a___math_8h.html#69d8933e54a218187b401746d40113e3">PA_TestInfo</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Fri Aug 22 13:34:54 2008 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>
