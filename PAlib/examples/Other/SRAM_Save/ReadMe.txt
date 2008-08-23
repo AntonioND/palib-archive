@@ -1,0 +1,1 @@
+SRAM support is still there, but you should use libfat or EFS_Lib instead for much better compatibility to most flash cards.

@@ -1,0 +1,633 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: General Functions</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;donnÃ©es</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>General Functions</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#gab4f4e9a4443621b3b354099759357fb">PA_LidClosed</a>()&nbsp;&nbsp;&nbsp;(IPC-&gt;buttons&gt;&gt;7)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si la DS est fermée. Renvoie 0 si ouverte, 1 si fermée.  <a href="#gab4f4e9a4443621b3b354099759357fb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g08ab8334774076d5b7d9806a8cafc258">PA_CloseLidSound</a>(close_sound)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et joue un son.  <a href="#g08ab8334774076d5b7d9806a8cafc258"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#gc727a5e3af86e986e9942bf31a3e0858">PA_CloseLidSound2</a>(close_sound, open_sound)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et joue un son.  <a href="#gc727a5e3af86e986e9942bf31a3e0858"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g376671148907b5c00a589c83b0d64a92">PA_WaitFor</a>(something)&nbsp;&nbsp;&nbsp;{PA_WaitForVBL(); while(!(something)){PA_WaitForVBL(); }}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Attendre un événement précis...  <a href="#g376671148907b5c00a589c83b0d64a92"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga65eb3298bbfc1b06e06bf1fe1619b7e">PA_Init</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g2da24e6469889cb791225580d2ccf483">PA_Init2D</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Remet en mode 2D après avoir utilisé la 3D.  <a href="#g2da24e6469889cb791225580d2ccf483"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g49f64e475efd26b0895d62e71c73f069">PA_SetVideoMode</a> (u8 screen, u8 mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer de mode video... A utiliser avec précaution.  <a href="#g49f64e475efd26b0895d62e71c73f069"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#gb6780062f1ff2d6bd0c6bc67b6616147">PA_UpdateUserInfo</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Met à jour les <a class="el" href="structinfos.html">infos</a> sur l'utilisateur... C'est fait automatiquement dans PA_Init. On peut ensuite récupérer toutes les <a class="el" href="structinfos.html">infos</a> avec PA_UserInfo.Color (couleur favorite), .BdayDay, .BdayMonth, .AlarmHour, .AlarmMinute, .Name, .NameLength, .Message, .MessageLength, .Language.  <a href="#gb6780062f1ff2d6bd0c6bc67b6616147"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g45cdf5ca56c5fb7e47d7543cf8999f28">PA_UpdateRTC</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Met à jour les <a class="el" href="structinfos.html">infos</a> sur l'heure et la date. C'est automatiquement mis à jour dans le VBL PA... On récupère les <a class="el" href="structinfos.html">infos</a> avec PA_RTC.Minutes, .Hour, .Seconds, .Day, .Month, et .Year.  <a href="#g45cdf5ca56c5fb7e47d7543cf8999f28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#gc8bc6cbc4e277a61fc686c37286e23f1">PA_LoadSplash</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche un splash screen PlayerAdvance... C'est toujours sympa de remercier ;).  <a href="#gc8bc6cbc4e277a61fc686c37286e23f1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g4d9876421d3be034bd0144d33786ce5c">PA_NeoSplash</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ga18c90c8695a1c447526d86d33cb4d78">PA_SwitchScreens</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Echange les écrans du haut et du bas.  <a href="#ga18c90c8695a1c447526d86d33cb4d78"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g732c5331a735fda2d46c1b0705b03f3a">PA_SetAutoCheckLid</a> (u8 on)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie automatiquement si la DS est fermée dans PA_WaitForVBL.  <a href="#g732c5331a735fda2d46c1b0705b03f3a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#gf6e6c1967bfc38af5a15e311852ae8e9">PA_CheckLid</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et renvoie 1.  <a href="#gf6e6c1967bfc38af5a15e311852ae8e9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#ge18e07cfae596008dcab087c5d3064ea">PA_WaitForVBL</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Attendre le vbl...  <a href="#ge18e07cfae596008dcab087c5d3064ea"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g811d7afe6fb63586b28f69e227254261">PA_SetScreenLight</a> (u8 screen, u8 light)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Allumer ou eteindre la lumière d'un écran.  <a href="#g811d7afe6fb63586b28f69e227254261"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#gb619896afd38d3d76cb61464755338fa">PA_SetLedBlink</a> (u8 blink, u8 speed)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler le clignotement de la led.  <a href="#gb619896afd38d3d76cb61464755338fa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g0bc55e6b9207f16cb2572d49812c8438">PA_SetDSLBrightness</a> (u8 level)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler le niveau de lumière de la DS Lite.  <a href="#g0bc55e6b9207f16cb2572d49812c8438"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___general.html#g187b1799eb5cb7e364363179e4b87763">PA_Locate</a> (char *start, char *target, bool isDir, int depth, char *result)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Find a directory in the file system within a given depth.  <a href="#g187b1799eb5cb7e364363179e4b87763"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description dÃ©taillÃ©e</h2>
+Initialise the lib, and other general functions... <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="g08ab8334774076d5b7d9806a8cafc258"></a><!-- doxytag: member="PA_General.h::PA_CloseLidSound" ref="g08ab8334774076d5b7d9806a8cafc258" args="(close_sound)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_CloseLidSound          </td>
+          <td>(</td>
+          <td class="paramtype">close_sound&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{\
+                        <span class="keywordflow">if</span>(<a class="code" href="group___general.html#gab4f4e9a4443621b3b354099759357fb" title="Vérifie si la DS est fermée. Renvoie 0 si ouverte, 1 si fermée.">PA_LidClosed</a>()){\
+                                <a class="code" href="arm9_2_p_a___sound_8h.html#afe9a271af4161d1df293aff228777d7">PA_PlaySimpleSound</a>(close_sound);\
+                                <a class="code" href="group___general.html#gf6e6c1967bfc38af5a15e311852ae8e9" title="Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et renvoie 1.">PA_CheckLid</a>(); \
+                        }}
+</pre></div>Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et joue un son. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>close_sound</em>&nbsp;</td><td>Son à jouer, regarder la doc son si pas certain de quoi mettre... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gc727a5e3af86e986e9942bf31a3e0858"></a><!-- doxytag: member="PA_General.h::PA_CloseLidSound2" ref="gc727a5e3af86e986e9942bf31a3e0858" args="(close_sound, open_sound)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_CloseLidSound2          </td>
+          <td>(</td>
+          <td class="paramtype">close_sound,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">open_sound&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{\
+                        <span class="keywordflow">if</span>(<a class="code" href="group___general.html#gab4f4e9a4443621b3b354099759357fb" title="Vérifie si la DS est fermée. Renvoie 0 si ouverte, 1 si fermée.">PA_LidClosed</a>()){\
+                                <a class="code" href="arm9_2_p_a___sound_8h.html#afe9a271af4161d1df293aff228777d7">PA_PlaySimpleSound</a>(close_sound);\
+                                <a class="code" href="group___general.html#gf6e6c1967bfc38af5a15e311852ae8e9" title="Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et renvoie 1.">PA_CheckLid</a>(); \
+                                <a class="code" href="arm9_2_p_a___sound_8h.html#afe9a271af4161d1df293aff228777d7">PA_PlaySimpleSound</a>(open_sound); \
+                        }}
+</pre></div>Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et joue un son. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>close_sound</em>&nbsp;</td><td>Son à jouer quand se ferme, regarder la doc son si pas certain de quoi mettre... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>open_sound</em>&nbsp;</td><td>Son à jouer quand s'ouvre, regarder la doc son si pas certain de quoi mettre... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gab4f4e9a4443621b3b354099759357fb"></a><!-- doxytag: member="PA_General.h::PA_LidClosed" ref="gab4f4e9a4443621b3b354099759357fb" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LidClosed          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%">&nbsp;&nbsp;&nbsp;(IPC-&gt;buttons&gt;&gt;7)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Vérifie si la DS est fermée. Renvoie 0 si ouverte, 1 si fermée. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g376671148907b5c00a589c83b0d64a92"></a><!-- doxytag: member="PA_General.h::PA_WaitFor" ref="g376671148907b5c00a589c83b0d64a92" args="(something)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_WaitFor          </td>
+          <td>(</td>
+          <td class="paramtype">something&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%">&nbsp;&nbsp;&nbsp;{PA_WaitForVBL(); while(!(something)){PA_WaitForVBL(); }}</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Attendre un événement précis... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>something</em>&nbsp;</td><td>Evénement à attendre, comme Pad.Newpress.A, ou Stylus.Newpress, etc... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="gf6e6c1967bfc38af5a15e311852ae8e9"></a><!-- doxytag: member="PA_General.h::PA_CheckLid" ref="gf6e6c1967bfc38af5a15e311852ae8e9" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u8 PA_CheckLid           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Vérifie si la DS est fermée. Si fermée, ca met en pause la DS et renvoie 1. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ga65eb3298bbfc1b06e06bf1fe1619b7e"></a><!-- doxytag: member="PA_General.h::PA_Init" ref="ga65eb3298bbfc1b06e06bf1fe1619b7e" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Init           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g2da24e6469889cb791225580d2ccf483"></a><!-- doxytag: member="PA_General.h::PA_Init2D" ref="g2da24e6469889cb791225580d2ccf483" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Init2D           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Remet en mode 2D après avoir utilisé la 3D. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gc8bc6cbc4e277a61fc686c37286e23f1"></a><!-- doxytag: member="PA_General.h::PA_LoadSplash" ref="gc8bc6cbc4e277a61fc686c37286e23f1" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadSplash           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Affiche un splash screen PlayerAdvance... C'est toujours sympa de remercier ;). 
+<p>
+Affiche un splash screen NeoFlash. 
+</div>
+</div><p>
+<a class="anchor" name="g187b1799eb5cb7e364363179e4b87763"></a><!-- doxytag: member="PA_General.h::PA_Locate" ref="g187b1799eb5cb7e364363179e4b87763" args="(char *start, char *target, bool isDir, int depth, char *result)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PA_Locate           </td>
+          <td>(</td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>isDir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>result</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Find a directory in the file system within a given depth. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>start</em>&nbsp;</td><td>from which directory to start, use "/" to search from the root </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>target</em>&nbsp;</td><td>what to look for: the name of a file or directory </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>isDir</em>&nbsp;</td><td>look for a directory or a file? </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>depth</em>&nbsp;</td><td>how much depth level (in number of directories) to traverse; limiting this speeds up the search on crowded cards. A reasonable value is, for example, 3. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>result</em>&nbsp;</td><td>pointer to a buffer where the result will be stored </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Renvoie:</b></dt><dd>true if the target was found </dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g4d9876421d3be034bd0144d33786ce5c"></a><!-- doxytag: member="PA_General.h::PA_NeoSplash" ref="g4d9876421d3be034bd0144d33786ce5c" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_NeoSplash           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g732c5331a735fda2d46c1b0705b03f3a"></a><!-- doxytag: member="PA_General.h::PA_SetAutoCheckLid" ref="g732c5331a735fda2d46c1b0705b03f3a" args="(u8 on)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetAutoCheckLid           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>on</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Vérifie automatiquement si la DS est fermée dans PA_WaitForVBL. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>on</em>&nbsp;</td><td>1 pour activer, 0 pour désactiver </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g0bc55e6b9207f16cb2572d49812c8438"></a><!-- doxytag: member="PA_General.h::PA_SetDSLBrightness" ref="g0bc55e6b9207f16cb2572d49812c8438" args="(u8 level)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetDSLBrightness           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>level</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Régler le niveau de lumière de la DS Lite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>level</em>&nbsp;</td><td>Niveau de la lumière (0-3) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gb619896afd38d3d76cb61464755338fa"></a><!-- doxytag: member="PA_General.h::PA_SetLedBlink" ref="gb619896afd38d3d76cb61464755338fa" args="(u8 blink, u8 speed)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetLedBlink           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>blink</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>speed</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Régler le clignotement de la led. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>blink</em>&nbsp;</td><td>1 pour clignoter, 0 pour toujours allumé </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>speed</em>&nbsp;</td><td>Vitesse : 0 pour lent, 1 pour rapide </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g811d7afe6fb63586b28f69e227254261"></a><!-- doxytag: member="PA_General.h::PA_SetScreenLight" ref="g811d7afe6fb63586b28f69e227254261" args="(u8 screen, u8 light)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_SetScreenLight           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>light</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Allumer ou eteindre la lumière d'un écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>light</em>&nbsp;</td><td>Lumière, 1 pour allumé, 0 pour éteint </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g49f64e475efd26b0895d62e71c73f069"></a><!-- doxytag: member="PA_General.h::PA_SetVideoMode" ref="g49f64e475efd26b0895d62e71c73f069" args="(u8 screen, u8 mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetVideoMode           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>mode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changer de mode video... A utiliser avec précaution. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mode</em>&nbsp;</td><td>Mode 0 pour normal, 1 pour 1 fond rotatif, 2 pour 2 </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ga18c90c8695a1c447526d86d33cb4d78"></a><!-- doxytag: member="PA_General.h::PA_SwitchScreens" ref="ga18c90c8695a1c447526d86d33cb4d78" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SwitchScreens           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Echange les écrans du haut et du bas. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g45cdf5ca56c5fb7e47d7543cf8999f28"></a><!-- doxytag: member="PA_General.h::PA_UpdateRTC" ref="g45cdf5ca56c5fb7e47d7543cf8999f28" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_UpdateRTC           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Met à jour les <a class="el" href="structinfos.html">infos</a> sur l'heure et la date. C'est automatiquement mis à jour dans le VBL PA... On récupère les <a class="el" href="structinfos.html">infos</a> avec PA_RTC.Minutes, .Hour, .Seconds, .Day, .Month, et .Year. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gb6780062f1ff2d6bd0c6bc67b6616147"></a><!-- doxytag: member="PA_General.h::PA_UpdateUserInfo" ref="gb6780062f1ff2d6bd0c6bc67b6616147" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_UpdateUserInfo           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Met à jour les <a class="el" href="structinfos.html">infos</a> sur l'utilisateur... C'est fait automatiquement dans PA_Init. On peut ensuite récupérer toutes les <a class="el" href="structinfos.html">infos</a> avec PA_UserInfo.Color (couleur favorite), .BdayDay, .BdayMonth, .AlarmHour, .AlarmMinute, .Name, .NameLength, .Message, .MessageLength, .Language. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ge18e07cfae596008dcab087c5d3064ea"></a><!-- doxytag: member="PA_General.h::PA_WaitForVBL" ref="ge18e07cfae596008dcab087c5d3064ea" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_WaitForVBL           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Attendre le vbl... 
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>GÃ©nÃ©rÃ© le Fri Aug 22 13:34:55 2008 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

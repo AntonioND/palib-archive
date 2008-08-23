@@ -1,0 +1,2887 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Référence du fichier PAlib/lib/include/nds/arm9/gif/gif_lib.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier PAlib/lib/include/nds/arm9/gif/gif_lib.h</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gif_color_type.html">GifColorType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_color_map_object.html">ColorMapObject</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gif_image_desc.html">GifImageDesc</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_gif_file_type.html">GifFileType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_extension_block.html">ExtensionBlock</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_saved_image.html">SavedImage</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#02b895f0577a6ad6cf0edf0bb876a7a8">_GIF_LIB_H_</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#37fe87526defdf2e2109580fccf3241a">GIF_LIB_VERSION</a>&nbsp;&nbsp;&nbsp;&quot; Version 4.1, &quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#ed8133077091c3a2c8e5f9173ac59f5e">GIF_ERROR</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#878314d16b0c1fc2e7cc701c363fc289">GIF_OK</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#a8cecfc5c5c054d2875c03e77b7be15d">TRUE</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#a93f0eb578d23995850d61f7d61c55c1">FALSE</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#7a68c9ffaac7dbcd652225dd7c06a54b">O_RDONLY</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#11b644a8526139c4cc1850dac1271ced">O_WRONLY</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#1cf6b1de1fffedaa1d26b189e9a8d2cc">O_CREAT</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#9f5acfe79fafe14b6694447bd0e9f10b">O_EXCL</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#d1d67e453fb3031f40f8cd3403773813">O_TRUNC</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#dfeab7d317533494af0121f5fe1c4fc6">GIF_STAMP</a>&nbsp;&nbsp;&nbsp;&quot;GIFVER&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#5d8491dc089681c2588ca1d97b1a685a">GIF_STAMP_LEN</a>&nbsp;&nbsp;&nbsp;sizeof(GIF_STAMP) - 1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#1ae893fb2afb6783f7413f5578930f38">GIF_VERSION_POS</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#45bd3ff81019daac527bb91f432c9b84">GIF87_STAMP</a>&nbsp;&nbsp;&nbsp;&quot;GIF87a&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#41e4f5a817905fdff489d5a1e48ddc60">GIF89_STAMP</a>&nbsp;&nbsp;&nbsp;&quot;GIF89a&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#c98cd35738f67be927e04675c12f4139">GIF_FILE_BUFFER_SIZE</a>&nbsp;&nbsp;&nbsp;16384</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#64e05705d6f6d75cf63f55dc65d9f11a">GIF_MESSAGE</a>(Msg)&nbsp;&nbsp;&nbsp;fprintf(stderr, &quot;\n%s: %s\n&quot;, PROGRAM_NAME, Msg)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#daa1e07b7a0894501655437b122dde21">GIF_EXIT</a>(Msg)&nbsp;&nbsp;&nbsp;{ GIF_MESSAGE(Msg); exit(-3); }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#bf0b3fa9e9ebbdc5dbef9b29d852e313">VoidPtr</a>&nbsp;&nbsp;&nbsp;void *</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#65caa04ca8f161664732008d54b9e02e">COMMENT_EXT_FUNC_CODE</a>&nbsp;&nbsp;&nbsp;0xfe</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#a698b89dde99b266a4877170bc2f7442">GRAPHICS_EXT_FUNC_CODE</a>&nbsp;&nbsp;&nbsp;0xf9</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#259b2d6d997620e6cf7e7957e4947c41">PLAINTEXT_EXT_FUNC_CODE</a>&nbsp;&nbsp;&nbsp;0x01</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#81a28dac3fa58c22d7d1e703695671f3">APPLICATION_EXT_FUNC_CODE</a>&nbsp;&nbsp;&nbsp;0xff</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#0821ddae99aed7fed825feffd31f3992">E_GIF_ERR_OPEN_FAILED</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#b620d66492ea24b922c9a0192f4120ce">E_GIF_ERR_WRITE_FAILED</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#45964797b07e1faa96e3b373f3950a17">E_GIF_ERR_HAS_SCRN_DSCR</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#f44023a36c393d08d9dc55274c0d5dae">E_GIF_ERR_HAS_IMAG_DSCR</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#f75f45bd5b1e1f03aad6a24df3c6bc80">E_GIF_ERR_NO_COLOR_MAP</a>&nbsp;&nbsp;&nbsp;5</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#ccf82e099f44e25c837f278d45de5872">E_GIF_ERR_DATA_TOO_BIG</a>&nbsp;&nbsp;&nbsp;6</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#f610d9c6f4ebff3ac30000a6e580d76c">E_GIF_ERR_NOT_ENOUGH_MEM</a>&nbsp;&nbsp;&nbsp;7</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#1d4829be2919716e9cb4d4b3ccd18178">E_GIF_ERR_DISK_IS_FULL</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#feda02312d74747bfe70f367ebe94e8f">E_GIF_ERR_CLOSE_FAILED</a>&nbsp;&nbsp;&nbsp;9</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#fe6b2de35d9d208c977e8b99f894e887">E_GIF_ERR_NOT_WRITEABLE</a>&nbsp;&nbsp;&nbsp;10</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#cf1f52290bb8e147decfa193754c30e9">D_GIF_ERR_OPEN_FAILED</a>&nbsp;&nbsp;&nbsp;101</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#c89546d54947b8a9b900ddcfd74dbb98">D_GIF_ERR_READ_FAILED</a>&nbsp;&nbsp;&nbsp;102</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#9c2f0506db274758feb131b0861739ab">D_GIF_ERR_NOT_GIF_FILE</a>&nbsp;&nbsp;&nbsp;103</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#36cbb939df30e7e12f21372b0ee55e16">D_GIF_ERR_NO_SCRN_DSCR</a>&nbsp;&nbsp;&nbsp;104</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#4f03c3302eded9c89c2225b573de5abe">D_GIF_ERR_NO_IMAG_DSCR</a>&nbsp;&nbsp;&nbsp;105</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#bf38d890db8b217d5066f344bdf7e649">D_GIF_ERR_NO_COLOR_MAP</a>&nbsp;&nbsp;&nbsp;106</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#b107afbc0074a818e882a7d61e8c4d44">D_GIF_ERR_WRONG_RECORD</a>&nbsp;&nbsp;&nbsp;107</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#b778198b6d07a04aa3b8be374aa043e7">D_GIF_ERR_DATA_TOO_BIG</a>&nbsp;&nbsp;&nbsp;108</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#89fe9d211f6b0425ca0b20789f10209b">D_GIF_ERR_NOT_ENOUGH_MEM</a>&nbsp;&nbsp;&nbsp;109</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#4fb9a53a89b8c0c2c237640d80d5abb6">D_GIF_ERR_CLOSE_FAILED</a>&nbsp;&nbsp;&nbsp;110</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#f8d08311460307dcba35538946993717">D_GIF_ERR_NOT_READABLE</a>&nbsp;&nbsp;&nbsp;111</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#0d3b73b26a788e6f6dcbc1d27ec46dfd">D_GIF_ERR_IMAGE_DEFECT</a>&nbsp;&nbsp;&nbsp;112</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#973f4504da3594ccd97c2a9d2aad3f88">D_GIF_ERR_EOF_TOO_SOON</a>&nbsp;&nbsp;&nbsp;113</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#02cbb32d8258d4ec8e278054b0654038">GIF_FONT_WIDTH</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#698eb09ca7148c20f9baf2e815b78f6d">GIF_FONT_HEIGHT</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td colspan="2"><br><h2>Définition de type</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#6ec10b3508c5830a7e1a99975bc75142">GifBooleanType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef unsigned char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef unsigned char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#c3fcebd3af8f05a4239d44bb8a60f1ec">GifRowType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef unsigned char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#29cf289930bb13721fe5623d74ec654e">GifPrefixType</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#b4533b7abdadfb6d28c3cb7ad018c8bb">GifWord</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef int(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#32b53e7bce397996fce08aa38de504b6">InputFunc</a> )(<a class="el" href="struct_gif_file_type.html">GifFileType</a> *, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *, int)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef int(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#ab97d69887d8af2eba4793a6832e0ce5">OutputFunc</a> )(<a class="el" href="struct_gif_file_type.html">GifFileType</a> *, const <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *, int)</td></tr>
+
+<tr><td colspan="2"><br><h2>Énumérations</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d6">GifRecordType</a> { <br>
+&nbsp;&nbsp;<a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d63fae351ceeadb009329f18f06b6a9889">UNDEFINED_RECORD_TYPE</a>, 
+<a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d6ecf8c9ad92addf1a82c65ca82a0106f5">SCREEN_DESC_RECORD_TYPE</a>, 
+<a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d65c601e5fa4d6f8082a713ff08a2c01c1">IMAGE_DESC_RECORD_TYPE</a>, 
+<a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d6130f447d10db0490be601d66695680ae">EXTENSION_RECORD_TYPE</a>, 
+<br>
+&nbsp;&nbsp;<a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d6a4bc0472566ca2f7b789dd2ef9eb8856">TERMINATE_RECORD_TYPE</a>
+<br>
+ }</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#f0441417e3d4c99994829a914ecd5bf4">GifScreenDumpType</a> { <a class="el" href="gif__lib_8h.html#f0441417e3d4c99994829a914ecd5bf449a6777de168a94c73b5a155211c10ee">GIF_DUMP_SGI_WINDOW</a> =  1000, 
+<a class="el" href="gif__lib_8h.html#f0441417e3d4c99994829a914ecd5bf4f0b8ce5041f0b60650b5a33193ea53b4">GIF_DUMP_X_WINDOW</a> =  1001
+ }</td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#ad7bcf2758f30c86db77de401185e9d3">EGifOpenFileName</a> (const char *GifFileName, int GifTestExistance)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#0e4fd632e32743b6d75aaabcfc09ad5b">EGifOpenFileHandle</a> (int GifFileHandle)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#31d8f879e6bfe4b90af02e17356d3871">EGifOpen</a> (void *userPtr, <a class="el" href="gif__lib_8h.html#ab97d69887d8af2eba4793a6832e0ce5">OutputFunc</a> writeFunc)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#a5c0950c3f92cb2c6a250f5635b1fb6e">EGifSpew</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#97399dc658559b6769c7977626e96705">EGifSetGifVersion</a> (const char *Version)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#b6ae17ea726079954e9ccfcd1398203f">EGifPutScreenDesc</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int GifWidth, int GifHeight, int GifColorRes, int GifBackGround, const <a class="el" href="struct_color_map_object.html">ColorMapObject</a> *GifColorMap)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#70ef5fe0914ad42f78a91b10428d4c68">EGifPutImageDesc</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int GifLeft, int GifTop, int Width, int GifHeight, int GifInterlace, const <a class="el" href="struct_color_map_object.html">ColorMapObject</a> *GifColorMap)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#1e9c917936f85497f4bb14eba90b3fb2">EGifPutLine</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, <a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a> *GifLine, int GifLineLen)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#aae35f6341c171655329008064277eda">EGifPutPixel</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, <a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a> GifPixel)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#1e3d6e799da77191080505365b9198a1">EGifPutComment</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, const char *GifComment)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#5a1e23799bd3c4525e61150b5a2fc3d0">EGifPutExtensionFirst</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int GifExtCode, int GifExtLen, const VoidPtr GifExtension)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#18e30917162aea64c57980812dc5fec6">EGifPutExtensionNext</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int GifExtCode, int GifExtLen, const VoidPtr GifExtension)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#c848b8fadea9ca73b888e5dde4333c57">EGifPutExtensionLast</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int GifExtCode, int GifExtLen, const VoidPtr GifExtension)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#4411a50d47c56eb2ed4a2e8f7aaba495">EGifPutExtension</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int GifExtCode, int GifExtLen, const VoidPtr GifExtension)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#041e125e387ef4508248ada460d640b2">EGifPutCode</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int GifCodeSize, const <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *GifCodeBlock)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#6ddfabca48fdc16a7468c110ef464a17">EGifPutCodeNext</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, const <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *GifCodeBlock)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#7109bd35c3a2f071f9ca178838e15aaf">EGifCloseFile</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#3a3c1687786740d691f37e704c549725">DGifOpenFileName</a> (const char *GifFileName)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#e347d1caee548cedf07c2b5190f20222">DGifOpenFileHandle</a> (int GifFileHandle)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#5987163b1b1bd7ffdaa6858587218d3c">DGifSlurp</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#ad852d8ee8effb59909c183126bf2aa8">DGifOpen</a> (void *userPtr, <a class="el" href="gif__lib_8h.html#32b53e7bce397996fce08aa38de504b6">InputFunc</a> readFunc)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#733cbebd6089b710f902036afdb66d57">DGifGetScreenDesc</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#153a602fa5c4729629404700a78b461b">DGifGetRecordType</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, <a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d6">GifRecordType</a> *GifType)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#f3de03c0361c062e86bf7509216b5c0c">DGifGetImageDesc</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#88ffe123479d543b76fe1bcbda0bb480">DGifGetLine</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, <a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a> *GifLine, int GifLineLen)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#0aea18915fe8b2c45af2c9095d92c30c">DGifGetPixel</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, <a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a> GifPixel)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#817e389bef9b77c45a36f7334569b6e6">DGifGetComment</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, char *GifComment)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#ab7616cc0e7f7f7b2efb1ee7f2c456de">DGifGetExtension</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int *GifExtCode, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> **GifExtension)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#e2f1e2b6c354b37e1e8d391cc79c84b7">DGifGetExtensionNext</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> **GifExtension)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#9d398d28600cfbf2363d38d011334628">DGifGetCode</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int *GifCodeSize, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> **GifCodeBlock)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#fe681c2e606f5ecfac674e202948aad7">DGifGetCodeNext</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> **GifCodeBlock)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#7e88929e5c9b78d877b4588b618886de">DGifGetLZCodes</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, int *GifCode)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#507fe38d9c00203f7829f4e8c06d7d5d">DGifCloseFile</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#a2c0fcc83ec66aa2ac8cd0bcad5886a7">QuantizeBuffer</a> (unsigned int Width, unsigned int Height, int *ColorMapSize, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *RedInput, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *GreenInput, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *BlueInput, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *OutputBuffer, <a class="el" href="struct_gif_color_type.html">GifColorType</a> *OutputColorMap)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#e49bf02f6211b07f9ace88995747fbff">PrintGifError</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#df2bd8308beb229ecd43c91b122e4e34">GifLastError</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#3e2cd74b45532c25f365f86a83a9bbb1">DumpScreen2Gif</a> (const char *FileName, int ReqGraphDriver, long ReqGraphMode1, long ReqGraphMode2, long ReqGraphMode3)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_color_map_object.html">ColorMapObject</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#74bd58c85374d5c770f23646ddd39112">MakeMapObject</a> (int ColorCount, const <a class="el" href="struct_gif_color_type.html">GifColorType</a> *ColorMap)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#7d3750bf63712e0ee066fffe79b319cc">FreeMapObject</a> (<a class="el" href="struct_color_map_object.html">ColorMapObject</a> *Object)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_color_map_object.html">ColorMapObject</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#fa747e89ac1aae8c9c3b9e23775d9387">UnionColorMap</a> (const <a class="el" href="struct_color_map_object.html">ColorMapObject</a> *ColorIn1, const <a class="el" href="struct_color_map_object.html">ColorMapObject</a> *ColorIn2, <a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a> ColorTransIn2[])</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#6cae4513c141eefe2d00a1f86b500bdf">BitSize</a> (int n)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#24d375cc15ea063542451cb5ae310084">ApplyTranslation</a> (<a class="el" href="struct_saved_image.html">SavedImage</a> *Image, <a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a> Translation[])</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#bf64a3122886aafa76e2fedbf08a5197">MakeExtension</a> (<a class="el" href="struct_saved_image.html">SavedImage</a> *New, int Function)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#8602d505791d10d01dde77dea2dbeb6f">AddExtensionBlock</a> (<a class="el" href="struct_saved_image.html">SavedImage</a> *New, int Len, unsigned char ExtData[])</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#6665a22254ca669e2592d6b6b4c157e4">FreeExtension</a> (<a class="el" href="struct_saved_image.html">SavedImage</a> *Image)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#5da0ab9a3dfb9c5746f391d4881c098c">MakeSavedImage</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile, const <a class="el" href="struct_saved_image.html">SavedImage</a> *CopyFrom)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#ae5dcf4504b2225ae5e57bbe688cce15">FreeSavedImages</a> (<a class="el" href="struct_gif_file_type.html">GifFileType</a> *GifFile)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#33cf18eae6a4a3c0369c712911a62b02">DrawText</a> (<a class="el" href="struct_saved_image.html">SavedImage</a> *Image, const int x, const int y, const char *legend, const int color)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#e6114fe58c3b292aa3628a42023b3271">DrawBox</a> (<a class="el" href="struct_saved_image.html">SavedImage</a> *Image, const int x, const int y, const int w, const int d, const int color)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#31146d5b45218aa9cd41ce02a2348f6d">DrawRectangle</a> (<a class="el" href="struct_saved_image.html">SavedImage</a> *Image, const int x, const int y, const int w, const int d, const int color)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#3acd8ac691e921e275ee82d2274e1626">DrawBoxedText</a> (<a class="el" href="struct_saved_image.html">SavedImage</a> *Image, const int x, const int y, const char *legend, const int border, const int bg, const int fg)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#69f926ce53735a6a2d5522e29a3fdec6">GifQuietPrint</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gif__lib_8h.html#540f8b3be748cc187eb378b4d32fa0a3">AsciiTable</a> [][GIF_FONT_WIDTH]</td></tr>
+
+</table>
+<hr><h2>Documentation des macros</h2>
+<a class="anchor" name="02b895f0577a6ad6cf0edf0bb876a7a8"></a><!-- doxytag: member="gif_lib.h::_GIF_LIB_H_" ref="02b895f0577a6ad6cf0edf0bb876a7a8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _GIF_LIB_H_&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="81a28dac3fa58c22d7d1e703695671f3"></a><!-- doxytag: member="gif_lib.h::APPLICATION_EXT_FUNC_CODE" ref="81a28dac3fa58c22d7d1e703695671f3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define APPLICATION_EXT_FUNC_CODE&nbsp;&nbsp;&nbsp;0xff          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="65caa04ca8f161664732008d54b9e02e"></a><!-- doxytag: member="gif_lib.h::COMMENT_EXT_FUNC_CODE" ref="65caa04ca8f161664732008d54b9e02e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COMMENT_EXT_FUNC_CODE&nbsp;&nbsp;&nbsp;0xfe          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4fb9a53a89b8c0c2c237640d80d5abb6"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_CLOSE_FAILED" ref="4fb9a53a89b8c0c2c237640d80d5abb6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_CLOSE_FAILED&nbsp;&nbsp;&nbsp;110          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b778198b6d07a04aa3b8be374aa043e7"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_DATA_TOO_BIG" ref="b778198b6d07a04aa3b8be374aa043e7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_DATA_TOO_BIG&nbsp;&nbsp;&nbsp;108          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="973f4504da3594ccd97c2a9d2aad3f88"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_EOF_TOO_SOON" ref="973f4504da3594ccd97c2a9d2aad3f88" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_EOF_TOO_SOON&nbsp;&nbsp;&nbsp;113          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0d3b73b26a788e6f6dcbc1d27ec46dfd"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_IMAGE_DEFECT" ref="0d3b73b26a788e6f6dcbc1d27ec46dfd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_IMAGE_DEFECT&nbsp;&nbsp;&nbsp;112          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bf38d890db8b217d5066f344bdf7e649"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_NO_COLOR_MAP" ref="bf38d890db8b217d5066f344bdf7e649" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_NO_COLOR_MAP&nbsp;&nbsp;&nbsp;106          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4f03c3302eded9c89c2225b573de5abe"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_NO_IMAG_DSCR" ref="4f03c3302eded9c89c2225b573de5abe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_NO_IMAG_DSCR&nbsp;&nbsp;&nbsp;105          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="36cbb939df30e7e12f21372b0ee55e16"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_NO_SCRN_DSCR" ref="36cbb939df30e7e12f21372b0ee55e16" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_NO_SCRN_DSCR&nbsp;&nbsp;&nbsp;104          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="89fe9d211f6b0425ca0b20789f10209b"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_NOT_ENOUGH_MEM" ref="89fe9d211f6b0425ca0b20789f10209b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_NOT_ENOUGH_MEM&nbsp;&nbsp;&nbsp;109          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9c2f0506db274758feb131b0861739ab"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_NOT_GIF_FILE" ref="9c2f0506db274758feb131b0861739ab" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_NOT_GIF_FILE&nbsp;&nbsp;&nbsp;103          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f8d08311460307dcba35538946993717"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_NOT_READABLE" ref="f8d08311460307dcba35538946993717" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_NOT_READABLE&nbsp;&nbsp;&nbsp;111          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="cf1f52290bb8e147decfa193754c30e9"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_OPEN_FAILED" ref="cf1f52290bb8e147decfa193754c30e9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_OPEN_FAILED&nbsp;&nbsp;&nbsp;101          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c89546d54947b8a9b900ddcfd74dbb98"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_READ_FAILED" ref="c89546d54947b8a9b900ddcfd74dbb98" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_READ_FAILED&nbsp;&nbsp;&nbsp;102          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b107afbc0074a818e882a7d61e8c4d44"></a><!-- doxytag: member="gif_lib.h::D_GIF_ERR_WRONG_RECORD" ref="b107afbc0074a818e882a7d61e8c4d44" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define D_GIF_ERR_WRONG_RECORD&nbsp;&nbsp;&nbsp;107          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="feda02312d74747bfe70f367ebe94e8f"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_CLOSE_FAILED" ref="feda02312d74747bfe70f367ebe94e8f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_CLOSE_FAILED&nbsp;&nbsp;&nbsp;9          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ccf82e099f44e25c837f278d45de5872"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_DATA_TOO_BIG" ref="ccf82e099f44e25c837f278d45de5872" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_DATA_TOO_BIG&nbsp;&nbsp;&nbsp;6          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1d4829be2919716e9cb4d4b3ccd18178"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_DISK_IS_FULL" ref="1d4829be2919716e9cb4d4b3ccd18178" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_DISK_IS_FULL&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f44023a36c393d08d9dc55274c0d5dae"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_HAS_IMAG_DSCR" ref="f44023a36c393d08d9dc55274c0d5dae" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_HAS_IMAG_DSCR&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="45964797b07e1faa96e3b373f3950a17"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_HAS_SCRN_DSCR" ref="45964797b07e1faa96e3b373f3950a17" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_HAS_SCRN_DSCR&nbsp;&nbsp;&nbsp;3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f75f45bd5b1e1f03aad6a24df3c6bc80"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_NO_COLOR_MAP" ref="f75f45bd5b1e1f03aad6a24df3c6bc80" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_NO_COLOR_MAP&nbsp;&nbsp;&nbsp;5          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f610d9c6f4ebff3ac30000a6e580d76c"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_NOT_ENOUGH_MEM" ref="f610d9c6f4ebff3ac30000a6e580d76c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_NOT_ENOUGH_MEM&nbsp;&nbsp;&nbsp;7          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fe6b2de35d9d208c977e8b99f894e887"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_NOT_WRITEABLE" ref="fe6b2de35d9d208c977e8b99f894e887" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_NOT_WRITEABLE&nbsp;&nbsp;&nbsp;10          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0821ddae99aed7fed825feffd31f3992"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_OPEN_FAILED" ref="0821ddae99aed7fed825feffd31f3992" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_OPEN_FAILED&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b620d66492ea24b922c9a0192f4120ce"></a><!-- doxytag: member="gif_lib.h::E_GIF_ERR_WRITE_FAILED" ref="b620d66492ea24b922c9a0192f4120ce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define E_GIF_ERR_WRITE_FAILED&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a93f0eb578d23995850d61f7d61c55c1"></a><!-- doxytag: member="gif_lib.h::FALSE" ref="a93f0eb578d23995850d61f7d61c55c1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FALSE&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="45bd3ff81019daac527bb91f432c9b84"></a><!-- doxytag: member="gif_lib.h::GIF87_STAMP" ref="45bd3ff81019daac527bb91f432c9b84" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF87_STAMP&nbsp;&nbsp;&nbsp;&quot;GIF87a&quot;          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="41e4f5a817905fdff489d5a1e48ddc60"></a><!-- doxytag: member="gif_lib.h::GIF89_STAMP" ref="41e4f5a817905fdff489d5a1e48ddc60" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF89_STAMP&nbsp;&nbsp;&nbsp;&quot;GIF89a&quot;          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ed8133077091c3a2c8e5f9173ac59f5e"></a><!-- doxytag: member="gif_lib.h::GIF_ERROR" ref="ed8133077091c3a2c8e5f9173ac59f5e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_ERROR&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="daa1e07b7a0894501655437b122dde21"></a><!-- doxytag: member="gif_lib.h::GIF_EXIT" ref="daa1e07b7a0894501655437b122dde21" args="(Msg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_EXIT          </td>
+          <td>(</td>
+          <td class="paramtype">Msg&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%">&nbsp;&nbsp;&nbsp;{ GIF_MESSAGE(Msg); exit(-3); }</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c98cd35738f67be927e04675c12f4139"></a><!-- doxytag: member="gif_lib.h::GIF_FILE_BUFFER_SIZE" ref="c98cd35738f67be927e04675c12f4139" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_FILE_BUFFER_SIZE&nbsp;&nbsp;&nbsp;16384          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="698eb09ca7148c20f9baf2e815b78f6d"></a><!-- doxytag: member="gif_lib.h::GIF_FONT_HEIGHT" ref="698eb09ca7148c20f9baf2e815b78f6d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_FONT_HEIGHT&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="02cbb32d8258d4ec8e278054b0654038"></a><!-- doxytag: member="gif_lib.h::GIF_FONT_WIDTH" ref="02cbb32d8258d4ec8e278054b0654038" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_FONT_WIDTH&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="37fe87526defdf2e2109580fccf3241a"></a><!-- doxytag: member="gif_lib.h::GIF_LIB_VERSION" ref="37fe87526defdf2e2109580fccf3241a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_LIB_VERSION&nbsp;&nbsp;&nbsp;&quot; Version 4.1, &quot;          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="64e05705d6f6d75cf63f55dc65d9f11a"></a><!-- doxytag: member="gif_lib.h::GIF_MESSAGE" ref="64e05705d6f6d75cf63f55dc65d9f11a" args="(Msg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_MESSAGE          </td>
+          <td>(</td>
+          <td class="paramtype">Msg&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%">&nbsp;&nbsp;&nbsp;fprintf(stderr, &quot;\n%s: %s\n&quot;, PROGRAM_NAME, Msg)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="878314d16b0c1fc2e7cc701c363fc289"></a><!-- doxytag: member="gif_lib.h::GIF_OK" ref="878314d16b0c1fc2e7cc701c363fc289" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_OK&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="dfeab7d317533494af0121f5fe1c4fc6"></a><!-- doxytag: member="gif_lib.h::GIF_STAMP" ref="dfeab7d317533494af0121f5fe1c4fc6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_STAMP&nbsp;&nbsp;&nbsp;&quot;GIFVER&quot;          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5d8491dc089681c2588ca1d97b1a685a"></a><!-- doxytag: member="gif_lib.h::GIF_STAMP_LEN" ref="5d8491dc089681c2588ca1d97b1a685a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_STAMP_LEN&nbsp;&nbsp;&nbsp;sizeof(GIF_STAMP) - 1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1ae893fb2afb6783f7413f5578930f38"></a><!-- doxytag: member="gif_lib.h::GIF_VERSION_POS" ref="1ae893fb2afb6783f7413f5578930f38" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GIF_VERSION_POS&nbsp;&nbsp;&nbsp;3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a698b89dde99b266a4877170bc2f7442"></a><!-- doxytag: member="gif_lib.h::GRAPHICS_EXT_FUNC_CODE" ref="a698b89dde99b266a4877170bc2f7442" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GRAPHICS_EXT_FUNC_CODE&nbsp;&nbsp;&nbsp;0xf9          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="070d2ce7b6bb7e5c05602aa8c308d0c4"></a><!-- doxytag: member="gif_lib.h::NULL" ref="070d2ce7b6bb7e5c05602aa8c308d0c4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NULL&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1cf6b1de1fffedaa1d26b189e9a8d2cc"></a><!-- doxytag: member="gif_lib.h::O_CREAT" ref="1cf6b1de1fffedaa1d26b189e9a8d2cc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define O_CREAT&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9f5acfe79fafe14b6694447bd0e9f10b"></a><!-- doxytag: member="gif_lib.h::O_EXCL" ref="9f5acfe79fafe14b6694447bd0e9f10b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define O_EXCL&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7a68c9ffaac7dbcd652225dd7c06a54b"></a><!-- doxytag: member="gif_lib.h::O_RDONLY" ref="7a68c9ffaac7dbcd652225dd7c06a54b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define O_RDONLY&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d1d67e453fb3031f40f8cd3403773813"></a><!-- doxytag: member="gif_lib.h::O_TRUNC" ref="d1d67e453fb3031f40f8cd3403773813" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define O_TRUNC&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="11b644a8526139c4cc1850dac1271ced"></a><!-- doxytag: member="gif_lib.h::O_WRONLY" ref="11b644a8526139c4cc1850dac1271ced" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define O_WRONLY&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="259b2d6d997620e6cf7e7957e4947c41"></a><!-- doxytag: member="gif_lib.h::PLAINTEXT_EXT_FUNC_CODE" ref="259b2d6d997620e6cf7e7957e4947c41" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLAINTEXT_EXT_FUNC_CODE&nbsp;&nbsp;&nbsp;0x01          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a8cecfc5c5c054d2875c03e77b7be15d"></a><!-- doxytag: member="gif_lib.h::TRUE" ref="a8cecfc5c5c054d2875c03e77b7be15d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TRUE&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bf0b3fa9e9ebbdc5dbef9b29d852e313"></a><!-- doxytag: member="gif_lib.h::VoidPtr" ref="bf0b3fa9e9ebbdc5dbef9b29d852e313" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VoidPtr&nbsp;&nbsp;&nbsp;void *          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des définition de type</h2>
+<a class="anchor" name="6ec10b3508c5830a7e1a99975bc75142"></a><!-- doxytag: member="gif_lib.h::GifBooleanType" ref="6ec10b3508c5830a7e1a99975bc75142" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="gif__lib_8h.html#6ec10b3508c5830a7e1a99975bc75142">GifBooleanType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="564485ad8b6cd7858dc67a8125817e55"></a><!-- doxytag: member="gif_lib.h::GifByteType" ref="564485ad8b6cd7858dc67a8125817e55" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned char <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4b600f0fd40d86e84f08d0082a74f183"></a><!-- doxytag: member="gif_lib.h::GifPixelType" ref="4b600f0fd40d86e84f08d0082a74f183" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned char <a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="29cf289930bb13721fe5623d74ec654e"></a><!-- doxytag: member="gif_lib.h::GifPrefixType" ref="29cf289930bb13721fe5623d74ec654e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned int <a class="el" href="gif__lib_8h.html#29cf289930bb13721fe5623d74ec654e">GifPrefixType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c3fcebd3af8f05a4239d44bb8a60f1ec"></a><!-- doxytag: member="gif_lib.h::GifRowType" ref="c3fcebd3af8f05a4239d44bb8a60f1ec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unsigned char* <a class="el" href="gif__lib_8h.html#c3fcebd3af8f05a4239d44bb8a60f1ec">GifRowType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b4533b7abdadfb6d28c3cb7ad018c8bb"></a><!-- doxytag: member="gif_lib.h::GifWord" ref="b4533b7abdadfb6d28c3cb7ad018c8bb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="gif__lib_8h.html#b4533b7abdadfb6d28c3cb7ad018c8bb">GifWord</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="32b53e7bce397996fce08aa38de504b6"></a><!-- doxytag: member="gif_lib.h::InputFunc" ref="32b53e7bce397996fce08aa38de504b6" args=")(GifFileType *, GifByteType *, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* <a class="el" href="gif__lib_8h.html#32b53e7bce397996fce08aa38de504b6">InputFunc</a>)(<a class="el" href="struct_gif_file_type.html">GifFileType</a> *, <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *, int)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ab97d69887d8af2eba4793a6832e0ce5"></a><!-- doxytag: member="gif_lib.h::OutputFunc" ref="ab97d69887d8af2eba4793a6832e0ce5" args=")(GifFileType *, const GifByteType *, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* <a class="el" href="gif__lib_8h.html#ab97d69887d8af2eba4793a6832e0ce5">OutputFunc</a>)(<a class="el" href="struct_gif_file_type.html">GifFileType</a> *, const <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *, int)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation du type de l'énumération</h2>
+<a class="anchor" name="6ba0c048b248f9db9d639f06fae204d6"></a><!-- doxytag: member="gif_lib.h::GifRecordType" ref="6ba0c048b248f9db9d639f06fae204d6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d6">GifRecordType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Valeurs énumérées: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="6ba0c048b248f9db9d639f06fae204d63fae351ceeadb009329f18f06b6a9889"></a><!-- doxytag: member="UNDEFINED_RECORD_TYPE" ref="6ba0c048b248f9db9d639f06fae204d63fae351ceeadb009329f18f06b6a9889" args="" -->UNDEFINED_RECORD_TYPE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="6ba0c048b248f9db9d639f06fae204d6ecf8c9ad92addf1a82c65ca82a0106f5"></a><!-- doxytag: member="SCREEN_DESC_RECORD_TYPE" ref="6ba0c048b248f9db9d639f06fae204d6ecf8c9ad92addf1a82c65ca82a0106f5" args="" -->SCREEN_DESC_RECORD_TYPE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="6ba0c048b248f9db9d639f06fae204d65c601e5fa4d6f8082a713ff08a2c01c1"></a><!-- doxytag: member="IMAGE_DESC_RECORD_TYPE" ref="6ba0c048b248f9db9d639f06fae204d65c601e5fa4d6f8082a713ff08a2c01c1" args="" -->IMAGE_DESC_RECORD_TYPE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="6ba0c048b248f9db9d639f06fae204d6130f447d10db0490be601d66695680ae"></a><!-- doxytag: member="EXTENSION_RECORD_TYPE" ref="6ba0c048b248f9db9d639f06fae204d6130f447d10db0490be601d66695680ae" args="" -->EXTENSION_RECORD_TYPE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="6ba0c048b248f9db9d639f06fae204d6a4bc0472566ca2f7b789dd2ef9eb8856"></a><!-- doxytag: member="TERMINATE_RECORD_TYPE" ref="6ba0c048b248f9db9d639f06fae204d6a4bc0472566ca2f7b789dd2ef9eb8856" args="" -->TERMINATE_RECORD_TYPE</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="f0441417e3d4c99994829a914ecd5bf4"></a><!-- doxytag: member="gif_lib.h::GifScreenDumpType" ref="f0441417e3d4c99994829a914ecd5bf4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="gif__lib_8h.html#f0441417e3d4c99994829a914ecd5bf4">GifScreenDumpType</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Valeurs énumérées: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="f0441417e3d4c99994829a914ecd5bf449a6777de168a94c73b5a155211c10ee"></a><!-- doxytag: member="GIF_DUMP_SGI_WINDOW" ref="f0441417e3d4c99994829a914ecd5bf449a6777de168a94c73b5a155211c10ee" args="" -->GIF_DUMP_SGI_WINDOW</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="f0441417e3d4c99994829a914ecd5bf4f0b8ce5041f0b60650b5a33193ea53b4"></a><!-- doxytag: member="GIF_DUMP_X_WINDOW" ref="f0441417e3d4c99994829a914ecd5bf4f0b8ce5041f0b60650b5a33193ea53b4" args="" -->GIF_DUMP_X_WINDOW</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="8602d505791d10d01dde77dea2dbeb6f"></a><!-- doxytag: member="gif_lib.h::AddExtensionBlock" ref="8602d505791d10d01dde77dea2dbeb6f" args="(SavedImage *New, int Len, unsigned char ExtData[])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AddExtensionBlock           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>New</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>Len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char&nbsp;</td>
+          <td class="paramname"> <em>ExtData</em>[]</td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="24d375cc15ea063542451cb5ae310084"></a><!-- doxytag: member="gif_lib.h::ApplyTranslation" ref="24d375cc15ea063542451cb5ae310084" args="(SavedImage *Image, GifPixelType Translation[])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ApplyTranslation           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>Image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a>&nbsp;</td>
+          <td class="paramname"> <em>Translation</em>[]</td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6cae4513c141eefe2d00a1f86b500bdf"></a><!-- doxytag: member="gif_lib.h::BitSize" ref="6cae4513c141eefe2d00a1f86b500bdf" args="(int n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int BitSize           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>n</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="507fe38d9c00203f7829f4e8c06d7d5d"></a><!-- doxytag: member="gif_lib.h::DGifCloseFile" ref="507fe38d9c00203f7829f4e8c06d7d5d" args="(GifFileType *GifFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifCloseFile           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9d398d28600cfbf2363d38d011334628"></a><!-- doxytag: member="gif_lib.h::DGifGetCode" ref="9d398d28600cfbf2363d38d011334628" args="(GifFileType *GifFile, int *GifCodeSize, GifByteType **GifCodeBlock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetCode           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>GifCodeSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> **&nbsp;</td>
+          <td class="paramname"> <em>GifCodeBlock</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fe681c2e606f5ecfac674e202948aad7"></a><!-- doxytag: member="gif_lib.h::DGifGetCodeNext" ref="fe681c2e606f5ecfac674e202948aad7" args="(GifFileType *GifFile, GifByteType **GifCodeBlock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetCodeNext           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> **&nbsp;</td>
+          <td class="paramname"> <em>GifCodeBlock</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="817e389bef9b77c45a36f7334569b6e6"></a><!-- doxytag: member="gif_lib.h::DGifGetComment" ref="817e389bef9b77c45a36f7334569b6e6" args="(GifFileType *GifFile, char *GifComment)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetComment           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>GifComment</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ab7616cc0e7f7f7b2efb1ee7f2c456de"></a><!-- doxytag: member="gif_lib.h::DGifGetExtension" ref="ab7616cc0e7f7f7b2efb1ee7f2c456de" args="(GifFileType *GifFile, int *GifExtCode, GifByteType **GifExtension)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetExtension           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>GifExtCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> **&nbsp;</td>
+          <td class="paramname"> <em>GifExtension</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e2f1e2b6c354b37e1e8d391cc79c84b7"></a><!-- doxytag: member="gif_lib.h::DGifGetExtensionNext" ref="e2f1e2b6c354b37e1e8d391cc79c84b7" args="(GifFileType *GifFile, GifByteType **GifExtension)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetExtensionNext           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> **&nbsp;</td>
+          <td class="paramname"> <em>GifExtension</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f3de03c0361c062e86bf7509216b5c0c"></a><!-- doxytag: member="gif_lib.h::DGifGetImageDesc" ref="f3de03c0361c062e86bf7509216b5c0c" args="(GifFileType *GifFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetImageDesc           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="88ffe123479d543b76fe1bcbda0bb480"></a><!-- doxytag: member="gif_lib.h::DGifGetLine" ref="88ffe123479d543b76fe1bcbda0bb480" args="(GifFileType *GifFile, GifPixelType *GifLine, int GifLineLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetLine           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifLine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifLineLen</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7e88929e5c9b78d877b4588b618886de"></a><!-- doxytag: member="gif_lib.h::DGifGetLZCodes" ref="7e88929e5c9b78d877b4588b618886de" args="(GifFileType *GifFile, int *GifCode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetLZCodes           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>GifCode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0aea18915fe8b2c45af2c9095d92c30c"></a><!-- doxytag: member="gif_lib.h::DGifGetPixel" ref="0aea18915fe8b2c45af2c9095d92c30c" args="(GifFileType *GifFile, GifPixelType GifPixel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetPixel           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a>&nbsp;</td>
+          <td class="paramname"> <em>GifPixel</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="153a602fa5c4729629404700a78b461b"></a><!-- doxytag: member="gif_lib.h::DGifGetRecordType" ref="153a602fa5c4729629404700a78b461b" args="(GifFileType *GifFile, GifRecordType *GifType)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetRecordType           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#6ba0c048b248f9db9d639f06fae204d6">GifRecordType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifType</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="733cbebd6089b710f902036afdb66d57"></a><!-- doxytag: member="gif_lib.h::DGifGetScreenDesc" ref="733cbebd6089b710f902036afdb66d57" args="(GifFileType *GifFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifGetScreenDesc           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ad852d8ee8effb59909c183126bf2aa8"></a><!-- doxytag: member="gif_lib.h::DGifOpen" ref="ad852d8ee8effb59909c183126bf2aa8" args="(void *userPtr, InputFunc readFunc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_gif_file_type.html">GifFileType</a>* DGifOpen           </td>
+          <td>(</td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>userPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#32b53e7bce397996fce08aa38de504b6">InputFunc</a>&nbsp;</td>
+          <td class="paramname"> <em>readFunc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e347d1caee548cedf07c2b5190f20222"></a><!-- doxytag: member="gif_lib.h::DGifOpenFileHandle" ref="e347d1caee548cedf07c2b5190f20222" args="(int GifFileHandle)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_gif_file_type.html">GifFileType</a>* DGifOpenFileHandle           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifFileHandle</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3a3c1687786740d691f37e704c549725"></a><!-- doxytag: member="gif_lib.h::DGifOpenFileName" ref="3a3c1687786740d691f37e704c549725" args="(const char *GifFileName)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_gif_file_type.html">GifFileType</a>* DGifOpenFileName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>GifFileName</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5987163b1b1bd7ffdaa6858587218d3c"></a><!-- doxytag: member="gif_lib.h::DGifSlurp" ref="5987163b1b1bd7ffdaa6858587218d3c" args="(GifFileType *GifFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DGifSlurp           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e6114fe58c3b292aa3628a42023b3271"></a><!-- doxytag: member="gif_lib.h::DrawBox" ref="e6114fe58c3b292aa3628a42023b3271" args="(SavedImage *Image, const int x, const int y, const int w, const int d, const int color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawBox           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>Image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3acd8ac691e921e275ee82d2274e1626"></a><!-- doxytag: member="gif_lib.h::DrawBoxedText" ref="3acd8ac691e921e275ee82d2274e1626" args="(SavedImage *Image, const int x, const int y, const char *legend, const int border, const int bg, const int fg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawBoxedText           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>Image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>legend</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>border</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>bg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>fg</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="31146d5b45218aa9cd41ce02a2348f6d"></a><!-- doxytag: member="gif_lib.h::DrawRectangle" ref="31146d5b45218aa9cd41ce02a2348f6d" args="(SavedImage *Image, const int x, const int y, const int w, const int d, const int color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawRectangle           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>Image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="33cf18eae6a4a3c0369c712911a62b02"></a><!-- doxytag: member="gif_lib.h::DrawText" ref="33cf18eae6a4a3c0369c712911a62b02" args="(SavedImage *Image, const int x, const int y, const char *legend, const int color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DrawText           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>Image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>legend</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3e2cd74b45532c25f365f86a83a9bbb1"></a><!-- doxytag: member="gif_lib.h::DumpScreen2Gif" ref="3e2cd74b45532c25f365f86a83a9bbb1" args="(const char *FileName, int ReqGraphDriver, long ReqGraphMode1, long ReqGraphMode2, long ReqGraphMode3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DumpScreen2Gif           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>FileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>ReqGraphDriver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&nbsp;</td>
+          <td class="paramname"> <em>ReqGraphMode1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&nbsp;</td>
+          <td class="paramname"> <em>ReqGraphMode2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&nbsp;</td>
+          <td class="paramname"> <em>ReqGraphMode3</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7109bd35c3a2f071f9ca178838e15aaf"></a><!-- doxytag: member="gif_lib.h::EGifCloseFile" ref="7109bd35c3a2f071f9ca178838e15aaf" args="(GifFileType *GifFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifCloseFile           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="31d8f879e6bfe4b90af02e17356d3871"></a><!-- doxytag: member="gif_lib.h::EGifOpen" ref="31d8f879e6bfe4b90af02e17356d3871" args="(void *userPtr, OutputFunc writeFunc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_gif_file_type.html">GifFileType</a>* EGifOpen           </td>
+          <td>(</td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>userPtr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#ab97d69887d8af2eba4793a6832e0ce5">OutputFunc</a>&nbsp;</td>
+          <td class="paramname"> <em>writeFunc</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0e4fd632e32743b6d75aaabcfc09ad5b"></a><!-- doxytag: member="gif_lib.h::EGifOpenFileHandle" ref="0e4fd632e32743b6d75aaabcfc09ad5b" args="(int GifFileHandle)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_gif_file_type.html">GifFileType</a>* EGifOpenFileHandle           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifFileHandle</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ad7bcf2758f30c86db77de401185e9d3"></a><!-- doxytag: member="gif_lib.h::EGifOpenFileName" ref="ad7bcf2758f30c86db77de401185e9d3" args="(const char *GifFileName, int GifTestExistance)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_gif_file_type.html">GifFileType</a>* EGifOpenFileName           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>GifFileName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifTestExistance</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="041e125e387ef4508248ada460d640b2"></a><!-- doxytag: member="gif_lib.h::EGifPutCode" ref="041e125e387ef4508248ada460d640b2" args="(GifFileType *GifFile, int GifCodeSize, const GifByteType *GifCodeBlock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutCode           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifCodeSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifCodeBlock</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6ddfabca48fdc16a7468c110ef464a17"></a><!-- doxytag: member="gif_lib.h::EGifPutCodeNext" ref="6ddfabca48fdc16a7468c110ef464a17" args="(GifFileType *GifFile, const GifByteType *GifCodeBlock)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutCodeNext           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifCodeBlock</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1e3d6e799da77191080505365b9198a1"></a><!-- doxytag: member="gif_lib.h::EGifPutComment" ref="1e3d6e799da77191080505365b9198a1" args="(GifFileType *GifFile, const char *GifComment)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutComment           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>GifComment</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4411a50d47c56eb2ed4a2e8f7aaba495"></a><!-- doxytag: member="gif_lib.h::EGifPutExtension" ref="4411a50d47c56eb2ed4a2e8f7aaba495" args="(GifFileType *GifFile, int GifExtCode, int GifExtLen, const VoidPtr GifExtension)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutExtension           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifExtCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifExtLen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VoidPtr&nbsp;</td>
+          <td class="paramname"> <em>GifExtension</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5a1e23799bd3c4525e61150b5a2fc3d0"></a><!-- doxytag: member="gif_lib.h::EGifPutExtensionFirst" ref="5a1e23799bd3c4525e61150b5a2fc3d0" args="(GifFileType *GifFile, int GifExtCode, int GifExtLen, const VoidPtr GifExtension)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutExtensionFirst           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifExtCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifExtLen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VoidPtr&nbsp;</td>
+          <td class="paramname"> <em>GifExtension</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c848b8fadea9ca73b888e5dde4333c57"></a><!-- doxytag: member="gif_lib.h::EGifPutExtensionLast" ref="c848b8fadea9ca73b888e5dde4333c57" args="(GifFileType *GifFile, int GifExtCode, int GifExtLen, const VoidPtr GifExtension)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutExtensionLast           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifExtCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifExtLen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VoidPtr&nbsp;</td>
+          <td class="paramname"> <em>GifExtension</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="18e30917162aea64c57980812dc5fec6"></a><!-- doxytag: member="gif_lib.h::EGifPutExtensionNext" ref="18e30917162aea64c57980812dc5fec6" args="(GifFileType *GifFile, int GifExtCode, int GifExtLen, const VoidPtr GifExtension)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutExtensionNext           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifExtCode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifExtLen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VoidPtr&nbsp;</td>
+          <td class="paramname"> <em>GifExtension</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="70ef5fe0914ad42f78a91b10428d4c68"></a><!-- doxytag: member="gif_lib.h::EGifPutImageDesc" ref="70ef5fe0914ad42f78a91b10428d4c68" args="(GifFileType *GifFile, int GifLeft, int GifTop, int Width, int GifHeight, int GifInterlace, const ColorMapObject *GifColorMap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutImageDesc           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifLeft</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifTop</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>Width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifInterlace</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_color_map_object.html">ColorMapObject</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifColorMap</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1e9c917936f85497f4bb14eba90b3fb2"></a><!-- doxytag: member="gif_lib.h::EGifPutLine" ref="1e9c917936f85497f4bb14eba90b3fb2" args="(GifFileType *GifFile, GifPixelType *GifLine, int GifLineLen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutLine           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifLine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifLineLen</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="aae35f6341c171655329008064277eda"></a><!-- doxytag: member="gif_lib.h::EGifPutPixel" ref="aae35f6341c171655329008064277eda" args="(GifFileType *GifFile, GifPixelType GifPixel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutPixel           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a>&nbsp;</td>
+          <td class="paramname"> <em>GifPixel</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b6ae17ea726079954e9ccfcd1398203f"></a><!-- doxytag: member="gif_lib.h::EGifPutScreenDesc" ref="b6ae17ea726079954e9ccfcd1398203f" args="(GifFileType *GifFile, int GifWidth, int GifHeight, int GifColorRes, int GifBackGround, const ColorMapObject *GifColorMap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifPutScreenDesc           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifHeight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifColorRes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>GifBackGround</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_color_map_object.html">ColorMapObject</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifColorMap</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="97399dc658559b6769c7977626e96705"></a><!-- doxytag: member="gif_lib.h::EGifSetGifVersion" ref="97399dc658559b6769c7977626e96705" args="(const char *Version)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EGifSetGifVersion           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>Version</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a5c0950c3f92cb2c6a250f5635b1fb6e"></a><!-- doxytag: member="gif_lib.h::EGifSpew" ref="a5c0950c3f92cb2c6a250f5635b1fb6e" args="(GifFileType *GifFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int EGifSpew           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6665a22254ca669e2592d6b6b4c157e4"></a><!-- doxytag: member="gif_lib.h::FreeExtension" ref="6665a22254ca669e2592d6b6b4c157e4" args="(SavedImage *Image)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FreeExtension           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>Image</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7d3750bf63712e0ee066fffe79b319cc"></a><!-- doxytag: member="gif_lib.h::FreeMapObject" ref="7d3750bf63712e0ee066fffe79b319cc" args="(ColorMapObject *Object)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FreeMapObject           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_color_map_object.html">ColorMapObject</a> *&nbsp;</td>
+          <td class="paramname"> <em>Object</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ae5dcf4504b2225ae5e57bbe688cce15"></a><!-- doxytag: member="gif_lib.h::FreeSavedImages" ref="ae5dcf4504b2225ae5e57bbe688cce15" args="(GifFileType *GifFile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FreeSavedImages           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="df2bd8308beb229ecd43c91b122e4e34"></a><!-- doxytag: member="gif_lib.h::GifLastError" ref="df2bd8308beb229ecd43c91b122e4e34" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GifLastError           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="bf64a3122886aafa76e2fedbf08a5197"></a><!-- doxytag: member="gif_lib.h::MakeExtension" ref="bf64a3122886aafa76e2fedbf08a5197" args="(SavedImage *New, int Function)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MakeExtension           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>New</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>Function</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="74bd58c85374d5c770f23646ddd39112"></a><!-- doxytag: member="gif_lib.h::MakeMapObject" ref="74bd58c85374d5c770f23646ddd39112" args="(int ColorCount, const GifColorType *ColorMap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_color_map_object.html">ColorMapObject</a>* MakeMapObject           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>ColorCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_gif_color_type.html">GifColorType</a> *&nbsp;</td>
+          <td class="paramname"> <em>ColorMap</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5da0ab9a3dfb9c5746f391d4881c098c"></a><!-- doxytag: member="gif_lib.h::MakeSavedImage" ref="5da0ab9a3dfb9c5746f391d4881c098c" args="(GifFileType *GifFile, const SavedImage *CopyFrom)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_saved_image.html">SavedImage</a>* MakeSavedImage           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_gif_file_type.html">GifFileType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GifFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_saved_image.html">SavedImage</a> *&nbsp;</td>
+          <td class="paramname"> <em>CopyFrom</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e49bf02f6211b07f9ace88995747fbff"></a><!-- doxytag: member="gif_lib.h::PrintGifError" ref="e49bf02f6211b07f9ace88995747fbff" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PrintGifError           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a2c0fcc83ec66aa2ac8cd0bcad5886a7"></a><!-- doxytag: member="gif_lib.h::QuantizeBuffer" ref="a2c0fcc83ec66aa2ac8cd0bcad5886a7" args="(unsigned int Width, unsigned int Height, int *ColorMapSize, GifByteType *RedInput, GifByteType *GreenInput, GifByteType *BlueInput, GifByteType *OutputBuffer, GifColorType *OutputColorMap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int QuantizeBuffer           </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramname"> <em>Width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&nbsp;</td>
+          <td class="paramname"> <em>Height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>ColorMapSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *&nbsp;</td>
+          <td class="paramname"> <em>RedInput</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *&nbsp;</td>
+          <td class="paramname"> <em>GreenInput</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *&nbsp;</td>
+          <td class="paramname"> <em>BlueInput</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#564485ad8b6cd7858dc67a8125817e55">GifByteType</a> *&nbsp;</td>
+          <td class="paramname"> <em>OutputBuffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_gif_color_type.html">GifColorType</a> *&nbsp;</td>
+          <td class="paramname"> <em>OutputColorMap</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fa747e89ac1aae8c9c3b9e23775d9387"></a><!-- doxytag: member="gif_lib.h::UnionColorMap" ref="fa747e89ac1aae8c9c3b9e23775d9387" args="(const ColorMapObject *ColorIn1, const ColorMapObject *ColorIn2, GifPixelType ColorTransIn2[])" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_color_map_object.html">ColorMapObject</a>* UnionColorMap           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_color_map_object.html">ColorMapObject</a> *&nbsp;</td>
+          <td class="paramname"> <em>ColorIn1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_color_map_object.html">ColorMapObject</a> *&nbsp;</td>
+          <td class="paramname"> <em>ColorIn2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gif__lib_8h.html#4b600f0fd40d86e84f08d0082a74f183">GifPixelType</a>&nbsp;</td>
+          <td class="paramname"> <em>ColorTransIn2</em>[]</td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="540f8b3be748cc187eb378b4d32fa0a3"></a><!-- doxytag: member="gif_lib.h::AsciiTable" ref="540f8b3be748cc187eb378b4d32fa0a3" args="[][GIF_FONT_WIDTH]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="gif__lib_8h.html#540f8b3be748cc187eb378b4d32fa0a3">AsciiTable</a>[][GIF_FONT_WIDTH]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="69f926ce53735a6a2d5522e29a3fdec6"></a><!-- doxytag: member="gif_lib.h::GifQuietPrint" ref="69f926ce53735a6a2d5522e29a3fdec6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="gif__lib_8h.html#69f926ce53735a6a2d5522e29a3fdec6">GifQuietPrint</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Fri Aug 22 13:34:53 2008 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>

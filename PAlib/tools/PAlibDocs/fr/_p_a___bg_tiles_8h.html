@@ -1,0 +1,1240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: RÃ©fÃ©rence du fichier PAlib/lib/include/nds/arm9/PA_BgTiles.h</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.5.5 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;donnÃ©es</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>RÃ©fÃ©rence du fichier PAlib/lib/include/nds/arm9/PA_BgTiles.h</h1>Everything concerning the Bg Tile modes. <a href="#_details">Plus de dÃ©tails...</a>
+<p>
+<code>#include &lt;nds.h&gt;</code><br>
+<code>#include &quot;<a class="el" href="_p_a___general_8h.html">PA_General.h</a>&quot;</code><br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de donnÃ©es</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_a___bg_default_infos.html">PA_BgDefaultInfos</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_p_a___bg_infos.html">PA_BgInfos</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscrollpositions.html">scrollpositions</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#fefc1ef3c66dc6dad1588627fbe20deb">BG_TILEDBG</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#ddfbb92166bb0f34aa07018ce4391a96">BG_ROTBG</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#c7195923b851e9197298c52b886e08ac">BG_LARGEMAP</a>&nbsp;&nbsp;&nbsp;4</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#269b84f4c063519527bc5264266469ee">BG_INFINITEMAP</a>&nbsp;&nbsp;&nbsp;5</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#366d9995f833f01cd44f26ee37dbb67e">CharBaseBlock</a>(screen, n)&nbsp;&nbsp;&nbsp;(((n)*0x4000) + 0x6000000 + (0x200000 *  screen))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#ff1ec25434064c7cc51c244fd3e23700">ScreenBaseBlock</a>(screen, n)&nbsp;&nbsp;&nbsp;(((n)*0x800) + 0x6000000 + (0x200000 *  screen))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#205487351d363075f169c44733c8c6bc">BG_COLOR16</a>&nbsp;&nbsp;&nbsp;0x00</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#e3150f2a67c05407ed6f1f79d76d841e">BG_COLOR256</a>&nbsp;&nbsp;&nbsp;0x80</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#46b0c9f79d0d7e018c29f0efa7b51f03">CHAR_SHIFT</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#604046b16510583cac5ec19c9f4879e0">SCREEN_SHIFT</a>&nbsp;&nbsp;&nbsp;8</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#b0f2e5f819e8250cc5b55059a22fee63">WRAPAROUND</a>&nbsp;&nbsp;&nbsp;0x1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#274d56b1dd88abfddcaf91d6e57e4410">SCREEN_TILES</a>&nbsp;&nbsp;&nbsp;24576</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#d317cc5b70fba7db2ec7deb70db8b93a">REG_BGSCREEN0</a>&nbsp;&nbsp;&nbsp;0x04000000</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#0dd55b6c1959af3e467363986232b5a8">REG_BGSCREEN1</a>&nbsp;&nbsp;&nbsp;0x04001000</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#b692cb3ef62d55ce04d7f2a5dcda71d1">REG_BGSCREEN</a>(screen)&nbsp;&nbsp;&nbsp;(0x04000000 + (screen * 0x1000))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#9bbbfe30a1c955addddc2362580ca599">REG_BGCNT</a>(screen, bg_number)&nbsp;&nbsp;&nbsp;(0x4000008 + (screen * 0x1000) + (bg_number &lt;&lt; 1))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#082e2f82883e68136b4b0354a0078f47">REG_BGSCROLLX</a>&nbsp;&nbsp;&nbsp;0x4000010</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#4bc1fdea18e3473f36783b4e787193ae">REG_BGSCROLLY</a>&nbsp;&nbsp;&nbsp;0x4000012</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#d3b36081accaabc44b64a6801fa0c905">BG_256X256</a>&nbsp;&nbsp;&nbsp;0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#58af9234cb054037ade20c19cd7ff58a">BG_512X256</a>&nbsp;&nbsp;&nbsp;1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#b95045c276934e0d8a0804e6088c033b">BG_256X512</a>&nbsp;&nbsp;&nbsp;2</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#28b49f24cafae416098dafe559832951">BG_512X512</a>&nbsp;&nbsp;&nbsp;3</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#456fc54c7318b28b4ffd09661879be22">TILE_N</a>&nbsp;&nbsp;&nbsp;1023</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#6669d4cb2f5f621003a48f783353b481">TILE_PAL</a>&nbsp;&nbsp;&nbsp;61440</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#ea8b2b0e8e345996f23188d0578335e8">TILE_HFLIP</a>&nbsp;&nbsp;&nbsp;1024</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#8c9ad3dd8a21a98d5f93207ec0c7f5a3">TILE_VFLIP</a>&nbsp;&nbsp;&nbsp;2048</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g368cddb372b80410a89b6cb401eebb5d">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cacher un fond.  <a href="group___bg_tiles.html#g368cddb372b80410a89b6cb401eebb5d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g8765fcbfb2216b7a6785dbf641ecda20">PA_ShowBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher un fond auparavant caché.  <a href="group___bg_tiles.html#g8765fcbfb2216b7a6785dbf641ecda20"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gaf08d4a7b7d0285eafc07d6040514978">PA_ResetBg</a>(screen)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialiser les fonds d'un écran. En fait ca ne fait que cacher tous les fonds.  <a href="group___bg_tiles.html#gaf08d4a7b7d0285eafc07d6040514978"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gb0167d556cc274e095ab32025ccdf70f">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles)&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un tileset en mémoire.  <a href="group___bg_tiles.html#gb0167d556cc274e095ab32025ccdf70f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gcb34647e31c5d00eabbf4af9244c6977">PA_LoadTiledBg</a>(screen, bg_number, bg_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs.  <a href="group___bg_tiles.html#gcb34647e31c5d00eabbf4af9244c6977"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g2326c1519a3901bac60df6f1ee2ee9cb">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap.  <a href="group___bg_tiles.html#g2326c1519a3901bac60df6f1ee2ee9cb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gbef4e0b201a2b9a09290caa149d25c2b">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap.  <a href="group___bg_tiles.html#gbef4e0b201a2b9a09290caa149d25c2b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g87f7dc52135a59b780f7a79f03f7bd87">PA_SetMapTileAll</a>(screen, bg_select, x, y, tile_info)&nbsp;&nbsp;&nbsp;*(u16*)(<a class="el" href="_p_a___bg_tiles_8h.html#f80c78d445789176d878c44c5136f2bc">PA_BgInfo</a>[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_info)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change les <a class="el" href="structinfos.html">infos</a> tiles utilisée pour une tile donnée dans la map.  <a href="group___bg_tiles.html#g87f7dc52135a59b780f7a79f03f7bd87"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g38f3152490d2617a74233199846de7a3">PA_EasyBgLoad</a>(screen, bg_number, bg_name)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g8a3d4f4d78c30991cd3660ca1d4e269c">PA_EasyBgLoadPtr</a>(screen, bg_number, bg_name)&nbsp;&nbsp;&nbsp;PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name-&gt;Info, bg_name-&gt;Tiles, bg_name-&gt;TileSize, bg_name-&gt;Map, bg_name-&gt;MapSize, bg_name-&gt;Palette)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Moyen le plus simple de charger un fond créé avec PAGfx... Peut prendre des pointeurs !  <a href="group___bg_tiles.html#g8a3d4f4d78c30991cd3660ca1d4e269c"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>DÃ©finition de type</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef u8(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#e44b9c58517a3243d6fc7dd610d47eb2">EasyBgPixels</a> )(u8, u8, s32, s32)</td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#eba446c08973a7d5abade1034fb4be7b">PA_EasyBgLoadEx</a> (u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#7c2140023c33dcca207c0a2ab2b00306">PA_GetPAGfxBgSize</a> (u16 width, u16 height)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#199d4f82ae283b04d65167bda1f8ac66">PA_GetPAGfxRotBgSize</a> (u16 width)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gc888676eb05f4f560561786e06c403a7">PA_ResetBgSys</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialise le systeme de fonds.  <a href="group___bg_tiles.html#gc888676eb05f4f560561786e06c403a7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g8f9cb2b39b9ab6a5e8524c1141e1a3c9">PA_ResetBgSysScreen</a> (u8 screen)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialise le systeme de fonds pour 1 écran.  <a href="group___bg_tiles.html#g8f9cb2b39b9ab6a5e8524c1141e1a3c9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g0ff54ebb77c13ff0b465377f6a7c0f63">PA_InitBg</a> (u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise un fond. A faire uniquement après avoir chargé un tileset et une map.  <a href="group___bg_tiles.html#g0ff54ebb77c13ff0b465377f6a7c0f63"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g859a46bcbcc5c920c6f622695db94082">PA_LoadBgTilesEx</a> (u8 screen, u8 bg_select, void *bg_tiles, u32 size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un tileset en mémoire avec une taille donnée.  <a href="group___bg_tiles.html#g859a46bcbcc5c920c6f622695db94082"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g93943bbcf203bb8bf1ded41dc0b2ebb2">PA_ReLoadBgTiles</a> (u8 screen, u8 bg_select, void *bg_tiles)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ReCharger un tileset en mémoire.  <a href="group___bg_tiles.html#g93943bbcf203bb8bf1ded41dc0b2ebb2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gea95a7b1ddb67994a63b6790fb059dc0">PA_DeleteTiles</a> (u8 screen, u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un tileset en mémoire. A noter que charger un tileset efface automatiquement le tileset précédent, donc on n'aura pas souvent besoin de cette fonction...  <a href="group___bg_tiles.html#gea95a7b1ddb67994a63b6790fb059dc0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ge543f1feed84e7a9735bc8a5c202fe02">PA_DeleteMap</a> (u8 screen, u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer une map en mémoire. A noter que charger une map efface automatiquement la map précédent, donc on n'aura pas souvent besoin de cette fonction...  <a href="group___bg_tiles.html#ge543f1feed84e7a9735bc8a5c202fe02"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g2a7752b9ddbd8b4f1842fb5fd9f1543a">PA_DeleteBg</a> (u8 screen, u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer et reinitialiser un fond complètement.  <a href="group___bg_tiles.html#g2a7752b9ddbd8b4f1842fb5fd9f1543a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gdd9bb5c939c759ac40b3b08d54da6509">PA_LoadBgMap</a> (u8 screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charge la carte d'un fond.  <a href="group___bg_tiles.html#gdd9bb5c939c759ac40b3b08d54da6509"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gca59b635c345f779f56f0b200ad844b4">PA_BGScrollX</a> (u8 screen, u8 bg_number, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal d'un fond de type Tiled.  <a href="group___bg_tiles.html#gca59b635c345f779f56f0b200ad844b4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gaa3d04084fd562031b54c5386885e9fb">PA_BGScrollY</a> (u8 screen, u8 bg_number, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertical d'un fond de type Tiled.  <a href="group___bg_tiles.html#gaa3d04084fd562031b54c5386885e9fb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g1bb088531ef81482efb1ac5263966fcb">PA_BGScrollXY</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g580afd4ca541328da6d56aca29991c5d">PA_SetMapTile</a> (u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change la tile gfx utilisée pour une tile donnée dans la map.  <a href="group___bg_tiles.html#g580afd4ca541328da6d56aca29991c5d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g82986b37a6216153e90744197a96e067">PA_SetLargeMapTile</a> (u8 screen, u8 bg_select, s32 x, s32 y, u32 tile_info)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change les <a class="el" href="structinfos.html">infos</a> tiles utilisée pour une tile donnée dans la map, seulement pour les grands fonds (512 de large ou haut).  <a href="group___bg_tiles.html#g82986b37a6216153e90744197a96e067"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#ge46e9f135473e251043cfbff31e4b2cc">PA_SetMapTileHflip</a> (u8 screen, u8 bg_select, u8 x, u8 y, u8 hflip)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flipper une tile de la carte, horizontalement.  <a href="group___bg_tiles.html#ge46e9f135473e251043cfbff31e4b2cc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g15b75ad094d33d0f0681e5703c46253a">PA_SetMapTileVflip</a> (u8 screen, u8 bg_select, u8 x, u8 y, u8 vflip)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gb27f6ba68b3b3de56310c86ea4e6c807">PA_SetMapTilePal</a> (u8 screen, u8 bg_select, u8 x, u8 y, u8 palette_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette de 16 couleurs utilisée par une tile de la carte. Marche uniquement en mode 16 couleurs pour le Bg.  <a href="group___bg_tiles.html#gb27f6ba68b3b3de56310c86ea4e6c807"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gcfbcb29c93b3d7967e2efb0fe87cad74">PA_SetMapTileEx</a> (u8 screen, u8 bg_select, s16 x, s16 y, u16 tile_number, u8 hflip, u8 vflip, u8 palette_number)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g7fce4715430d553cbcbebd6d61ebf52c">PA_SetBgPrio</a> (u8 screen, u8 bg, u8 prio)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la priorité d'un fond.  <a href="group___bg_tiles.html#g7fce4715430d553cbcbebd6d61ebf52c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g8d8c2723f985aac4de0af1913767c1cc">PA_CreateBgFromTiles</a> (u8 screen, u8 bg_select, u8 bg_tiles, void *bg_map, u8 bg_size)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g01416e462605d749b5c5a2cc37a2c473">PA_SetBgPrioSeq</a> (u8 screen, u8 priority0, u8 priority1, u8 priority2, u8 priority3)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la priorité des fonds pour qu'ils soient dans un ordre donné.  <a href="group___bg_tiles.html#g01416e462605d749b5c5a2cc37a2c473"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gadbad457f99f74c82f92acd362d7bd6d">PA_ClearBg</a> (u8 screen, u8 bg_select)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un fond donné (juste la map).  <a href="group___bg_tiles.html#gadbad457f99f74c82f92acd362d7bd6d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gc585010453176e4328998684f8c46541">PA_EasyBgScrollX</a> (u8 screen, u8 bg_number, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal de n'importe quel fond.  <a href="group___bg_tiles.html#gc585010453176e4328998684f8c46541"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gff92e083b8c7532624f1157be1b571e8">PA_EasyBgScrollY</a> (u8 screen, u8 bg_number, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertical de n'importe quel fond.  <a href="group___bg_tiles.html#gff92e083b8c7532624f1157be1b571e8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gf947f9f0c32a129d6c4266b16dfea3c2">PA_EasyBgScrollXY</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal et vertical de n'importe quel fond.  <a href="group___bg_tiles.html#gf947f9f0c32a129d6c4266b16dfea3c2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g1494057aaf2881c69e270b8de977a5af">PA_EasyBgGetPixel</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le numéro dans la palette du pixel à l'écran...  <a href="group___bg_tiles.html#g1494057aaf2881c69e270b8de977a5af"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#gc8066bc730628c1984e2f5734ec7d9a7">PA_EasyBgGetPixelCol</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la couleur (valeur u16) du pixel à l'écran...  <a href="group___bg_tiles.html#gc8066bc730628c1984e2f5734ec7d9a7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_tiles.html#g65b99925b7d92a0ed44fb333202b18b4">PA_SetBgWrap</a> (u8 screen, u8 bg, u8 wrap)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Active ou non le wrapping des fonds (rotatifs, 8bit, et 16bit).  <a href="group___bg_tiles.html#g65b99925b7d92a0ed44fb333202b18b4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#34e4310cdcd591731521101e1166d7ba">PAEasyBgGetPixelTiled</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#960b10d59f030d2b00bf5baabd76efc4">PAEasyBgGetPixelLarge</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#c73e3eeb4bdf5fd7e80180de8b203596">PAEasyBgGetPixelInf</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#9bca0befad09b520f883f9addf261b43">PANoPixel</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#53c08c7c69bb274345ef9c73b0ce959c">PA_UpdateBgTile</a> (u8 screen, u8 bg_select, u16 tilepos, void *tile)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#daa437fe3338ffe16e419261fc517447">PA_StoreEasyBgInfos</a> (u8 screen, u8 bg_number, u32 Type, u32 Width, u32 Height, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette)</td></tr>
+
+<tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="_p_a___bg_tiles_8h.html#e44b9c58517a3243d6fc7dd610d47eb2">EasyBgPixels</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#5c72f04c0e5a963117015f51861a28f4">PA_EasyBgPixel</a> [6]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_p_a___bg_infos.html">PA_BgInfos</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#f80c78d445789176d878c44c5136f2bc">PA_BgInfo</a> [2][4]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#e5cb123dea88c7c8289337f8ed000eb8">charblocks</a> [2][70]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16 *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#8a92c2250a510fe81b6a86d96c946b97">bg_sizes</a> [4]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#653bbd9a2612eaecc2723f9cc6e62f2d">bg_place</a> [4]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#1a6d579495d1639641c846293361648d">charsetstart</a> [2]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#d623c33f6b93798c4ce184b24f027893">PA_parallaxX</a> [2][4]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#83c06e31cd22f6c5c9429431745b7917">PA_parallaxY</a> [2][4]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structscrollpositions.html">scrollpositions</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___bg_tiles_8h.html#9dd415254238189890b698edbcc55050">scrollpos</a> [2][4]</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description dÃ©taillÃ©e</h2>
+Everything concerning the Bg Tile modes. 
+<p>
+This file contains all the macros and variables regarding Tile modes, loading tiles and Bg, etc... <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="d3b36081accaabc44b64a6801fa0c905"></a><!-- doxytag: member="PA_BgTiles.h::BG_256X256" ref="d3b36081accaabc44b64a6801fa0c905" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_256X256&nbsp;&nbsp;&nbsp;0          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b95045c276934e0d8a0804e6088c033b"></a><!-- doxytag: member="PA_BgTiles.h::BG_256X512" ref="b95045c276934e0d8a0804e6088c033b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_256X512&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="58af9234cb054037ade20c19cd7ff58a"></a><!-- doxytag: member="PA_BgTiles.h::BG_512X256" ref="58af9234cb054037ade20c19cd7ff58a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_512X256&nbsp;&nbsp;&nbsp;1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="28b49f24cafae416098dafe559832951"></a><!-- doxytag: member="PA_BgTiles.h::BG_512X512" ref="28b49f24cafae416098dafe559832951" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_512X512&nbsp;&nbsp;&nbsp;3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="205487351d363075f169c44733c8c6bc"></a><!-- doxytag: member="PA_BgTiles.h::BG_COLOR16" ref="205487351d363075f169c44733c8c6bc" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_COLOR16&nbsp;&nbsp;&nbsp;0x00          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e3150f2a67c05407ed6f1f79d76d841e"></a><!-- doxytag: member="PA_BgTiles.h::BG_COLOR256" ref="e3150f2a67c05407ed6f1f79d76d841e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_COLOR256&nbsp;&nbsp;&nbsp;0x80          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="269b84f4c063519527bc5264266469ee"></a><!-- doxytag: member="PA_BgTiles.h::BG_INFINITEMAP" ref="269b84f4c063519527bc5264266469ee" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_INFINITEMAP&nbsp;&nbsp;&nbsp;5          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c7195923b851e9197298c52b886e08ac"></a><!-- doxytag: member="PA_BgTiles.h::BG_LARGEMAP" ref="c7195923b851e9197298c52b886e08ac" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_LARGEMAP&nbsp;&nbsp;&nbsp;4          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ddfbb92166bb0f34aa07018ce4391a96"></a><!-- doxytag: member="PA_BgTiles.h::BG_ROTBG" ref="ddfbb92166bb0f34aa07018ce4391a96" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_ROTBG&nbsp;&nbsp;&nbsp;3          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fefc1ef3c66dc6dad1588627fbe20deb"></a><!-- doxytag: member="PA_BgTiles.h::BG_TILEDBG" ref="fefc1ef3c66dc6dad1588627fbe20deb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BG_TILEDBG&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="46b0c9f79d0d7e018c29f0efa7b51f03"></a><!-- doxytag: member="PA_BgTiles.h::CHAR_SHIFT" ref="46b0c9f79d0d7e018c29f0efa7b51f03" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CHAR_SHIFT&nbsp;&nbsp;&nbsp;2          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="366d9995f833f01cd44f26ee37dbb67e"></a><!-- doxytag: member="PA_BgTiles.h::CharBaseBlock" ref="366d9995f833f01cd44f26ee37dbb67e" args="(screen, n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CharBaseBlock          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">n&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%">&nbsp;&nbsp;&nbsp;(((n)*0x4000) + 0x6000000 + (0x200000 *  screen))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9bbbfe30a1c955addddc2362580ca599"></a><!-- doxytag: member="PA_BgTiles.h::REG_BGCNT" ref="9bbbfe30a1c955addddc2362580ca599" args="(screen, bg_number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_BGCNT          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_number&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%">&nbsp;&nbsp;&nbsp;(0x4000008 + (screen * 0x1000) + (bg_number &lt;&lt; 1))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b692cb3ef62d55ce04d7f2a5dcda71d1"></a><!-- doxytag: member="PA_BgTiles.h::REG_BGSCREEN" ref="b692cb3ef62d55ce04d7f2a5dcda71d1" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_BGSCREEN          </td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%">&nbsp;&nbsp;&nbsp;(0x04000000 + (screen * 0x1000))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d317cc5b70fba7db2ec7deb70db8b93a"></a><!-- doxytag: member="PA_BgTiles.h::REG_BGSCREEN0" ref="d317cc5b70fba7db2ec7deb70db8b93a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_BGSCREEN0&nbsp;&nbsp;&nbsp;0x04000000          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0dd55b6c1959af3e467363986232b5a8"></a><!-- doxytag: member="PA_BgTiles.h::REG_BGSCREEN1" ref="0dd55b6c1959af3e467363986232b5a8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_BGSCREEN1&nbsp;&nbsp;&nbsp;0x04001000          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="082e2f82883e68136b4b0354a0078f47"></a><!-- doxytag: member="PA_BgTiles.h::REG_BGSCROLLX" ref="082e2f82883e68136b4b0354a0078f47" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_BGSCROLLX&nbsp;&nbsp;&nbsp;0x4000010          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="4bc1fdea18e3473f36783b4e787193ae"></a><!-- doxytag: member="PA_BgTiles.h::REG_BGSCROLLY" ref="4bc1fdea18e3473f36783b4e787193ae" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REG_BGSCROLLY&nbsp;&nbsp;&nbsp;0x4000012          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="604046b16510583cac5ec19c9f4879e0"></a><!-- doxytag: member="PA_BgTiles.h::SCREEN_SHIFT" ref="604046b16510583cac5ec19c9f4879e0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SCREEN_SHIFT&nbsp;&nbsp;&nbsp;8          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="274d56b1dd88abfddcaf91d6e57e4410"></a><!-- doxytag: member="PA_BgTiles.h::SCREEN_TILES" ref="274d56b1dd88abfddcaf91d6e57e4410" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SCREEN_TILES&nbsp;&nbsp;&nbsp;24576          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ff1ec25434064c7cc51c244fd3e23700"></a><!-- doxytag: member="PA_BgTiles.h::ScreenBaseBlock" ref="ff1ec25434064c7cc51c244fd3e23700" args="(screen, n)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ScreenBaseBlock          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">n&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%">&nbsp;&nbsp;&nbsp;(((n)*0x800) + 0x6000000 + (0x200000 *  screen))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ea8b2b0e8e345996f23188d0578335e8"></a><!-- doxytag: member="PA_BgTiles.h::TILE_HFLIP" ref="ea8b2b0e8e345996f23188d0578335e8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TILE_HFLIP&nbsp;&nbsp;&nbsp;1024          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="456fc54c7318b28b4ffd09661879be22"></a><!-- doxytag: member="PA_BgTiles.h::TILE_N" ref="456fc54c7318b28b4ffd09661879be22" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TILE_N&nbsp;&nbsp;&nbsp;1023          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6669d4cb2f5f621003a48f783353b481"></a><!-- doxytag: member="PA_BgTiles.h::TILE_PAL" ref="6669d4cb2f5f621003a48f783353b481" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TILE_PAL&nbsp;&nbsp;&nbsp;61440          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8c9ad3dd8a21a98d5f93207ec0c7f5a3"></a><!-- doxytag: member="PA_BgTiles.h::TILE_VFLIP" ref="8c9ad3dd8a21a98d5f93207ec0c7f5a3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TILE_VFLIP&nbsp;&nbsp;&nbsp;2048          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="b0f2e5f819e8250cc5b55059a22fee63"></a><!-- doxytag: member="PA_BgTiles.h::WRAPAROUND" ref="b0f2e5f819e8250cc5b55059a22fee63" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WRAPAROUND&nbsp;&nbsp;&nbsp;0x1          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des dÃ©finition de type</h2>
+<a class="anchor" name="e44b9c58517a3243d6fc7dd610d47eb2"></a><!-- doxytag: member="PA_BgTiles.h::EasyBgPixels" ref="e44b9c58517a3243d6fc7dd610d47eb2" args=")(u8, u8, s32, s32)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef u8(* <a class="el" href="_p_a___bg_tiles_8h.html#e44b9c58517a3243d6fc7dd610d47eb2">EasyBgPixels</a>)(u8, u8, s32, s32)          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="eba446c08973a7d5abade1034fb4be7b"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgLoadEx" ref="eba446c08973a7d5abade1034fb4be7b" args="(u8 screen, u8 bg_number, u32 *Infos, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_EasyBgLoadEx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32 *&nbsp;</td>
+          <td class="paramname"> <em>Infos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>Tiles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>TileSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>Map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>MapSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>Palette</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7c2140023c33dcca207c0a2ab2b00306"></a><!-- doxytag: member="PA_BgTiles.h::PA_GetPAGfxBgSize" ref="7c2140023c33dcca207c0a2ab2b00306" args="(u16 width, u16 height)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PA_GetPAGfxBgSize           </td>
+          <td>(</td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>height</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="199d4f82ae283b04d65167bda1f8ac66"></a><!-- doxytag: member="PA_BgTiles.h::PA_GetPAGfxRotBgSize" ref="199d4f82ae283b04d65167bda1f8ac66" args="(u16 width)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PA_GetPAGfxRotBgSize           </td>
+          <td>(</td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>width</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="daa437fe3338ffe16e419261fc517447"></a><!-- doxytag: member="PA_BgTiles.h::PA_StoreEasyBgInfos" ref="daa437fe3338ffe16e419261fc517447" args="(u8 screen, u8 bg_number, u32 Type, u32 Width, u32 Height, void *Tiles, u32 TileSize, void *Map, u32 MapSize, void *Palette)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_StoreEasyBgInfos           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>Width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>Height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>Tiles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>TileSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>Map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>MapSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>Palette</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="53c08c7c69bb274345ef9c73b0ce959c"></a><!-- doxytag: member="PA_BgTiles.h::PA_UpdateBgTile" ref="53c08c7c69bb274345ef9c73b0ce959c" args="(u8 screen, u8 bg_select, u16 tilepos, void *tile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_UpdateBgTile           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>tilepos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>tile</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c73e3eeb4bdf5fd7e80180de8b203596"></a><!-- doxytag: member="PA_BgTiles.h::PAEasyBgGetPixelInf" ref="c73e3eeb4bdf5fd7e80180de8b203596" args="(u8 screen, u8 bg_number, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PAEasyBgGetPixelInf           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="960b10d59f030d2b00bf5baabd76efc4"></a><!-- doxytag: member="PA_BgTiles.h::PAEasyBgGetPixelLarge" ref="960b10d59f030d2b00bf5baabd76efc4" args="(u8 screen, u8 bg_number, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PAEasyBgGetPixelLarge           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="34e4310cdcd591731521101e1166d7ba"></a><!-- doxytag: member="PA_BgTiles.h::PAEasyBgGetPixelTiled" ref="34e4310cdcd591731521101e1166d7ba" args="(u8 screen, u8 bg_number, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PAEasyBgGetPixelTiled           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9bca0befad09b520f883f9addf261b43"></a><!-- doxytag: member="PA_BgTiles.h::PANoPixel" ref="9bca0befad09b520f883f9addf261b43" args="(u8 screen, u8 bg_number, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PANoPixel           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des variables</h2>
+<a class="anchor" name="653bbd9a2612eaecc2723f9cc6e62f2d"></a><!-- doxytag: member="PA_BgTiles.h::bg_place" ref="653bbd9a2612eaecc2723f9cc6e62f2d" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 <a class="el" href="_p_a___bg_tiles_8h.html#653bbd9a2612eaecc2723f9cc6e62f2d">bg_place</a>[4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="8a92c2250a510fe81b6a86d96c946b97"></a><!-- doxytag: member="PA_BgTiles.h::bg_sizes" ref="8a92c2250a510fe81b6a86d96c946b97" args="[4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u16 <a class="el" href="_p_a___bg_tiles_8h.html#8a92c2250a510fe81b6a86d96c946b97">bg_sizes</a>[4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="e5cb123dea88c7c8289337f8ed000eb8"></a><!-- doxytag: member="PA_BgTiles.h::charblocks" ref="e5cb123dea88c7c8289337f8ed000eb8" args="[2][70]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 <a class="el" href="_p_a___bg_tiles_8h.html#e5cb123dea88c7c8289337f8ed000eb8">charblocks</a>[2][70]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="1a6d579495d1639641c846293361648d"></a><!-- doxytag: member="PA_BgTiles.h::charsetstart" ref="1a6d579495d1639641c846293361648d" args="[2]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 <a class="el" href="_p_a___bg_tiles_8h.html#1a6d579495d1639641c846293361648d">charsetstart</a>[2]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f80c78d445789176d878c44c5136f2bc"></a><!-- doxytag: member="PA_BgTiles.h::PA_BgInfo" ref="f80c78d445789176d878c44c5136f2bc" args="[2][4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_p_a___bg_infos.html">PA_BgInfos</a> <a class="el" href="_p_a___bg_tiles_8h.html#f80c78d445789176d878c44c5136f2bc">PA_BgInfo</a>[2][4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="7e2bfd0ba09788f5aedbfd87fde1144e"></a><!-- doxytag: member="PA_BgTiles.h::PA_DrawBg" ref="7e2bfd0ba09788f5aedbfd87fde1144e" args="[2]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u16* <a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[2]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="5c72f04c0e5a963117015f51861a28f4"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgPixel" ref="5c72f04c0e5a963117015f51861a28f4" args="[6]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_p_a___bg_tiles_8h.html#e44b9c58517a3243d6fc7dd610d47eb2">EasyBgPixels</a> <a class="el" href="_p_a___bg_tiles_8h.html#5c72f04c0e5a963117015f51861a28f4">PA_EasyBgPixel</a>[6]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="d623c33f6b93798c4ce184b24f027893"></a><!-- doxytag: member="PA_BgTiles.h::PA_parallaxX" ref="d623c33f6b93798c4ce184b24f027893" args="[2][4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">s32 <a class="el" href="_p_a___bg_tiles_8h.html#d623c33f6b93798c4ce184b24f027893">PA_parallaxX</a>[2][4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="83c06e31cd22f6c5c9429431745b7917"></a><!-- doxytag: member="PA_BgTiles.h::PA_parallaxY" ref="83c06e31cd22f6c5c9429431745b7917" args="[2][4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">s32 <a class="el" href="_p_a___bg_tiles_8h.html#83c06e31cd22f6c5c9429431745b7917">PA_parallaxY</a>[2][4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9dd415254238189890b698edbcc55050"></a><!-- doxytag: member="PA_BgTiles.h::scrollpos" ref="9dd415254238189890b698edbcc55050" args="[2][4]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structscrollpositions.html">scrollpositions</a> <a class="el" href="_p_a___bg_tiles_8h.html#9dd415254238189890b698edbcc55050">scrollpos</a>[2][4]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>GÃ©nÃ©rÃ© le Fri Aug 22 13:34:53 2008 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.5 </small></address>
+</body>
+</html>
