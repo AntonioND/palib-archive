@@ -1,0 +1,23 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : White
+
+5 backgrounds :
+  text0 : 8bitFont, 256x64, Pal : text0_Pal, 99 tiles -> text0_Tiles and text0_Map
+  text1 : 8bitFont, 256x64, Pal : text1_Pal, 104 tiles -> text1_Tiles and text1_Map
+  text2 : 8bitFont, 512x128, Pal : text2_Pal, 113 tiles -> text2_Tiles and text2_Map
+  text3 : 8bitFont, 512x128, Pal : text3_Pal, 193 tiles -> text3_Tiles and text3_Map
+  text4 : 8bitFont, 512x128, Pal : text4_Pal, 258 tiles -> text4_Tiles and text4_Map
+
+5 palettes :
+  text0_Pal, 2 colors
+  text1_Pal, 2 colors
+  text2_Pal, 2 colors
+  text3_Pal, 2 colors
+  text4_Pal, 2 colors
+
+Converted in 0 minutes 0 seconds
+
+Finished !
