@@ -1,0 +1,17 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Black
+
+2 backgrounds :
+  PA_text : EasyBg, 256x192, Pal : PA_text_Pal, 95 tiles -> PA_text_Tiles and PA_text_Map
+  PA_text2 : EasyBg, 256x192, Pal : PA_text2_Pal, 175 tiles -> PA_text2_Tiles and PA_text2_Map
+
+2 palettes :
+  PA_text_Pal, 5 colors
+  PA_text2_Pal, 6 colors
+
+Converted in 0 minutes 0 seconds
+
+Finished !
