@@ -1,0 +1,13 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+1 backgrounds :
+  BG3 : EasyBg, 256x256, Pal : BG3_Pal, Converted to TileBg, 1024 tiles -> BG3_Tiles and BG3_Map
+
+1 palettes :
+  BG3_Pal, 63 colors
+
+Finished !
