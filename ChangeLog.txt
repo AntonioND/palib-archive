@@ -1,3 +1,23 @@
+-------------
+| PAlib SVN |
+-------------
+
+
+New Stuff
+---------
+
+[Makefile] The Variable ADD_LIBS now works. It can be set in the small Makefile that is located in the project folder. To include other libraries, found at the standard locations, just type their basenames without 'lib', '-l' or a combination of both. For example: ADD_LIBS += bz2 xml2.
+
+
+Updated Oldies
+--------------
+
+
+Things Fixed
+------------
+
+[Makefile] Removed a repetition of -L$(PAPATH)/lib.
+
 
 ------------------------------
 | PAlib 080823 : Tighten Up! |
@@ -1142,7 +1162,7 @@ PAlib 0.77a : Christmas Release
 
 [PAGfx] Corrected the frontend, which had TiledBg instead of TileBg... minor bugfixes to both the converter and the frontend
 
-[Text] Added #define TEXT_ALLCHARACTERS  to the config file : Replaces the normal default text by a similar one which has pretty much all the special characters... thanks to Morian for that one ! But it takes twice as much memory in video ram, so you can choose which one to include... Will be on by default in PAlib updates... Also updated the small font with a few more characters (like € and others)
+[Text] Added #define TEXT_ALLCHARACTERS  to the config file : Replaces the normal default text by a similar one which has pretty much all the special characters... thanks to Morian for that one ! But it takes twice as much memory in video ram, so you can choose which one to include... Will be on by default in PAlib updates... Also updated the small font with a few more characters (like ï¿½ and others)
 
 [Palettes] Added PA_SetBgPalNCol(bool screen, u8 bg_number, u8 pal_number, u8 color_number, u16 color); (usefull for the 8bit backgrounds... haven't updated the examples yet though)
 
