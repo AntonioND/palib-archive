@@ -56,7 +56,7 @@ CFLAGS	:=	-g  -Wformat=2 -Winline -Wall -O2\
 CFLAGS	+=	$(INCLUDE) -DARM9 -I$(PAPATH)/include/nds
 
 ASFLAGS	:=	-g $(ARCH)
-LDFLAGS	:=	-g $(ARCH) -mno-fpu -L$(PAPATH)/lib -Wl
+LDFLAGS	:=	-g $(ARCH) -mno-fpu -Wl
 
 #---------------------------------------------------------------------------------
 # path to tools - this can be deleted if you set the path in windows
@@ -232,8 +232,8 @@ endif
  
 #---------------------------------------------------------------------------------
 %.elf:
-	@echo $(LD)  $(LDFLAGS) -specs=ds_arm9.specs $(OFILES) $(LIBPATHPA) $(LIBSPA) $(LIBPATHS) $(LIBS) -o $(TARGET).elf
-	@$(LD)  $(LDFLAGS) -specs=ds_arm9.specs $(OFILES) $(LIBPATHPA) $(LIBSPA) $(LIBPATHS) $(LIBS) -o $(TARGET).elf
+	@echo $(LD)  $(LDFLAGS) -specs=ds_arm9.specs $(OFILES) $(LIBPATHPA) $(LIBSPA) $(LIBPATHS) $(LIBS) $(foreach lib,$(ADD_LIBS),-l$(lib)) -o $(TARGET).elf
+	@$(LD)  $(LDFLAGS) -specs=ds_arm9.specs $(OFILES) $(LIBPATHPA) $(LIBSPA) $(LIBPATHS) $(LIBS) $(foreach lib,$(ADD_LIBS),-l$(lib)) -o $(TARGET).elf
  
  
  
