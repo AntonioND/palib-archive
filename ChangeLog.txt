@@ -12,6 +12,8 @@ New Stuff
 Updated Oldies
 --------------
 
+[Keyboard] The Keyboard now supports the whole US-ASCII character set. The four characters "{", "}", "|" and "~" were added, the first three replacing "[", "]", "\" in caps lock mode. The visual representant for the apostroph looks no longer like an acute accent.
+
 
 Things Fixed
 ------------

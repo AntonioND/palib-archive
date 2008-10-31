@@ -22,23 +22,23 @@ void PA_SetLetterPal(s16 x, s16 y, u8 Pal);
 
 
 //////////////////////////////////////////////////////////////////////
-// Système de Tiles
+// SystÃ¨me de Tiles
 //////////////////////////////////////////////////////////////////////
 
 
 
-extern const unsigned char keyboard_Tiles[10240];
+extern const unsigned char keyboard_Tiles[10400];
 extern const unsigned short keyboard_Map[4096];
 //extern const unsigned short keyboardPal1[16];
 //extern const unsigned short keyboardPal2[16];
 
 typedef struct {
-	u8 Bg; // Numéro du fond
+	u8 Bg; // NumÃ©ro du fond
 	u8 Type; // 0 pour normal, 1 pour majuscules..
 	char Letter;  // Lettre
 	s16 ScrollX, ScrollY;  // Scroll x et y...
-	s16 Repeat;  // Temps avant de répéter...
-	s16 oldX, oldY; // Ancienne zone touchée
+	s16 Repeat;  // Temps avant de rÃ©pÃ©ter...
+	s16 oldX, oldY; // Ancienne zone touchÃ©e
 	u8 Color1, Color2; // Main color, pressed color...
 	u8 Custom; // using custom graphics
 } Keyboards;
@@ -58,10 +58,10 @@ extern const u8 PA_Keyboard[2][5][24];
     \fn void PA_InitKeyboard(u8 bg_number)
     \brief
 		\~english Initialise the Keyboard on a given background. Uses 16 color palettes 14 and 15 (doesn't mix with text though, don't worry)
-		\~french Initialiser le calvier sur un fond donné. Utilise les palettes de 16 couleurs 14 et 15 (n'interfère pas avec le texte)
+		\~french Initialiser le calvier sur un fond donnÃ©. Utilise les palettes de 16 couleurs 14 et 15 (n'interfÃ¨re pas avec le texte)
     \~\param bg_number
       \~english Background number (0-3)
-      \~french Numéro du fond que l'on veut tourner (0-3)
+      \~french NumÃ©ro du fond que l'on veut tourner (0-3)
 */
 void PA_InitKeyboard(u8 bg_number);
 
@@ -71,10 +71,10 @@ void PA_InitKeyboard(u8 bg_number);
     \def PA_InitCustomKeyboard(bg_number, keyb_custom)
     \brief
 		\~english Initialise a custom Keyboard on a given background. 
-		\~french Initialiser un clavier perso sur un fond donné   
+		\~french Initialiser un clavier perso sur un fond donnÃ©   
 	\~\param bg_number
 		\~english Background number (0-3)
-		\~french Numéro du fond que l'on veut tourner (0-3)
+		\~french NumÃ©ro du fond que l'on veut tourner (0-3)
 	\~\param keyb_custom
 		\~english Custom Keyboard name, converted as EasyBg
 		\~french Claviet perso, converti comme EasyBg			
@@ -91,7 +91,7 @@ void PA_InitKeyboard(u8 bg_number);
     \fn char PA_CheckKeyboard(void)
     \brief
 		\~english Checks if the keyboard is used, and return the letter :)  Use this every turn (even if the stylus isn't pressed)
-		\~french Vérifie le clavier, s'il est utilisé, et renvoie la lettre appuyée (0 si pas de nouvel appuye). A utiliser tout le temps, même si le stylet ne touche pas l'écran
+		\~french VÃ©rifie le clavier, s'il est utilisÃ©, et renvoie la lettre appuyÃ©e (0 si pas de nouvel appuye). A utiliser tout le temps, mÃªme si le stylet ne touche pas l'Ã©cran
 */
 char PA_CheckKeyboard(void);
 
@@ -101,7 +101,7 @@ char PA_CheckKeyboard(void);
     \fn extern inline void PA_ScrollKeyboardX(s16 x)
     \brief
 		\~english Set the Keyboard's X position		
-		\~french Placer le Clavier à la position X
+		\~french Placer le Clavier Ã  la position X
     \~\param x
       \~english X position...
       \~french Position X
@@ -116,7 +116,7 @@ extern inline void PA_ScrollKeyboardX(s16 x) {
     \fn extern inline void PA_ScrollKeyboardY(s16 y)
     \brief
 		\~english Set the Keyboard's Y position		
-		\~french Placer le Clavier à la position Y
+		\~french Placer le Clavier Ã  la position Y
     \~\param y
       \~english Y position...
       \~french Position Y
@@ -131,7 +131,7 @@ extern inline void PA_ScrollKeyboardY(s16 y) {
     \fn extern inline void PA_ScrollKeyboardXY(s16 x, s16 y)
     \brief
 		\~english Set the Keyboard's position		
-		\~french Placer le Clavier à une position donnée
+		\~french Placer le Clavier Ã  une position donnÃ©e
     \~\param x
       \~english X position...
       \~french Position X
@@ -150,7 +150,7 @@ extern inline void PA_ScrollKeyboardXY(s16 x, s16 y) {
     \def PA_EraseLastKey()
     \brief
 		\~english Erase the last key lit up (if it didn't on it's own)
-		\~french Effacer la dernière touche pressée, si ca ne le fait pas tout seul
+		\~french Effacer la derniÃ¨re touche pressÃ©e, si ca ne le fait pas tout seul
 */
 #define PA_EraseLastKey() PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15)
 
@@ -159,7 +159,7 @@ extern inline void PA_ScrollKeyboardXY(s16 x, s16 y) {
     \fn extern inline void PA_KeyboardIn(s16 x, s16 y)
     \brief
 		\~english Make the keyboard enter to position (x, y), scrolling from the bottom of the screen	
-		\~french Faire entrer le clavier à la position (x, y) en glissant depuis le bas de l'écran
+		\~french Faire entrer le clavier Ã  la position (x, y) en glissant depuis le bas de l'Ã©cran
     \~\param x
       \~english X position...
       \~french Position X
@@ -174,7 +174,7 @@ s16 i;
 		PA_ScrollKeyboardY(i);
 		PA_WaitForVBL();
 	}
-	PA_ScrollKeyboardY(y);  // On amène pile au bon y...		
+	PA_ScrollKeyboardY(y);  // On amÃ¨ne pile au bon y...		
 }
 
 
@@ -186,7 +186,7 @@ s16 i;
 */
 extern inline void PA_KeyboardOut(void){  // Faire sortir le clavier... 
 s16 i;
-PA_EraseLastKey(); // Efface s'il reste une touche pressée...
+PA_EraseLastKey(); // Efface s'il reste une touche pressÃ©e...
 	for (i = Keyboard.ScrollY; i < 200; i+=8){
 		PA_ScrollKeyboardY(i);
 		PA_WaitForVBL();
@@ -200,7 +200,7 @@ PA_EraseLastKey(); // Efface s'il reste une touche pressée...
     \fn void PA_ReloadKeyboardCol(void)
     \brief
 		\~english Reloads the keyboard's palette, usefull if you changed the background palette
-		\~french Recharge la palette du clavier, utile si on a changé de palette pour les fonds
+		\~french Recharge la palette du clavier, utile si on a changÃ© de palette pour les fonds
 */
 void PA_ReloadKeyboardCol(void);
 
@@ -215,7 +215,7 @@ void PA_ReloadKeyboardCol(void);
       \~french Couleur normale, 0 pour bleu, 1 pour rouge, 2 pour vert
     \~\param color2
       \~english Pressed key color, 0 for blue, 1 for red, 2 for green
-      \~french Couleur de la touche appuyée, 0 pour bleu, 1 pour rouge, 2 pour vert
+      \~french Couleur de la touche appuyÃ©e, 0 pour bleu, 1 pour rouge, 2 pour vert
 */
 extern inline void PA_SetKeyboardColor(u8 color1, u8 color2){
 	Keyboard.Color1 = color1;
@@ -227,7 +227,7 @@ extern inline void PA_SetKeyboardColor(u8 color1, u8 color2){
     \fn extern inline void PA_SetKeyboardScreen(u8 screen)
     \brief
 		\~english Set Keyboard screen. Must be used BEFORE the keyboard init..
-		\~french Régler l'écran du clavier. Doit être utilisé AVANT l'init du clavier
+		\~french RÃ©gler l'Ã©cran du clavier. Doit Ãªtre utilisÃ© AVANT l'init du clavier
     \~\param screen
       \~english 0 (bottom) or 1 (top)
       \~french 0 (bas) or 1 (haut)
