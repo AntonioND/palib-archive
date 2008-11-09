@@ -20,6 +20,8 @@ Things Fixed
 
 [Makefile] Removed a repetition of -L$(PAPATH)/lib.
 
+[Keyboard] Added key repeat functionality for uppercase letters and symbols.
+
 
 ------------------------------
 | PAlib 080823 : Tighten Up! |

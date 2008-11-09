@@ -30,7 +30,8 @@ u8 keyb_screen = 0;
 Keyboards Keyboard;
 void PA_ReloadKeyboardCol(void);
 
-void PA_InitKeyboard(u8 bg_number) {
+void PA_InitKeyboard(u8 bg_number)
+{
 	// On charge le fond...
 	PA_LoadSimpleBg(keyb_screen, bg_number, keyboard_Tiles, keyboard_Map, BG_256X512, 0, 0);
 
@@ -56,22 +57,37 @@ void PA_InitKeyboard(u8 bg_number) {
 
 
 
-void PA_ReloadKeyboardCol(void) {
+void PA_ReloadKeyboardCol(void)
+{
 	u8 i;
 	u16 r, g, b, color;
 	u8 tempr, tempg, tempb;
-	for (i = 1; i < 11; i++) { // On va mettre appuyé en rouge
+	for (i = 1; i < 11; i++)  // On va mettre appuyé en rouge
+	{
 		color = keyboard_Palette[i];
 
-		tempb = b = (color>>10)&31;	tempg = g = (color>>5)&31;
+		tempb = b = (color>>10)&31;
+		tempg = g = (color>>5)&31;
 		tempr = r = (color)&31;
 
 		// Si dominante rouge
-		if (Keyboard.Color1 == 1) {tempr = b; tempb = r;} //rouge
-		else if (Keyboard.Color1 == 2) {tempg = b; tempb = g;} //vert
+		if (Keyboard.Color1 == 1)
+		{
+			tempr = b; tempb = r; //rouge
+		}
+		else if (Keyboard.Color1 == 2)
+		{
+			tempg = b; tempb = g; //vert
+		}
 		BG_PALETTE[(keyb_screen << 9) + (15 << 4) + i] = PA_RGB(tempr, tempg, tempb);
-		if (Keyboard.Color2 == 1) {tempr = b; tempb = r;} //rouge
-		else if (Keyboard.Color2 == 2) {tempg = b; tempb = g;} //vert
+		if (Keyboard.Color2 == 1)
+		{
+			tempr = b; tempb = r; //rouge
+		}
+		else if (Keyboard.Color2 == 2)
+		{
+			tempg = b; tempb = g; //vert
+		}
 		BG_PALETTE[(keyb_screen << 9) + (14 << 4) + i] = PA_RGB(tempr, tempg, tempb);
 	}
 }
@@ -79,7 +95,8 @@ void PA_ReloadKeyboardCol(void) {
 //#define SPACE     32   // La vrai valeur d'un espace
 
 // Clavier, avec 5 lignes de 12 touches...
-const u8 PA_Keyboard[2][5][24] = {
+const u8 PA_Keyboard[2][5][24] =
+{
 	  {
 	  {'1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8', '9', '9', '0', '0', '-', '-', '=', '='}, // Touches de 0 à 9, puis - et =
 	  {PA_TAB, 'q', 'q', 'w', 'w', 'e', 'e', 'r', 'r', 't', 't', 'y', 'y', 'u', 'u', 'i', 'i', 'o', 'o', 'p', 'p',PA_BACKSPACE, PA_BACKSPACE, PA_BACKSPACE}, // qwertyuiop, Backspace
@@ -94,7 +111,7 @@ const u8 PA_Keyboard[2][5][24] = {
 	  {PA_SHIFT, PA_SHIFT, PA_SHIFT, 'Z', 'Z', 'X', 'X', 'C', 'C', 'V', 'V', 'B', 'B', 'N', 'N', 'M', 'M', '<', '<', '>', '>', '?', '?', PA_RIEN},  // Shift, zxcvbnm , . /
       {PA_RIEN, PA_RIEN, '~', '~', ':', ':', '"', '"', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '{', '{', '}', '}', '|', '|'}
 	  }
-	  }; // On prend en compte les trous...
+}; // On prend en compte les trous...
 
 
 
@@ -104,71 +121,83 @@ const u8 PA_Keyboard[2][5][24] = {
 
 
 
-void PA_ChangeKeyboardType(void){
+void PA_ChangeKeyboardType(void)
+{
 	Keyboard.Type = !Keyboard.Type;
 
 	s16 i, j;
-	if(!Keyboard.Custom){
+	if(!Keyboard.Custom)
+	{
 		DMA_Copy((void*)(keyboard_Map + (Keyboard.Type << 11)), (void*)ScreenBaseBlock(keyb_screen, PA_BgInfo[keyb_screen][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);
 
 		for (j = 0; j < 12; j++)   // On parcourt tout le fond pour mettre la bonne palette...
 			for (i = 0; i < 32; i++)
 				PA_SetMapTilePal(keyb_screen, Keyboard.Bg, i, j, 15);
 	}
-	else{
+	else
+	{
 		DMA_Copy((void*)(PA_BgInfo[keyb_screen][Keyboard.Bg].Map + (Keyboard.Type << 12)), (void*)ScreenBaseBlock(keyb_screen, PA_BgInfo[keyb_screen][Keyboard.Bg].mapchar), 32*12 , DMA_16NOW);
 	}
 }
 
 
 
-char PA_CheckKeyboard(void) {  // Vérifier si on appuye sur le clavier avec ces touches...
-// Vont prendre la position que l'on appuye sur le clavier...
-s16 x = Stylus.X;
-s16 y = Stylus.Y;
-
+char PA_CheckKeyboard(void) // Vérifier si on appuye sur le clavier avec ces touches...
+{
+	// Vont prendre la position que l'on appuye sur le clavier...
+	s16 x = Stylus.X;
+	s16 y = Stylus.Y;
 
 	x -= Keyboard.ScrollX + 8; // Ca commence à 57, donc c'est comme si en 57 on était à 0
 	y -= Keyboard.ScrollY + 8; // Pareil mais pour y...
 
-
-
 	// On commence par vérifier si on est bien sur le clavier... Si ce n'est pas le cas, on renverra 0.
-	if ((x >= 0) && (x < 192) && (y >= 0) && (y < 80)) {
+	if ((x >= 0) && (x < 192) && (y >= 0) && (y < 80))
+	{
 	   //Les cases font 8 de largeur, donc de 0-7 c'est la case 0... il faut diviser par 8
 		y = y >> 4;
 		x = x >> 3;
 
-		if (Stylus.Newpress) {
+		if (Stylus.Newpress)
+		{
 			Keyboard.oldX = x;
 			Keyboard.oldY = y;
 			Keyboard.Repeat = 50;
 
-			if (PA_Keyboard[0][y][x] == PA_CAPS) {
+			if (PA_Keyboard[Keyboard.Type][y][x] == PA_CAPS)
+			{
 				PA_ChangeKeyboardType();
 			}
 
 			// Majuscule si jamais c'est Shift appuyé
-			if (Keyboard.Letter == PA_SHIFT) {
+			if (Keyboard.Letter == PA_SHIFT)
+			{
 				// Si on rappuye sur Shift ca le vire sans rien faire
-				if(PA_Keyboard[Keyboard.Type][y][x] == PA_SHIFT) Keyboard.Letter = 0;
-				else Keyboard.Letter = PA_Keyboard[Keyboard.Type][y][x];
+				if(PA_Keyboard[Keyboard.Type][y][x] == PA_SHIFT)
+					Keyboard.Letter = 0;
+				else
+					Keyboard.Letter = PA_Keyboard[Keyboard.Type][y][x];
 
 				PA_SetLetterPal(0, 3, 15); // On efface le shift
 				PA_ChangeKeyboardType();
 			}
 			else {
 				Keyboard.Letter = PA_Keyboard[Keyboard.Type][y][x];
-				if (Keyboard.Letter == PA_SHIFT) PA_ChangeKeyboardType();
+				if (Keyboard.Letter == PA_SHIFT)
+				{
+					PA_ChangeKeyboardType();
+				}
 			}
 			PA_SetLetterPal(x, y, 14);
 
 			return (Keyboard.Letter);  // Renvoie la valeur dans le clavier...	si nouvelle pression
 		}
 		else {
-			if (Stylus.Held && (PA_Keyboard[0][y][x] == Keyboard.Letter)) {
+			if (Stylus.Held && (PA_Keyboard[Keyboard.Type][y][x] == Keyboard.Letter))
+			{
 				--Keyboard.Repeat;
-				if (Keyboard.Repeat == 0) {
+				if (Keyboard.Repeat == 0)
+				{
 					Keyboard.Repeat = 10;
 					return(Keyboard.Letter);
 				}
@@ -176,20 +205,26 @@ s16 y = Stylus.Y;
 		}
 	}
 
-	if (!Stylus.Held) {
-		if (Keyboard.Letter != PA_SHIFT) PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15);
+	if (!Stylus.Held)
+	{
+		if (Keyboard.Letter != PA_SHIFT)
+		{
+			PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15);
+		}
 	}
 	return 0;
-
 }
 
 
 
-void PA_SetLetterPal(s16 x, s16 y, u8 Pal) {
-u8 value = PA_Keyboard[0][y][x];
-	if (value&&(!Keyboard.Custom)) {
+void PA_SetLetterPal(s16 x, s16 y, u8 Pal)
+{
+	u8 value = PA_Keyboard[0][y][x];
+	if (value&&(!Keyboard.Custom))
+	{
 		while(PA_Keyboard[0][y][x-1] == value) --x;
-		while(PA_Keyboard[0][y][x] == value) {
+		while(PA_Keyboard[0][y][x] == value)
+		{
 			PA_SetMapTilePal(keyb_screen, Keyboard.Bg, x+1, (y << 1) + 1, Pal);
 			PA_SetMapTilePal(keyb_screen, Keyboard.Bg, x+1, (y << 1) + 2, Pal);
 			x++;
