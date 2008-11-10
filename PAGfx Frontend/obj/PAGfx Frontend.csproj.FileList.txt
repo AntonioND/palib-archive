@@ -1,0 +1,20 @@
+bin\Debug\PAGC Frontend.exe.config
+obj\Debug\PAGC Frontend.exe
+obj\Debug\PAGC Frontend.pdb
+bin\Debug\PAGC Frontend.exe
+bin\Debug\PAGC Frontend.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\PAGC_Frontend.Form1.resources
+obj\Debug\PAGC_Frontend.FormAbout.resources
+obj\Debug\PAGC_Frontend.Properties.Resources.resources
+obj\Debug\PAGfx Frontend.csproj.GenerateResource.Cache
+bin\Release\PAGC Frontend.exe.config
+bin\Release\PAGC Frontend.exe
+bin\Release\PAGC Frontend.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\PAGC_Frontend.Form1.resources
+obj\Release\PAGC_Frontend.FormAbout.resources
+obj\Release\PAGC_Frontend.Properties.Resources.resources
+obj\Release\PAGfx Frontend.csproj.GenerateResource.Cache
+obj\Release\PAGC Frontend.exe
+obj\Release\PAGC Frontend.pdb

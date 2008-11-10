@@ -1,0 +1,17 @@
+PA Gfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+1 sprites :
+  bullet : 16colors, 8x128, Pal : bullet_Pal, -> bullet_Sprite
+
+1 backgrounds :
+  testmap : LargeMap, 256x1024, Pal : testmap_Pal, 300 tiles -> testmap_Tiles and testmap_Map
+
+2 palettes :
+  bullet_Pal, 14 colors
+  testmap_Pal, 15 colors
+
+Finished !

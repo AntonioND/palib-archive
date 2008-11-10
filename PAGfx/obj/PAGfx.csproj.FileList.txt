@@ -1,0 +1,10 @@
+obj\Debug\PAGfx.exe
+obj\Debug\PAGfx.pdb
+bin\Debug\PAGfx.exe
+bin\Debug\PAGfx.pdb
+obj\Debug\ResolveAssemblyReference.cache
+bin\Release\PAGfx.exe
+bin\Release\PAGfx.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\PAGfx.exe
+obj\Release\PAGfx.pdb

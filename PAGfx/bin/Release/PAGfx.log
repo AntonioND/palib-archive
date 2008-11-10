@@ -1,0 +1,19 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+3 sprites :
+  souris : KeepPal, 16x32, Pal : palettesouris_Pal, -> souris_Sprite
+  curseur : KeepPal, 8x16, Pal : palettecurseur_Pal, -> curseur_Sprite
+  boutonquitter : KeepPal, 64x32, Pal : boutonquitter_Pal, -> boutonquitter_Sprite
+
+3 palettes :
+  palettesouris_Pal, 256 colors
+  palettecurseur_Pal, 256 colors
+  boutonquitter_Pal, 256 colors
+
+Converted in 0 minutes 0 seconds
+
+Finished !

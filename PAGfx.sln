@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAGfx", "PAGfx\PAGfx.csproj", "{8F3FE815-EAC2-4BED-ADDE-115C9E13E8CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAGfx Frontend", "PAGfx Frontend\PAGfx Frontend.csproj", "{CEDCD674-A24B-44EC-9043-88B782E938B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F3FE815-EAC2-4BED-ADDE-115C9E13E8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F3FE815-EAC2-4BED-ADDE-115C9E13E8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F3FE815-EAC2-4BED-ADDE-115C9E13E8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F3FE815-EAC2-4BED-ADDE-115C9E13E8CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEDCD674-A24B-44EC-9043-88B782E938B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDCD674-A24B-44EC-9043-88B782E938B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDCD674-A24B-44EC-9043-88B782E938B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDCD674-A24B-44EC-9043-88B782E938B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
