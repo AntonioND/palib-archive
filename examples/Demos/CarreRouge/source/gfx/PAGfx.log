@@ -1,0 +1,14 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+2 sprites :
+  blue : 256colors, 32x32, Pal : sprite0_Pal, -> blue_Sprite
+  red : 256colors, 32x32, Pal : sprite0_Pal, -> red_Sprite
+
+1 palettes :
+  sprite0_Pal, 3 colors
+
+Finished !

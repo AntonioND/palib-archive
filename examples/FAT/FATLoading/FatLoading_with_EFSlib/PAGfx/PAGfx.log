@@ -1,0 +1,21 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+4 sprites :
+  harry : 256colors, 32x32, Pal : harry_Pal, -> harry_Sprite
+  mario : 256colors, 16x16, Pal : mario_Pal, -> mario_Sprite
+  pokekun : 256colors, 32x64, Pal : pokekun_Pal, -> pokekun_Sprite
+  sonic : 256colors, 32x32, Pal : sonic_Pal, -> sonic_Sprite
+
+4 palettes :
+  harry_Pal, 5 colors
+  mario_Pal, 4 colors
+  pokekun_Pal, 5 colors
+  sonic_Pal, 14 colors
+
+Converted in 0 minutes 0 seconds
+
+Finished !

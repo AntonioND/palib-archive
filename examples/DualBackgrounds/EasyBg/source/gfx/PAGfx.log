@@ -1,0 +1,13 @@
+PAGfx Converter, by Mollusk     www.palib.com
+If you have suggestions, problems, or anything, please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color : Magenta
+
+1 backgrounds :
+  Town : EasyBg, 1024x1024, Pal : Town_Pal, Converted to InfiniteMap, 1790 tiles -> Town_Tiles and Town_Map
+
+1 palettes :
+  Town_Pal, 68 colors
+
+Finished !
