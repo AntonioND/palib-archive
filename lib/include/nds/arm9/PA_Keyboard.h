@@ -7,6 +7,13 @@ extern "C" {
 
 #include "PA9.h"
 
+// Keyboard defines
+#define PA_RIEN      0    // Si y'a rien, faudra faire comme si on appuye sur rien
+#define PA_BACKSPACE 1    // On va dire que la touche backspace a pour valeur 1...
+#define PA_CAPS      2    // 2 pour CAPS
+#define PA_TAB       3    // tab...
+#define PA_SHIFT     4    // etc
+#define PA_ENTER     '\n' // 3 pour Enter
 
 extern u8 keyb_screen;
 
@@ -70,14 +77,14 @@ void PA_InitKeyboard(u8 bg_number);
 /*!
     \def PA_InitCustomKeyboard(bg_number, keyb_custom)
     \brief
-		\~english Initialise a custom Keyboard on a given background. 
-		\~french Initialiser un clavier perso sur un fond donné   
+		\~english Initialise a custom Keyboard on a given background.
+		\~french Initialiser un clavier perso sur un fond donné
 	\~\param bg_number
 		\~english Background number (0-3)
 		\~french Numéro du fond que l'on veut tourner (0-3)
 	\~\param keyb_custom
 		\~english Custom Keyboard name, converted as EasyBg
-		\~french Claviet perso, converti comme EasyBg			
+		\~french Claviet perso, converti comme EasyBg
 */
 #define PA_InitCustomKeyboard(bg_number, keyb_custom) {\
 	PA_LoadBgPal(keyb_screen, bg_number, (void*)keyb_custom##_Pal);\
@@ -100,7 +107,7 @@ char PA_CheckKeyboard(void);
 /*!
     \fn extern inline void PA_ScrollKeyboardX(s16 x)
     \brief
-		\~english Set the Keyboard's X position		
+		\~english Set the Keyboard's X position
 		\~french Placer le Clavier à la position X
     \~\param x
       \~english X position...
@@ -115,7 +122,7 @@ extern inline void PA_ScrollKeyboardX(s16 x) {
 /*!
     \fn extern inline void PA_ScrollKeyboardY(s16 y)
     \brief
-		\~english Set the Keyboard's Y position		
+		\~english Set the Keyboard's Y position
 		\~french Placer le Clavier à la position Y
     \~\param y
       \~english Y position...
@@ -130,7 +137,7 @@ extern inline void PA_ScrollKeyboardY(s16 y) {
 /*!
     \fn extern inline void PA_ScrollKeyboardXY(s16 x, s16 y)
     \brief
-		\~english Set the Keyboard's position		
+		\~english Set the Keyboard's position
 		\~french Placer le Clavier à une position donnée
     \~\param x
       \~english X position...
@@ -158,7 +165,7 @@ extern inline void PA_ScrollKeyboardXY(s16 x, s16 y) {
 /*!
     \fn extern inline void PA_KeyboardIn(s16 x, s16 y)
     \brief
-		\~english Make the keyboard enter to position (x, y), scrolling from the bottom of the screen	
+		\~english Make the keyboard enter to position (x, y), scrolling from the bottom of the screen
 		\~french Faire entrer le clavier à la position (x, y) en glissant depuis le bas de l'écran
     \~\param x
       \~english X position...
@@ -167,14 +174,14 @@ extern inline void PA_ScrollKeyboardXY(s16 x, s16 y) {
       \~english Y position...
       \~french Position Y
 */
-extern inline void PA_KeyboardIn(s16 x, s16 y){  // Faire rentrer le clavier... 
+extern inline void PA_KeyboardIn(s16 x, s16 y){  // Faire rentrer le clavier...
 s16 i;
 	PA_ScrollKeyboardXY(x, 192);  // On le sort et met en X. Puis on fait glisser...
 	for (i = 192; i > y; i-=8){
 		PA_ScrollKeyboardY(i);
 		PA_WaitForVBL();
 	}
-	PA_ScrollKeyboardY(y);  // On amène pile au bon y...		
+	PA_ScrollKeyboardY(y);  // On amène pile au bon y...
 }
 
 
@@ -184,7 +191,7 @@ s16 i;
 		\~english Make the keyboard scroll out
 		\~french Faire sortir le clavier
 */
-extern inline void PA_KeyboardOut(void){  // Faire sortir le clavier... 
+extern inline void PA_KeyboardOut(void){  // Faire sortir le clavier...
 s16 i;
 PA_EraseLastKey(); // Efface s'il reste une touche pressée...
 	for (i = Keyboard.ScrollY; i < 200; i+=8){
@@ -208,7 +215,7 @@ void PA_ReloadKeyboardCol(void);
 /*!
     \fn extern inline void PA_SetKeyboardColor(u8 color1, u8 color2)
     \brief
-		\~english You can change the color used by the keyboard... 
+		\~english You can change the color used by the keyboard...
 		\~french On peut changer la couleur du clavier !
     \~\param color1
       \~english Normal color, 0 for blue, 1 for red, 2 for green
@@ -234,7 +241,7 @@ extern inline void PA_SetKeyboardColor(u8 color1, u8 color2){
 */
 extern inline void PA_SetKeyboardScreen(u8 screen){
    keyb_screen = screen; // Top screen
-} 
+}
 
 
 /** @} */ // end of Keyboard

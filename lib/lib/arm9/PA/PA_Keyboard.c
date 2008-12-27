@@ -4,15 +4,16 @@ extern "C" {
 
 #include "PA9.h"
 
+
+extern const unsigned char keyboard_Tiles[10400];
+extern const unsigned short keyboard_Map[4096];
+extern const unsigned short keyboard_Palette[16];
+
 /*
 #include "keyboard.raw.c"
 #include "keyboard.map.c"
 #include "keyboard.pal.c"
 */
-
-extern const unsigned char keyboard_Tiles[10400];
-extern const unsigned short keyboard_Map[4096];
-extern const unsigned short keyboard_Palette[16];
 
 /*
 const unsigned short keyboardPal1[16] = {

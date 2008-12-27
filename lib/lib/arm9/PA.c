@@ -1,4 +1,3 @@
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -22,8 +21,8 @@ volatile PA_IPCType PA_IPC;
 
 
 typedef struct {
-   s16 x, y, oldx, oldy, vx, vy;  // Coordonnées
-   u8 stylus; // Si on déplace ou non
+   s16 x, y, oldx, oldy, vx, vy;  // CoordonnÃ©es
+   u8 stylus; // Si on dÃ©place ou non
    u8 moving; // Si la boule est en mouvement ou non
 } positions;
 
@@ -33,7 +32,7 @@ typedef struct {
 u32 PA_bgmap[2][4]; // Pointeur vers les maps, 4 maps par screen
 u8 PA_Screen = 0;
 
-s16 PA_ScreenSpace; // Espace entre les 2 écrans...+192
+s16 PA_ScreenSpace; // Espace entre les 2 Ã©crans...+192
 
 PA_GifInfos PA_GifInfo;
 
@@ -41,10 +40,10 @@ PA_GifInfos PA_GifInfo;
 
 
 //Keypad stuff...
-Pads Pad;
-PA_Pad* PadPointer;
+PA_Pad_Struct Pad;
 
-PA_Stylus Stylus;
+PA_Stylus_Struct Stylus;
+
 
 
 PA_movingsprite  PA_MovedSprite; // Pour les sprites que l'on bouge...
@@ -55,16 +54,11 @@ u8 PA_MoveSpriteType = 0;
 /*
 typedef struct{
 	u8 snd_action[16]; // 0 - rien, 1 - play, 2 - stop, 3 - pause
-	u8 snd_action[16]; // 0 - rien, 1 - play, 2 - stop, 3 - pause	
+	u8 snd_action[16]; // 0 - rien, 1 - play, 2 - stop, 3 - pause
 
 
 }PA_IPCinfo;
 PA_IPCinfo PA_IPC;*/
-
-
-
-
-
 
 
 void PA_SetBrightness(u8 screen, s8 bright) {
@@ -79,20 +73,11 @@ u16 mode = 1 << 14;
 }
 
 
-
-void PA_Nothing(void){}
-
-
+void PA_Nothing(void)
+{
+}
 
 
 #ifdef __cplusplus
 }
 #endif
-
-
-
-
-
-
-
-
