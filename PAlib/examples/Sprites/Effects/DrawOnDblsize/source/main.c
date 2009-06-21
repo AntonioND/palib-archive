@@ -16,7 +16,7 @@ int main(void){
 					0, // Palette number
 					(void*)sprite0_Pal);	// Palette name
 
-	PA_CreateSprite(0, 0, (void*)Blank, // Blank sprite !
+	PA_CreateSprite(0, 0, (void*)NULL, // Blank sprite !
 					OBJ_SIZE_64X64, // Sprite size
 					1, 0, // Sprite palette number
 					0, 0); // In the upper left corner

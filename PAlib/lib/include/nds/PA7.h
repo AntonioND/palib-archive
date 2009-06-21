@@ -10,7 +10,6 @@ extern "C" {
 #include <nds/arm7/touch.h>
 #include <nds/arm7/clock.h>
 
-
 #include "PA_IPC.h"
 
 #include "arm7/PA_Sound.h"
@@ -55,7 +54,7 @@ extern inline u64 PA_Distance(s32 x1, s32 y1, s32 x2, s32 y2) {
 }
 
 
-void PA_Init(void);
+void PA_Init(bool maxmod);
 //void InterruptHandler(void);
 void PA_InitVBL(void);
 void PA_UpdateStylus();

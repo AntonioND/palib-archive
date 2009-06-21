@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Référence du fichier include/nds/arm9/PA_Micro.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Liste&nbsp;des&nbsp;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&nbsp;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier include/nds/arm9/PA_Micro.h</h1><code>#include &quot;<a class="el" href="_p_a___general_8h.html">PA_General.h</a>&quot;</code><br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___micro.html#g0c782c98f05c5b0d3e021c81a263c789">PA_MicGetVol</a>()&nbsp;&nbsp;&nbsp;PA_IPC.Mic.Volume</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le volume du micro.  <a href="group___micro.html#g0c782c98f05c5b0d3e021c81a263c789"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="_p_a___micro_8h.html#fa206b15f96193beb89968fbd24915e9">PA_PlaySoundEx2</a> (u8 PA_Channel, const void *data, s32 length, u8 volume, int freq, s16 format, <a class="el" href="_sound_common_8h.html#be6cbbe907e13bbe272877ef0703e5d1">BOOLEAN</a> repeat, int repeatPoint)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___micro.html#g72a48b1b0767d0062574a032f9bce2ab">PA_MicStartRecording</a> (u8 *buffer, s32 length)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Commencer � enregistrer avec le microphone. Par contre, le son est super laid et faible :/.  <a href="group___micro.html#g72a48b1b0767d0062574a032f9bce2ab"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___micro.html#gaf15ad035c14cbfd269ef68287771050">PA_MicReplay</a> (u8 *buffer, s32 length)</td></tr>
+
+</table>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="fa206b15f96193beb89968fbd24915e9"></a><!-- doxytag: member="PA_Micro.h::PA_PlaySoundEx2" ref="fa206b15f96193beb89968fbd24915e9" args="(u8 PA_Channel, const void *data, s32 length, u8 volume, int freq, s16 format, BOOLEAN repeat, int repeatPoint)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_PlaySoundEx2           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>PA_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>volume</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>freq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>format</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_sound_common_8h.html#be6cbbe907e13bbe272877ef0703e5d1">BOOLEAN</a>&nbsp;</td>
+          <td class="paramname"> <em>repeat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>repeatPoint</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Jun 13 12:56:59 2009 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

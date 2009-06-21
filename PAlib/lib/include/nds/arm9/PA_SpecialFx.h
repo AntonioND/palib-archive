@@ -4,9 +4,9 @@
 
 
  
-#define REG_MOSAIC(screen) _REG16(0x0400004C + (screen * 0x1000))
-#define REG_BLDCNT(screen) _REG16(0x04000050 + (screen * 0x1000))
-#define REG_BLDALPHA(screen) _REG16(0x04000052 + (screen * 0x1000))
+#define PA_REG_MOSAIC(screen) _REG16(0x0400004C + (screen * 0x1000))
+#define PA_REG_BLDCNT(screen) _REG16(0x04000050 + (screen * 0x1000))
+#define PA_REG_BLDALPHA(screen) _REG16(0x04000052 + (screen * 0x1000))
 
 #define SFX_BG0 1
 #define SFX_BG1 2
@@ -78,7 +78,7 @@
          \~english Vertical size of the mosaic (1 for 1 pixel, 2 for 2 pixels, etc...)
          \~french Taille verticale de la mosaic (1 pour 1 pixel, 2 pour 2 pixels, etc...)
 */
-#define PA_SetBgMosaicXY(screen, h_size, v_size) {REG_MOSAIC(screen) &= 255; REG_MOSAIC(screen) |= ((h_size) + ((v_size) << 4));}
+#define PA_SetBgMosaicXY(screen, h_size, v_size) {PA_REG_MOSAIC(screen) &= 255; PA_REG_MOSAIC(screen) |= ((h_size) + ((v_size) << 4));}
 
 
 /*! \def PA_SetSpriteMosaicXY(screen, h_size, v_size)
@@ -95,7 +95,7 @@
          \~english Vertical size of the mosaic (1 for 1 pixel, 2 for 2 pixels, etc...)
          \~french Taille verticale de la mosaic (1 pour 1 pixel, 2 pour 2 pixels, etc...)
 */
-#define PA_SetSpriteMosaicXY(screen, h_size, v_size) {REG_MOSAIC(screen) &= (255 << 8); REG_MOSAIC(screen) |= (((h_size) << 8) + ((v_size) << 12));}
+#define PA_SetSpriteMosaicXY(screen, h_size, v_size) {PA_REG_MOSAIC(screen) &= (255 << 8); PA_REG_MOSAIC(screen) |= (((h_size) << 8) + ((v_size) << 12));}
 
 
 
@@ -118,7 +118,7 @@
          \~english Backgrounds and sprites to be seen behind the alpha-blending. Use the following macro : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (back drop)
          \~french Fond et sprites à afficher derrière la transparence, que l'on choisi de la facon suivante : SFX_BG0 | SFX_BG1 | SFX_BG2 | SFX_BG3 | SFX_OBJ | SFX_BD (back drop)
 */
-#define PA_EnableSpecialFx(screen, EffectType, FirstTarget, SecondTarget) REG_BLDCNT(screen) = ((FirstTarget) + ((SecondTarget) << 8) + ((EffectType) << 6))
+#define PA_EnableSpecialFx(screen, EffectType, FirstTarget, SecondTarget) PA_REG_BLDCNT(screen) = ((FirstTarget) + ((SecondTarget) << 8) + ((EffectType) << 6))
 
 
 
@@ -131,7 +131,7 @@
          \~english Screen...
          \~french Ecran...
 */
-#define PA_DisableSpecialFx(screen) REG_BLDCNT(screen) = 0
+#define PA_DisableSpecialFx(screen) PA_REG_BLDCNT(screen) = 0
 
 
 
@@ -149,7 +149,7 @@
          \~english Coefficient for the second layer, from 0 to 31. Apparently, it's better to set between 0 and 16
          \~french Coefficient pour la deuxième couche, de 0 à 31. A priori vaut mieux le mettre entre 0 et 16
 */
-#define PA_SetSFXAlpha(screen, Coeff1, Coeff2) REG_BLDALPHA(screen) = (Coeff1) + ((Coeff2) << 8)
+#define PA_SetSFXAlpha(screen, Coeff1, Coeff2) PA_REG_BLDALPHA(screen) = (Coeff1) + ((Coeff2) << 8)
 
 
 /** @} */ // end of SpecialFx

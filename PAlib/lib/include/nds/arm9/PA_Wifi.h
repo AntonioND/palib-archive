@@ -21,17 +21,17 @@
 
 
 extern void sgIP_dbgprint(char * txt, ...);
-extern void Timer_50ms(void);
-extern void arm9_synctoarm7();
+void Timer_50ms(void);
+void arm9_synctoarm7();
 extern void arm9_fifo();
 extern void PA_InitWifi();
 extern bool PA_ConnectWifiWFC();
 unsigned long PA_chartoip(char *message);
 int PA_InitSocket(int *socket,char *host,int port,int mode);
 int PA_InitServer(int *sock,int port,int mode, int num_connect);
-int PA_GetHTTP(char *buffer, char *adress);
+//int PA_GetHTTP(char *buffer, char *adress);
 
-bool PA_SubmitScore(char *response, char *gamekey, char *playername, int score, char *level, u8 responsetype);
+//bool PA_SubmitScore(char *response, char *gamekey, char *playername, int score, char *level, u8 responsetype);
 
 
 #endif

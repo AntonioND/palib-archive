@@ -15,10 +15,10 @@ extern "C" {
 #include <stdarg.h> // Pour le système de text
 #include <string.h>
 
-#include "arm9/PA_IO.h"
-#include "arm9/PA_GBFS.h"
-#include "arm9/PA_FS.h"
-#include "gbfs.h"
+// Too lazy to change every definition, so we will take the old
+#include "arm9/Video_Definitions.h"
+
+//#include "arm9/PA_IO.h"
 #include "gba-jpeg-decode.h"
 #include "Sound9.h"
 #include "fat.h"
@@ -33,7 +33,6 @@ extern "C" {
 #include "arm9/PA_BgLargeMap.h"
 
 
-#include "arm9/PA_Video.h"
 #include "arm9/PA_Sprite.h"
 #include "arm9/PA_SpriteDual.h"
 #include "arm9/PA_Sound.h"
@@ -49,7 +48,6 @@ extern "C" {
 #include "arm9/PA_Math.h"
 #include "arm9/PA_Palette.h"
 #include "arm9/PA_PaletteDual.h"
-#include "arm9/PA_Save.h"
 #include "arm9/PA_SpecialFx.h"
 
 #include "arm9/PA_TileDual.h"
@@ -72,7 +70,7 @@ extern "C" {
 
 #include "arm9/PA_Wifi.h"
 
-#include "arm9/PA_Splash.h"
+//#include "arm9/PA_Splash.h"
 
 #include "arm9/PA_Gif.h"
 
@@ -80,7 +78,6 @@ extern "C" {
 
 #include "arm9/as_lib9.h"
 
-#include "arm9/PA_FATLoad.h"
 #include "arm9/PA_KeysSpecial.h"
 #include "arm9/PA_Fake16bit.h"
 

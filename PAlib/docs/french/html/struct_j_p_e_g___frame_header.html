@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Référence de la structure JPEG_FrameHeader</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&nbsp;de&nbsp;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la structure JPEG_FrameHeader</h1><!-- doxytag: class="JPEG_FrameHeader" --><code>#include &lt;gba-jpeg-decode.h&gt;</code>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="gba-jpeg_8h.html#1a1d8a443f4c3d01ddd3e6c33cf548ec">JPEG_Marker</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html#02fd9a580d1de2fbe7deb07848fc925c">marker</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html#3f4c9c186c9afd9a0675f9cd64f1b068">encoding</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html#2d8454ca78c14df9ad1c6ded8386def3">differential</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html#6b4c65cbea4c952879b186a9c51a3cc7">precision</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html#50355643bbae85ee9a6ac3f27a26a433">height</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned short&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html#d2d49172bcfae83117b0e80230eb235c">width</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="struct_j_p_e_g___frame_header___component.html">JPEG_FrameHeader_Component</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html#0da6f6e6f0def2d3844881d18754b0f6">componentList</a> [JPEG_MAXIMUM_COMPONENTS]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html#cedf422833108e552eb0830e5a327500">componentCount</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+The frame header state. <hr><h2>Documentation des champs</h2>
+<a class="anchor" name="cedf422833108e552eb0830e5a327500"></a><!-- doxytag: member="JPEG_FrameHeader::componentCount" ref="cedf422833108e552eb0830e5a327500" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="struct_j_p_e_g___frame_header.html#cedf422833108e552eb0830e5a327500">JPEG_FrameHeader::componentCount</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Number of components. 
+</div>
+</div><p>
+<a class="anchor" name="0da6f6e6f0def2d3844881d18754b0f6"></a><!-- doxytag: member="JPEG_FrameHeader::componentList" ref="0da6f6e6f0def2d3844881d18754b0f6" args="[JPEG_MAXIMUM_COMPONENTS]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_j_p_e_g___frame_header___component.html">JPEG_FrameHeader_Component</a> <a class="el" href="struct_j_p_e_g___frame_header.html#0da6f6e6f0def2d3844881d18754b0f6">JPEG_FrameHeader::componentList</a>[JPEG_MAXIMUM_COMPONENTS]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Components. 
+</div>
+</div><p>
+<a class="anchor" name="2d8454ca78c14df9ad1c6ded8386def3"></a><!-- doxytag: member="JPEG_FrameHeader::differential" ref="2d8454ca78c14df9ad1c6ded8386def3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char <a class="el" href="struct_j_p_e_g___frame_header.html#2d8454ca78c14df9ad1c6ded8386def3">JPEG_FrameHeader::differential</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Differential (1) or non-differential (0). 
+</div>
+</div><p>
+<a class="anchor" name="3f4c9c186c9afd9a0675f9cd64f1b068"></a><!-- doxytag: member="JPEG_FrameHeader::encoding" ref="3f4c9c186c9afd9a0675f9cd64f1b068" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="struct_j_p_e_g___frame_header.html#3f4c9c186c9afd9a0675f9cd64f1b068">JPEG_FrameHeader::encoding</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+0 for Huffman coding, 1 for arithmetic coding. 
+</div>
+</div><p>
+<a class="anchor" name="50355643bbae85ee9a6ac3f27a26a433"></a><!-- doxytag: member="JPEG_FrameHeader::height" ref="50355643bbae85ee9a6ac3f27a26a433" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="struct_j_p_e_g___frame_header.html#50355643bbae85ee9a6ac3f27a26a433">JPEG_FrameHeader::height</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Maximum number of lines in the source image, equal to the number of lines in the component with the maximum number of vertical samples. 0 indicates that the number of lines shall be defined by the DNL marker and parameters at the end of the first scan. 
+</div>
+</div><p>
+<a class="anchor" name="02fd9a580d1de2fbe7deb07848fc925c"></a><!-- doxytag: member="JPEG_FrameHeader::marker" ref="02fd9a580d1de2fbe7deb07848fc925c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="gba-jpeg_8h.html#1a1d8a443f4c3d01ddd3e6c33cf548ec">JPEG_Marker</a> <a class="el" href="struct_j_p_e_g___frame_header.html#02fd9a580d1de2fbe7deb07848fc925c">JPEG_FrameHeader::marker</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The marker that began this frame header, one of JPEG_Marker_SOFn. 
+</div>
+</div><p>
+<a class="anchor" name="6b4c65cbea4c952879b186a9c51a3cc7"></a><!-- doxytag: member="JPEG_FrameHeader::precision" ref="6b4c65cbea4c952879b186a9c51a3cc7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="struct_j_p_e_g___frame_header.html#6b4c65cbea4c952879b186a9c51a3cc7">JPEG_FrameHeader::precision</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sample precision - precision in bits for the samples of the components in the frame. 
+</div>
+</div><p>
+<a class="anchor" name="d2d49172bcfae83117b0e80230eb235c"></a><!-- doxytag: member="JPEG_FrameHeader::width" ref="d2d49172bcfae83117b0e80230eb235c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned short <a class="el" href="struct_j_p_e_g___frame_header.html#d2d49172bcfae83117b0e80230eb235c">JPEG_FrameHeader::width</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Number of samples per line in the source image, equal to the number of samples per line in the component with the maximum number of horizontal samples. 
+</div>
+</div><p>
+<hr>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>include/nds/<a class="el" href="gba-jpeg-decode_8h.html">gba-jpeg-decode.h</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Jun 13 12:57:00 2009 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

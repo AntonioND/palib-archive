@@ -1,0 +1,3275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Sprite system</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;donnÃ©es</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Sprite system</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g9af951fe9c7c3faca32d0a1e039ec8be">PA_UpdateOAM0</a>()&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj, (void*)OAM0, 256, DMA_32NOW)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les <a class="el" href="structinfos.html">infos</a> des sprites pour l'écran 0 uniquement. A faire dans le VBL.  <a href="#g9af951fe9c7c3faca32d0a1e039ec8be"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#geafedd78475febc931b34aeba95c2f14">PA_UpdateOAM1</a>()&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj + 256, (void*)OAM1, 256, DMA_32NOW)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les <a class="el" href="structinfos.html">infos</a> des sprites pour l'écran 1 uniquement. A faire dans le VBL.  <a href="#geafedd78475febc931b34aeba95c2f14"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g1c44c32e4774169e2397ea7889ca6436">PA_UpdateSpriteGfx</a>(screen, obj_number, obj_data)&nbsp;&nbsp;&nbsp;PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx d'un sprite donné.  <a href="#g1c44c32e4774169e2397ea7889ca6436"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g07261631ed2d033e15fc1557e386ffe4">PA_SetSpriteRotEnable</a>(screen, sprite, rotset)&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 |= OBJ_ROT;  PA_obj[screen][sprite].atr1 = (PA_obj[screen][sprite].atr1 &amp; ALL_BUT_ROTSET) + ((rotset) &lt;&lt; 9);}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner et zoomer un sprite.  <a href="#g07261631ed2d033e15fc1557e386ffe4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf3c02384ab8e196fb1959f9390fd746d">PA_SetSpriteRotDisable</a>(screen, sprite)&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 &amp;= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &amp;= ALL_BUT_ROTSET;}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arreter de faire tourner et zoomer un sprite.  <a href="#gf3c02384ab8e196fb1959f9390fd746d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g4bf93eaa77e6e533cc05f873a35bb95a">PA_SetSpriteX</a>(screen, obj, x)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(PA_OBJ_X)) + ((x) &amp; PA_OBJ_X)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran.  <a href="#g4bf93eaa77e6e533cc05f873a35bb95a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g353097a994619fb54e46b8fff6eb15ca">PA_GetSpriteX</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr1 &amp; (PA_OBJ_X))</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran.  <a href="#g353097a994619fb54e46b8fff6eb15ca"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gced1fba7a40575fe1b7794b45255d5e9">PA_SetSpriteY</a>(screen, obj, y)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(PA_OBJ_Y)) + ((y) &amp; PA_OBJ_Y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran.  <a href="#gced1fba7a40575fe1b7794b45255d5e9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gbe6706a941e65ac879edb4c0422967bb">PA_GetSpriteY</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr0 &amp; PA_OBJ_Y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position Y du sprite à l'écran.  <a href="#gbe6706a941e65ac879edb4c0422967bb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g9c4155c5f3cbd7fed697e992766ba8f0">PA_SetSpritePal</a>(screen, obj, pal)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT_PAL) + ((pal) &lt;&lt; 12)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette d'un sprite.  <a href="#g9c4155c5f3cbd7fed697e992766ba8f0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gc9886ffb71301524b7302f6bff6a2435">PA_GetSpritePal</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &gt;&gt; 12)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Palette d'un sprite.  <a href="#gc9886ffb71301524b7302f6bff6a2435"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ge104c411fd7a04ad6265a85d48ddc3a5">PA_SetSpriteDblsize</a>(screen, obj, dblsize)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(DBLSIZE)) + ((dblsize) &lt;&lt; 9)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer ou désactiver le mode Doublesize pour un sprite.  <a href="#ge104c411fd7a04ad6265a85d48ddc3a5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gfc0ed987ebc8f23b0f2ae49826f3dab8">PA_GetSpriteDblsize</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; DBLSIZE) &gt;&gt; 9)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Etat du mode Doublesize pour un sprite.  <a href="#gfc0ed987ebc8f23b0f2ae49826f3dab8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g26e67beb53eebad5aaa121d426a5984d">PA_SetSpriteColors</a>(screen, sprite, n_colors)&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(N_COLORS)) + ((n_colors) &lt;&lt; 13)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le mode de couleur du sprite.  <a href="#g26e67beb53eebad5aaa121d426a5984d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gd89fdbc2bddda4c51e91e2ba388ce484">PA_GetSpriteColors</a>(screen, sprite)&nbsp;&nbsp;&nbsp;((PA_obj[screen][sprite].atr0 &amp; N_COLORS) &gt;&gt; 13)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode de couleur d'un sprite.  <a href="#gd89fdbc2bddda4c51e91e2ba388ce484"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g8e36dc74210832c38f6bf6864344f7a6">PA_SetSpriteMode</a>(screen, sprite, obj_mode)&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(OBJ_MODE)) + ((obj_mode) &lt;&lt; 10)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre.  <a href="#g8e36dc74210832c38f6bf6864344f7a6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g8eade41cc18bc24efbda6a25703cce3d">PA_GetSpriteMode</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MODE) &gt;&gt; 10)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre.  <a href="#g8eade41cc18bc24efbda6a25703cce3d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g1257268cb4fd90c31da4f2eaac4f5540">PA_SetSpriteMosaic</a>(screen, obj, mosaic)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_MOSAIC)) + ((mosaic) &lt;&lt; 12)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre ou non un sprite en mode mosaic.  <a href="#g1257268cb4fd90c31da4f2eaac4f5540"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf7007fc7025218586ca19aec5e2dd5b6">PA_GetSpriteMosaic</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MOSAIC) &gt;&gt; 12)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Si un sprite est en mode mosaic.  <a href="#gf7007fc7025218586ca19aec5e2dd5b6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g641750a4e110a0baf38906fb3082a51d">PA_SetSpriteHflip</a>(screen, obj, hflip)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_HFLIP)) + ((hflip) &lt;&lt; 12)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip horizontal pour un sprite.  <a href="#g641750a4e110a0baf38906fb3082a51d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g953acb0052af2a3ac0f6e375295fdb85">PA_GetSpriteHflip</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_HFLIP) &gt;&gt; 12)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">S'il y a un flip horizontal pour un sprite.  <a href="#g953acb0052af2a3ac0f6e375295fdb85"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g1613e9822383100508d2e5cbdeb1e774">PA_SetSpriteVflip</a>(screen, obj, vflip)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_VFLIP)) + ((vflip) &lt;&lt; 13)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser ou non le flip vertical pour un sprite.  <a href="#g1613e9822383100508d2e5cbdeb1e774"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g3855089c9cf41b39babe471ff20e8a2c">PA_GetSpriteVflip</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_VFLIP) &gt;&gt; 13)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Si le flip vertical est utilisé ou non pour un sprite.  <a href="#g3855089c9cf41b39babe471ff20e8a2c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gc0a3dab3f8cd7458a2c6bac496f11457">PA_SetSpriteGfx</a>(screen, obj, gfx)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_GFX)) + ((gfx) &amp; OBJ_GFX)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Modifier les graphismes utilisés par un sprite.  <a href="#gc0a3dab3f8cd7458a2c6bac496f11457"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g3909b4feb83bc29337e3d9ea8999aa5d">PA_GetSpriteGfx</a>(screen, obj)&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &amp; OBJ_GFX)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer le gfx utilisés par un sprite.  <a href="#g3909b4feb83bc29337e3d9ea8999aa5d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g89eae5f07d1eadd3c14dde5c8fe56a5d">PA_SetSpritePrio</a>(screen, obj, prio)&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_PRIO)) + ((prio) &lt;&lt; 10)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler la priorité d'un sprite par rapport au Bg.  <a href="#g89eae5f07d1eadd3c14dde5c8fe56a5d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ge9f78a08ec4ce948cbf77cdd5486cd29">PA_GetSpritePrio</a>(screen, obj)&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr2 &amp; OBJ_PRIO) &gt;&gt; 10)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la priorité d'un sprite par rapport au Bg.  <a href="#ge9f78a08ec4ce948cbf77cdd5486cd29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g8b3a167e67ef84d36ce6b8a1d100c1ef">PA_GetSpriteLx</a>(screen, sprite)&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___sprite_8h.html#bf4d69a32fb8ac0f0af6b9cabdd1e2da">PA_size</a>[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].lx</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un sprite.  <a href="#g8b3a167e67ef84d36ce6b8a1d100c1ef"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g6eb6db7837dfc5b7c7aefb30e0f4f680">PA_GetSpriteLy</a>(screen, sprite)&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___sprite_8h.html#bf4d69a32fb8ac0f0af6b9cabdd1e2da">PA_size</a>[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].ly</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un sprite.  <a href="#g6eb6db7837dfc5b7c7aefb30e0f4f680"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gbd11e15d7f6a467c62fbd99b3e1376a5">PA_CloneSprite</a>(screen, obj, target)&nbsp;&nbsp;&nbsp;{PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++<a class="el" href="_p_a___sprite_8h.html#9e48dffcd5bf38f4c18f0a08bc49b94a">obj_per_gfx</a>[screen][PA_GetSpriteGfx(screen, target)];}</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cloner un sprite. Marche uniquement pour les sprites sur un meme écran.  <a href="#gbd11e15d7f6a467c62fbd99b3e1376a5"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g00ec06b6dcb233eff61098743018cd4a">PA_UpdateOAM</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les <a class="el" href="structinfos.html">infos</a> des sprites pour les 2 écrans. A faire dans le VBL.  <a href="#g00ec06b6dcb233eff61098743018cd4a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g13cf9bfdba81fd1db52c36657c86a485">PA_CreateGfx</a> (u8 screen, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger en mémoire un gfx à utiliser plus tard pour un sprite. Renvoie le numéro en mémoire.  <a href="#g13cf9bfdba81fd1db52c36657c86a485"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g432b21232695f012bd930b929dd3d4ee">PA_ResetSpriteSysScreen</a> (u8 screen)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g7c97c5d0c410350615f4bc46f8b3fadf">PA_ResetSpriteSys</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Remise à 0 du système de sprite, de la mémoire...  <a href="#g7c97c5d0c410350615f4bc46f8b3fadf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf3ff1df272606a10c4e0cb0f6a5395c1">PA_CreateSprite</a> (u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version simple de la fonction.  <a href="#gf3ff1df272606a10c4e0cb0f6a5395c1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gafc23252312c159966d08092e0dd9255">PA_CreateSpriteEx</a> (u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction.  <a href="#gafc23252312c159966d08092e0dd9255"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g420e828590dcef56391a6f9059cc8c5c">PA_Create16bitSpriteEx</a> (u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite de 16 bits avec ses gfx... Ceci est la version complexe de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche.  <a href="#g420e828590dcef56391a6f9059cc8c5c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g533482a4c4e4431b880820c352f7655a">PA_Create16bitSpriteFromGfx</a> (u8 screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite de 16 bits à partir de gfx...  <a href="#g533482a4c4e4431b880820c352f7655a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#ge3bee1bc3d320b0c368d20fb7131bc0d">PA_Create16bitSprite</a> (u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche.  <a href="#ge3bee1bc3d320b0c368d20fb7131bc0d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g06d345ac7c5ee7f196353f3f91c56532">PA_CreateSpriteFromGfx</a> (u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version simple de la fonction.  <a href="#g06d345ac7c5ee7f196353f3f91c56532"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf9d73a0c236b959a22fd9be887b56190">PA_CreateSpriteExFromGfx</a> (u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction.  <a href="#gf9d73a0c236b959a22fd9be887b56190"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g44454768a7bf46205aef1cfbd340e6af">PA_UpdateGfx</a> (u8 screen, u16 gfx_number, void *obj_data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx donnés.  <a href="#g44454768a7bf46205aef1cfbd340e6af"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gede715c923dccb2a649029ae1742ee4a">PA_UpdateGfxAndMem</a> (u8 screen, u8 gfx_number, void *obj_data)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour les Gfx donnés et le pointer d'animation dans PAlib... Uniquement pour utilisateurs avertis.  <a href="#gede715c923dccb2a649029ae1742ee4a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gcbfc3e66ceaa548e28899810ae08d26c">PA_DeleteGfx</a> (u8 screen, u16 obj_gfx)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un Gfx. Si un sprite l'utilisait, il deviendra invisible...  <a href="#gcbfc3e66ceaa548e28899810ae08d26c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g3b88f09871c225c80273a8d4a55c37f2">PA_DeleteSprite</a> (u8 screen, u8 obj_number)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un sprite. S'il était le seul à utiliser un gfx, il sera effacé lui aussi.  <a href="#g3b88f09871c225c80273a8d4a55c37f2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g39afb930b8780967626c46d192cfc8cb">PA_SetRotset</a> (u8 screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner et zoomer un sprite.  <a href="#g39afb930b8780967626c46d192cfc8cb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g0d8ea45c1c458dbe884eb509166bb894">PA_SetRotsetNoZoom</a> (u8 screen, u8 rotset, s16 angle)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner un sprite sans zoomer. C'est un peu plus rapide que la fonction PA_SetRotset.  <a href="#g0d8ea45c1c458dbe884eb509166bb894"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g119bcd7d495cc380098a4ca92f7222b3">PA_SetRotsetNoAngle</a> (u8 screen, u8 rotset, u16 zoomx, u16 zoomy)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Zoomer un sprite sans le faire tourner. C'est un peu plus rapide que la fonction PA_SetRotset.  <a href="#g119bcd7d495cc380098a4ca92f7222b3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf8c1762e9ecc2e93bbe6b91648e043a0">PA_SetSpriteXY</a> (u8 screen, u8 sprite, s16 x, s16 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X et Y du sprite à l'écran.  <a href="#gf8c1762e9ecc2e93bbe6b91648e043a0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gb699b4129293c647a28ff476cffddc72">PA_Set16bitSpriteAlpha</a> (u8 screen, u8 sprite, u8 alpha)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Position X du sprite à l'écran.  <a href="#gb699b4129293c647a28ff476cffddc72"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g0af73965180c4cf4ce63094f1b3ebfbf">PA_SetSpriteAnimEx</a> (u8 screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler l'image du sprite dans l'animation. Cette fonction est plus rapide que PA_SetSpriteAnim parce qu'elle n'a pas à rechercher les dimensions du sprite.  <a href="#g0af73965180c4cf4ce63094f1b3ebfbf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gcc6a891a7c9870da327c097810a4dbee">PA_SetSpriteAnim</a> (u8 screen, u8 sprite, s16 animframe)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler l'image du sprite dans l'animation. Identique à PA_SetSpriteAnimEx, mais plus simple à utiliser, par contre plus lent.  <a href="#gcc6a891a7c9870da327c097810a4dbee"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gfa1f236952d1e40c23193851c0b46ccd">PA_StartSpriteAnimEx</a> (u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !  <a href="#gfa1f236952d1e40c23193851c0b46ccd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g8c3dea2736eb6ef26a59927ea6057dba">PA_StartSpriteAnim</a> (u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas !  <a href="#g8c3dea2736eb6ef26a59927ea6057dba"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gea076b58f79163360abf9684b15838fc">PA_StopSpriteAnim</a> (u8 screen, u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Arrêter une animation de sprite.  <a href="#gea076b58f79163360abf9684b15838fc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g0a67062587c9df8378c560f0dd14f8fb">PA_SetSpriteAnimFrame</a> (u8 screen, u8 sprite, u16 frame)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le numéro actuel de la frame d'animation.  <a href="#g0a67062587c9df8378c560f0dd14f8fb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g805237160c4eaf60ea333216a022616e">PA_GetSpriteAnimFrame</a> (u8 screen, u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le numéro actuel de la frame d'animation.  <a href="#g805237160c4eaf60ea333216a022616e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g193fe58a3e0cc0d801f4268ea1aa0ad4">PA_SetSpriteAnimSpeed</a> (u8 screen, u8 sprite, s16 speed)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la vitesse de l'animation.  <a href="#g193fe58a3e0cc0d801f4268ea1aa0ad4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g5a7eacf8941fe765c34a4baf30f7f6c5">PA_GetSpriteAnimSpeed</a> (u8 screen, u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la vitesse de l'animation.  <a href="#g5a7eacf8941fe765c34a4baf30f7f6c5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf17591725057594fa458d8657a3e98f8">PA_SetSpriteNCycles</a> (u8 screen, u8 sprite, s32 NCycles)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer le nombre de cycles d'animation restant (-1 pour inifini).  <a href="#gf17591725057594fa458d8657a3e98f8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">s32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf42552af820ff46a0875072061391a26">PA_GetSpriteNCycles</a> (u8 screen, u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le nombre de cycles d'animation restants.  <a href="#gf42552af820ff46a0875072061391a26"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g1f44ae6197463ff9d1c78772e5c97a9d">PA_SpriteAnimPause</a> (u8 screen, u8 sprite, u8 pause)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre en Pause en remettre en lecture une animation de sprite.  <a href="#g1f44ae6197463ff9d1c78772e5c97a9d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g5ba93c853d8d821ef895269a3502f229">PA_SetSpritePixel</a> (u8 screen, u8 sprite, u8 x, u8 y, u8 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent.  <a href="#g5ba93c853d8d821ef895269a3502f229"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gad5e8a20aa850a13896740dcd93a5fcc">PA_GetSpritePixel</a> (u8 screen, u8 sprite, u8 x, u8 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent.  <a href="#gad5e8a20aa850a13896740dcd93a5fcc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf11d2dd56dad1ad2e8023e79c03efb41">PA_GetSprite16cPixel</a> (u8 screen, u8 sprite, u8 x, u8 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel d'un sprite de 16 couleurs.  <a href="#gf11d2dd56dad1ad2e8023e79c03efb41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gcb883c2266c143cded7f6ba59dedc748">PA_InitSpriteDraw</a> (u8 screen, u8 sprite)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise un sprite pour pouvoir dessiner dessus !  <a href="#gcb883c2266c143cded7f6ba59dedc748"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#gf074585d759f2cb59c8113e7fbbea62f">PA_InitAllSpriteDraw</a> (void)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise tous les sprites à l'écran pour dessiner dessus.  <a href="#gf074585d759f2cb59c8113e7fbbea62f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g20c40365581c33a701a95870432f97c7">PA_InitSpriteExtPrio</a> (u8 SpritePrio)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer le systeme de priorité de sprites PAlib. Plus lent que le systeme normal, il permet d'avoir 256 niveaux de priorité (supplante la priorité par numéro de sprites).  <a href="#g20c40365581c33a701a95870432f97c7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___sprite.html#g47fc1052f95c514b802115a0986ed34b">PA_SetSpriteExtPrio</a> (u8 screen, u8 sprite, u8 prio)</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description dÃ©taillÃ©e</h2>
+Load Sprite, move them around, rotate them... <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="gbd11e15d7f6a467c62fbd99b3e1376a5"></a><!-- doxytag: member="PA_Sprite.h::PA_CloneSprite" ref="gbd11e15d7f6a467c62fbd99b3e1376a5" args="(screen, obj, target)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_CloneSprite          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">target&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;{PA_obj[screen][obj].atr0 = PA_obj[screen][target].atr0; PA_obj[screen][obj].atr1 = PA_obj[screen][target].atr1; PA_obj[screen][obj].atr2 = PA_obj[screen][target].atr2; ++<a class="el" href="_p_a___sprite_8h.html#9e48dffcd5bf38f4c18f0a08bc49b94a">obj_per_gfx</a>[screen][PA_GetSpriteGfx(screen, target)];}</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Cloner un sprite. Marche uniquement pour les sprites sur un meme écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>target</em>&nbsp;</td><td>Numéro de la cible à cloner </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gd89fdbc2bddda4c51e91e2ba388ce484"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteColors" ref="gd89fdbc2bddda4c51e91e2ba388ce484" args="(screen, sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteColors          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sprite&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((PA_obj[screen][sprite].atr0 &amp; N_COLORS) &gt;&gt; 13)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mode de couleur d'un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gfc0ed987ebc8f23b0f2ae49826f3dab8"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteDblsize" ref="gfc0ed987ebc8f23b0f2ae49826f3dab8" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteDblsize          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; DBLSIZE) &gt;&gt; 9)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Etat du mode Doublesize pour un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g3909b4feb83bc29337e3d9ea8999aa5d"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteGfx" ref="g3909b4feb83bc29337e3d9ea8999aa5d" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteGfx          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &amp; OBJ_GFX)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer le gfx utilisés par un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g953acb0052af2a3ac0f6e375295fdb85"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteHflip" ref="g953acb0052af2a3ac0f6e375295fdb85" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteHflip          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_HFLIP) &gt;&gt; 12)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+S'il y a un flip horizontal pour un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g8b3a167e67ef84d36ce6b8a1d100c1ef"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteLx" ref="g8b3a167e67ef84d36ce6b8a1d100c1ef" args="(screen, sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteLx          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sprite&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___sprite_8h.html#bf4d69a32fb8ac0f0af6b9cabdd1e2da">PA_size</a>[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].lx</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la largeur d'un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g6eb6db7837dfc5b7c7aefb30e0f4f680"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteLy" ref="g6eb6db7837dfc5b7c7aefb30e0f4f680" args="(screen, sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteLy          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sprite&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___sprite_8h.html#bf4d69a32fb8ac0f0af6b9cabdd1e2da">PA_size</a>[PA_obj[screen][sprite].atr0 &gt;&gt; 14][PA_obj[screen][sprite].atr1 &gt;&gt; 14].ly</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la hauteur d'un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g8eade41cc18bc24efbda6a25703cce3d"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteMode" ref="g8eade41cc18bc24efbda6a25703cce3d" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteMode          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MODE) &gt;&gt; 10)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf7007fc7025218586ca19aec5e2dd5b6"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteMosaic" ref="gf7007fc7025218586ca19aec5e2dd5b6" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteMosaic          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr0 &amp; OBJ_MOSAIC) &gt;&gt; 12)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Si un sprite est en mode mosaic. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gc9886ffb71301524b7302f6bff6a2435"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpritePal" ref="gc9886ffb71301524b7302f6bff6a2435" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpritePal          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr2 &gt;&gt; 12)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Palette d'un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ge9f78a08ec4ce948cbf77cdd5486cd29"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpritePrio" ref="ge9f78a08ec4ce948cbf77cdd5486cd29" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpritePrio          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr2 &amp; OBJ_PRIO) &gt;&gt; 10)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la priorité d'un sprite par rapport au Bg. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g3855089c9cf41b39babe471ff20e8a2c"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteVflip" ref="g3855089c9cf41b39babe471ff20e8a2c" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteVflip          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((PA_obj[screen][obj].atr1 &amp; OBJ_VFLIP) &gt;&gt; 13)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Si le flip vertical est utilisé ou non pour un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g353097a994619fb54e46b8fff6eb15ca"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteX" ref="g353097a994619fb54e46b8fff6eb15ca" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteX          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr1 &amp; (PA_OBJ_X))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Position X du sprite à l'écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gbe6706a941e65ac879edb4c0422967bb"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteY" ref="gbe6706a941e65ac879edb4c0422967bb" args="(screen, obj)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetSpriteY          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;(PA_obj[screen][obj].atr0 &amp; PA_OBJ_Y)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Position Y du sprite à l'écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g26e67beb53eebad5aaa121d426a5984d"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteColors" ref="g26e67beb53eebad5aaa121d426a5984d" args="(screen, sprite, n_colors)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteColors          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sprite,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">n_colors&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(N_COLORS)) + ((n_colors) &lt;&lt; 13)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changer le mode de couleur du sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n_colors</em>&nbsp;</td><td>0 pour 16 couleurs, 1 pour 256 </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ge104c411fd7a04ad6265a85d48ddc3a5"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteDblsize" ref="ge104c411fd7a04ad6265a85d48ddc3a5" args="(screen, obj, dblsize)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteDblsize          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">dblsize&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(DBLSIZE)) + ((dblsize) &lt;&lt; 9)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Activer ou désactiver le mode Doublesize pour un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dblsize</em>&nbsp;</td><td>1 pour l'activer, 0 pour l'inactiver </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gc0a3dab3f8cd7458a2c6bac496f11457"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteGfx" ref="gc0a3dab3f8cd7458a2c6bac496f11457" args="(screen, obj, gfx)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteGfx          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gfx&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_GFX)) + ((gfx) &amp; OBJ_GFX)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Modifier les graphismes utilisés par un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Numéro du gfx en mémoire ; on peut obtenir un numéro avec PA_CreateGfx ou <a class="el" href="group___sprite.html#g3909b4feb83bc29337e3d9ea8999aa5d" title="Récupérer le gfx utilisés par un sprite.">PA_GetSpriteGfx(obj_number)</a>; </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g641750a4e110a0baf38906fb3082a51d"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteHflip" ref="g641750a4e110a0baf38906fb3082a51d" args="(screen, obj, hflip)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteHflip          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">hflip&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_HFLIP)) + ((hflip) &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Utiliser ou non le flip horizontal pour un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Flip horizontal, 1 pour oui, 0 pour non... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g8e36dc74210832c38f6bf6864344f7a6"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteMode" ref="g8e36dc74210832c38f6bf6864344f7a6" args="(screen, sprite, obj_mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteMode          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sprite,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj_mode&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][sprite].atr0 = (PA_obj[screen][sprite].atr0 &amp; ALL_BUT(OBJ_MODE)) + ((obj_mode) &lt;&lt; 10)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Régler le mode d'un sprite : 0 pour normal, 1 pour transparent, 2 pour fenetre. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_mode</em>&nbsp;</td><td>Mode : 0 pour normal, 1 pour transparent, 2 pour fenetre ; ne marche pas encore </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g1257268cb4fd90c31da4f2eaac4f5540"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteMosaic" ref="g1257268cb4fd90c31da4f2eaac4f5540" args="(screen, obj, mosaic)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteMosaic          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mosaic&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(OBJ_MOSAIC)) + ((mosaic) &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre ou non un sprite en mode mosaic. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mosaic</em>&nbsp;</td><td>Mode mosaic activé (1) ou désactivé (0) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g9c4155c5f3cbd7fed697e992766ba8f0"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpritePal" ref="g9c4155c5f3cbd7fed697e992766ba8f0" args="(screen, obj, pal)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpritePal          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pal&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT_PAL) + ((pal) &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changer la palette d'un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pal</em>&nbsp;</td><td>Numéro de la palette (de 0 à 15) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g89eae5f07d1eadd3c14dde5c8fe56a5d"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpritePrio" ref="g89eae5f07d1eadd3c14dde5c8fe56a5d" args="(screen, obj, prio)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpritePrio          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">prio&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr2 = (PA_obj[screen][obj].atr2 &amp; ALL_BUT(OBJ_PRIO)) + ((prio) &lt;&lt; 10)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Régler la priorité d'un sprite par rapport au Bg. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>prio</em>&nbsp;</td><td>Priorité du sprite : 0 est au-dessus du fond 0, 1 au-dessus du 1, etc... (0-3) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf3c02384ab8e196fb1959f9390fd746d"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteRotDisable" ref="gf3c02384ab8e196fb1959f9390fd746d" args="(screen, sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteRotDisable          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sprite&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 &amp;= ALL_BUT(OBJ_ROT);  PA_obj[screen][sprite].atr1 &amp;= ALL_BUT_ROTSET;}</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Arreter de faire tourner et zoomer un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Sprite que l'on veut faire tourner </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g07261631ed2d033e15fc1557e386ffe4"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteRotEnable" ref="g07261631ed2d033e15fc1557e386ffe4" args="(screen, sprite, rotset)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteRotEnable          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">sprite,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rotset&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;{PA_obj[screen][sprite].atr0 |= OBJ_ROT;  PA_obj[screen][sprite].atr1 = (PA_obj[screen][sprite].atr1 &amp; ALL_BUT_ROTSET) + ((rotset) &lt;&lt; 9);}</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Faire tourner et zoomer un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Sprite que l'on veut faire tourner </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotset</em>&nbsp;</td><td>Rotset que l'on veut pour un sprite donné (0-31). On peut a priori utiliser un rotset pour plusieurs sprites, s'ils sont zoomés/tournés pareil... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g1613e9822383100508d2e5cbdeb1e774"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteVflip" ref="g1613e9822383100508d2e5cbdeb1e774" args="(screen, obj, vflip)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteVflip          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vflip&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(OBJ_VFLIP)) + ((vflip) &lt;&lt; 13)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Utiliser ou non le flip vertical pour un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vflip</em>&nbsp;</td><td>Flip vertical, 1 pour oui, 0 pour non... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g4bf93eaa77e6e533cc05f873a35bb95a"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteX" ref="g4bf93eaa77e6e533cc05f873a35bb95a" args="(screen, obj, x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteX          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr1 = (PA_obj[screen][obj].atr1 &amp; ALL_BUT(PA_OBJ_X)) + ((x) &amp; PA_OBJ_X)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Position X du sprite à l'écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gced1fba7a40575fe1b7794b45255d5e9"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteY" ref="gced1fba7a40575fe1b7794b45255d5e9" args="(screen, obj, y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSpriteY          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_obj[screen][obj].atr0 = (PA_obj[screen][obj].atr0 &amp; ALL_BUT(PA_OBJ_Y)) + ((y) &amp; PA_OBJ_Y)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Position Y du sprite à l'écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g9af951fe9c7c3faca32d0a1e039ec8be"></a><!-- doxytag: member="PA_Sprite.h::PA_UpdateOAM0" ref="g9af951fe9c7c3faca32d0a1e039ec8be" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_UpdateOAM0          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj, (void*)OAM0, 256, DMA_32NOW)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre à jour les <a class="el" href="structinfos.html">infos</a> des sprites pour l'écran 0 uniquement. A faire dans le VBL. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="geafedd78475febc931b34aeba95c2f14"></a><!-- doxytag: member="PA_Sprite.h::PA_UpdateOAM1" ref="geafedd78475febc931b34aeba95c2f14" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_UpdateOAM1          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DMA_Copy((void*)PA_obj + 256, (void*)OAM1, 256, DMA_32NOW)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre à jour les <a class="el" href="structinfos.html">infos</a> des sprites pour l'écran 1 uniquement. A faire dans le VBL. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g1c44c32e4774169e2397ea7889ca6436"></a><!-- doxytag: member="PA_Sprite.h::PA_UpdateSpriteGfx" ref="g1c44c32e4774169e2397ea7889ca6436" args="(screen, obj_number, obj_data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_UpdateSpriteGfx          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj_number,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">obj_data&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_UpdateGfx(screen, PA_GetSpriteGfx(screen, obj_number), obj_data)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre à jour les Gfx d'un sprite donné. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Graphisme à charger </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="ge3bee1bc3d320b0c368d20fb7131bc0d"></a><!-- doxytag: member="PA_Sprite.h::PA_Create16bitSprite" ref="ge3bee1bc3d320b0c368d20fb7131bc0d" args="(u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_Create16bitSprite           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>obj_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creer un sprite de 16 bits avec ses gfx... Ceci est la version simple de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Gfx à charger </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g420e828590dcef56391a6f9059cc8c5c"></a><!-- doxytag: member="PA_Sprite.h::PA_Create16bitSpriteEx" ref="g420e828590dcef56391a6f9059cc8c5c" args="(u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_Create16bitSpriteEx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>obj_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>mosaic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>hflip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>vflip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>prio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>dblsize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creer un sprite de 16 bits avec ses gfx... Ceci est la version complexe de la fonction. Attention : un sprite de 16 bits DOIT etre large de 128 pixels, meme si ce sprite ne prend qu'une petite partie sur la gauche. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Gfx à charger </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mosaic</em>&nbsp;</td><td>Activer le mode mosaique pour ce sprite. Pas encore au point... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Flip horizontal activé ou non. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vflip</em>&nbsp;</td><td>Flip vertical... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>prio</em>&nbsp;</td><td>Priorité du sprite vis-à-vis des fonds : devant quel fond l'afficher... (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dblsize</em>&nbsp;</td><td>Doubler la taille possible du sprite. A activer uniquement si on compte grossir et faire tourner le sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g533482a4c4e4431b880820c352f7655a"></a><!-- doxytag: member="PA_Sprite.h::PA_Create16bitSpriteFromGfx" ref="g533482a4c4e4431b880820c352f7655a" args="(u8 screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_Create16bitSpriteFromGfx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>gfx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creer un sprite de 16 bits à partir de gfx... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>gfx</em>&nbsp;</td><td>Gfx à utiliser </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g13cf9bfdba81fd1db52c36657c86a485"></a><!-- doxytag: member="PA_Sprite.h::PA_CreateGfx" ref="g13cf9bfdba81fd1db52c36657c86a485" args="(u8 screen, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u16 PA_CreateGfx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>obj_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color_mode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Charger en mémoire un gfx à utiliser plus tard pour un sprite. Renvoie le numéro en mémoire. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Gfx à charger </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0), ou 2 pour 16 bits </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf3ff1df272606a10c4e0cb0f6a5395c1"></a><!-- doxytag: member="PA_Sprite.h::PA_CreateSprite" ref="gf3ff1df272606a10c4e0cb0f6a5395c1" args="(u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_CreateSprite           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>obj_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>palette</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creer un sprite avec ses gfx... Ceci est la version simple de la fonction. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Gfx à charger </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gafc23252312c159966d08092e0dd9255"></a><!-- doxytag: member="PA_Sprite.h::PA_CreateSpriteEx" ref="gafc23252312c159966d08092e0dd9255" args="(u8 screen, u8 obj_number, void *obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_CreateSpriteEx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>obj_data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>palette</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>mosaic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>hflip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>vflip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>prio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>dblsize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Gfx à charger </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_mode</em>&nbsp;</td><td>Mode du sprite (normal, transparent, fenetre). Pas encore opérationnel, laisser à 0... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mosaic</em>&nbsp;</td><td>Activer le mode mosaique pour ce sprite. Pas encore au point... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Flip horizontal activé ou non. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vflip</em>&nbsp;</td><td>Flip vertical... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>prio</em>&nbsp;</td><td>Priorité du sprite vis-à-vis des fonds : devant quel fond l'afficher... (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dblsize</em>&nbsp;</td><td>Doubler la taille possible du sprite. A activer uniquement si on compte grossir et faire tourner le sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf9d73a0c236b959a22fd9be887b56190"></a><!-- doxytag: member="PA_Sprite.h::PA_CreateSpriteExFromGfx" ref="gf9d73a0c236b959a22fd9be887b56190" args="(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_CreateSpriteExFromGfx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>obj_gfx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>palette</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>mosaic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>hflip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>vflip</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>prio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>dblsize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creer un sprite avec ses gfx... Ceci est la version complexe de la fonction. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_gfx</em>&nbsp;</td><td>Gfx en mémoire à utiliser. On peut en avoir avec PA_GetSpriteGfx ou PA_CreateGfx </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_mode</em>&nbsp;</td><td>Mode du sprite (normal, transparent, fenetre). Pas encore opérationnel, laisser à 0... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>mosaic</em>&nbsp;</td><td>Activer le mode mosaique pour ce sprite. Pas encore au point... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Flip horizontal activé ou non. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vflip</em>&nbsp;</td><td>Flip vertical... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>prio</em>&nbsp;</td><td>Priorité du sprite vis-à-vis des fonds : devant quel fond l'afficher... (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>dblsize</em>&nbsp;</td><td>Doubler la taille possible du sprite. A activer uniquement si on compte grossir et faire tourner le sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g06d345ac7c5ee7f196353f3f91c56532"></a><!-- doxytag: member="PA_Sprite.h::PA_CreateSpriteFromGfx" ref="g06d345ac7c5ee7f196353f3f91c56532" args="(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_CreateSpriteFromGfx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>obj_gfx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_shape</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color_mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>palette</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Creer un sprite avec ses gfx... Ceci est la version simple de la fonction. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro du sprite que vous voulez utiliser (de 0 à 127 pour chaque écran séparemment). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_gfx</em>&nbsp;</td><td>Gfx en mémoire à utiliser. On peut en avoir avec PA_GetSpriteGfx ou PA_CreateGfx </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_shape</em>&nbsp;</td><td>Forme du sprite à charger, de 0 à 2. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_size</em>&nbsp;</td><td>Taille du sprite. Utiliser la macro OBJ_SIZE_32X32 (...) pour charger la forme et la taille... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Mode 256 ou 16 couleurs (1 ou 0). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Palette à utiliser (0-15). </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gcbfc3e66ceaa548e28899810ae08d26c"></a><!-- doxytag: member="PA_Sprite.h::PA_DeleteGfx" ref="gcbfc3e66ceaa548e28899810ae08d26c" args="(u8 screen, u16 obj_gfx)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_DeleteGfx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>obj_gfx</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Effacer un Gfx. Si un sprite l'utilisait, il deviendra invisible... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_gfx</em>&nbsp;</td><td>Numéro du Gfx en mémoire </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g3b88f09871c225c80273a8d4a55c37f2"></a><!-- doxytag: member="PA_Sprite.h::PA_DeleteSprite" ref="g3b88f09871c225c80273a8d4a55c37f2" args="(u8 screen, u8 obj_number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_DeleteSprite           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>obj_number</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Effacer un sprite. S'il était le seul à utiliser un gfx, il sera effacé lui aussi. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_number</em>&nbsp;</td><td>Numéro du sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf11d2dd56dad1ad2e8023e79c03efb41"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSprite16cPixel" ref="gf11d2dd56dad1ad2e8023e79c03efb41" args="(u8 screen, u8 sprite, u8 x, u8 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u8 PA_GetSprite16cPixel           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la couleur d'un pixel d'un sprite de 16 couleurs. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g805237160c4eaf60ea333216a022616e"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteAnimFrame" ref="g805237160c4eaf60ea333216a022616e" args="(u8 screen, u8 sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u16 PA_GetSpriteAnimFrame           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Renvoie le numéro actuel de la frame d'animation. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g5a7eacf8941fe765c34a4baf30f7f6c5"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteAnimSpeed" ref="g5a7eacf8941fe765c34a4baf30f7f6c5" args="(u8 screen, u8 sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u16 PA_GetSpriteAnimSpeed           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Renvoie la vitesse de l'animation. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf42552af820ff46a0875072061391a26"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpriteNCycles" ref="gf42552af820ff46a0875072061391a26" args="(u8 screen, u8 sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline s32 PA_GetSpriteNCycles           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Renvoie le nombre de cycles d'animation restants. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gad5e8a20aa850a13896740dcd93a5fcc"></a><!-- doxytag: member="PA_Sprite.h::PA_GetSpritePixel" ref="gad5e8a20aa850a13896740dcd93a5fcc" args="(u8 screen, u8 sprite, u8 x, u8 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u8 PA_GetSpritePixel           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la couleur d'un pixel d'un sprite. Comme PA_GetSpritePixelEx, avec moins d'options, mais un peu plus lent. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf074585d759f2cb59c8113e7fbbea62f"></a><!-- doxytag: member="PA_Sprite.h::PA_InitAllSpriteDraw" ref="gf074585d759f2cb59c8113e7fbbea62f" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_InitAllSpriteDraw           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise tous les sprites à l'écran pour dessiner dessus. 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gcb883c2266c143cded7f6ba59dedc748"></a><!-- doxytag: member="PA_Sprite.h::PA_InitSpriteDraw" ref="gcb883c2266c143cded7f6ba59dedc748" args="(u8 screen, u8 sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InitSpriteDraw           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise un sprite pour pouvoir dessiner dessus ! 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g20c40365581c33a701a95870432f97c7"></a><!-- doxytag: member="PA_Sprite.h::PA_InitSpriteExtPrio" ref="g20c40365581c33a701a95870432f97c7" args="(u8 SpritePrio)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InitSpriteExtPrio           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>SpritePrio</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Activer le systeme de priorité de sprites PAlib. Plus lent que le systeme normal, il permet d'avoir 256 niveaux de priorité (supplante la priorité par numéro de sprites). 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>SpritePrio</em>&nbsp;</td><td>1 pour on, 0 pour off... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g7c97c5d0c410350615f4bc46f8b3fadf"></a><!-- doxytag: member="PA_Sprite.h::PA_ResetSpriteSys" ref="g7c97c5d0c410350615f4bc46f8b3fadf" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_ResetSpriteSys           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Remise à 0 du système de sprite, de la mémoire... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g432b21232695f012bd930b929dd3d4ee"></a><!-- doxytag: member="PA_Sprite.h::PA_ResetSpriteSysScreen" ref="g432b21232695f012bd930b929dd3d4ee" args="(u8 screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_ResetSpriteSysScreen           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gb699b4129293c647a28ff476cffddc72"></a><!-- doxytag: member="PA_Sprite.h::PA_Set16bitSpriteAlpha" ref="gb699b4129293c647a28ff476cffddc72" args="(u8 screen, u8 sprite, u8 alpha)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_Set16bitSpriteAlpha           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>alpha</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Position X du sprite à l'écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite, uniquement pour les sprites 16bit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>alpha</em>&nbsp;</td><td>Paramèter alpha, 0-15 </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g39afb930b8780967626c46d192cfc8cb"></a><!-- doxytag: member="PA_Sprite.h::PA_SetRotset" ref="g39afb930b8780967626c46d192cfc8cb" args="(u8 screen, u8 rotset, s16 angle, u16 zoomx, u16 zoomy)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetRotset           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>rotset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>zoomx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>zoomy</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Faire tourner et zoomer un sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotset</em>&nbsp;</td><td>Rotset que l'on veut changer. Pour attribuer un rotset à un sprite, utiliser PA_SetSpriteRotEnable </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>angle</em>&nbsp;</td><td>Angle, entre 0 et 512 (et non 360, attention !) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>zoomx</em>&nbsp;</td><td>Zoom horizontal. 256 est pas de zoom, 512 2 fois plus petit, et 128 2 fois plus grand... Ajuster au mieux ! :p </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>zoomy</em>&nbsp;</td><td>Zoom vertical. 256 est pas de zoom, 512 2 fois plus petit, et 128 2 fois plus grand... Ajuster au mieux ! :p </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g119bcd7d495cc380098a4ca92f7222b3"></a><!-- doxytag: member="PA_Sprite.h::PA_SetRotsetNoAngle" ref="g119bcd7d495cc380098a4ca92f7222b3" args="(u8 screen, u8 rotset, u16 zoomx, u16 zoomy)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetRotsetNoAngle           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>rotset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>zoomx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>zoomy</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Zoomer un sprite sans le faire tourner. C'est un peu plus rapide que la fonction PA_SetRotset. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotset</em>&nbsp;</td><td>Rotset que l'on veut changer. Pour attribuer un rotset à un sprite, utiliser PA_SetSpriteRotEnable </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>zoomx</em>&nbsp;</td><td>Zoom horizontal. 256 est pas de zoom, 512 2 fois plus petit, et 128 2 fois plus grand... Ajuster au mieux ! :p </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>zoomy</em>&nbsp;</td><td>Zoom vertical. 256 est pas de zoom, 512 2 fois plus petit, et 128 2 fois plus grand... Ajuster au mieux ! :p </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g0d8ea45c1c458dbe884eb509166bb894"></a><!-- doxytag: member="PA_Sprite.h::PA_SetRotsetNoZoom" ref="g0d8ea45c1c458dbe884eb509166bb894" args="(u8 screen, u8 rotset, s16 angle)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetRotsetNoZoom           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>rotset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>angle</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Faire tourner un sprite sans zoomer. C'est un peu plus rapide que la fonction PA_SetRotset. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>rotset</em>&nbsp;</td><td>Rotset que l'on veut changer. Pour attribuer un rotset à un sprite, utiliser PA_SetSpriteRotEnable </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>angle</em>&nbsp;</td><td>Angle, entre 0 et 512 (et non 360, attention !) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gcc6a891a7c9870da327c097810a4dbee"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteAnim" ref="gcc6a891a7c9870da327c097810a4dbee" args="(u8 screen, u8 sprite, s16 animframe)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetSpriteAnim           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>animframe</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Régler l'image du sprite dans l'animation. Identique à PA_SetSpriteAnimEx, mais plus simple à utiliser, par contre plus lent. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animframe</em>&nbsp;</td><td>Frame de l'animation du sprite (0, 1, 2, etc...) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g0af73965180c4cf4ce63094f1b3ebfbf"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteAnimEx" ref="g0af73965180c4cf4ce63094f1b3ebfbf" args="(u8 screen, u8 sprite, u8 lx, u8 ly, u8 ncolors, s16 animframe)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetSpriteAnimEx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>lx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>ly</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>ncolors</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>animframe</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Régler l'image du sprite dans l'animation. Cette fonction est plus rapide que PA_SetSpriteAnim parce qu'elle n'a pas à rechercher les dimensions du sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lx</em>&nbsp;</td><td>Largeur du sprite (8, 16, 32, 64) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ly</em>&nbsp;</td><td>Hauteur du sprite (8, 16, 32, 64) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ncolors</em>&nbsp;</td><td>Mode couleur du sprite (0 pour 16 couleurs, 1 pour 256) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>animframe</em>&nbsp;</td><td>Frame de l'animation du sprite (0, 1, 2, etc...) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g0a67062587c9df8378c560f0dd14f8fb"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteAnimFrame" ref="g0a67062587c9df8378c560f0dd14f8fb" args="(u8 screen, u8 sprite, u16 frame)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetSpriteAnimFrame           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>frame</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changer le numéro actuel de la frame d'animation. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>frame</em>&nbsp;</td><td>Numéro de frame... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g193fe58a3e0cc0d801f4268ea1aa0ad4"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteAnimSpeed" ref="g193fe58a3e0cc0d801f4268ea1aa0ad4" args="(u8 screen, u8 sprite, s16 speed)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetSpriteAnimSpeed           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>speed</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changer la vitesse de l'animation. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>speed</em>&nbsp;</td><td>Vitesse, en fps... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g47fc1052f95c514b802115a0986ed34b"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteExtPrio" ref="g47fc1052f95c514b802115a0986ed34b" args="(u8 screen, u8 sprite, u8 prio)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_SetSpriteExtPrio           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>prio</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gf17591725057594fa458d8657a3e98f8"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteNCycles" ref="gf17591725057594fa458d8657a3e98f8" args="(u8 screen, u8 sprite, s32 NCycles)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetSpriteNCycles           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>NCycles</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Changer le nombre de cycles d'animation restant (-1 pour inifini). 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>NCycles</em>&nbsp;</td><td>Nombre de cycles </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g5ba93c853d8d821ef895269a3502f229"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpritePixel" ref="g5ba93c853d8d821ef895269a3502f229" args="(u8 screen, u8 sprite, u8 x, u8 y, u8 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetSpritePixel           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre un pixel d'un sprite à une couleur donnée. Comme PA_SetSpritePixelEx, avec moins d'options, mais un peu plus lent. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X du pixel à changer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y du pixel à changer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Nouvelle couleur de la palette à metrre </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf8c1762e9ecc2e93bbe6b91648e043a0"></a><!-- doxytag: member="PA_Sprite.h::PA_SetSpriteXY" ref="gf8c1762e9ecc2e93bbe6b91648e043a0" args="(u8 screen, u8 sprite, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_SetSpriteXY           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Position X et Y du sprite à l'écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position Y </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g1f44ae6197463ff9d1c78772e5c97a9d"></a><!-- doxytag: member="PA_Sprite.h::PA_SpriteAnimPause" ref="g1f44ae6197463ff9d1c78772e5c97a9d" args="(u8 screen, u8 sprite, u8 pause)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u16 PA_SpriteAnimPause           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>pause</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre en Pause en remettre en lecture une animation de sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>pause</em>&nbsp;</td><td>1 pour pause, 0 pour reprendre la lecture... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g8c3dea2736eb6ef26a59927ea6057dba"></a><!-- doxytag: member="PA_Sprite.h::PA_StartSpriteAnim" ref="g8c3dea2736eb6ef26a59927ea6057dba" args="(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_StartSpriteAnim           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>firstframe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>lastframe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>speed</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas ! 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>firstframe</em>&nbsp;</td><td>Premières image de l'animation, généralement 0.... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lastframe</em>&nbsp;</td><td>Dernière image à afficher. Une fois atteinte, ca retourne à la première </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>speed</em>&nbsp;</td><td>Vitesse, en frames par seconde (fps). 1 signifie donc 1 image par seconde... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gfa1f236952d1e40c23193851c0b46ccd"></a><!-- doxytag: member="PA_Sprite.h::PA_StartSpriteAnimEx" ref="gfa1f236952d1e40c23193851c0b46ccd" args="(u8 screen, u8 sprite, s16 firstframe, s16 lastframe, s16 speed, u8 type, s16 ncycles)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_StartSpriteAnimEx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>firstframe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>lastframe</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>speed</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>ncycles</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Démarre une animation de sprite. Une fois démarrée, elle continue tant qu'on ne l'arrête pas ! 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>firstframe</em>&nbsp;</td><td>Premières image de l'animation, généralement 0.... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lastframe</em>&nbsp;</td><td>Dernière image à afficher. Une fois atteinte, ca retourne à la première </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>speed</em>&nbsp;</td><td>Vitesse, en frames par seconde (fps). 1 signifie donc 1 image par seconde... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>Défini de quelle manière on veut boucler. ANIM_LOOP (0) pour normal, et ANIM_UPDOWN (1) pour d'avant en arrière </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ncycles</em>&nbsp;</td><td>Nombres de cycles d'animations avant l'arrêt. Si on utilise ANIM_UPDOWN, il faut 2 cycles pour que l'animation revienne à l'image de base </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gea076b58f79163360abf9684b15838fc"></a><!-- doxytag: member="PA_Sprite.h::PA_StopSpriteAnim" ref="gea076b58f79163360abf9684b15838fc" args="(u8 screen, u8 sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_StopSpriteAnim           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Arrêter une animation de sprite. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g44454768a7bf46205aef1cfbd340e6af"></a><!-- doxytag: member="PA_Sprite.h::PA_UpdateGfx" ref="g44454768a7bf46205aef1cfbd340e6af" args="(u8 screen, u16 gfx_number, void *obj_data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_UpdateGfx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>gfx_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>obj_data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre à jour les Gfx donnés. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>gfx_number</em>&nbsp;</td><td>Numéro du Gfx en mémoire </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Graphisme à charger </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gede715c923dccb2a649029ae1742ee4a"></a><!-- doxytag: member="PA_Sprite.h::PA_UpdateGfxAndMem" ref="gede715c923dccb2a649029ae1742ee4a" args="(u8 screen, u8 gfx_number, void *obj_data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_UpdateGfxAndMem           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>gfx_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>obj_data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre à jour les Gfx donnés et le pointer d'animation dans PAlib... Uniquement pour utilisateurs avertis. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>gfx_number</em>&nbsp;</td><td>Numéro du Gfx en mémoire </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>obj_data</em>&nbsp;</td><td>Graphisme à charger </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g00ec06b6dcb233eff61098743018cd4a"></a><!-- doxytag: member="PA_Sprite.h::PA_UpdateOAM" ref="g00ec06b6dcb233eff61098743018cd4a" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_UpdateOAM           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Mettre à jour les <a class="el" href="structinfos.html">infos</a> des sprites pour les 2 écrans. A faire dans le VBL. 
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>GÃ©nÃ©rÃ© le Sat Jun 13 12:57:00 2009 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Référence de la structure JPEG_HuffmanTable</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="functions.html"><span>Champs&nbsp;de&nbsp;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la structure JPEG_HuffmanTable</h1><!-- doxytag: class="JPEG_HuffmanTable" --><code>#include &lt;gba-jpeg-decode.h&gt;</code>
+<p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const unsigned char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___huffman_table.html#f5db13b1bfe83218edc6948b7d0763f7">huffval</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___huffman_table.html#70980acb15aaf45c7e3120f6d6fdd16d">maxcode</a> [16]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const unsigned char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___huffman_table.html#c292bc53174aa7ee91f1fe561a1c9e46">valptr</a> [16]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___huffman_table.html#d339a19db9955afa9dda6c105c57ee70">look_nbits</a> [256]</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___huffman_table.html#5a06e1e76cdf7111642e43672dc7897a">look_sym</a> [256]</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Description détaillée</h2>
+A huffman table. <hr><h2>Documentation des champs</h2>
+<a class="anchor" name="f5db13b1bfe83218edc6948b7d0763f7"></a><!-- doxytag: member="JPEG_HuffmanTable::huffval" ref="f5db13b1bfe83218edc6948b7d0763f7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char* <a class="el" href="struct_j_p_e_g___huffman_table.html#f5db13b1bfe83218edc6948b7d0763f7">JPEG_HuffmanTable::huffval</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Pointer to values in the table (256 entries). 
+</div>
+</div><p>
+<a class="anchor" name="d339a19db9955afa9dda6c105c57ee70"></a><!-- doxytag: member="JPEG_HuffmanTable::look_nbits" ref="d339a19db9955afa9dda6c105c57ee70" args="[256]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="struct_j_p_e_g___huffman_table.html#d339a19db9955afa9dda6c105c57ee70">JPEG_HuffmanTable::look_nbits</a>[256]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The lookahead buffer lengths. 
+</div>
+</div><p>
+<a class="anchor" name="5a06e1e76cdf7111642e43672dc7897a"></a><!-- doxytag: member="JPEG_HuffmanTable::look_sym" ref="5a06e1e76cdf7111642e43672dc7897a" args="[256]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char <a class="el" href="struct_j_p_e_g___huffman_table.html#5a06e1e76cdf7111642e43672dc7897a">JPEG_HuffmanTable::look_sym</a>[256]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The lookahead buffer values. 
+</div>
+</div><p>
+<a class="anchor" name="70980acb15aaf45c7e3120f6d6fdd16d"></a><!-- doxytag: member="JPEG_HuffmanTable::maxcode" ref="70980acb15aaf45c7e3120f6d6fdd16d" args="[16]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="struct_j_p_e_g___huffman_table.html#70980acb15aaf45c7e3120f6d6fdd16d">JPEG_HuffmanTable::maxcode</a>[16]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+The maximum code for each length - 1. 
+</div>
+</div><p>
+<a class="anchor" name="c292bc53174aa7ee91f1fe561a1c9e46"></a><!-- doxytag: member="JPEG_HuffmanTable::valptr" ref="c292bc53174aa7ee91f1fe561a1c9e46" args="[16]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char* <a class="el" href="struct_j_p_e_g___huffman_table.html#c292bc53174aa7ee91f1fe561a1c9e46">JPEG_HuffmanTable::valptr</a>[16]          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Items are subtracted by mincode and then indexed into huffval. 
+</div>
+</div><p>
+<hr>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
+<li>include/nds/<a class="el" href="gba-jpeg-decode_8h.html">gba-jpeg-decode.h</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Jun 13 12:57:00 2009 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

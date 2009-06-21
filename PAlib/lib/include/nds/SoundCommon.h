@@ -86,9 +86,9 @@ typedef struct {
 // ----- Global variables -----
 
 	// Magic address, after IPC struct
-#define sndControl		((SND_CONTROL*)((u32)(IPC) + sizeof(TransferRegion)))
+#define sndControl		((SND_CONTROL*)((u32)(PA_IPC_compat) + sizeof(PA_TransferRegion)))
 
-#define modControl		((MT_MSG_CMD*)((u32)(IPC) + sizeof(TransferRegion) + sizeof(SND_CONTROL)))
+#define modControl		((MT_MSG_CMD*)((u32)(PA_IPC_compat) + sizeof(PA_TransferRegion) + sizeof(SND_CONTROL)))
 		
 // ----------
 

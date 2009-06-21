@@ -83,7 +83,7 @@ extern void PA_DrawFake16bitLine(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 
          \~english Choose the screen (0 or 1)
          \~french [nothing]
 */
-#define PA_ClearFake16bitBg(screen) DMA_Copy(Blank, (void*)PA_DrawFake16[screen], 256*192, DMA_16NOW)
+#define PA_ClearFake16bitBg(screen) dmaFillWords(0, (void*)PA_DrawFake16[screen], 256*192*2)
 
 /*! \def PA_PutFake16bitPixel(screen, x, y, color)
     \brief

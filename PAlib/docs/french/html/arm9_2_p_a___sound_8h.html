@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Référence du fichier include/nds/arm9/PA_Sound.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Liste&nbsp;des&nbsp;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&nbsp;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier include/nds/arm9/PA_Sound.h</h1><code>#include &quot;<a class="el" href="_sound9_8h.html">../Sound9.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_p_a___i_p_c_8h.html">PA_IPC.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="_p_a___general_8h.html">PA_General.h</a>&quot;</code><br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#afe9a271af4161d1df293aff228777d7">PA_PlaySimpleSound</a>(name)&nbsp;&nbsp;&nbsp;AS_SoundDefaultPlay((u8*)name, (u32)name##_size, 127, 64, false, 0)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#9ecd01109196bb91db92feabce8d7aa8">PA_PlaySoundRepeat</a>(name)&nbsp;&nbsp;&nbsp;AS_SoundDefaultPlay((u8*)name, (u32)name##_size, 127, 64, true, 0)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#c9248775b5fd7fa3f446e5d35fd008bc">PA_SoundChannelIsBusy</a>(channel)&nbsp;&nbsp;&nbsp;IPC_Sound-&gt;chan[channel].busy</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#749103b2eac23c76e8ac5dadc4072f48">PA_SetSoundChannelPan</a>(chan, pan)&nbsp;&nbsp;&nbsp;AS_SetSoundPan(chan, pan)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#fe1238c6f3cbef9b7bfa651f15dee7d2">PA_SetSoundChannelVol</a>(chan, vol)&nbsp;&nbsp;&nbsp;AS_SetSoundVolume(chan, vol)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#45000e5dc39ea578ff4d2fe60bf20f4a">PA_StopSound</a>(chan)&nbsp;&nbsp;&nbsp;AS_SoundStop(chan)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#51dcfb63b4f1a92c97606eb27bf02c7d">PA_SetSoundVol</a>(vol)&nbsp;&nbsp;&nbsp;AS_SetMasterVolume(vol)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#fc6fa7ee2d3a64792742c4c4f580d9a9">PA_PlayMod</a>(file)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#0391e7439150dc665f053eee8bfc039f">PA_StopMod</a>()&nbsp;&nbsp;&nbsp;modControl-&gt;command = MT_MSG_END</td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#ddc5b00d88567e1b5baf19dbcf64e6da">PA_PlayPSG</a> (u8 PA_Channel, u8 vol, u8 pan, s32 freq, u8 duty)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utiliser les Programmable Sound Generators.  <a href="#ddc5b00d88567e1b5baf19dbcf64e6da"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="arm9_2_p_a___sound_8h.html#f29a8d9c85cc99ebda02c00afb118ade">PA_StopSound</a> (u8 PA_Channel)</td></tr>
+
+</table>
+<hr><h2>Documentation des macros</h2>
+<a class="anchor" name="fc6fa7ee2d3a64792742c4c4f580d9a9"></a><!-- doxytag: member="PA_Sound.h::PA_PlayMod" ref="fc6fa7ee2d3a64792742c4c4f580d9a9" args="(file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_PlayMod          </td>
+          <td>(</td>
+          <td class="paramtype">file&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{<a class="code" href="_sound_common_8h.html#531898c050d4e82d0bf66b152fc592ca">modControl</a>-&gt;module = (u8*)file; \
+                                                                                        <a class="code" href="_sound_common_8h.html#531898c050d4e82d0bf66b152fc592ca">modControl</a>-&gt;command = <a class="code" href="_sound_common_8h.html#37f1a52062a5e1951b903c26e5685baa">MT_MSG_INIT</a>;}
+</pre></div>
+</div>
+</div><p>
+<a class="anchor" name="afe9a271af4161d1df293aff228777d7"></a><!-- doxytag: member="PA_Sound.h::PA_PlaySimpleSound" ref="afe9a271af4161d1df293aff228777d7" args="(name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_PlaySimpleSound          </td>
+          <td>(</td>
+          <td class="paramtype">name&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;AS_SoundDefaultPlay((u8*)name, (u32)name##_size, 127, 64, false, 0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ecd01109196bb91db92feabce8d7aa8"></a><!-- doxytag: member="PA_Sound.h::PA_PlaySoundRepeat" ref="9ecd01109196bb91db92feabce8d7aa8" args="(name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_PlaySoundRepeat          </td>
+          <td>(</td>
+          <td class="paramtype">name&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;AS_SoundDefaultPlay((u8*)name, (u32)name##_size, 127, 64, true, 0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="749103b2eac23c76e8ac5dadc4072f48"></a><!-- doxytag: member="PA_Sound.h::PA_SetSoundChannelPan" ref="749103b2eac23c76e8ac5dadc4072f48" args="(chan, pan)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSoundChannelPan          </td>
+          <td>(</td>
+          <td class="paramtype">chan,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">pan&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;AS_SetSoundPan(chan, pan)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fe1238c6f3cbef9b7bfa651f15dee7d2"></a><!-- doxytag: member="PA_Sound.h::PA_SetSoundChannelVol" ref="fe1238c6f3cbef9b7bfa651f15dee7d2" args="(chan, vol)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSoundChannelVol          </td>
+          <td>(</td>
+          <td class="paramtype">chan,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vol&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;AS_SetSoundVolume(chan, vol)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="51dcfb63b4f1a92c97606eb27bf02c7d"></a><!-- doxytag: member="PA_Sound.h::PA_SetSoundVol" ref="51dcfb63b4f1a92c97606eb27bf02c7d" args="(vol)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetSoundVol          </td>
+          <td>(</td>
+          <td class="paramtype">vol&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;AS_SetMasterVolume(vol)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c9248775b5fd7fa3f446e5d35fd008bc"></a><!-- doxytag: member="PA_Sound.h::PA_SoundChannelIsBusy" ref="c9248775b5fd7fa3f446e5d35fd008bc" args="(channel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SoundChannelIsBusy          </td>
+          <td>(</td>
+          <td class="paramtype">channel&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;IPC_Sound-&gt;chan[channel].busy</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="0391e7439150dc665f053eee8bfc039f"></a><!-- doxytag: member="PA_Sound.h::PA_StopMod" ref="0391e7439150dc665f053eee8bfc039f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_StopMod          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;modControl-&gt;command = MT_MSG_END</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="45000e5dc39ea578ff4d2fe60bf20f4a"></a><!-- doxytag: member="PA_Sound.h::PA_StopSound" ref="45000e5dc39ea578ff4d2fe60bf20f4a" args="(chan)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_StopSound          </td>
+          <td>(</td>
+          <td class="paramtype">chan&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;AS_SoundStop(chan)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="ddc5b00d88567e1b5baf19dbcf64e6da"></a><!-- doxytag: member="PA_Sound.h::PA_PlayPSG" ref="ddc5b00d88567e1b5baf19dbcf64e6da" args="(u8 PA_Channel, u8 vol, u8 pan, s32 freq, u8 duty)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_PlayPSG           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>PA_Channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>vol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>pan</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>freq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>duty</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Utiliser les Programmable Sound Generators. 
+<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>PA_Channel</em>&nbsp;</td><td>Canal audio, de 8 � 15 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vol</em>&nbsp;</td><td>Volume (0-127) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>freq</em>&nbsp;</td><td>Fr�quence </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>duty</em>&nbsp;</td><td>Duty (0-7) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="f29a8d9c85cc99ebda02c00afb118ade"></a><!-- doxytag: member="PA_Sound.h::PA_StopSound" ref="f29a8d9c85cc99ebda02c00afb118ade" args="(u8 PA_Channel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_StopSound           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>PA_Channel</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Jun 13 12:56:59 2009 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

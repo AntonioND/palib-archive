@@ -18,11 +18,11 @@ int main(void){
 
 	PA_InitText(1, 0);
 
-	PA_CreateSprite(0, 0, (void*)Blank, // Blank sprite !
+	PA_CreateSprite(0, 0, (void*)NULL, // Blank sprite !
 					OBJ_SIZE_64X64, // Sprite size
 					1, 0, // Sprite palette number
 					0, 0); // In the upper left corner
-	PA_CreateSprite(0, 1, (void*)Blank, // Blank sprite !
+	PA_CreateSprite(0, 1, (void*)NULL, // Blank sprite !
 					OBJ_SIZE_64X64, // Sprite size
 					1, 0, // Sprite palette number
 					64, 0); // To the right			

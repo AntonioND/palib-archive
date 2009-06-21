@@ -20,10 +20,10 @@ extern int microphone_buffer_length;
 extern int current_length;
 
 
-extern inline void PA_Mic(void)
+static inline void PA_Mic(void)
 {
 	// Get volume
-	PA_IPC->Mic.Volume = MIC_ReadData() - 124;
+	PA_IPC->Mic.Volume = micReadData8() - 124;
 	
 	// Record new sound...
 	if (PA_IPC->Mic.Data)
@@ -35,7 +35,7 @@ extern inline void PA_Mic(void)
 		microphone_buffer_length = PA_IPC->Mic.Length;
 		current_length = 0;
 
-		MIC_On();
+		micOn();
 
 		TIMER2_DATA = 0xF7CF;
 		TIMER2_CR = TIMER_ENABLE | TIMER_DIV_1 | TIMER_IRQ_REQ;
@@ -45,12 +45,12 @@ extern inline void PA_Mic(void)
 	}
 }
 
-extern inline void PA_SoundUpdates(void){
+static inline void PA_SoundUpdates(void){
 	u8 channel;
 	static PA_IPCSound Soundold[17];
 	
 	if(PA_IPC->Sound[16].Volume!=Soundold[16].Volume) { // Change global sound volume
-		SOUND_CR = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume&127);
+		REG_SOUNDCNT = SOUND_ENABLE | SOUND_VOL(PA_IPC->Sound[16].Volume&127);
 		Soundold[16].Volume=PA_IPC->Sound[16].Volume;
 	}
 	if(PA_IPC->Sound[16].Busy){ // Change Brightness

@@ -15,7 +15,6 @@ int main(int argc, char ** argv)
 	PA_Init();    // Initializes PA_Lib
 	PA_InitVBL(); // Initializes a standard VBL
 	
-	
 	PA_SetVideoMode(0, 2);  //screen, mode
 	PA_SetVideoMode(1, 2);  //screen, mode
 	
@@ -24,7 +23,6 @@ int main(int argc, char ** argv)
 					  Rot, // background name in PAGfx
 					  1); // wraparound !
 	PA_LoadPAGfxRotBg(1, 3, Rot, 1); // wraparound !
-			
 			
 PA_InitText(1, 0);
 

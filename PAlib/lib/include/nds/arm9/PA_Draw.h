@@ -15,7 +15,7 @@ extern "C" {
 
 #include "PA_Interrupt.h"
 #include "PA_Palette.h"
-#include "PA_Splash.h"
+//#include "PA_Splash.h"
 #include "PA_Gif.h"
 
 extern u8 PA_nBit[2]; // 8 or 16 bit Bg
@@ -522,7 +522,7 @@ PA_DrawBg[screen][PA_temp] = bitmap[PA_temp] | (1 << 15);}
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)		 
 */
-#define PA_Clear8bitBg(screen) DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*96, DMA_16NOW);
+#define PA_Clear8bitBg(screen) dmaFillWords(0, (void*)PA_DrawBg[screen], 256*96*2);
 
 /*! \def PA_Clear16bitBg(screen)
     \brief
@@ -532,7 +532,7 @@ PA_DrawBg[screen][PA_temp] = bitmap[PA_temp] | (1 << 15);}
          \~english Chose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)		 
 */
-#define PA_Clear16bitBg(screen) DMA_Copy(Blank, (void*)PA_DrawBg[screen], 256*192, DMA_16NOW)
+#define PA_Clear16bitBg(screen) dmaFillWords(0, (void*)PA_DrawBg[screen], 256*192*2)
 
 
 /*! \fn extern inline void PA_LoadJpeg(u8 screen, void *jpeg)
@@ -624,57 +624,6 @@ extern inline void PA_LoadBmp(u8 screen, void *bmp){
 extern inline void PA_LoadJpeg(u8 screen, void *jpeg)
 void PA_LoadBmp(u8 screen, s16 x, s16 y, void *bmp);*/
 
-
-/*! \fn extern inline void PA_LoadFSImage(u8 screen, s16 FSImage)
-    \brief
-         \~english Load any image from PAFS on the screen (16 bit). Currently supports Gif, Jpeg, and BMP
-         \~french Charger une image depuis PAFS sur l'écran (16 bit). Supporte le Gif, Jpeg, et BMP
-    \~\param screen
-         \~english Chose de screen (0 or 1)
-         \~french Choix de l'écran (0 ou 1)		 
-    \~\param FSImage
-         \~english PAFS Image number
-         \~french Numéro de l'image dans PAFS	 
-*/
-extern inline void PA_LoadFSImage(u8 screen, s16 FSImage){
-	if (PA_CompareText(PA_FSFile[FSImage].Ext, "bmp")){
-		PA_LoadBmp(screen, PA_PAFSFile(FSImage));
-	}
-	if (PA_CompareText(PA_FSFile[FSImage].Ext, "jpg")){ 
-		PA_LoadJpeg(screen, PA_PAFSFile(FSImage));
-	}	
-	if (PA_CompareText(PA_FSFile[FSImage].Ext, "gif")){ 
-		PA_LoadGif(screen, PA_PAFSFile(FSImage));
-	}		
-}
-
-
-
-
-/*
-extern inline void PA_LoadGBFSImage(u8 screen, s16 GBFSImage){
-	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
-		PA_LoadBmp(screen, PA_GBFSfile[GBFSImage].File);
-	}
-	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "jpg")){ 
-		PA_LoadJpeg(screen, PA_GBFSfile[GBFSImage].File);
-	}	
-	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "gif")){ 
-		PA_LoadGif(screen, PA_GBFSfile[GBFSImage].File);
-	}		
-}
-*/
-extern inline void PA_LoadGBFSImageToBuffer(void *Buffer, s16 GBFSImage, s16 Width){
-	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "bmp")){
-		PA_LoadBmpToBuffer((u16*)Buffer, 0, 0, (u16*)PA_GBFSfile[GBFSImage].File, Width);
-	}
-	/*if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "jpg")){ 
-		PA_LoadJpeg(screen, PA_GBFSfile[GBFSImage].File);
-	}	*/
-	if (PA_CompareText(PA_GBFSfile[GBFSImage].Ext, "gif")){ 
-		DecodeGif((const u8*)PA_GBFSfile[GBFSImage].File, (u8*)Buffer, (u16*)0x05000000, 1, Width);
-	}		
-}
 
 
 

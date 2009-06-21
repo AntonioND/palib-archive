@@ -2,8 +2,8 @@
 #include <PA9.h>       // Include for PA_Lib
 
 // PAGfx include
-#include "gfx\all_gfx.h"
-#include "gfx\all_gfx.c"
+#include "gfx/all_gfx.h"
+#include "gfx/all_gfx.c"
 
 // Image includes
 #include "photo.h"

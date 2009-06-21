@@ -20,8 +20,6 @@ extern "C" {
 extern u16 *PA_Draw16[2];
 extern u32 *PA_Draw1632[2];
 
-extern u32 Blank[130000>>2];
-
 	extern u16 *bittext_maps[10];		
 	extern u8 *bittext_tiles_blank[10];		
 	extern u32 *c16_tiles[10];	
@@ -50,19 +48,22 @@ ALWAYSINLINE void PA_16c8X8(u8 screen, s16 x, s16 y, u32 *image);
 	
 void PA_16c8X8Color(u8 screen, s16 x, s16 y, u32 *image, u8 color);
 
+#define PA_Plot8Pixels(a,b,c,d) { PA_Draw1632[a][b] |= (d<<c); PA_Draw1632[a][b+(26*8)] |= (d>>(32-c)); }
 
-
-ALWAYSINLINE void PA_Plot8Pixels(u8 screen, u16 pos, u16 temp, u32 color){
+/*
+inline void PA_Plot8Pixels(u8 screen, u16 pos, u16 temp, u32 color){
    PA_Draw1632[screen][pos] |= (color<<temp);
    PA_Draw1632[screen][pos+(26*8)] |= (color>>(32-temp));   
-}  
+}
+*/ 
+
 
 extern inline void PA_16c8pixels(u8 screen, s16 x, s16 y, u32 colors){
+
 	PA_Plot8Pixels(screen, PA_16cPos(x+8, y+8), ((x&7)<<2), colors);
 }
 
-
-ALWAYSINLINE void PA_16c16X16Letter(u8 screen, s16 x, s16 y, u8 letter, u8 size, u8 color)
+extern inline void PA_16c16X16Letter(u8 screen, s16 x, s16 y, u8 letter, u8 size, u8 color)
 {  
 	u16 firstpos = ((letter&31)<<1)+((letter >> 5)<<7);
 	PA_16c8X8Color(screen, x, y, (c16_tiles[size]+(bittext_maps[size][firstpos]<<3)), color);
@@ -127,9 +128,7 @@ extern inline void PA_Init16cBg(u8 screen, u8 bg){
          \~english Choose de screen (0 or 1)
          \~french Choix de l'écran (0 ou 1)
 */
-extern inline void PA_16cErase(u8 screen){
-	DMA_Copy(Blank, PA_Draw1632[screen], 26*8*34, DMA_32NOW)
-}
+void PA_16cErase(u8 screen);
 
 
 
@@ -242,7 +241,7 @@ ALWAYSINLINE void PA_16cPutPixel(u8 screen, s16 x, s16 y, u32 color){
    x += 8; y += 8;
    u16 temp = (x&7)<<2;
    u16 pos = PA_16cPos(x, y);
-   PA_Draw1632[screen][pos] |= (color<<temp);
+   PA_Draw1632[screen][pos] = (color<<temp) | ( (~(15<<temp) ) & PA_Draw1632[screen][pos]) ;
 }
 
 ALWAYSINLINE void PA_16cDeletePixel(u8 screen, s16 x, s16 y){

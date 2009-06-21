@@ -42,6 +42,7 @@
 // <PALIB-CHANGE> Replaced // with ///
 #include <nds.h>
 #include <stdio.h>
+#include "../PA_Shared.h"
 
 #ifndef AS_USE_EFS
 #include <stdio.h>
@@ -64,7 +65,7 @@ extern "C" {
 #define AS_FILEBUFFER_SIZE  8 * 1024   // file buffer size
 
 // locate the IPC structure after the libnds one
-#define IPC_Sound   ((IPC_SoundSystem*)((u32)(IPC) + sizeof(TransferRegion) + sizeof(SND_CONTROL) + sizeof(MT_MSG_CMD))) // <PALIB-CHANGE>
+#define IPC_Sound   ((IPC_SoundSystem*)((u32)(PA_IPC_compat) + sizeof(PA_TransferRegion) + sizeof(SND_CONTROL) + sizeof(MT_MSG_CMD))) // <PALIB-CHANGE> the second
 
 // file access functions
 #define MP3FILE                         FILE

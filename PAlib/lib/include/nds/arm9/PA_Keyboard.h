@@ -27,7 +27,7 @@ void PA_SetLetterPal(s16 x, s16 y, u8 Pal);
 
 
 
-extern const unsigned char keyboard_Tiles[10240];
+extern const unsigned char keyboard_Tiles[10400];
 extern const unsigned short keyboard_Map[4096];
 //extern const unsigned short keyboardPal1[16];
 //extern const unsigned short keyboardPal2[16];
@@ -42,7 +42,7 @@ typedef struct {
 	u8 Color1, Color2; // Main color, pressed color...
 	u8 Custom; // using custom graphics
 } Keyboards;
-extern Keyboards Keyboard;
+extern Keyboards PA_Keyboard_Struct;
 
 extern const u8 PA_Keyboard[2][5][24];
 
@@ -82,8 +82,9 @@ void PA_InitKeyboard(u8 bg_number);
 #define PA_InitCustomKeyboard(bg_number, keyb_custom) {\
 	PA_LoadBgPal(keyb_screen, bg_number, (void*)keyb_custom##_Pal);\
 	PA_LoadSimpleBg(keyb_screen, bg_number, keyb_custom##_Tiles, keyb_custom##_Map, BG_256X512, 1, 1);\
-	Keyboard.Bg = bg_number;	Keyboard.Type = 0;	Keyboard.Repeat = 0;	Keyboard.Custom = 1;\
-	PA_BgInfo[keyb_screen][Keyboard.Bg].Map = (u32)keyb_custom##_Map;\
+	PA_Keyboard_Struct.Bg = bg_number;	PA_Keyboard_Struct.Type = 0;	PA_Keyboard_Struct.Repeat = 0;\
+	PA_Keyboard_Struct.Custom = 1;\
+	PA_BgInfo[keyb_screen][PA_Keyboard_Struct.Bg].Map = (u32)keyb_custom##_Map;\
 }
 
 
@@ -107,8 +108,8 @@ char PA_CheckKeyboard(void);
       \~french Position X
 */
 extern inline void PA_ScrollKeyboardX(s16 x) {
-	PA_BGScrollX(keyb_screen, Keyboard.Bg, -x);
-	Keyboard.ScrollX = x;
+	PA_BGScrollX(keyb_screen, PA_Keyboard_Struct.Bg, -x);
+	PA_Keyboard_Struct.ScrollX = x;
 }
 
 
@@ -122,8 +123,8 @@ extern inline void PA_ScrollKeyboardX(s16 x) {
       \~french Position Y
 */
 extern inline void PA_ScrollKeyboardY(s16 y) {
-	PA_BGScrollY(keyb_screen, Keyboard.Bg, -y);
-	Keyboard.ScrollY = y;
+	PA_BGScrollY(keyb_screen, PA_Keyboard_Struct.Bg, -y);
+	PA_Keyboard_Struct.ScrollY = y;
 }
 
 
@@ -140,9 +141,9 @@ extern inline void PA_ScrollKeyboardY(s16 y) {
       \~french Position Y
 */
 extern inline void PA_ScrollKeyboardXY(s16 x, s16 y) {
-	PA_BGScrollXY(keyb_screen, Keyboard.Bg, -x, -y);
-	Keyboard.ScrollX = x;
-	Keyboard.ScrollY = y;
+	PA_BGScrollXY(keyb_screen, PA_Keyboard_Struct.Bg, -x, -y);
+	PA_Keyboard_Struct.ScrollX = x;
+	PA_Keyboard_Struct.ScrollY = y;
 }
 
 
@@ -152,7 +153,7 @@ extern inline void PA_ScrollKeyboardXY(s16 x, s16 y) {
 		\~english Erase the last key lit up (if it didn't on it's own)
 		\~french Effacer la dernière touche pressée, si ca ne le fait pas tout seul
 */
-#define PA_EraseLastKey() PA_SetLetterPal(Keyboard.oldX, Keyboard.oldY, 15)
+#define PA_EraseLastKey() PA_SetLetterPal(PA_Keyboard_Struct.oldX, PA_Keyboard_Struct.oldY, 15)
 
 
 /*!
@@ -187,7 +188,7 @@ s16 i;
 extern inline void PA_KeyboardOut(void){  // Faire sortir le clavier... 
 s16 i;
 PA_EraseLastKey(); // Efface s'il reste une touche pressée...
-	for (i = Keyboard.ScrollY; i < 200; i+=8){
+	for (i = PA_Keyboard_Struct.ScrollY; i < 200; i+=8){
 		PA_ScrollKeyboardY(i);
 		PA_WaitForVBL();
 	}
@@ -218,8 +219,8 @@ void PA_ReloadKeyboardCol(void);
       \~french Couleur de la touche appuyée, 0 pour bleu, 1 pour rouge, 2 pour vert
 */
 extern inline void PA_SetKeyboardColor(u8 color1, u8 color2){
-	Keyboard.Color1 = color1;
-	Keyboard.Color2 = color2;
+	PA_Keyboard_Struct.Color1 = color1;
+	PA_Keyboard_Struct.Color2 = color2;
 	PA_ReloadKeyboardCol();
 }
 

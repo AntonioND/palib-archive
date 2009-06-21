@@ -15,6 +15,8 @@ extern "C" {
 #include <nds/bios.h>
 #include <malloc.h>
 
+#include "../PA_Shared.h"
+
 #include <stdarg.h> // Pour le système de text
 #include <string.h>
 
@@ -22,11 +24,9 @@ extern "C" {
 extern u8 PA_Screen;
 
 typedef struct {
-   u8 NoIdea; 
-   u8 Year;
+   u16 Year;
    u8 Month;
    u8 Day;
-   u8 NoIdea2;
    u8 Hour;
    u8 Minutes;
    u8 Seconds;
@@ -44,7 +44,7 @@ extern inline void PAWaitForVBL(void){
 }
 extern inline void PA_PowerOff()
 {
-	IPC->aux |= BIT(6); // libnds arm7: #define PM_POWER_DOWN BIT(6)
+	powerOn(PM_SYSTEM_PWR);
 }
 
 extern u8 pa_checklid;
@@ -68,8 +68,6 @@ extern u8 pa_checklid;
 #define DMA_32NOW (DMA_ON | DMA_NOW | DMA_32)
 #define DMA_Copy(source, dest, count, mode) {REG_DMA3SRC = (u32)source; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) | (mode);}
 
-#define DMA_Clear(dest, count, mode) {REG_DMA3SRC = (u32)Blank; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) | (mode);}
-
 #define DMA_Force(ulVal,dest, count, mode) {REG_DMA3SRC=(u32)&ulVal; REG_DMA3DST = (u32)dest; REG_DMA3CNT = (count) |(mode) | DMA_SRC_FIX;}
 
 #define DMA_CopyEx(type, source, dest, count, mode) {DMA_SRC(type) = (u32)source; DMA_DEST(type) = (u32)dest; DMA_CR(type) = (count) | (mode);}
@@ -91,7 +89,6 @@ extern u8 pa_checklid;
 #define _REG16 *(volatile u16 *)
 #define _REG32 *(volatile u32 *)
 
-
 #define SWITCH_SCREENS  (1<<15)
 
 
@@ -106,15 +103,7 @@ extern u8 pa_checklid;
     Contains prototypes and macros... for the arm9
 */
 
-
-
-//extern u32 *Blank;
-extern u32 Blank[130000>>2];
-
 extern volatile PA_IPCType PA_IPC;
-
-
-
 
 //////////////////////////////////////////////////////////////////////
 // Général
@@ -161,6 +150,7 @@ typedef struct {
 } infos;
 extern infos PA_UserInfo;
 
+/*
 #define INFO_COLOR *(u8*)0x027FFC82
 #define INFO_BDAY_MONTH *(u8*)0x027FFC83
 #define INFO_BDAY_DAY *(u8*)0x027FFC84
@@ -171,7 +161,7 @@ extern infos PA_UserInfo;
 #define INFO_MESSAGE *(u8*)0x027FFC9C
 #define INFO_MESSAGE_LENGTH *(u8*)0x027FFCD0
 #define INFO_LANGUAGE  *(u8*)(0x027FFCE4)
-
+*/
 
 /** @defgroup General General Functions
  *  Initialise the lib, and other general functions...
@@ -194,7 +184,8 @@ void PA_Init(void);
 */
 void PA_Init2D(void);
 
-
+// for the video modes...
+extern u8 PA_ExtPal[2][2];
 
 /*! \fn extern inline void PA_SetVideoMode(u8 screen, u8 mode)
     \brief
@@ -207,11 +198,7 @@ void PA_Init2D(void);
          \~english Mode 0 for normal, 1 for 1 rotating backgrounds, 2 for 2
          \~french Mode 0 pour normal, 1 pour 1 fond rotatif, 2 pour 2
 */
-extern inline void PA_SetVideoMode(u8 screen, u8 mode) {
-	(*(vuint32*)(0x04000000 + (0x1000 * screen))) &= ~7;
-	(*(vuint32*)(0x04000000 + (0x1000 * screen))) |= mode;
-}
-
+extern void PA_SetVideoMode(u8 screen, u8 mode);
 
 
 /*! \fn void PA_UpdateUserInfo(void)
@@ -229,27 +216,6 @@ void PA_UpdateUserInfo(void);
 */
 void PA_UpdateRTC(void);
 
-
-/*! \fn void PA_LoadSplash(void)
-    \brief
-         \~english Load a PlayerAdvance splash screen... It's always nice to give some credit ;)
-         \~french Affiche un splash screen PlayerAdvance... C'est toujours sympa de remercier ;)
-
-
-*/
-void PA_LoadSplash(void);
-
-
-/*! \fn void PA_LoadSplash()
-    \brief
-         \~english Load a NeoFlash splash screen...
-         \~french Affiche un splash screen NeoFlash
-*/
-void PA_NeoSplash(void);
-
-
-
-
 /*! \fn extern inline void PA_SwitchScreens(void)
     \brief
          \~english Switch the bottom and top screens...
@@ -260,30 +226,12 @@ extern inline void PA_SwitchScreens(void) {
 	PA_Screen = !PA_Screen;
 }
 
-
-/*! \fn extern inline void PA_InitCPUMeter()
-    \brief
-         \~english BROKEN ----- Initialises the CPU Meter. The CPU value is saved in PA_CPU (and PA_MaxCPU for max usage)
-         \~french BROKEN ----- Initialise le compteur CPU. La valeur (en %) est sauvée dans PA_CPU (et le plus gros dans PA_MaxCPU)
-*//*
-extern inline void PA_InitCPUMeter() {
-	PA_CPU = 0; 
-	PA_MaxCPU = 0; 
-	PA_lines = 0; 
-	PA_VBLCount = 0;
-	PA_nVBLs = 0;
-}*/
-
-
-
-
-
 /*! \def PA_LidClosed()
     \brief
          \~english Check if the DS is closed. Returns 0 if open, 1 if closed
          \~french Vérifie si la DS est fermée. Renvoie 0 si ouverte, 1 si fermée
 */
-#define PA_LidClosed() (IPC->buttons>>7)
+#define PA_LidClosed() (PA_IPC_compat->buttons>>7)
 
 
 /*! \fn extern inline void PA_SetAutoCheckLid(u8 on)
@@ -382,8 +330,8 @@ extern inline void PA_WaitForVBL(void){
          \~french Lumière, 1 pour allumé, 0 pour éteint
 */
 extern inline void PA_SetScreenLight(u8 screen, u8 light){
-	IPC->aux &= ~(1<<(2+screen));
-	IPC->aux |= light<<(2+screen);
+	PA_IPC_compat->aux &= ~(1<<(2+screen));
+	PA_IPC_compat->aux |= light<<(2+screen);
 }
 
 
@@ -399,8 +347,8 @@ extern inline void PA_SetScreenLight(u8 screen, u8 light){
          \~french Vitesse : 0 pour lent, 1 pour rapide
 */
 extern inline void PA_SetLedBlink(u8 blink, u8 speed){
-	IPC->aux &= ~(3<<4);
-	IPC->aux |= ((blink&1) + ((speed&1)<<1))<<4;
+	PA_IPC_compat->aux &= ~(3<<4);
+	PA_IPC_compat->aux |= ((blink&1) + ((speed&1)<<1))<<4;
 }
 
 
@@ -449,7 +397,6 @@ bool PA_Locate(char *start, char *target, bool isDir, int depth, char *result);
 
 
 /** @} */ // end of General
-
 
 void PA_Nothing(void);
 

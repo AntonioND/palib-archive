@@ -1,0 +1,1484 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Bitmap mode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;donnÃ©es</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Bitmap mode</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g08db959e19ae99e0eca1322472774b21">PA_Get16bitPixel</a>(screen, x, y)&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[screen][(x) + ((y) &lt;&lt; 8)]</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel, en mode dessin 16 bit.  <a href="#g08db959e19ae99e0eca1322472774b21"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g43f4fb595546c0cdbed84c855e7bbc10">PA_SetDrawSize</a>(screen, draw_size)&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___draw_8h.html#5dc83ceccd01ad26775f7fcf50b105a4">PA_drawsize</a>[screen] = draw_size;</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Regler la taille du stylo quand on dessine.  <a href="#g43f4fb595546c0cdbed84c855e7bbc10"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gd213e7797691843d488a14cc908d8c9d">PA_Load8bitBitmap</a>(screen, bitmap)&nbsp;&nbsp;&nbsp;DMA_Copy(bitmap, (void*)<a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[screen], 256*96, DMA_16NOW)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une image à l'écran... pour une fond dessinable de 8 bits.  <a href="#gd213e7797691843d488a14cc908d8c9d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g75e5d7d09e8b16570b64147a3d15c682">PA_Load16bitBitmap</a>(screen, bitmap)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une image à l'écran... pour une fond dessinable de 16 bits.  <a href="#g75e5d7d09e8b16570b64147a3d15c682"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g8a7588f63b80c14a31d008498cea5175">PA_Clear8bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(<a class="el" href="_p_a___general_8h.html#740aa158504f3bbac785d0b53bed7df4">Blank</a>, (void*)<a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[screen], 256*96, DMA_16NOW);</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Efface l'écran... pour une fond dessinable de 8 bits.  <a href="#g8a7588f63b80c14a31d008498cea5175"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g47a2f38b7773099498ad06ed85daa652">PA_Clear16bitBg</a>(screen)&nbsp;&nbsp;&nbsp;DMA_Copy(<a class="el" href="_p_a___general_8h.html#740aa158504f3bbac785d0b53bed7df4">Blank</a>, (void*)<a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[screen], 256*192, DMA_16NOW)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Efface l'écran... pour une fond dessinable de 16 bits.  <a href="#g47a2f38b7773099498ad06ed85daa652"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g101bdc810b596c3577b63c365a7b61de">PA_Init8bitBg</a> (u8 screen, u8 bg_priority)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le mode de dessin 8 bit (avec palette). Il suffit de choisir l'écran et la priorité de ce font (de 0 à 3). Ce fond sera placé sur le fond 3 (le remplacant), et doit etre chargé avant tout autre fond ! Prend environ 3/8 de la VRAM.  <a href="#g101bdc810b596c3577b63c365a7b61de"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g92faadf94e29044314426f32c1577776">PA_InitBig8bitBg</a> (u8 screen, u8 bg_priority)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Similaire à PA_Init8bitBg, mais avec une taille de 256x256. Ceci prend un peu plus de mémoire, mais autorise le scrolling vertical.  <a href="#g92faadf94e29044314426f32c1577776"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gbcc4d21fc9012e26ec162292a7f00e64">PA_8bitSwapBuffer</a> (u8 screen)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g84af76996dfb43d7c21f042fe60a9ae9">PA_Init8bitDblBuffer</a> (u8 screen, u8 bg_priority)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g2ebdea1d22ca5990b948b4be354b86d7">PA_Init16bitBg</a> (u8 screen, u8 bg_priority)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le mode de dessin 16 bit (sans palettes, couleurs RGB). Il suffit de choisir l'écran et la priorité de ce font (de 0 à 3). Ce fond sera placé sur le fond 3 (le remplacant), et doit etre chargé avant tout autre fond ! Prend environ 3/8 de la VRAM.  <a href="#g2ebdea1d22ca5990b948b4be354b86d7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g098cd4ee13e13ef5a9b1441b9524c9d3">PA_Init16bitDblBuffer</a> (u8 screen, u8 bg_priority)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g11c30af4ea26e4ed9a1efdfe5b8019c0">PA_16bitSwapBuffer</a> (u8 screen)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g569637f4508158b45f1842482c03e82b">PA_Put8bitPixel</a> (u8 screen, s16 x, s16 y, u8 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessine un pixel à l'écran, sur un fond de 8 bits.  <a href="#g569637f4508158b45f1842482c03e82b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g1391e6b6585c72497bc715fe341c1617">PA_Put2_8bitPixels</a> (u8 screen, s16 x, s16 y, u16 colors)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessine deux pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Beaucoup plus rapide que de dessiner les 2 pixels séparemment.  <a href="#g1391e6b6585c72497bc715fe341c1617"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g6c4b2af23df5e95b2d7cada059c4acf2">PA_PutDouble8bitPixels</a> (u8 screen, s16 x, s16 y, u8 color1, u8 color2)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessine deux pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Beaucoup plus rapide que de dessiner les 2 pixels séparemment.  <a href="#g6c4b2af23df5e95b2d7cada059c4acf2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g96ced5eaaff925909fa569937b279d0c">PA_Put4_8bitPixels</a> (u8 screen, s16 x, s16 y, u32 colors)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessine 4 pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Façon la plus rapide de dessiner à l'écran.  <a href="#g96ced5eaaff925909fa569937b279d0c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gdc7263337c41fc8ba0e8c97e57d31d53">PA_Get8bitPixel</a> (u8 screen, u8 x, u8 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la couleur d'un pixel, en mode dessin 8 bit.  <a href="#gdc7263337c41fc8ba0e8c97e57d31d53"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gaa48e29b80f91c51f4e06229328ce278">PA_Put16bitPixel</a> (u8 screen, s16 x, s16 y, u16 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessine un pixel à l'écran, sur un fond de 16 bits.  <a href="#gaa48e29b80f91c51f4e06229328ce278"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g0ca49dc39f4d9a924efd213d55cb045d">PA_Draw8bitLine</a> (u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessiner une ligne en mode dessin... pour le mode dessin 8 bit.  <a href="#g0ca49dc39f4d9a924efd213d55cb045d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gec9fceb64822780a458e3d68a1eec930">PA_Draw16bitLine</a> (u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessiner une ligne en mode dessin... pour le mode dessin 16 bit.  <a href="#gec9fceb64822780a458e3d68a1eec930"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gd618676e55e514647e2dd01c669b66e7">PA_Draw16bitLineEx</a> (u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessiner une ligne épaisse en mode dessin... pour le mode dessin 16 bit.  <a href="#gd618676e55e514647e2dd01c669b66e7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ge9f5ad03bb955853e3c44fe4aa260544">PA_Draw8bitLineEx</a> (u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessiner une ligne épaisse en mode dessin... pour le mode dessin 8 bit.  <a href="#ge9f5ad03bb955853e3c44fe4aa260544"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ged5dfd5e26f3c9a09153f1fa9b63c8bb">PA_Draw16bitRect</a> (u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dessiner rectangle en mode dessin... pour le mode dessin 16 bit.  <a href="#ged5dfd5e26f3c9a09153f1fa9b63c8bb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#ga80029aa4a46b8fc7a484f7f51b7b2a4">PA_8bitDraw</a> (u8 screen, u8 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pour 8 bit : Jolie petite fonction qui dessine à l'écran ! Tout ce qu'il reste à faire, c'est de choisir la couleur. Si le VBL PA n'est pas initialiser, ne pas oublier de rafraichir le Stylet à chaque cycle (et non, pas avec des glacons !). Il suffit d'executer PA_Draw à chaque cycle pour dessiner...  <a href="#ga80029aa4a46b8fc7a484f7f51b7b2a4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gf74e162d9ae8c42ceba1becd9b993ba4">PA_16bitDraw</a> (u8 screen, u16 color)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pour 16 bit : Jolie petite fonction qui dessine à l'écran ! Tout ce qu'il reste à faire, c'est de choisir la couleur. Si le VBL PA n'est pas initialiser, ne pas oublier de rafraichir le Stylet à chaque cycle (et non, pas avec des glacons !). Il suffit d'executer PA_Draw à chaque cycle pour dessiner...  <a href="#gf74e162d9ae8c42ceba1becd9b993ba4"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gfc528f54e5e7c8a75bf76f30331b49e7">PA_LoadJpeg</a> (u8 screen, void *jpeg)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un jpeg sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !  <a href="#gfc528f54e5e7c8a75bf76f30331b49e7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gfd19885bd66bf748a64f89a1d64aae11">PA_LoadBmpToBuffer</a> (u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un BMP dans un buffer de 16 bit.  <a href="#gfd19885bd66bf748a64f89a1d64aae11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gd759cbd1a20d2f9e1bfd8d2693315854">PA_LoadBmpEx</a> (u8 screen, s16 x, s16 y, void *bmp)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !  <a href="#gd759cbd1a20d2f9e1bfd8d2693315854"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gcdef635157dfd7731c3af75ac88a1a52">PA_LoadBmp</a> (u8 screen, void *bmp)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant !  <a href="#gcdef635157dfd7731c3af75ac88a1a52"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#gbc9602f3c38eec0f8ef33a4adef5dfdf">PA_GetBmpWidth</a> (void *bmpdata)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la largeur d'un BMP en pixels.  <a href="#gbc9602f3c38eec0f8ef33a4adef5dfdf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bitmap.html#g8604f29e3414e9eb7bbdb35eb36c17af">PA_GetBmpHeight</a> (void *bmpdata)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Récupérer la hauteur d'un BMP en pixels.  <a href="#g8604f29e3414e9eb7bbdb35eb36c17af"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description dÃ©taillÃ©e</h2>
+Draw on screen, either a pixel or a line, or anything ! Load a Bitmap, a Jpeg... <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="g47a2f38b7773099498ad06ed85daa652"></a><!-- doxytag: member="PA_Draw.h::PA_Clear16bitBg" ref="g47a2f38b7773099498ad06ed85daa652" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Clear16bitBg          </td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DMA_Copy(<a class="el" href="_p_a___general_8h.html#740aa158504f3bbac785d0b53bed7df4">Blank</a>, (void*)<a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[screen], 256*192, DMA_16NOW)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Efface l'écran... pour une fond dessinable de 16 bits. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g8a7588f63b80c14a31d008498cea5175"></a><!-- doxytag: member="PA_Draw.h::PA_Clear8bitBg" ref="g8a7588f63b80c14a31d008498cea5175" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Clear8bitBg          </td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DMA_Copy(<a class="el" href="_p_a___general_8h.html#740aa158504f3bbac785d0b53bed7df4">Blank</a>, (void*)<a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[screen], 256*96, DMA_16NOW);</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Efface l'écran... pour une fond dessinable de 8 bits. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g08db959e19ae99e0eca1322472774b21"></a><!-- doxytag: member="PA_Draw.h::PA_Get16bitPixel" ref="g08db959e19ae99e0eca1322472774b21" args="(screen, x, y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Get16bitPixel          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[screen][(x) + ((y) &lt;&lt; 8)]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la couleur d'un pixel, en mode dessin 16 bit. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g75e5d7d09e8b16570b64147a3d15c682"></a><!-- doxytag: member="PA_Draw.h::PA_Load16bitBitmap" ref="g75e5d7d09e8b16570b64147a3d15c682" args="(screen, bitmap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Load16bitBitmap          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bitmap&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{u32 PA_temp; \
+<span class="keywordflow">for</span> (PA_temp = 0; PA_temp &lt; 256*192; PA_temp++)\
+PA_DrawBg[screen][PA_temp] = bitmap[PA_temp] | (1 &lt;&lt; 15);}
+</pre></div>Charger une image à l'écran... pour une fond dessinable de 16 bits. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bitmap</em>&nbsp;</td><td>Nom du bitmap </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gd213e7797691843d488a14cc908d8c9d"></a><!-- doxytag: member="PA_Draw.h::PA_Load8bitBitmap" ref="gd213e7797691843d488a14cc908d8c9d" args="(screen, bitmap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Load8bitBitmap          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bitmap&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DMA_Copy(bitmap, (void*)<a class="el" href="_p_a___draw_8h.html#7e2bfd0ba09788f5aedbfd87fde1144e">PA_DrawBg</a>[screen], 256*96, DMA_16NOW)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Charger une image à l'écran... pour une fond dessinable de 8 bits. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bitmap</em>&nbsp;</td><td>Nom du bitmap </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g43f4fb595546c0cdbed84c855e7bbc10"></a><!-- doxytag: member="PA_Draw.h::PA_SetDrawSize" ref="g43f4fb595546c0cdbed84c855e7bbc10" args="(screen, draw_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetDrawSize          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">draw_size&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;<a class="el" href="_p_a___draw_8h.html#5dc83ceccd01ad26775f7fcf50b105a4">PA_drawsize</a>[screen] = draw_size;</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Regler la taille du stylo quand on dessine. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>draw_size</em>&nbsp;</td><td>Taille... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="gf74e162d9ae8c42ceba1becd9b993ba4"></a><!-- doxytag: member="PA_Draw.h::PA_16bitDraw" ref="gf74e162d9ae8c42ceba1becd9b993ba4" args="(u8 screen, u16 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PA_16bitDraw           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Pour 16 bit : Jolie petite fonction qui dessine à l'écran ! Tout ce qu'il reste à faire, c'est de choisir la couleur. Si le VBL PA n'est pas initialiser, ne pas oublier de rafraichir le Stylet à chaque cycle (et non, pas avec des glacons !). Il suffit d'executer PA_Draw à chaque cycle pour dessiner... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g11c30af4ea26e4ed9a1efdfe5b8019c0"></a><!-- doxytag: member="PA_Draw.h::PA_16bitSwapBuffer" ref="g11c30af4ea26e4ed9a1efdfe5b8019c0" args="(u8 screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_16bitSwapBuffer           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="ga80029aa4a46b8fc7a484f7f51b7b2a4"></a><!-- doxytag: member="PA_Draw.h::PA_8bitDraw" ref="ga80029aa4a46b8fc7a484f7f51b7b2a4" args="(u8 screen, u8 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PA_8bitDraw           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Pour 8 bit : Jolie petite fonction qui dessine à l'écran ! Tout ce qu'il reste à faire, c'est de choisir la couleur. Si le VBL PA n'est pas initialiser, ne pas oublier de rafraichir le Stylet à chaque cycle (et non, pas avec des glacons !). Il suffit d'executer PA_Draw à chaque cycle pour dessiner... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Numéro de la couleur dans la palette (0-255) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gbcc4d21fc9012e26ec162292a7f00e64"></a><!-- doxytag: member="PA_Draw.h::PA_8bitSwapBuffer" ref="gbcc4d21fc9012e26ec162292a7f00e64" args="(u8 screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_8bitSwapBuffer           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="gec9fceb64822780a458e3d68a1eec930"></a><!-- doxytag: member="PA_Draw.h::PA_Draw16bitLine" ref="gec9fceb64822780a458e3d68a1eec930" args="(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Draw16bitLine           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessiner une ligne en mode dessin... pour le mode dessin 16 bit. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gd618676e55e514647e2dd01c669b66e7"></a><!-- doxytag: member="PA_Draw.h::PA_Draw16bitLineEx" ref="gd618676e55e514647e2dd01c669b66e7" args="(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color, s8 size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Draw16bitLineEx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>endx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>endy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s8&nbsp;</td>
+          <td class="paramname"> <em>size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessiner une ligne épaisse en mode dessin... pour le mode dessin 16 bit. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>endx</em>&nbsp;</td><td>Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>endy</em>&nbsp;</td><td>Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>Largeur du trait, en pixels </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ged5dfd5e26f3c9a09153f1fa9b63c8bb"></a><!-- doxytag: member="PA_Draw.h::PA_Draw16bitRect" ref="ged5dfd5e26f3c9a09153f1fa9b63c8bb" args="(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u16 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Draw16bitRect           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>endx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>endy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessiner rectangle en mode dessin... pour le mode dessin 16 bit. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>endx</em>&nbsp;</td><td>Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>endy</em>&nbsp;</td><td>Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g0ca49dc39f4d9a924efd213d55cb045d"></a><!-- doxytag: member="PA_Draw.h::PA_Draw8bitLine" ref="g0ca49dc39f4d9a924efd213d55cb045d" args="(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u8 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Draw8bitLine           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessiner une ligne en mode dessin... pour le mode dessin 8 bit. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de la palette du fond (0-255) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="ge9f5ad03bb955853e3c44fe4aa260544"></a><!-- doxytag: member="PA_Draw.h::PA_Draw8bitLineEx" ref="ge9f5ad03bb955853e3c44fe4aa260544" args="(u8 screen, s16 basex, s16 basey, s16 endx, s16 endy, u8 color, s8 size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Draw8bitLineEx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>endx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>endy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s8&nbsp;</td>
+          <td class="paramname"> <em>size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessiner une ligne épaisse en mode dessin... pour le mode dessin 8 bit. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>endx</em>&nbsp;</td><td>Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>endy</em>&nbsp;</td><td>Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>Largeur du trait, en pixels </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gdc7263337c41fc8ba0e8c97e57d31d53"></a><!-- doxytag: member="PA_Draw.h::PA_Get8bitPixel" ref="gdc7263337c41fc8ba0e8c97e57d31d53" args="(u8 screen, u8 x, u8 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u8 PA_Get8bitPixel           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la couleur d'un pixel, en mode dessin 8 bit. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g8604f29e3414e9eb7bbdb35eb36c17af"></a><!-- doxytag: member="PA_Draw.h::PA_GetBmpHeight" ref="g8604f29e3414e9eb7bbdb35eb36c17af" args="(void *bmpdata)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u16 PA_GetBmpHeight           </td>
+          <td>(</td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bmp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la hauteur d'un BMP en pixels. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bmp</em>&nbsp;</td><td>image au format BMP... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gbc9602f3c38eec0f8ef33a4adef5dfdf"></a><!-- doxytag: member="PA_Draw.h::PA_GetBmpWidth" ref="gbc9602f3c38eec0f8ef33a4adef5dfdf" args="(void *bmpdata)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline u16 PA_GetBmpWidth           </td>
+          <td>(</td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bmp</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Récupérer la largeur d'un BMP en pixels. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bmp</em>&nbsp;</td><td>image au format BMP... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g2ebdea1d22ca5990b948b4be354b86d7"></a><!-- doxytag: member="PA_Draw.h::PA_Init16bitBg" ref="g2ebdea1d22ca5990b948b4be354b86d7" args="(u8 screen, u8 bg_priority)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Init16bitBg           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_priority</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise le mode de dessin 16 bit (sans palettes, couleurs RGB). Il suffit de choisir l'écran et la priorité de ce font (de 0 à 3). Ce fond sera placé sur le fond 3 (le remplacant), et doit etre chargé avant tout autre fond ! Prend environ 3/8 de la VRAM. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_priority</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g098cd4ee13e13ef5a9b1441b9524c9d3"></a><!-- doxytag: member="PA_Draw.h::PA_Init16bitDblBuffer" ref="g098cd4ee13e13ef5a9b1441b9524c9d3" args="(u8 screen, u8 bg_priority)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Init16bitDblBuffer           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_priority</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g101bdc810b596c3577b63c365a7b61de"></a><!-- doxytag: member="PA_Draw.h::PA_Init8bitBg" ref="g101bdc810b596c3577b63c365a7b61de" args="(u8 screen, u8 bg_priority)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Init8bitBg           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_priority</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialise le mode de dessin 8 bit (avec palette). Il suffit de choisir l'écran et la priorité de ce font (de 0 à 3). Ce fond sera placé sur le fond 3 (le remplacant), et doit etre chargé avant tout autre fond ! Prend environ 3/8 de la VRAM. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_priority</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g84af76996dfb43d7c21f042fe60a9ae9"></a><!-- doxytag: member="PA_Draw.h::PA_Init8bitDblBuffer" ref="g84af76996dfb43d7c21f042fe60a9ae9" args="(u8 screen, u8 bg_priority)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Init8bitDblBuffer           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_priority</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="g92faadf94e29044314426f32c1577776"></a><!-- doxytag: member="PA_Draw.h::PA_InitBig8bitBg" ref="g92faadf94e29044314426f32c1577776" args="(u8 screen, u8 bg_priority)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InitBig8bitBg           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_priority</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Similaire à PA_Init8bitBg, mais avec une taille de 256x256. Ceci prend un peu plus de mémoire, mais autorise le scrolling vertical. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_priority</em>&nbsp;</td><td></td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gcdef635157dfd7731c3af75ac88a1a52"></a><!-- doxytag: member="PA_Draw.h::PA_LoadBmp" ref="gcdef635157dfd7731c3af75ac88a1a52" args="(u8 screen, void *bmp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_LoadBmp           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bmp</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant ! 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bmp</em>&nbsp;</td><td>image au format BMP... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gd759cbd1a20d2f9e1bfd8d2693315854"></a><!-- doxytag: member="PA_Draw.h::PA_LoadBmpEx" ref="gd759cbd1a20d2f9e1bfd8d2693315854" args="(u8 screen, s16 x, s16 y, void *bmp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_LoadBmpEx           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bmp</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Charger un BMP sur un fond de 16 bits... Faut pas oublier de charger ce fond avant ! 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bmp</em>&nbsp;</td><td>image au format BMP... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gfd19885bd66bf748a64f89a1d64aae11"></a><!-- doxytag: member="PA_Draw.h::PA_LoadBmpToBuffer" ref="gfd19885bd66bf748a64f89a1d64aae11" args="(u16 *Buffer, s16 x, s16 y, void *bmp, s16 SWidth)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadBmpToBuffer           </td>
+          <td>(</td>
+          <td class="paramtype">u16 *&nbsp;</td>
+          <td class="paramname"> <em>Buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bmp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>SWidth</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Charger un BMP dans un buffer de 16 bit. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Buffer</em>&nbsp;</td><td>Buffer... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bmp</em>&nbsp;</td><td>image au format BMP... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>SWidth</em>&nbsp;</td><td>Largeur du buffer, en pixels (256 pour la taille de l'écran...) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gfc528f54e5e7c8a75bf76f30331b49e7"></a><!-- doxytag: member="PA_Draw.h::PA_LoadJpeg" ref="gfc528f54e5e7c8a75bf76f30331b49e7" args="(u8 screen, void *jpeg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_LoadJpeg           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>jpeg</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Charger un jpeg sur un fond de 16 bits... Faut pas oublier de charger ce fond avant ! 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>jpeg</em>&nbsp;</td><td>image au format jpeg... </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gaa48e29b80f91c51f4e06229328ce278"></a><!-- doxytag: member="PA_Draw.h::PA_Put16bitPixel" ref="gaa48e29b80f91c51f4e06229328ce278" args="(u8 screen, s16 x, s16 y, u16 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_Put16bitPixel           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessine un pixel à l'écran, sur un fond de 16 bits. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X (0-255) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y (0-191) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 16 bits, obtenue avec <a class="el" href="group___palette.html#gac31ab2510a20c165e8b3b265ae7a780" title="Convertir une couleurs au format Rouge, Vert, Bleu en un nombre utilisable par le...">PA_RGB(rouge, vert, bleu)</a> </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g1391e6b6585c72497bc715fe341c1617"></a><!-- doxytag: member="PA_Draw.h::PA_Put2_8bitPixels" ref="g1391e6b6585c72497bc715fe341c1617" args="(u8 screen, s16 x, s16 y, u16 colors)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_Put2_8bitPixels           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>colors</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessine deux pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Beaucoup plus rapide que de dessiner les 2 pixels séparemment. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X (0-254), doit etre PAIR </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y (0-191) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>colors</em>&nbsp;</td><td>Couleurs des premier et deuxième pixels (*256 pour le deuxième) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g96ced5eaaff925909fa569937b279d0c"></a><!-- doxytag: member="PA_Draw.h::PA_Put4_8bitPixels" ref="g96ced5eaaff925909fa569937b279d0c" args="(u8 screen, s16 x, s16 y, u32 colors)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_Put4_8bitPixels           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>colors</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessine 4 pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Façon la plus rapide de dessiner à l'écran. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X (0-254), doit etre PAIR </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y (0-191) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>colors</em>&nbsp;</td><td>Couleurs des 4 pixels </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g569637f4508158b45f1842482c03e82b"></a><!-- doxytag: member="PA_Draw.h::PA_Put8bitPixel" ref="g569637f4508158b45f1842482c03e82b" args="(u8 screen, s16 x, s16 y, u8 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_Put8bitPixel           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessine un pixel à l'écran, sur un fond de 8 bits. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X (0-255) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y (0-191) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de la palette du fond (0-255) </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g6c4b2af23df5e95b2d7cada059c4acf2"></a><!-- doxytag: member="PA_Draw.h::PA_PutDouble8bitPixels" ref="g6c4b2af23df5e95b2d7cada059c4acf2" args="(u8 screen, s16 x, s16 y, u8 color1, u8 color2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_PutDouble8bitPixels           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Dessine deux pixels à l'écran, sur un fond de 8 bits. Ces pixels sont contigus, et le premier doit avoir une position X pair. Beaucoup plus rapide que de dessiner les 2 pixels séparemment. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X (0-254), doit etre PAIR </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y (0-191) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color1</em>&nbsp;</td><td>Couleur de la palette du fond (0-255) pour le premier pixel </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color2</em>&nbsp;</td><td>Couleur de la palette du fond (0-255) pour le deuxième pixel </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>GÃ©nÃ©rÃ© le Sat Jun 13 12:57:00 2009 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

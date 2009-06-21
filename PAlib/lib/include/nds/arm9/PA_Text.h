@@ -15,7 +15,7 @@ extern u8 *bit8_tiles[10];
 
 #define PA_InitCustomTextEx(screen, bg_select, tiles, map, pal) {\
    PAbgtext[screen] = bg_select;\
-   PA_LoadSimpleBg(screen, bg_select, tiles, Blank, BG_256X256, 0, 1);\
+   PA_LoadSimpleBg(screen, bg_select, tiles, NULL, BG_256X256, 0, 1);\
    PA_LoadBgPal(screen, bg_select, (void*)pal);\
    PA_textmap[screen] = (u16*)map;PA_textpal[screen] = (u16*)pal;PAtext_pal[screen]=0;\
    u32 PAtexttempvar = 0; for (PAtexttempvar = 0; PAtexttempvar < 32*24; PAtexttempvar++) PA_SetTileLetter(screen, PAtexttempvar, 0, 0);   }

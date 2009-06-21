@@ -1,0 +1,717 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Référence du fichier include/nds/gba-jpeg-decode.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Généré par Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Liste&nbsp;des&nbsp;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Portée&nbsp;globale</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence du fichier include/nds/gba-jpeg-decode.h</h1><code>#include &quot;<a class="el" href="gba-jpeg_8h.html">gba-jpeg.h</a>&quot;</code><br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___huffman_table.html">JPEG_HuffmanTable</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header___component.html">JPEG_FrameHeader_Component</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___frame_header.html">JPEG_FrameHeader</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___scan_header___component.html">JPEG_ScanHeader_Component</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___scan_header.html">JPEG_ScanHeader</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#49c5620360e5f0b94145d82d4f655cf1">GBA_IMAGE_JPEG_H</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#f6d84b5a6d5406e9ef496c1608883b54">JPEG_BITS_START</a>()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#85437cce1784b017d3de88923eda8797">JPEG_BITS_REWIND</a>()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#ef8fa67c1a4ff64d9e61ccd957a1eac5">JPEG_BITS_CHECK</a>()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#3f2781e823ea50fea38be0fd5323af2d">JPEG_BITS_GET</a>(COUNT)&nbsp;&nbsp;&nbsp;((bits_data &gt;&gt; (bits_left -= (COUNT))) &amp; ((1 &lt;&lt; (COUNT)) - 1))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#71a8f71ece4000f8df5006ef47b71678">JPEG_BITS_PEEK</a>(COUNT)&nbsp;&nbsp;&nbsp;((bits_data &gt;&gt; (bits_left - (COUNT))) &amp; ((1 &lt;&lt; (COUNT)) - 1))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#2b7b458a52bcc95e7f48279003d01468">JPEG_BITS_DROP</a>(COUNT)&nbsp;&nbsp;&nbsp;(bits_left -= (COUNT))</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#e9bd398a296a80d69dbabedc04e766cb">JPEG_HuffmanTable_Decode</a>(TABLE, OUT)</td></tr>
+
+<tr><td colspan="2"><br><h2>Définition de type</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <a class="el" href="struct_j_p_e_g___huffman_table.html">JPEG_HuffmanTable</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#f34638de8dcccd379202f5a77cfea975">JPEG_HuffmanTable</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#e4e1b51df8d829052f116df03a9da6a5">JPEG_Decoder</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <a class="el" href="struct_j_p_e_g___frame_header.html">JPEG_FrameHeader</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#c835ec84c65f75785cd3b51a869d86b9">JPEG_FrameHeader</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <br class="typebreak">
+<a class="el" href="struct_j_p_e_g___frame_header___component.html">JPEG_FrameHeader_Component</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#013eaf9958a2cf07dae3c4117bee247f">JPEG_FrameHeader_Component</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <a class="el" href="struct_j_p_e_g___scan_header.html">JPEG_ScanHeader</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#a05116cedc914b839d8578173c011ce2">JPEG_ScanHeader</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef struct <br class="typebreak">
+<a class="el" href="struct_j_p_e_g___scan_header___component.html">JPEG_ScanHeader_Component</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#6749ca17ed1decd669bbf8842167ca16">JPEG_ScanHeader_Component</a></td></tr>
+
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#238c7d0fa0fe296e9ff564da26a60636">JPEG_Match</a> (const unsigned char *data, int length)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#34b4c90ec9d71f04d63bff86e3ec4b7f">JPEG_FrameHeader_Read</a> (<a class="el" href="struct_j_p_e_g___frame_header.html">JPEG_FrameHeader</a> *frame, const unsigned char **data, <a class="el" href="gba-jpeg_8h.html#1a1d8a443f4c3d01ddd3e6c33cf548ec">JPEG_Marker</a> marker)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#7a5144bbfae5ad863173f8fbfb16c295">JPEG_HuffmanTable_Read</a> (<a class="el" href="struct_j_p_e_g___huffman_table.html">JPEG_HuffmanTable</a> *table, const unsigned char **data)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#3bf6e3d10b8042ddc11462d5da43607b">JPEG_HuffmanTable_Skip</a> (const unsigned char **data)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#ec5ffcc8b6f15e3f68338510fb412b71">JPEG_ScanHeader_Read</a> (<a class="el" href="struct_j_p_e_g___scan_header.html">JPEG_ScanHeader</a> *scan, const unsigned char **data)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#55a3bec7d2ee105658cc20386c436d7f">JPEG_Decoder_ReadHeaders</a> (<a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a> *decoder, const unsigned char **data)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#2bd2697fc96c6b314932151130f45d4b">JPEG_Decoder_ReadImage</a> (<a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a> *decoder, const unsigned char **data, volatile JPEG_OUTPUT_TYPE *out, int outWidth, int outHeight)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#9697d251ad63be7afc905db5e35c5c51">JPEG_IDCT</a> (JPEG_FIXED_TYPE *zz, signed char *chunk, int chunkStride)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="gba-jpeg-decode_8h.html#e6b7e03559c1f9d694b394fb88cae7ae">JPEG_DecompressImage</a> (const unsigned char *data, volatile JPEG_OUTPUT_TYPE *out, int outWidth, int outHeight)</td></tr>
+
+</table>
+<hr><h2>Documentation des macros</h2>
+<a class="anchor" name="49c5620360e5f0b94145d82d4f655cf1"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::GBA_IMAGE_JPEG_H" ref="49c5620360e5f0b94145d82d4f655cf1" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define GBA_IMAGE_JPEG_H          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+gba-image_jpeg.h<p>
+A JPEG decompressor, targeted for the GameBoy Advance (although there should be no machine-specific aspects if you disable JPEG_USE_IWRAM and JPEG_MARK_TIME). On the GBA it consumes, all with slight potential variance:<p>
+3348 bytes of IWRAM, temporary 7756 bytes of ROM 4720 bytes of stack space, usually in IWRAM 350 milliseconds for decompressing a representative image<p>
+Unlike before when IWRAM was permanently used, it's now loaded in just before decompression, allowing you to spend IWRAM on more tools called constantly rather than one you call only once in awhile. There is no permanent IWRAM usage with this library.<p>
+It has a low capacitance for unusual JPEGs. They cannot be progressive, use arithmetic coding, have more than 4 components in a scan, and must be 8-bit. They can be colour or grayscale, and any component scaling factors are valid (unless if JPEG_HANDLE_ANY_FACTORS is reset, in which case only 2:1:1 is allowed). The maximum component scale factors cannot be three. In general, you'll be all right, but if it doesn't like your input it will not react sensibly in embedded.<p>
+This code is in the public domain. JPEG is used for both its standard meaning and for JFIF.<p>
+Revision 1: Inflicted stricter warnings, fixed C99-using code, and reduced allocation footprint (6144 bytes less). Revision 2: Reduced ROM usage by 276 bytes, with the body going to 832 bytes of IWRAM. I made it more configurable, particularly in YCbCr-&gt;RGB conversion. Some brute force ROM usage reduction. Revision 3: Removed all memset, malloc, and free dependencies. This increases stack use drastically but also makes it completely self-sufficient. Revision 4: Saved 6176 bytes of <a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a> state by exploiting an allowance of baseline JPEG decoding. This requires 3088 more bytes of stack space, however. Revision 5: Made the fixed-point shift configurable. Can now be compiled with -ansi -pedantic, and fixed stack usage so that it is always predictable by exploiting a JPEG restriction. Revision 6: A fixed type has been added and is configurable. 16-bit fixed is valid if you reduce JPEG_FIXSHIFT to 4 or lower. Revision 7: Inserted assertions for when you're not on the embedded environment; good for confirming that a given file is compatible with the decompressor. "this" is no longer used as a variable name. Added necessary fluff for dealing with C++.<p>
+<ul>
+<li>Burton Radons (<a href="mailto:loth@users.sourceforge.net">loth@users.sourceforge.net</a>) </li></ul>
+
+</div>
+</div><p>
+<a class="anchor" name="ef8fa67c1a4ff64d9e61ccd957a1eac5"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_BITS_CHECK" ref="ef8fa67c1a4ff64d9e61ccd957a1eac5" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JPEG_BITS_CHECK          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span> { \
+        <span class="keywordflow">while</span> (bits_left &lt; 32 - 7) \
+        { \
+            bits_data = (bits_data &lt;&lt; 8) | (*data ++); \
+            <span class="keywordflow">if</span> (data [-1] == 0xFF) \
+                data ++; \
+            bits_left += 8; \
+        } \
+    } <span class="keywordflow">while</span> (0)
+</pre></div>Fill the buffer. 
+</div>
+</div><p>
+<a class="anchor" name="2b7b458a52bcc95e7f48279003d01468"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_BITS_DROP" ref="2b7b458a52bcc95e7f48279003d01468" args="(COUNT)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JPEG_BITS_DROP          </td>
+          <td>(</td>
+          <td class="paramtype">COUNT&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;(bits_left -= (COUNT))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Drop a number of bits from the stream. 
+</div>
+</div><p>
+<a class="anchor" name="3f2781e823ea50fea38be0fd5323af2d"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_BITS_GET" ref="3f2781e823ea50fea38be0fd5323af2d" args="(COUNT)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JPEG_BITS_GET          </td>
+          <td>(</td>
+          <td class="paramtype">COUNT&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((bits_data &gt;&gt; (bits_left -= (COUNT))) &amp; ((1 &lt;&lt; (COUNT)) - 1))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Return and consume a number of bits. 
+</div>
+</div><p>
+<a class="anchor" name="71a8f71ece4000f8df5006ef47b71678"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_BITS_PEEK" ref="71a8f71ece4000f8df5006ef47b71678" args="(COUNT)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JPEG_BITS_PEEK          </td>
+          <td>(</td>
+          <td class="paramtype">COUNT&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((bits_data &gt;&gt; (bits_left - (COUNT))) &amp; ((1 &lt;&lt; (COUNT)) - 1))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Return a number of bits without consuming them. 
+</div>
+</div><p>
+<a class="anchor" name="85437cce1784b017d3de88923eda8797"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_BITS_REWIND" ref="85437cce1784b017d3de88923eda8797" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JPEG_BITS_REWIND          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span> { \
+        <span class="keywordtype">int</span> count = bits_left &gt;&gt; 3; \
+        \
+        <span class="keywordflow">while</span> (count --) \
+        { \
+            data --; \
+            <span class="keywordflow">if</span> (data [-1] == 0xFF) \
+                data --; \
+        } \
+        \
+        bits_left = 0; \
+        bits_data = 0; \
+    } <span class="keywordflow">while</span> (0)
+</pre></div>Rewind any bytes that have not been read from and reset the state. 
+</div>
+</div><p>
+<a class="anchor" name="f6d84b5a6d5406e9ef496c1608883b54"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_BITS_START" ref="f6d84b5a6d5406e9ef496c1608883b54" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JPEG_BITS_START          </td>
+          <td>(</td>
+&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> bits_left = 0; \
+    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> bits_data = 0
+</pre></div>Start reading bits. 
+</div>
+</div><p>
+<a class="anchor" name="e9bd398a296a80d69dbabedc04e766cb"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_HuffmanTable_Decode" ref="e9bd398a296a80d69dbabedc04e766cb" args="(TABLE, OUT)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JPEG_HuffmanTable_Decode          </td>
+          <td>(</td>
+          <td class="paramtype">TABLE,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">OUT&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span> { \
+        <span class="keywordtype">int</span> bitcount, result; \
+        \
+        result = <a class="code" href="gba-jpeg-decode_8h.html#71a8f71ece4000f8df5006ef47b71678">JPEG_BITS_PEEK</a> (8); \
+        \
+        <span class="keywordflow">if</span> ((bitcount = (TABLE)-&gt;look_nbits [result]) != 0) \
+        { \
+            <a class="code" href="gba-jpeg-decode_8h.html#2b7b458a52bcc95e7f48279003d01468">JPEG_BITS_DROP</a> (bitcount); \
+            result = (TABLE)-&gt;look_sym [result]; \
+        } \
+        <span class="keywordflow">else</span> \
+        { \
+            <span class="keywordtype">int</span> i = 7; \
+            \
+            <a class="code" href="gba-jpeg-decode_8h.html#2b7b458a52bcc95e7f48279003d01468">JPEG_BITS_DROP</a> (8); \
+            <span class="keywordflow">do</span> result = (result &lt;&lt; 1) | <a class="code" href="gba-jpeg-decode_8h.html#3f2781e823ea50fea38be0fd5323af2d">JPEG_BITS_GET</a> (1); \
+            <span class="keywordflow">while</span> (result &gt; (TABLE)-&gt;maxcode [++ i]); \
+            \
+            result = (TABLE)-&gt;valptr [i] [result]; \
+        } \
+        \
+        (OUT) = result; \
+    } <span class="keywordflow">while</span> (0)
+</pre></div>Read a single unsigned char from the current bit-stream by using the provided table. 
+</div>
+</div><p>
+<hr><h2>Documentation des définition de type</h2>
+<a class="anchor" name="e4e1b51df8d829052f116df03a9da6a5"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_Decoder" ref="e4e1b51df8d829052f116df03a9da6a5" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a> <a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="c835ec84c65f75785cd3b51a869d86b9"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_FrameHeader" ref="c835ec84c65f75785cd3b51a869d86b9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct_j_p_e_g___frame_header.html">JPEG_FrameHeader</a> <a class="el" href="struct_j_p_e_g___frame_header.html">JPEG_FrameHeader</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="013eaf9958a2cf07dae3c4117bee247f"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_FrameHeader_Component" ref="013eaf9958a2cf07dae3c4117bee247f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct_j_p_e_g___frame_header___component.html">JPEG_FrameHeader_Component</a> <a class="el" href="struct_j_p_e_g___frame_header___component.html">JPEG_FrameHeader_Component</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="f34638de8dcccd379202f5a77cfea975"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_HuffmanTable" ref="f34638de8dcccd379202f5a77cfea975" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct_j_p_e_g___huffman_table.html">JPEG_HuffmanTable</a> <a class="el" href="struct_j_p_e_g___huffman_table.html">JPEG_HuffmanTable</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="a05116cedc914b839d8578173c011ce2"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_ScanHeader" ref="a05116cedc914b839d8578173c011ce2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct_j_p_e_g___scan_header.html">JPEG_ScanHeader</a> <a class="el" href="struct_j_p_e_g___scan_header.html">JPEG_ScanHeader</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="6749ca17ed1decd669bbf8842167ca16"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_ScanHeader_Component" ref="6749ca17ed1decd669bbf8842167ca16" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct_j_p_e_g___scan_header___component.html">JPEG_ScanHeader_Component</a> <a class="el" href="struct_j_p_e_g___scan_header___component.html">JPEG_ScanHeader_Component</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="55a3bec7d2ee105658cc20386c436d7f"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_Decoder_ReadHeaders" ref="55a3bec7d2ee105658cc20386c436d7f" args="(JPEG_Decoder *decoder, const unsigned char **data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JPEG_Decoder_ReadHeaders           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a> *&nbsp;</td>
+          <td class="paramname"> <em>decoder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char **&nbsp;</td>
+          <td class="paramname"> <em>data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Read all headers up to the start of the image and store the new data pointer in *data. Returns true on success and false on failure (failure isn't possible if JPEG_DEBUG is reset). 
+</div>
+</div><p>
+<a class="anchor" name="2bd2697fc96c6b314932151130f45d4b"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_Decoder_ReadImage" ref="2bd2697fc96c6b314932151130f45d4b" args="(JPEG_Decoder *decoder, const unsigned char **data, volatile JPEG_OUTPUT_TYPE *out, int outWidth, int outHeight)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JPEG_Decoder_ReadImage           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_j_p_e_g___decoder.html">JPEG_Decoder</a> *&nbsp;</td>
+          <td class="paramname"> <em>decoder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char **&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">volatile JPEG_OUTPUT_TYPE *&nbsp;</td>
+          <td class="paramname"> <em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>outWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>outHeight</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Read the entire image from the *data value and then store the new data pointer. Returns true on success and false on failure (failure isn't possible if JPEG_DEBUG is reset). 
+</div>
+</div><p>
+<a class="anchor" name="e6b7e03559c1f9d694b394fb88cae7ae"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_DecompressImage" ref="e6b7e03559c1f9d694b394fb88cae7ae" args="(const unsigned char *data, volatile JPEG_OUTPUT_TYPE *out, int outWidth, int outHeight)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JPEG_DecompressImage           </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">volatile JPEG_OUTPUT_TYPE *&nbsp;</td>
+          <td class="paramname"> <em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>outWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>outHeight</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Create a decompressor, read the headers from the provided data, and then read the image into the buffer given. Returns true on success and false on failure (failure isn't possible if JPEG_DEBUG is reset). 
+</div>
+</div><p>
+<a class="anchor" name="34b4c90ec9d71f04d63bff86e3ec4b7f"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_FrameHeader_Read" ref="34b4c90ec9d71f04d63bff86e3ec4b7f" args="(JPEG_FrameHeader *frame, const unsigned char **data, JPEG_Marker marker)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JPEG_FrameHeader_Read           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_j_p_e_g___frame_header.html">JPEG_FrameHeader</a> *&nbsp;</td>
+          <td class="paramname"> <em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char **&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="gba-jpeg_8h.html#1a1d8a443f4c3d01ddd3e6c33cf548ec">JPEG_Marker</a>&nbsp;</td>
+          <td class="paramname"> <em>marker</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Read a FrameHeader segment (SOFn) and store the new data pointer in *data. Returns true on success and false on failure (failure isn't possible if JPEG_DEBUG is reset). 
+</div>
+</div><p>
+<a class="anchor" name="7a5144bbfae5ad863173f8fbfb16c295"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_HuffmanTable_Read" ref="7a5144bbfae5ad863173f8fbfb16c295" args="(JPEG_HuffmanTable *table, const unsigned char **data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JPEG_HuffmanTable_Read           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_j_p_e_g___huffman_table.html">JPEG_HuffmanTable</a> *&nbsp;</td>
+          <td class="paramname"> <em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char **&nbsp;</td>
+          <td class="paramname"> <em>data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Read a HuffmanTable segment (DHT) and store the new data pointer in *data. Returns true on success and false on failure (failure isn't possible if JPEG_DEBUG is reset). 
+</div>
+</div><p>
+<a class="anchor" name="3bf6e3d10b8042ddc11462d5da43607b"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_HuffmanTable_Skip" ref="3bf6e3d10b8042ddc11462d5da43607b" args="(const unsigned char **data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JPEG_HuffmanTable_Skip           </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char **&nbsp;</td>
+          <td class="paramname"> <em>data</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Skip a HuffmanTable segment (DHT) and store the new data pointer in *data on success. Returns true on success and false on failure (failure isn't possible if JPEG_DEBUG is reset). 
+</div>
+</div><p>
+<a class="anchor" name="9697d251ad63be7afc905db5e35c5c51"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_IDCT" ref="9697d251ad63be7afc905db5e35c5c51" args="(JPEG_FIXED_TYPE *zz, signed char *chunk, int chunkStride)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void JPEG_IDCT           </td>
+          <td>(</td>
+          <td class="paramtype">JPEG_FIXED_TYPE *&nbsp;</td>
+          <td class="paramname"> <em>zz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">signed char *&nbsp;</td>
+          <td class="paramname"> <em>chunk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>chunkStride</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Perform a 2D inverse DCT computation on the input.<p>
+<dl compact><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>zz</em>&nbsp;</td><td>The coefficients to process, JPEG_DCTSIZE2 in length. The contents will be destroyed in the computations. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>chunk</em>&nbsp;</td><td>The chunk to store the results in, nominally from -64 to 63, although some error is expected. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>chunkStride</em>&nbsp;</td><td>The number of values in a row for the chunk array. </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="238c7d0fa0fe296e9ff564da26a60636"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_Match" ref="238c7d0fa0fe296e9ff564da26a60636" args="(const unsigned char *data, int length)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JPEG_Match           </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char *&nbsp;</td>
+          <td class="paramname"> <em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>length</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Return whether this data matches as a JPEG input stream. You only need to read four bytes. 
+</div>
+</div><p>
+<a class="anchor" name="ec5ffcc8b6f15e3f68338510fb412b71"></a><!-- doxytag: member="gba&#45;jpeg&#45;decode.h::JPEG_ScanHeader_Read" ref="ec5ffcc8b6f15e3f68338510fb412b71" args="(JPEG_ScanHeader *scan, const unsigned char **data)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int JPEG_ScanHeader_Read           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_j_p_e_g___scan_header.html">JPEG_ScanHeader</a> *&nbsp;</td>
+          <td class="paramname"> <em>scan</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char **&nbsp;</td>
+          <td class="paramname"> <em>data</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Read a ScanHeader segment (SOS) and store the new data pointer in *data. Returns true on success and false on failure (failure isn't possible if JPEG_DEBUG is reset). 
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Généré le Sat Jun 13 12:56:59 2009 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>

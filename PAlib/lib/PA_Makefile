@@ -1,55 +1,72 @@
+#---------------------------------------------------------------------------------
+# PAlib Application Makefile
+#---------------------------------------------------------------------------------
 
-#---------------------------------------------------------------------------------
-.SUFFIXES:
-#---------------------------------------------------------------------------------
 ifeq ($(strip $(DEVKITARM)),)
 $(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM)
 endif
 
 include $(DEVKITARM)/ds_rules
 
+TEXT_TO_SAY_1 :=
+TEXT_TO_SAY_2 :=
+TEXT_TO_SAY_3 :=
+TEXT_TO_SAY_4 :=
+NL_AND_PAUSE :=
+MSG_IS_ERROR :=
 
-#---------------------------------------------------------------------------------
-# ARM7BIN is the path to an arm7 binary other than the default
-#	usage: ARM7BIN := -7 binaryName.bin
-#
-# ICON is the path to an icon to be used int the header plus text
-#	usage: ICON := -t iconName.bmp "text line one; text line 2; text line 3"
-# 
-#---------------------------------------------------------------------------------
+ARM7_IS_OK :=
+
+ifeq ($(strip $(ARM7_SELECTED)),)
+	TEXT_TO_SAY_1 := You forgot to select an ARM7 core! ARM7_MP3 will be selected by default.
+	TEXT_TO_SAY_2 := To select an ARM7 core, uncomment the line of the makefile that specifies
+	TEXT_TO_SAY_3 := the ARM7 core you want.
+	NL_AND_PAUSE = YES
+	ARM7_SELECTED = ARM7_MP3
+endif
 
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_BASIC)
-	ARM7BIN		:= -7 $(PAPATH)/lib/arm7/arm7.bin
+	TEXT_TO_SAY_1 := The ARM7_BASIC core is only here for compatibility with PAlib 080203 and
+	TEXT_TO_SAY_2 := 080823 programs. ARM7_MP3 will be selected by default. If you are upgrading
+	TEXT_TO_SAY_3 := a project, it is highly recommended that you replace your makefile with the
+	TEXT_TO_SAY_4 := one in $(DEVKITPRO)/PAlib.
+	NL_AND_PAUSE = YES
+	ARM7_SELECTED = ARM7_MP3
 endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MOD_DSWIFI)
-	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_mod_dswifi/arm7.bin
-endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MOD_LIBLOBBY)
-	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_mod_liblobby/arm7.bin
-endif
+
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3)
-	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_mp3/arm7.bin
+	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_mp3.bin
+	ARM7_IS_OK := YES
 endif
+
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3_DSWIFI)
-	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_mp3_dswifi/arm7.bin
+	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_mp3_dswifi.bin
+	ARM7_IS_OK := YES
 endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3_LIBLOBBY)
-	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_mp3_liblobby/arm7.bin
+
+ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
+	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_maxmod_dswifi.bin
+	ARM7_IS_OK := YES
 endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MIKMOD_DSWIFI)
-	ARM7BIN		:= -7 $(PAPATH)/lib/arm7_mikmod_dswifi/arm7.bin
+
+ifeq ($(strip $(ARM7_IS_OK)),)
+	TEXT_TO_SAY_1 := The ARM7 core you selected is invalid: $(strip $(ARM7_SELECTED))
+	TEXT_TO_SAY_2 := ARM7_MP3 will be selected by default.
+	TEXT_TO_SAY_3 := To select a proper ARM7 core, uncomment the line of the makefile
+	TEXT_TO_SAY_4 := that specifies the ARM7 core you want.
+	NL_AND_PAUSE = YES
+	ARM7_SELECTED = ARM7_MP3
 endif
 
 #---------------------------------------------------------------------------------
 # options for code generation
 #---------------------------------------------------------------------------------
-ARCH	:=	-mthumb-interwork
+ARCH	:=	-mthumb -mthumb-interwork
 
 # note: arm9tdmi isn't the correct CPU arch, but anything newer and LD
 # *insists* it has a FPU or VFP, and it won't take no for an answer!
 CFLAGS	:=	-g  -Wformat=2 -Winline -Wall -O2\
-
- 		-mcpu=arm946e-s -mtune=arm946e-s -fomit-frame-pointer\
+ 		-march=armv5te -mtune=arm946e-s -fomit-frame-pointer\
 		-ffast-math \
 		$(ARCH)
 
@@ -57,16 +74,6 @@ CFLAGS	+=	$(INCLUDE) -DARM9 -I$(PAPATH)/include/nds
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	:=	-g $(ARCH) -mno-fpu -L$(PAPATH)/lib -Wl
-
-#---------------------------------------------------------------------------------
-# path to tools - this can be deleted if you set the path in windows
-#---------------------------------------------------------------------------------
-# export PATH		:=	/d/dev/ds/devkitARM_r11/bin:/bin
- 
-#---------------------------------------------------------------------------------
-# PATH to ndslib - just make a system variable called NDSLIBPATH and be done with it
-#---------------------------------------------------------------------------------
-# NDSLIBPATH	:=	/d/dev/ds/ndslib/
  
 #---------------------------------------------------------------------------------
 # the prefix on the compiler executables
@@ -76,26 +83,14 @@ PREFIX			:=	arm-eabi-
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------	
 
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_BASIC)
-	LIBS	:= -lfat -lnds9 -ldswifi9
-endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MOD_DSWIFI)
-	LIBS	:= -lfat -lnds9 -ldswifi9
-endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MOD_LIBLOBBY)
-	LIBS	:= -lfat -lnds9 -llobby9d
-endif
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3)
 	LIBS	:= -lfat -lnds9
 endif
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3_DSWIFI)
 	LIBS	:= -lfat -lnds9 -ldswifi9
 endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3_LIBLOBBY)
-	LIBS	:= -lfat -lnds9 -llobby9d
-endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MIKMOD_DSWIFI)
-	LIBS	:= -lfat -lnds9 -ldswifi9 -lmikmod9
+ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
+	LIBS	:= -lfat -lnds9 -ldswifi9 -lmm9
 endif
 
 LIBSPA	:= -lpa9
@@ -104,26 +99,15 @@ LIBSPA	:= -lpa9
 # list of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_BASIC)
-	LIBDIRS	:=	$(DEVKITPRO)/libnds
-endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MOD_DSWIFI)
-	LIBDIRS	:=	$(DEVKITPRO)/libnds
-endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MOD_LIBLOBBY)
-	LIBDIRS	:=	$(DEVKITPRO)/libnds $(DEVKITPRO)/liblobby
-endif
+
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3)
 	LIBDIRS	:=	$(DEVKITPRO)/libnds
 endif
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3_DSWIFI)
 	LIBDIRS	:=	$(DEVKITPRO)/libnds
 endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3_LIBLOBBY)
-	LIBDIRS	:=	$(DEVKITPRO)/libnds $(DEVKITPRO)/liblobby
-endif
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_MIKMOD_DSWIFI)
-	LIBDIRS	:=	$(DEVKITPRO)/libnds $(DEVKITPRO)/mikmod
+ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
+	LIBDIRS	:=	$(DEVKITPRO)/libnds
 endif
 
 LIBDIRPA	:=	$(PAPATH)
@@ -154,6 +138,25 @@ CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 PCXFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.pcx)))
 BINFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bin)))
+
+ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
+export AUDIOFILES :=	$(foreach dir,$(notdir $(wildcard $(MUSIC)/*.*)),$(CURDIR)/$(MUSIC)/$(dir))
+endif
+
+ifeq ($(strip $(AUDIOFILES)),)
+	ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
+		TEXT_TO_SAY_2 := No MaxMod-compatible files were found in the audio folder.
+		TEXT_TO_SAY_3 := If you are loading the soundbank from FAT or EFS, ignore this message.
+		TEXT_TO_SAY_4 := " "
+	endif
+	DONT_BUILD_MAXMOD_SOUNDBANK = YES
+endif
+
+ifneq ($(strip $(DONT_BUILD_MAXMOD_SOUNDBANK)), YES)
+	ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
+		BINFILES += soundbank_bin.bin
+	endif
+endif
 PNGFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.png)))
 PALFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.pal)))
 RAWFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.raw)))
@@ -163,9 +166,13 @@ MODFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.mod)))
 GIFFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.gif)))
 BMPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bmp)))
 MP3FILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.mp3)))
- 
-export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) $(PNGFILES:.png=.o) $(PCXFILES:.pcx=.o) $(JPEGFILES:.jpg=.o) $(MODFILES:.mod=.o) $(GIFFILES:.gif=.o) $(BMPFILES:.bmp=.o) $(MP3FILES:.mp3=.o)\
-					$(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
+
+
+
+export OFILES	:=	$(MAPFILES:.map=.o) $(RAWFILES:.raw=.o) $(PALFILES:.pal=.o) $(BINFILES:.bin=.o) \
+					$(PNGFILES:.png=.o) $(PCXFILES:.pcx=.o) $(JPEGFILES:.jpg=.o) $(MODFILES:.mod=.o) \
+					$(GIFFILES:.gif=.o) $(BMPFILES:.bmp=.o) $(MP3FILES:.mp3=.o) $(CPPFILES:.cpp=.o) \
+					$(CFILES:.c=.o) $(SFILES:.s=.o)
  
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
 					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
@@ -175,13 +182,60 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
  
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 export LIBPATHPA	:=	$(foreach dir,$(LIBDIRPA),-L$(dir)/lib)
- 
+
+ifeq ($(strip $(USE_EFS)), YES)
+	WILDCARD_EFS := $(wildcard $(CURDIR)/efs) $(wildcard $(CURDIR)/efs.exe)
+	ifeq ($(strip $(WILDCARD_EFS)),)
+		TEXT_TO_SAY_1 := "It seems your copy of the EFS patcher is missing!"
+		TEXT_TO_SAY_2 := "Without this file, you can't build your project."
+		TEXT_TO_SAY_3 := "You can find it in the following directory:"
+		TEXT_TO_SAY_4 := "$(DEVKITPRO)/PAlib/examples/FAT/EFS"
+		NL_AND_PAUSE := YES
+		MSG_IS_ERROR := YES
+	endif
+endif
+
 .PHONY: $(BUILD) clean export
  
 #---------------------------------------------------------------------------------
-$(BUILD):	
+$(BUILD):
+# Before compiling, show any warning messages that might have detected
+ifneq ($(strip $(TEXT_TO_SAY_1)),)
+ifeq ($(strip $(MSG_IS_ERROR)),)
+	@echo " ===================================="
+	@echo "/ PAlib Project Compilation Warning /"
+	@echo "==================================== "
+else
+	@echo " =================================="
+	@echo "/ PAlib Project Compilation Error /"
+	@echo "================================== "
+endif
+	@echo.
+	@echo $(TEXT_TO_SAY_1)
+endif
+ifneq ($(strip $(TEXT_TO_SAY_2)),)
+	@echo $(TEXT_TO_SAY_2)
+endif
+ifneq ($(strip $(TEXT_TO_SAY_3)),)
+	@echo $(TEXT_TO_SAY_3)
+endif
+ifneq ($(strip $(TEXT_TO_SAY_4)),)
+	@echo $(TEXT_TO_SAY_4)
+endif
+ifneq ($(strip $(NL_AND_PAUSE)),)
+	@echo.
+ifeq ($(strip $(MSG_IS_ERROR)),)
+	@read -n 1 -p "Press any key to continue the compilation..."
+	@echo.
+else
+	@read -n 1 -p "Press any key to exit..."
+endif
+	@echo.
+endif
+ifeq ($(strip $(MSG_IS_ERROR)),)
 	@[ -d $@ ] || mkdir -p $@
 	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+endif
  
 #---------------------------------------------------------------------------------
 clean:
@@ -195,8 +249,6 @@ export:
 #---------------------------------------------------------------------------------
 else
  
-DEPENDS	:=	$(OFILES:.o=.d)
- 
 #---------------------------------------------------------------------------------
 # main targets
 #---------------------------------------------------------------------------------
@@ -207,6 +259,15 @@ $(OUTPUT).nds	: 	$(OUTPUT).bin
 $(OUTPUT).bin	:	$(OUTPUT).elf
  
 $(OUTPUT).elf	:	$(OFILES)
+
+#---------------------------------------------------------------------------------
+# rule to build soundbank from music files
+#---------------------------------------------------------------------------------
+soundbank_bin.bin : $(AUDIOFILES)
+#---------------------------------------------------------------------------------
+ifneq ($(strip $(DONT_BUILD_MAXMOD_SOUNDBANK)), YES)
+	@mmutil $^ -d -osoundbank_bin.bin -hsoundbank.h
+endif
  
 #---------------------------------------------------------------------------------
 %.ds.gba: %.nds
@@ -227,20 +288,17 @@ endif
 
 #---------------------------------------------------------------------------------
 %.bin: %.elf
-	
 	@$(OBJCOPY) -O binary $(TARGET).elf $(TARGET).bin
  
 #---------------------------------------------------------------------------------
 %.elf:
 	@echo $(LD)  $(LDFLAGS) -specs=ds_arm9.specs $(OFILES) $(LIBPATHPA) $(LIBSPA) $(LIBPATHS) $(LIBS) -o $(TARGET).elf
 	@$(LD)  $(LDFLAGS) -specs=ds_arm9.specs $(OFILES) $(LIBPATHPA) $(LIBSPA) $(LIBPATHS) $(LIBS) -o $(TARGET).elf
- 
- 
- 
+
 #---------------------------------------------------------------------------------
 # Compile Targets for C/C++
 #---------------------------------------------------------------------------------
- 
+
 #---------------------------------------------------------------------------------
 %.o : %.cpp
 	@echo $(notdir $<)
@@ -342,8 +400,6 @@ endef
 	@echo $(notdir $<)
 	@$(bin2o)
 
- 
--include $(DEPENDS) 
 #---------------------------------------------------------------------------------------
 endif
 #---------------------------------------------------------------------------------------

@@ -1,9 +1,8 @@
 #ifndef _PA_BGTILES
 #define _PA_BGTILES
 
-//#include <PA9.h>
-//#include <PA_FS.h>
 #include <nds.h>
+#include "../PA_Shared.h"
 #include "PA_General.h"
 
 

@@ -23,7 +23,7 @@ while(1)
 {
 
 	// Day, Month, and Year
-	PA_OutputText(1, 2, 10, "%02d/%02d/%02d", PA_RTC.Day, PA_RTC.Month, PA_RTC.Year);
+	PA_OutputText(1, 2, 10, "%02d/%02d/%04d", PA_RTC.Day, PA_RTC.Month, PA_RTC.Year);
 
 	// And the time...
 	PA_OutputText(1, 2, 12, "%02d:%02d  %02d seconds", PA_RTC.Hour, PA_RTC.Minutes, PA_RTC.Seconds);	

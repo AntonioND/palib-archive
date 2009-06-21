@@ -1,17 +1,27 @@
-// Includes
-#include <PA9.h>       // Include for PA_Lib
+////////////////////////////
+// PAlib project template //
+////////////////////////////
 
-// Function: main()
-int main(int argc, char ** argv)
-{
-	PA_Init();    // Initializes PA_Lib
-	PA_InitVBL(); // Initializes a standard VBL
+// Lines starting with two slashes are ignored by the compiler
+// Basically you can use them to comment what are you doing
+// In fact, this kind of lines are called comments :P
+
+// Include PAlib so that you can use it
+#include <PA9.h>
+
+int main(){
+	// Initialize PAlib
+	PA_Init();
+	PA_InitVBL();
+
+	// Put your initialization code here
 
 	// Infinite loop to keep the program running
-	while (1)
-	{
+	while(true){
+		// Put your game logic here
+
+		// Wait until the next frame.
+		// The DS runs at 60 frames per second.
 		PA_WaitForVBL();
 	}
-	
-	return 0;
-} // End of main()
+}

@@ -1,0 +1,750 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>PAlib - Programmer&#39;s Arsenal: Large Maps</title>
+<link href="tabs.css" rel="stylesheet" type="text/css">
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- GÃ©nÃ©rÃ© par Doxygen 1.5.8 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
+      <li><a href="annotated.html"><span>Structures&nbsp;de&nbsp;donnÃ©es</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+    <li>
+      <form action="search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Rechercher&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Large Maps</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#g9f6d1aa062e34ce6f00cc597d5e816c6">PA_LoadLargeBg</a>(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large).  <a href="#g9f6d1aa062e34ce6f00cc597d5e816c6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#g1f23aca5c32f4781bc0f952eae0d609f">PA_LoadPAGfxLargeBg</a>(screen, bg_number, bg_name)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx.  <a href="#g1f23aca5c32f4781bc0f952eae0d609f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#gdabe8ab915314c5bf00d29d9063eaf37">PA_LoadLargeBgEx</a>(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles.  <a href="#gdabe8ab915314c5bf00d29d9063eaf37"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#ged6167c4fb05f84311266a14843f2b86">PA_InfLargeScrollX</a> (u8 screen, u8 bg_select, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' horizontalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="#ged6167c4fb05f84311266a14843f2b86"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#gf457c8312399c7cef3737b2b3547ccd9">PA_InfLargeScrollY</a> (u8 screen, u8 bg_select, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' verticalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="#gf457c8312399c7cef3737b2b3547ccd9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#g77cc7b1da7fafeb4dc64c03753b3f52b">PA_InfLargeScrollXY</a> (u8 screen, u8 bg_select, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un fond à scrolling 'infini' horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg.  <a href="#g77cc7b1da7fafeb4dc64c03753b3f52b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#gfc9cfabbb48ba17fce2b9e46658a2b79">PA_LargeScrollX</a> (u8 screen, u8 bg_select, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling horizontalement.Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="#gfc9cfabbb48ba17fce2b9e46658a2b79"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#g81fc6dc7f2fcc55d5031f57cfe3c4794">PA_LargeScrollY</a> (u8 screen, u8 bg_select, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="#g81fc6dc7f2fcc55d5031f57cfe3c4794"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#g7f50efb09dce7bc3c566bf7cc4fc8707">PA_LargeScrollXY</a> (u8 screen, u8 bg_select, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un grand fond à scrolling horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll...  <a href="#g7f50efb09dce7bc3c566bf7cc4fc8707"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#g3156271b4274fe0c075f8d0c5a2a0fc3">PA_InitParallaxX</a> (u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller.  <a href="#g3156271b4274fe0c075f8d0c5a2a0fc3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#g5dbd02ea203f5961b80f228d63d0aeed">PA_InitParallaxY</a> (u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller.  <a href="#g5dbd02ea203f5961b80f228d63d0aeed"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#gbcf1d4572e792e5d83a9800109769fa9">PA_ParallaxScrollX</a> (u8 screen, s32 x)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="#gbcf1d4572e792e5d83a9800109769fa9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#g7dfb3bb3680980b148f25d15faa77f1f">PA_ParallaxScrollY</a> (u8 screen, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="#g7dfb3bb3680980b148f25d15faa77f1f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___bg_large_map.html#gfcf8b75a3daf1634b38cb51ae8274f5b">PA_ParallaxScrollXY</a> (u8 screen, s32 x, s32 y)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="#gfcf8b75a3daf1634b38cb51ae8274f5b"></a><br></td></tr>
+</table>
+<hr><a name="_details"></a><h2>Description dÃ©taillÃ©e</h2>
+Load Large Maps, scroll them... <hr><h2>Documentation des macros</h2>
+<a class="anchor" name="g9f6d1aa062e34ce6f00cc597d5e816c6"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_LoadLargeBg" ref="g9f6d1aa062e34ce6f00cc597d5e816c6" args="(screen, bg_select, bg_tiles, bg_map, color_mode, lx, ly)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadLargeBg          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_tiles,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_map,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">color_mode,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">lx,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ly&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{\
+<a class="code" href="_p_a___bg_tiles_8h.html#f80c78d445789176d878c44c5136f2bc">PA_BgInfo</a>[screen][bg_select].<a class="code" href="struct_p_a___bg_infos.html#db0f1753d3266f23d57ec70382c2e6ef">NTiles</a> = <a class="code" href="_p_a___general_8h.html#abd4e93e222dff07af98dec2dfc96c7a">SIZEOF_16BIT</a>(bg_tiles)&gt;&gt;5;\
+<span class="keywordflow">if</span> (PA_BgInfo[screen][bg_select].NTiles &lt; <a class="code" href="_p_a___bg_large_map_8h.html#6403bf369550d13e1d7685c36503a46c">MAX_TILES</a>) {<a class="code" href="group___bg_tiles.html#g2326c1519a3901bac60df6f1ee2ee9cb" title="Facon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap...">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, Blank, <a class="code" href="_p_a___bg_tiles_8h.html#58af9234cb054037ade20c19cd7ff58a">BG_512X256</a>, 0, color_mode);}\
+<span class="keywordflow">else</span>{<a class="code" href="_p_a___bg_large_map_8h.html#9f8f09bbc391b4b5eddb01176e4482c4">PA_LoadTileEngine</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_tiles);}\
+<a class="code" href="_p_a___bg_large_map_8h.html#d0076bcf234c9088b218a0890050c15c">PA_InitLargeBg</a>(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>*)bg_map);}
+</pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large). 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Nom du tableau contenant les tiles (exemple: ship_Tiles) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_map</em>&nbsp;</td><td>Nom du tableau contenant les <a class="el" href="structinfos.html">infos</a> sur la map (exemple : ship_Map) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Nombre de couleurs : 0 pour 16 couleurs, 1 pour 256 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lx</em>&nbsp;</td><td>Largeur, en tiles. Un fond de 512 pixels de large fera 64 tiles de large. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ly</em>&nbsp;</td><td>Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut. </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gdabe8ab915314c5bf00d29d9063eaf37"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_LoadLargeBgEx" ref="gdabe8ab915314c5bf00d29d9063eaf37" args="(screen, bg_select, bg_tiles, tile_size, bg_map, color_mode, lx, ly)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadLargeBgEx          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_tiles,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">tile_size,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_map,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">color_mode,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">lx,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ly&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{\
+<a class="code" href="_p_a___bg_tiles_8h.html#f80c78d445789176d878c44c5136f2bc">PA_BgInfo</a>[screen][bg_select].<a class="code" href="struct_p_a___bg_infos.html#db0f1753d3266f23d57ec70382c2e6ef">NTiles</a> = <a class="code" href="_p_a___general_8h.html#abd4e93e222dff07af98dec2dfc96c7a">SIZEOF_16BIT</a>(bg_tiles)&gt;&gt;5;\
+<span class="keywordflow">if</span> (PA_BgInfo[screen][bg_select].NTiles &lt; <a class="code" href="_p_a___bg_large_map_8h.html#6403bf369550d13e1d7685c36503a46c">MAX_TILES</a>) {<a class="code" href="group___bg_tiles.html#gbef4e0b201a2b9a09290caa149d25c2b" title="Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap...">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, Blank, <a class="code" href="_p_a___bg_tiles_8h.html#58af9234cb054037ade20c19cd7ff58a">BG_512X256</a>, 0, color_mode);}\
+<span class="keywordflow">else</span>{<a class="code" href="_p_a___bg_large_map_8h.html#9f8f09bbc391b4b5eddb01176e4482c4">PA_LoadTileEngine</a>(screen, bg_select, bg_tiles);}\
+<a class="code" href="_p_a___bg_large_map_8h.html#d0076bcf234c9088b218a0890050c15c">PA_InitLargeBg</a>(screen, bg_select, lx, ly, (<span class="keywordtype">void</span>*)bg_map);}
+</pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), mais ici on met soi-meme la taille des tiles. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Nom du tableau contenant les tiles (exemple: ship_Tiles) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tile_size</em>&nbsp;</td><td>Taille du tilset </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_map</em>&nbsp;</td><td>Nom du tableau contenant les <a class="el" href="structinfos.html">infos</a> sur la map (exemple : ship_Map) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Nombre de couleurs : 0 pour 16 couleurs, 1 pour 256 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lx</em>&nbsp;</td><td>Largeur, en tiles. Un fond de 512 pixels de large fera 64 tiles de large. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ly</em>&nbsp;</td><td>Hauteur, en tiles. Un fond de 512 pixels de hauy fera 64 tiles de haut. </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g1f23aca5c32f4781bc0f952eae0d609f"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_LoadPAGfxLargeBg" ref="g1f23aca5c32f4781bc0f952eae0d609f" args="(screen, bg_number, bg_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadPAGfxLargeBg          </td>
+          <td>(</td>
+          <td class="paramtype">screen,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_number,         <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_name&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Valeur :</b><div class="fragment"><pre class="fragment">{\
+        <a class="code" href="group___palette.html#gd312e63462eef876094c3e80853031f8" title="Charger une palette de 256 couleurs dans les palettes des fonds.">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
+        <a class="code" href="group___bg_large_map.html#g9f6d1aa062e34ce6f00cc597d5e816c6" title="Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de...">PA_LoadLargeBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, 1, (bg_name##_Info[1]) &gt;&gt; 3, (bg_name##_Info[2]) &gt;&gt; 3);}
+</pre></div>Charger et initialiser un fond pour le scrolling infini (pour les fonds de plus de 512 pixels de haut ou de large), converti avec PAGfx. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Nom du fond dans PAGfx </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Documentation des fonctions</h2>
+<a class="anchor" name="ged6167c4fb05f84311266a14843f2b86"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_InfLargeScrollX" ref="ged6167c4fb05f84311266a14843f2b86" args="(u8 screen, u8 bg_select, s32 x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InfLargeScrollX           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer un fond à scrolling 'infini' horizontalement. Doit etre initialisé avec PA_LoadLargeBg. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g77cc7b1da7fafeb4dc64c03753b3f52b"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_InfLargeScrollXY" ref="g77cc7b1da7fafeb4dc64c03753b3f52b" args="(u8 screen, u8 bg_select, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_InfLargeScrollXY           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer un fond à scrolling 'infini' horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gf457c8312399c7cef3737b2b3547ccd9"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_InfLargeScrollY" ref="gf457c8312399c7cef3737b2b3547ccd9" args="(u8 screen, u8 bg_select, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InfLargeScrollY           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer un fond à scrolling 'infini' verticalement. Doit etre initialisé avec PA_LoadLargeBg. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g3156271b4274fe0c075f8d0c5a2a0fc3"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_InitParallaxX" ref="g3156271b4274fe0c075f8d0c5a2a0fc3" args="(u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_InitParallaxX           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg3</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg0</em>&nbsp;</td><td>Valeur pour le premier fond (0). 256 met en vitesse normal, moins pour moins lent (128 pour moitié de vitesse), plus pour plus rapide (512 équivaut à 2 fois plus vite). On peut utiliser des valeurs négatives. 0 désactive le scrolling parallax pour ce fond </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg1</em>&nbsp;</td><td>Idem, pour le Fond 1 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg2</em>&nbsp;</td><td>Idem, pour le Fond 2 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg3</em>&nbsp;</td><td>Idem, pour le Fond 3 </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g5dbd02ea203f5961b80f228d63d0aeed"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_InitParallaxY" ref="g5dbd02ea203f5961b80f228d63d0aeed" args="(u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_InitParallaxY           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg3</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller. 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg0</em>&nbsp;</td><td>Valeur pour le premier fond (0). 256 met en vitesse normal, moins pour moins lent (128 pour moitié de vitesse), plus pour plus rapide (512 équivaut à 2 fois plus vite). On peut utiliser des valeurs négatives. 0 désactive le scrolling parallax pour ce fond </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg1</em>&nbsp;</td><td>Idem, pour le Fond 1 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg2</em>&nbsp;</td><td>Idem, pour le Fond 2 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg3</em>&nbsp;</td><td>Idem, pour le Fond 3 </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gfc9cfabbb48ba17fce2b9e46658a2b79"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_LargeScrollX" ref="gfc9cfabbb48ba17fce2b9e46658a2b79" args="(u8 screen, u8 bg_select, s32 x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LargeScrollX           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer un grand fond à scrolling horizontalement.Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g7f50efb09dce7bc3c566bf7cc4fc8707"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_LargeScrollXY" ref="g7f50efb09dce7bc3c566bf7cc4fc8707" args="(u8 screen, u8 bg_select, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_LargeScrollXY           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer un grand fond à scrolling horizontalement et verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g81fc6dc7f2fcc55d5031f57cfe3c4794"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_LargeScrollY" ref="g81fc6dc7f2fcc55d5031f57cfe3c4794" args="(u8 screen, u8 bg_select, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LargeScrollY           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer un grand fond à scrolling verticalement. Doit etre initialisé avec PA_LoadLargeBg. Cette fonction ne permet pas au fond de 'boucler' sur lui-meme, mais est bien plus rapide que InfLargeScroll... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gbcf1d4572e792e5d83a9800109769fa9"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_ParallaxScrollX" ref="gbcf1d4572e792e5d83a9800109769fa9" args="(u8 screen, s32 x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_ParallaxScrollX           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer les fonds activés pour le parallax... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="gfcf8b75a3daf1634b38cb51ae8274f5b"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_ParallaxScrollXY" ref="gfcf8b75a3daf1634b38cb51ae8274f5b" args="(u8 screen, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_ParallaxScrollXY           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer les fonds activés pour le parallax... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="g7dfb3bb3680980b148f25d15faa77f1f"></a><!-- doxytag: member="PA_BgLargeMap.h::PA_ParallaxScrollY" ref="g7dfb3bb3680980b148f25d15faa77f1f" args="(u8 screen, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inline void PA_ParallaxScrollY           </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Déplacer les fonds activés pour le parallax... 
+<p>
+<dl compact><dt><b>ParamÃ¨tres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+</div>
+<hr size="1"><address style="text-align: right;"><small>GÃ©nÃ©rÃ© le Sat Jun 13 12:56:59 2009 pour PAlib - Programmer's Arsenal par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.8 </small></address>
+</body>
+</html>
