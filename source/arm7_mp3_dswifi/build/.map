@@ -1,0 +1,1348 @@
+Archive member included because of file (symbol)
+
+/home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+                              main.o (installWifiFIFO)
+/home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+                              /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o) (SLasm_Acquire)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+                              main.o (AS_Init)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+                              main.o (PA_Init)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o) (PA_InitFifo)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+                              main.o (PA_InputGetAndSend)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+                              main.o (PA_LegacyIPCManage)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o) (PA_FifoMicMsg)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o) (PA_FifoPSGMsg)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o) (getAllocationSize)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (xmp3_samplesPerFrameTab)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (xmp3_CheckPadBit)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (xmp3_FreeBuffers)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (xmp3_Dequantize)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o) (xmp3_DequantChannel)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (xmp3_DecodeHuffman)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o) (xmp3_huffTable)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (xmp3_IMDCT)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (xmp3_UnpackScaleFactors)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o) (xmp3_MidSideProc)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (xmp3_Subband)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o) (xmp3_imdctWin)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o) (xmp3_PolyphaseStereo)
+/home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o) (xmp3_FDCT32)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(audio.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o) (enableSound)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(clock.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o) (initClockIRQ)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(input.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o) (inputGetAndSend)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(microphone.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o) (micReadData8)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(spi.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o) (writePowerManagement)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(system.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o) (installSystemFIFO)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(touch.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o) (touchRead)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(userSettings.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o) (readUserSettings)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+                              /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o) (fifoSendValue32)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+                              main.o (irqSet)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(libnds_exit.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/ds_arm7_crt0.o (__libnds_exit)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(timers.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o) (timerStart)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+                              main.o (swiWaitForVBlank)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+                              /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o) (swiDelay)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+                              /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o) (IntrMain)
+/home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o) (swiSoftReset)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_divsi3.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o) (__aeabi_idiv)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_dvmd_tls.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_divsi3.o) (__div0)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-init.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/ds_arm7_crt0.o (__libc_init_array)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o) (free)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mallocr.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o) (_malloc_r)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memcpy.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o) (memcpy)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memmove.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o) (memmove)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memset.o)
+                              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o) (memset)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mlock.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mallocr.o) (__malloc_lock)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-freer.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o) (_free_r)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-impure.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o) (_impure_ptr)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(sbrk.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mallocr.o) (_sbrk_r)
+/home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(malloc_vars.o)
+                              /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(sbrk.o) (fake_heap_end)
+
+Allocating common symbols
+Common symbol       size              file
+
+fifo_datamsg_data   0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+arm7q               0x800             /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+nAudioBufStart      0x4               /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+fifo_buffer         0x400             /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+audioBuf            0x1200            /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+irqTableAUX         0xc8              /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+fifo_value32_func   0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+fifo_address_func   0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+PA_IPC              0x4               /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+hMP3Decoder         0x4               /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+fifo_value32_data   0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+fifo_value32_queue  0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+FlashData           0x200             /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+fifo_data_queue     0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+Keys                0x1               /home/oracle/devkitPro/libnds/lib/libnds7.a(input.o)
+irqTable            0xc8              /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+readPtr             0x4               /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+bytesLeft           0x4               /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+fifo_address_data   0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+stereo              0x1               /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+nAudioBuf           0x4               /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+mp3FrameInfo        0x1c              /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+fifo_datamsg_func   0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+fifo_address_queue  0x40              /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x0000000008000000 0x0000000002000000
+iwram            0x00000000037f8000 0x0000000000018000
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x00000000037f8000                __iwram_start = 0x37f8000
+                0x0000000003810000                __iwram_top = 0x3810000
+                0x000000000380ff00                __sp_irq = (__iwram_top - 0x100)
+                0x000000000380fe00                __sp_svc = (__sp_irq - 0x100)
+                0x000000000380fd00                __sp_usr = (__sp_svc - 0x100)
+                0x0000000003fffff8                __irq_flags = 0x3fffff8
+                0x0000000003ffffc0                __irq_flagsaux = 0x3ffffc0
+                0x0000000003fffffc                __irq_vector = 0x3fffffc
+
+.init           0x00000000037f8000       0xe8
+                0x00000000037f8000                __text_start = .
+ *(.init)
+ .init          0x00000000037f8000       0xd0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/ds_arm7_crt0.o
+                0x00000000037f8000                _start
+ .init          0x00000000037f80d0        0xc /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crti.o
+                0x00000000037f80d0                _init
+ .init          0x00000000037f80dc        0xc /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtn.o
+                0x00000000037f80e8                . = ALIGN (0x4)
+
+.plt
+ *(.plt)
+
+.text           0x00000000037f80f0     0xe0e8
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x00000000037f80f0        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/ds_arm7_crt0.o
+ .text          0x00000000037f80f0        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crti.o
+ .text          0x00000000037f80f0       0x94 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+ .text          0x00000000037f8184       0x70 main.o
+                0x00000000037f8184                main
+                0x00000000037f81cc                PA_VBL
+                0x00000000037f81e4                PA_VCount
+ .text          0x00000000037f81f4     0x3bd0 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+                0x00000000037f81f4                ReadFlashByte
+                0x00000000037f820c                ReadFlashBytes
+                0x00000000037f8264                ReadFlashHWord
+                0x00000000037f8290                crc16_slow
+                0x00000000037f82e8                Wifi_BBRead
+                0x00000000037f8328                Wifi_BBWrite
+                0x00000000037f83a8                Wifi_RFWrite
+                0x00000000037f83e4                PowerChip_ReadWrite
+                0x00000000037f8460                SetLedState
+                0x00000000037f84b0                ProxySetLedState
+                0x00000000037f84cc                Wifi_RFInit
+                0x00000000037f86f0                Wifi_BBInit
+                0x00000000037f8734                Wifi_MacInit
+                0x00000000037f8764                Wifi_TxSetup
+                0x00000000037f8778                Wifi_RxSetup
+                0x00000000037f87d0                Wifi_Shutdown
+                0x00000000037f887c                Wifi_CopyMacAddr
+                0x00000000037f8898                Wifi_CmpMacAddr
+                0x00000000037f88d8                Wifi_MACRead
+                0x00000000037f8928                Wifi_MACCopy
+                0x00000000037f89c4                Wifi_MACWrite
+                0x00000000037f8a60                Wifi_QueueRxMacData
+                0x00000000037f8b7c                Wifi_CheckTxBuf
+                0x00000000037f8bb4                Wifi_CopyFirstTxData
+                0x00000000037f8cf8                Wifi_TxRaw
+                0x00000000037f8d78                Wifi_TxCheck
+                0x00000000037f8d90                Wifi_Intr_CntOverflow
+                0x00000000037f8e04                Wifi_Intr_StartTx
+                0x00000000037f8e18                Wifi_Intr_TxEnd
+                0x00000000037f8f40                Wifi_Intr_TBTT
+                0x00000000037f8f58                Wifi_Intr_DoNothing
+                0x00000000037f8f5c                erasemem
+                0x00000000037f8f7c                Wifi_Deinit
+                0x00000000037f8ffc                Wifi_Start
+                0x00000000037f91b4                Wifi_Stop
+                0x00000000037f9218                Wifi_SetWepKey
+                0x00000000037f927c                Wifi_SetWepMode
+                0x00000000037f92c0                Wifi_SetBeaconPeriod
+                0x00000000037f92dc                Wifi_SetMode
+                0x00000000037f9304                Wifi_SetPreambleType
+                0x00000000037f9330                Wifi_DisableTempPowerSave
+                0x00000000037f9358                Wifi_TxQueue
+                0x00000000037f944c                Wifi_GenMgtHeader
+                0x00000000037f9540                Wifi_SendOpenSystemAuthPacket
+                0x00000000037f959c                Wifi_SendSharedKeyAuthPacket
+                0x00000000037f95f8                Wifi_SendSharedKeyAuthPacket2
+                0x00000000037f96a4                Wifi_SendAssocPacket
+                0x00000000037f98dc                Wifi_SendNullFrame
+                0x00000000037f9970                Wifi_SendPSPollFrame
+                0x00000000037f9a14                Wifi_CreateTxFrame
+                0x00000000037f9a1c                Wifi_SetSyncHandler
+                0x00000000037f9a2c                installWifiFIFO
+                0x00000000037f9a9c                Wifi_ProcessReceivedFrame
+                0x00000000037fab44                Wifi_Intr_RxEnd
+                0x00000000037facc8                Wifi_Interrupt
+                0x00000000037fae10                Wifi_SetChannel
+                0x00000000037fb0b8                Wifi_Update
+                0x00000000037fb834                Wifi_Sync
+                0x00000000037fb87c                Wifi_WakeUp
+                0x00000000037fb910                GetWfcSettings
+                0x00000000037fbb44                InitFlashData
+                0x00000000037fbb64                Wifi_Init
+ .text          0x00000000037fbdc4       0x5c /home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+                0x00000000037fbdc4                SLasm_Acquire
+                0x00000000037fbdf8                SLasm_Release
+ .text          0x00000000037fbe20      0xc98 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+                0x00000000037fbe20                AS_StereoDesinterleave
+                0x00000000037fbee4                AS_SetTimer
+                0x00000000037fbf44                AS_MP3ClearBuffers
+                0x00000000037fc000                AS_MP3Stop
+                0x00000000037fc044                AS_Init
+                0x00000000037fc07c                AS_InitMP3
+                0x00000000037fc0c4                AS_SoundVBL
+                0x00000000037fc3f0                AS_RegenStreamCallback
+                0x00000000037fc6f0                AS_RegenStream
+                0x00000000037fc750                AS_MP3Engine
+ .text          0x00000000037fcab8       0x68 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+                0x00000000037fcab8                PA_Init
+ .text          0x00000000037fcb20       0xe8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+                0x00000000037fcb20                PA_FifoValHandler
+                0x00000000037fcb64                PA_FifoMsgHandler
+                0x00000000037fcbd4                PA_InitFifo
+ .text          0x00000000037fcc08       0xa4 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+                0x00000000037fcc08                PA_ReadMicVol
+                0x00000000037fcc4c                PA_InputGetAndSend
+ .text          0x00000000037fccac      0x2e0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+                0x00000000037fccac                PA_SoundPlay
+                0x00000000037fcd88                PA_LegacySoundUpdates
+                0x00000000037fcee4                PA_SoundStop
+                0x00000000037fcef8                runNdsLoaderCheck
+                0x00000000037fcf30                PA_LegacyIPCManage
+ .text          0x00000000037fcf8c       0xb8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+                0x00000000037fcf8c                PA_MicTimer
+                0x00000000037fd008                PA_FifoMicMsg
+ .text          0x00000000037fd044       0x5c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+                0x00000000037fd044                PA_FifoPSGMsg
+ .text          0x00000000037fd0a0      0x7ac /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+                0x00000000037fd0a0                getAllocationSize
+                0x00000000037fd0ac                MP3FindSyncWord
+                0x00000000037fd0f4                MP3GetLastFrameInfo
+                0x00000000037fd17c                MP3GetNextFrameInfo
+                0x00000000037fd1cc                MP3Decode
+                0x00000000037fd828                MP3FreeDecoder
+                0x00000000037fd83c                MP3InitDecoder
+ .text          0x00000000037fd84c        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .text          0x00000000037fd84c      0x748 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+                0x00000000037fd84c                xmp3_SetBitstreamPointer
+                0x00000000037fd864                xmp3_GetBits
+                0x00000000037fd978                xmp3_CalcBitsUsed
+                0x00000000037fd990                xmp3_CheckPadBit
+                0x00000000037fd9bc                xmp3_UnpackFrameHeader
+                0x00000000037fdc50                xmp3_UnpackSideInfo
+ .text          0x00000000037fdf94      0x188 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+                0x00000000037fdf94                xmp3_FreeBuffers
+                0x00000000037fe03c                xmp3_AllocateBuffers
+ .text          0x00000000037fe11c      0x390 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+                0x00000000037fe11c                xmp3_Dequantize
+ .text          0x00000000037fe4ac      0x578 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+                0x00000000037fe690                xmp3_DequantChannel
+ .text          0x00000000037fea24      0x8f0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+                0x00000000037fea24                xmp3_DecodeHuffman
+ .text          0x00000000037ff314        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .text          0x00000000037ff314     0x1220 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+                0x00000000037ff914                xmp3_IMDCT
+ .text          0x0000000003800534      0x880 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+                0x0000000003800534                xmp3_UnpackScaleFactors
+ .text          0x0000000003800db4      0x8a8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+                0x0000000003800db4                xmp3_MidSideProc
+                0x0000000003800e40                xmp3_IntensityProcMPEG1
+                0x000000000380129c                xmp3_IntensityProcMPEG2
+ .text          0x000000000380165c      0x178 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+                0x000000000380165c                xmp3_Subband
+ .text          0x00000000038017d4        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .text          0x00000000038017d4      0x8b8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+                0x00000000038017d4                xmp3_PolyphaseStereo
+                0x0000000003801d40                xmp3_PolyphaseMono
+ .text          0x000000000380208c      0x970 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+                0x000000000380208c                xmp3_FDCT32
+ .text          0x00000000038029fc      0x3c4 /home/oracle/devkitPro/libnds/lib/libnds7.a(audio.o)
+                0x00000000038029fc                getFreeChannel
+                0x0000000003802a20                getFreePSGChannel
+                0x0000000003802a44                getFreeNoiseChannel
+                0x0000000003802a70                installSoundFIFO
+                0x0000000003802a94                disableSound
+                0x0000000003802ad8                enableSound
+                0x0000000003802b1c                soundCommandHandler
+                0x0000000003802c34                soundDataHandler
+                0x0000000003802da0                micSwapHandler
+ .text          0x0000000003802dc0      0x430 /home/oracle/devkitPro/libnds/lib/libnds7.a(clock.o)
+                0x0000000003802dc0                BCDToInteger
+                0x0000000003802de4                syncRTC
+                0x0000000003802df4                rtcTransaction
+                0x0000000003802ef4                rtcSetTime
+                0x0000000003802f1c                rtcGetTime
+                0x0000000003802f7c                rtcSetTimeAndDate
+                0x0000000003802fac                rtcGetTimeAndDate
+                0x000000000380300c                resyncClock
+                0x00000000038030f4                rtcReset
+                0x0000000003803134                initClockIRQ
+                0x00000000038031bc                integerToBCD
+ .text          0x00000000038031f0       0xa8 /home/oracle/devkitPro/libnds/lib/libnds7.a(input.o)
+                0x00000000038031f0                inputGetAndSend
+ .text          0x0000000003803298      0x288 /home/oracle/devkitPro/libnds/lib/libnds7.a(microphone.o)
+                0x00000000038032b8                micReadData12
+                0x0000000003803318                micReadData8
+                0x0000000003803374                micTimerHandler
+                0x00000000038033ec                micSetAmp
+                0x0000000003803444                micStopRecording
+                0x000000000380349c                micStartRecording
+ .text          0x0000000003803520      0x108 /home/oracle/devkitPro/libnds/lib/libnds7.a(spi.o)
+                0x0000000003803520                writePowerManagement
+                0x0000000003803588                readFirmware
+ .text          0x0000000003803628      0x140 /home/oracle/devkitPro/libnds/lib/libnds7.a(system.o)
+                0x0000000003803628                sleepEnabled
+                0x0000000003803634                systemShutDown
+                0x0000000003803644                installSystemFIFO
+                0x000000000380365c                systemSleep
+                0x000000000380368c                powerValueHandler
+ .text          0x0000000003803768      0x5a0 /home/oracle/devkitPro/libnds/lib/libnds7.a(touch.o)
+                0x0000000003803768                UpdateRange
+                0x00000000038037f0                readTouchValue
+                0x000000000380396c                touchRead
+                0x00000000038039d4                touchReadTemperature
+                0x0000000003803a08                CheckStylus
+                0x0000000003803a9c                touchReadXY
+ .text          0x0000000003803d08       0xe8 /home/oracle/devkitPro/libnds/lib/libnds7.a(userSettings.o)
+                0x0000000003803d08                readUserSettings
+ .text          0x0000000003803df0      0xc3c /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+                0x0000000003803f50                fifoSendAddress
+                0x0000000003803f8c                fifoSendValue32
+                0x0000000003803fd0                fifoGetAddress
+                0x000000000380403c                fifoSetAddressHandler
+                0x00000000038040a8                fifoGetValue32
+                0x0000000003804114                fifoSetValue32Handler
+                0x0000000003804180                fifoCheckAddress
+                0x00000000038041a4                fifoCheckDatamsg
+                0x00000000038041c8                fifoCheckValue32
+                0x000000000380427c                fifoInit
+                0x000000000380440c                fifoGetDatamsg
+                0x0000000003804924                fifoSetDatamsgHandler
+                0x00000000038049b4                fifoSendDatamsg
+ .text          0x0000000003804a2c      0x288 /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+                0x0000000003804a2c                irqDummy
+                0x0000000003804a30                irqSet
+                0x0000000003804aa4                irqInit
+                0x0000000003804af4                irqInitHandler
+                0x0000000003804b30                irqEnable
+                0x0000000003804b90                irqDisable
+                0x0000000003804bf4                irqClear
+                0x0000000003804c28                irqSetAUX
+                0x0000000003804c60                irqClearAUX
+                0x0000000003804c94                irqDisableAUX
+                0x0000000003804ca4                irqEnableAUX
+ .text          0x0000000003804cb4       0x40 /home/oracle/devkitPro/libnds/lib/libnds7.a(libnds_exit.o)
+                0x0000000003804cb4                systemErrorExit
+                0x0000000003804cb8                __libnds_exit
+ .text          0x0000000003804cf4       0xf4 /home/oracle/devkitPro/libnds/lib/libnds7.a(timers.o)
+                0x0000000003804cf4                timerElapsed
+                0x0000000003804d28                cpuStartTiming
+                0x0000000003804d64                cpuEndTiming
+                0x0000000003804da0                timerStart
+ .text          0x0000000003804de8       0x54 /home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+                0x0000000003804de8                swiWaitForVBlank
+                0x0000000003804df8                swiIntrWait
+ *fill*         0x0000000003804e3c        0x4 ff
+ .text          0x0000000003804e40       0x70 /home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+                0x0000000003804e40                swiDelay
+                0x0000000003804e44                swiSleep
+                0x0000000003804e48                swiChangeSoundBias
+                0x0000000003804e4c                swiDivide
+                0x0000000003804e50                swiRemainder
+                0x0000000003804e56                swiDivMod
+                0x0000000003804e62                swiCopy
+                0x0000000003804e66                swiFastCopy
+                0x0000000003804e6a                swiSqrt
+                0x0000000003804e6e                swiCRC16
+                0x0000000003804e72                swiIsDebugger
+                0x0000000003804e76                swiUnpackBits
+                0x0000000003804e7a                swiDecompressLZSSWram
+                0x0000000003804e7e                swiDecompressLZSSVram
+                0x0000000003804e82                swiDecompressHuffman
+                0x0000000003804e86                swiDecompressRLEWram
+                0x0000000003804e8a                swiDecompressRLEVram
+                0x0000000003804e8e                swiHalt
+                0x0000000003804e92                swiGetSineTable
+                0x0000000003804e96                swiGetPitchTable
+                0x0000000003804e9a                swiGetVolumeTable
+                0x0000000003804e9e                swiSwitchToGBAMode
+                0x0000000003804ea2                swiSetHaltCR
+ .text          0x0000000003804eb0       0xec /home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+                0x0000000003804eb0                IntrMain
+ *fill*         0x0000000003804f9c        0x4 ff
+ .text          0x0000000003804fa0       0x10 /home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+                0x0000000003804fa0                swiSoftReset
+ .text          0x0000000003804fb0      0x144 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_divsi3.o)
+                0x0000000003804fb0                __aeabi_idiv
+                0x0000000003804fb0                __divsi3
+                0x00000000038050dc                __aeabi_idivmod
+ .text          0x00000000038050f4        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_dvmd_tls.o)
+                0x00000000038050f4                __aeabi_ldiv0
+                0x00000000038050f4                __div0
+                0x00000000038050f4                __aeabi_idiv0
+ .text          0x00000000038050f8       0xc8 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-init.o)
+                0x00000000038050f8                __libc_fini_array
+                0x0000000003805140                __libc_init_array
+ .text          0x00000000038051c0       0x40 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o)
+                0x00000000038051c0                free
+                0x00000000038051e0                malloc
+ .text          0x0000000003805200      0x71c /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mallocr.o)
+                0x0000000003805200                _malloc_r
+ .text          0x000000000380591c       0xf0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memcpy.o)
+                0x000000000380591c                memcpy
+ .text          0x0000000003805a0c      0x12c /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memmove.o)
+                0x0000000003805a0c                memmove
+ .text          0x0000000003805b38       0xf8 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memset.o)
+                0x0000000003805b38                memset
+ .text          0x0000000003805c30        0x8 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mlock.o)
+                0x0000000003805c30                __malloc_lock
+                0x0000000003805c34                __malloc_unlock
+ .text          0x0000000003805c38      0x374 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-freer.o)
+                0x0000000003805c38                _malloc_trim_r
+                0x0000000003805d34                _free_r
+ .text          0x0000000003805fac        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-impure.o)
+ .text          0x0000000003805fac       0x78 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(sbrk.o)
+                0x0000000003805fac                _sbrk_r
+ .text          0x0000000003806024        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(malloc_vars.o)
+ .text          0x0000000003806024        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtend.o
+ .text          0x0000000003806024        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtn.o
+ *fill*         0x0000000003806024        0x4 ff
+ .text.stub     0x0000000003806028      0x150 linker stubs
+ *(.text.*personality*)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x0000000000000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+                0x0000000003806178                . = ALIGN (0x4)
+
+.v4_bx          0x0000000000000000        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.fini           0x00000000038061d8       0x18
+ *(.fini)
+ .fini          0x00000000038061d8        0xc /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crti.o
+                0x00000000038061d8                _fini
+ .fini          0x00000000038061e4        0xc /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtn.o
+                0x00000000038061f0                __text_end = .
+
+.rodata         0x00000000038061f0     0x3480
+ *(.rodata)
+ .rodata        0x00000000038061f0      0x508 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+                0x00000000038061f0                xmp3_samplerateTab
+                0x0000000003806214                xmp3_bitrateTab
+                0x0000000003806324                xmp3_samplesPerFrameTab
+                0x0000000003806338                xmp3_bitsPerSlotTab
+                0x0000000003806340                xmp3_sideBytesTab
+                0x000000000380634c                xmp3_slotTab
+                0x000000000380645c                xmp3_sfBandTable
+ .rodata        0x00000000038066f8      0x250 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .rodata        0x0000000003806948     0x2304 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+                0x0000000003806948                xmp3_huffTable
+                0x0000000003808a6c                xmp3_huffTabOffset
+                0x0000000003808aec                xmp3_huffTabLookup
+                0x0000000003808bec                xmp3_quadTable
+                0x0000000003808c3c                xmp3_quadTabOffset
+                0x0000000003808c44                xmp3_quadTabMaxBits
+ .rodata        0x0000000003808c4c       0x6c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .rodata        0x0000000003808cb8       0x68 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .rodata        0x0000000003808d20      0x86c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+                0x0000000003808d20                xmp3_imdctWin
+                0x0000000003808f60                xmp3_ISFMpeg1
+                0x0000000003808f98                xmp3_ISFMpeg2
+                0x0000000003809098                xmp3_ISFIIP
+                0x00000000038090a8                xmp3_uniqueIDTab
+                0x00000000038090b0                xmp3_csa
+                0x00000000038090f0                xmp3_coef32
+                0x000000000380916c                xmp3_polyCoef
+ .rodata        0x000000000380958c       0xc0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .rodata        0x000000000380964c       0x1c /home/oracle/devkitPro/libnds/lib/libnds7.a(clock.o)
+ .rodata        0x0000000003809668        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-impure.o)
+                0x0000000003809668                _global_impure_ptr
+ *all.rodata*(*)
+ *(.roda)
+ *(.rodata.*)
+ .rodata.str1.4
+                0x000000000380966c        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-impure.o)
+ *(.gnu.linkonce.r*)
+                0x0000000003809670                . = ALIGN (0x4)
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x0000000003809670                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x0000000003809670                __exidx_end = .
+                0x0000000003809670                . = ALIGN (0x4)
+                0x0000000003809670                PROVIDE (__preinit_array_start, .)
+
+.preinit_array
+ *(.preinit_array)
+                0x0000000003809670                PROVIDE (__preinit_array_end, .)
+                0x0000000003809670                PROVIDE (__init_array_start, .)
+
+.init_array     0x0000000003809670        0x4
+ *(.init_array)
+ .init_array    0x0000000003809670        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+                0x0000000003809674                PROVIDE (__init_array_end, .)
+                0x0000000003809674                PROVIDE (__fini_array_start, .)
+
+.fini_array     0x0000000003809674        0x4
+ *(.fini_array)
+ .fini_array    0x0000000003809674        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+                0x0000000003809678                PROVIDE (__fini_array_end, .)
+
+.ctors          0x0000000003809678        0x0
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+                0x0000000003809678                . = ALIGN (0x4)
+
+.dtors          0x0000000003809678        0x0
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+                0x0000000003809678                . = ALIGN (0x4)
+
+.eh_frame       0x0000000003809678        0x4
+ *(.eh_frame)
+ .eh_frame      0x0000000003809678        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+ .eh_frame      0x0000000003809678        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtend.o
+                0x000000000380967c                . = ALIGN (0x4)
+
+.gcc_except_table
+                0x000000000380967c        0x0
+ *(.gcc_except_table)
+                0x000000000380967c                . = ALIGN (0x4)
+
+.jcr            0x000000000380967c        0x4
+ *(.jcr)
+ .jcr           0x000000000380967c        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+ .jcr           0x000000000380967c        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtend.o
+
+.got
+ *(.got.plt)
+ *(.got)
+
+.iwram          0x0000000003809680        0x0
+                0x0000000003809680                __iwram_start = ABSOLUTE (.)
+ *(.iwram)
+ *iwram.*(.text)
+                0x0000000003809680                . = ALIGN (0x4)
+                0x0000000003809680                __iwram_end = ABSOLUTE (.)
+
+.data           0x0000000003809680      0x970
+                0x0000000003809680                __data_start = ABSOLUTE (.)
+ *(.data)
+ .data          0x0000000003809680        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/ds_arm7_crt0.o
+ .data          0x0000000003809680        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crti.o
+ .data          0x0000000003809680        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+                0x0000000003809680                __dso_handle
+ .data          0x0000000003809684        0x0 main.o
+ .data          0x0000000003809684      0x114 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+                0x0000000003809684                RF_Reglist
+                0x00000000038096c4                MAC_Reglist
+                0x000000000380971c                MAC_Vallist
+                0x0000000003809774                count_ofs_list
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(audio.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(clock.o)
+ .data          0x0000000003809798        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(input.o)
+ .data          0x0000000003809798        0x1 /home/oracle/devkitPro/libnds/lib/libnds7.a(microphone.o)
+ .data          0x0000000003809799        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(spi.o)
+ .data          0x0000000003809799        0x1 /home/oracle/devkitPro/libnds/lib/libnds7.a(system.o)
+                0x0000000003809799                sleepIsEnabled
+ .data          0x000000000380979a        0x1 /home/oracle/devkitPro/libnds/lib/libnds7.a(touch.o)
+ .data          0x000000000380979b        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(userSettings.o)
+ *fill*         0x000000000380979b        0x1 ff
+ .data          0x000000000380979c       0x10 /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+                0x000000000380979c                fifo_freewords
+                0x00000000038097a0                fifo_send_queue
+                0x00000000038097a4                fifo_buffer_free
+                0x00000000038097a8                fifo_receive_queue
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(libnds_exit.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(timers.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_divsi3.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_dvmd_tls.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-init.o)
+ .data          0x00000000038097ac        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o)
+ .data          0x00000000038097ac      0x410 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mallocr.o)
+                0x00000000038097ac                __malloc_av_
+                0x0000000003809bb4                __malloc_sbrk_base
+                0x0000000003809bb8                __malloc_trim_threshold
+ .data          0x0000000003809bbc        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memcpy.o)
+ .data          0x0000000003809bbc        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memmove.o)
+ .data          0x0000000003809bbc        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memset.o)
+ .data          0x0000000003809bbc        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mlock.o)
+ .data          0x0000000003809bbc        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-freer.o)
+ *fill*         0x0000000003809bbc        0x4 ff
+ .data          0x0000000003809bc0      0x430 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-impure.o)
+                0x0000000003809bc0                _impure_ptr
+ .data          0x0000000003809ff0        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(sbrk.o)
+ .data          0x0000000003809ff0        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(malloc_vars.o)
+ .data          0x0000000003809ff0        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtend.o
+ .data          0x0000000003809ff0        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtn.o
+ *(.data.*)
+ *(.gnu.linkonce.d*)
+                0x0000000003809ff0                . = ALIGN (0x4)
+                0x0000000003809ff0                __data_end = ABSOLUTE (.)
+
+.bss            0x0000000003809ff0     0x4078
+                0x0000000003809ff0                __bss_start = ABSOLUTE (.)
+                0x0000000003809ff0                __bss_start__ = ABSOLUTE (.)
+ *(.dynbss)
+ *(.gnu.linkonce.b*)
+ *(.bss*)
+ .bss           0x0000000003809ff0        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/ds_arm7_crt0.o
+ .bss           0x0000000003809ff0        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crti.o
+ .bss           0x0000000003809ff0       0x1c /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+ .bss           0x000000000380a00c        0x0 main.o
+ .bss           0x000000000380a00c       0x18 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+                0x000000000380a00c                led_state
+                0x000000000380a010                WifiData
+                0x000000000380a014                chdata_save5
+                0x000000000380a018                synchandler
+                0x000000000380a01c                arm7qlen
+                0x000000000380a020                keepalive_time
+ .bss           0x000000000380a024        0x0 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+ .bss           0x000000000380a024        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .bss           0x000000000380a024        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .bss           0x000000000380a024        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .bss           0x000000000380a024        0x1 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ *fill*         0x000000000380a025        0x3 00
+ .bss           0x000000000380a028      0x19c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+                0x000000000380a1c0                PA_LegacyInit
+ .bss           0x000000000380a1c4        0x8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+                0x000000000380a1c4                PA_MicBuffer
+                0x000000000380a1c8                PA_MicBufferLen
+ .bss           0x000000000380a1cc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .bss           0x000000000380a1cc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .bss           0x000000000380a1cc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .bss           0x000000000380a1cc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .bss           0x000000000380a1cc     0x1a00 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(audio.o)
+ .bss           0x000000000380bbcc        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(clock.o)
+ .bss           0x000000000380bbcc        0x8 /home/oracle/devkitPro/libnds/lib/libnds7.a(input.o)
+ .bss           0x000000000380bbd4       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(microphone.o)
+ .bss           0x000000000380bbf4        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(spi.o)
+ .bss           0x000000000380bbf4        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(system.o)
+ .bss           0x000000000380bbf4       0x14 /home/oracle/devkitPro/libnds/lib/libnds7.a(touch.o)
+ .bss           0x000000000380bc08        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(userSettings.o)
+ .bss           0x000000000380bc08        0x8 /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+                0x000000000380bc0c                processing
+ .bss           0x000000000380bc10        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+ .bss           0x000000000380bc10        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(libnds_exit.o)
+ .bss           0x000000000380bc10        0xc /home/oracle/devkitPro/libnds/lib/libnds7.a(timers.o)
+                0x000000000380bc10                elapsed
+ .bss           0x000000000380bc1c        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+ .bss           0x000000000380bc1c        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+ .bss           0x000000000380bc1c        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+ .bss           0x000000000380bc1c        0x0 /home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+ .bss           0x000000000380bc1c        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_divsi3.o)
+ .bss           0x000000000380bc1c        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_dvmd_tls.o)
+ .bss           0x000000000380bc1c        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-init.o)
+ .bss           0x000000000380bc1c        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o)
+ .bss           0x000000000380bc1c       0x34 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mallocr.o)
+                0x000000000380bc1c                __malloc_top_pad
+                0x000000000380bc20                __malloc_current_mallinfo
+                0x000000000380bc48                __malloc_max_sbrked_mem
+                0x000000000380bc4c                __malloc_max_total_mem
+ .bss           0x000000000380bc50        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memcpy.o)
+ .bss           0x000000000380bc50        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memmove.o)
+ .bss           0x000000000380bc50        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memset.o)
+ .bss           0x000000000380bc50        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mlock.o)
+ .bss           0x000000000380bc50        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-freer.o)
+ .bss           0x000000000380bc50        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-impure.o)
+ .bss           0x000000000380bc50        0x4 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(sbrk.o)
+ .bss           0x000000000380bc54        0x8 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(malloc_vars.o)
+                0x000000000380bc54                fake_heap_end
+                0x000000000380bc58                fake_heap_start
+ .bss           0x000000000380bc5c        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtend.o
+ .bss           0x000000000380bc5c        0x0 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtn.o
+ *(COMMON)
+ COMMON         0x000000000380bc5c      0xa00 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+                0x000000000380bc5c                arm7q
+                0x000000000380c45c                FlashData
+ COMMON         0x000000000380c65c     0x1234 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+                0x000000000380c65c                nAudioBufStart
+                0x000000000380c660                audioBuf
+                0x000000000380d860                hMP3Decoder
+                0x000000000380d864                readPtr
+                0x000000000380d868                bytesLeft
+                0x000000000380d86c                stereo
+                0x000000000380d870                nAudioBuf
+                0x000000000380d874                mp3FrameInfo
+ COMMON         0x000000000380d890        0x4 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+                0x000000000380d890                PA_IPC
+ COMMON         0x000000000380d894        0x1 /home/oracle/devkitPro/libnds/lib/libnds7.a(input.o)
+                0x000000000380d894                Keys
+ *fill*         0x000000000380d895        0x3 00
+ COMMON         0x000000000380d898      0x640 /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+                0x000000000380d898                fifo_datamsg_data
+                0x000000000380d8d8                fifo_buffer
+                0x000000000380dcd8                fifo_value32_func
+                0x000000000380dd18                fifo_address_func
+                0x000000000380dd58                fifo_value32_data
+                0x000000000380dd98                fifo_value32_queue
+                0x000000000380ddd8                fifo_data_queue
+                0x000000000380de18                fifo_address_data
+                0x000000000380de58                fifo_datamsg_func
+                0x000000000380de98                fifo_address_queue
+ COMMON         0x000000000380ded8      0x190 /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+                0x000000000380ded8                irqTableAUX
+                0x000000000380dfa0                irqTable
+                0x000000000380e068                . = ALIGN (0x4)
+                0x000000000380e068                __bss_end = .
+                0x000000000380e068                __bss_end__ = .
+                0x000000000380e068                _end = .
+                0x000000000380e068                __end__ = .
+                0x000000000380e068                PROVIDE (end, _end)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.ARM.attributes
+                0x0000000000000000       0x2c
+ .ARM.attributes
+                0x0000000000000000       0x20 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/ds_arm7_crt0.o
+ .ARM.attributes
+                0x0000000000000020       0x20 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crti.o
+ .ARM.attributes
+                0x0000000000000040       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+ .ARM.attributes
+                0x0000000000000070       0x2c main.o
+ .ARM.attributes
+                0x000000000000009c       0x2c /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .ARM.attributes
+                0x00000000000000c8       0x20 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+ .ARM.attributes
+                0x00000000000000e8       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .ARM.attributes
+                0x0000000000000114       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .ARM.attributes
+                0x0000000000000140       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .ARM.attributes
+                0x000000000000016c       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .ARM.attributes
+                0x0000000000000198       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .ARM.attributes
+                0x00000000000001c4       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .ARM.attributes
+                0x00000000000001f0       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .ARM.attributes
+                0x000000000000021c       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .ARM.attributes
+                0x0000000000000248       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .ARM.attributes
+                0x0000000000000274       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .ARM.attributes
+                0x00000000000002a0       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .ARM.attributes
+                0x00000000000002cc       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .ARM.attributes
+                0x00000000000002f8       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .ARM.attributes
+                0x0000000000000324       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .ARM.attributes
+                0x0000000000000350       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .ARM.attributes
+                0x000000000000037c       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .ARM.attributes
+                0x00000000000003a8       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .ARM.attributes
+                0x00000000000003d4       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .ARM.attributes
+                0x0000000000000400       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .ARM.attributes
+                0x000000000000042c       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .ARM.attributes
+                0x0000000000000458       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+ .ARM.attributes
+                0x0000000000000478       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .ARM.attributes
+                0x00000000000004a4       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(audio.o)
+ .ARM.attributes
+                0x00000000000004d0       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(clock.o)
+ .ARM.attributes
+                0x00000000000004fc       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(input.o)
+ .ARM.attributes
+                0x0000000000000528       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(microphone.o)
+ .ARM.attributes
+                0x0000000000000554       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(spi.o)
+ .ARM.attributes
+                0x0000000000000580       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(system.o)
+ .ARM.attributes
+                0x00000000000005ac       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(touch.o)
+ .ARM.attributes
+                0x00000000000005d8       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(userSettings.o)
+ .ARM.attributes
+                0x0000000000000604       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+ .ARM.attributes
+                0x0000000000000630       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+ .ARM.attributes
+                0x000000000000065c       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(libnds_exit.o)
+ .ARM.attributes
+                0x0000000000000688       0x2c /home/oracle/devkitPro/libnds/lib/libnds7.a(timers.o)
+ .ARM.attributes
+                0x00000000000006b4       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+ .ARM.attributes
+                0x00000000000006d4       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+ .ARM.attributes
+                0x00000000000006f4       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+ .ARM.attributes
+                0x0000000000000714       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+ .ARM.attributes
+                0x0000000000000734       0x20 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x0000000000000754       0x20 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x0000000000000774       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000000000007a4       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o)
+ .ARM.attributes
+                0x00000000000007d4       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mallocr.o)
+ .ARM.attributes
+                0x0000000000000804       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x0000000000000834       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x0000000000000864       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000000000000894       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x00000000000008c4       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-freer.o)
+ .ARM.attributes
+                0x00000000000008f4       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-impure.o)
+ .ARM.attributes
+                0x0000000000000924       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(sbrk.o)
+ .ARM.attributes
+                0x0000000000000954       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(malloc_vars.o)
+ .ARM.attributes
+                0x0000000000000984       0x30 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtend.o
+ .ARM.attributes
+                0x00000000000009b4       0x20 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtn.o
+
+.comment        0x0000000000000000       0x44
+ *(.comment)
+ .comment       0x0000000000000000       0x22 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+                                         0x23 (size before relaxing)
+ .comment       0x0000000000000000       0x23 main.o
+ .comment       0x0000000000000022       0x22 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+                                         0x23 (size before relaxing)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(audio.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(clock.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(input.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(microphone.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(spi.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(system.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(touch.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(userSettings.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(fifosystem.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(interrupts.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(libnds_exit.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/libnds/lib/libnds7.a(timers.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-init.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-malloc.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mallocr.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memcpy.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memmove.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-memset.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-mlock.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-freer.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a(lib_a-impure.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(sbrk.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a(malloc_vars.o)
+ .comment       0x0000000000000000       0x23 /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtend.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x340
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x20 main.o
+ .debug_aranges
+                0x0000000000000020       0x20 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .debug_aranges
+                0x0000000000000040       0x20 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+ .debug_aranges
+                0x0000000000000060       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .debug_aranges
+                0x0000000000000080       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .debug_aranges
+                0x00000000000000a0       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .debug_aranges
+                0x00000000000000c0       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .debug_aranges
+                0x00000000000000e0       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .debug_aranges
+                0x0000000000000100       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .debug_aranges
+                0x0000000000000120       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .debug_aranges
+                0x0000000000000140       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .debug_aranges
+                0x0000000000000160       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .debug_aranges
+                0x0000000000000180       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .debug_aranges
+                0x00000000000001a0       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .debug_aranges
+                0x00000000000001c0       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .debug_aranges
+                0x00000000000001e0       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .debug_aranges
+                0x0000000000000200       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .debug_aranges
+                0x0000000000000220       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .debug_aranges
+                0x0000000000000240       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .debug_aranges
+                0x0000000000000260       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .debug_aranges
+                0x0000000000000280       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+ .debug_aranges
+                0x00000000000002a0       0x20 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .debug_aranges
+                0x00000000000002c0       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+ .debug_aranges
+                0x00000000000002e0       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+ .debug_aranges
+                0x0000000000000300       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+ .debug_aranges
+                0x0000000000000320       0x20 /home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+
+.debug_pubnames
+                0x0000000000000000      0xd86
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x0000000000000000       0x34 main.o
+ .debug_pubnames
+                0x0000000000000034      0x5a8 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .debug_pubnames
+                0x00000000000005dc      0x126 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .debug_pubnames
+                0x0000000000000702       0x1e /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .debug_pubnames
+                0x0000000000000720       0x4e /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .debug_pubnames
+                0x000000000000076e       0x3b /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .debug_pubnames
+                0x00000000000007a9       0x98 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .debug_pubnames
+                0x0000000000000841       0x59 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .debug_pubnames
+                0x000000000000089a       0x24 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .debug_pubnames
+                0x00000000000008be       0xa0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .debug_pubnames
+                0x000000000000095e       0xad /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .debug_pubnames
+                0x0000000000000a0b       0x9e /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .debug_pubnames
+                0x0000000000000aa9       0x40 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .debug_pubnames
+                0x0000000000000ae9       0x26 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .debug_pubnames
+                0x0000000000000b0f       0x2a /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .debug_pubnames
+                0x0000000000000b39       0x29 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .debug_pubnames
+                0x0000000000000b62       0x95 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .debug_pubnames
+                0x0000000000000bf7       0x21 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .debug_pubnames
+                0x0000000000000c18       0x2e /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .debug_pubnames
+                0x0000000000000c46       0x5f /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .debug_pubnames
+                0x0000000000000ca5       0x23 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .debug_pubnames
+                0x0000000000000cc8       0x9c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .debug_pubnames
+                0x0000000000000d64       0x22 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+
+.debug_info     0x0000000000000000     0xcd4f
+ *(.debug_info)
+ .debug_info    0x0000000000000000      0x192 main.o
+ .debug_info    0x0000000000000192     0x23f1 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .debug_info    0x0000000000002583       0xbe /home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+ .debug_info    0x0000000000002641      0x93f /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .debug_info    0x0000000000002f80      0x23b /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .debug_info    0x00000000000031bb      0x38b /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .debug_info    0x0000000000003546      0x336 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .debug_info    0x000000000000387c      0x40a /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .debug_info    0x0000000000003c86      0x2d9 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .debug_info    0x0000000000003f5f      0x247 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .debug_info    0x00000000000041a6      0x8b8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .debug_info    0x0000000000004a5e      0x1af /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .debug_info    0x0000000000004c0d      0x8d3 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .debug_info    0x00000000000054e0      0x8f9 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .debug_info    0x0000000000005dd9      0x813 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .debug_info    0x00000000000065ec      0x8f3 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .debug_info    0x0000000000006edf      0xbe2 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .debug_info    0x0000000000007ac1      0x1a5 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .debug_info    0x0000000000007c66     0x268a /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .debug_info    0x000000000000a2f0      0x98a /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .debug_info    0x000000000000ac7a      0xca8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .debug_info    0x000000000000b922      0x3e4 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .debug_info    0x000000000000bd06      0x1a6 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .debug_info    0x000000000000beac       0xa0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+ .debug_info    0x000000000000bf4c      0xafd /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .debug_info    0x000000000000ca49       0xbc /home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+ .debug_info    0x000000000000cb05       0xbf /home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+ .debug_info    0x000000000000cbc4       0xc9 /home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+ .debug_info    0x000000000000cc8d       0xc2 /home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+
+.debug_abbrev   0x0000000000000000     0x2745
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000       0x7e main.o
+ .debug_abbrev  0x000000000000007e      0x574 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .debug_abbrev  0x00000000000005f2       0x14 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+ .debug_abbrev  0x0000000000000606      0x1c9 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .debug_abbrev  0x00000000000007cf       0xee /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .debug_abbrev  0x00000000000008bd      0x148 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .debug_abbrev  0x0000000000000a05      0x11a /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .debug_abbrev  0x0000000000000b1f      0x18d /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .debug_abbrev  0x0000000000000cac      0x13f /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .debug_abbrev  0x0000000000000deb       0xd5 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .debug_abbrev  0x0000000000000ec0      0x2a9 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .debug_abbrev  0x0000000000001169       0x86 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .debug_abbrev  0x00000000000011ef      0x277 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .debug_abbrev  0x0000000000001466      0x153 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .debug_abbrev  0x00000000000015b9      0x1a8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .debug_abbrev  0x0000000000001761      0x20c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .debug_abbrev  0x000000000000196d      0x229 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .debug_abbrev  0x0000000000001b96       0xb8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .debug_abbrev  0x0000000000001c4e      0x392 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .debug_abbrev  0x0000000000001fe0      0x1bd /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .debug_abbrev  0x000000000000219d      0x241 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .debug_abbrev  0x00000000000023de      0x115 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .debug_abbrev  0x00000000000024f3       0x75 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .debug_abbrev  0x0000000000002568       0x14 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+ .debug_abbrev  0x000000000000257c      0x179 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .debug_abbrev  0x00000000000026f5       0x14 /home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+ .debug_abbrev  0x0000000000002709       0x14 /home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+ .debug_abbrev  0x000000000000271d       0x14 /home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+ .debug_abbrev  0x0000000000002731       0x14 /home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+
+.debug_line     0x0000000000000000     0x3c97
+ *(.debug_line)
+ .debug_line    0x0000000000000000       0xcd main.o
+ .debug_line    0x00000000000000cd      0xb71 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .debug_line    0x0000000000000c3e       0x9b /home/oracle/devkitPro/libnds/lib/libdswifi7.a(spinlock.o)
+ .debug_line    0x0000000000000cd9      0x371 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .debug_line    0x000000000000104a      0x156 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .debug_line    0x00000000000011a0      0x1d1 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .debug_line    0x0000000000001371      0x17e /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .debug_line    0x00000000000014ef      0x1d3 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .debug_line    0x00000000000016c2      0x1bf /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .debug_line    0x0000000000001881      0x15b /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .debug_line    0x00000000000019dc      0x1cf /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .debug_line    0x0000000000001bab       0x6f /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+ .debug_line    0x0000000000001c1a      0x1ed /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .debug_line    0x0000000000001e07      0x120 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .debug_line    0x0000000000001f27      0x15e /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .debug_line    0x0000000000002085      0x23f /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .debug_line    0x00000000000022c4      0x2a2 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .debug_line    0x0000000000002566       0x71 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+ .debug_line    0x00000000000025d7      0x6cb /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .debug_line    0x0000000000002ca2      0x1e8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .debug_line    0x0000000000002e8a      0x334 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .debug_line    0x00000000000031be       0xf5 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .debug_line    0x00000000000032b3       0x66 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+ .debug_line    0x0000000000003319      0x2a5 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(asmpoly_gcc.o)
+ .debug_line    0x00000000000035be      0x430 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+ .debug_line    0x00000000000039ee       0x95 /home/oracle/devkitPro/libnds/lib/libnds7.a(intrwait.o)
+ .debug_line    0x0000000000003a83       0xc1 /home/oracle/devkitPro/libnds/lib/libnds7.a(biosCalls.o)
+ .debug_line    0x0000000000003b44       0xc6 /home/oracle/devkitPro/libnds/lib/libnds7.a(interruptDispatcher.o)
+ .debug_line    0x0000000000003c0a       0x8d /home/oracle/devkitPro/libnds/lib/libnds7.a(swiSoftReset.o)
+
+.debug_frame    0x0000000000000000      0xfa4
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000       0x64 main.o
+ .debug_frame   0x0000000000000064      0x6a8 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .debug_frame   0x000000000000070c      0x148 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .debug_frame   0x0000000000000854       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .debug_frame   0x0000000000000880       0x70 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .debug_frame   0x00000000000008f0       0x58 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .debug_frame   0x0000000000000948       0xac /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .debug_frame   0x00000000000009f4       0x4c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .debug_frame   0x0000000000000a40       0x2c /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .debug_frame   0x0000000000000a6c       0xd8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .debug_frame   0x0000000000000b44       0xb8 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .debug_frame   0x0000000000000bfc       0x60 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .debug_frame   0x0000000000000c5c       0x44 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .debug_frame   0x0000000000000ca0       0x74 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .debug_frame   0x0000000000000d14       0x44 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .debug_frame   0x0000000000000d58       0xec /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .debug_frame   0x0000000000000e44       0x44 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .debug_frame   0x0000000000000e88       0x98 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .debug_frame   0x0000000000000f20       0x44 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .debug_frame   0x0000000000000f64       0x40 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+
+.debug_str      0x0000000000000000     0x29f6
+ *(.debug_str)
+ .debug_str     0x0000000000000000      0x1d9 main.o
+                                        0x217 (size before relaxing)
+ .debug_str     0x00000000000001d9      0xea2 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+                                       0x10e2 (size before relaxing)
+ .debug_str     0x000000000000107b      0x537 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+                                        0x662 (size before relaxing)
+ .debug_str     0x00000000000015b2      0x12e /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+                                        0x2ed (size before relaxing)
+ .debug_str     0x00000000000016e0       0xfb /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+                                        0x2e7 (size before relaxing)
+ .debug_str     0x00000000000017db       0x69 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+                                        0x2b3 (size before relaxing)
+ .debug_str     0x0000000000001844      0x106 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+                                        0x337 (size before relaxing)
+ .debug_str     0x000000000000194a       0xb2 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+                                        0x20f (size before relaxing)
+ .debug_str     0x00000000000019fc       0x47 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+                                        0x190 (size before relaxing)
+ .debug_str     0x0000000000001a43      0x2c7 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+                                        0x4fa (size before relaxing)
+ .debug_str     0x0000000000001d0a       0xb4 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3tabs.o)
+                                         0xfc (size before relaxing)
+ .debug_str     0x0000000000001dbe      0x280 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+                                        0x4ae (size before relaxing)
+ .debug_str     0x000000000000203e      0x1a1 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+                                        0x561 (size before relaxing)
+ .debug_str     0x00000000000021df       0x63 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+                                        0x45e (size before relaxing)
+ .debug_str     0x0000000000002242      0x126 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+                                        0x388 (size before relaxing)
+ .debug_str     0x0000000000002368      0x1b3 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+                                        0x5be (size before relaxing)
+ .debug_str     0x000000000000251b       0x46 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(hufftabs.o)
+                                        0x180 (size before relaxing)
+ .debug_str     0x0000000000002561      0x1c1 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+                                        0x55f (size before relaxing)
+ .debug_str     0x0000000000002722       0xc2 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+                                        0x49c (size before relaxing)
+ .debug_str     0x00000000000027e4       0xe4 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+                                        0x2b5 (size before relaxing)
+ .debug_str     0x00000000000028c8       0x67 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+                                        0x26e (size before relaxing)
+ .debug_str     0x000000000000292f       0x63 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(trigtabs.o)
+                                         0xe6 (size before relaxing)
+ .debug_str     0x0000000000002992       0x64 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+                                         0xbb (size before relaxing)
+
+.debug_loc      0x0000000000000000     0x6a32
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000       0x5d main.o
+ .debug_loc     0x000000000000005d     0x13c0 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .debug_loc     0x000000000000141d      0x289 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(as_lib7.o)
+ .debug_loc     0x00000000000016a6       0x3d /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .debug_loc     0x00000000000016e3       0xd5 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Fifo.o)
+ .debug_loc     0x00000000000017b8       0x3e /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Input.o)
+ .debug_loc     0x00000000000017f6       0x9a /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Legacy.o)
+ .debug_loc     0x0000000000001890       0x51 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_Mic.o)
+ .debug_loc     0x00000000000018e1       0x3d /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA_PSG.o)
+ .debug_loc     0x000000000000191e      0x6de /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .debug_loc     0x0000000000001ffc      0x29a /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .debug_loc     0x0000000000002296       0x7a /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(buffers.o)
+ .debug_loc     0x0000000000002310      0x1a5 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dequant.o)
+ .debug_loc     0x00000000000024b5      0x50d /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .debug_loc     0x00000000000029c2      0x9bf /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .debug_loc     0x0000000000003381     0x1951 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .debug_loc     0x0000000000004cd2      0x41f /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .debug_loc     0x00000000000050f1      0x9e5 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .debug_loc     0x0000000000005ad6       0x9b /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(subband.o)
+ .debug_loc     0x0000000000005b71      0xec1 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.stack          0x0000000000080000        0x0
+                0x0000000000080000                _stack = .
+ *(.stack)
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/ds_arm7_crt0.o
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crti.o
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtbegin.o
+LOAD main.o
+LOAD /home/oracle/devkitPro/libnds/lib/libmm7.a
+LOAD /home/oracle/devkitPro/libnds/lib/libdswifi7.a
+LOAD /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a
+LOAD /home/oracle/devkitPro/libnds/lib/libnds7.a
+START GROUP
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/libgcc.a
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libg.a
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libc.a
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/../../../../arm-eabi/lib/libsysbase.a
+END GROUP
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtend.o
+LOAD /home/oracle/devkitPro/devkitARM/bin/../lib/gcc/arm-eabi/4.4.3/crtn.o
+OUTPUT(arm7.elf elf32-littlearm)
+
+.debug_ranges   0x0000000000000000     0x16b8
+ .debug_ranges  0x0000000000000000      0x6d0 /home/oracle/devkitPro/libnds/lib/libdswifi7.a(wifi_arm7.o)
+ .debug_ranges  0x00000000000006d0       0x30 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(PA.o)
+ .debug_ranges  0x0000000000000700       0xe0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(mp3dec.o)
+ .debug_ranges  0x00000000000007e0       0x48 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(bitstream.o)
+ .debug_ranges  0x0000000000000828       0x30 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dqchan.o)
+ .debug_ranges  0x0000000000000858       0xe0 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(huffman.o)
+ .debug_ranges  0x0000000000000938      0x360 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(imdct.o)
+ .debug_ranges  0x0000000000000c98       0x90 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(scalfact.o)
+ .debug_ranges  0x0000000000000d28      0x120 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(stproc.o)
+ .debug_ranges  0x0000000000000e48      0x870 /home/oracle/devkitPro/PAlib/source/arm7_mp3_dswifi/../../lib/libpa7.a(dct32.o)

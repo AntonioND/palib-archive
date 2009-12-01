@@ -1,0 +1,15 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please come to the PAlib forums
+
+Converting PAGfx.ini
+Transparent Color: Black
+
+1 sprites:
+  rocket: 256colors, 32x32, Pal: rocket_Pal, -> rocket_Sprite
+
+1 palettes:
+  rocket_Pal, 12 colors
+
+Converted in 0 minutes and 0 seconds
+
+Finished!

@@ -1,0 +1,45 @@
+<!-- PAlibAppTemplate 1.0 - copyright (c) fincs -->
+
+<html dir="LTR" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>PAlibAppTemplate</title>
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta http-equiv="MSThemeCompatible" content="Yes">
+</head>
+
+<body style="overflow: visible; height: 633px;" onload="InitDocument(document);">
+</body>
+
+</html>
+
+<script language="JSCRIPT">
+
+function InitDocument(document){
+	setDirection();
+
+	var path = window.external.FindSymbol("PROJECT_PATH");
+	
+	if(path.match(" ")){
+		alert("You can't have spaces in the path name.");	        
+		window.external.Finish(document, 'cancel');
+	}else{
+		window.external.Load(document);
+		OnFinish(document);
+	}
+}
+
+function OnFinish(document){
+	OnWizFinish(document);
+}
+
+</script>
+
+<script id="INCLUDE_COMMON" language="JSCRIPT"></script>
+<script id="INCLUDE_SCRIPT" language="JSCRIPT"></script>
+
+<script type="text/javascript">
+	document.scripts("INCLUDE_SCRIPT").src = window.external.FindSymbol("SCRIPT_COMMON_PATH") + "/Script.js";
+	document.scripts("INCLUDE_COMMON").src = window.external.FindSymbol("SCRIPT_COMMON_PATH") + "/Common.js";
+</script>

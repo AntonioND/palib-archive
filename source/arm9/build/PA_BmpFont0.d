@@ -1,0 +1,5 @@
+PA_BmpFont0.o: \
+ /home/oracle/devkitPro/PAlib/source/arm9/source/BitmapFont/bin/PA_BmpFont0.c \
+ /home/oracle/devkitPro/PAlib/source/arm9/../../include/nds/PA_BgStruct.h
+
+/home/oracle/devkitPro/PAlib/source/arm9/../../include/nds/PA_BgStruct.h:

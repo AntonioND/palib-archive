@@ -1,0 +1,21 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please come to the PAlib forums
+
+Converting PAGfx.ini
+Transparent Color: Magenta
+
+7 textures:
+  red: 256colors, 8x8, Pal : fw_Pal, -> red_Texture
+  orange: 256colors, 8x8, Pal : fw_Pal, -> orange_Texture
+  yellow: 256colors, 8x8, Pal : fw_Pal, -> yellow_Texture
+  green: 256colors, 8x8, Pal : fw_Pal, -> green_Texture
+  blue: 256colors, 8x2, Pal : fw_Pal, -> blue_Texture
+  indigo: 256colors, 8x8, Pal : fw_Pal, -> indigo_Texture
+  violet: 256colors, 8x8, Pal : fw_Pal, -> violet_Texture
+
+1 palettes:
+  fw_Pal, 43 colors
+
+Converted in 0 minutes and 0 seconds
+
+Finished!

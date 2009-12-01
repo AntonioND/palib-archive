@@ -1,0 +1,1 @@
+If you're using a non-Windows operating system, copy the alternative Mono binaries here from PAlib\tools\PAGfx\Mono.

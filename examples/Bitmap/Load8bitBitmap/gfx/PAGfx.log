@@ -1,0 +1,15 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please come to the PAlib forums
+
+Converting PAGfx.ini
+Transparent Color: Black
+
+1 backgrounds:
+  Photo8bit : 8bit, 256x192, Pal: bitmap_Pal, -> Photo8bit_Bitmap
+
+1 palettes:
+  bitmap_Pal, 254 colors
+
+Converted in 0 minutes and 0 seconds
+
+Finished!

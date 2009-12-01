@@ -1,0 +1,15 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please come to the PAlib forums
+
+Converting PAGfx.ini
+Transparent Color: Magenta
+
+1 backgrounds:
+  keyboardcustom : EasyBg, 256x1024, Pal: keyboardcustom_Pal, 469 tiles -> keyboardcustom_Tiles and keyboardcustom_Map
+
+1 palettes:
+  keyboardcustom_Pal, 5 colors
+
+Converted in 0 minutes and 1 second
+
+Finished!
