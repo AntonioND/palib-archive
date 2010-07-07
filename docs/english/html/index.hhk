@@ -251,7 +251,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="a00009.htm#a8ba70e6accdcb8ac472e6e7c431baccf"><param name="Name" value="extra"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm"><param name="Name" value="f3DSprites"></OBJECT>
   <UL>
-    <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#gaba0835470673fc2e4e3f07d7a33c73de"><param name="Name" value="PA_3DCreateSprite"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#ga9fc29238129ab36d5cbcf155cd3be9c2"><param name="Name" value="PA_3DCreateSprite"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#ga1a562aaa211a00c76cbe7b2e9ece0676"><param name="Name" value="PA_3DCreateSpriteFromTex"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#gadefd38af3b139476d2869f9988b8f227"><param name="Name" value="PA_3DCreateTex"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#ga2acf81ff23cd85f13c8a4a51e9af5749"><param name="Name" value="PA_3DDeleteSprite"></OBJECT>
@@ -623,7 +623,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="a00061.htm#gae318d23f473b175e708d4a24a4536e6b"><param name="Name" value="PA_16cGetPixel"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="a00061.htm#gab3e18f483a3949d2ce5b2cb0c0bef222"><param name="Name" value="PA_16cPutPixel"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="a00061.htm#gacf8e66be974b8efdebe04b5b784acadd"><param name="Name" value="PA_16cText"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#gaba0835470673fc2e4e3f07d7a33c73de"><param name="Name" value="PA_3DCreateSprite"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#ga9fc29238129ab36d5cbcf155cd3be9c2"><param name="Name" value="PA_3DCreateSprite"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#ga1a562aaa211a00c76cbe7b2e9ece0676"><param name="Name" value="PA_3DCreateSpriteFromTex"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#gadefd38af3b139476d2869f9988b8f227"><param name="Name" value="PA_3DCreateTex"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="a00062.htm#ga2acf81ff23cd85f13c8a4a51e9af5749"><param name="Name" value="PA_3DDeleteSprite"></OBJECT>

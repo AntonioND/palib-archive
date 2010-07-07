@@ -1,5 +1,4 @@
-gif_font.o: \
- /home/oracle/devkitPro/PAlib/source/arm9/source/gif/gif_font.c \
- /home/oracle/devkitPro/PAlib/source/arm9/../../include/nds/arm9/gif/gif_lib.h
+gif_font.o: c:/devkitPro/PAlib/source/arm9/source/gif/gif_font.c \
+ c:/devkitPro/PAlib/source/arm9/../../include/nds/arm9/gif/gif_lib.h
 
-/home/oracle/devkitPro/PAlib/source/arm9/../../include/nds/arm9/gif/gif_lib.h:
+c:/devkitPro/PAlib/source/arm9/../../include/nds/arm9/gif/gif_lib.h:

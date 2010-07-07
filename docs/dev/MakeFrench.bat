@@ -14,7 +14,7 @@ pause
 echo.
 
 cd ..\french\latex
-make > noise.txt
+make > NUL
 
 cd..
 

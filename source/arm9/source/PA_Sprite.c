@@ -8,6 +8,7 @@ u16 n_free_mem[2]; // nombre d'emplacements libres
 u8 used_mem[2][1024]; // Note la quantité de mémoire utilisée en chaque point de la mémoire pour pouvoir effacer les gfx...
 u8 obj_per_gfx[2][1024]; // Nombre de sprites utilisant un gfx donné...
 mem_usage free_mem[2][1024];
+u8 pa_obj_created[2][128];
 u16 FirstGfx[2] = {0, 0};
 
 
@@ -86,6 +87,7 @@ void PA_ResetSpriteSysScreen(u8 screen) {
 	for (n = 0; n < 128; n++) {
 		nspriteanims -= spriteanims[screen][n].play; // remove sprites from sprite to animate list
 		spriteanims[screen][n].play = 0;
+		pa_obj_created[screen][n]=0;
 	}
 
 	if (screen == 0) PA_MoveSpriteType = 0;
@@ -145,7 +147,7 @@ u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_
 	truenumber = i + FirstGfx[screen];
 	DMA_Copy(obj_data, (void*)(SPRITE_GFX1 + (0x200000 *  screen) + (truenumber << NUMBER_DECAL)), (mem_size << MEM_DECAL), DMA_32NOW);
 	used_mem[screen][i] = mem_size;   // Nombre de blocks
-	obj_per_gfx[screen][i] = 1; // Nombre d'objets sur ce gfx...
+	obj_per_gfx[screen][i] = 0; // Nombre d'objets sur ce gfx...
 	free_mem[screen][n_mem].free -= mem_size;
 
 	if (free_mem[screen][n_mem].free > 0) free_mem[screen][n_mem].mem_block += mem_size; // S'il reste un bout libre, on garde...
@@ -163,18 +165,29 @@ u16 PA_CreateGfx(u8 screen, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_
 
 
 void PA_DeleteSprite(u8 screen, u8 obj_number) {
-	u16 obj_gfx = PA_GetSpriteGfx(screen, obj_number);
+	//check if sprite is created first
+	if(pa_obj_created[screen][obj_number]){
+	
+		u16 obj_gfx = PA_GetSpriteGfx(screen, obj_number);
 
-// Si aucun objet n'utilise cet emplacement, on libère la mémoire... Sinon on signale qu'un de moins s'en sert
-	if (obj_per_gfx[screen][obj_gfx] > 0) {
-		--obj_per_gfx[screen][obj_gfx];
+		// If there are multiple sprites using the graphics, then save the graphics
+		if (obj_per_gfx[screen][obj_gfx] > 0) {
+			obj_per_gfx[screen][obj_gfx]--;
+			//if this is the last sprite using the graphics, then delete the graphics
+			if (obj_per_gfx[screen][obj_gfx] == 0){
+				//stop animation
+				PA_StopSpriteAnim  (screen,obj_number);
+				PA_SetSpriteAnimFrame  (screen,obj_number,0);				
+				//delete the graphics
+				PA_DeleteGfx(screen, obj_gfx);
+			}
+		}
 
-		if (obj_per_gfx[screen][obj_gfx] == 0) PA_DeleteGfx(screen, obj_gfx);
+		PA_obj[screen][obj_number].atr0 = 192;
+		PA_obj[screen][obj_number].atr1 = 256;
+		PA_obj[screen][obj_number].atr2 = 0;
+		PA_obj[screen][obj_number].atr3 = 0;
 	}
-
-	PA_obj[screen][obj_number].atr0 = 192;
-	PA_obj[screen][obj_number].atr1 = 256;
-	PA_obj[screen][obj_number].atr2 = 0;
 }
 
 

@@ -2,7 +2,7 @@
 #define _PA_MAIN
 
 /*!
-	\mainpage PAlib 0911XX Documentation
+	\mainpage PAlib 100707 Documentation
 
 	\section intro Introduction
 	Welcome to the PAlib documentation. Here you'll find
@@ -59,6 +59,7 @@ extern "C"{
 
 #include <nds.h>
 #include <fat.h>
+#include <filesystem.h>
 
 #include <malloc.h>
 #include <stdarg.h>

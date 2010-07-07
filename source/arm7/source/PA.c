@@ -2,8 +2,15 @@
 #include <string.h>
 
 void PA_Init(bool sound){
+	// Initialize the basic part of the system
 	irqInit();
 	fifoInit();
+
+	// Quick and dirty VBlank sleep
+	while(REG_VCOUNT >= 192);
+	while(REG_VCOUNT < 192);
+
+	// Housekeeping
 	readUserSettings();
 	sleepIsEnabled = false; // disable libnds autosleep
 

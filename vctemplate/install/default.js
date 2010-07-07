@@ -32,7 +32,7 @@ function OnFinish(selProj, selObj){
 		var f_data = selProj.Object.AddFilter("data");
 		var f_gfx = selProj.Object.AddFilter("gfx");
 		var f_audio = selProj.Object.AddFilter("audio");
-		var f_efsroot = selProj.Object.AddFilter("efsroot");
+		var f_filesystem = selProj.Object.AddFilter("filesystem");
 
 		try{
 			wizard.RenderTemplate(devkitPath + "\\PAlib\\vctemplate\\overrides\\ReadMe.txt", "ReadMe.txt", true, true);
@@ -74,8 +74,8 @@ function PrepareConfig(config, isDebug, devkitPath, toolchainPath){
 		NMakeTool.ReBuildCommandLine = "make clean && make -r 2>&1 | sed -e 's/\\(.[a-zA-Z]\\+\\):\\([0-9]\\+\\):/\\1(\\2):/";
 
 		NMakeTool.IncludeSearchPath = toolchainPath + "\\arm-eabi\\include;" +                 // C standard library
-		                              toolchainPath + "\\lib\\gcc\\arm-eabi\\4.4.0\\include;" + // C standard library, part 2
-		                              toolchainPath + "\\arm-eabi\\include\\c++\\4.4.0;" +     // C++ standard library
+		                              toolchainPath + "\\lib\\gcc\\arm-eabi\\4.4.2\\include;" + // C standard library, part 2
+		                              toolchainPath + "\\arm-eabi\\include\\c++\\4.4.2;" +     // C++ standard library
 		                              devkitPath + "\\libnds\\include;" +                      // libnds include path
 		                              devkitPath + "\\PAlib\\include\\nds";                    // PAlib include path
 

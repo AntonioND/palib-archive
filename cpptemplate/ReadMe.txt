@@ -4,22 +4,21 @@
 |\-------------------------------------------/|
 \---------------------------------------------/
 
-Using this template you can get a PAlib C++ NDS application running in almost no time.
+Using this template you can get a PAlib C++ Nintendo DS application running in almost no time.
 You must get familiar with the structure of a PAlib project:
 
 Folders:
-  data    - Contains data files that you want to include in your project.
-  include - Contains header files (.h).
-  source  - Contains source files (.c, .cpp and .s). Those are your program.
-  gfx     - Contains PAGfx (a graphics converter) and the graphics for your program.
-  audio   - Contains module files (mod, s3m, xm and it) and sound effects (wav) for use with Maxmod.
-  efsroot - Contains files which you will be able to read using EFS.
+  data       - Contains data files that you want to include in your project.
+  include    - Contains header files (.h).
+  source     - Contains source files (.c, .cpp and .s). Those are your program.
+  gfx        - Contains PAGfx (a graphics converter) and the graphics for your program.
+  audio      - Contains module files (mod, s3m, xm and it) and sound effects (wav) for use with Maxmod.
+  filesystem - Contains files which will be embedded in the .nds file. Use libfilesystem to read them.
 
 Files:
   build.bat and clean.bat - These are used to compile and clean your project (on Windows), respectively.
   Makefile                - This is a special file that tells your system how to convert your project files into a NDS ROM (how to compile your project).
   (Optional) logo.bmp     - This is a custom logo that will be shown in the application loader of your Nintendo DS instead of the default PAlib one.
-  Template.pnproj         - This is a project file that you can use with Programmers' Notepad, a source code editor.
   ReadMe.txt              - The file you are reading! :P
   source/main.cpp         - This contains the entry point of your program, you normally don't have to edit it.
   source/MyApp.cpp        - This contains the source code of your program class.
@@ -31,12 +30,12 @@ Files:
 
 - When you want to compile your project launch build.bat. Now a command prompt should open and you will see
    the status of the compiling process.
-    /---------------------------------------------------------------------------------------------------------------------------\
-    | TIP: Watch out for the warnings and errors! If you don't know what they mean, ask in the PAlib forums (forum.palib.info). |
-    \---------------------------------------------------------------------------------------------------------------------------/
+    /------------------------------------------------------------------------------------------------------------------------\
+    | TIP: Watch out for the warnings and errors! If you don't know what they mean, ask in the PAlib forums (palib-dev.com). |
+    \------------------------------------------------------------------------------------------------------------------------/
 - When you want to run your project, launch your favorite emulator (for example: PAlib/emulators/no$gba/no$gba.exe) and open the
    NDS file that has been generated.
-- If you want to use Programmers' Notepad, launch it and open the Template.pnproj file.
+- If you're using libfilesystem and your program doesn't work in your card use HomebrewMenu by devkitPro (go to devkitPro.org/hbmenu).
 
 ============================================
 | Linux/Mac/Other users, please read this! |
@@ -72,10 +71,6 @@ Sound/Music:
 
 Networking:
  dswifi - dswifi for DS<->AccessPoint connections (examples\Wifi\dswifi)
-
-Filesystem:
- EFSlib - This library appends a filesystem to the NDS ROM (examples\FAT\EFS) - if you choose this, copy the patcher and the files
-           source/efs_lib.c and source/efs_lib.h from the example.
 
 /-----------------------------------------------------------------------------------------------------------------------------\
 | IMPORTANT: Your project will only work on the G6 and M3 Real cards if you choose an ARM7 core which is smaller than 64 KBs. |

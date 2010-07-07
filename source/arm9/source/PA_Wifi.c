@@ -59,7 +59,7 @@ int PA_InitSocket(int* sock, char *host, int port, int mode) {
 	struct sockaddr_in servaddr;
 	*sock = socket(AF_INET, SOCK_STREAM, 0);
 
-	if (IS_INETADDR((int)host))
+	if (IS_INETADDR(host))
 		ip = PA_chartoip(host);
 	else
 		ip = *(unsigned long *)gethostbyname(host)->h_addr_list[0];

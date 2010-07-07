@@ -4,7 +4,7 @@
 // Include the sound
 #include "sfx.h"
 
-int mainchar ** argv), char** argv)
+int main()
 {
 	// PALib Initialization
 	PA_Init();

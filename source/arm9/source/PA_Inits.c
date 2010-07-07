@@ -83,14 +83,8 @@ extern funcpointer GHPadVBL;
 void PA_Init(){
 	register int i;
 
-	// Clear the ASlib IPC to avoid cracking
-	memset((void*) IPC_Sound, 0, sizeof(IPC_SoundSystem));
-
-	// Wait a frame to let the ARM9<->ARM7 communication stabilize
-	// The libnds fifo code is buggy/unstable starting with 1.3.4 >_<
-	// Strange things happen at the first frame if this is not done
-	// (e.g. the libnds transfer region (0x27FF000) gets filled with
-	//  garbage values)
+	// Wait a couple frames to provide a sensible starting point
+	swiWaitForVBlank();
 	swiWaitForVBlank();
 
 	PA_InitFifo();
@@ -125,6 +119,5 @@ void PA_Init(){
 
 	// Initialize the VBlank function
 	irqSet(IRQ_VBLANK, PA_vblFunc);
-	irqEnable(IRQ_VBLANK);
-
+	//irqEnable(IRQ_VBLANK);
 }

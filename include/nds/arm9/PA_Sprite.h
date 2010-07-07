@@ -77,6 +77,7 @@ typedef struct {
 extern u16 n_free_mem[2]; // nombre d'emplacements libres
 extern u8 used_mem[2][1024]; // Note la quantité de mémoire utilisée en chaque point de la mémoire pour pouvoir effacer les gfx...
 extern u8 obj_per_gfx[2][1024]; // Nombre de sprites utilisant un gfx donné...
+extern u8 pa_obj_created[2][128];
 extern mem_usage free_mem[2][1024];
 
 extern u16 FirstGfx[2];
@@ -224,6 +225,8 @@ static inline void PA_CreateSprite(u8 screen, u8 obj_number, void* obj_data, u8 
 	PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (palette << 12);
 	PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
 	PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (obj_size << 14);
+	obj_per_gfx[screen][PA_obj[screen][obj_number].atr2]++;
+	pa_obj_created[screen][obj_number]=1;
 };
 
 /*! \fn static inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
@@ -280,6 +283,8 @@ static inline void PA_CreateSpriteEx(u8 screen, u8 obj_number, void* obj_data, u
 	PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, color_mode) + (prio << 10) + (palette << 12);
 	PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + ((color_mode) << 13) + (obj_shape << 14);
 	PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
+	obj_per_gfx[screen][PA_obj[screen][obj_number].atr2]++;
+	pa_obj_created[screen][obj_number]=1;
 };
 
 /*! \fn static inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
@@ -327,6 +332,8 @@ static inline void PA_Create16bitSpriteEx(u8 screen, u8 obj_number, void* obj_da
 	PA_obj[screen][obj_number].atr2 = PA_CreateGfx(screen, obj_data, obj_shape, obj_size, 2) + (prio << 10) + (15 << 12);
 	PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (3 << 10) + (mosaic << 12) + (0 << 13) + (obj_shape << 14);
 	PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
+	obj_per_gfx[screen][PA_obj[screen][obj_number].atr2]++;
+	pa_obj_created[screen][obj_number]=1;
 }
 
 /*! \fn static inline void PA_Create16bitSpriteFromGfx(u8 screen, u8 obj_number, u16 gfx, u8 obj_shape, u8 obj_size, s16 x, s16 y)
@@ -359,6 +366,8 @@ static inline void PA_Create16bitSpriteFromGfx(u8 screen, u8 obj_number, u16 gfx
 	PA_obj[screen][obj_number].atr2 = gfx + (15 << 12);
 	PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (3 << 10) + (obj_shape << 14);
 	PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (obj_size << 14);
+	obj_per_gfx[screen][PA_obj[screen][obj_number].atr2]++;
+	pa_obj_created[screen][obj_number]=1;
 }
 
 /*! \fn static inline void PA_Create16bitSprite(u8 screen, u8 obj_number, void* obj_data, u8 obj_shape, u8 obj_size, s16 x, s16 y)
@@ -428,6 +437,7 @@ static inline void PA_CreateSpriteFromGfx(u8 screen, u8 obj_number, u16 obj_gfx,
 	PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (color_mode << 13) + (obj_shape << 14);
 	PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (obj_size << 14);
 	obj_per_gfx[screen][obj_gfx]++;
+	pa_obj_created[screen][obj_number]=1;
 };
 
 /*! \fn static inline void PA_CreateSpriteExFromGfx(u8 screen, u8 obj_number, u16 obj_gfx, u8 obj_shape, u8 obj_size, u8 color_mode, u8 palette, u8 obj_mode, u8 mosaic, u8 hflip, u8 vflip, u8 prio, u8 dblsize, s16 x, s16 y)
@@ -484,7 +494,8 @@ static inline void PA_CreateSpriteExFromGfx(u8 screen, u8 obj_number, u16 obj_gf
 	PA_obj[screen][obj_number].atr2 = obj_gfx + (prio << 10) + (palette << 12);
 	PA_obj[screen][obj_number].atr0 = (y&PA_OBJ_Y) + (dblsize << 9) + (obj_mode << 10) + (mosaic << 12) + (color_mode << 13) + (obj_shape << 14);
 	PA_obj[screen][obj_number].atr1 = (x & PA_OBJ_X) + (hflip << 12) + (vflip << 13) + (obj_size << 14);
-	++obj_per_gfx[screen][obj_gfx];
+	obj_per_gfx[screen][obj_gfx]++;
+	pa_obj_created[screen][obj_number]=1;
 };
 
 /*! \def PA_UpdateSpriteGfx(screen, obj_number, obj_data)

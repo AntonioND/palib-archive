@@ -1,14 +1,13 @@
-buffers.o: \
- /home/oracle/devkitPro/PAlib/source/arm7/source/helix/real/buffers.c \
- /home/oracle/devkitPro/PAlib/source/arm7/source/helix/real/coder.h \
- /home/oracle/devkitPro/PAlib/source/arm7/source/helix/mp3common.h \
- /home/oracle/devkitPro/PAlib/source/arm7/source/helix/mp3dec.h \
- /home/oracle/devkitPro/PAlib/source/arm7/source/helix/statname.h
+buffers.o: c:/devkitPro/PAlib/source/arm7/source/helix/real/buffers.c \
+ c:/devkitPro/PAlib/source/arm7/source/helix/real/coder.h \
+ c:/devkitPro/PAlib/source/arm7/source/helix/mp3common.h \
+ c:/devkitPro/PAlib/source/arm7/source/helix/mp3dec.h \
+ c:/devkitPro/PAlib/source/arm7/source/helix/statname.h
 
-/home/oracle/devkitPro/PAlib/source/arm7/source/helix/real/coder.h:
+c:/devkitPro/PAlib/source/arm7/source/helix/real/coder.h:
 
-/home/oracle/devkitPro/PAlib/source/arm7/source/helix/mp3common.h:
+c:/devkitPro/PAlib/source/arm7/source/helix/mp3common.h:
 
-/home/oracle/devkitPro/PAlib/source/arm7/source/helix/mp3dec.h:
+c:/devkitPro/PAlib/source/arm7/source/helix/mp3dec.h:
 
-/home/oracle/devkitPro/PAlib/source/arm7/source/helix/statname.h:
+c:/devkitPro/PAlib/source/arm7/source/helix/statname.h:

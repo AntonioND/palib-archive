@@ -1,6 +1,26 @@
----------------------------------------------
-| PAlib 0912XX STABLE: PAlib.evilness -= 99 | fincs
----------------------------------------------
+-------------------------------------------------
+| PAlib 100707 QuickFix: The last PAlib release | fincs
+-------------------------------------------------
+
+[General] Removed the ASlib IPC clear code, it was doing more harm than good.
+
+[3DSprites] PA_3DCreateSprite now returns the GFX number.
+
+[Linux] Fixed a backslash (\) path to use forward slash (/).
+
+[Examples] The updating script screwed up some sound examples, it's now fixed.
+
+[EFS] EFS support was dropped in favor of libfilesystem.
+
+[Editors] PN support is now dropped.
+
+[Fix] PAlib now works with devkitARM r31.
+
+[Sprite] Fixed PA_DeleteSprite bug (thanks BassAceGold).
+
+--------------------------------------------------
+| PAlib 0912XX STABLE beta: PAlib.evilness -= 99 | fincs
+--------------------------------------------------
 
 Note: PAlib was a mess in the ARM7 side before this release.
 

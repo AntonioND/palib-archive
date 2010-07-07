@@ -9,6 +9,10 @@
 # Environment variables & common settings
 #---------------------------------------------------------------------------------
 
+ifeq ($(strip $(DEVKITPRO)),)
+$(error Please set DEVKITPRO in your environment)
+endif
+
 ifeq ($(strip $(DEVKITARM)),)
 $(error Please set DEVKITARM in your environment)
 endif
@@ -17,8 +21,12 @@ ifeq ($(strip $(MAKEFILE_VER)),)
 $(error Your makefile is outdated. Please use the one at $(DEVKITPRO)/PAlib/template)
 endif
 
-ifneq ($(strip $(MAKEFILE_VER)),ver1)
-$(error Your PAlib version is outdated. Please go to http://forum.palib.info to get the newest one)
+ifeq ($(strip $(MAKEFILE_VER)),ver1)
+$(error Your makefile is outdated. Please use the one at $(DEVKITPRO)/PAlib/template)
+endif
+
+ifneq ($(strip $(MAKEFILE_VER)),ver2)
+$(error Your PAlib version is outdated. Please go to http://www.palib-dev.com to get the latest)
 endif
 
 PATH   := $(DEVKITARM)/bin:$(PATH)
@@ -37,16 +45,7 @@ ifeq ($(strip $(ARM7_SELECTED)),)
 	TEXT_TO_SAY_1 := You forgot to select an ARM7 core! ARM7_MP3 will be selected by default.
 	TEXT_TO_SAY_2 := To select an ARM7 core, uncomment the line of the makefile that specifies
 	TEXT_TO_SAY_3 := the ARM7 core you want.
-	NL_AND_PAUSE   = YES
-	ARM7_SELECTED := ARM7_MP3
-endif
-
-ifeq ($(strip $(ARM7_SELECTED)), ARM7_BASIC)
-	TEXT_TO_SAY_1 := The ARM7_BASIC core is only here for compatibility with PAlib 080203 and
-	TEXT_TO_SAY_2 := 080823 programs. ARM7_MP3 will be selected by default. If you are upgrading
-	TEXT_TO_SAY_3 := a project, it is highly recommended that you replace your makefile with the
-	TEXT_TO_SAY_4 := one in $(DEVKITPRO)/PAlib.
-	NL_AND_PAUSE   = YES
+	NL_AND_PAUSE  := YES
 	ARM7_SELECTED := ARM7_MP3
 endif
 
@@ -109,13 +108,13 @@ LDFLAGS  :=  -specs=ds_arm9.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 #---------------------------------------------------------------------------------	
 
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3)
-	LIBS := -lfat -lnds9
+	LIBS := -lfilesystem -lfat -lnds9
 endif
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MP3_DSWIFI)
-	LIBS := -lfat -lnds9 -ldswifi9
+	LIBS := -lfilesystem -lfat -lnds9 -ldswifi9
 endif
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
-	LIBS := -lfat -lnds9 -ldswifi9 -lmm9
+	LIBS := -lfilesystem -lfat -lnds9 -ldswifi9 -lmm9
 endif
 
 # The -lpa9 switch must be placed before other libraries.
@@ -188,28 +187,21 @@ GIFFILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.gif)))
 BMPFILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.bmp)))
 MP3FILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.mp3)))
 
-# Collect audio files supported by MaxMod (mod, xm, s3m, it, wav)
+# Collect audio files supported by Maxmod (mod, xm, s3m, it, wav)
 ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
 	export AUDIOFILES := $(foreach file,$(notdir $(wildcard $(AUDIO)/*.mod)),$(CURDIR)/$(AUDIO)/$(file)) \
 	                     $(foreach file,$(notdir $(wildcard $(AUDIO)/*.s3m)),$(CURDIR)/$(AUDIO)/$(file)) \
 	                     $(foreach file,$(notdir $(wildcard $(AUDIO)/*.xm)),$(CURDIR)/$(AUDIO)/$(file))  \
 	                     $(foreach file,$(notdir $(wildcard $(AUDIO)/*.it)),$(CURDIR)/$(AUDIO)/$(file))  \
 	                     $(foreach file,$(notdir $(wildcard $(AUDIO)/*.wav)),$(CURDIR)/$(AUDIO)/$(file))
-endif
 
-# Audio files check
-ifeq ($(strip $(AUDIOFILES)),)
-	ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
-		TEXT_TO_SAY_2 := No MaxMod-compatible files were found in the audio folder.
-		TEXT_TO_SAY_3 := If you are loading the soundbank from FAT or EFS, ignore this message.
+	ifeq ($(strip $(AUDIOFILES)),)
+		TEXT_TO_SAY_2 := No Maxmod-compatible files were found in the audio folder.
+		TEXT_TO_SAY_3 := If you are loading the soundbank from the filesystem, ignore this message.
 		TEXT_TO_SAY_4 := " "
-	endif
-	DONT_BUILD_MAXMOD_SOUNDBANK = YES
-endif
-
-# Add the MaxMod soundbank if needed
-ifneq ($(strip $(DONT_BUILD_MAXMOD_SOUNDBANK)), YES)
-	ifeq ($(strip $(ARM7_SELECTED)), ARM7_MAXMOD_DSWIFI)
+		DONT_BUILD_MAXMOD_SOUNDBANK := YES
+	else
+		# Add the Maxmod soundbank to the list of bin files
 		BINFILES += soundbank_bin.bin
 	endif
 endif
@@ -221,11 +213,11 @@ export OFILES := $(BINFILES:.bin=.o) $(PCXFILES:.pcx=.o) $(PALFILES:.pal=.o) \
                  $(CFILES:.c=.o) $(CPPFILES:.cpp=.o) $(SFILES:.s=.o)
 
 # Include paths
-export INCLUDE := $(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
+export INCLUDE := -I$(CURDIR)/$(BUILD) \
+                  $(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir)) \
                   $(foreach dir,$(LIBDIRS),-I$(dir)/include) \
                   $(foreach dir,$(LIBDIRS),-I$(dir)/include/nds) \
-                  -I$(PAPATH)/include/nds \
-                  -I$(CURDIR)/$(BUILD)
+                  -I$(PAPATH)/include/nds
 
 # Library paths
 export LIBPATHS := $(foreach dir,$(LIBDIRS),-L$(dir)/lib)
@@ -233,17 +225,11 @@ export LIBPATHS := $(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 # Header dependencies path (.d files)
 export DEPSDIR := $(CURDIR)/$(BUILD)
 
-# Check if the EFS patcher is present
-ifeq ($(strip $(USE_EFS)), YES)
-	WILDCARD_EFS := $(wildcard $(CURDIR)/efs) $(wildcard $(CURDIR)/efs.exe)
-	ifeq ($(strip $(WILDCARD_EFS)),)
-		TEXT_TO_SAY_1 := "It seems your copy of the EFS patcher is missing!"
-		TEXT_TO_SAY_2 := "Without this file, you can't build your project."
-		TEXT_TO_SAY_3 := "You can find it in the following directory:"
-		TEXT_TO_SAY_4 := "$(DEVKITPRO)/PAlib/examples/FAT/EFS"
-		NL_AND_PAUSE := YES
-		MSG_IS_ERROR := YES
-	endif
+# Filesystem
+ifneq ($(strip $(wildcard $(CURDIR)/filesystem)),)
+	export FILESYSTEM := -d $(CURDIR)/filesystem
+else
+	export FILESYSTEM :=
 endif
 
 .PHONY: $(BUILD) clean
@@ -265,7 +251,7 @@ else
 	@echo "/ PAlib Project Compilation Error /"
 	@echo "================================== "
 endif
-	@echo .
+	@echo
 	@echo $(TEXT_TO_SAY_1)
 endif
 ifneq ($(strip $(TEXT_TO_SAY_2)),)
@@ -278,18 +264,18 @@ ifneq ($(strip $(TEXT_TO_SAY_4)),)
 	@echo $(TEXT_TO_SAY_4)
 endif
 ifneq ($(strip $(NL_AND_PAUSE)),)
-	@echo .
+	@echo
 ifeq ($(strip $(MSG_IS_ERROR)),)
 	@read -n 1 -p "Press any key to continue the compilation..."
-	@echo .
+	@echo
 else
 	@read -n 1 -p "Press any key to exit..."
 endif
-	@echo .
+	@echo
 endif
 ifeq ($(strip $(MSG_IS_ERROR)),)
 	@echo Build process start for project \"$(TARGET)\"...
-	@echo .
+	@echo
 	@[ -d $@ ] || mkdir -p $@
 	@[ -d $(OUTPATH) ] || mkdir -p $(OUTPATH)
 	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
@@ -323,22 +309,17 @@ soundbank_bin.bin: $(AUDIOFILES)
 #---------------------------------------------------------------------------------
 ifneq ($(strip $(DONT_BUILD_MAXMOD_SOUNDBANK)), YES)
 	@echo "Generating soundbank..."
-	@echo .
+	@echo
 	@mmutil $^ -d -osoundbank_bin.bin -hsoundbank.h
 endif
 
 #---------------------------------------------------------------------------------
 %.nds: %.bin
 #---------------------------------------------------------------------------------
-ifeq ($(strip $(USE_EFS)), YES)
-	@ndstool -c $@ -9 $(TARGET).bin -7 $(ARM7BIN) -b $(ICON) "$(TEXT1);$(TEXT2);$(TEXT3)" -d ../efsroot > /dev/null
-	@$(CURDIR)/../efs $(OUTPUT).nds
-else
-	@ndstool -c $@ -9 $(TARGET).bin -7 $(ARM7BIN) -b $(ICON) "$(TEXT1);$(TEXT2);$(TEXT3)" > /dev/null
-endif
-	@echo .
+	@ndstool -c $@ -9 $(TARGET).bin -7 $(ARM7BIN) -b $(ICON) "$(TEXT1);$(TEXT2);$(TEXT3)" $(FILESYSTEM) > /dev/null
+	@echo
 	@echo Built: $(notdir $@)
-	@echo .
+	@echo
 
 #---------------------------------------------------------------------------------
 %.bin: %.elf
@@ -348,7 +329,7 @@ endif
 #---------------------------------------------------------------------------------
 %.elf:
 #---------------------------------------------------------------------------------
-	@echo .
+	@echo
 	@echo Linking...
 	@$(LD) $(LDFLAGS) $(OFILES) $(LIBPATHS) $(LIBS) -o $(TARGET).elf
 

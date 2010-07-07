@@ -12,12 +12,6 @@
 ARM7_SELECTED := ARM7_MAXMOD_DSWIFI
 
 #---------------------------------------------------------------------------------
-# If you're using EFS uncomment "USE_EFS = YES" here.
-#---------------------------------------------------------------------------------
-
-#USE_EFS = YES
-
-#---------------------------------------------------------------------------------
 # Be sure to change these default banner TEXTs. This is the name your project will
 # display in the DS menu (including some flash cards). Create a custom logo.bmp
 # icon for your project too!
@@ -47,6 +41,6 @@ RELEASEPATH :=
 # If you need to change other parts of the make process, see the PA_Makefile:
 #---------------------------------------------------------------------------------
 
-MAKEFILE_VER := ver1
+MAKEFILE_VER := ver2
 
 include $(DEVKITPRO)/PAlib/lib/PA_Makefile

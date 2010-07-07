@@ -1,2 +1,2 @@
 asmpoly_gcc.o: \
- /home/oracle/devkitPro/PAlib/source/arm7/source/helix/real/asmpoly_gcc.s
+ c:/devkitPro/PAlib/source/arm7/source/helix/real/asmpoly_gcc.s

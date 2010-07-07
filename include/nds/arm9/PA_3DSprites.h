@@ -93,10 +93,11 @@ void PA_Reset3DSprites();
 void PA_Reset3DSprites2Banks();
 
 /// Creates a 3D sprite
-static inline void PA_3DCreateSprite(u16 sprite, void *image, u16 width, u16 height, u8 type, u8 palette, s16 x, s16 y){
+static inline u16 PA_3DCreateSprite(u16 sprite, void *image, u16 width, u16 height, u8 type, u8 palette, s16 x, s16 y){
 	u16 tex_gfx = PA_3DCreateTex(image, width, height, type);
 	PA_3DCreateSpriteFromTex(sprite, tex_gfx, width, height, palette, x, y);
 	obj_per_gfx3D[tex_gfx] --;
+	return tex_gfx;
 }
 
 /// Deletes a 3D texture.

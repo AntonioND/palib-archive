@@ -12,7 +12,7 @@ Folders:
   source  - Contains source files (.c, .cpp and .s). Those are your program.
   gfx     - Contains PAGfx (a graphics converter) and the graphics for your program.
   audio   - Contains module files (mod, s3m, xm and it) and sound effects (wav) for use with Maxmod.
-  efsroot - Contains files which you will be able to read using EFS.
+  filesystem - Contains files which will be embedded in the .nds file. Use libfilesystem to read them.
 
 Files:
   Makefile            - This is a special file that tells your system how to convert your project files into a NDS ROM (how to compile your project).
@@ -31,6 +31,7 @@ Files:
 - When you want to run your project, press F5 to launch the .nds file. You must associate .nds files with an emulator for this
     to work! A good one is no$gba, which you can find at c:\devkitPro\PAlib\emulators\no$gba.
     If you haven't compiled your project yet and press F5 it will automatically build it before running it.
+- If you're using libfilesystem and your program doesn't work in your card use HomebrewMenu by devkitPro (go to devkitPro.org/hbmenu).
 
 ======================================
 | Preparing your program for release |
@@ -60,10 +61,6 @@ Audio:
 
 Networking:
  dswifi - dswifi for DS<->AccessPoint connections (examples\Wifi\dswifi)
-
-Filesystem:
- EFSlib - This library appends a filesystem to the NDS ROM (examples\FAT\EFS) - if you choose this, copy the patcher and the files
-           source/efs_lib.c and source/efs_lib.h from the example.
 
 /-----------------------------------------------------------------------------------------------------------------------------\
 | IMPORTANT: Your project will only work on the G6 and M3 Real cards if you choose an ARM7 core which is smaller than 64 KBs. |

@@ -39,7 +39,12 @@ void PA_UpdatePad() {
 void PA_UpdateStylus() {
 	touchPosition t_data;
 	touchRead(&t_data);
-	Stylus.Pressure = (((t_data.px * t_data.z2) >> 6) / t_data.z1) - (t_data.px >> 6);
+
+	if(t_data.z1 != 0)
+		Stylus.Pressure = (((t_data.px * t_data.z2) >> 6) / t_data.z1) - (t_data.px >> 6);
+	else
+		Stylus.Pressure = -1;
+
 	Stylus.DblClick = Stylus.Newpress && ((Stylus.Downtime + Stylus.Uptime) < 45);
 	Stylus.Downtime *= !Stylus.Newpress; // = 0 if newpress
 	Stylus.Downtime += Stylus.Held;

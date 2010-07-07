@@ -51,7 +51,7 @@ void PA_InitFake16bitBg(u8 screen, u8 prio){
 	// Initialize an 8 bit background on bg 3 at the specified screen
 	if(!hadbg) // Only initialize if that screen never had a fake 16 bit background before
 		PA_Init8bitBg(screen, prio);
-	// Make each scanline display the entire pallette
+	// Make each scanline display the entire palette
 	int x, y;
 	for(y = 0; y < 192; y ++)
 		for(x = 0; x < 256; x ++)

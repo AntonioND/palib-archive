@@ -1,2 +1,1 @@
-keyboard.pal.o: \
- /home/oracle/devkitPro/PAlib/source/arm9/source/keyboard.pal.c
+keyboard.pal.o: c:/devkitPro/PAlib/source/arm9/source/keyboard.pal.c

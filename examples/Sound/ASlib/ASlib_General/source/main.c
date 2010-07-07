@@ -12,7 +12,7 @@
 #include "sfxa.h"
 #include "sfxb.h"
 
-int mainchar ** argv), char** argv)
+int main()
 {
 	// variables
     int i, rate = 0, newrate = 0;
