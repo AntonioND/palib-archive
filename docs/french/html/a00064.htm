@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Rotating Backgrounds</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Rotating Backgrounds</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.htm#gae775c97870a58b51cae1d6ee62ce3064">PA_LoadRotBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Charger un fond pour les rotations/zoom! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs  <a href="#gae775c97870a58b51cae1d6ee62ce3064"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.htm#ga5aa28504488c9975496d649389626fcd">PA_LoadPAGfxRotBg</a>(screen, bg_select, bg_name, wraparound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs  <a href="#ga5aa28504488c9975496d649389626fcd"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00064.htm#ga4a6a0f2eabce254859fa06e58efc99a5">PA_SetBgRot</a> (u8 screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire tourner/zoomer un fond rotatif.  <a href="#ga4a6a0f2eabce254859fa06e58efc99a5"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Load rotating backgrounds, move, rotate, scale them </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="gae775c97870a58b51cae1d6ee62ce3064"></a><!-- doxytag: member="PA_BgRot.h::PA_LoadRotBg" ref="gae775c97870a58b51cae1d6ee62ce3064" args="(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadRotBg</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_tiles, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_map, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_size, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wraparound&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    <a class="code" href="a00065.htm#ga2beae2277c190bb5698e16281ad8cd31" title="Effacer et reinitialiser un fond complètement.">PA_DeleteBg</a>(screen, bg_select);\
+    <a class="code" href="a00065.htm#gab0167d556cc274e095ab32025ccdf70f" title="[DEPRECATED] Charger un tileset en mémoire">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles); \
+    PA_LoadRotBgMap(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
+    <a class="code" href="a00065.htm#ga0ff54ebb77c13ff0b465377f6a7c0f63" title="Initialise un fond. A faire uniquement après avoir chargé un tileset et une map...">PA_InitBg</a>(screen, bg_select, bg_size, wraparound, 1);\
+    <a class="code" href="a00064.htm#ga4a6a0f2eabce254859fa06e58efc99a5" title="Faire tourner/zoomer un fond rotatif.">PA_SetBgRot</a>(screen, bg_select, 0, 0, 0, 0, 0, 256);\
+    }<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Charger un fond pour les rotations/zoom! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000005">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Nom du tableau contenant les tiles (exemple: ship_Tiles) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_map</em>&nbsp;</td><td>Nom du tableau contenant les infos sur la map (exemple : ship_Map) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_size</em>&nbsp;</td><td>Taille du fond. Utiliser les macros suivantes : BG_ROT_128X128, ou 256X256, 512X512, ou enfin 1024X1024 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wraparound</em>&nbsp;</td><td>Si le fond boucle ou non. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5aa28504488c9975496d649389626fcd"></a><!-- doxytag: member="PA_BgRot.h::PA_LoadPAGfxRotBg" ref="ga5aa28504488c9975496d649389626fcd" args="(screen, bg_select, bg_name, wraparound)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadPAGfxRotBg</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_name, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wraparound&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    <a class="code" href="a00079.htm#gaa5565296cb8c94b4012deb4f151d2d08" title="Charger une palette pour le fond 8bit.">PA_Load8bitBgPal</a>(screen, (<span class="keywordtype">void</span>*)bg_name##_Pal);\
+    <a class="code" href="a00064.htm#gae775c97870a58b51cae1d6ee62ce3064" title="[DEPRECATED] Charger un fond pour les rotations/zoom! Attention, il faut avant utiliser...">PA_LoadRotBg</a>(screen, bg_select, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxRotBgSize(bg_name##_Info[1]), wraparound);\
+    }<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Charger un fond pour les rotations/zoom ! Attention, il faut avant utiliser PA_SetVideoMode avec 1 pour utiliser un fond rotatif (le fond 3 uniquement !), ou 2 pour 2 fonds (2 et 3). Le fond DOIT etre de 256 couleurs </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000006">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Nom du fond, comme bg0 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wraparound</em>&nbsp;</td><td>Si le fond boucle ou non. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga4a6a0f2eabce254859fa06e58efc99a5"></a><!-- doxytag: member="PA_BgRot.h::PA_SetBgRot" ref="ga4a6a0f2eabce254859fa06e58efc99a5" args="(u8 screen, u8 bg_select, s32 x_scroll, s32 y_scroll, s32 x_rotcentre, s32 y_rotcentre, s16 bg_angle, s32 bg_zoom)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetBgRot </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x_scroll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y_scroll</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x_rotcentre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y_rotcentre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>bg_angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg_zoom</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Faire tourner/zoomer un fond rotatif. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x_scroll</em>&nbsp;</td><td>Scroll x... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y_scroll</em>&nbsp;</td><td>Scroll y... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x_rotcentre</em>&nbsp;</td><td>Position X du centre de rotation </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y_rotcentre</em>&nbsp;</td><td>Position Y du centre de rotation </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_angle</em>&nbsp;</td><td>Angle de rotation (0-511) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_zoom</em>&nbsp;</td><td>Zoom (256 pour pas de zoom...) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

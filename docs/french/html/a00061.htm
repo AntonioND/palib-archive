@@ -1,0 +1,683 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: 16color pseudo-bitmap mode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>16color pseudo-bitmap mode</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga14a77fd573eeae4d1e687a7b08bf976d">PA_16cCustomFont</a>(c16_slot, c16_font)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Ajouter une police perso dans le systeme de texte 16c !! Doit être convertie avec PAGfx  <a href="#ga14a77fd573eeae4d1e687a7b08bf976d"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga5dcb4d5ee24bc2bd2f5136108194b85e">PA_Init16cBg</a> (u8 screen, u8 bg)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le mode de dessin 16 couleurs, sur lequel on peut coller de petites images...  <a href="#ga5dcb4d5ee24bc2bd2f5136108194b85e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#gaa362fcf149b53ca903a09a25792f433b">PA_16cErase</a> (u8 screen)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un écran de 16 couleurs. Doit être utilisé juste après PA_WaitForVBL pour éviter des erreurs d'affichage.  <a href="#gaa362fcf149b53ca903a09a25792f433b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga831e3d0291f9617470cad859e326946e"></a><!-- doxytag: member="c16::PA_Dual16cErase" ref="ga831e3d0291f9617470cad859e326946e" args="(void)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga831e3d0291f9617470cad859e326946e">PA_Dual16cErase</a> (void)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un écran de 16 couleurs sur les 2 écrans. Doit être utilisé juste après PA_WaitForVBL pour éviter des erreurs d'affichage. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga5cfc59f0baa98266119fdcb7fcc25476">PA_InitComplete16c</a> (u8 bg, void *Palette)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise le mode de dessin 16 couleurs sur les 2 écrans avec une palette donnée.  <a href="#ga5cfc59f0baa98266119fdcb7fcc25476"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#gacf8e66be974b8efdebe04b5b784acadd">PA_16cText</a> (u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, const char *text, u8 color, u8 size, s32 limit)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cette fonction permet d'écrire du texte à chasse variable à l'écran.  <a href="#gacf8e66be974b8efdebe04b5b784acadd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga502e6a0da156e9fb1f3f63f517d4e516">PA_Add16cFont</a> (int slot, const <a class="el" href="a00006.htm">PA_BgStruct</a> *font)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajouter une police perso dans le système de texte 16c.  <a href="#ga502e6a0da156e9fb1f3f63f517d4e516"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ALWAYSINLINE void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#gab3e18f483a3949d2ce5b2cb0c0bef222">PA_16cPutPixel</a> (u8 screen, s16 x, s16 y, u32 color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher un pixel sur un fond 16c.  <a href="#gab3e18f483a3949d2ce5b2cb0c0bef222"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ALWAYSINLINE void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga9b702d106fb90b2b3d88fb301543c65d">PA_16c8X4</a> (u8 screen, s16 x, s16 y, u32 *image)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher une image de 8x4 pixels à un endroit donné, fonction la plus rapide de copie...  <a href="#ga9b702d106fb90b2b3d88fb301543c65d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ALWAYSINLINE void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga2b1a3bc11034b06f5cccaa2743d9867a">PA_16c8X6</a> (u8 screen, s16 x, s16 y, u32 *image)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher une image de 8x6 pixels à un endroit donné, deuxième fonction la plus rapide de copie...  <a href="#ga2b1a3bc11034b06f5cccaa2743d9867a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ALWAYSINLINE void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#gaa1f63153a8736e0e80b9201b429ab5c3">PA_16c8X8</a> (u8 screen, s16 x, s16 y, u32 *image)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher une image de 8x8 pixels à un endroit donné.  <a href="#gaa1f63153a8736e0e80b9201b429ab5c3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">ALWAYSINLINE void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga7227ebdc3a55ab0a8c708f048877449f">PA_16c8Xi</a> (u8 screen, s16 x, s16 y, u32 *image, u8 i)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher une image de 8x8 pixels à un endroit donné.  <a href="#ga7227ebdc3a55ab0a8c708f048877449f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#ga14df4a79bfe9aedf3bafac9704a1342c">PA_16cClearZone</a> (u8 screen, s16 x1, s16 y1, s16 x2, s16 y2)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer une partie d'un fond 16c.  <a href="#ga14df4a79bfe9aedf3bafac9704a1342c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00061.htm#gae318d23f473b175e708d4a24a4536e6b">PA_16cGetPixel</a> (u8 screen, s16 x, s16 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la valeur d'un pixel donné sur un fond 16c.  <a href="#gae318d23f473b175e708d4a24a4536e6b"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Special 16color background on which you can paste images. Usefull to show shots in SHMUP ! </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ga14a77fd573eeae4d1e687a7b08bf976d"></a><!-- doxytag: member="PA_16c.h::PA_16cCustomFont" ref="ga14a77fd573eeae4d1e687a7b08bf976d" args="(c16_slot, c16_font)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_16cCustomFont</td>
+          <td>(</td>
+          <td class="paramtype">c16_slot, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">c16_font&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    bittext_maps[c16_slot] = (u16*)(<span class="keywordtype">void</span>*)c16_font##_Map;\
+    c16_tiles[c16_slot] = (u32*)(<span class="keywordtype">void</span>*)c16_font##_Tiles;\
+    pa_bittextdefaultsize[c16_slot] = (u8*)c16_font##_Sizes;\
+    pa_bittextpoliceheight[c16_slot] = c16_font##_Height;\
+}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Ajouter une police perso dans le systeme de texte 16c !! Doit être convertie avec PAGfx </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000001">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>c16_slot</em>&nbsp;</td><td>Slot pour ajouter la police. Les slots 0-4 sont utilisés pour les polices par défaut de PAlib, et 5-9 sont libres. On peut néanmoins charger par-dessus les polices PAlib si on veut. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>c16_font</em>&nbsp;</td><td>Nom de la police... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga5dcb4d5ee24bc2bd2f5136108194b85e"></a><!-- doxytag: member="PA_16c.h::PA_Init16cBg" ref="ga5dcb4d5ee24bc2bd2f5136108194b85e" args="(u8 screen, u8 bg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_Init16cBg </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialise le mode de dessin 16 couleurs, sur lequel on peut coller de petites images... </p>
+<p>Initialise le mode de dessin 16 couleurs, sur lequel on peut coller de petites images... Utilisant la palette 0.</p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg</em>&nbsp;</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa362fcf149b53ca903a09a25792f433b"></a><!-- doxytag: member="PA_16c.h::PA_16cErase" ref="gaa362fcf149b53ca903a09a25792f433b" args="(u8 screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_16cErase </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Effacer un écran de 16 couleurs. Doit être utilisé juste après PA_WaitForVBL pour éviter des erreurs d'affichage. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5cfc59f0baa98266119fdcb7fcc25476"></a><!-- doxytag: member="PA_16c.h::PA_InitComplete16c" ref="ga5cfc59f0baa98266119fdcb7fcc25476" args="(u8 bg, void *Palette)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_InitComplete16c </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>Palette</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialise le mode de dessin 16 couleurs sur les 2 écrans avec une palette donnée. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg</em>&nbsp;</td><td>Numéro du fond </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>Palette</em>&nbsp;</td><td>Palette de 16 couleurs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gacf8e66be974b8efdebe04b5b784acadd"></a><!-- doxytag: member="PA_16c.h::PA_16cText" ref="gacf8e66be974b8efdebe04b5b784acadd" args="(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, const char *text, u8 color, u8 size, s32 limit)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">s16 PA_16cText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>maxx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>maxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>limit</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Cette fonction permet d'écrire du texte à chasse variable à l'écran. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Coordonnée X du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Coordonnée Y du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxx</em>&nbsp;</td><td>Coordonnée X du coin inférieur droit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxy</em>&nbsp;</td><td>Coordonnée Y du coin inférieur droit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Texte, tel que "Hello World" </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de la palette à utiliser (0-255) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>Taille du texte, de 0 (vraiment petit) à 4 (assez grand) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>limit</em>&nbsp;</td><td>On peut fixer une limite au nombre de caractères. Ceci peut etre utile pour dessiner un texte progressivement, en augmentant de 1 le nombre de caractères à chaque boucle.... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga502e6a0da156e9fb1f3f63f517d4e516"></a><!-- doxytag: member="PA_16c.h::PA_Add16cFont" ref="ga502e6a0da156e9fb1f3f63f517d4e516" args="(int slot, const PA_BgStruct *font)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Add16cFont </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00006.htm">PA_BgStruct</a> *&nbsp;</td>
+          <td class="paramname"> <em>font</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ajouter une police perso dans le système de texte 16c. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>slot</em>&nbsp;</td><td>Slot pour ajouter la police. Les slots 0-4 sont utilisés pour les polices par défaut de PAlib, et 5-9 sont libres. On peut néanmoins charger par-dessus les polices PAlib si on veut. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>font</em>&nbsp;</td><td>Pointeur vers le police perso. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gab3e18f483a3949d2ce5b2cb0c0bef222"></a><!-- doxytag: member="PA_16c.h::PA_16cPutPixel" ref="gab3e18f483a3949d2ce5b2cb0c0bef222" args="(u8 screen, s16 x, s16 y, u32 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALWAYSINLINE PA_16cPutPixel </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Afficher un pixel sur un fond 16c. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 263, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position y en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 199, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Valeur du pixel (0-15, prend la couleur dans la palette chargée) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9b702d106fb90b2b3d88fb301543c65d"></a><!-- doxytag: member="PA_16c.h::PA_16c8X4" ref="ga9b702d106fb90b2b3d88fb301543c65d" args="(u8 screen, s16 x, s16 y, u32 *image)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALWAYSINLINE void PA_16c8X4 </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32 *&nbsp;</td>
+          <td class="paramname"> <em>image</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Afficher une image de 8x4 pixels à un endroit donné, fonction la plus rapide de copie... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 255, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position y en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 191, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>image</em>&nbsp;</td><td>Image en 16 couleurs à charger. Utiliser (u32*)NomImage en cas d'erreur de compilation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2b1a3bc11034b06f5cccaa2743d9867a"></a><!-- doxytag: member="PA_16c.h::PA_16c8X6" ref="ga2b1a3bc11034b06f5cccaa2743d9867a" args="(u8 screen, s16 x, s16 y, u32 *image)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALWAYSINLINE void PA_16c8X6 </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32 *&nbsp;</td>
+          <td class="paramname"> <em>image</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Afficher une image de 8x6 pixels à un endroit donné, deuxième fonction la plus rapide de copie... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 255, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position y en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 191, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>image</em>&nbsp;</td><td>Image en 16 couleurs à charger. Utiliser (u32*)NomImage en cas d'erreur de compilation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa1f63153a8736e0e80b9201b429ab5c3"></a><!-- doxytag: member="PA_16c.h::PA_16c8X8" ref="gaa1f63153a8736e0e80b9201b429ab5c3" args="(u8 screen, s16 x, s16 y, u32 *image)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALWAYSINLINE void PA_16c8X8 </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32 *&nbsp;</td>
+          <td class="paramname"> <em>image</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Afficher une image de 8x8 pixels à un endroit donné. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 255, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position y en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 191, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>image</em>&nbsp;</td><td>Image en 16 couleurs à charger. Utiliser (u32*)NomImage en cas d'erreur de compilation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7227ebdc3a55ab0a8c708f048877449f"></a><!-- doxytag: member="PA_16c.h::PA_16c8Xi" ref="ga7227ebdc3a55ab0a8c708f048877449f" args="(u8 screen, s16 x, s16 y, u32 *image, u8 i)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ALWAYSINLINE void PA_16c8Xi </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32 *&nbsp;</td>
+          <td class="paramname"> <em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>i</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Afficher une image de 8x8 pixels à un endroit donné. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 255, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position y en pixels du coin supérieur gauche. A noter que celle-ci va de -8 à 191, afin de permettre des images à moitié sorties... NE JAMAIS DEPASSER DU CADRE, sous peine de gros bugs graphiques... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>image</em>&nbsp;</td><td>Image en 16 couleurs à charger. Utiliser (u32*)NomImage en cas d'erreur de compilation </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>i</em>&nbsp;</td><td>Nombre de lignes à dessiner </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga14df4a79bfe9aedf3bafac9704a1342c"></a><!-- doxytag: member="PA_16c.h::PA_16cClearZone" ref="ga14df4a79bfe9aedf3bafac9704a1342c" args="(u8 screen, s16 x1, s16 y1, s16 x2, s16 y2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_16cClearZone </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Effacer une partie d'un fond 16c. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Coin supérieur gauche... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Coin supérieur gauche... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Coin inférieur droit... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Coin inférieur droit... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gae318d23f473b175e708d4a24a4536e6b"></a><!-- doxytag: member="PA_16c.h::PA_16cGetPixel" ref="gae318d23f473b175e708d4a24a4536e6b" args="(u8 screen, s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u8 PA_16cGetPixel </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Renvoie la valeur d'un pixel donné sur un fond 16c. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

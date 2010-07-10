@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Shape Recognition</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Shape Recognition</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga363a73c0f870835f1c7d933f68060853"></a><!-- doxytag: member="Reco::PA_CheckLetter" ref="ga363a73c0f870835f1c7d933f68060853" args="()" -->
+char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00081.htm#ga363a73c0f870835f1c7d933f68060853">PA_CheckLetter</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Analyse la forme et renvoie une lettre correspondante. 0 si rien. La chaine représentative de la forme est copiée dans PA_RecoShape au Stylus Release. Copie des images dispos : <a href="http://www.palib.info/Reco/PAGraffiti.gif.">http://www.palib.info/Reco/PAGraffiti.gif.</a> <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00081.htm#gab11e820a2dded2ef7d0dcc825f857518">PA_RecoAddShape</a> (char letter, char *shape)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajouter une nouvelle forme au système de reconnaissance.  <a href="#gab11e820a2dded2ef7d0dcc825f857518"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac51785ad845354090fe26994be80ee45"></a><!-- doxytag: member="Reco::PA_ResetRecoSys" ref="gac51785ad845354090fe26994be80ee45" args="()" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00081.htm#gac51785ad845354090fe26994be80ee45">PA_ResetRecoSys</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Réinitialise le systeme de reconnaissance. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00081.htm#ga3c46b75b0f8308ebe2a6dc8416fef87f">PA_UsePAGraffiti</a> (u8 use)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer ou désactiver les lettres <a class="el" href="a00060.htm" title="PAlib C++ namespace.">PA</a> Graffiti. On voudra le désactiver quand on veut utiliser uniquement ses propres formes.  <a href="#ga3c46b75b0f8308ebe2a6dc8416fef87f"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Draw a shape and have it recognized ! </p>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="gab11e820a2dded2ef7d0dcc825f857518"></a><!-- doxytag: member="PA_Reco.h::PA_RecoAddShape" ref="gab11e820a2dded2ef7d0dcc825f857518" args="(char letter, char *shape)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_RecoAddShape </td>
+          <td>(</td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>letter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&nbsp;</td>
+          <td class="paramname"> <em>shape</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ajouter une nouvelle forme au système de reconnaissance. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>letter</em>&nbsp;</td><td>Lettre renvoyée par le système de reconnaissance pour cette forme (peut être n'imorte quelle lettre, ou un nombre de 1 à 255) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>shape</em>&nbsp;</td><td>Chaine de 15 caractères fournie par le systeme de reconnaissance in PA_RecoShape </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3c46b75b0f8308ebe2a6dc8416fef87f"></a><!-- doxytag: member="PA_Reco.h::PA_UsePAGraffiti" ref="ga3c46b75b0f8308ebe2a6dc8416fef87f" args="(u8 use)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_UsePAGraffiti </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>use</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Activer ou désactiver les lettres <a class="el" href="a00060.htm" title="PAlib C++ namespace.">PA</a> Graffiti. On voudra le désactiver quand on veut utiliser uniquement ses propres formes. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>use</em>&nbsp;</td><td>1/0, on/off... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:39 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

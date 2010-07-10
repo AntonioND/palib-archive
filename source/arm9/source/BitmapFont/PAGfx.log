@@ -1,0 +1,18 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color: White
+
+5 backgrounds:
+  PA_BmpFont0 : 1bitFont, 256x64, Pal: PA_BmpFont0_Pal, 100 tiles -> PA_BmpFont0_Tiles and PA_BmpFont0_Map
+  PA_BmpFont1 : 1bitFont, 256x64, Pal: PA_BmpFont1_Pal, 105 tiles -> PA_BmpFont1_Tiles and PA_BmpFont1_Map
+  PA_BmpFont2 : 1bitFont, 512x128, Pal: PA_BmpFont2_Pal, 115 tiles -> PA_BmpFont2_Tiles and PA_BmpFont2_Map
+  PA_BmpFont3 : 1bitFont, 512x128, Pal: PA_BmpFont3_Pal, 196 tiles -> PA_BmpFont3_Tiles and PA_BmpFont3_Map
+  PA_BmpFont4 : 1bitFont, 512x128, Pal: PA_BmpFont4_Pal, 262 tiles -> PA_BmpFont4_Tiles and PA_BmpFont4_Map
+
+5 palettes:
+
+Converted in 0 minutes and 0 seconds
+
+Finished!

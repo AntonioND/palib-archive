@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Backgrounds/Effects/Mode7/source/main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Backgrounds/Effects/Mode7/source/main.c</h1><div class="fragment"><pre class="fragment"><span class="comment">// Mode 7 example.</span>
+
+<span class="comment">// Includes</span>
+<span class="preprocessor">#include &lt;PA9.h&gt;</span>
+
+<span class="preprocessor">#include &quot;all_gfx.h&quot;</span>
+
+<span class="keywordtype">int</span> main(){
+    <a name="a0"></a><a class="code" href="a00070.htm#ga9d1e006a5b057290a85f7e71cba4f0c1" title="Initialise la lib... Doit etre placé au début de main().">PA_Init</a>();
+    
+    <a name="a1"></a><a class="code" href="a00070.htm#ga2f2e605901a879f4643e2355a28bf34d" title="Changer de mode video... A utiliser avec précaution.">PA_SetVideoMode</a>(0, 2);  <span class="comment">//screen, mode</span>
+    <a class="code" href="a00070.htm#ga2f2e605901a879f4643e2355a28bf34d" title="Changer de mode video... A utiliser avec précaution.">PA_SetVideoMode</a>(1, 2);  <span class="comment">//screen, mode</span>
+    
+    <span class="comment">// Yup, we use the standard bg load function!</span>
+    <a name="a2"></a><a class="code" href="a00065.htm#gadf0fb1a1ec794471d2e143ef88a3f4a2" title="Charger un fond (EasyBg ou RotBg).">PA_LoadBackground</a>(0, <span class="comment">//screen</span>
+                      3, <span class="comment">// background number</span>
+                      &amp;Rot); <span class="comment">// background name in PAGfx</span>
+    <a class="code" href="a00065.htm#gadf0fb1a1ec794471d2e143ef88a3f4a2" title="Charger un fond (EasyBg ou RotBg).">PA_LoadBackground</a>(1, 3, &amp;Rot);
+
+    <span class="comment">// Wraparound (!)</span>
+    <a name="a3"></a><a class="code" href="a00065.htm#ga69df583ca0901711678d3b9316206919" title="Active ou non le wrapping des fonds (rotatifs, 8bit, et 16bit).">PA_SetBgWrap</a>(0, 3, 1);
+    <a class="code" href="a00065.htm#ga69df583ca0901711678d3b9316206919" title="Active ou non le wrapping des fonds (rotatifs, 8bit, et 16bit).">PA_SetBgWrap</a>(1, 3, 1);
+            
+    <a name="a4"></a><a class="code" href="a00085.htm#ga3a9eca528c797f0ce0a7a44dd5b92093" title="Charger et initialiser le texte. Ne marche qu&amp;#39;en modes 0-2.">PA_LoadDefaultText</a>(1, 0);
+
+    <a name="a5"></a><a class="code" href="a00077.htm#gae4811416392f3307bc67543837c68329" title="Initialise le Mode 7 pour un fond donné. Vous devez etre en mode 1 ou 2 impérativement...">PA_InitMode7</a>(3);
+
+    u16 angle = 0; 
+    u16 height = 8192;
+
+    <span class="keywordflow">while</span>(<span class="keyword">true</span>){
+        <span class="comment">// Change the angle</span>
+        angle += Pad.Held.Right - Pad.Held.Left;
+        angle &amp;= 511;
+        <a name="a6"></a><a class="code" href="a00077.htm#ga9d7a8603169ca9f5b0850248891ff48f" title="Définir l&amp;#39;angle.">PA_Mode7Angle</a>(angle);
+        
+        <span class="comment">// Move left/right</span>
+        <a name="a7"></a><a class="code" href="a00077.htm#ga526a5af8b64020f620be5d793cc1b75a" title="Se déplacer latéralement.">PA_Mode7MoveLeftRight</a>(Pad.Held.A - Pad.Held.Y);
+        
+        <span class="comment">// Move Forward/backward</span>
+        <a name="a8"></a><a class="code" href="a00077.htm#ga53498df84c64c98481af0827d46236a8" title="Se déplacer latéralement.">PA_Mode7MoveForwardBack</a>(Pad.Held.Up - Pad.Held.Down);
+        
+        <span class="comment">// Height</span>
+        height += (Pad.Held.X - Pad.Held.B)&lt;&lt;7;
+        <a name="a9"></a><a class="code" href="a00077.htm#gaf99c08783fc45211dc670770010c6fa4" title="Régler la hauteur de la caméra.">PA_Mode7Height</a>(height);
+
+        <a name="a10"></a><a class="code" href="a00085.htm#ga5f593cfd24cef2ef8b6a4fa3dea44209" title="Ecrire du texte à l&amp;#39;écran. Ne marche qu&amp;#39;en modes 0-2.">PA_OutputText</a>(1, 0, 0, <span class="stringliteral">&quot;Angle  : %d    &quot;</span>, angle);   
+        <a class="code" href="a00085.htm#ga5f593cfd24cef2ef8b6a4fa3dea44209" title="Ecrire du texte à l&amp;#39;écran. Ne marche qu&amp;#39;en modes 0-2.">PA_OutputText</a>(1, 0, 1, <span class="stringliteral">&quot;Height : %d    &quot;</span>, height);  
+        
+        <a name="a11"></a><a class="code" href="a00070.htm#ga3acf5d26f19bffb5a115d5751467ff04" title="Attendre le vbl...">PA_WaitForVBL</a>();
+    }
+}
+</pre></div> </div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

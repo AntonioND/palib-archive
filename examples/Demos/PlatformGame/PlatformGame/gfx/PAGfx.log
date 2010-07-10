@@ -1,0 +1,15 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please come to the PAlib forums
+
+Converting PAGfx.ini
+Transparent Color: Magenta
+
+1 sprites:
+  mario: 256colors, 32x96, Pal: sprite0_Pal, -> mario_Sprite
+
+1 palettes:
+  sprite0_Pal, 20 colors
+
+Converted in 0 minutes and 0 seconds
+
+Finished!

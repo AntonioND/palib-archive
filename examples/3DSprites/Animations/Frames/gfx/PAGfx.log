@@ -1,0 +1,15 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please come to the PAlib forums
+
+Converting PAGfx.ini
+Transparent Color: Magenta
+
+1 textures:
+  frames: 256colors, 32x128, Pal : frames_Pal, -> frames_Texture
+
+1 palettes:
+  frames_Pal, 19 colors
+
+Converted in 0 minutes and 0 seconds
+
+Finished!

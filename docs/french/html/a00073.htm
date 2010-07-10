@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Key input system</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Key input system</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#gadca042bc805ff171828274782abde43d">PA_MoveSprite</a>(sprite)&nbsp;&nbsp;&nbsp;PA_MoveSpriteEx(PA_Screen, sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteLy(0, sprite))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un sprite en fonction du stylet. Le sprite sera accroché si le stylet passe aud-dessus, puis il sera déplacé en fonction... Donne 1 si on a déplacé ce sprite, sinon 0. On peut ensuite récupérer des infos avec PA_MovedSprite.Moving (1 si on déplace un sprite), .Sprite (numéro du sprite déplacé), .X (position X du centre du sprite), .Y (position Y du centre du sprite déplacé), .Vx (vitesse horizontale du sprite déplacé !! Utile si l'on veut que le sprite continue à se déplacer par la suite...), et .Vy.  <a href="#gadca042bc805ff171828274782abde43d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#ga9433372a42c248a4ea8c2f73144f9bc6">PA_StylusInZone</a>(x1, y1, x2, y2)&nbsp;&nbsp;&nbsp;((Stylus.X&gt;=x1)&amp;&amp;(Stylus.Y&gt;=y1)&amp;&amp;(Stylus.X&lt;x2)&amp;&amp;(Stylus.Y&lt;y2))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si le stylet est dans une zone délimitée donnée... Renvoie 1 si oui, 0 sinon.  <a href="#ga9433372a42c248a4ea8c2f73144f9bc6"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9ce910b187e80f8777667d49fcb8c44a"></a><!-- doxytag: member="Keys::PA_UpdatePad" ref="ga9ce910b187e80f8777667d49fcb8c44a" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#ga9ce910b187e80f8777667d49fcb8c44a">PA_UpdatePad</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet de mettre à jour les touches appuyées. A utilisé une fois par frame (genre dans le vbl). On a ensuite accès aux touches pressées avec Pad.Held.A (ou Up, Down, L...), aux touches nouvellement pressées avec Pad.Newpress.R, et aux touches tout juste relachées avec Pad.Released.Up... <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga406b34951614dba951d3b1574ebb9146"></a><!-- doxytag: member="Keys::PA_UpdateStylus" ref="ga406b34951614dba951d3b1574ebb9146" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#ga406b34951614dba951d3b1574ebb9146">PA_UpdateStylus</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mettre à jour la position du stylet. On peut vérifier si le stylet est actuellement sur l'écran (Stylus.Held), tout just appuyé (Stylus.Newpress), ou relaché (Stylus.Released), et obtenir sa position (Stylus.X, Stylus.Y). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#gac8118f627bd0af3e9f5895e7c0f13db7">PA_MoveSpritePix</a> (u8 sprite)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un sprite en fonction du stylet, avec détection au pixel pret. Ceci est comme PA_MoveSprite, mais un peu plus lent, et nécessite PA_InitSpriteDraw(screen, sprite). Le sprite sera accroché si le stylet passe aud-dessus, puis il sera déplacé en fonction... Donne 1 si on a déplacé ce sprite, sinon 0. On peut ensuite récupérer des infos avec PA_MovedSprite.Moving (1 si on déplace un sprite), .Sprite (numéro du sprite déplacé), .X (position X du coin sup gauche du sprite), .Y (position Y du point sup gauche du sprite déplacé), .Vx (vitesse horizontale du sprite déplacé !! Utile si l'on veut que le sprite continue à se déplacer par la suite...), et .Vy.  <a href="#gac8118f627bd0af3e9f5895e7c0f13db7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#ga6260f4cd6762e1858ee4624028336405">PA_MoveSpriteEx</a> (u8 screen, u8 sprite, u8 lx, u8 ly)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un sprite en fonction du stylet. Voir PA_MoveSprite pour plus de détails. La différence est qu'ici on précise la largeur et la hauteur du sprite, utile si le sprite ne fait pas vraiment la meme taille que la taille standard DS (genre si c'est un sprite de 20x20). Ceci limitera donc aussi la distance d'accrochage.  <a href="#ga6260f4cd6762e1858ee4624028336405"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#gaa711b5de65ba948f1df9aa02ea3f1226">PA_MoveSpriteDistance</a> (u8 sprite, u8 distance)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer un sprite en fonction du stylet. Voir PA_MoveSprite pour plus de détails. La différence est qu'ici on précise la distance d'accrochage, en pixels.  <a href="#gaa711b5de65ba948f1df9aa02ea3f1226"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#gab615f6c03a7a33cc6c70a0613db2f5d9">PA_SpriteStylusOverEx</a> (u8 sprite, u8 lx, u8 ly)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non).  <a href="#gab615f6c03a7a33cc6c70a0613db2f5d9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#ga8b00225499260687053efaaa11ce3f49">PA_SpriteTouchedEx</a> (u8 sprite, u8 lx, u8 ly)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si l'on touche un sprite donné. Renvoie 1 si touché... On peut choisir la hauteur et la largeur autour du sprite.  <a href="#ga8b00225499260687053efaaa11ce3f49"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#gab881cb12fb94e3fd2c6aae8031c82c03">PA_SpriteTouched</a> (u8 sprite)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si l'on touche un sprite donné. Renvoie 1 si touché...  <a href="#gab881cb12fb94e3fd2c6aae8031c82c03"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00073.htm#ga2a54be8a6ac22e279adbd14f23463cd9">PA_SpriteStylusOver</a> (u8 sprite)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non).  <a href="#ga2a54be8a6ac22e279adbd14f23463cd9"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Check which keys are pressed... </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="gadca042bc805ff171828274782abde43d"></a><!-- doxytag: member="PA_Keys.h::PA_MoveSprite" ref="gadca042bc805ff171828274782abde43d" args="(sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_MoveSprite</td>
+          <td>(</td>
+          <td class="paramtype">sprite&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_MoveSpriteEx(PA_Screen, sprite, PA_GetSpriteLx(0, sprite), PA_GetSpriteLy(0, sprite))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Déplacer un sprite en fonction du stylet. Le sprite sera accroché si le stylet passe aud-dessus, puis il sera déplacé en fonction... Donne 1 si on a déplacé ce sprite, sinon 0. On peut ensuite récupérer des infos avec PA_MovedSprite.Moving (1 si on déplace un sprite), .Sprite (numéro du sprite déplacé), .X (position X du centre du sprite), .Y (position Y du centre du sprite déplacé), .Vx (vitesse horizontale du sprite déplacé !! Utile si l'on veut que le sprite continue à se déplacer par la suite...), et .Vy. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9433372a42c248a4ea8c2f73144f9bc6"></a><!-- doxytag: member="PA_Keys.h::PA_StylusInZone" ref="ga9433372a42c248a4ea8c2f73144f9bc6" args="(x1, y1, x2, y2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_StylusInZone</td>
+          <td>(</td>
+          <td class="paramtype">x1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y2&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((Stylus.X&gt;=x1)&amp;&amp;(Stylus.Y&gt;=y1)&amp;&amp;(Stylus.X&lt;x2)&amp;&amp;(Stylus.Y&lt;y2))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Vérifie si le stylet est dans une zone délimitée donnée... Renvoie 1 si oui, 0 sinon. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Valeur X du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Valeur Y du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Valeur X du coin inférieur droit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Valeur Y du coin inférieur droit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="gac8118f627bd0af3e9f5895e7c0f13db7"></a><!-- doxytag: member="PA_Keys.h::PA_MoveSpritePix" ref="gac8118f627bd0af3e9f5895e7c0f13db7" args="(u8 sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PA_MoveSpritePix </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Déplacer un sprite en fonction du stylet, avec détection au pixel pret. Ceci est comme PA_MoveSprite, mais un peu plus lent, et nécessite PA_InitSpriteDraw(screen, sprite). Le sprite sera accroché si le stylet passe aud-dessus, puis il sera déplacé en fonction... Donne 1 si on a déplacé ce sprite, sinon 0. On peut ensuite récupérer des infos avec PA_MovedSprite.Moving (1 si on déplace un sprite), .Sprite (numéro du sprite déplacé), .X (position X du coin sup gauche du sprite), .Y (position Y du point sup gauche du sprite déplacé), .Vx (vitesse horizontale du sprite déplacé !! Utile si l'on veut que le sprite continue à se déplacer par la suite...), et .Vy. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga6260f4cd6762e1858ee4624028336405"></a><!-- doxytag: member="PA_Keys.h::PA_MoveSpriteEx" ref="ga6260f4cd6762e1858ee4624028336405" args="(u8 screen, u8 sprite, u8 lx, u8 ly)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PA_MoveSpriteEx </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>lx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>ly</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Déplacer un sprite en fonction du stylet. Voir PA_MoveSprite pour plus de détails. La différence est qu'ici on précise la largeur et la hauteur du sprite, utile si le sprite ne fait pas vraiment la meme taille que la taille standard DS (genre si c'est un sprite de 20x20). Ceci limitera donc aussi la distance d'accrochage. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Sur quel écran le faire... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lx</em>&nbsp;</td><td>Largeur du sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ly</em>&nbsp;</td><td>Hauteur du sprite </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa711b5de65ba948f1df9aa02ea3f1226"></a><!-- doxytag: member="PA_Keys.h::PA_MoveSpriteDistance" ref="gaa711b5de65ba948f1df9aa02ea3f1226" args="(u8 sprite, u8 distance)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u8 PA_MoveSpriteDistance </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>distance</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Déplacer un sprite en fonction du stylet. Voir PA_MoveSprite pour plus de détails. La différence est qu'ici on précise la distance d'accrochage, en pixels. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro de l'objet dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>distance</em>&nbsp;</td><td>Distance d'accrochage </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gab615f6c03a7a33cc6c70a0613db2f5d9"></a><!-- doxytag: member="PA_Keys.h::PA_SpriteStylusOverEx" ref="gab615f6c03a7a33cc6c70a0613db2f5d9" args="(u8 sprite, u8 lx, u8 ly)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u8 PA_SpriteStylusOverEx </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>lx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>ly</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lx</em>&nbsp;</td><td>Largeur </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ly</em>&nbsp;</td><td>Hauter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8b00225499260687053efaaa11ce3f49"></a><!-- doxytag: member="PA_Keys.h::PA_SpriteTouchedEx" ref="ga8b00225499260687053efaaa11ce3f49" args="(u8 sprite, u8 lx, u8 ly)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u8 PA_SpriteTouchedEx </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>lx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>ly</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Vérifie si l'on touche un sprite donné. Renvoie 1 si touché... On peut choisir la hauteur et la largeur autour du sprite. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>lx</em>&nbsp;</td><td>Largeur </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>ly</em>&nbsp;</td><td>Hauter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gab881cb12fb94e3fd2c6aae8031c82c03"></a><!-- doxytag: member="PA_Keys.h::PA_SpriteTouched" ref="gab881cb12fb94e3fd2c6aae8031c82c03" args="(u8 sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u8 PA_SpriteTouched </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Vérifie si l'on touche un sprite donné. Renvoie 1 si touché... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2a54be8a6ac22e279adbd14f23463cd9"></a><!-- doxytag: member="PA_Keys.h::PA_SpriteStylusOver" ref="ga2a54be8a6ac22e279adbd14f23463cd9" args="(u8 sprite)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u8 PA_SpriteStylusOver </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>sprite</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Vérifie si le stylet est placé au-dessus d'un sprite donné (que le stylet touche l'écran ou non). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>sprite</em>&nbsp;</td><td>Numéro du sprite dans le systeme de sprite </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

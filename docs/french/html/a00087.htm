@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Window system</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Window system</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga5a9c76b3141c92bd38b3ac4ebe0ea084">PA_SetWin1XY</a>(screen, x1, y1, x2, y2)&nbsp;&nbsp;&nbsp;do{WIN1X(screen) = x2 + ((x1) &lt;&lt; 8); WIN1Y(screen) = y2 + ((y1) &lt;&lt; 8);}while(0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler les coordonnées X et Y du rectangle de la deuxième fenetre. Il faudra aussi utiliser PA_SetWin1 pour choisir quels fonds sont visibles et si les sprites le sont ou non...  <a href="#ga5a9c76b3141c92bd38b3ac4ebe0ea084"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga55b9543a3a02df6dacca4d037b1a4f32">PA_EnableWin0</a>(screen, bg_sprites)&nbsp;&nbsp;&nbsp;do{DISPCNTL(screen) |= WINDOW0; WININ(screen) &amp;= 255; WININ(screen) |= (bg_sprites);}while(0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer et choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, pour la fenetre 0. Il faudra ensuite régler la taille avec PA_SetWin0XY.  <a href="#ga55b9543a3a02df6dacca4d037b1a4f32"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga50aa9022753ede7baacfb030987192b2">PA_DisableWin0</a>(screen)&nbsp;&nbsp;&nbsp;DISPCNTL(screen) &amp;= ~WINDOW0</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Désactiver la première fenetre...  <a href="#ga50aa9022753ede7baacfb030987192b2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga5f79b9461d956b9d651da1f02b40d846">PA_EnableWin1</a>(screen, bg_sprites)&nbsp;&nbsp;&nbsp;do{DISPCNTL(screen) |= WINDOW1; WININ(screen) &amp;= 255; WININ(screen) |= ((bg_sprites) &lt;&lt; 8);}while(0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer et choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, pour la fenetre 1. Il faudra ensuite régler la taille avec PA_SetWin1X.  <a href="#ga5f79b9461d956b9d651da1f02b40d846"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga07bbe7bcc6ce24ecc6fa659b7aa6a1c7">PA_DisableWin1</a>(screen)&nbsp;&nbsp;&nbsp;DISPCNTL(screen) &amp;= ~WINDOW1</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Désactiver la deuxième fenetre...  <a href="#ga07bbe7bcc6ce24ecc6fa659b7aa6a1c7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga9b103ff3c54958df11b680b8b2fa4223">PA_DisableWinObj</a>(screen)&nbsp;&nbsp;&nbsp;DISPCNTL(screen) &amp;= ~WINDOWOBJ</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Désactiver la fenetre objet...  <a href="#ga9b103ff3c54958df11b680b8b2fa4223"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga0fed4aefdb4a6e250d45f404a974368f">PA_SetOutWin</a>(screen, bg_sprites)&nbsp;&nbsp;&nbsp;do{WINOUT(screen) &amp;= ~255; WINOUT(screen) |= bg_sprites;}while(0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, en dehors des fenetres.  <a href="#ga0fed4aefdb4a6e250d45f404a974368f"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga1e75824d0fb82b9dc22bb76c242c34a9">PA_EnableWinObj</a> (u8 screen, u16 bg_sprites)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Activer et choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, pour la fenetre objets (créée à partir des sprites en mode Window).  <a href="#ga1e75824d0fb82b9dc22bb76c242c34a9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00087.htm#ga2ca165bbbbfadc82c41e6135cb45c86c">PA_WindowFade</a> (u8 screen, u8 type, u8 time)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet de faire des entrées/sorties en utilisant le systeme de fenetre.  <a href="#ga2ca165bbbbfadc82c41e6135cb45c86c"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Set up 2 windows and a possible object window... </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ga5a9c76b3141c92bd38b3ac4ebe0ea084"></a><!-- doxytag: member="PA_Window.h::PA_SetWin1XY" ref="ga5a9c76b3141c92bd38b3ac4ebe0ea084" args="(screen, x1, y1, x2, y2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetWin1XY</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y2&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;do{WIN1X(screen) = x2 + ((x1) &lt;&lt; 8); WIN1Y(screen) = y2 + ((y1) &lt;&lt; 8);}while(0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Régler les coordonnées X et Y du rectangle de la deuxième fenetre. Il faudra aussi utiliser PA_SetWin1 pour choisir quels fonds sont visibles et si les sprites le sont ou non... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Coordonnée X du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Coordonnée Y du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Coordonnée X du coin inférieur droit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Coordonnée Y du coin inférieur droit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga55b9543a3a02df6dacca4d037b1a4f32"></a><!-- doxytag: member="PA_Window.h::PA_EnableWin0" ref="ga55b9543a3a02df6dacca4d037b1a4f32" args="(screen, bg_sprites)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_EnableWin0</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_sprites&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;do{DISPCNTL(screen) |= WINDOW0; WININ(screen) &amp;= 255; WININ(screen) |= (bg_sprites);}while(0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Activer et choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, pour la fenetre 0. Il faudra ensuite régler la taille avec PA_SetWin0XY. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_sprites</em>&nbsp;</td><td>Fond et sprites à afficher, que l'on choisi de la facon suivante : WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ | WIN_SFX (pour les effets spéciaux) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga50aa9022753ede7baacfb030987192b2"></a><!-- doxytag: member="PA_Window.h::PA_DisableWin0" ref="ga50aa9022753ede7baacfb030987192b2" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_DisableWin0</td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DISPCNTL(screen) &amp;= ~WINDOW0</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Désactiver la première fenetre... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5f79b9461d956b9d651da1f02b40d846"></a><!-- doxytag: member="PA_Window.h::PA_EnableWin1" ref="ga5f79b9461d956b9d651da1f02b40d846" args="(screen, bg_sprites)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_EnableWin1</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_sprites&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;do{DISPCNTL(screen) |= WINDOW1; WININ(screen) &amp;= 255; WININ(screen) |= ((bg_sprites) &lt;&lt; 8);}while(0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Activer et choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, pour la fenetre 1. Il faudra ensuite régler la taille avec PA_SetWin1X. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_sprites</em>&nbsp;</td><td>Fond et sprites à afficher, que l'on choisi de la facon suivante : WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ | WIN_SFX (pour les effets spéciaux) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga07bbe7bcc6ce24ecc6fa659b7aa6a1c7"></a><!-- doxytag: member="PA_Window.h::PA_DisableWin1" ref="ga07bbe7bcc6ce24ecc6fa659b7aa6a1c7" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_DisableWin1</td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DISPCNTL(screen) &amp;= ~WINDOW1</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Désactiver la deuxième fenetre... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9b103ff3c54958df11b680b8b2fa4223"></a><!-- doxytag: member="PA_Window.h::PA_DisableWinObj" ref="ga9b103ff3c54958df11b680b8b2fa4223" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_DisableWinObj</td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DISPCNTL(screen) &amp;= ~WINDOWOBJ</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Désactiver la fenetre objet... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0fed4aefdb4a6e250d45f404a974368f"></a><!-- doxytag: member="PA_Window.h::PA_SetOutWin" ref="ga0fed4aefdb4a6e250d45f404a974368f" args="(screen, bg_sprites)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetOutWin</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_sprites&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;do{WINOUT(screen) &amp;= ~255; WINOUT(screen) |= bg_sprites;}while(0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, en dehors des fenetres. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_sprites</em>&nbsp;</td><td>Fond et sprites à afficher, que l'on choisi de la facon suivante : WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga1e75824d0fb82b9dc22bb76c242c34a9"></a><!-- doxytag: member="PA_Window.h::PA_EnableWinObj" ref="ga1e75824d0fb82b9dc22bb76c242c34a9" args="(u8 screen, u16 bg_sprites)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_EnableWinObj </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>bg_sprites</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Activer et choisir quels fonds seront visibles dans la fenetre, et si les sprites le seront ou pas, pour la fenetre objets (créée à partir des sprites en mode Window). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_sprites</em>&nbsp;</td><td>Fond et sprites à afficher, que l'on choisi de la facon suivante : WIN_BG0 | WIN_BG1 | WIN_BG2 | WIN_BG3 | WIN_OBJ | WIN_SFX (pour les effets spéciaux) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2ca165bbbbfadc82c41e6135cb45c86c"></a><!-- doxytag: member="PA_Window.h::PA_WindowFade" ref="ga2ca165bbbbfadc82c41e6135cb45c86c" args="(u8 screen, u8 type, u8 time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_WindowFade </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>time</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Permet de faire des entrées/sorties en utilisant le systeme de fenetre. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Ecran... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>type</em>&nbsp;</td><td>Type... 8 différents types sont disponibles (0-7) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>time</em>&nbsp;</td><td>Temps, de 0 à 32 (inclus). 0 est écran visisble, 32 invisible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:39 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

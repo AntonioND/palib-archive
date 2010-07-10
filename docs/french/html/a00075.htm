@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Math functions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Math functions</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00008.htm">PA_Point</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Simple point structure.  <a href="a00008.htm#_details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab5ea9e1c5c885643135248810033aadf"></a><!-- doxytag: member="Math::PA_Cos" ref="gab5ea9e1c5c885643135248810033aadf" args="(angle)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#gab5ea9e1c5c885643135248810033aadf">PA_Cos</a>(angle)&nbsp;&nbsp;&nbsp;PA_SIN[((angle) + 128)&amp;511]</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la valeur Cosinus d'un angle. Cette valeur est comprise entre -256 et 256... Attention : l'angle n'est pas en 360 degr?s, mais en 512 ! <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga154d0c5d208521b2bd2d0a9866277bd7"></a><!-- doxytag: member="Math::PA_Sin" ref="ga154d0c5d208521b2bd2d0a9866277bd7" args="(angle)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga154d0c5d208521b2bd2d0a9866277bd7">PA_Sin</a>(angle)&nbsp;&nbsp;&nbsp;PA_SIN[((angle))&amp;511]</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la valeur Sinus d'un angle. Cette valeur est comprise entre -256 et 256... Attention : l'angle n'est pas en 360 degr?s, mais en 256 ! <br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2b48c3bea30b13b0f4b2f91c222524f0"></a><!-- doxytag: member="Math::PA_Rand" ref="ga2b48c3bea30b13b0f4b2f91c222524f0" args="()" -->
+static u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga2b48c3bea30b13b0f4b2f91c222524f0">PA_Rand</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Donne un numéro aléatoire... Ceci est pris de Ham, je n'ai aucun m?rite. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0943846516d716f139e737569933ce50"></a><!-- doxytag: member="Math::PA_InitRand" ref="ga0943846516d716f139e737569933ce50" args="()" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga0943846516d716f139e737569933ce50">PA_InitRand</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialisation automatique du rand, basé sur l'horloge interne... <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga39c1d23b109fb9beb62af235a640ed6e">PA_SRand</a> (s32 r)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le random avec un seed. Ceci est pris de Ham, je n'ai aucun mérite. J'ai juste raccourci/accéléré un peu le tout.  <a href="#ga39c1d23b109fb9beb62af235a640ed6e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga3bfa349f9505ac2228fd6a7acdae824f">PA_RandMax</a> (u32 max)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Donne un num?ro al?atoire... Entre 0 et le nombre donn? (inclus).  <a href="#ga3bfa349f9505ac2228fd6a7acdae824f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga16ce6a4aaf3093b2181d10ef5f83d422">PA_RandMinMax</a> (u32 min, u32 max)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Donne un num?ro al?atoire... Entre les 2 nombres donn?s (inclus).  <a href="#ga16ce6a4aaf3093b2181d10ef5f83d422"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga588c2c0df66219baeb3e61abafe3dba2">PA_Distance</a> (s32 x1, s32 y1, s32 x2, s32 y2)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calculer la distance (au carr?) entre 2 points.  <a href="#ga588c2c0df66219baeb3e61abafe3dba2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga9f1fa4be42745d3d647cd27ba9a6bc0c">PA_TrueDistance</a> (s32 x1, s32 y1, s32 x2, s32 y2)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Calculer la vraie distance entre 2 points. Beaucoup plus lent que PA_Distance.  <a href="#ga9f1fa4be42745d3d647cd27ba9a6bc0c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#gac783db640f98f30b541c50d79ce86e40">PA_AdjustAngle</a> (u16 angle, s16 anglerot, s32 startx, s32 starty, s32 targetx, s32 targety)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajuster un angle, par exemple pour calculer la direction ? prendre par un vaisseau.  <a href="#gac783db640f98f30b541c50d79ce86e40"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#gab3c6f9bba13eb269665c395eeaff1562">PA_GetAngle</a> (s32 startx, s32 starty, s32 targetx, s32 targety)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">R?cup?rer l'angle, de 0 ? 511, par rapport ? l'horizontale...  <a href="#gab3c6f9bba13eb269665c395eeaff1562"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#gab438416ec75e4cda05b64ee494d15a30">PA_mulf32</a> (int a, int b)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(TODO)  <a href="#gab438416ec75e4cda05b64ee494d15a30"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga14f4a779ee2bc3fd56c93194a439db0d">PA_divf32</a> (int a, int b)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(TODO)  <a href="#ga14f4a779ee2bc3fd56c93194a439db0d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga07b0c1277f83347f8977ede132609653">PA_modf32</a> (int a, int b)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(TODO)  <a href="#ga07b0c1277f83347f8977ede132609653"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00075.htm#ga04a64d9e5cad6faf5db4c585df6f730e">PA_sqrtf32</a> (int a)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">(TODO)  <a href="#ga04a64d9e5cad6faf5db4c585df6f730e"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Adjust angles, get random values... </p>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga39c1d23b109fb9beb62af235a640ed6e"></a><!-- doxytag: member="PA_Math.h::PA_SRand" ref="ga39c1d23b109fb9beb62af235a640ed6e" args="(s32 r)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_SRand </td>
+          <td>(</td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>r</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialiser le random avec un seed. Ceci est pris de Ham, je n'ai aucun mérite. J'ai juste raccourci/accéléré un peu le tout. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>Seed... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3bfa349f9505ac2228fd6a7acdae824f"></a><!-- doxytag: member="PA_Math.h::PA_RandMax" ref="ga3bfa349f9505ac2228fd6a7acdae824f" args="(u32 max)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u32 PA_RandMax </td>
+          <td>(</td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>max</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Donne un num?ro al?atoire... Entre 0 et le nombre donn? (inclus). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>max</em>&nbsp;</td><td>Valeur maximale incluse </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga16ce6a4aaf3093b2181d10ef5f83d422"></a><!-- doxytag: member="PA_Math.h::PA_RandMinMax" ref="ga16ce6a4aaf3093b2181d10ef5f83d422" args="(u32 min, u32 max)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u32 PA_RandMinMax </td>
+          <td>(</td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>max</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Donne un num?ro al?atoire... Entre les 2 nombres donn?s (inclus). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>min</em>&nbsp;</td><td>Valeur minimale incluse </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>max</em>&nbsp;</td><td>Valeur maximale incluse </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga588c2c0df66219baeb3e61abafe3dba2"></a><!-- doxytag: member="PA_Math.h::PA_Distance" ref="ga588c2c0df66219baeb3e61abafe3dba2" args="(s32 x1, s32 y1, s32 x2, s32 y2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u32 PA_Distance </td>
+          <td>(</td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Calculer la distance (au carr?) entre 2 points. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Coordonn?e X du premier point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Coordonn?e Y du premier point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Coordonn?e X du deuxi?me point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Coordonn?e Y du deuxi?me point </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9f1fa4be42745d3d647cd27ba9a6bc0c"></a><!-- doxytag: member="PA_Math.h::PA_TrueDistance" ref="ga9f1fa4be42745d3d647cd27ba9a6bc0c" args="(s32 x1, s32 y1, s32 x2, s32 y2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u32 PA_TrueDistance </td>
+          <td>(</td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Calculer la vraie distance entre 2 points. Beaucoup plus lent que PA_Distance. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Coordonn?e X du premier point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Coordonn?e Y du premier point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Coordonn?e X du deuxi?me point </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Coordonn?e Y du deuxi?me point </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gac783db640f98f30b541c50d79ce86e40"></a><!-- doxytag: member="PA_Math.h::PA_AdjustAngle" ref="gac783db640f98f30b541c50d79ce86e40" args="(u16 angle, s16 anglerot, s32 startx, s32 starty, s32 targetx, s32 targety)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u16 PA_AdjustAngle </td>
+          <td>(</td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>anglerot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>startx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>starty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>targetx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>targety</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ajuster un angle, par exemple pour calculer la direction ? prendre par un vaisseau. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>angle</em>&nbsp;</td><td>Angle de base, de 0 ? 511 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>anglerot</em>&nbsp;</td><td>De combien tourner... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>startx</em>&nbsp;</td><td>Coordonn?e X de base </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>starty</em>&nbsp;</td><td>Coordonn?e Y de base </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>targetx</em>&nbsp;</td><td>Coordonn?e X de la cible </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>targety</em>&nbsp;</td><td>Coordonn?e Y de la cible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gab3c6f9bba13eb269665c395eeaff1562"></a><!-- doxytag: member="PA_Math.h::PA_GetAngle" ref="gab3c6f9bba13eb269665c395eeaff1562" args="(s32 startx, s32 starty, s32 targetx, s32 targety)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u16 PA_GetAngle </td>
+          <td>(</td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>startx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>starty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>targetx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>targety</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>R?cup?rer l'angle, de 0 ? 511, par rapport ? l'horizontale... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>startx</em>&nbsp;</td><td>Coordonn?e X de base </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>starty</em>&nbsp;</td><td>Coordonn?e Y de base </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>targetx</em>&nbsp;</td><td>Coordonn?e X de la cible </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>targety</em>&nbsp;</td><td>Coordonn?e Y de la cible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gab438416ec75e4cda05b64ee494d15a30"></a><!-- doxytag: member="PA_Math.h::PA_mulf32" ref="gab438416ec75e4cda05b64ee494d15a30" args="(int a, int b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PA_mulf32 </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>b</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>(TODO) </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Premier nombre </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>Deuxième nombre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga14f4a779ee2bc3fd56c93194a439db0d"></a><!-- doxytag: member="PA_Math.h::PA_divf32" ref="ga14f4a779ee2bc3fd56c93194a439db0d" args="(int a, int b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PA_divf32 </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>b</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>(TODO) </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Premier nombre </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>Deuxième nombre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga07b0c1277f83347f8977ede132609653"></a><!-- doxytag: member="PA_Math.h::PA_modf32" ref="ga07b0c1277f83347f8977ede132609653" args="(int a, int b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PA_modf32 </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>b</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>(TODO) </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Premier nombre </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>Deuxième nombre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga04a64d9e5cad6faf5db4c585df6f730e"></a><!-- doxytag: member="PA_Math.h::PA_sqrtf32" ref="ga04a64d9e5cad6faf5db4c585df6f730e" args="(int a)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int PA_sqrtf32 </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>a</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>(TODO) </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Nombre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

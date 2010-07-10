@@ -1,0 +1,15 @@
+PAGfx Converter v0.9 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color: Black
+
+1 backgrounds:
+  PA_TiledFont : EasyBg, 256x192, Pal: PA_TiledFont_Pal, 207 tiles -> PA_TiledFont_Tiles and PA_TiledFont_Map
+
+1 palettes:
+  PA_TiledFont_Pal, 5 colors
+
+Converted in 0 minutes and 0 seconds
+
+Finished!

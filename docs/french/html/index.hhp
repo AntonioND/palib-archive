@@ -1,0 +1,73 @@
+[OPTIONS]
+Compiled file=../PAlib.chm
+Compatibility=1.1
+Full-text search=Yes
+Contents file=index.hhc
+Default Window=main
+Default topic=main.htm
+Index file=index.hhk
+Language=0x40C French
+Binary TOC=YES
+Title=PAlib
+
+[WINDOWS]
+main="PAlib","index.hhc","index.hhk","main.htm","main.htm",,,,,0x23520,,0x10387e,,,,,,,,0
+
+[FILES]
+main.htm
+pages.htm
+a00002.htm
+a00001.htm
+deprecated.htm
+a00061.htm
+a00062.htm
+a00063.htm
+a00064.htm
+a00065.htm
+a00066.htm
+a00067.htm
+a00068.htm
+a00069.htm
+a00070.htm
+a00071.htm
+a00072.htm
+a00073.htm
+a00074.htm
+a00075.htm
+a00076.htm
+a00077.htm
+a00078.htm
+a00079.htm
+a00080.htm
+a00081.htm
+a00082.htm
+a00083.htm
+a00084.htm
+a00085.htm
+a00086.htm
+a00087.htm
+a00088.htm
+a00089.htm
+modules.htm
+annotated.htm
+classes.htm
+functions.htm
+functions_func.htm
+functions_vars.htm
+a00006.htm
+a00007.htm
+a00008.htm
+a00009.htm
+a00011.htm
+namespaces.htm
+a00060.htm
+a00003.htm
+a00004.htm
+a00010.htm
+a00012.htm
+a00005.htm
+examples.htm
+tabs.css
+tab_b.gif
+tab_l.gif
+tab_r.gif

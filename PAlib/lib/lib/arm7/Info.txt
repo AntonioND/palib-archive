@@ -1,1 +1,0 @@
-This is the default arm7 core, left there for backward compatibility. It should be the same as arm7_mp3.

@@ -1,0 +1,6 @@
+; Here you can put extra files you want to carry over your project
+; NOT FUNCTIONAL YET
+
++source %PAlib%\examples\FAT\EFSlib\source\efs_lib.c
++source %PAlib%\examples\FAT\EFSlib\source\efs_lib.h
++file %PAlib%\examples\FAT\EFSlib\efs.exe

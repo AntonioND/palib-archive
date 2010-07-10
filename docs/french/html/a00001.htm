@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Text/Normal/HelloWorld/source/main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Text/Normal/HelloWorld/source/main.c</h1><div class="fragment"><pre class="fragment">
+<span class="comment">// Hello World Program //</span>
+<span class="comment"></span>
+<span class="comment">// Lines starting with two slashes are ignored by the compiler</span>
+<span class="comment">// Basically you can use them to comment what are you doing</span>
+<span class="comment">// In fact, this kind of lines are called comments :P</span>
+
+<span class="comment">// Include PAlib so that you can use it</span>
+<span class="preprocessor">#include &lt;PA9.h&gt;</span>
+
+<span class="keywordtype">int</span> main(){
+    <span class="comment">// Initialize PAlib</span>
+    <a name="a0"></a><a class="code" href="a00070.htm#ga9d1e006a5b057290a85f7e71cba4f0c1" title="Initialise la lib... Doit etre placé au début de main().">PA_Init</a>();
+
+    <span class="comment">// Load the default text font</span>
+    <a name="a1"></a><a class="code" href="a00085.htm#ga3a9eca528c797f0ce0a7a44dd5b92093" title="Charger et initialiser le texte. Ne marche qu&amp;#39;en modes 0-2.">PA_LoadDefaultText</a>(1, <span class="comment">// Top screen</span>
+                       2); <span class="comment">// Background #2</span>
+
+    <span class="comment">// Write the text &quot;Hello World&quot;</span>
+    <a name="a2"></a><a class="code" href="a00085.htm#ga2a62873bb947af9e28f69b619bfb6a83" title="Ecrire du texte tout simple à l&amp;#39;écran. Ne marche qu&amp;#39;en modes 0-2. Beaucoup...">PA_OutputSimpleText</a>(1, <span class="comment">// Top screen</span>
+                        1, <span class="comment">// X position 1*8 = 8</span>
+                        1, <span class="comment">// Y position 1*8 = 8</span>
+                        <span class="stringliteral">&quot;Hello World&quot;</span>);
+
+    <span class="comment">// Infinite loop to keep the program running</span>
+    <span class="keywordflow">while</span>(<span class="keyword">true</span>){
+        <span class="comment">// Wait until the next frame.</span>
+        <span class="comment">// The DS runs at 60 frames per second.</span>
+        <a name="a3"></a><a class="code" href="a00070.htm#ga3acf5d26f19bffb5a115d5751467ff04" title="Attendre le vbl...">PA_WaitForVBL</a>();
+    }
+}
+</pre></div> </div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

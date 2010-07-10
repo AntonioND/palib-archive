@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Debugging utilities</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Debugging utilities</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.htm#gae22ff25b757406fe746580b22a4d2b7a">PA_Assert</a>(c, m)&nbsp;&nbsp;&nbsp;((c) ? ((void)0) : _PA_Assert(#c, m, __FILE__, __LINE__))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher un erreur si la condition est faux.  <a href="#gae22ff25b757406fe746580b22a4d2b7a"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga75b080e6c7b2ed299f51c2f3985ca814"></a><!-- doxytag: member="Debug::PA_IsEmulator" ref="ga75b080e6c7b2ed299f51c2f3985ca814" args="()" -->
+bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.htm#ga75b080e6c7b2ed299f51c2f3985ca814">PA_IsEmulator</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Détecte si le programme est exécuté sur un émulateur. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.htm#gadb7f925de87bbd8a15b7f04dd32a300a">PA_iDeaS_DebugOutput</a> (const char *str)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sorties de texte à la iDeaS debugging console.  <a href="#gadb7f925de87bbd8a15b7f04dd32a300a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.htm#ga37a33aef4234ca8423fd307ad1744a21">PA_iDeaS_DebugPrintf</a> (const char *str,...)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sorties de texte formaté à la iDeaS debugging console.  <a href="#ga37a33aef4234ca8423fd307ad1744a21"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6b47b3072da000373d5f049c3e4975e7"></a><!-- doxytag: member="Debug::PA_iDeaS_Breakpoint" ref="ga6b47b3072da000373d5f049c3e4975e7" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00067.htm#ga6b47b3072da000373d5f049c3e4975e7">PA_iDeaS_Breakpoint</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Mets un breakpoint sur iDeaS. <br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Some debugging utilities like emulator detecting and iDeaS debug console printing </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="gae22ff25b757406fe746580b22a4d2b7a"></a><!-- doxytag: member="PA_Assert.h::PA_Assert" ref="gae22ff25b757406fe746580b22a4d2b7a" args="(c, m)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Assert</td>
+          <td>(</td>
+          <td class="paramtype">c, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">m&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;((c) ? ((void)0) : _PA_Assert(#c, m, __FILE__, __LINE__))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Afficher un erreur si la condition est faux. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>c</em>&nbsp;</td><td>Condition, comme MyVar &lt; 128 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>m</em>&nbsp;</td><td>Message d'erreur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="gadb7f925de87bbd8a15b7f04dd32a300a"></a><!-- doxytag: member="PA_Debug.h::PA_iDeaS_DebugOutput" ref="gadb7f925de87bbd8a15b7f04dd32a300a" args="(const char *str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_iDeaS_DebugOutput </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>str</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sorties de texte à la iDeaS debugging console. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>Le texte </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga37a33aef4234ca8423fd307ad1744a21"></a><!-- doxytag: member="PA_Debug.h::PA_iDeaS_DebugPrintf" ref="ga37a33aef4234ca8423fd307ad1744a21" args="(const char *str,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_iDeaS_DebugPrintf </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sorties de texte formaté à la iDeaS debugging console. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>Le texte </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

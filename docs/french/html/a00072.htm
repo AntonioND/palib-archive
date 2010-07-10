@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Keyboard</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Keyboard</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac571d534e9231befce3c432e76de6a09"></a><!-- doxytag: member="Keyboard::PA_InitKeyboard" ref="gac571d534e9231befce3c432e76de6a09" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#gac571d534e9231befce3c432e76de6a09">PA_InitKeyboard</a>&nbsp;&nbsp;&nbsp;PA_LoadDefaultKeyboard</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Old name for <a class="el" href="a00072.htm#ga1cecba528d481d6801b147ab1ca110fc" title="Initialiser le calvier sur un fond donné. Utilise les palettes de 16 couleurs 14...">PA_LoadDefaultKeyboard()</a>. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga762aa60c31b25de41bddf2ddc3e49d44">PA_InitCustomKeyboard</a>(bg_number, keyb_custom)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Initialiser un clavier perso sur un fond donné  <a href="#ga762aa60c31b25de41bddf2ddc3e49d44"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga38fe692dcef12ee2813d7b98fe9251ca"></a><!-- doxytag: member="Keyboard::PA_EraseLastKey" ref="ga38fe692dcef12ee2813d7b98fe9251ca" args="()" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga38fe692dcef12ee2813d7b98fe9251ca">PA_EraseLastKey</a>()&nbsp;&nbsp;&nbsp;PA_SetLetterPal(PA_Keyboard_Struct.oldX, PA_Keyboard_Struct.oldY, 15)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer la dernière touche pressée, si ca ne le fait pas tout seul. <br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga1cecba528d481d6801b147ab1ca110fc">PA_LoadDefaultKeyboard</a> (u8 bg_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le calvier sur un fond donné. Utilise les palettes de 16 couleurs 14 et 15 (n'interfère pas avec le texte).  <a href="#ga1cecba528d481d6801b147ab1ca110fc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga760819bb3e75ef6cd421b9eb3aa275bc">PA_LoadKeyboard</a> (u8 bg_number, const <a class="el" href="a00006.htm">PA_BgStruct</a> *keyboard)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser un clavier perso sur un fond donné.  <a href="#ga760819bb3e75ef6cd421b9eb3aa275bc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa842f6f54d407590fad9339ae96bcf4e"></a><!-- doxytag: member="Keyboard::PA_CheckKeyboard" ref="gaa842f6f54d407590fad9339ae96bcf4e" args="(void)" -->
+char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#gaa842f6f54d407590fad9339ae96bcf4e">PA_CheckKeyboard</a> (void)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Vérifie le clavier, s'il est utilisé, et renvoie la lettre appuyée (0 si pas de nouvel appuye). A utiliser tout le temps, même si le stylet ne touche pas l'écran. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#gabb7ed20071346628b4af21a8f9bd1f97">PA_ScrollKeyboardX</a> (s16 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Placer le Clavier à la position X.  <a href="#gabb7ed20071346628b4af21a8f9bd1f97"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga02d7da741d2f1780715d31bfbffdf90d">PA_ScrollKeyboardY</a> (s16 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Placer le Clavier à la position Y.  <a href="#ga02d7da741d2f1780715d31bfbffdf90d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#gad7aad0fedd9634f4e946f015ba742a8c">PA_ScrollKeyboardXY</a> (s16 x, s16 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Placer le Clavier à une position donnée.  <a href="#gad7aad0fedd9634f4e946f015ba742a8c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga9efe240679e30affd253d6cfb5f145da">PA_KeyboardIn</a> (s16 x, s16 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire entrer le clavier à la position (x, y) en glissant depuis le bas de l'écran.  <a href="#ga9efe240679e30affd253d6cfb5f145da"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0037c2f2d51128df5f7a8b74b4692abf"></a><!-- doxytag: member="Keyboard::PA_KeyboardOut" ref="ga0037c2f2d51128df5f7a8b74b4692abf" args="(void)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga0037c2f2d51128df5f7a8b74b4692abf">PA_KeyboardOut</a> (void)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Faire sortir le clavier. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab81df56ade3fa5d46a3b5835836fc511"></a><!-- doxytag: member="Keyboard::PA_ReloadKeyboardCol" ref="gab81df56ade3fa5d46a3b5835836fc511" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#gab81df56ade3fa5d46a3b5835836fc511">PA_ReloadKeyboardCol</a> (void)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Recharge la palette du clavier, utile si on a changé de palette pour les fonds. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga61621a89a1c5766ea841b922eebc09a0">PA_SetKeyboardColor</a> (u8 color1, u8 color2)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">On peut changer la couleur du clavier !  <a href="#ga61621a89a1c5766ea841b922eebc09a0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00072.htm#ga500a766e70dc715277fb1a4101f1d4d8">PA_SetKeyboardScreen</a> (u8 screen)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Régler l'écran du clavier. Doit être utilisé AVANT l'init du clavier.  <a href="#ga500a766e70dc715277fb1a4101f1d4d8"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Load a keyboard and have fun </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ga762aa60c31b25de41bddf2ddc3e49d44"></a><!-- doxytag: member="PA_Keyboard.h::PA_InitCustomKeyboard" ref="ga762aa60c31b25de41bddf2ddc3e49d44" args="(bg_number, keyb_custom)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_InitCustomKeyboard</td>
+          <td>(</td>
+          <td class="paramtype">bg_number, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">keyb_custom&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    <a class="code" href="a00079.htm#gad312e63462eef876094c3e80853031f8" title="Charger une palette de 256 couleurs dans les palettes des fonds.">PA_LoadBgPal</a>(keyb_screen, bg_number, (<span class="keywordtype">void</span>*)keyb_custom##_Pal);\
+    <a class="code" href="a00065.htm#ga2326c1519a3901bac60df6f1ee2ee9cb" title="[DEPRECATED] Façon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles...">PA_LoadSimpleBg</a>(keyb_screen, bg_number, keyb_custom##_Tiles, keyb_custom##_Map, BG_256X512, 1, 1);\
+    PA_Keyboard_Struct.Bg = bg_number;  PA_Keyboard_Struct.Type = 0;    PA_Keyboard_Struct.Repeat = 0;\
+    PA_Keyboard_Struct.Custom = 1;\
+    PA_BgInfo[keyb_screen][PA_Keyboard_Struct.Bg].Map = (u32)keyb_custom##_Map;\
+}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Initialiser un clavier perso sur un fond donné </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000015">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>keyb_custom</em>&nbsp;</td><td>Claviet perso, converti comme EasyBg </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga1cecba528d481d6801b147ab1ca110fc"></a><!-- doxytag: member="PA_Keyboard.h::PA_LoadDefaultKeyboard" ref="ga1cecba528d481d6801b147ab1ca110fc" args="(u8 bg_number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadDefaultKeyboard </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialiser le calvier sur un fond donné. Utilise les palettes de 16 couleurs 14 et 15 (n'interfère pas avec le texte). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga760819bb3e75ef6cd421b9eb3aa275bc"></a><!-- doxytag: member="PA_Keyboard.h::PA_LoadKeyboard" ref="ga760819bb3e75ef6cd421b9eb3aa275bc" args="(u8 bg_number, const PA_BgStruct *keyboard)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadKeyboard </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00006.htm">PA_BgStruct</a> *&nbsp;</td>
+          <td class="paramname"> <em>keyboard</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialiser un clavier perso sur un fond donné. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>keyboard</em>&nbsp;</td><td>Pointeur vers le fond du claviet perso, converti comme EasyBg </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gabb7ed20071346628b4af21a8f9bd1f97"></a><!-- doxytag: member="PA_Keyboard.h::PA_ScrollKeyboardX" ref="gabb7ed20071346628b4af21a8f9bd1f97" args="(s16 x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_ScrollKeyboardX </td>
+          <td>(</td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Placer le Clavier à la position X. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga02d7da741d2f1780715d31bfbffdf90d"></a><!-- doxytag: member="PA_Keyboard.h::PA_ScrollKeyboardY" ref="ga02d7da741d2f1780715d31bfbffdf90d" args="(s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_ScrollKeyboardY </td>
+          <td>(</td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Placer le Clavier à la position Y. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad7aad0fedd9634f4e946f015ba742a8c"></a><!-- doxytag: member="PA_Keyboard.h::PA_ScrollKeyboardXY" ref="gad7aad0fedd9634f4e946f015ba742a8c" args="(s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_ScrollKeyboardXY </td>
+          <td>(</td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Placer le Clavier à une position donnée. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9efe240679e30affd253d6cfb5f145da"></a><!-- doxytag: member="PA_Keyboard.h::PA_KeyboardIn" ref="ga9efe240679e30affd253d6cfb5f145da" args="(s16 x, s16 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_KeyboardIn </td>
+          <td>(</td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Faire entrer le clavier à la position (x, y) en glissant depuis le bas de l'écran. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga61621a89a1c5766ea841b922eebc09a0"></a><!-- doxytag: member="PA_Keyboard.h::PA_SetKeyboardColor" ref="ga61621a89a1c5766ea841b922eebc09a0" args="(u8 color1, u8 color2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetKeyboardColor </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>On peut changer la couleur du clavier ! </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>color1</em>&nbsp;</td><td>Couleur normale, 0 pour bleu, 1 pour rouge, 2 pour vert </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color2</em>&nbsp;</td><td>Couleur de la touche appuyée, 0 pour bleu, 1 pour rouge, 2 pour vert </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga500a766e70dc715277fb1a4101f1d4d8"></a><!-- doxytag: member="PA_Keyboard.h::PA_SetKeyboardScreen" ref="ga500a766e70dc715277fb1a4101f1d4d8" args="(u8 screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetKeyboardScreen </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Régler l'écran du clavier. Doit être utilisé AVANT l'init du clavier. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>0 (bas) or 1 (haut) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,2033 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Tiled Background Modes</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Tiled Background Modes</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00006.htm">PA_BgStruct</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Background structure.  <a href="a00006.htm#_details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4c2f9b4f36afa72709f8ff36fff2b0e3"></a><!-- doxytag: member="BgTiles::_GFX_ALIGN" ref="ga4c2f9b4f36afa72709f8ff36fff2b0e3" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga4c2f9b4f36afa72709f8ff36fff2b0e3">_GFX_ALIGN</a>&nbsp;&nbsp;&nbsp;__attribute__((aligned (4)))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Graphics align define for PAGfx. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga368cddb372b80410a89b6cb401eebb5d">PA_HideBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cacher un fond.  <a href="#ga368cddb372b80410a89b6cb401eebb5d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga8765fcbfb2216b7a6785dbf641ecda20">PA_ShowBg</a>(screen, bg_select)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Afficher un fond auparavant caché.  <a href="#ga8765fcbfb2216b7a6785dbf641ecda20"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gaaf08d4a7b7d0285eafc07d6040514978">PA_ResetBg</a>(screen)&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialiser les fonds d'un écran. En fait ca ne fait que cacher tous les fonds.  <a href="#gaaf08d4a7b7d0285eafc07d6040514978"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gab0167d556cc274e095ab32025ccdf70f">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles)&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Charger un tileset en mémoire  <a href="#gab0167d556cc274e095ab32025ccdf70f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gacb34647e31c5d00eabbf4af9244c6977">PA_LoadTiledBg</a>(screen, bg_number, bg_name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs  <a href="#gacb34647e31c5d00eabbf4af9244c6977"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga2326c1519a3901bac60df6f1ee2ee9cb">PA_LoadSimpleBg</a>(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Façon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap  <a href="#ga2326c1519a3901bac60df6f1ee2ee9cb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gabef4e0b201a2b9a09290caa149d25c2b">PA_LoadBg</a>(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap  <a href="#gabef4e0b201a2b9a09290caa149d25c2b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga87f7dc52135a59b780f7a79f03f7bd87">PA_SetMapTileAll</a>(screen, bg_select, x, y, tile_info)&nbsp;&nbsp;&nbsp;*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_info)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change les infos tiles utilisée pour une tile donnée dans la map.  <a href="#ga87f7dc52135a59b780f7a79f03f7bd87"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga38f3152490d2617a74233199846de7a3">PA_EasyBgLoad</a>(screen, bg_number, bg_name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Moyen le plus simple de charger un fond créé avec PAGfx  <a href="#ga38f3152490d2617a74233199846de7a3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga598f41cc834a43c8c82a40911b4db013">PA_EasyBgLoadPtr</a>(screen, bg_number, bg_name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Moyen le plus simple de charger un fond créé avec PAGfx... Peut prendre des pointeurs !  <a href="#ga598f41cc834a43c8c82a40911b4db013"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Énumérations</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom">{ <br/>
+&nbsp;&nbsp;<a class="el" href="a00065.htm#gga06fc87d81c62e9abb8790b6e5713c55ba31f3503bea418bbfe03dc22e91839a89">PA_BgInvalid</a>, 
+<a class="el" href="a00065.htm#gga06fc87d81c62e9abb8790b6e5713c55ba6b852978f8cd652ef237b81ed37b058a">PA_BgNormal</a>, 
+<a class="el" href="a00065.htm#gga06fc87d81c62e9abb8790b6e5713c55ba0e51eb339f82dd35cff2e12b3992477d">PA_BgLarge</a>, 
+<a class="el" href="a00065.htm#gga06fc87d81c62e9abb8790b6e5713c55ba24265bc55b7870e705b0e181f63d0470">PA_BgUnlimited</a>, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="a00065.htm#gga06fc87d81c62e9abb8790b6e5713c55ba5fd5614b292e72f70798aec65fb8fe86">PA_BgRot</a>, 
+<a class="el" href="a00065.htm#gga06fc87d81c62e9abb8790b6e5713c55badd44e6b6a239695d3a684d7acda9b1d2">PA_Font1bit</a>, 
+<a class="el" href="a00065.htm#gga06fc87d81c62e9abb8790b6e5713c55ba9237833c0dcf7afadeba12593a9c4499">PA_Font4bit</a>, 
+<a class="el" href="a00065.htm#gga06fc87d81c62e9abb8790b6e5713c55bab8e4a883736f1c45b4164cea9a73166b">PA_Font8bit</a>
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Types of background. </p>
+ <a href="a00065.htm#ga06fc87d81c62e9abb8790b6e5713c55b">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac888676eb05f4f560561786e06c403a7"></a><!-- doxytag: member="BgTiles::PA_ResetBgSys" ref="gac888676eb05f4f560561786e06c403a7" args="(void)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gac888676eb05f4f560561786e06c403a7">PA_ResetBgSys</a> (void)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialise le systeme de fonds. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga8f9cb2b39b9ab6a5e8524c1141e1a3c9">PA_ResetBgSysScreen</a> (u8 screen)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reinitialise le systeme de fonds pour 1 écran.  <a href="#ga8f9cb2b39b9ab6a5e8524c1141e1a3c9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga0ff54ebb77c13ff0b465377f6a7c0f63">PA_InitBg</a> (u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise un fond. A faire uniquement après avoir chargé un tileset et une map.  <a href="#ga0ff54ebb77c13ff0b465377f6a7c0f63"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga859a46bcbcc5c920c6f622695db94082">PA_LoadBgTilesEx</a> (u8 screen, u8 bg_select, void *bg_tiles, u32 size)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un tileset en mémoire avec une taille donnée.  <a href="#ga859a46bcbcc5c920c6f622695db94082"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga93943bbcf203bb8bf1ded41dc0b2ebb2">PA_ReLoadBgTiles</a> (u8 screen, u8 bg_select, void *bg_tiles)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">ReCharger un tileset en mémoire.  <a href="#ga93943bbcf203bb8bf1ded41dc0b2ebb2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gaea95a7b1ddb67994a63b6790fb059dc0">PA_DeleteTiles</a> (u8 screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un tileset en mémoire. A noter que charger un tileset efface automatiquement le tileset précédent, donc on n'aura pas souvent besoin de cette fonction...  <a href="#gaea95a7b1ddb67994a63b6790fb059dc0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gae543f1feed84e7a9735bc8a5c202fe02">PA_DeleteMap</a> (u8 screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer une map en mémoire. A noter que charger une map efface automatiquement la map précédent, donc on n'aura pas souvent besoin de cette fonction...  <a href="#gae543f1feed84e7a9735bc8a5c202fe02"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga2beae2277c190bb5698e16281ad8cd31">PA_DeleteBg</a> (u8 screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer et reinitialiser un fond complètement.  <a href="#ga2beae2277c190bb5698e16281ad8cd31"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gadd9bb5c939c759ac40b3b08d54da6509">PA_LoadBgMap</a> (u8 screen, u8 bg_select, void *bg_map, u8 bg_size)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charge la carte d'un fond.  <a href="#gadd9bb5c939c759ac40b3b08d54da6509"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gadf0fb1a1ec794471d2e143ef88a3f4a2">PA_LoadBackground</a> (u8 screen, u8 bg_select, const <a class="el" href="a00006.htm">PA_BgStruct</a> *bg_name)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger un fond (EasyBg ou RotBg).  <a href="#gadf0fb1a1ec794471d2e143ef88a3f4a2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga0044c89b271d4498aec2f6871a63d74e">PA_BGScrollX</a> (u8 screen, u8 bg_number, s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal d'un fond de type Tiled.  <a href="#ga0044c89b271d4498aec2f6871a63d74e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gad4641293cb3d86c84533e27aeff39be4">PA_BGScrollY</a> (u8 screen, u8 bg_number, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertical d'un fond de type Tiled.  <a href="#gad4641293cb3d86c84533e27aeff39be4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gae39a703b3e73b770a2b410df1313c391">PA_SetMapTile</a> (u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change la tile gfx utilisée pour une tile donnée dans la map.  <a href="#gae39a703b3e73b770a2b410df1313c391"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gac462e83587192f91794a24901e656c5a">PA_SetLargeMapTile</a> (u8 screen, u8 bg_select, s32 x, s32 y, u32 tile_info)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change les infos tiles utilisée pour une tile donnée dans la map, seulement pour les grands fonds (512 de large ou haut).  <a href="#gac462e83587192f91794a24901e656c5a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gae46e9f135473e251043cfbff31e4b2cc">PA_SetMapTileHflip</a> (u8 screen, u8 bg_select, u8 x, u8 y, u8 hflip)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flipper une tile de la carte, horizontalement.  <a href="#gae46e9f135473e251043cfbff31e4b2cc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gaa4a9f016001c320fb18fa1659e7a45dc">PA_SetMapTileVflip</a> (u8 screen, u8 bg_select, u8 x, u8 y, u8 vflip)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Flipper une tile de la carte, verticalement.  <a href="#gaa4a9f016001c320fb18fa1659e7a45dc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga971d29a935bff82b1c81939e93675196">PA_SetMapTilePal</a> (u8 screen, u8 bg_select, u8 x, u8 y, u8 palette_number)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la palette de 16 couleurs utilisée par une tile de la carte. Marche uniquement en mode 16 couleurs pour le Bg.  <a href="#ga971d29a935bff82b1c81939e93675196"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga2fab13ccb3b05448ad24ed892d1718e2">PA_SetBgPrio</a> (u8 screen, u8 bg, u8 prio)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la priorité d'un fond.  <a href="#ga2fab13ccb3b05448ad24ed892d1718e2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga14c55620d4e83dbac6eb3648ff84b336">PA_SetBgPrioSeq</a> (u8 screen, u8 priority0, u8 priority1, u8 priority2, u8 priority3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la priorité des fonds pour qu'ils soient dans un ordre donné.  <a href="#ga14c55620d4e83dbac6eb3648ff84b336"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga872b29fd5fec265d2a195eda7774f884">PA_ClearBg</a> (u8 screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer un fond donné (juste la map).  <a href="#ga872b29fd5fec265d2a195eda7774f884"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gac585010453176e4328998684f8c46541">PA_EasyBgScrollX</a> (u8 screen, u8 bg_number, s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal de n'importe quel fond.  <a href="#gac585010453176e4328998684f8c46541"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gaff92e083b8c7532624f1157be1b571e8">PA_EasyBgScrollY</a> (u8 screen, u8 bg_number, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll vertical de n'importe quel fond.  <a href="#gaff92e083b8c7532624f1157be1b571e8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga4041111ec9a92c198379a2d2d70e5664">PA_EasyBgScrollXY</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scroll horizontal et vertical de n'importe quel fond.  <a href="#ga4041111ec9a92c198379a2d2d70e5664"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u8&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga9cfefbaf81f03d1437b9fc9223d853d8">PA_EasyBgGetPixel</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie le numéro dans la palette du pixel à l'écran...  <a href="#ga9cfefbaf81f03d1437b9fc9223d853d8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga808a03a498b0b15201bbc39c12ec134d">PA_EasyBgGetPixelCol</a> (u8 screen, u8 bg_number, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Renvoie la couleur (valeur u16) du pixel à l'écran...  <a href="#ga808a03a498b0b15201bbc39c12ec134d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga69df583ca0901711678d3b9316206919">PA_SetBgWrap</a> (u8 screen, u8 bg, u8 wrap)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Active ou non le wrapping des fonds (rotatifs, 8bit, et 16bit).  <a href="#ga69df583ca0901711678d3b9316206919"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#gae8c1eacf4353babaab86297baa94c089">PA_InitParallaxX</a> (u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller.  <a href="#gae8c1eacf4353babaab86297baa94c089"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga3291f71316639eb5ee067f90f0e81d3b">PA_InitParallaxY</a> (u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller.  <a href="#ga3291f71316639eb5ee067f90f0e81d3b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga7c08a78572f085ecabeaa6563ca4f4bc">PA_ParallaxScrollX</a> (u8 screen, s32 x)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="#ga7c08a78572f085ecabeaa6563ca4f4bc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga7375ca17134a54908ff14b8bd28e27a8">PA_ParallaxScrollY</a> (u8 screen, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="#ga7375ca17134a54908ff14b8bd28e27a8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00065.htm#ga3c2616d6ec3889346de10cf56e4f0da4">PA_ParallaxScrollXY</a> (u8 screen, s32 x, s32 y)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Déplacer les fonds activés pour le parallax...  <a href="#ga3c2616d6ec3889346de10cf56e4f0da4"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Load a background, scroll it, etc... </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ga368cddb372b80410a89b6cb401eebb5d"></a><!-- doxytag: member="PA_BgTiles.h::PA_HideBg" ref="ga368cddb372b80410a89b6cb401eebb5d" args="(screen, bg_select)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_HideBg</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0x100 &lt;&lt; (bg_select))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Cacher un fond. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8765fcbfb2216b7a6785dbf641ecda20"></a><!-- doxytag: member="PA_BgTiles.h::PA_ShowBg" ref="ga8765fcbfb2216b7a6785dbf641ecda20" args="(screen, bg_select)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_ShowBg</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) |= (0x100 &lt;&lt; (bg_select))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Afficher un fond auparavant caché. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaaf08d4a7b7d0285eafc07d6040514978"></a><!-- doxytag: member="PA_BgTiles.h::PA_ResetBg" ref="gaaf08d4a7b7d0285eafc07d6040514978" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_ResetBg</td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;_REG16(REG_BGSCREEN(screen)) &amp;= ~(0xF00)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reinitialiser les fonds d'un écran. En fait ca ne fait que cacher tous les fonds. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gab0167d556cc274e095ab32025ccdf70f"></a><!-- doxytag: member="PA_BgTiles.h::PA_LoadBgTiles" ref="gab0167d556cc274e095ab32025ccdf70f" args="(screen, bg_select, bg_tiles)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadBgTiles</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_tiles&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_LoadBgTilesEx(screen, bg_select, (void*)bg_tiles, SIZEOF_16BIT(bg_tiles))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[DEPRECATED] Charger un tileset en mémoire </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000007">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Nom du tableau contenant les tiles (exemple: ship_Tiles) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gacb34647e31c5d00eabbf4af9244c6977"></a><!-- doxytag: member="PA_BgTiles.h::PA_LoadTiledBg" ref="gacb34647e31c5d00eabbf4af9244c6977" args="(screen, bg_number, bg_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadTiledBg</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_number, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_name&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    <a class="code" href="a00079.htm#gad312e63462eef876094c3e80853031f8" title="Charger une palette de 256 couleurs dans les palettes des fonds.">PA_LoadBgPal</a>(screen, bg_number, (<span class="keywordtype">void</span>*)bg_name##_Pal); \
+    <a class="code" href="a00065.htm#ga2326c1519a3901bac60df6f1ee2ee9cb" title="[DEPRECATED] Façon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles...">PA_LoadSimpleBg</a>(screen, bg_number, bg_name##_Tiles, bg_name##_Map, PA_GetPAGfxBgSize(bg_name##_Info[1], bg_name##_Info[2]), 0, 1);}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] On ne pourra jamais rendre ca plus simple... Charge un fond de type TiledBg converti avec PAGfx, en mettant les tiles, la map, et meme la palette ! Seulement en mode 256 couleurs </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000008">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Nom du fond, comme bg0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2326c1519a3901bac60df6f1ee2ee9cb"></a><!-- doxytag: member="PA_BgTiles.h::PA_LoadSimpleBg" ref="ga2326c1519a3901bac60df6f1ee2ee9cb" args="(screen, bg_select, bg_tiles, bg_map, bg_size, wraparound, color_mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadSimpleBg</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_tiles, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_map, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_size, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wraparound, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">color_mode&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    <a class="code" href="a00065.htm#ga2beae2277c190bb5698e16281ad8cd31" title="Effacer et reinitialiser un fond complètement.">PA_DeleteBg</a>(screen, bg_select);\
+    <a class="code" href="a00065.htm#gab0167d556cc274e095ab32025ccdf70f" title="[DEPRECATED] Charger un tileset en mémoire">PA_LoadBgTiles</a>(screen, bg_select, bg_tiles); \
+    <a class="code" href="a00065.htm#gadd9bb5c939c759ac40b3b08d54da6509" title="Charge la carte d&amp;#39;un fond.">PA_LoadBgMap</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
+    <a class="code" href="a00065.htm#ga0ff54ebb77c13ff0b465377f6a7c0f63" title="Initialise un fond. A faire uniquement après avoir chargé un tileset et une map...">PA_InitBg</a>(screen, bg_select, bg_size, 0, color_mode);\
+    PA_BGScrollXY(screen, bg_select, 0, 0);}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Façon simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000009">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Nom du tableau contenant les tiles (exemple: ship_Tiles) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_map</em>&nbsp;</td><td>Nom du tableau contenant les infos sur la map (exemple : ship_Map) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_size</em>&nbsp;</td><td>Taille du fond. Pour un fond normal, on utilise les macros BG_256X256, BG_256X512, etc... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wraparound</em>&nbsp;</td><td>Si le fond boucle ou non. C'est plus important pour les fonds rotatifs... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Nombre de couleurs : 0 pour 16 couleurs, 1 pour 256 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gabef4e0b201a2b9a09290caa149d25c2b"></a><!-- doxytag: member="PA_BgTiles.h::PA_LoadBg" ref="gabef4e0b201a2b9a09290caa149d25c2b" args="(screen, bg_select, bg_tiles, tile_size, bg_map, bg_size, wraparound, color_mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadBg</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_tiles, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">tile_size, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_map, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_size, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wraparound, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">color_mode&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    <a class="code" href="a00065.htm#ga859a46bcbcc5c920c6f622695db94082" title="Charger un tileset en mémoire avec une taille donnée.">PA_LoadBgTilesEx</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_tiles, tile_size); \
+    <a class="code" href="a00065.htm#gadd9bb5c939c759ac40b3b08d54da6509" title="Charge la carte d&amp;#39;un fond.">PA_LoadBgMap</a>(screen, bg_select, (<span class="keywordtype">void</span>*)bg_map, bg_size); \
+    <a class="code" href="a00065.htm#ga0ff54ebb77c13ff0b465377f6a7c0f63" title="Initialise un fond. A faire uniquement après avoir chargé un tileset et une map...">PA_InitBg</a>(screen, bg_select, bg_size, 0, color_mode);\
+    PA_BGScrollXY(screen, bg_select, 0, 0);}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Facon la plus simple de cahrger un fond. Combine PA_InitBg, PA_LoadBgTiles, et PA_LoadBgMap </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000010">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Nom du tableau contenant les tiles (exemple: ship_Tiles) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tile_size</em>&nbsp;</td><td>Taille du tilset </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_map</em>&nbsp;</td><td>Nom du tableau contenant les infos sur la map (exemple : ship_Map) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_size</em>&nbsp;</td><td>Taille du fond. Ceci est très important, car ça détermine aussi si le Bg est rotatif ou non. Pour un fond normal, on utilise les macros BG_256X256, BG_256X512, etc... Por un fond rotatif, il suffit d'utiliser BG_ROT_128X128... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wraparound</em>&nbsp;</td><td>Si le fond boucle ou non. C'est plus important pour les fonds rotatifs... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Nombre de couleurs : 0 pour 16 couleurs, 1 pour 256 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga87f7dc52135a59b780f7a79f03f7bd87"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetMapTileAll" ref="ga87f7dc52135a59b780f7a79f03f7bd87" args="(screen, bg_select, x, y, tile_info)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetMapTileAll</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">tile_info&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;*(u16*)(PA_BgInfo[screen][bg_select].Map + ((x) &lt;&lt; 1) + ((y) &lt;&lt; 6)) = (tile_info)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Change les infos tiles utilisée pour une tile donnée dans la map. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X de la tile à changer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y de la tile à changer dans la carte </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tile_info</em>&nbsp;</td><td>Nouveau numéro de tile que l'on veut mettre (tile + palette + flips...) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga38f3152490d2617a74233199846de7a3"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgLoad" ref="ga38f3152490d2617a74233199846de7a3" args="(screen, bg_number, bg_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_EasyBgLoad</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_number, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_name&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{PA_BgInfo[screen][bg_number].BgMode = bg_name##_Info[0];\
+    PA_DEPRECATED_MACRO;\
+    PA_StoreEasyBgInfos(screen, bg_number, bg_name##_Info[0], bg_name##_Info[1], bg_name##_Info[2], (<span class="keywordtype">void</span>*)bg_name##_Tiles, SIZEOF_16BIT(bg_name##_Tiles), (<span class="keywordtype">void</span>*)bg_name##_Map, SIZEOF_16BIT(bg_name##_Map), (<span class="keywordtype">void</span>*)bg_name##_Pal);\
+    <span class="keywordflow">if</span>(PA_BgInfo[screen][bg_number].BgMode == BG_TILEDBG){  <a class="code" href="a00065.htm#gacb34647e31c5d00eabbf4af9244c6977" title="[DEPRECATED] On ne pourra jamais rendre ca plus simple... Charge un fond de type...">PA_LoadTiledBg</a>(screen, bg_number, bg_name);}\
+    <span class="keywordflow">else</span>{<a class="code" href="a00063.htm#ga1f23aca5c32f4781bc0f952eae0d609f" title="[DEPRECATED] Charger et initialiser un fond pour le scrolling infini (pour les fonds...">PA_LoadPAGfxLargeBg</a>(screen, bg_number, bg_name);}}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Moyen le plus simple de charger un fond créé avec PAGfx </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000011">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond... (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Nom du fond </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga598f41cc834a43c8c82a40911b4db013"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgLoadPtr" ref="ga598f41cc834a43c8c82a40911b4db013" args="(screen, bg_number, bg_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_EasyBgLoadPtr</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_number, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_name&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    PA_EasyBgLoadEx(screen, bg_number, (u32*)bg_name-&gt;Info, bg_name-&gt;Tiles, bg_name-&gt;TileSize, bg_name-&gt;Map, bg_name-&gt;MapSize, bg_name-&gt;Palette);\
+}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Moyen le plus simple de charger un fond créé avec PAGfx... Peut prendre des pointeurs ! </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000012">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond... (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Fond, par exemple &amp;bg0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga06fc87d81c62e9abb8790b6e5713c55b"></a><!-- doxytag: member="PA_BgStruct.h::@0" ref="ga06fc87d81c62e9abb8790b6e5713c55b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Types of background. </p>
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55ba31f3503bea418bbfe03dc22e91839a89"></a><!-- doxytag: member="PA_BgInvalid" ref="gga06fc87d81c62e9abb8790b6e5713c55ba31f3503bea418bbfe03dc22e91839a89" args="" -->PA_BgInvalid</em>&nbsp;</td><td>
+<p>Invalid background. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55ba6b852978f8cd652ef237b81ed37b058a"></a><!-- doxytag: member="PA_BgNormal" ref="gga06fc87d81c62e9abb8790b6e5713c55ba6b852978f8cd652ef237b81ed37b058a" args="" -->PA_BgNormal</em>&nbsp;</td><td>
+<p>Normal tiled background AKA TiledBg. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55ba0e51eb339f82dd35cff2e12b3992477d"></a><!-- doxytag: member="PA_BgLarge" ref="gga06fc87d81c62e9abb8790b6e5713c55ba0e51eb339f82dd35cff2e12b3992477d" args="" -->PA_BgLarge</em>&nbsp;</td><td>
+<p>Large background AKA LargeMap. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55ba24265bc55b7870e705b0e181f63d0470"></a><!-- doxytag: member="PA_BgUnlimited" ref="gga06fc87d81c62e9abb8790b6e5713c55ba24265bc55b7870e705b0e181f63d0470" args="" -->PA_BgUnlimited</em>&nbsp;</td><td>
+<p>Unlimited background AKA InfiniteMap. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55ba5fd5614b292e72f70798aec65fb8fe86"></a><!-- doxytag: member="PA_BgRot" ref="gga06fc87d81c62e9abb8790b6e5713c55ba5fd5614b292e72f70798aec65fb8fe86" args="" -->PA_BgRot</em>&nbsp;</td><td>
+<p>Rotational background. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55badd44e6b6a239695d3a684d7acda9b1d2"></a><!-- doxytag: member="PA_Font1bit" ref="gga06fc87d81c62e9abb8790b6e5713c55badd44e6b6a239695d3a684d7acda9b1d2" args="" -->PA_Font1bit</em>&nbsp;</td><td>
+<p>1-bit bitmap font </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55ba9237833c0dcf7afadeba12593a9c4499"></a><!-- doxytag: member="PA_Font4bit" ref="gga06fc87d81c62e9abb8790b6e5713c55ba9237833c0dcf7afadeba12593a9c4499" args="" -->PA_Font4bit</em>&nbsp;</td><td>
+<p>4-bit bitmap font </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga06fc87d81c62e9abb8790b6e5713c55bab8e4a883736f1c45b4164cea9a73166b"></a><!-- doxytag: member="PA_Font8bit" ref="gga06fc87d81c62e9abb8790b6e5713c55bab8e4a883736f1c45b4164cea9a73166b" args="" -->PA_Font8bit</em>&nbsp;</td><td>
+<p>8-bit bitmap font </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga8f9cb2b39b9ab6a5e8524c1141e1a3c9"></a><!-- doxytag: member="PA_BgTiles.h::PA_ResetBgSysScreen" ref="ga8f9cb2b39b9ab6a5e8524c1141e1a3c9" args="(u8 screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_ResetBgSysScreen </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Reinitialise le systeme de fonds pour 1 écran. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0ff54ebb77c13ff0b465377f6a7c0f63"></a><!-- doxytag: member="PA_BgTiles.h::PA_InitBg" ref="ga0ff54ebb77c13ff0b465377f6a7c0f63" args="(u8 screen, u8 bg_select, u8 bg_size, u8 wraparound, u8 color_mode)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InitBg </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>wraparound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color_mode</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialise un fond. A faire uniquement après avoir chargé un tileset et une map. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_size</em>&nbsp;</td><td>Taille du fond. Ceci est très important, car ça détermine aussi si le Bg est rotatif ou non. Pour un fond normal, on utilise les macros BG_256X256, BG_256X512, etc... Pour un fond rotatif, il suffit d'utiliser BG_ROT_128X128... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wraparound</em>&nbsp;</td><td>Si le fond boucle ou non. C'est plus important pour les fonds rotatifs... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color_mode</em>&nbsp;</td><td>Nombre de couleurs : 0 pour 16 couleurs, 1 pour 256 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga859a46bcbcc5c920c6f622695db94082"></a><!-- doxytag: member="PA_BgTiles.h::PA_LoadBgTilesEx" ref="ga859a46bcbcc5c920c6f622695db94082" args="(u8 screen, u8 bg_select, void *bg_tiles, u32 size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadBgTilesEx </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bg_tiles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Charger un tileset en mémoire avec une taille donnée. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Nom du tableau contenant les tiles (exemple: ship_Tiles) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>Taille en 16 bits... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga93943bbcf203bb8bf1ded41dc0b2ebb2"></a><!-- doxytag: member="PA_BgTiles.h::PA_ReLoadBgTiles" ref="ga93943bbcf203bb8bf1ded41dc0b2ebb2" args="(u8 screen, u8 bg_select, void *bg_tiles)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_ReLoadBgTiles </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bg_tiles</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ReCharger un tileset en mémoire. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_tiles</em>&nbsp;</td><td>Nom du tableau contenant les tiles (exemple: ship_Tiles) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaea95a7b1ddb67994a63b6790fb059dc0"></a><!-- doxytag: member="PA_BgTiles.h::PA_DeleteTiles" ref="gaea95a7b1ddb67994a63b6790fb059dc0" args="(u8 screen, u8 bg_select)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_DeleteTiles </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Effacer un tileset en mémoire. A noter que charger un tileset efface automatiquement le tileset précédent, donc on n'aura pas souvent besoin de cette fonction... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gae543f1feed84e7a9735bc8a5c202fe02"></a><!-- doxytag: member="PA_BgTiles.h::PA_DeleteMap" ref="gae543f1feed84e7a9735bc8a5c202fe02" args="(u8 screen, u8 bg_select)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_DeleteMap </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Effacer une map en mémoire. A noter que charger une map efface automatiquement la map précédent, donc on n'aura pas souvent besoin de cette fonction... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2beae2277c190bb5698e16281ad8cd31"></a><!-- doxytag: member="PA_BgTiles.h::PA_DeleteBg" ref="ga2beae2277c190bb5698e16281ad8cd31" args="(u8 screen, u8 bg_select)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_DeleteBg </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Effacer et reinitialiser un fond complètement. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gadd9bb5c939c759ac40b3b08d54da6509"></a><!-- doxytag: member="PA_BgTiles.h::PA_LoadBgMap" ref="gadd9bb5c939c759ac40b3b08d54da6509" args="(u8 screen, u8 bg_select, void *bg_map, u8 bg_size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadBgMap </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>bg_map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Charge la carte d'un fond. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut charger (de 0 à 3 en mode 0, uniquement 2 et 3 en mode 2) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_map</em>&nbsp;</td><td>Nom du tableau contenant les infos sur la map (exemple : (void*)ship_Map) n'oublie pas le void... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_size</em>&nbsp;</td><td>Taille du fond. Ceci est très important, car ça détermine aussi si le Bg est rotatif ou non. Pour un fond normal, on utilise les macros BG_256X256, BG_256X512, etc... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gadf0fb1a1ec794471d2e143ef88a3f4a2"></a><!-- doxytag: member="PA_BgTiles.h::PA_LoadBackground" ref="gadf0fb1a1ec794471d2e143ef88a3f4a2" args="(u8 screen, u8 bg_select, const PA_BgStruct *bg_name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadBackground </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00006.htm">PA_BgStruct</a> *&nbsp;</td>
+          <td class="paramname"> <em>bg_name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Charger un fond (EasyBg ou RotBg). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond... (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_name</em>&nbsp;</td><td>Pointeur vers le fond </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00002.htm#a2">Backgrounds/Effects/Mode7/source/main.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga0044c89b271d4498aec2f6871a63d74e"></a><!-- doxytag: member="PA_BgTiles.h::PA_BGScrollX" ref="ga0044c89b271d4498aec2f6871a63d74e" args="(u8 screen, u8 bg_number, s32 x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_BGScrollX </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Scroll horizontal d'un fond de type Tiled. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer, horizontalement... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad4641293cb3d86c84533e27aeff39be4"></a><!-- doxytag: member="PA_BgTiles.h::PA_BGScrollY" ref="gad4641293cb3d86c84533e27aeff39be4" args="(u8 screen, u8 bg_number, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_BGScrollY </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Scroll vertical d'un fond de type Tiled. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer, verticalement... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gae39a703b3e73b770a2b410df1313c391"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetMapTile" ref="gae39a703b3e73b770a2b410df1313c391" args="(u8 screen, u8 bg_select, s16 x, s16 y, s16 tile_number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetMapTile </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>tile_number</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Change la tile gfx utilisée pour une tile donnée dans la map. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X de la tile à changer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y de la tile à changer dans la carte </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tile_number</em>&nbsp;</td><td>Nouveau numéro de tile que l'on veut mettre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gac462e83587192f91794a24901e656c5a"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetLargeMapTile" ref="gac462e83587192f91794a24901e656c5a" args="(u8 screen, u8 bg_select, s32 x, s32 y, u32 tile_info)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetLargeMapTile </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>tile_info</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Change les infos tiles utilisée pour une tile donnée dans la map, seulement pour les grands fonds (512 de large ou haut). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X de la tile à changer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y de la tile à changer dans la carte </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>tile_info</em>&nbsp;</td><td>Nouveau numéro de tile que l'on veut mettre (tile + palette + flips...) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gae46e9f135473e251043cfbff31e4b2cc"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetMapTileHflip" ref="gae46e9f135473e251043cfbff31e4b2cc" args="(u8 screen, u8 bg_select, u8 x, u8 y, u8 hflip)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_SetMapTileHflip </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>hflip</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Flipper une tile de la carte, horizontalement. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X de la tile à changer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y de la tile à changer dans la carte </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>hflip</em>&nbsp;</td><td>Mettre la tile de la carte en flip horizontal </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa4a9f016001c320fb18fa1659e7a45dc"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetMapTileVflip" ref="gaa4a9f016001c320fb18fa1659e7a45dc" args="(u8 screen, u8 bg_select, u8 x, u8 y, u8 vflip)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetMapTileVflip </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>vflip</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Flipper une tile de la carte, verticalement. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X de la tile à changer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y de la tile à changer dans la carte </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>vflip</em>&nbsp;</td><td>Mettre la tile de la carte en flip vertical </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga971d29a935bff82b1c81939e93675196"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetMapTilePal" ref="ga971d29a935bff82b1c81939e93675196" args="(u8 screen, u8 bg_select, u8 x, u8 y, u8 palette_number)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetMapTilePal </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>palette_number</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Changer la palette de 16 couleurs utilisée par une tile de la carte. Marche uniquement en mode 16 couleurs pour le Bg. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X de la tile à changer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y de la tile à changer dans la carte </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette_number</em>&nbsp;</td><td>Numéro de la palette (0-15) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2fab13ccb3b05448ad24ed892d1718e2"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetBgPrio" ref="ga2fab13ccb3b05448ad24ed892d1718e2" args="(u8 screen, u8 bg, u8 prio)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetBgPrio </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>prio</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Changer la priorité d'un fond. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg</em>&nbsp;</td><td>Numéro du fond... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>prio</em>&nbsp;</td><td>Niveau de priorité, de 0 à 3, 0 étant priorité la plus élevée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga14c55620d4e83dbac6eb3648ff84b336"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetBgPrioSeq" ref="ga14c55620d4e83dbac6eb3648ff84b336" args="(u8 screen, u8 priority0, u8 priority1, u8 priority2, u8 priority3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetBgPrioSeq </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>priority0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>priority1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>priority2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>priority3</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Changer la priorité des fonds pour qu'ils soient dans un ordre donné. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority0</em>&nbsp;</td><td>Fond à mettre en premier </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority1</em>&nbsp;</td><td>Suivant... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority2</em>&nbsp;</td><td>Suivant... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>priority3</em>&nbsp;</td><td>Dernier... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga872b29fd5fec265d2a195eda7774f884"></a><!-- doxytag: member="PA_BgTiles.h::PA_ClearBg" ref="ga872b29fd5fec265d2a195eda7774f884" args="(u8 screen, u8 bg_select)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_ClearBg </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Effacer un fond donné (juste la map). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Fond... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gac585010453176e4328998684f8c46541"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgScrollX" ref="gac585010453176e4328998684f8c46541" args="(u8 screen, u8 bg_number, s32 x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_EasyBgScrollX </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Scroll horizontal de n'importe quel fond. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer, horizontalement... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaff92e083b8c7532624f1157be1b571e8"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgScrollY" ref="gaff92e083b8c7532624f1157be1b571e8" args="(u8 screen, u8 bg_number, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_EasyBgScrollY </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Scroll vertical de n'importe quel fond. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer, verticalement... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4041111ec9a92c198379a2d2d70e5664"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgScrollXY" ref="ga4041111ec9a92c198379a2d2d70e5664" args="(u8 screen, u8 bg_number, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_EasyBgScrollXY </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Scroll horizontal et vertical de n'importe quel fond. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer, horizontalement... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer, verticalement... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9cfefbaf81f03d1437b9fc9223d853d8"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgGetPixel" ref="ga9cfefbaf81f03d1437b9fc9223d853d8" args="(u8 screen, u8 bg_number, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u8 PA_EasyBgGetPixel </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Renvoie le numéro dans la palette du pixel à l'écran... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X du pixel à l'écran </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y du pixel à l'écran </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga808a03a498b0b15201bbc39c12ec134d"></a><!-- doxytag: member="PA_BgTiles.h::PA_EasyBgGetPixelCol" ref="ga808a03a498b0b15201bbc39c12ec134d" args="(u8 screen, u8 bg_number, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u16 PA_EasyBgGetPixelCol </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Renvoie la couleur (valeur u16) du pixel à l'écran... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X du pixel à l'écran </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y du pixel à l'écran </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga69df583ca0901711678d3b9316206919"></a><!-- doxytag: member="PA_BgTiles.h::PA_SetBgWrap" ref="ga69df583ca0901711678d3b9316206919" args="(u8 screen, u8 bg, u8 wrap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetBgWrap </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>wrap</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Active ou non le wrapping des fonds (rotatifs, 8bit, et 16bit). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>wrap</em>&nbsp;</td><td>Wrap activé ou désactivé... </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00002.htm#a3">Backgrounds/Effects/Mode7/source/main.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="gae8c1eacf4353babaab86297baa94c089"></a><!-- doxytag: member="PA_BgTiles.h::PA_InitParallaxX" ref="gae8c1eacf4353babaab86297baa94c089" args="(u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_InitParallaxX </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg3</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg0</em>&nbsp;</td><td>Valeur pour le premier fond (0). 256 met en vitesse normal, moins pour moins lent (128 pour moitié de vitesse), plus pour plus rapide (512 équivaut à 2 fois plus vite). On peut utiliser des valeurs négatives. 0 désactive le scrolling parallax pour ce fond </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg1</em>&nbsp;</td><td>Idem, pour le Fond 1 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg2</em>&nbsp;</td><td>Idem, pour le Fond 2 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg3</em>&nbsp;</td><td>Idem, pour le Fond 3 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3291f71316639eb5ee067f90f0e81d3b"></a><!-- doxytag: member="PA_BgTiles.h::PA_InitParallaxY" ref="ga3291f71316639eb5ee067f90f0e81d3b" args="(u8 screen, s32 bg0, s32 bg1, s32 bg2, s32 bg3)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_InitParallaxY </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>bg3</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialiser le Parallax Scrolling pour plusieurs fonds, horizontalement. Choix de la vitesse à laquelle les fonds vont défiler par rapport aux autres... Utiliser PA_ParallaxScrollX par la suite pour scroller. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg0</em>&nbsp;</td><td>Valeur pour le premier fond (0). 256 met en vitesse normal, moins pour moins lent (128 pour moitié de vitesse), plus pour plus rapide (512 équivaut à 2 fois plus vite). On peut utiliser des valeurs négatives. 0 désactive le scrolling parallax pour ce fond </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg1</em>&nbsp;</td><td>Idem, pour le Fond 1 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg2</em>&nbsp;</td><td>Idem, pour le Fond 2 </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg3</em>&nbsp;</td><td>Idem, pour le Fond 3 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7c08a78572f085ecabeaa6563ca4f4bc"></a><!-- doxytag: member="PA_BgTiles.h::PA_ParallaxScrollX" ref="ga7c08a78572f085ecabeaa6563ca4f4bc" args="(u8 screen, s32 x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_ParallaxScrollX </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Déplacer les fonds activés pour le parallax... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7375ca17134a54908ff14b8bd28e27a8"></a><!-- doxytag: member="PA_BgTiles.h::PA_ParallaxScrollY" ref="ga7375ca17134a54908ff14b8bd28e27a8" args="(u8 screen, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_ParallaxScrollY </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Déplacer les fonds activés pour le parallax... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3c2616d6ec3889346de10cf56e4f0da4"></a><!-- doxytag: member="PA_BgTiles.h::PA_ParallaxScrollXY" ref="ga3c2616d6ec3889346de10cf56e4f0da4" args="(u8 screen, s32 x, s32 y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_ParallaxScrollXY </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>y</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Déplacer les fonds activés pour le parallax... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Valeur X à déplacer </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Valeur Y à déplacer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Palette system for Dual Screen</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Palette system for Dual Screen</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.htm#ga4e261754a8f6f264c0c18b4f6358e3d3">PA_DualLoadPal</a>(palette, source)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 256 couleurs pour les fonds ou les sprites pour les 2 écrans.  <a href="#ga4e261754a8f6f264c0c18b4f6358e3d3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.htm#ga59fb434a6d2a678c1ecd62cbb2e5feb9">PA_DualLoadPal16</a>(palette, n_palette, source)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 16 couleurs pour les fonds ou les sprites pour les deux écrans.  <a href="#ga59fb434a6d2a678c1ecd62cbb2e5feb9"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.htm#ga229b26549a284a31b9bec7f821c651fa">PA_DualSetPalNeg</a> (u32 palette)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Négativer une palette donnée. Pour annuler, il suffit de négativer à nouveau.  <a href="#ga229b26549a284a31b9bec7f821c651fa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.htm#gad60c569bab65f73c49eb104270c36cc8">PA_DualSetPal16Neg</a> (u32 palette, u8 n_palette)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Négativer une palette de 16 couleurs donnée. Pour annuler, il suffit de négativer à nouveau.  <a href="#gad60c569bab65f73c49eb104270c36cc8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.htm#ga92a531475555a9c6bac7d02ff586e430">PA_DualLoadSpritePal</a> (u8 palette_number, void *palette)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 256 couleurs dans les palettes des sprites.  <a href="#ga92a531475555a9c6bac7d02ff586e430"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.htm#gac88b587cd38cb590f9db4ed4397bd3b1">PA_DualLoadBgPal</a> (u8 bg_number, void *palette)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger une palette de 256 couleurs pour un fond.  <a href="#gac88b587cd38cb590f9db4ed4397bd3b1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00080.htm#ga95fe483cf4a7fdce0c579b4117c3f38d">PA_DualSetBgColor</a> (u16 color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la couleur de fond des 2 écrans.  <a href="#ga95fe483cf4a7fdce0c579b4117c3f38d"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Load palettes, change palette colors, set the gamma, etc... on both screens ! </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ga4e261754a8f6f264c0c18b4f6358e3d3"></a><!-- doxytag: member="PA_PaletteDual.h::PA_DualLoadPal" ref="ga4e261754a8f6f264c0c18b4f6358e3d3" args="(palette, source)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_DualLoadPal</td>
+          <td>(</td>
+          <td class="paramtype">palette, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">source&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    DMA_Copy((<span class="keywordtype">void</span>*)source, (<span class="keywordtype">void</span>*)palette, 256, DMA_16NOW);\
+    DMA_Copy((<span class="keywordtype">void</span>*)(source+1024), (<span class="keywordtype">void</span>*)palette, 256, DMA_16NOW);\
+    <span class="keywordflow">if</span>(palette == PAL_SPRITE)\
+        PA_DualLoadSpriteExtPal(0, (<span class="keywordtype">void</span>*)palette);\
+}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>Charger une palette de 256 couleurs pour les fonds ou les sprites pour les 2 écrans. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Charger pour les Bg ou les Sprites : PAL_BG ou PAL_SPRITE </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>source</em>&nbsp;</td><td>Nom de la palette (ex : master_Palette) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga59fb434a6d2a678c1ecd62cbb2e5feb9"></a><!-- doxytag: member="PA_PaletteDual.h::PA_DualLoadPal16" ref="ga59fb434a6d2a678c1ecd62cbb2e5feb9" args="(palette, n_palette, source)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_DualLoadPal16</td>
+          <td>(</td>
+          <td class="paramtype">palette, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">n_palette, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">source&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    DMA_Copy((<span class="keywordtype">void</span>*)source, (<span class="keywordtype">void</span>*)(palette + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);\
+    DMA_Copy((<span class="keywordtype">void</span>*)source, (<span class="keywordtype">void</span>*)(palette + 1024 + (n_palette &lt;&lt; 5)), 16, DMA_16NOW);}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>Charger une palette de 16 couleurs pour les fonds ou les sprites pour les deux écrans. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Charger pour les Bg ou les Sprites : PAL_BG ou PAL_SPRITE </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n_palette</em>&nbsp;</td><td>Numéro de la palette de 16 couleurs que l'on veut charger (0-15)</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>source</em>&nbsp;</td><td>Nom de la palette (ex : master_Palette) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga229b26549a284a31b9bec7f821c651fa"></a><!-- doxytag: member="PA_PaletteDual.h::PA_DualSetPalNeg" ref="ga229b26549a284a31b9bec7f821c651fa" args="(u32 palette)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_DualSetPalNeg </td>
+          <td>(</td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>palette</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Négativer une palette donnée. Pour annuler, il suffit de négativer à nouveau. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Charger pour les Bg ou les Sprites : PAL_BG, PAL_SPRITE </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad60c569bab65f73c49eb104270c36cc8"></a><!-- doxytag: member="PA_PaletteDual.h::PA_DualSetPal16Neg" ref="gad60c569bab65f73c49eb104270c36cc8" args="(u32 palette, u8 n_palette)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_DualSetPal16Neg </td>
+          <td>(</td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>palette</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>n_palette</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Négativer une palette de 16 couleurs donnée. Pour annuler, il suffit de négativer à nouveau. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Charger pour les Bg ou les Sprites : PAL_BG, PAL_SPRITE </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>n_palette</em>&nbsp;</td><td>Numéro de la palette de 16 couleurs (0-15) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga92a531475555a9c6bac7d02ff586e430"></a><!-- doxytag: member="PA_PaletteDual.h::PA_DualLoadSpritePal" ref="ga92a531475555a9c6bac7d02ff586e430" args="(u8 palette_number, void *palette)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_DualLoadSpritePal </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>palette_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>palette</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Charger une palette de 256 couleurs dans les palettes des sprites. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>palette_number</em>&nbsp;</td><td>Numéro de la palette (0-15) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Nom de la palette à charger ((void*)nom_palette) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gac88b587cd38cb590f9db4ed4397bd3b1"></a><!-- doxytag: member="PA_PaletteDual.h::PA_DualLoadBgPal" ref="gac88b587cd38cb590f9db4ed4397bd3b1" args="(u8 bg_number, void *palette)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_DualLoadBgPal </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&nbsp;</td>
+          <td class="paramname"> <em>palette</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Charger une palette de 256 couleurs pour un fond. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bg_number</em>&nbsp;</td><td>Numéro du fond (0-3) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>palette</em>&nbsp;</td><td>Nom de la palette à charger ((void*)nom_palette) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga95fe483cf4a7fdce0c579b4117c3f38d"></a><!-- doxytag: member="PA_PaletteDual.h::PA_DualSetBgColor" ref="ga95fe483cf4a7fdce0c579b4117c3f38d" args="(u16 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_DualSetBgColor </td>
+          <td>(</td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>color</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Changer la couleur de fond des 2 écrans. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Valeur RGB, comme <a class="el" href="a00079.htm#gaac31ab2510a20c165e8b3b265ae7a780" title="Convertir une couleurs au format Rouge, Vert, Bleu en un nombre utilisable par le...">PA_RGB(31, 31, 31)</a> pour blanc </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:39 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

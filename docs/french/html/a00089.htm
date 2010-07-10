@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: ASlib functions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>ASlib functions</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Structures de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00011.htm">SoundInfo</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sound info.  <a href="a00011.htm#_details">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaf61cacb772260dcc18798fc9af8e8736"></a><!-- doxytag: member="ASlib::AS_SoundQuickPlay" ref="gaf61cacb772260dcc18798fc9af8e8736" args="(name)" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#gaf61cacb772260dcc18798fc9af8e8736">AS_SoundQuickPlay</a>(name)&nbsp;&nbsp;&nbsp;AS_SoundDefaultPlay((u8*)name, (u32)name##_size, 127, 64, false, 0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Easiest way to play a sound, using default settings. <br/></td></tr>
+<tr><td colspan="2"><h2>Énumérations</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga7052fff99903d76aa4d7d2776428e662">MP3Command</a> { , <br/>
+&nbsp;&nbsp;<a class="el" href="a00089.htm#gga7052fff99903d76aa4d7d2776428e662ac19060b0aa7e26d40b81cd428e276eef">MP3CMD_INIT</a> =  8, 
+<a class="el" href="a00089.htm#gga7052fff99903d76aa4d7d2776428e662a36c29031064739101c4666116fa6c35e">MP3CMD_STOP</a> =  16, 
+<a class="el" href="a00089.htm#gga7052fff99903d76aa4d7d2776428e662a1268f9dfd60ddd7302f7ff5d6268ed0d">MP3CMD_PLAY</a> =  32, 
+<a class="el" href="a00089.htm#gga7052fff99903d76aa4d7d2776428e662a3b664c62146c453c08f6d860612f1f78">MP3CMD_PAUSE</a> =  64, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="a00089.htm#gga7052fff99903d76aa4d7d2776428e662a25db98e54a7d0bc24638e247da38c64c">MP3CMD_SETRATE</a> =  128
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>MP3 commands. </p>
+ <a href="a00089.htm#ga7052fff99903d76aa4d7d2776428e662">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga42ad801b4a9a9465be1907e9770235de">SoundCommand</a> { , <br/>
+&nbsp;&nbsp;<a class="el" href="a00089.htm#gga42ad801b4a9a9465be1907e9770235dea6c577b5d2d26fe506b76e650d56b8fc6">SNDCMD_STOP</a> =  2, 
+<a class="el" href="a00089.htm#gga42ad801b4a9a9465be1907e9770235deaaf73015fbd571b7f87d017bdf4ddcb9a">SNDCMD_PLAY</a> =  4, 
+<a class="el" href="a00089.htm#gga42ad801b4a9a9465be1907e9770235deaaf791c3ff6281a03a82dc04b93908c7b">SNDCMD_SETVOLUME</a> =  8, 
+<a class="el" href="a00089.htm#gga42ad801b4a9a9465be1907e9770235dea17f79e3c3914bfacc2a328e9b95baad6">SNDCMD_SETPAN</a> =  16, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="a00089.htm#gga42ad801b4a9a9465be1907e9770235dea7d9611110aa38edf04ff98373747bc45">SNDCMD_SETRATE</a> =  32, 
+<a class="el" href="a00089.htm#gga42ad801b4a9a9465be1907e9770235deaac47718dbd1c8b5e006600d82900301d">SNDCMD_SETMASTERVOLUME</a> =  64
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Sound commands. </p>
+ <a href="a00089.htm#ga42ad801b4a9a9465be1907e9770235de">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga50571e83028d4a2793b34084a2858c26">MP3Status</a> { <br/>
+&nbsp;&nbsp;<a class="el" href="a00089.htm#gga50571e83028d4a2793b34084a2858c26a35e7a723252468e96ded6961e6d0ead2">MP3ST_STOPPED</a> =  0, 
+<a class="el" href="a00089.htm#gga50571e83028d4a2793b34084a2858c26a53dd1fd86576363d8940f964de41704d">MP3ST_PLAYING</a> =  1, 
+<a class="el" href="a00089.htm#gga50571e83028d4a2793b34084a2858c26a9f8df37a27781d0a32791715174ae304">MP3ST_PAUSED</a> =  2, 
+<a class="el" href="a00089.htm#gga50571e83028d4a2793b34084a2858c26ab15729c18835febc8654f51412ce58e0">MP3ST_OUT_OF_DATA</a> =  4, 
+<br/>
+&nbsp;&nbsp;<a class="el" href="a00089.htm#gga50571e83028d4a2793b34084a2858c26afa30835937f9d047d4601c3fcca93b0b">MP3ST_DECODE_ERROR</a> =  8, 
+<a class="el" href="a00089.htm#gga50571e83028d4a2793b34084a2858c26a75167841d450dbcde2aac2a4d45e6258">MP3ST_INITFAILED</a> =  16
+<br/>
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>MP3 states. </p>
+ <a href="a00089.htm#ga50571e83028d4a2793b34084a2858c26">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga5fe3c32dd461edde935379416fb1f057">AS_MODE</a> { <a class="el" href="a00089.htm#gga5fe3c32dd461edde935379416fb1f057aa0b62456a06f6d39971f05776c8ace88">AS_MODE_MP3</a> =  1, 
+<a class="el" href="a00089.htm#gga5fe3c32dd461edde935379416fb1f057a6d5d8f195263b59e8d51b8ed279cae4e">AS_MODE_SURROUND</a> =  2, 
+<a class="el" href="a00089.htm#gga5fe3c32dd461edde935379416fb1f057aede8822c11ac2e578b7da9423e3d77a2">AS_MODE_16CH</a> =  4, 
+<a class="el" href="a00089.htm#gga5fe3c32dd461edde935379416fb1f057a7558b3dd57ad2e8ee13f5b83f55bd853">AS_MODE_8CH</a> =  8
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>ASlib modes. </p>
+ <a href="a00089.htm#ga5fe3c32dd461edde935379416fb1f057">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga24d02ef022ce3df717d8a1ef25c4701d">AS_DELAY</a> { <a class="el" href="a00089.htm#gga24d02ef022ce3df717d8a1ef25c4701da722299230f75d3fba2fce2c606bcb866">AS_NO_DELAY</a> =  0, 
+<a class="el" href="a00089.htm#gga24d02ef022ce3df717d8a1ef25c4701dacc410a17b7d8f704e26ea4bbfcea8a4e">AS_SURROUND</a> =  1, 
+<a class="el" href="a00089.htm#gga24d02ef022ce3df717d8a1ef25c4701da7f2e2524a488a6b830408f89b3fd2383">AS_REVERB</a> =  4
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Delay values. </p>
+ <a href="a00089.htm#ga24d02ef022ce3df717d8a1ef25c4701d">Plus de détails...</a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga8fbf4416f16c941bf450b8facda4f374">AS_SOUNDFORMAT</a> { <a class="el" href="a00089.htm#gga8fbf4416f16c941bf450b8facda4f374a2ebe4878b1047076bc79cb38258815a9">AS_PCM_8BIT</a> =  0, 
+<a class="el" href="a00089.htm#gga8fbf4416f16c941bf450b8facda4f374a9339f0174143f4456c81444b13ef9d6d">AS_PCM_16BIT</a> =  1, 
+<a class="el" href="a00089.htm#gga8fbf4416f16c941bf450b8facda4f374a370d97e3091c88942886fb35bbb8630e">AS_ADPCM</a> =  2
+ }</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><p>Sound formats. </p>
+ <a href="a00089.htm#ga8fbf4416f16c941bf450b8facda4f374">Plus de détails...</a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa6664098b080d0ce61ffc1c3f24df27e"></a><!-- doxytag: member="ASlib::AS_Init" ref="gaa6664098b080d0ce61ffc1c3f24df27e" args="(u8 mode)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#gaa6664098b080d0ce61ffc1c3f24df27e">AS_Init</a> (u8 mode)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialize ASlib. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga82a827d23289af00e6525b2e7f8ae65f"></a><!-- doxytag: member="ASlib::AS_ReserveChannel" ref="ga82a827d23289af00e6525b2e7f8ae65f" args="(u8 channel)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga82a827d23289af00e6525b2e7f8ae65f">AS_ReserveChannel</a> (u8 channel)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reserve a particular DS channel (so it won't be used for the sound pool). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga13207b96e56c3104390d8b72b2b7bf18"></a><!-- doxytag: member="ASlib::AS_SetMasterVolume" ref="ga13207b96e56c3104390d8b72b2b7bf18" args="(u8 volume)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga13207b96e56c3104390d8b72b2b7bf18">AS_SetMasterVolume</a> (u8 volume)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the master volume (0..127). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gabd3fa831ac7081c25d0f928504f48d97"></a><!-- doxytag: member="ASlib::AS_SetDefaultSettings" ref="gabd3fa831ac7081c25d0f928504f48d97" args="(u8 format, s32 rate, u8 delay)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#gabd3fa831ac7081c25d0f928504f48d97">AS_SetDefaultSettings</a> (u8 format, s32 rate, u8 delay)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the default sound settings. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga8cc9cee889ca84166051197343ffb3b8"></a><!-- doxytag: member="ASlib::AS_SoundPlay" ref="ga8cc9cee889ca84166051197343ffb3b8" args="(SoundInfo sound)" -->
+int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga8cc9cee889ca84166051197343ffb3b8">AS_SoundPlay</a> (<a class="el" href="a00011.htm">SoundInfo</a> sound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a sound using the priority system. Returns the sound channel allocated or -1 if the sound was skipped. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaaeeb3ec1ebf08fb9135af74942b6a333"></a><!-- doxytag: member="ASlib::AS_SoundDefaultPlay" ref="gaaeeb3ec1ebf08fb9135af74942b6a333" args="(u8 *data, u32 size, u8 volume, u8 pan, u8 loop, u8 prio)" -->
+static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#gaaeeb3ec1ebf08fb9135af74942b6a333">AS_SoundDefaultPlay</a> (u8 *data, u32 size, u8 volume, u8 pan, u8 loop, u8 prio)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a sound using the priority system with the default settings. Returns the sound channel allocated or -1 if the sound was skipped. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6c5bd5bee03b9739261ed6ef601296cf"></a><!-- doxytag: member="ASlib::AS_SetSoundPan" ref="ga6c5bd5bee03b9739261ed6ef601296cf" args="(u8 chan, u8 pan)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga6c5bd5bee03b9739261ed6ef601296cf">AS_SetSoundPan</a> (u8 chan, u8 pan)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the panning of a sound (0=left, 64=center, 127=right). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad7c0281bedac1e43a9e85f207240469b"></a><!-- doxytag: member="ASlib::AS_SetSoundVolume" ref="gad7c0281bedac1e43a9e85f207240469b" args="(u8 chan, u8 volume)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#gad7c0281bedac1e43a9e85f207240469b">AS_SetSoundVolume</a> (u8 chan, u8 volume)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the volume of a sound (0..127). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga90cf77a31d3a7d9a0f0806ed85f700c4"></a><!-- doxytag: member="ASlib::AS_SetSoundRate" ref="ga90cf77a31d3a7d9a0f0806ed85f700c4" args="(u8 chan, u32 rate)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga90cf77a31d3a7d9a0f0806ed85f700c4">AS_SetSoundRate</a> (u8 chan, u32 rate)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the sound sample rate. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2e7d499b62026c832c77a7f543bbf23c"></a><!-- doxytag: member="ASlib::AS_SoundStop" ref="ga2e7d499b62026c832c77a7f543bbf23c" args="(u8 chan)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga2e7d499b62026c832c77a7f543bbf23c">AS_SoundStop</a> (u8 chan)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stop playing a sound. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6eb8529195c51466521ecd9b2f68c6b9"></a><!-- doxytag: member="ASlib::AS_SoundDirectPlay" ref="ga6eb8529195c51466521ecd9b2f68c6b9" args="(u8 chan, SoundInfo sound)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga6eb8529195c51466521ecd9b2f68c6b9">AS_SoundDirectPlay</a> (u8 chan, <a class="el" href="a00011.htm">SoundInfo</a> sound)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a sound directly using the given channel. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga399ddf9caec8397255e3b608101861b5"></a><!-- doxytag: member="ASlib::AS_MP3DirectPlay" ref="ga399ddf9caec8397255e3b608101861b5" args="(u8 *buffer, u32 size)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga399ddf9caec8397255e3b608101861b5">AS_MP3DirectPlay</a> (u8 *buffer, u32 size)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a MP3 directly from memory. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0a89cc6104eaee87d46320559ffa3286"></a><!-- doxytag: member="ASlib::AS_MP3StreamPlay" ref="ga0a89cc6104eaee87d46320559ffa3286" args="(const char *path)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga0a89cc6104eaee87d46320559ffa3286">AS_MP3StreamPlay</a> (const char *path)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Play a MP3 stream. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6ce7cac28415405402486c56b61cdf29"></a><!-- doxytag: member="ASlib::AS_MP3Pause" ref="ga6ce7cac28415405402486c56b61cdf29" args="()" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga6ce7cac28415405402486c56b61cdf29">AS_MP3Pause</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pause a MP3. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac963abe25fe025fc506293e4b7bdd449"></a><!-- doxytag: member="ASlib::AS_MP3Unpause" ref="gac963abe25fe025fc506293e4b7bdd449" args="()" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#gac963abe25fe025fc506293e4b7bdd449">AS_MP3Unpause</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Unpause a MP3. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaa9a547319c674fa1c621669cfe727f18"></a><!-- doxytag: member="ASlib::AS_MP3Stop" ref="gaa9a547319c674fa1c621669cfe727f18" args="()" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#gaa9a547319c674fa1c621669cfe727f18">AS_MP3Stop</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Stop a MP3. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3c418770c7db556a57a9c76018d40133"></a><!-- doxytag: member="ASlib::AS_GetMP3Status" ref="ga3c418770c7db556a57a9c76018d40133" args="()" -->
+static int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga3c418770c7db556a57a9c76018d40133">AS_GetMP3Status</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the current MP3 status. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga755bd198110eb6f96e6b6511638523b3"></a><!-- doxytag: member="ASlib::AS_SetMP3Volume" ref="ga755bd198110eb6f96e6b6511638523b3" args="(u8 volume)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga755bd198110eb6f96e6b6511638523b3">AS_SetMP3Volume</a> (u8 volume)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the MP3 volume (0..127). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga7498af7616778f2a1cda0b5e4414874e"></a><!-- doxytag: member="ASlib::AS_SetMP3Pan" ref="ga7498af7616778f2a1cda0b5e4414874e" args="(u8 pan)" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga7498af7616778f2a1cda0b5e4414874e">AS_SetMP3Pan</a> (u8 pan)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the MP3 panning (0=left, 64=center, 127=right). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab1845d1561a75f19dfb76b83b7ea6530"></a><!-- doxytag: member="ASlib::AS_SetMP3Delay" ref="gab1845d1561a75f19dfb76b83b7ea6530" args="(u8 delay)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#gab1845d1561a75f19dfb76b83b7ea6530">AS_SetMP3Delay</a> (u8 delay)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the default MP3 delay mode (warning: high values can cause glitches). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga48e45d883abc1b47a436ffa756d4dcf5"></a><!-- doxytag: member="ASlib::AS_SetMP3Loop" ref="ga48e45d883abc1b47a436ffa756d4dcf5" args="(u8 loop)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga48e45d883abc1b47a436ffa756d4dcf5">AS_SetMP3Loop</a> (u8 loop)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the MP3 loop mode (false = one shot, true = loop indefinitely). <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga96f0fd79b4c8397f7224972f1e5d6e28"></a><!-- doxytag: member="ASlib::AS_SetMP3Rate" ref="ga96f0fd79b4c8397f7224972f1e5d6e28" args="(s32 rate)" -->
+static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga96f0fd79b4c8397f7224972f1e5d6e28">AS_SetMP3Rate</a> (s32 rate)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the MP3 sample rate. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga926416b87b7b235860cebdd48472cdc3"></a><!-- doxytag: member="ASlib::AS_SoundVBL" ref="ga926416b87b7b235860cebdd48472cdc3" args="()" -->
+void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00089.htm#ga926416b87b7b235860cebdd48472cdc3">AS_SoundVBL</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Regenerate buffers for MP3 stream. Must be called each VBlank (only needed if mp3 is used). <br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Functions to play RAW sounds and *shrug* MP3s. </p>
+<hr/><h2>Documentation du type de l'énumération</h2>
+<a class="anchor" id="ga7052fff99903d76aa4d7d2776428e662"></a><!-- doxytag: member="as_lib9.h::MP3Command" ref="ga7052fff99903d76aa4d7d2776428e662" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00089.htm#ga7052fff99903d76aa4d7d2776428e662">MP3Command</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>MP3 commands. </p>
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga7052fff99903d76aa4d7d2776428e662ac19060b0aa7e26d40b81cd428e276eef"></a><!-- doxytag: member="MP3CMD_INIT" ref="gga7052fff99903d76aa4d7d2776428e662ac19060b0aa7e26d40b81cd428e276eef" args="" -->MP3CMD_INIT</em>&nbsp;</td><td>
+<p>Initialize. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga7052fff99903d76aa4d7d2776428e662a36c29031064739101c4666116fa6c35e"></a><!-- doxytag: member="MP3CMD_STOP" ref="gga7052fff99903d76aa4d7d2776428e662a36c29031064739101c4666116fa6c35e" args="" -->MP3CMD_STOP</em>&nbsp;</td><td>
+<p>Stop. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga7052fff99903d76aa4d7d2776428e662a1268f9dfd60ddd7302f7ff5d6268ed0d"></a><!-- doxytag: member="MP3CMD_PLAY" ref="gga7052fff99903d76aa4d7d2776428e662a1268f9dfd60ddd7302f7ff5d6268ed0d" args="" -->MP3CMD_PLAY</em>&nbsp;</td><td>
+<p>Play. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga7052fff99903d76aa4d7d2776428e662a3b664c62146c453c08f6d860612f1f78"></a><!-- doxytag: member="MP3CMD_PAUSE" ref="gga7052fff99903d76aa4d7d2776428e662a3b664c62146c453c08f6d860612f1f78" args="" -->MP3CMD_PAUSE</em>&nbsp;</td><td>
+<p>Pause. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga7052fff99903d76aa4d7d2776428e662a25db98e54a7d0bc24638e247da38c64c"></a><!-- doxytag: member="MP3CMD_SETRATE" ref="gga7052fff99903d76aa4d7d2776428e662a25db98e54a7d0bc24638e247da38c64c" args="" -->MP3CMD_SETRATE</em>&nbsp;</td><td>
+<p>Set rate. </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga42ad801b4a9a9465be1907e9770235de"></a><!-- doxytag: member="as_lib9.h::SoundCommand" ref="ga42ad801b4a9a9465be1907e9770235de" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00089.htm#ga42ad801b4a9a9465be1907e9770235de">SoundCommand</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sound commands. </p>
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga42ad801b4a9a9465be1907e9770235dea6c577b5d2d26fe506b76e650d56b8fc6"></a><!-- doxytag: member="SNDCMD_STOP" ref="gga42ad801b4a9a9465be1907e9770235dea6c577b5d2d26fe506b76e650d56b8fc6" args="" -->SNDCMD_STOP</em>&nbsp;</td><td>
+<p>Stop. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga42ad801b4a9a9465be1907e9770235deaaf73015fbd571b7f87d017bdf4ddcb9a"></a><!-- doxytag: member="SNDCMD_PLAY" ref="gga42ad801b4a9a9465be1907e9770235deaaf73015fbd571b7f87d017bdf4ddcb9a" args="" -->SNDCMD_PLAY</em>&nbsp;</td><td>
+<p>Play. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga42ad801b4a9a9465be1907e9770235deaaf791c3ff6281a03a82dc04b93908c7b"></a><!-- doxytag: member="SNDCMD_SETVOLUME" ref="gga42ad801b4a9a9465be1907e9770235deaaf791c3ff6281a03a82dc04b93908c7b" args="" -->SNDCMD_SETVOLUME</em>&nbsp;</td><td>
+<p>Set volume. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga42ad801b4a9a9465be1907e9770235dea17f79e3c3914bfacc2a328e9b95baad6"></a><!-- doxytag: member="SNDCMD_SETPAN" ref="gga42ad801b4a9a9465be1907e9770235dea17f79e3c3914bfacc2a328e9b95baad6" args="" -->SNDCMD_SETPAN</em>&nbsp;</td><td>
+<p>Set pan. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga42ad801b4a9a9465be1907e9770235dea7d9611110aa38edf04ff98373747bc45"></a><!-- doxytag: member="SNDCMD_SETRATE" ref="gga42ad801b4a9a9465be1907e9770235dea7d9611110aa38edf04ff98373747bc45" args="" -->SNDCMD_SETRATE</em>&nbsp;</td><td>
+<p>Set rate. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga42ad801b4a9a9465be1907e9770235deaac47718dbd1c8b5e006600d82900301d"></a><!-- doxytag: member="SNDCMD_SETMASTERVOLUME" ref="gga42ad801b4a9a9465be1907e9770235deaac47718dbd1c8b5e006600d82900301d" args="" -->SNDCMD_SETMASTERVOLUME</em>&nbsp;</td><td>
+<p>Set master volume. </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga50571e83028d4a2793b34084a2858c26"></a><!-- doxytag: member="as_lib9.h::MP3Status" ref="ga50571e83028d4a2793b34084a2858c26" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00089.htm#ga50571e83028d4a2793b34084a2858c26">MP3Status</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>MP3 states. </p>
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga50571e83028d4a2793b34084a2858c26a35e7a723252468e96ded6961e6d0ead2"></a><!-- doxytag: member="MP3ST_STOPPED" ref="gga50571e83028d4a2793b34084a2858c26a35e7a723252468e96ded6961e6d0ead2" args="" -->MP3ST_STOPPED</em>&nbsp;</td><td>
+<p>Stopped. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga50571e83028d4a2793b34084a2858c26a53dd1fd86576363d8940f964de41704d"></a><!-- doxytag: member="MP3ST_PLAYING" ref="gga50571e83028d4a2793b34084a2858c26a53dd1fd86576363d8940f964de41704d" args="" -->MP3ST_PLAYING</em>&nbsp;</td><td>
+<p>Playing. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga50571e83028d4a2793b34084a2858c26a9f8df37a27781d0a32791715174ae304"></a><!-- doxytag: member="MP3ST_PAUSED" ref="gga50571e83028d4a2793b34084a2858c26a9f8df37a27781d0a32791715174ae304" args="" -->MP3ST_PAUSED</em>&nbsp;</td><td>
+<p>Paused. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga50571e83028d4a2793b34084a2858c26ab15729c18835febc8654f51412ce58e0"></a><!-- doxytag: member="MP3ST_OUT_OF_DATA" ref="gga50571e83028d4a2793b34084a2858c26ab15729c18835febc8654f51412ce58e0" args="" -->MP3ST_OUT_OF_DATA</em>&nbsp;</td><td>
+<p>Out of data. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga50571e83028d4a2793b34084a2858c26afa30835937f9d047d4601c3fcca93b0b"></a><!-- doxytag: member="MP3ST_DECODE_ERROR" ref="gga50571e83028d4a2793b34084a2858c26afa30835937f9d047d4601c3fcca93b0b" args="" -->MP3ST_DECODE_ERROR</em>&nbsp;</td><td>
+<p>Decoding error. </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga50571e83028d4a2793b34084a2858c26a75167841d450dbcde2aac2a4d45e6258"></a><!-- doxytag: member="MP3ST_INITFAILED" ref="gga50571e83028d4a2793b34084a2858c26a75167841d450dbcde2aac2a4d45e6258" args="" -->MP3ST_INITFAILED</em>&nbsp;</td><td>
+<p>Initialization failed. </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5fe3c32dd461edde935379416fb1f057"></a><!-- doxytag: member="as_lib9.h::AS_MODE" ref="ga5fe3c32dd461edde935379416fb1f057" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00089.htm#ga5fe3c32dd461edde935379416fb1f057">AS_MODE</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ASlib modes. </p>
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga5fe3c32dd461edde935379416fb1f057aa0b62456a06f6d39971f05776c8ace88"></a><!-- doxytag: member="AS_MODE_MP3" ref="gga5fe3c32dd461edde935379416fb1f057aa0b62456a06f6d39971f05776c8ace88" args="" -->AS_MODE_MP3</em>&nbsp;</td><td>
+<p>use mp3 </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga5fe3c32dd461edde935379416fb1f057a6d5d8f195263b59e8d51b8ed279cae4e"></a><!-- doxytag: member="AS_MODE_SURROUND" ref="gga5fe3c32dd461edde935379416fb1f057a6d5d8f195263b59e8d51b8ed279cae4e" args="" -->AS_MODE_SURROUND</em>&nbsp;</td><td>
+<p>use surround </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga5fe3c32dd461edde935379416fb1f057aede8822c11ac2e578b7da9423e3d77a2"></a><!-- doxytag: member="AS_MODE_16CH" ref="gga5fe3c32dd461edde935379416fb1f057aede8822c11ac2e578b7da9423e3d77a2" args="" -->AS_MODE_16CH</em>&nbsp;</td><td>
+<p>use all DS channels </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga5fe3c32dd461edde935379416fb1f057a7558b3dd57ad2e8ee13f5b83f55bd853"></a><!-- doxytag: member="AS_MODE_8CH" ref="gga5fe3c32dd461edde935379416fb1f057a7558b3dd57ad2e8ee13f5b83f55bd853" args="" -->AS_MODE_8CH</em>&nbsp;</td><td>
+<p>use DS channels 1-8 only </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga24d02ef022ce3df717d8a1ef25c4701d"></a><!-- doxytag: member="as_lib9.h::AS_DELAY" ref="ga24d02ef022ce3df717d8a1ef25c4701d" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00089.htm#ga24d02ef022ce3df717d8a1ef25c4701d">AS_DELAY</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Delay values. </p>
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga24d02ef022ce3df717d8a1ef25c4701da722299230f75d3fba2fce2c606bcb866"></a><!-- doxytag: member="AS_NO_DELAY" ref="gga24d02ef022ce3df717d8a1ef25c4701da722299230f75d3fba2fce2c606bcb866" args="" -->AS_NO_DELAY</em>&nbsp;</td><td>
+<p>0 ms delay </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga24d02ef022ce3df717d8a1ef25c4701dacc410a17b7d8f704e26ea4bbfcea8a4e"></a><!-- doxytag: member="AS_SURROUND" ref="gga24d02ef022ce3df717d8a1ef25c4701dacc410a17b7d8f704e26ea4bbfcea8a4e" args="" -->AS_SURROUND</em>&nbsp;</td><td>
+<p>16 ms delay </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga24d02ef022ce3df717d8a1ef25c4701da7f2e2524a488a6b830408f89b3fd2383"></a><!-- doxytag: member="AS_REVERB" ref="gga24d02ef022ce3df717d8a1ef25c4701da7f2e2524a488a6b830408f89b3fd2383" args="" -->AS_REVERB</em>&nbsp;</td><td>
+<p>66 ms delay </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8fbf4416f16c941bf450b8facda4f374"></a><!-- doxytag: member="as_lib9.h::AS_SOUNDFORMAT" ref="ga8fbf4416f16c941bf450b8facda4f374" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="a00089.htm#ga8fbf4416f16c941bf450b8facda4f374">AS_SOUNDFORMAT</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Sound formats. </p>
+<dl><dt><b>Valeurs énumérées: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="gga8fbf4416f16c941bf450b8facda4f374a2ebe4878b1047076bc79cb38258815a9"></a><!-- doxytag: member="AS_PCM_8BIT" ref="gga8fbf4416f16c941bf450b8facda4f374a2ebe4878b1047076bc79cb38258815a9" args="" -->AS_PCM_8BIT</em>&nbsp;</td><td>
+<p>8-bit PCM </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga8fbf4416f16c941bf450b8facda4f374a9339f0174143f4456c81444b13ef9d6d"></a><!-- doxytag: member="AS_PCM_16BIT" ref="gga8fbf4416f16c941bf450b8facda4f374a9339f0174143f4456c81444b13ef9d6d" args="" -->AS_PCM_16BIT</em>&nbsp;</td><td>
+<p>16-bit PCM </p>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" id="gga8fbf4416f16c941bf450b8facda4f374a370d97e3091c88942886fb35bbb8630e"></a><!-- doxytag: member="AS_ADPCM" ref="gga8fbf4416f16c941bf450b8facda4f374a370d97e3091c88942886fb35bbb8630e" args="" -->AS_ADPCM</em>&nbsp;</td><td>
+<p>4-bit ADPCM </p>
+</td></tr>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:39 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

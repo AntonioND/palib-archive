@@ -1,0 +1,17 @@
+
+  .---------------------------------------------------.
+  | PAlibAppTemplate for VC++ 2008/2005 1.0 installer |
+  '---------------------------------------------------'
+
+  Welcome to the PAlibAppTemplate installer.
+
+  Make sure you launch this file with administrator privileges in Windows
+  Vista and 7 because of the Windows File Protection (it includes the Program
+  Files folder). To do so, right click on the file and select "Run as
+  Administrator".
+
+  The JavaScript used to install the PAlibAppTemplate uses FileSystemObject to
+  copy files, making some antivirus programs flag it as a dangerous script.
+  When the warning pops up click on "Ignore" or on a similar button.
+
+  >> 

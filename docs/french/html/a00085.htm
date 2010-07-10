@@ -1,0 +1,1090 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Text output system</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Text output system</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4296db5827d91055c8bbcb4f5340a271"></a><!-- doxytag: member="Text::PA_InitText" ref="ga4296db5827d91055c8bbcb4f5340a271" args="" -->
+#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga4296db5827d91055c8bbcb4f5340a271">PA_InitText</a>&nbsp;&nbsp;&nbsp;PA_LoadDefaultText</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Old name for <a class="el" href="a00085.htm#ga3a9eca528c797f0ce0a7a44dd5b92093" title="Charger et initialiser le texte. Ne marche qu&#39;en modes 0-2.">PA_LoadDefaultText()</a>. <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga00da81397836bc6a51c89c3d95bbd928">PA_SetTileLetter</a>(screen, x, y, letter)&nbsp;&nbsp;&nbsp;PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire une lettre à l'écran.  <a href="#ga00da81397836bc6a51c89c3d95bbd928"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga72a2ff1c74b4ac81cc1a09de7bc4eebc">PA_InitCustomText</a>(screen, bg_select, text)&nbsp;&nbsp;&nbsp;PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Initialiser le texte en utilisant une police perso  <a href="#ga72a2ff1c74b4ac81cc1a09de7bc4eebc"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga87c74338ab22d545f783b7c864b01c8b">PA_ShowFont</a>(screen)&nbsp;&nbsp;&nbsp;PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret autrement.  <a href="#ga87c74338ab22d545f783b7c864b01c8b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga189ba539ef28e44e36dd0a04dfe81638">PA_8bitCustomFont</a>(bit8_slot, bit8_font)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[DEPRECATED] Ajouter une police perso dans le systeme de texte 8bit !! Doit être convertie avec PAGfx  <a href="#ga189ba539ef28e44e36dd0a04dfe81638"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga3a9eca528c797f0ce0a7a44dd5b92093">PA_LoadDefaultText</a> (u8 screen, u8 bg_select)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Charger et initialiser le texte. Ne marche qu'en modes 0-2.  <a href="#ga3a9eca528c797f0ce0a7a44dd5b92093"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga8b5618690d40844fe4453f613064d485">PA_SetTextTileCol</a> (u8 screen, u8 color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change la couleur du texte à écrire (ne change pas la couleur du texte déjà écrit).  <a href="#ga8b5618690d40844fe4453f613064d485"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga5f593cfd24cef2ef8b6a4fa3dea44209">PA_OutputText</a> (u8 screen, u16 x, u16 y, const char *text,...)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte à l'écran. Ne marche qu'en modes 0-2.  <a href="#ga5f593cfd24cef2ef8b6a4fa3dea44209"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga2a62873bb947af9e28f69b619bfb6a83">PA_OutputSimpleText</a> (u8 screen, u16 x, u16 y, const char *text)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte tout simple à l'écran. Ne marche qu'en modes 0-2. Beaucoup plus rapide que PA_OutputText, masi aussi beaucoup plus limité... Renvoie le nombre de lettres.  <a href="#ga2a62873bb947af9e28f69b619bfb6a83"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga2e8f4869736fadb5ac162034058a573f">PA_BoxText</a> (u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nmobre de lettre écrites.  <a href="#ga2e8f4869736fadb5ac162034058a573f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga9122663a8608f4951ca64017c5a4ff65">PA_BoxTextNoWrap</a> (u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nombre de lettre écrites. Cette fonction coupe les mots...  <a href="#ga9122663a8608f4951ca64017c5a4ff65"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga81f531853cbc4208554a311079dcd3da">PA_SetTextCol</a> (u8 screen, u16 r, u16 g, u16 b)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Changer la couleur de base du texte à l'écran.  <a href="#ga81f531853cbc4208554a311079dcd3da"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga7b81b3f7019fd777831e5e6c699e22ce">PA_LoadText</a> (u8 screen, u8 bg_number, const <a class="el" href="a00006.htm">PA_BgStruct</a> *font)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialiser le texte en utilisant une police perso.  <a href="#ga7b81b3f7019fd777831e5e6c699e22ce"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga11e93b4fd13dcf1acec255f7c75f74a6">PA_8bitText</a> (u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, const char *text, u8 color, u8 size, u8 transp, s32 limit)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cette fonction permet d'écrire du texte à chasse variable à l'écran. Elle nécessite d'avoir un fond dessinable de 8 bits (cf PA_Init8bitBg). Les options sont la taille, la transparence, et les limites, ainsi que la couleur. Seul inconvénient : il n'accepte pas les commande comme d, etc... La fonction renvoie le nombre de charactères écrits.  <a href="#ga11e93b4fd13dcf1acec255f7c75f74a6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">s16&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga08ea2a8f301d3d5ad869a7e421e03678">PA_CenterSmartText</a> (u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, const char *text, u8 color, u8 size, u8 transp)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">En gros la meme chose que SmartText, mais en centré...  <a href="#ga08ea2a8f301d3d5ad869a7e421e03678"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga97f6d564e065f96be45a7d0d5e9da3f6">PA_AddBitmapFont</a> (int slot, const <a class="el" href="a00006.htm">PA_BgStruct</a> *font)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ajouter une police perso dans le système de texte 8bit/16bit.  <a href="#ga97f6d564e065f96be45a7d0d5e9da3f6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#gaa2a9d6f874c8288eb01e2050dda2553b">PA_InitTextBorders</a> (u8 screen, u8 x1, u8 y1, u8 x2, u8 y2)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialise une boite à texte, avec la bordure. Ceci rend l'utilisation des textes délimités bien plus simple.  <a href="#gaa2a9d6f874c8288eb01e2050dda2553b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#gaf9ede3fea41eaae1a7dc154a2ff07b07">PA_EraseTextBox</a> (u8 screen)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Efface le text d'un boite à texte... Nécessite qu'il ait été initialisé avec PA_InitTextBorders.  <a href="#gaf9ede3fea41eaae1a7dc154a2ff07b07"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#gaa9f1da03019b0939753a5f4055958b1c">PA_SimpleBoxText</a> (u8 screen, const char *text, u32 limit)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrit du texte dans une zone délimitée. Similaire à PA_BoxText, mais sans avoir besoin de délimiter.  <a href="#gaa9f1da03019b0939753a5f4055958b1c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga5db1fa2094a65db0e66c1947e58b6a58">PA_ClearTextBg</a> (u8 screen)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Effacer tout le texte sur un écran donné.  <a href="#ga5db1fa2094a65db0e66c1947e58b6a58"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga9b05d6d03e77dceb5b4cb489a59268e1">PA_Print</a> (u8 screen, const char *text,...)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Ecrire du texte à l'écran. Marche comme la fonction printf.  <a href="#ga9b05d6d03e77dceb5b4cb489a59268e1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00085.htm#ga1b4607997682a71dfa943beb87aaea55">PA_PrintLetter</a> (u8 screen, char letter)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Comme PA_Print, mais juste pour une lettre.  <a href="#ga1b4607997682a71dfa943beb87aaea55"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Allows you to output text... </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ga00da81397836bc6a51c89c3d95bbd928"></a><!-- doxytag: member="PA_Text.h::PA_SetTileLetter" ref="ga00da81397836bc6a51c89c3d95bbd928" args="(screen, x, y, letter)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_SetTileLetter</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">letter&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_SetMapTileAll(screen, PAbgtext[screen], x, y, (PA_textmap[screen][(u16)letter]&amp;((1&lt;&lt;12)-1)) + (PAtext_pal[screen] &lt;&lt; 12))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ecrire une lettre à l'écran. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où afficher la lettre </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où afficher la lettre </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>letter</em>&nbsp;</td><td>Lettre... 'a', 'Z', etc... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga72a2ff1c74b4ac81cc1a09de7bc4eebc"></a><!-- doxytag: member="PA_Text.h::PA_InitCustomText" ref="ga72a2ff1c74b4ac81cc1a09de7bc4eebc" args="(screen, bg_select, text)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_InitCustomText</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bg_select, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">text&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_InitCustomTextEx(screen, bg_select, text##_Tiles, text##_Map, text##_Pal)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[DEPRECATED] Initialiser le texte en utilisant une police perso </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000016">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Image de la police, converti avec PAGfx </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga87c74338ab22d545f783b7c864b01c8b"></a><!-- doxytag: member="PA_Text.h::PA_ShowFont" ref="ga87c74338ab22d545f783b7c864b01c8b" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_ShowFont</td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_LoadBgMap(screen, PAbgtext[screen], (void*)PA_textmap[screen], BG_256X256)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Affiche la police utilisée. C'est juste utile pour du débuggage, aucun intéret autrement. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga189ba539ef28e44e36dd0a04dfe81638"></a><!-- doxytag: member="PA_Text.h::PA_8bitCustomFont" ref="ga189ba539ef28e44e36dd0a04dfe81638" args="(bit8_slot, bit8_font)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_8bitCustomFont</td>
+          <td>(</td>
+          <td class="paramtype">bit8_slot, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bit8_font&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    PA_DEPRECATED_MACRO;\
+    bittext_maps[bit8_slot] = (u16*)(<span class="keywordtype">void</span>*)bit8_font##_Map; \
+    bit8_tiles[bit8_slot] = (u8*)bit8_font##_Tiles; \
+    pa_bittextdefaultsize[bit8_slot] = (u8*)bit8_font##_Sizes;  \
+    pa_bittextpoliceheight[bit8_slot] = bit8_font##_Height;\
+}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[DEPRECATED] Ajouter une police perso dans le systeme de texte 8bit !! Doit être convertie avec PAGfx </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.htm#_deprecated000017">Obsolète:</a></b></dt><dd></dd></dl>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>bit8_slot</em>&nbsp;</td><td>Slot pour ajouter la police. Les slots 0-4 sont utilisés pour les polices par défaut de PAlib, et 5-9 sont libres. On peut néanmoins charger par-dessus les polices PAlib si on veut </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bit8_font</em>&nbsp;</td><td>Nom de la police... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga3a9eca528c797f0ce0a7a44dd5b92093"></a><!-- doxytag: member="PA_Text.h::PA_LoadDefaultText" ref="ga3a9eca528c797f0ce0a7a44dd5b92093" args="(u8 screen, u8 bg_select)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadDefaultText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Charger et initialiser le texte. Ne marche qu'en modes 0-2. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond que l'on veut tourner (0-3) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00002.htm#a4">Backgrounds/Effects/Mode7/source/main.c</a>, et <a class="el" href="a00001.htm#a1">Text/Normal/HelloWorld/source/main.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga8b5618690d40844fe4453f613064d485"></a><!-- doxytag: member="PA_Text.h::PA_SetTextTileCol" ref="ga8b5618690d40844fe4453f613064d485" args="(u8 screen, u8 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetTextTileCol </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Change la couleur du texte à écrire (ne change pas la couleur du texte déjà écrit). </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 0 à 6, suffit de tester pour voir le résultat :) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5f593cfd24cef2ef8b6a4fa3dea44209"></a><!-- doxytag: member="PA_Text.h::PA_OutputText" ref="ga5f593cfd24cef2ef8b6a4fa3dea44209" args="(u8 screen, u16 x, u16 y, const char *text,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_OutputText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ecrire du texte à l'écran. Ne marche qu'en modes 0-2. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où commencer à afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où commencer à afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Chaine de caractère à écrire. On dispose des commandes suivantes : %s pour une autre chaine de caractères, %d pour écrire la valeur d'une variables, %fX pour afficher un nombre avec X chiffres après la virgule, \n pour aller à la ligne. Voici un exemple : PA_OutputText(0, 0, 1, "Mon nom est %s et je n'ai que %d dents...", "Mollusk", 20); </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00002.htm#a10">Backgrounds/Effects/Mode7/source/main.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga2a62873bb947af9e28f69b619bfb6a83"></a><!-- doxytag: member="PA_Text.h::PA_OutputSimpleText" ref="ga2a62873bb947af9e28f69b619bfb6a83" args="(u8 screen, u16 x, u16 y, const char *text)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u16 PA_OutputSimpleText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ecrire du texte tout simple à l'écran. Ne marche qu'en modes 0-2. Beaucoup plus rapide que PA_OutputText, masi aussi beaucoup plus limité... Renvoie le nombre de lettres. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où commencer à afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où commencer à afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Chaine de caractère à écrire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Exemples: </b></dt><dd><a class="el" href="a00001.htm#a2">Text/Normal/HelloWorld/source/main.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga2e8f4869736fadb5ac162034058a573f"></a><!-- doxytag: member="PA_Text.h::PA_BoxText" ref="ga2e8f4869736fadb5ac162034058a573f" args="(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u32 PA_BoxText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>basex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>basey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>maxx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>maxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>limit</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nmobre de lettre écrites. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où commencer à afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où commencer à afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxx</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où finir d'afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxy</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où finir d'afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Chaine de caractère à écrire. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>limit</em>&nbsp;</td><td>Nombre maximum de lettres à afficher pour ce coup-ci </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9122663a8608f4951ca64017c5a4ff65"></a><!-- doxytag: member="PA_Text.h::PA_BoxTextNoWrap" ref="ga9122663a8608f4951ca64017c5a4ff65" args="(u8 screen, u16 basex, u16 basey, u16 maxx, u16 maxy, const char *text, u32 limit)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">u32 PA_BoxTextNoWrap </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>basex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>basey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>maxx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>maxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>limit</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Permet d'écrire du texte à l'écran, dans une boite délimitée au choix, et en choisissant le nombre de lettres à afficher (peut être utile pour afficher du texte en train de se taper, sinon suffit de mettre 10000 pour afficher tout d'un coup) Renvoie le nombre de lettre écrites. Cette fonction coupe les mots... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où commencer à afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où commencer à afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxx</em>&nbsp;</td><td>Coordonnée X en TILES (0-31) où finir d'afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxy</em>&nbsp;</td><td>Coordonnée Y en TILES (0-19) où finir d'afficher le text </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Chaine de caractère à écrire. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>limit</em>&nbsp;</td><td>Nombre maximum de lettres à afficher pour ce coup-ci </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga81f531853cbc4208554a311079dcd3da"></a><!-- doxytag: member="PA_Text.h::PA_SetTextCol" ref="ga81f531853cbc4208554a311079dcd3da" args="(u8 screen, u16 r, u16 g, u16 b)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_SetTextCol </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>b</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Changer la couleur de base du texte à l'écran. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>r</em>&nbsp;</td><td>Quantité de rouge (0-31) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>g</em>&nbsp;</td><td>Quantité de vert (0-31) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>b</em>&nbsp;</td><td>Quantité de bleu (0-31) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7b81b3f7019fd777831e5e6c699e22ce"></a><!-- doxytag: member="PA_Text.h::PA_LoadText" ref="ga7b81b3f7019fd777831e5e6c699e22ce" args="(u8 screen, u8 bg_number, const PA_BgStruct *font)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_LoadText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>bg_select</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00006.htm">PA_BgStruct</a> *&nbsp;</td>
+          <td class="paramname"> <em>font</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialiser le texte en utilisant une police perso. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bg_select</em>&nbsp;</td><td>Numéro du fond... </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>font</em>&nbsp;</td><td>Pointeur vers la police </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga11e93b4fd13dcf1acec255f7c75f74a6"></a><!-- doxytag: member="PA_Text.h::PA_8bitText" ref="ga11e93b4fd13dcf1acec255f7c75f74a6" args="(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, const char *text, u8 color, u8 size, u8 transp, s32 limit)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">s16 PA_8bitText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>maxx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>maxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>transp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s32&nbsp;</td>
+          <td class="paramname"> <em>limit</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Cette fonction permet d'écrire du texte à chasse variable à l'écran. Elle nécessite d'avoir un fond dessinable de 8 bits (cf PA_Init8bitBg). Les options sont la taille, la transparence, et les limites, ainsi que la couleur. Seul inconvénient : il n'accepte pas les commande comme d, etc... La fonction renvoie le nombre de charactères écrits. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Coordonnée X du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Coordonnée Y du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxx</em>&nbsp;</td><td>Coordonnée X du coin inférieur droit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxy</em>&nbsp;</td><td>Coordonnée Y du coin inférieur droit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Texte, tel que "Hello World" </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de la palette à utiliser (0-255) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>Taille du texte, de 0 (vraiment petit) à 4 (assez grand) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>transp</em>&nbsp;</td><td>Transparence. Mettre à 0 effecera tout dessin de la zone de texte. 1 écrira le texte par-dessus le dessin sans l'effacer. 2 n'écrira rien (juste pour compter les lettres). 3 fera un texte tourné à 90°. 4 est un texte tourné dans l'autre sens. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>limit</em>&nbsp;</td><td>On peut fixer une limite au nombre de caractères. Ceci peut etre utile pour dessiner un texte progressivement, en augmentant de 1 le nombre de caractères à chaque boucle.... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga08ea2a8f301d3d5ad869a7e421e03678"></a><!-- doxytag: member="PA_Text.h::PA_CenterSmartText" ref="ga08ea2a8f301d3d5ad869a7e421e03678" args="(u8 screen, s16 basex, s16 basey, s16 maxx, s16 maxy, const char *text, u8 color, u8 size, u8 transp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">s16 PA_CenterSmartText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>basey</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>maxx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">s16&nbsp;</td>
+          <td class="paramname"> <em>maxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>transp</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>En gros la meme chose que SmartText, mais en centré... </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basex</em>&nbsp;</td><td>Coordonnée X du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>basey</em>&nbsp;</td><td>Coordonnée Y du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxx</em>&nbsp;</td><td>Coordonnée X du coin inférieur droit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>maxy</em>&nbsp;</td><td>Coordonnée Y du coin inférieur droit </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Texte, tel que "Hello World" </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de la palette à utiliser (0-255) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>size</em>&nbsp;</td><td>Taille du texte, de 0 (vraiment petit) à 4 (assez grand) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>transp</em>&nbsp;</td><td>Transparence. Mettre à 0 effecera tout dessin de la zone de texte. 1 écrira le texte par-dessus le dessin sans l'effacer. 2 n'écrira rien (juste pour compter les lettres). 3 fera un texte tourné à 90°. 4 est un texte tourné dans l'autre sens. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga97f6d564e065f96be45a7d0d5e9da3f6"></a><!-- doxytag: member="PA_Text.h::PA_AddBitmapFont" ref="ga97f6d564e065f96be45a7d0d5e9da3f6" args="(int slot, const PA_BgStruct *font)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_AddBitmapFont </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>slot</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="a00006.htm">PA_BgStruct</a> *&nbsp;</td>
+          <td class="paramname"> <em>font</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ajouter une police perso dans le système de texte 8bit/16bit. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>slot</em>&nbsp;</td><td>Slot pour ajouter la police. Les slots 0-4 sont utilisés pour les polices par défaut de PAlib, et 5-9 sont libres. On peut néanmoins charger par-dessus les polices PAlib si on veut. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>font</em>&nbsp;</td><td>Pointeur vers le police perso. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa2a9d6f874c8288eb01e2050dda2553b"></a><!-- doxytag: member="PA_Text.h::PA_InitTextBorders" ref="gaa2a9d6f874c8288eb01e2050dda2553b" args="(u8 screen, u8 x1, u8 y1, u8 x2, u8 y2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InitTextBorders </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>y2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Initialise une boite à texte, avec la bordure. Ceci rend l'utilisation des textes délimités bien plus simple. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Limite gauche en tiles </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Haut </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Droite </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Bas </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf9ede3fea41eaae1a7dc154a2ff07b07"></a><!-- doxytag: member="PA_Text.h::PA_EraseTextBox" ref="gaf9ede3fea41eaae1a7dc154a2ff07b07" args="(u8 screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_EraseTextBox </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Efface le text d'un boite à texte... Nécessite qu'il ait été initialisé avec PA_InitTextBorders. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa9f1da03019b0939753a5f4055958b1c"></a><!-- doxytag: member="PA_Text.h::PA_SimpleBoxText" ref="gaa9f1da03019b0939753a5f4055958b1c" args="(u8 screen, const char *text, u32 limit)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline u32 PA_SimpleBoxText </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u32&nbsp;</td>
+          <td class="paramname"> <em>limit</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ecrit du texte dans une zone délimitée. Similaire à PA_BoxText, mais sans avoir besoin de délimiter. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Chaine de caractère à écrire. </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>limit</em>&nbsp;</td><td>Nombre maximum de lettres à afficher pour ce coup-ci </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5db1fa2094a65db0e66c1947e58b6a58"></a><!-- doxytag: member="PA_Text.h::PA_ClearTextBg" ref="ga5db1fa2094a65db0e66c1947e58b6a58" args="(u8 screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_ClearTextBg </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Effacer tout le texte sur un écran donné. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9b05d6d03e77dceb5b4cb489a59268e1"></a><!-- doxytag: member="PA_Text.h::PA_Print" ref="ga9b05d6d03e77dceb5b4cb489a59268e1" args="(u8 screen, const char *text,...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_Print </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&nbsp;</td>
+          <td class="paramname"> <em>...</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Ecrire du texte à l'écran. Marche comme la fonction printf. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>text</em>&nbsp;</td><td>Chaine de caractère à écrire. On dispose des commandes suivantes : %s pour une autre chaine de caractères, %d pour écrire la valeur d'une variables, %fX pour afficher un nombre avec X chiffres après la virgule, \n pour aller à la ligne. Voici un exemple : PA_OutputText(0, 0, 1, "Mon nom est %s et je n'ai que %d dents...", "Mollusk", 20); </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1b4607997682a71dfa943beb87aaea55"></a><!-- doxytag: member="PA_Text.h::PA_PrintLetter" ref="ga1b4607997682a71dfa943beb87aaea55" args="(u8 screen, char letter)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static inline void PA_PrintLetter </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>letter</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Comme PA_Print, mais juste pour une lettre. </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>letter</em>&nbsp;</td><td>Une lettre... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:39 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

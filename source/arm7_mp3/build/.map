@@ -1,0 +1,1280 @@
+Archive member included because of file (symbol)
+
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+                              main.o (PA_Init)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o) (PA_InitFifo)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+                              main.o (PA_InputGetAndSend)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+                              main.o (PA_LegacyIPCManage)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o) (PA_FifoMicMsg)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o) (PA_FifoPSGMsg)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+                              main.o (AS_MP3Engine)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o) (getAllocationSize)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (xmp3_samplesPerFrameTab)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (xmp3_CheckPadBit)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (xmp3_AllocateBuffers)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (xmp3_Dequantize)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o) (xmp3_DequantChannel)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (xmp3_DecodeHuffman)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o) (xmp3_huffTable)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (xmp3_IMDCT)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (xmp3_UnpackScaleFactors)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o) (xmp3_MidSideProc)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (xmp3_Subband)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o) (xmp3_imdctWin)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o) (xmp3_PolyphaseStereo)
+c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o) (xmp3_FDCT32)
+c:/devkitPro/libnds/lib\libnds7.a(audio.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o) (enableSound)
+c:/devkitPro/libnds/lib\libnds7.a(clock.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o) (initClockIRQ)
+c:/devkitPro/libnds/lib\libnds7.a(input.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o) (inputGetAndSend)
+c:/devkitPro/libnds/lib\libnds7.a(microphone.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o) (micReadData8)
+c:/devkitPro/libnds/lib\libnds7.a(spi.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o) (writePowerManagement)
+c:/devkitPro/libnds/lib\libnds7.a(system.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o) (installSystemFIFO)
+c:/devkitPro/libnds/lib\libnds7.a(touch.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o) (touchRead)
+c:/devkitPro/libnds/lib\libnds7.a(userSettings.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o) (readUserSettings)
+c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+                              c:/devkitPro/libnds/lib\libnds7.a(audio.o) (fifoSendValue32)
+c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+                              main.o (irqSet)
+c:/devkitPro/libnds/lib\libnds7.a(libnds_exit.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib/ds_arm7_crt0.o (__libnds_exit)
+c:/devkitPro/libnds/lib\libnds7.a(timers.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o) (timerStart)
+c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+                              main.o (swiWaitForVBlank)
+c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+                              c:/devkitPro/libnds/lib\libnds7.a(clock.o) (swiDelay)
+c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+                              c:/devkitPro/libnds/lib\libnds7.a(interrupts.o) (IntrMain)
+c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o) (swiSoftReset)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_divsi3.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o) (__aeabi_idiv)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_dvmd_tls.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_divsi3.o) (__aeabi_idiv0)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-init.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib/ds_arm7_crt0.o (__libc_init_array)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o) (free)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mallocr.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o) (_malloc_r)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memcpy.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o) (memcpy)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memmove.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o) (memmove)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memset.o)
+                              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o) (memset)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mlock.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mallocr.o) (__malloc_lock)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-freer.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o) (_free_r)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-impure.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o) (_impure_ptr)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(sbrk.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mallocr.o) (_sbrk_r)
+c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(malloc_vars.o)
+                              c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(sbrk.o) (fake_heap_end)
+
+Allocating common symbols
+Common symbol       size              file
+
+fifo_datamsg_data   0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+nAudioBufStart      0x4               c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+fifo_buffer         0x400             c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+audioBuf            0x1200            c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+irqTableAUX         0xc8              c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+fifo_value32_func   0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+fifo_address_func   0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+PA_IPC              0x4               c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+hMP3Decoder         0x4               c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+fifo_value32_data   0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+fifo_value32_queue  0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+fifo_data_queue     0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+Keys                0x1               c:/devkitPro/libnds/lib\libnds7.a(input.o)
+irqTable            0xc8              c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+readPtr             0x4               c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+bytesLeft           0x4               c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+fifo_address_data   0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+stereo              0x1               c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+nAudioBuf           0x4               c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+mp3FrameInfo        0x1c              c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+fifo_datamsg_func   0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+fifo_address_queue  0x40              c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x08000000         0x02000000
+iwram            0x037f8000         0x00018000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x037f8000                __iwram_start = 0x37f8000
+                0x03810000                __iwram_top = 0x3810000
+                0x0380ff00                __sp_irq = (__iwram_top - 0x100)
+                0x0380fe00                __sp_svc = (__sp_irq - 0x100)
+                0x0380fd00                __sp_usr = (__sp_svc - 0x100)
+                0x03fffff8                __irq_flags = 0x3fffff8
+                0x03ffffc0                __irq_flagsaux = 0x3ffffc0
+                0x03fffffc                __irq_vector = 0x3fffffc
+
+.init           0x037f8000       0xe8
+                0x037f8000                __text_start = .
+ *(.init)
+ .init          0x037f8000       0xd0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib/ds_arm7_crt0.o
+                0x037f8000                _start
+ .init          0x037f80d0        0xc c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crti.o
+                0x037f80d0                _init
+ .init          0x037f80dc        0xc c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtn.o
+                0x037f80e8                . = ALIGN (0x4)
+
+.plt
+ *(.plt)
+
+.text           0x037f80f0     0xa070
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x037f80f0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib/ds_arm7_crt0.o
+ .text          0x037f80f0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crti.o
+ .text          0x037f80f0       0x94 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+ .text          0x037f8184       0x68 main.o
+                0x037f8184                PA_VBL
+                0x037f8198                PA_VCount
+                0x037f81a8                main
+ .text          0x037f81ec       0x88 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+                0x037f81ec                PA_Init
+ .text          0x037f8274       0xe8 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+                0x037f8274                PA_FifoValHandler
+                0x037f82b8                PA_FifoMsgHandler
+                0x037f8328                PA_InitFifo
+ .text          0x037f835c       0xa4 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+                0x037f835c                PA_ReadMicVol
+                0x037f83a0                PA_InputGetAndSend
+ .text          0x037f8400      0x2c4 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+                0x037f8400                PA_SoundPlay
+                0x037f84c8                PA_SoundStop
+                0x037f84dc                PA_LegacySoundUpdates
+                0x037f8630                runNdsLoaderCheck
+                0x037f8668                PA_LegacyIPCManage
+ .text          0x037f86c4       0xb8 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+                0x037f86c4                PA_MicTimer
+                0x037f8740                PA_FifoMicMsg
+ .text          0x037f877c       0x58 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+                0x037f877c                PA_FifoPSGMsg
+ .text          0x037f87d4      0xb44 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+                0x037f87d4                AS_StereoDesinterleave
+                0x037f8898                AS_SetTimer
+                0x037f88f8                AS_MP3ClearBuffers
+                0x037f89b4                AS_MP3Stop
+                0x037f8a00                AS_RegenStreamCallback
+                0x037f8ce4                AS_RegenStream
+                0x037f8d44                AS_MP3Engine
+                0x037f8fc8                AS_InitMP3
+                0x037f9010                AS_SoundVBL
+                0x037f92e0                AS_Init
+ .text          0x037f9318      0x614 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+                0x037f9354                getAllocationSize
+                0x037f9360                MP3InitDecoder
+                0x037f9370                MP3FreeDecoder
+                0x037f9384                MP3FindSyncWord
+                0x037f93c4                MP3GetLastFrameInfo
+                0x037f944c                MP3GetNextFrameInfo
+                0x037f949c                MP3Decode
+ .text          0x037f992c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .text          0x037f992c      0x74c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+                0x037f992c                xmp3_SetBitstreamPointer
+                0x037f9940                xmp3_GetBits
+                0x037f9a54                xmp3_CalcBitsUsed
+                0x037f9a70                xmp3_CheckPadBit
+                0x037f9aa0                xmp3_UnpackFrameHeader
+                0x037f9d1c                xmp3_UnpackSideInfo
+ .text          0x037fa078      0x188 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+                0x037fa078                xmp3_AllocateBuffers
+                0x037fa158                xmp3_FreeBuffers
+ .text          0x037fa200      0x390 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+                0x037fa200                xmp3_Dequantize
+ .text          0x037fa590      0x588 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+                0x037fa778                xmp3_DequantChannel
+ .text          0x037fab18      0x8cc c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+                0x037fab18                xmp3_DecodeHuffman
+ .text          0x037fb3e4        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .text          0x037fb3e4     0x11a8 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+                0x037fb9d4                xmp3_IMDCT
+ .text          0x037fc58c      0x828 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+                0x037fc58c                xmp3_UnpackScaleFactors
+ .text          0x037fcdb4      0x874 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+                0x037fcdb4                xmp3_MidSideProc
+                0x037fce40                xmp3_IntensityProcMPEG1
+                0x037fd274                xmp3_IntensityProcMPEG2
+ .text          0x037fd628      0x178 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+                0x037fd628                xmp3_Subband
+ .text          0x037fd7a0        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .text          0x037fd7a0      0x8b8 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+                0x037fd7a0                xmp3_PolyphaseStereo
+                0x037fdd0c                xmp3_PolyphaseMono
+ .text          0x037fe058      0x970 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+                0x037fe058                xmp3_FDCT32
+ .text          0x037fe9c8      0x3c4 c:/devkitPro/libnds/lib\libnds7.a(audio.o)
+                0x037fe9c8                getFreeChannel
+                0x037fe9ec                getFreePSGChannel
+                0x037fea10                getFreeNoiseChannel
+                0x037fea3c                installSoundFIFO
+                0x037fea60                disableSound
+                0x037feaa4                enableSound
+                0x037feae8                soundCommandHandler
+                0x037fec00                soundDataHandler
+                0x037fed6c                micSwapHandler
+ .text          0x037fed8c      0x430 c:/devkitPro/libnds/lib\libnds7.a(clock.o)
+                0x037fed8c                BCDToInteger
+                0x037fedb0                syncRTC
+                0x037fedc0                rtcTransaction
+                0x037feec0                rtcSetTime
+                0x037feee8                rtcGetTime
+                0x037fef48                rtcSetTimeAndDate
+                0x037fef78                rtcGetTimeAndDate
+                0x037fefd8                resyncClock
+                0x037ff0c0                rtcReset
+                0x037ff100                initClockIRQ
+                0x037ff188                integerToBCD
+ .text          0x037ff1bc       0xa8 c:/devkitPro/libnds/lib\libnds7.a(input.o)
+                0x037ff1bc                inputGetAndSend
+ .text          0x037ff264      0x288 c:/devkitPro/libnds/lib\libnds7.a(microphone.o)
+                0x037ff284                micReadData12
+                0x037ff2e4                micReadData8
+                0x037ff340                micTimerHandler
+                0x037ff3b8                micSetAmp
+                0x037ff410                micStopRecording
+                0x037ff468                micStartRecording
+ .text          0x037ff4ec      0x108 c:/devkitPro/libnds/lib\libnds7.a(spi.o)
+                0x037ff4ec                writePowerManagement
+                0x037ff554                readFirmware
+ .text          0x037ff5f4      0x140 c:/devkitPro/libnds/lib\libnds7.a(system.o)
+                0x037ff5f4                sleepEnabled
+                0x037ff600                systemShutDown
+                0x037ff610                installSystemFIFO
+                0x037ff628                systemSleep
+                0x037ff658                powerValueHandler
+ .text          0x037ff734      0x5a0 c:/devkitPro/libnds/lib\libnds7.a(touch.o)
+                0x037ff734                UpdateRange
+                0x037ff7bc                readTouchValue
+                0x037ff938                touchRead
+                0x037ff9a0                touchReadTemperature
+                0x037ff9d4                CheckStylus
+                0x037ffa68                touchReadXY
+ .text          0x037ffcd4       0xe8 c:/devkitPro/libnds/lib\libnds7.a(userSettings.o)
+                0x037ffcd4                readUserSettings
+ .text          0x037ffdbc      0xc3c c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+                0x037fff1c                fifoSendAddress
+                0x037fff58                fifoSendValue32
+                0x037fff9c                fifoGetAddress
+                0x03800008                fifoSetAddressHandler
+                0x03800074                fifoGetValue32
+                0x038000e0                fifoSetValue32Handler
+                0x0380014c                fifoCheckAddress
+                0x03800170                fifoCheckDatamsg
+                0x03800194                fifoCheckValue32
+                0x03800248                fifoInit
+                0x038003d8                fifoGetDatamsg
+                0x038008f0                fifoSetDatamsgHandler
+                0x03800980                fifoSendDatamsg
+ .text          0x038009f8      0x288 c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+                0x038009f8                irqDummy
+                0x038009fc                irqSet
+                0x03800a70                irqInit
+                0x03800ac0                irqInitHandler
+                0x03800afc                irqEnable
+                0x03800b5c                irqDisable
+                0x03800bc0                irqClear
+                0x03800bf4                irqSetAUX
+                0x03800c2c                irqClearAUX
+                0x03800c60                irqDisableAUX
+                0x03800c70                irqEnableAUX
+ .text          0x03800c80       0x40 c:/devkitPro/libnds/lib\libnds7.a(libnds_exit.o)
+                0x03800c80                systemErrorExit
+                0x03800c84                __libnds_exit
+ .text          0x03800cc0       0xf4 c:/devkitPro/libnds/lib\libnds7.a(timers.o)
+                0x03800cc0                timerElapsed
+                0x03800cf4                cpuStartTiming
+                0x03800d30                cpuEndTiming
+                0x03800d6c                timerStart
+ .text          0x03800db4       0x54 c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+                0x03800db4                swiWaitForVBlank
+                0x03800dc4                swiIntrWait
+ *fill*         0x03800e08        0x8 ff
+ .text          0x03800e10       0x70 c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+                0x03800e10                swiDelay
+                0x03800e14                swiSleep
+                0x03800e18                swiChangeSoundBias
+                0x03800e1c                swiDivide
+                0x03800e20                swiRemainder
+                0x03800e26                swiDivMod
+                0x03800e32                swiCopy
+                0x03800e36                swiFastCopy
+                0x03800e3a                swiSqrt
+                0x03800e3e                swiCRC16
+                0x03800e42                swiIsDebugger
+                0x03800e46                swiUnpackBits
+                0x03800e4a                swiDecompressLZSSWram
+                0x03800e4e                swiDecompressLZSSVram
+                0x03800e52                swiDecompressHuffman
+                0x03800e56                swiDecompressRLEWram
+                0x03800e5a                swiDecompressRLEVram
+                0x03800e5e                swiHalt
+                0x03800e62                swiGetSineTable
+                0x03800e66                swiGetPitchTable
+                0x03800e6a                swiGetVolumeTable
+                0x03800e6e                swiSwitchToGBAMode
+                0x03800e72                swiSetHaltCR
+ .text          0x03800e80       0xec c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+                0x03800e80                IntrMain
+ *fill*         0x03800f6c        0x4 ff
+ .text          0x03800f70       0x10 c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+                0x03800f70                swiSoftReset
+ .text          0x03800f80      0x148 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_divsi3.o)
+                0x03800f80                __divsi3
+                0x03800f80                __aeabi_idiv
+                0x038010a8                __aeabi_idivmod
+ .text          0x038010c8        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_dvmd_tls.o)
+                0x038010c8                __aeabi_idiv0
+                0x038010c8                __aeabi_ldiv0
+ .text          0x038010cc       0xc4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-init.o)
+                0x038010cc                __libc_init_array
+                0x0380114c                __libc_fini_array
+ .text          0x03801190       0x40 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o)
+                0x03801190                malloc
+                0x038011b0                free
+ .text          0x038011d0      0x710 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mallocr.o)
+                0x038011d0                _malloc_r
+ .text          0x038018e0       0xfc c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memcpy.o)
+                0x038018e0                memcpy
+ .text          0x038019dc      0x13c c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memmove.o)
+                0x038019dc                memmove
+ .text          0x03801b18       0xf8 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memset.o)
+                0x03801b18                memset
+ .text          0x03801c10        0x8 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mlock.o)
+                0x03801c10                __malloc_lock
+                0x03801c14                __malloc_unlock
+ .text          0x03801c18      0x360 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-freer.o)
+                0x03801c18                _malloc_trim_r
+                0x03801d14                _free_r
+ .text          0x03801f78        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-impure.o)
+ .text          0x03801f78       0x78 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(sbrk.o)
+                0x03801f78                _sbrk_r
+ .text          0x03801ff0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(malloc_vars.o)
+ .text          0x03801ff0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtend.o
+ .text          0x03801ff0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtn.o
+ .text.stub     0x03801ff0      0x120 linker stubs
+ *(.text.*personality*)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+                0x03802110                . = ALIGN (0x4)
+
+.v4_bx          0x00000000        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.fini           0x03802160       0x18
+ *(.fini)
+ .fini          0x03802160        0xc c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crti.o
+                0x03802160                _fini
+ .fini          0x0380216c        0xc c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtn.o
+                0x03802178                __text_end = .
+
+.rodata         0x03802178     0x3480
+ *(.rodata)
+ .rodata        0x03802178      0x508 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+                0x03802178                xmp3_samplerateTab
+                0x0380219c                xmp3_bitrateTab
+                0x038022ac                xmp3_samplesPerFrameTab
+                0x038022c0                xmp3_bitsPerSlotTab
+                0x038022c8                xmp3_sideBytesTab
+                0x038022d4                xmp3_slotTab
+                0x038023e4                xmp3_sfBandTable
+ .rodata        0x03802680      0x250 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .rodata        0x038028d0     0x2304 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+                0x038028d0                xmp3_huffTable
+                0x038049f4                xmp3_huffTabOffset
+                0x03804a74                xmp3_huffTabLookup
+                0x03804b74                xmp3_quadTable
+                0x03804bc4                xmp3_quadTabOffset
+                0x03804bcc                xmp3_quadTabMaxBits
+ .rodata        0x03804bd4       0x6c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .rodata        0x03804c40       0x68 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .rodata        0x03804ca8      0x86c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+                0x03804ca8                xmp3_imdctWin
+                0x03804ee8                xmp3_ISFMpeg1
+                0x03804f20                xmp3_ISFMpeg2
+                0x03805020                xmp3_ISFIIP
+                0x03805030                xmp3_uniqueIDTab
+                0x03805038                xmp3_csa
+                0x03805078                xmp3_coef32
+                0x038050f4                xmp3_polyCoef
+ .rodata        0x03805514       0xc0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .rodata        0x038055d4       0x1c c:/devkitPro/libnds/lib\libnds7.a(clock.o)
+ .rodata        0x038055f0        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-impure.o)
+                0x038055f0                _global_impure_ptr
+ *all.rodata*(*)
+ *(.roda)
+ *(.rodata.*)
+ .rodata.str1.4
+                0x038055f4        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-impure.o)
+ *(.gnu.linkonce.r*)
+                0x038055f8                . = ALIGN (0x4)
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x038055f8                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x038055f8                __exidx_end = .
+                0x038055f8                . = ALIGN (0x4)
+                0x038055f8                PROVIDE (__preinit_array_start, .)
+
+.preinit_array
+ *(.preinit_array)
+                0x038055f8                PROVIDE (__preinit_array_end, .)
+                0x038055f8                PROVIDE (__init_array_start, .)
+
+.init_array     0x038055f8        0x4
+ *(.init_array)
+ .init_array    0x038055f8        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+                0x038055fc                PROVIDE (__init_array_end, .)
+                0x038055fc                PROVIDE (__fini_array_start, .)
+
+.fini_array     0x038055fc        0x4
+ *(.fini_array)
+ .fini_array    0x038055fc        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+                0x03805600                PROVIDE (__fini_array_end, .)
+
+.ctors          0x03805600        0x0
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+                0x03805600                . = ALIGN (0x4)
+
+.dtors          0x03805600        0x0
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+                0x03805600                . = ALIGN (0x4)
+
+.eh_frame       0x03805600        0x4
+ *(.eh_frame)
+ .eh_frame      0x03805600        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+ .eh_frame      0x03805600        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtend.o
+                0x03805604                . = ALIGN (0x4)
+
+.gcc_except_table
+                0x03805604        0x0
+ *(.gcc_except_table)
+                0x03805604                . = ALIGN (0x4)
+
+.jcr            0x03805604        0x4
+ *(.jcr)
+ .jcr           0x03805604        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+ .jcr           0x03805604        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtend.o
+
+.got
+ *(.got.plt)
+ *(.got)
+
+.iwram          0x03805608        0x0
+                0x03805608                __iwram_start = ABSOLUTE (.)
+ *(.iwram)
+ *iwram.*(.text)
+                0x03805608                . = ALIGN (0x4)
+                0x03805608                __iwram_end = ABSOLUTE (.)
+
+.data           0x03805608      0x858
+                0x03805608                __data_start = ABSOLUTE (.)
+ *(.data)
+ .data          0x03805608        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib/ds_arm7_crt0.o
+ .data          0x03805608        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crti.o
+ .data          0x03805608        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+                0x03805608                __dso_handle
+ .data          0x0380560c        0x0 main.o
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+ .data          0x0380560c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .data          0x0380560c        0x0 c:/devkitPro/libnds/lib\libnds7.a(audio.o)
+ .data          0x0380560c        0x0 c:/devkitPro/libnds/lib\libnds7.a(clock.o)
+ .data          0x0380560c        0x0 c:/devkitPro/libnds/lib\libnds7.a(input.o)
+ .data          0x0380560c        0x1 c:/devkitPro/libnds/lib\libnds7.a(microphone.o)
+ .data          0x0380560d        0x0 c:/devkitPro/libnds/lib\libnds7.a(spi.o)
+ .data          0x0380560d        0x1 c:/devkitPro/libnds/lib\libnds7.a(system.o)
+                0x0380560d                sleepIsEnabled
+ .data          0x0380560e        0x1 c:/devkitPro/libnds/lib\libnds7.a(touch.o)
+ .data          0x0380560f        0x0 c:/devkitPro/libnds/lib\libnds7.a(userSettings.o)
+ *fill*         0x0380560f        0x1 ff
+ .data          0x03805610       0x10 c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+                0x03805610                fifo_freewords
+                0x03805614                fifo_send_queue
+                0x03805618                fifo_buffer_free
+                0x0380561c                fifo_receive_queue
+ .data          0x03805620        0x0 c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+ .data          0x03805620        0x0 c:/devkitPro/libnds/lib\libnds7.a(libnds_exit.o)
+ .data          0x03805620        0x0 c:/devkitPro/libnds/lib\libnds7.a(timers.o)
+ .data          0x03805620        0x0 c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+ .data          0x03805620        0x0 c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+ .data          0x03805620        0x0 c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+ .data          0x03805620        0x0 c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+ .data          0x03805620        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_divsi3.o)
+ .data          0x03805620        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_dvmd_tls.o)
+ .data          0x03805620        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-init.o)
+ .data          0x03805620        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o)
+ .data          0x03805620      0x410 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mallocr.o)
+                0x03805620                __malloc_av_
+                0x03805a28                __malloc_sbrk_base
+                0x03805a2c                __malloc_trim_threshold
+ .data          0x03805a30        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memcpy.o)
+ .data          0x03805a30        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memmove.o)
+ .data          0x03805a30        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memset.o)
+ .data          0x03805a30        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mlock.o)
+ .data          0x03805a30        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-freer.o)
+ .data          0x03805a30      0x430 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-impure.o)
+                0x03805a30                _impure_ptr
+ .data          0x03805e60        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(sbrk.o)
+ .data          0x03805e60        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(malloc_vars.o)
+ .data          0x03805e60        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtend.o
+ .data          0x03805e60        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtn.o
+ *(.data.*)
+ *(.gnu.linkonce.d*)
+                0x03805e60                . = ALIGN (0x4)
+                0x03805e60                __data_end = ABSOLUTE (.)
+
+.bss            0x03805e60     0x3660
+                0x03805e60                __bss_start = ABSOLUTE (.)
+                0x03805e60                __bss_start__ = ABSOLUTE (.)
+ *(.dynbss)
+ *(.gnu.linkonce.b*)
+ *(.bss*)
+ .bss           0x03805e60        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib/ds_arm7_crt0.o
+ .bss           0x03805e60        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crti.o
+ .bss           0x03805e60       0x1c c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+ .bss           0x03805e7c        0x0 main.o
+ .bss           0x03805e7c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .bss           0x03805e7c        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .bss           0x03805e7c        0x1 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ *fill*         0x03805e7d        0x3 00
+ .bss           0x03805e80      0x19c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+                0x03806018                PA_LegacyInit
+ .bss           0x0380601c        0x8 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+                0x0380601c                PA_MicBuffer
+                0x03806020                PA_MicBufferLen
+ .bss           0x03806024        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .bss           0x03806024        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .bss           0x03806024        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .bss           0x03806024        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .bss           0x03806024        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .bss           0x03806024     0x1a00 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/libnds/lib\libnds7.a(audio.o)
+ .bss           0x03807a24        0x0 c:/devkitPro/libnds/lib\libnds7.a(clock.o)
+ .bss           0x03807a24        0x8 c:/devkitPro/libnds/lib\libnds7.a(input.o)
+ .bss           0x03807a2c       0x20 c:/devkitPro/libnds/lib\libnds7.a(microphone.o)
+ .bss           0x03807a4c        0x0 c:/devkitPro/libnds/lib\libnds7.a(spi.o)
+ .bss           0x03807a4c        0x0 c:/devkitPro/libnds/lib\libnds7.a(system.o)
+ .bss           0x03807a4c       0x14 c:/devkitPro/libnds/lib\libnds7.a(touch.o)
+ .bss           0x03807a60        0x0 c:/devkitPro/libnds/lib\libnds7.a(userSettings.o)
+ .bss           0x03807a60        0x8 c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+                0x03807a64                processing
+ .bss           0x03807a68        0x0 c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+ .bss           0x03807a68        0x0 c:/devkitPro/libnds/lib\libnds7.a(libnds_exit.o)
+ .bss           0x03807a68        0xc c:/devkitPro/libnds/lib\libnds7.a(timers.o)
+                0x03807a68                elapsed
+ .bss           0x03807a74        0x0 c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+ .bss           0x03807a74        0x0 c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+ .bss           0x03807a74        0x0 c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+ .bss           0x03807a74        0x0 c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+ .bss           0x03807a74        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_divsi3.o)
+ .bss           0x03807a74        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_dvmd_tls.o)
+ .bss           0x03807a74        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-init.o)
+ .bss           0x03807a74        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o)
+ .bss           0x03807a74       0x34 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mallocr.o)
+                0x03807a74                __malloc_top_pad
+                0x03807a78                __malloc_current_mallinfo
+                0x03807aa0                __malloc_max_sbrked_mem
+                0x03807aa4                __malloc_max_total_mem
+ .bss           0x03807aa8        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memcpy.o)
+ .bss           0x03807aa8        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memmove.o)
+ .bss           0x03807aa8        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memset.o)
+ .bss           0x03807aa8        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mlock.o)
+ .bss           0x03807aa8        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-freer.o)
+ .bss           0x03807aa8        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-impure.o)
+ .bss           0x03807aa8        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(sbrk.o)
+ .bss           0x03807aac        0x8 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(malloc_vars.o)
+                0x03807aac                fake_heap_end
+                0x03807ab0                fake_heap_start
+ .bss           0x03807ab4        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtend.o
+ .bss           0x03807ab4        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtn.o
+ *(COMMON)
+ COMMON         0x03807ab4        0x4 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+                0x03807ab4                PA_IPC
+ COMMON         0x03807ab8     0x1234 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+                0x03807ab8                nAudioBufStart
+                0x03807abc                audioBuf
+                0x03808cbc                hMP3Decoder
+                0x03808cc0                readPtr
+                0x03808cc4                bytesLeft
+                0x03808cc8                stereo
+                0x03808ccc                nAudioBuf
+                0x03808cd0                mp3FrameInfo
+ COMMON         0x03808cec        0x1 c:/devkitPro/libnds/lib\libnds7.a(input.o)
+                0x03808cec                Keys
+ *fill*         0x03808ced        0x3 00
+ COMMON         0x03808cf0      0x640 c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+                0x03808cf0                fifo_datamsg_data
+                0x03808d30                fifo_buffer
+                0x03809130                fifo_value32_func
+                0x03809170                fifo_address_func
+                0x038091b0                fifo_value32_data
+                0x038091f0                fifo_value32_queue
+                0x03809230                fifo_data_queue
+                0x03809270                fifo_address_data
+                0x038092b0                fifo_datamsg_func
+                0x038092f0                fifo_address_queue
+ COMMON         0x03809330      0x190 c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+                0x03809330                irqTableAUX
+                0x038093f8                irqTable
+                0x038094c0                . = ALIGN (0x4)
+                0x038094c0                __bss_end = .
+                0x038094c0                __bss_end__ = .
+                0x038094c0                _end = .
+                0x038094c0                __end__ = .
+                0x038094c0                PROVIDE (end, _end)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.ARM.attributes
+                0x00000000       0x2c
+ .ARM.attributes
+                0x00000000       0x20 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib/ds_arm7_crt0.o
+ .ARM.attributes
+                0x00000020       0x20 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crti.o
+ .ARM.attributes
+                0x00000040       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+ .ARM.attributes
+                0x00000070       0x2c main.o
+ .ARM.attributes
+                0x0000009c       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .ARM.attributes
+                0x000000c8       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .ARM.attributes
+                0x000000f4       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .ARM.attributes
+                0x00000120       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .ARM.attributes
+                0x0000014c       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .ARM.attributes
+                0x00000178       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .ARM.attributes
+                0x000001a4       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .ARM.attributes
+                0x000001d0       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .ARM.attributes
+                0x000001fc       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .ARM.attributes
+                0x00000228       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .ARM.attributes
+                0x00000254       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .ARM.attributes
+                0x00000280       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .ARM.attributes
+                0x000002ac       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .ARM.attributes
+                0x000002d8       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .ARM.attributes
+                0x00000304       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .ARM.attributes
+                0x00000330       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .ARM.attributes
+                0x0000035c       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .ARM.attributes
+                0x00000388       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .ARM.attributes
+                0x000003b4       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .ARM.attributes
+                0x000003e0       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .ARM.attributes
+                0x0000040c       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+ .ARM.attributes
+                0x0000042c       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .ARM.attributes
+                0x00000458       0x2c c:/devkitPro/libnds/lib\libnds7.a(audio.o)
+ .ARM.attributes
+                0x00000484       0x2c c:/devkitPro/libnds/lib\libnds7.a(clock.o)
+ .ARM.attributes
+                0x000004b0       0x2c c:/devkitPro/libnds/lib\libnds7.a(input.o)
+ .ARM.attributes
+                0x000004dc       0x2c c:/devkitPro/libnds/lib\libnds7.a(microphone.o)
+ .ARM.attributes
+                0x00000508       0x2c c:/devkitPro/libnds/lib\libnds7.a(spi.o)
+ .ARM.attributes
+                0x00000534       0x2c c:/devkitPro/libnds/lib\libnds7.a(system.o)
+ .ARM.attributes
+                0x00000560       0x2c c:/devkitPro/libnds/lib\libnds7.a(touch.o)
+ .ARM.attributes
+                0x0000058c       0x2c c:/devkitPro/libnds/lib\libnds7.a(userSettings.o)
+ .ARM.attributes
+                0x000005b8       0x2c c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+ .ARM.attributes
+                0x000005e4       0x2c c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+ .ARM.attributes
+                0x00000610       0x2c c:/devkitPro/libnds/lib\libnds7.a(libnds_exit.o)
+ .ARM.attributes
+                0x0000063c       0x2c c:/devkitPro/libnds/lib\libnds7.a(timers.o)
+ .ARM.attributes
+                0x00000668       0x20 c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+ .ARM.attributes
+                0x00000688       0x20 c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+ .ARM.attributes
+                0x000006a8       0x20 c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+ .ARM.attributes
+                0x000006c8       0x20 c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+ .ARM.attributes
+                0x000006e8       0x22 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x0000070a       0x22 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x0000072c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-init.o)
+ .ARM.attributes
+                0x0000075c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o)
+ .ARM.attributes
+                0x0000078c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mallocr.o)
+ .ARM.attributes
+                0x000007bc       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memcpy.o)
+ .ARM.attributes
+                0x000007ec       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memmove.o)
+ .ARM.attributes
+                0x0000081c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memset.o)
+ .ARM.attributes
+                0x0000084c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mlock.o)
+ .ARM.attributes
+                0x0000087c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-freer.o)
+ .ARM.attributes
+                0x000008ac       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-impure.o)
+ .ARM.attributes
+                0x000008dc       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(sbrk.o)
+ .ARM.attributes
+                0x0000090c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(malloc_vars.o)
+ .ARM.attributes
+                0x0000093c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtend.o
+ .ARM.attributes
+                0x0000096c       0x20 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtn.o
+
+.comment        0x00000000       0x44
+ *(.comment)
+ .comment       0x00000000       0x22 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+                                 0x23 (size before relaxing)
+ .comment       0x00000000       0x23 main.o
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .comment       0x00000000       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .comment       0x00000022       0x22 c:/devkitPro/libnds/lib\libnds7.a(audio.o)
+                                 0x23 (size before relaxing)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(clock.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(input.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(microphone.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(spi.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(system.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(touch.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(userSettings.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(fifosystem.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(interrupts.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(libnds_exit.o)
+ .comment       0x00000000       0x23 c:/devkitPro/libnds/lib\libnds7.a(timers.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-init.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-malloc.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mallocr.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memcpy.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memmove.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-memset.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-mlock.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-freer.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a(lib_a-impure.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(sbrk.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a(malloc_vars.o)
+ .comment       0x00000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtend.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x300
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .debug_aranges
+                0x00000040       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .debug_aranges
+                0x00000060       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .debug_aranges
+                0x00000080       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .debug_aranges
+                0x000000a0       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .debug_aranges
+                0x000000c0       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .debug_aranges
+                0x000000e0       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .debug_aranges
+                0x00000100       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_aranges
+                0x00000120       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_aranges
+                0x00000140       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .debug_aranges
+                0x00000160       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .debug_aranges
+                0x00000180       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_aranges
+                0x000001a0       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_aranges
+                0x000001c0       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_aranges
+                0x000001e0       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_aranges
+                0x00000200       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_aranges
+                0x00000220       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .debug_aranges
+                0x00000240       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+ .debug_aranges
+                0x00000260       0x20 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .debug_aranges
+                0x00000280       0x20 c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+ .debug_aranges
+                0x000002a0       0x20 c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+ .debug_aranges
+                0x000002c0       0x20 c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+ .debug_aranges
+                0x000002e0       0x20 c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+
+.debug_pubnames
+                0x00000000      0x7de
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x34 main.o
+ .debug_pubnames
+                0x00000034       0x1e c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .debug_pubnames
+                0x00000052       0x4e c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .debug_pubnames
+                0x000000a0       0x3b c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .debug_pubnames
+                0x000000db       0x98 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .debug_pubnames
+                0x00000173       0x59 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .debug_pubnames
+                0x000001cc       0x24 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .debug_pubnames
+                0x000001f0      0x126 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .debug_pubnames
+                0x00000316       0xa0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_pubnames
+                0x000003b6       0xad c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .debug_pubnames
+                0x00000463       0x9e c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_pubnames
+                0x00000501       0x40 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .debug_pubnames
+                0x00000541       0x26 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .debug_pubnames
+                0x00000567       0x2a c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_pubnames
+                0x00000591       0x29 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_pubnames
+                0x000005ba       0x95 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .debug_pubnames
+                0x0000064f       0x21 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_pubnames
+                0x00000670       0x2e c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_pubnames
+                0x0000069e       0x5f c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_pubnames
+                0x000006fd       0x23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .debug_pubnames
+                0x00000720       0x9c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .debug_pubnames
+                0x000007bc       0x22 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+
+.debug_info     0x00000000     0xaccc
+ *(.debug_info)
+ .debug_info    0x00000000      0x192 main.o
+ .debug_info    0x00000192      0x26f c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .debug_info    0x00000401      0x39f c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .debug_info    0x000007a0      0x334 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .debug_info    0x00000ad4      0x455 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .debug_info    0x00000f29      0x307 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .debug_info    0x00001230      0x281 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .debug_info    0x000014b1      0xa23 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .debug_info    0x00001ed4      0x6c9 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_info    0x0000259d      0x1af c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .debug_info    0x0000274c      0x978 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_info    0x000030c4      0x90b c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .debug_info    0x000039cf      0x827 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .debug_info    0x000041f6      0x919 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_info    0x00004b0f      0xc7a c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_info    0x00005789      0x1a5 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .debug_info    0x0000592e     0x27c3 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_info    0x000080f1      0x9c1 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_info    0x00008ab2      0xd39 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_info    0x000097eb      0x403 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .debug_info    0x00009bee      0x1a6 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .debug_info    0x00009d94       0x8c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+ .debug_info    0x00009e20      0xba6 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .debug_info    0x0000a9c6       0xbc c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+ .debug_info    0x0000aa82       0xbf c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+ .debug_info    0x0000ab41       0xc9 c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+ .debug_info    0x0000ac0a       0xc2 c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+
+.debug_abbrev   0x00000000     0x2103
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x7e main.o
+ .debug_abbrev  0x0000007e      0x104 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .debug_abbrev  0x00000182      0x151 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .debug_abbrev  0x000002d3      0x11c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .debug_abbrev  0x000003ef      0x176 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .debug_abbrev  0x00000565      0x152 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .debug_abbrev  0x000006b7       0xde c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .debug_abbrev  0x00000795      0x1b3 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .debug_abbrev  0x00000948      0x239 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_abbrev  0x00000b81       0x86 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .debug_abbrev  0x00000c07      0x26c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_abbrev  0x00000e73      0x148 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .debug_abbrev  0x00000fbb      0x19b c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .debug_abbrev  0x00001156      0x22e c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_abbrev  0x00001384      0x221 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_abbrev  0x000015a5       0xb8 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .debug_abbrev  0x0000165d      0x376 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_abbrev  0x000019d3      0x1d2 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_abbrev  0x00001ba5      0x21e c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_abbrev  0x00001dc3      0x108 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .debug_abbrev  0x00001ecb       0x75 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .debug_abbrev  0x00001f40       0x14 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+ .debug_abbrev  0x00001f54      0x15f c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .debug_abbrev  0x000020b3       0x14 c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+ .debug_abbrev  0x000020c7       0x14 c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+ .debug_abbrev  0x000020db       0x14 c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+ .debug_abbrev  0x000020ef       0x14 c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+
+.debug_line     0x00000000     0x35b0
+ *(.debug_line)
+ .debug_line    0x00000000       0xb8 main.o
+ .debug_line    0x000000b8      0x196 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .debug_line    0x0000024e      0x19c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .debug_line    0x000003ea      0x15a c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .debug_line    0x00000544      0x1cc c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .debug_line    0x00000710      0x193 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .debug_line    0x000008a3      0x137 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .debug_line    0x000009da      0x337 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .debug_line    0x00000d11      0x1c2 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_line    0x00000ed3       0x65 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .debug_line    0x00000f38      0x303 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_line    0x0000123b      0x1bd c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .debug_line    0x000013f8      0x1a3 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .debug_line    0x0000159b      0x266 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_line    0x00001801      0x2c6 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_line    0x00001ac7       0x67 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .debug_line    0x00001b2e      0x799 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_line    0x000022c7      0x241 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_line    0x00002508      0x4fa c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_line    0x00002a02      0x16e c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .debug_line    0x00002b70       0x5c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .debug_line    0x00002bcc      0x29b c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(asmpoly_gcc.o)
+ .debug_line    0x00002e67      0x4a0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+ .debug_line    0x00003307       0x95 c:/devkitPro/libnds/lib\libnds7.a(intrwait.o)
+ .debug_line    0x0000339c       0xc1 c:/devkitPro/libnds/lib\libnds7.a(biosCalls.o)
+ .debug_line    0x0000345d       0xc6 c:/devkitPro/libnds/lib\libnds7.a(interruptDispatcher.o)
+ .debug_line    0x00003523       0x8d c:/devkitPro/libnds/lib\libnds7.a(swiSoftReset.o)
+
+.debug_frame    0x00000000      0x7f0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x58 main.o
+ .debug_frame   0x00000058       0x28 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .debug_frame   0x00000080       0x60 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .debug_frame   0x000000e0       0x4c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .debug_frame   0x0000012c       0x98 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .debug_frame   0x000001c4       0x44 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .debug_frame   0x00000208       0x2c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .debug_frame   0x00000234      0x118 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .debug_frame   0x0000034c       0xd0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_frame   0x0000041c       0xb4 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_frame   0x000004d0       0x50 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .debug_frame   0x00000520       0x3c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .debug_frame   0x0000055c       0x64 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_frame   0x000005c0       0x3c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_frame   0x000005fc       0xc4 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_frame   0x000006c0       0x3c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_frame   0x000006fc       0x80 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_frame   0x0000077c       0x3c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .debug_frame   0x000007b8       0x38 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+
+.debug_str      0x00000000     0x1bbb
+ *(.debug_str)
+ .debug_str     0x00000000      0x1c8 main.o
+                                0x206 (size before relaxing)
+ .debug_str     0x000001c8      0x132 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+                                0x2f1 (size before relaxing)
+ .debug_str     0x000002fa      0x220 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+                                0x2e5 (size before relaxing)
+ .debug_str     0x0000051a       0x5f c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+                                0x2a9 (size before relaxing)
+ .debug_str     0x00000579      0x11c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+                                0x352 (size before relaxing)
+ .debug_str     0x00000695       0xa8 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+                                0x20d (size before relaxing)
+ .debug_str     0x0000073d       0x3d c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+                                0x198 (size before relaxing)
+ .debug_str     0x0000077a      0x50b c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+                                0x695 (size before relaxing)
+ .debug_str     0x00000c85      0x2bd c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+                                0x4f0 (size before relaxing)
+ .debug_str     0x00000f42       0xaa c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+                                 0xf2 (size before relaxing)
+ .debug_str     0x00000fec      0x276 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+                                0x4a4 (size before relaxing)
+ .debug_str     0x00001262      0x197 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+                                0x557 (size before relaxing)
+ .debug_str     0x000013f9       0x59 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+                                0x454 (size before relaxing)
+ .debug_str     0x00001452      0x121 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+                                0x37e (size before relaxing)
+ .debug_str     0x00001573      0x1a9 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+                                0x5b4 (size before relaxing)
+ .debug_str     0x0000171c       0x3c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+                                0x176 (size before relaxing)
+ .debug_str     0x00001758      0x1bc c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+                                0x555 (size before relaxing)
+ .debug_str     0x00001914       0xb8 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+                                0x492 (size before relaxing)
+ .debug_str     0x000019cc       0xda c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+                                0x2ab (size before relaxing)
+ .debug_str     0x00001aa6       0x5d c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+                                0x264 (size before relaxing)
+ .debug_str     0x00001b03       0x59 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+                                 0xdc (size before relaxing)
+ .debug_str     0x00001b5c       0x5f c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+                                 0xb1 (size before relaxing)
+
+.debug_loc      0x00000000     0x8644
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x60 main.o
+ .debug_loc     0x00000060       0x33 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .debug_loc     0x00000093       0xcb c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .debug_loc     0x0000015e       0x56 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .debug_loc     0x000001b4       0xd0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .debug_loc     0x00000284       0x67 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .debug_loc     0x000002eb       0x69 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .debug_loc     0x00000354      0x310 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .debug_loc     0x00000664      0x667 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_loc     0x00000ccb      0x451 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_loc     0x0000111c       0xe3 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .debug_loc     0x000011ff      0x35b c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .debug_loc     0x0000155a      0x7f1 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_loc     0x00001d4b      0xda4 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_loc     0x00002aef     0x2c87 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_loc     0x00005776      0x792 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_loc     0x00005f08     0x110c c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_loc     0x00007014      0x105 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .debug_loc     0x00007119     0x152b c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.stack          0x00080000        0x0
+                0x00080000                _stack = .
+ *(.stack)
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib/ds_arm7_crt0.o
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crti.o
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtbegin.o
+LOAD main.o
+LOAD c:/devkitPro/libnds/lib\libmm7.a
+LOAD c:/devkitPro/libnds/lib\libdswifi7.a
+LOAD c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a
+LOAD c:/devkitPro/libnds/lib\libnds7.a
+START GROUP
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0\libgcc.a
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libg.a
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libc.a
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/../../../../arm-eabi/lib\libsysbase.a
+END GROUP
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtend.o
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-eabi/4.5.0/crtn.o
+OUTPUT(arm7.elf elf32-littlearm)
+
+.debug_pubtypes
+                0x00000000     0x10a9
+ .debug_pubtypes
+                0x00000000       0x20 main.o
+ .debug_pubtypes
+                0x00000020       0x47 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA.o)
+ .debug_pubtypes
+                0x00000067       0x6a c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Fifo.o)
+ .debug_pubtypes
+                0x000000d1       0x70 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Input.o)
+ .debug_pubtypes
+                0x00000141       0xc9 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Legacy.o)
+ .debug_pubtypes
+                0x0000020a       0x6a c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_Mic.o)
+ .debug_pubtypes
+                0x00000274       0x84 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(PA_PSG.o)
+ .debug_pubtypes
+                0x000002f8      0x16d c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(as_lib7.o)
+ .debug_pubtypes
+                0x00000465       0x74 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_pubtypes
+                0x000004d9       0x33 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3tabs.o)
+ .debug_pubtypes
+                0x0000050c       0xf3 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_pubtypes
+                0x000005ff      0x1e0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(buffers.o)
+ .debug_pubtypes
+                0x000007df      0x1a2 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dequant.o)
+ .debug_pubtypes
+                0x00000981       0xe3 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_pubtypes
+                0x00000a64      0x1b2 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_pubtypes
+                0x00000c16       0x58 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(hufftabs.o)
+ .debug_pubtypes
+                0x00000c6e      0x12b c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_pubtypes
+                0x00000d99      0x170 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_pubtypes
+                0x00000f09       0xdc c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_pubtypes
+                0x00000fe5       0xa0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(subband.o)
+ .debug_pubtypes
+                0x00001085       0x12 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(trigtabs.o)
+ .debug_pubtypes
+                0x00001097       0x12 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)
+
+.debug_ranges   0x00000000      0x848
+ .debug_ranges  0x00000000       0x30 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(mp3dec.o)
+ .debug_ranges  0x00000030       0x68 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(bitstream.o)
+ .debug_ranges  0x00000098       0x60 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dqchan.o)
+ .debug_ranges  0x000000f8       0xd0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(huffman.o)
+ .debug_ranges  0x000001c8      0x3f0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(imdct.o)
+ .debug_ranges  0x000005b8       0x90 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(scalfact.o)
+ .debug_ranges  0x00000648      0x120 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(stproc.o)
+ .debug_ranges  0x00000768       0xe0 c:/devkitPro/PAlib/source/arm7_mp3/../../lib\libpa7.a(dct32.o)

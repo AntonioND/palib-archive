@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Fake 16bit bitmap mode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Fake 16bit bitmap mode</h1><table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Macros</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#ga15846cdeefe0b83f4fe1e5cbb88d6e57">PA_LoadFake16bitBitmap</a>(screen, bitmap)&nbsp;&nbsp;&nbsp;DMA_Copy(bitmap, (void*)PA_DrawFake16[screen], 256*192, DMA_16NOW)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#ga15846cdeefe0b83f4fe1e5cbb88d6e57"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#ga4202583928e50d15da5cfb61abad1121">PA_ClearFake16bitBg</a>(screen)&nbsp;&nbsp;&nbsp;dmaFillWords(0, (void*)PA_DrawFake16[screen], 256*192*2)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#ga4202583928e50d15da5cfb61abad1121"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#ga5dd09cf76457fad1d5371d4ff5e9c22c">PA_PutFake16bitPixel</a>(screen, x, y, color)&nbsp;&nbsp;&nbsp;PA_DrawFake16[screen][(x) + 256 * (y)] = color</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#ga5dd09cf76457fad1d5371d4ff5e9c22c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#ga1dcc09488902d4a050132594bfc3d484">PA_GetFake16bitPixel</a>(screen, x, y)&nbsp;&nbsp;&nbsp;PA_DrawFake16[screen][(x) + 256 * (y)]</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#ga1dcc09488902d4a050132594bfc3d484"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#gaaf2528adaf2b66473e181d45fb8a61be">PA_DrawFake16bitRect</a>(screen, x1, y1, x2, y2, color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#gaaf2528adaf2b66473e181d45fb8a61be"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#ga86696a01dd3793acf6350f0508e5e04c">PA_Fake16bitLoadBmpEx</a>(screen, bmp, x, y)&nbsp;&nbsp;&nbsp;PA_LoadBmpToBuffer(PA_DrawFake16[screen], x, y, bmp, 256)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#ga86696a01dd3793acf6350f0508e5e04c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#ga5e770410e9e7f4fd2e901c41aac02252">PA_Fake16bitLoadBmp</a>(screen, bmp)&nbsp;&nbsp;&nbsp;PA_Fake16bitLoadBmpEx(screen, bmp, 0, 0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#ga5e770410e9e7f4fd2e901c41aac02252"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#gadd3ed1e6f0ae1e9347c704c8b56665e7">PA_Fake16bitLoadGif</a>(screen, gif)&nbsp;&nbsp;&nbsp;PA_Fake16bitLoadGifXY(screen, gif, 0, 0)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#gadd3ed1e6f0ae1e9347c704c8b56665e7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#gabeb548e55c5b80134ae870e5813e6967">PA_Fake16bitLoadJpeg</a>(screen, jpeg)&nbsp;&nbsp;&nbsp;JPEG_DecompressImage((u8*)jpeg, PA_DrawFake16[screen], 256, 192)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#gabeb548e55c5b80134ae870e5813e6967"></a><br/></td></tr>
+<tr><td colspan="2"><h2>Fonctions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#ga2e9c431cd95781aa63b533bef3ad0a88">PA_InitFake16bitBg</a> (u8 screen, u8 prio)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#ga2e9c431cd95781aa63b533bef3ad0a88"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00069.htm#gac1645ae97588a24b1ff171eaab46a858">PA_DrawFake16bitLine</a> (u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">[nothing]  <a href="#gac1645ae97588a24b1ff171eaab46a858"></a><br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Functions to handle fake 16 bit backgrounds that take up less memory than real ones! </p>
+<hr/><h2>Documentation des macros</h2>
+<a class="anchor" id="ga15846cdeefe0b83f4fe1e5cbb88d6e57"></a><!-- doxytag: member="PA_Fake16bit.h::PA_LoadFake16bitBitmap" ref="ga15846cdeefe0b83f4fe1e5cbb88d6e57" args="(screen, bitmap)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_LoadFake16bitBitmap</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bitmap&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;DMA_Copy(bitmap, (void*)PA_DrawFake16[screen], 256*192, DMA_16NOW)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>[nothing] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bitmap</em>&nbsp;</td><td>[nothing] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4202583928e50d15da5cfb61abad1121"></a><!-- doxytag: member="PA_Fake16bit.h::PA_ClearFake16bitBg" ref="ga4202583928e50d15da5cfb61abad1121" args="(screen)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_ClearFake16bitBg</td>
+          <td>(</td>
+          <td class="paramtype">screen&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;dmaFillWords(0, (void*)PA_DrawFake16[screen], 256*192*2)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>[nothing] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5dd09cf76457fad1d5371d4ff5e9c22c"></a><!-- doxytag: member="PA_Fake16bit.h::PA_PutFake16bitPixel" ref="ga5dd09cf76457fad1d5371d4ff5e9c22c" args="(screen, x, y, color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_PutFake16bitPixel</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">color&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_DrawFake16[screen][(x) + 256 * (y)] = color</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>[nothing] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1dcc09488902d4a050132594bfc3d484"></a><!-- doxytag: member="PA_Fake16bit.h::PA_GetFake16bitPixel" ref="ga1dcc09488902d4a050132594bfc3d484" args="(screen, x, y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_GetFake16bitPixel</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_DrawFake16[screen][(x) + 256 * (y)]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>[nothing] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaaf2528adaf2b66473e181d45fb8a61be"></a><!-- doxytag: member="PA_Fake16bit.h::PA_DrawFake16bitRect" ref="gaaf2528adaf2b66473e181d45fb8a61be" args="(screen, x1, y1, x2, y2, color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_DrawFake16bitRect</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y2, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">color&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Valeur :</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span>{\
+    <a class="code" href="a00069.htm#gac1645ae97588a24b1ff171eaab46a858" title="[nothing]">PA_DrawFake16bitLine</a>(screen, x1, y1, x2, y1, color);\
+    <a class="code" href="a00069.htm#gac1645ae97588a24b1ff171eaab46a858" title="[nothing]">PA_DrawFake16bitLine</a>(screen, x1, y1, x1, y2, color);\
+    <a class="code" href="a00069.htm#gac1645ae97588a24b1ff171eaab46a858" title="[nothing]">PA_DrawFake16bitLine</a>(screen, x2, y1, x2, y2, color);\
+    <a class="code" href="a00069.htm#gac1645ae97588a24b1ff171eaab46a858" title="[nothing]">PA_DrawFake16bitLine</a>(screen, x1, y2, x2, y2, color);}<span class="keywordflow">while</span>(0)
+</pre></div>
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>[nothing] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga86696a01dd3793acf6350f0508e5e04c"></a><!-- doxytag: member="PA_Fake16bit.h::PA_Fake16bitLoadBmpEx" ref="ga86696a01dd3793acf6350f0508e5e04c" args="(screen, bmp, x, y)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Fake16bitLoadBmpEx</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bmp, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">y&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_LoadBmpToBuffer(PA_DrawFake16[screen], x, y, bmp, 256)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x</em>&nbsp;</td><td>Position X du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y</em>&nbsp;</td><td>Position Y du coin supérieur gauche </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bmp</em>&nbsp;</td><td>image au format BMP... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5e770410e9e7f4fd2e901c41aac02252"></a><!-- doxytag: member="PA_Fake16bit.h::PA_Fake16bitLoadBmp" ref="ga5e770410e9e7f4fd2e901c41aac02252" args="(screen, bmp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Fake16bitLoadBmp</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bmp&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_Fake16bitLoadBmpEx(screen, bmp, 0, 0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>bmp</em>&nbsp;</td><td>image au format BMP... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gadd3ed1e6f0ae1e9347c704c8b56665e7"></a><!-- doxytag: member="PA_Fake16bit.h::PA_Fake16bitLoadGif" ref="gadd3ed1e6f0ae1e9347c704c8b56665e7" args="(screen, gif)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Fake16bitLoadGif</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gif&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;PA_Fake16bitLoadGifXY(screen, gif, 0, 0)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>gif</em>&nbsp;</td><td>image au format Gif... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gabeb548e55c5b80134ae870e5813e6967"></a><!-- doxytag: member="PA_Fake16bit.h::PA_Fake16bitLoadJpeg" ref="gabeb548e55c5b80134ae870e5813e6967" args="(screen, jpeg)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PA_Fake16bitLoadJpeg</td>
+          <td>(</td>
+          <td class="paramtype">screen, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">jpeg&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>&nbsp;&nbsp;&nbsp;JPEG_DecompressImage((u8*)jpeg, PA_DrawFake16[screen], 256, 192)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>Choix de l'écran (0 ou 1) </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>jpeg</em>&nbsp;</td><td>image au format jpeg... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/><h2>Documentation des fonctions</h2>
+<a class="anchor" id="ga2e9c431cd95781aa63b533bef3ad0a88"></a><!-- doxytag: member="PA_Fake16bit.h::PA_InitFake16bitBg" ref="ga2e9c431cd95781aa63b533bef3ad0a88" args="(u8 screen, u8 prio)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_InitFake16bitBg </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>prio</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>[nothing] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>prio</em>&nbsp;</td><td>[nothing] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gac1645ae97588a24b1ff171eaab46a858"></a><!-- doxytag: member="PA_Fake16bit.h::PA_DrawFake16bitLine" ref="gac1645ae97588a24b1ff171eaab46a858" args="(u8 screen, u16 x1, u16 y1, u16 x2, u16 y2, u16 color)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PA_DrawFake16bitLine </td>
+          <td>(</td>
+          <td class="paramtype">u8&nbsp;</td>
+          <td class="paramname"> <em>screen</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>y2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">u16&nbsp;</td>
+          <td class="paramname"> <em>color</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>[nothing] </p>
+<dl><dt><b>Paramètres:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>screen</em>&nbsp;</td><td>[nothing] </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x1</em>&nbsp;</td><td>Position X du premier point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y1</em>&nbsp;</td><td>Position Y du premier point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>x2</em>&nbsp;</td><td>Position X du deuxième point. Attention, si X n'est pas compris entre 0 et 255, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>y2</em>&nbsp;</td><td>Position Y du deuxième point. Attention, si Y n'est pas compris entre 0 et 191, le résultat ne sera pas celui escompté </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>color</em>&nbsp;</td><td>Couleur de 15 bits.On peut utiliser la macro PA_RGB pour entrer les valeurs RGB... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:38 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

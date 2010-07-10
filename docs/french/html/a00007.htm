@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>PAlib: Référence de la structure PA_FifoMsg</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Généré par Doxygen 1.6.1 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.htm"><span>Page&nbsp;principale</span></a></li>
+      <li><a href="pages.htm"><span>Pages&nbsp;associées</span></a></li>
+      <li><a href="modules.htm"><span>Modules</span></a></li>
+      <li><a href="namespaces.htm"><span>Espaces&nbsp;de&nbsp;nommage</span></a></li>
+      <li class="current"><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="examples.htm"><span>Exemples</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="annotated.htm"><span>Structures&nbsp;de&nbsp;données</span></a></li>
+      <li><a href="functions.htm"><span>Champs&nbsp;de&nbsp;donnée</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Référence de la structure PA_FifoMsg<br/>
+<small>
+[<a class="el" href="a00070.htm">General Functions</a>]</small>
+</h1><!-- doxytag: class="PA_FifoMsg" -->
+<p>Represents a message sent through Fifo.  
+<a href="#_details">Plus de détails...</a></p>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Champs de données</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adccc6409a9a8ac1704e9805a4d571dc5"></a><!-- doxytag: member="PA_FifoMsg::type" ref="adccc6409a9a8ac1704e9805a4d571dc5" args="" -->
+u32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00007.htm#adccc6409a9a8ac1704e9805a4d571dc5">type</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Type of message. <br/></td></tr>
+<tr><td class="memItemLeft" ><a class="anchor" id="a4546d6b3058b39d014f9cee51cee34cf"></a><!-- doxytag: member="PA_FifoMsg::@8" ref="a4546d6b3058b39d014f9cee51cee34cf" args="" -->
+union {</td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;struct {</td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u16&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#af7418a0af8de7c50f0816ac2f5115141">tdiode1</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">TSC temperature diode 1. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u16&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#acf6c3c1e1a3c9dff227e1f4a6218f5b1">tdiode2</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">TSC temperature diode 1. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u32&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a7ee910f021b01038e66fac2060b4c767">temperature</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">TSC computed temperature. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u16&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a6426a765f6856459873a09438a0eb2fc">battery</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">TSC battery. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a40daa2d295f2adc8da5e4d75d515865c">micvol</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Microphone volume. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a128edac3b0e98f4ea75a3f45d4594387">extra</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Extra byte - used as padding for now. <br/></td></tr>
+<tr><td class="memItemLeft" valign="top">&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a6980d83dbb25a3eeadc7d5b7d99f807b">InputMsg</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Input message data. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;struct {</td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8 *&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a48e37ca80d3b843683c61460722bde00">buffer</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Buffer to record microphone data. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u32&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a5639df5b911dab55395e34e93967c9f0">length</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Length of the buffer in bytes. <br/></td></tr>
+<tr><td class="memItemLeft" valign="top">&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a7a64fba809f575e27fe40819e7263e95">MicMsg</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Microphone record message data. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;struct {</td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#ad9130cb60587d17f91aab93221f8d9d6">brightness</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Brightness of the lights (0-3). <br/></td></tr>
+<tr><td class="memItemLeft" valign="top">&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a9dd924d63bc7e7e7dcb193d9c8cc4746">DSLBrightMsg</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">DS lite brightness message data. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;struct {</td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u32&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a4bafcac30db6d2fd4f574cc4a1b5b3c7">freq</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Frequency (in hertz). <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#aa49ad4c2b650bebbd935555035639b70">chan</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Channel. <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a31a9f1c62342c0d6e2fd68baebced06e">vol</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Volume (0-127). <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#a3f8ff304ce8ae8daf763de7f879a7b43">pan</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pan (0-64-127). <br/></td></tr>
+<tr><td class="memItemLeft" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;u8&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#aec90fdbe4dccf4c182e89e702c7010b8">duty</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Duty (0-7). <br/></td></tr>
+<tr><td class="memItemLeft" valign="top">&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;<a class="el" href="a00007.htm#af7c5db412492828e92dcd69ee3a8020e">PSGMsg</a></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">PSG play message data. <br/></td></tr>
+<tr><td class="memItemLeft" valign="top">};&nbsp;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">-- <br/></td></tr>
+</table>
+<hr/><a name="_details"></a><h2>Description détaillée</h2>
+<p>Represents a message sent through Fifo. </p>
+</div>
+<hr size="1"/><address style="text-align: right;"><small>Généré le Wed Jul 7 21:08:39 2010 pour PAlib par&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
+</body>
+</html>

@@ -1,0 +1,15 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please come to the PAlib forums
+
+Converting PAGfx.ini
+Transparent Color: Green
+
+1 textures:
+  explosion: 256colors, 64x448, Pal : explosion_Pal, -> explosion_Texture
+
+1 palettes:
+  explosion_Pal, 15 colors
+
+Converted in 0 minutes and 0 seconds
+
+Finished!

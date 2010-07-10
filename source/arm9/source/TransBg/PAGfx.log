@@ -1,0 +1,15 @@
+PAGfx Converter v0.10 -- by Mollusk -- resurrected by fincs -- forum.palib.info
+If you have suggestions, problems or anything please mail me at mollusk@palib.info
+
+Converting PAGfx.ini
+Transparent Color: Magenta
+
+1 backgrounds:
+  PA_TransBg : EasyBg, 256x192, Pal: PA_TransBg_Pal, 56 tiles -> PA_TransBg_Tiles and PA_TransBg_Map
+
+1 palettes:
+  PA_TransBg_Pal, 2 colors
+
+Converted in 0 minutes and 0 seconds
+
+Finished!
