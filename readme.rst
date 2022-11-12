@@ -79,3 +79,10 @@ share an initial commit, so the history of this repository is a bit weird.
   had code).
 
   https://code.google.com/archive/p/palibds/source
+
+Other files
+-----------
+
+The archived repository https://code.google.com/archive/p/palib-tutorial-pdf/
+contains the PAlib wiki tutorial preserved in PDF format. You can find it in
+this repository in folder ``palib-tutorial-pdf``.

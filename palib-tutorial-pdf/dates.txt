@@ -1,0 +1,5 @@
+Source: https://code.google.com/archive/p/palib-tutorial-pdf/downloads
+
+PAlib_wiki_MSWord_build2.doc    Feb 26, 2009 
+PAlib_wiki_PDF_build2.pdf       Feb 26, 2009
+PAlib_wiki_PDF.pdf              Feb 24, 2009
