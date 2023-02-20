@@ -37,6 +37,7 @@ in the changelog:
 - PAlib 090509 beta
 - PAlib beta 090408
 - PAlib 080313
+- PALib_CommunityUpdate_BETA-080203
 
 If anyone knows where to find them, please, raise an issue in this repository,
 or send them to me directly.
