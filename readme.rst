@@ -24,14 +24,13 @@ http://web.archive.org/web/20110902055959if_/http://www.palib-dev.com/index.php
 
 This repository contains an archive of all released versions of PAlib, as well
 as all of the Google Code SVN repository history (converted to GIT). It also
-contains version 100707.
+contains versions 090621 and 100707.
 
 **Important note**: This repository is missing the following versions mentioned
 in the changelog:
 
 - PAlib 0912XX STABLE beta
 - PAlib 090801 beta
-- PAlib 090621 beta
 - PAlib 090613 beta
 - PAlib 090601 beta
 - PAlib 090509 beta
